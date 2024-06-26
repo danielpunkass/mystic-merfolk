@@ -1,0 +1,11 @@
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "https://jalkut.com"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Origin, Content-Type, Accept, Authorization"
+</IfModule>
+
+# Handle OPTIONS requests
+<Limit OPTIONS>
+    Order allow,deny
+    Allow from all
+</Limit>

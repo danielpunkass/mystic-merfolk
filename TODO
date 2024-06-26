@@ -1,0 +1,3 @@
+? Fetch and parse the closure data from https://datavisualization.dph.mass.gov/views/BeachesDashboardMockup_test/ClosureTable.csv?:refresh=y
+? Fetch and parse geometric mean testing data from https://datavisualization.dph.mass.gov/views/BeachesDashboardMockup_test/Geomean.csv?:refresh=y&Name=Shannon%20Beach%20@%20Upper%20Mystic%20(DCR)
+	and merge it with the same table

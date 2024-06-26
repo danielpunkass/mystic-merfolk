@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shannon Beach Data Dashboard</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shannon Beach Data Dashboard</h1>
+    <table id="data-table">
+        <thead>
+            <tr id="table-head">
+                <!-- Table headers will be inserted here -->
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Table data will be inserted here -->
+        </tbody>
+    </table>
+    <script>
+    	// Could have a popup here to let you choose from beaches    	
+    	const beachName = 'Shannon%20Beach%20@%20Upper%20Mystic%20(DCR)';
+        const dataURL = 'https://jalkut.com/water/beachdata.php?b=' + beachName;
+
+        async function fetchData() {
+            try {
+                const response = await fetch(dataURL, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'text/csv',
+                    },
+                    mode: 'cors'
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.text();
+                parseCSV(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+        
+        function parseCSV(data) {
+            const rows = [];
+            let currentRow = [];
+            let currentField = '';
+            let insideQuotes = false;
+			var pushedColumns = 0;
+			
+            for (let i = 0; i < data.length; i++) {
+                const char = data[i];
+
+                if (char === '"' && (i === 0 || data[i - 1] !== '\\')) {
+                    insideQuotes = !insideQuotes;
+                } else if (char === ',' && !insideQuotes) {
+                	// Skip over second column, redundant date field
+                	if (pushedColumns != 1) {
+	                    currentRow.push(currentField);
+					}
+					pushedColumns += 1;
+                    currentField = '';
+                } else if (char === '\n' && !insideQuotes) {
+                    currentRow.push(currentField);                    
+                    rows.push(currentRow);
+                    currentRow = [];
+                    pushedColumns = 0;
+                    currentField = '';
+                } else {
+                    currentField += char;
+                }
+            }
+            // Add the last field and row
+            currentRow.push(currentField);
+            rows.push(currentRow);
+
+            const tableHead = document.getElementById('table-head');
+            const tableBody = document.getElementById('table-body');
+
+            // Clear existing table data
+            tableHead.innerHTML = '';
+            tableBody.innerHTML = '';
+
+            // Set table headers
+            const headers = rows[0];
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
+                tableHead.appendChild(th);
+            });
+
+            // Sort and set table rows
+            const sortedRows = sortTableByDate(rows.slice(1));
+            sortedRows.forEach(row => {
+                const tr = document.createElement('tr');
+                row.forEach(column => {
+                    const td = document.createElement('td');
+                    td.textContent = column;
+                    tr.appendChild(td);
+                });
+                tableBody.appendChild(tr);
+            });
+        }
+        
+
+  		function sortTableByDate(rows) {
+            return rows.sort((b, a) => {
+                const dateA = new Date(a[2]); // Assuming date is in the first column
+                const dateB = new Date(b[2]); // Adjust the index if date is in a different column
+                return dateA - dateB;
+            });
+        }
+
+        function startAutoRefresh() {
+            fetchData();
+            setInterval(fetchData, 5 * 60 * 1000); // Refresh every 5 minutes
+        }
+
+        // Start auto-refresh on page load
+        document.addEventListener('DOMContentLoaded', startAutoRefresh);
+    </script>
+</body>
+</html>
