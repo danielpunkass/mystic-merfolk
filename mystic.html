@@ -19,6 +19,7 @@
 </head>
 <body>
     <h1>Shannon Beach Data Dashboard</h1>
+    
     <table id="data-table">
         <thead>
             <tr id="table-head">
@@ -29,9 +30,10 @@
             <!-- Table data will be inserted here -->
         </tbody>
     </table>
+    
     <script>
     	// Could have a popup here to let you choose from beaches    	
-    	const beachName = 'Shannon%20Beach%20@%20Upper%20Mystic%20(DCR)';
+    	const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
         const dataURL = 'https://jalkut.com/water/beachdata.php?b=' + beachName;
 
         async function fetchData() {
@@ -46,14 +48,18 @@
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
-                const data = await response.text();
-                parseCSV(data);
+                return await response.text();
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
         
-        function parseCSV(data) {
+        async function update() {
+        	let data = await fetchData();
+        	updateWithData(data);
+        }
+        
+        function updateWithData(data) {
             const rows = [];
             let currentRow = [];
             let currentField = '';
@@ -124,13 +130,22 @@
             });
         }
 
-        function startAutoRefresh() {
-            fetchData();
-            setInterval(fetchData, 5 * 60 * 1000); // Refresh every 5 minutes
-        }
+        // Start the fetch as soon as possible
+        let fetchPromise = fetchData()
+            .catch(error => console.error('Error fetching data:', error));
 
-        // Start auto-refresh on page load
-        document.addEventListener('DOMContentLoaded', startAutoRefresh);
+        // Wait for both the fetch to complete and the page to finish loading
+        window.addEventListener('load', () => {
+            console.log("Page has finished loading.");
+
+            fetchPromise.then(data => {
+                updateWithData(data);
+				setInterval(update, 5 * 60 * 1000); // Refresh every 5 minutes
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+        });
     </script>
 </body>
 </html>
