@@ -1,6 +1,6 @@
 <?php
 // Get the URL from the query string
-$baseURL = isset($_GET['u']) ? $_GET['u'] : 'https://datavisualization.dph.mass.gov/views/BeachesDashboardMockup_test/Results.csv?refresh=y';
+$baseURL = isset($_GET['u']) ? $_GET['u'] : 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y';
 $beachName = isset($_GET['b']) ? $_GET['b'] : 'Shannon Beach @ Upper Mystic (DCR)';
 $url = $baseURL . '&Name=' . urlencode($beachName);
 

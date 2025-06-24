@@ -117,7 +117,9 @@
                     td.textContent = column;
                     tr.appendChild(td);
                 });
-                tableBody.appendChild(tr);
+                if (tr.innerText !== "") {
+                	tableBody.appendChild(tr);
+                }
             });
         }
         
