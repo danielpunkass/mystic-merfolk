@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upper Mystic Water Quality</title>
     <meta name="description" content="A concise snapshot of current and recent water conditions at Shannon Beach.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊‍♂️</text></svg>">
     <style>
         * {
             margin: 0;
@@ -219,6 +219,14 @@
         </div>
         
         <div class="card">
+            <h2 style="padding: 1.5rem 1.5rem 0; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Current Status</h2>
+            <div id="current-status" style="padding: 1.5rem; color: #64748b; font-size: 1.1rem;">
+                Status information will be available soon...
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Recent Test Results</h2>
             <div class="table-container">
                 <div id="loading" class="loading">Loading beach data...</div>
                 <table id="data-table" style="display: none;">
@@ -252,6 +260,10 @@
         const dataURL = window.location.hostname === 'localhost' 
             ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y&Name=' + encodeURIComponent(beachName)
             : 'https://jalkut.com/water/beachdata.php?b=' + beachName;
+            
+        const statusURL = window.location.hostname === 'localhost'
+            ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y&Name=' + encodeURIComponent(beachName)
+            : 'https://jalkut.com/water/beachdata.php?u=' + encodeURIComponent('https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y') + '&b=' + encodeURIComponent(beachName);
 
         // Test data in CSV format
         const testData = `Date and Time,Indicator,Threshold,Date and Time,Results
@@ -277,30 +289,54 @@
 8/27/2024 7:05:00 AM,Enterococci,61,8/27/2024 7:05:00 AM,7
 8/28/2024 1:52:00 AM,Enterococci,61,8/28/2024 1:52:00 AM,10
 `;
+        
+        // Test status data in CSV format
+        const testStatusData = `Beach Status,Name,Town
+Open,Shannon Beach @ Upper Mystic (DCR),Winchester
+`;
 
         async function fetchData() {
             if (isTestMode) {
                 // Return test data immediately
                 return new Promise(resolve => {
                     // Add a small delay to simulate loading
-                    setTimeout(() => resolve(testData), 500);
+                    setTimeout(() => resolve({ samplesData: testData, statusData: testStatusData }), 500);
                 });
             }
             
             try {
-                const response = await fetch(dataURL, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'text/csv',
-                    },
-                    mode: 'cors'
-                });
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
+                // Fetch both samples data and status data in parallel
+                const [samplesResponse, statusResponse] = await Promise.all([
+                    fetch(dataURL, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'text/csv',
+                        },
+                        mode: 'cors'
+                    }),
+                    fetch(statusURL, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'text/csv',
+                        },
+                        mode: 'cors'
+                    })
+                ]);
+                
+                if (!samplesResponse.ok) {
+                    throw new Error('Samples data response was not ok ' + samplesResponse.statusText);
                 }
-                return await response.text();
+                if (!statusResponse.ok) {
+                    throw new Error('Status data response was not ok ' + statusResponse.statusText);
+                }
+                
+                const samplesData = await samplesResponse.text();
+                const statusData = await statusResponse.text();
+                
+                return { samplesData, statusData };
             } catch (error) {
                 console.error('Error fetching data:', error);
+                throw error;
             }
         }
         
@@ -312,7 +348,7 @@
             
             try {
                 let data = await fetchData();
-                updateWithData(data);
+                updateWithData(data.samplesData, data.statusData);
             } catch (error) {
                 console.error('Error updating data:', error);
             } finally {
@@ -323,7 +359,51 @@
             }
         }
         
-        function updateWithData(data) {
+        function updateCurrentStatus(statusData) {
+            const currentStatusDiv = document.getElementById('current-status');
+            
+            try {
+                // Parse status CSV data
+                const lines = statusData.trim().split('\n');
+                if (lines.length < 2) {
+                    currentStatusDiv.innerHTML = '<span style="color: #64748b;">Status information unavailable</span>';
+                    return;
+                }
+                
+                // Skip header row and get first data row
+                const dataRow = lines[1].split(',');
+                const status = dataRow[0]?.trim();
+                const beachNameFromStatus = dataRow[1]?.trim();
+                const town = dataRow[2]?.trim();
+                
+                if (status) {
+                    const statusClass = status.toLowerCase() === 'open' ? 'status-safe' : 'status-danger';
+                    const statusText = status.toLowerCase() === 'open' ? 'Open for Swimming' : 'Closed to Swimming';
+                    
+                    currentStatusDiv.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                            <span class="status-badge ${statusClass}" style="font-size: 1rem; padding: 0.5rem 1rem;">${statusText}</span>
+                        </div>
+                        <div style="color: #64748b; font-size: 0.9rem;">
+                            Beach: ${beachNameFromStatus || beachName}<br>
+                            Location: ${town || 'Winchester'}
+                        </div>
+                    `;
+                } else {
+                    currentStatusDiv.innerHTML = '<span style="color: #64748b;">Status information unavailable</span>';
+                }
+            } catch (error) {
+                console.error('Error parsing status data:', error);
+                currentStatusDiv.innerHTML = '<span style="color: #64748b;">Error loading status information</span>';
+            }
+        }
+        
+        function updateWithData(samplesData, statusData) {
+            // Process status data first
+            updateCurrentStatus(statusData);
+            
+            // Then process samples data
+            const data = samplesData;
             const rows = [];
             let currentRow = [];
             let currentField = '';
@@ -447,7 +527,7 @@
             console.log("Page has finished loading.");
 
             fetchPromise.then(data => {
-                updateWithData(data);
+                updateWithData(data.samplesData, data.statusData);
 				setInterval(update, 5 * 60 * 1000); // Refresh every 5 minutes
             });
         });
