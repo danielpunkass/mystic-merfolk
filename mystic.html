@@ -240,9 +240,35 @@
     <script>
     	// Could have a popup here to let you choose from beaches    	
     	const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
-        const dataURL = 'https://jalkut.com/water/beachdata.php?b=' + beachName;
+        const urlParams = new URLSearchParams(window.location.search);
+        const isTestMode = urlParams.get('test') === '1';
+        
+        // Use direct URL for local testing (bypasses CORS proxy)
+        const dataURL = window.location.hostname === 'localhost' 
+            ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y&Name=' + encodeURIComponent(beachName)
+            : 'https://jalkut.com/water/beachdata.php?b=' + beachName;
+
+        // Test data in CSV format
+        const testData = `Date and Time,Indicator,Threshold: Single-Sample,Date and Time,Results
+7/9/2024 8:12:00 AM,Enterococci,61,7/9/2024 8:12:00 AM,88
+7/1/2024 8:47:00 AM,Enterococci,61,7/1/2024 8:47:00 AM,61
+6/24/2024 9:13:00 AM,Enterococci,61,6/24/2024 9:13:00 AM,26
+6/19/2024 3:00:00 AM,Enterococci,61,6/19/2024 3:00:00 AM,"1,410"
+6/18/2024 9:02:00 AM,Enterococci,61,6/18/2024 9:02:00 AM,240
+6/11/2024 8:21:00 AM,Enterococci,61,6/11/2024 8:21:00 AM,12
+6/4/2024 9:08:00 AM,Enterococci,61,6/4/2024 9:08:00 AM,0.5
+5/28/2024 7:48:00 AM,Enterococci,61,5/28/2024 7:48:00 AM,"2,420"
+5/21/2024 9:40:00 AM,Enterococci,61,5/21/2024 9:40:00 AM,41`;
 
         async function fetchData() {
+            if (isTestMode) {
+                // Return test data immediately
+                return new Promise(resolve => {
+                    // Add a small delay to simulate loading
+                    setTimeout(() => resolve(testData), 500);
+                });
+            }
+            
             try {
                 const response = await fetch(dataURL, {
                     method: 'GET',
@@ -330,6 +356,12 @@
                 th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
                 tableHead.appendChild(th);
             });
+            
+            // Add Status header
+            const statusTh = document.createElement('th');
+            statusTh.textContent = 'Status';
+            statusTh.addEventListener('click', () => sortTableByDate(rows.slice(1)));
+            tableHead.appendChild(statusTh);
 
             // Sort and set table rows
             const sortedRows = sortTableByDate(rows.slice(1));
@@ -337,28 +369,27 @@
                 const tr = document.createElement('tr');
                 row.forEach((column, index) => {
                     const td = document.createElement('td');
-                    
-                    // Add status badges for specific columns that might contain status info
-                    if (column && typeof column === 'string') {
-                        const lowerColumn = column.toLowerCase();
-                        if (lowerColumn.includes('safe') || lowerColumn.includes('good') || 
-                            lowerColumn.includes('acceptable') || lowerColumn.includes('open')) {
-                            td.innerHTML = `<span class="status-badge status-safe">${column}</span>`;
-                        } else if (lowerColumn.includes('warning') || lowerColumn.includes('caution') ||
-                                  lowerColumn.includes('elevated')) {
-                            td.innerHTML = `<span class="status-badge status-warning">${column}</span>`;
-                        } else if (lowerColumn.includes('unsafe') || lowerColumn.includes('danger') ||
-                                  lowerColumn.includes('closed') || lowerColumn.includes('high')) {
-                            td.innerHTML = `<span class="status-badge status-danger">${column}</span>`;
-                        } else {
-                            td.textContent = column;
-                        }
-                    } else {
-                        td.textContent = column;
-                    }
-                    
+                    td.textContent = column;
                     tr.appendChild(td);
                 });
+                
+                // Add calculated status column
+                const statusTd = document.createElement('td');
+                if (row.length >= 4) {
+                    const threshold = parseFloat(row[2]); // Threshold column
+                    const result = parseFloat(row[4]?.replace(/,/g, '') || '0'); // Results column, remove commas
+                    
+                    if (result > threshold) {
+                        statusTd.innerHTML = `<span class="status-badge status-danger">Above Threshold</span>`;
+                    } else if (result === threshold) {
+                        statusTd.innerHTML = `<span class="status-badge status-warning">At Threshold</span>`;
+                    } else {
+                        statusTd.innerHTML = `<span class="status-badge status-safe">Below Threshold</span>`;
+                    }
+                } else {
+                    statusTd.textContent = 'N/A';
+                }
+                tr.appendChild(statusTd);
                 if (tr.innerText !== "") {
                 	tableBody.appendChild(tr);
                 }
@@ -369,7 +400,8 @@
             dataTable.style.display = 'table';
             
             // Show last updated time
-            lastUpdatedDiv.innerHTML = `Last updated: ${new Date().toLocaleString()}`;
+            const testModeText = isTestMode ? ' (Test Mode)' : '';
+            lastUpdatedDiv.innerHTML = `Last updated: ${new Date().toLocaleString()}${testModeText}`;
             lastUpdatedDiv.style.display = 'block';
         }
         

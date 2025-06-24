@@ -25,7 +25,12 @@ if ($response === false) {
 	echo 'Curl error: ' . curl_error($ch);
 } else {
 	// Set the appropriate headers to allow CORS
-	header("Access-Control-Allow-Origin: *");
+	$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '*';
+	if (in_array($origin, ['https://jalkut.com', 'http://localhost:8080', 'http://localhost:8000'])) {
+		header("Access-Control-Allow-Origin: $origin");
+	} else {
+		header("Access-Control-Allow-Origin: *");
+	}
 	header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 	header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization");
 	header("Content-Type: text/plain");
