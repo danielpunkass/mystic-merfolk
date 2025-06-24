@@ -98,7 +98,7 @@
         }
 
         th {
-            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            background: #0ea5e9;
             color: white;
             font-weight: 600;
             text-transform: uppercase;
@@ -109,10 +109,15 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        th:last-child {
+            border-right: none;
         }
 
         th:hover {
-            background: linear-gradient(135deg, #0284c7, #0369a1);
+            background: #0284c7;
         }
 
         td {
