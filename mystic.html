@@ -318,8 +318,8 @@
                 if (char === '"' && (i === 0 || data[i - 1] !== '\\')) {
                     insideQuotes = !insideQuotes;
                 } else if (char === ',' && !insideQuotes) {
-                	// Skip over second column, redundant date field
-                	if (pushedColumns != 1) {
+                	// Skip over fourth column (index 3), redundant date field
+                	if (pushedColumns != 3) {
 	                    currentRow.push(currentField);
 					}
 					pushedColumns += 1;
@@ -375,9 +375,13 @@
                 
                 // Add calculated status column
                 const statusTd = document.createElement('td');
-                if (row.length >= 4) {
+                if (row.length >= 3) {
+                    // Since we skip column 3 (duplicate date), the indices are:
+                    // 0: Date and Time, 1: Indicator, 2: Threshold, 3: Results
                     const threshold = parseFloat(row[2]); // Threshold column
-                    const result = parseFloat(row[4]?.replace(/,/g, '') || '0'); // Results column, remove commas
+                    const result = parseFloat(row[3]?.replace(/,/g, '') || '0'); // Results column, remove commas
+                    
+                    console.log('Debug:', { threshold, result, row }); // Debug logging
                     
                     if (result > threshold) {
                         statusTd.innerHTML = `<span class="status-badge status-danger">Above Threshold</span>`;
