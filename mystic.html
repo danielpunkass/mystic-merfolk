@@ -431,10 +431,10 @@
         
 
   		function sortTableByDate(rows) {
-            return rows.sort((b, a) => {
-                const dateA = new Date(a[2]); // Assuming date is in the first column
-                const dateB = new Date(b[2]); // Adjust the index if date is in a different column
-                return dateA - dateB;
+            return rows.sort((a, b) => {
+                const dateA = new Date(a[0]); // First column contains the date
+                const dateB = new Date(b[0]); // First column contains the date
+                return dateB - dateA; // Most recent first (descending order)
             });
         }
 
