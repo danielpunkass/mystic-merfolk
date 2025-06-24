@@ -160,6 +160,32 @@
             background: #fee2e2;
             color: #991b1b;
         }
+        
+        .status-card-open {
+            background: linear-gradient(135deg, #dcfce7, #f0fdf4) !important;
+            border: 2px solid #22c55e !important;
+        }
+        
+        .status-card-closed {
+            background: linear-gradient(135deg, #fee2e2, #fef2f2) !important;
+            border: 2px solid #ef4444 !important;
+        }
+        
+        .status-card-open h2 {
+            color: #166534 !important;
+        }
+        
+        .status-card-closed h2 {
+            color: #991b1b !important;
+        }
+        
+        .status-card-open p {
+            color: #166534 !important;
+        }
+        
+        .status-card-closed p {
+            color: #991b1b !important;
+        }
 
         .last-updated {
             text-align: center;
@@ -218,15 +244,15 @@
             <div class="subtitle">A concise snapshot of current and recent water conditions at Shannon Beach. Data from the <a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
         </div>
         
-        <div class="card">
-            <h2 style="padding: 1.5rem 1.5rem 0; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Current Status</h2>
-            <div id="current-status" style="padding: 1.5rem; color: #64748b; font-size: 1.1rem;">
-                Status information will be available soon...
+        <div class="card" id="status-card">
+            <div id="current-status" style="padding: 2rem;">
+                <h2 id="status-heading" style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">Current Status: Loading...</h2>
+                <p id="status-description" style="margin: 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">This is the official status for Shannon Beach specifically, based on single samples and the cumulative geometric mean of recent results. As always, swim at your own risk and at the discretion of your own best judgement!</p>
             </div>
         </div>
         
         <div class="card">
-            <h2 style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Recent Test Results</h2>
+            <h2 style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Single Sample Test Results</h2>
             <div class="table-container">
                 <div id="loading" class="loading">Loading beach data...</div>
                 <table id="data-table" style="display: none;">
@@ -360,41 +386,40 @@ Closed,Shannon Beach @ Upper Mystic (DCR),Winchester
         }
         
         function updateCurrentStatus(statusData) {
-            const currentStatusDiv = document.getElementById('current-status');
+            const statusCard = document.getElementById('status-card');
+            const statusHeading = document.getElementById('status-heading');
+            const statusDescription = document.getElementById('status-description');
             
             try {
                 // Parse status CSV data
                 const lines = statusData.trim().split('\n');
                 if (lines.length < 2) {
-                    currentStatusDiv.innerHTML = '<span style="color: #64748b;">Status information unavailable</span>';
+                    statusHeading.textContent = 'Current Status: Information Unavailable';
+                    statusDescription.textContent = 'Status information is currently unavailable. Please check back later for updates.';
                     return;
                 }
                 
                 // Skip header row and get first data row
                 const dataRow = lines[1].split(',');
                 const status = dataRow[0]?.trim();
-                const beachNameFromStatus = dataRow[1]?.trim();
-                const town = dataRow[2]?.trim();
                 
                 if (status) {
-                    const statusClass = status.toLowerCase() === 'open' ? 'status-safe' : 'status-danger';
-                    const statusText = status.toLowerCase() === 'open' ? 'Open for Swimming' : 'Closed for Swimming';
+                    const isOpen = status.toLowerCase() === 'open';
+                    const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
                     
-                    currentStatusDiv.innerHTML = `
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                            <span class="status-badge ${statusClass}" style="font-size: 1rem; padding: 0.5rem 1rem;">${statusText}</span>
-                        </div>
-                        <div style="color: #64748b; font-size: 0.9rem;">
-                            Beach: ${beachNameFromStatus || beachName}<br>
-                            Location: ${town || 'Winchester'}
-                        </div>
-                    `;
+                    // Update heading
+                    statusHeading.textContent = `Current Status: ${statusText}`;
+                    
+                    // Update card styling based on status
+                    statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';                    
                 } else {
-                    currentStatusDiv.innerHTML = '<span style="color: #64748b;">Status information unavailable</span>';
+                    statusHeading.textContent = 'Current Status: Information Unavailable';
+                    statusDescription.textContent = 'Status information is currently unavailable. Please check back later for updates.';
                 }
             } catch (error) {
                 console.error('Error parsing status data:', error);
-                currentStatusDiv.innerHTML = '<span style="color: #64748b;">Error loading status information</span>';
+                statusHeading.textContent = 'Current Status: Error Loading';
+                statusDescription.textContent = 'There was an error loading status information. Please refresh the page.';
             }
         }
         
