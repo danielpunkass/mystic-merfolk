@@ -254,16 +254,29 @@
             : 'https://jalkut.com/water/beachdata.php?b=' + beachName;
 
         // Test data in CSV format
-        const testData = `Date and Time,Indicator,Threshold: Single-Sample,Date and Time,Results
-7/9/2024 8:12:00 AM,Enterococci,61,7/9/2024 8:12:00 AM,88
-7/1/2024 8:47:00 AM,Enterococci,61,7/1/2024 8:47:00 AM,61
-6/24/2024 9:13:00 AM,Enterococci,61,6/24/2024 9:13:00 AM,26
-6/19/2024 3:00:00 AM,Enterococci,61,6/19/2024 3:00:00 AM,"1,410"
-6/18/2024 9:02:00 AM,Enterococci,61,6/18/2024 9:02:00 AM,240
-6/11/2024 8:21:00 AM,Enterococci,61,6/11/2024 8:21:00 AM,12
-6/4/2024 9:08:00 AM,Enterococci,61,6/4/2024 9:08:00 AM,0.5
+        const testData = `Date and Time,Indicator,Threshold,Date and Time,Results
+5/21/2024 9:40:00 AM,Enterococci,61,5/21/2024 9:40:00 AM,41
 5/28/2024 7:48:00 AM,Enterococci,61,5/28/2024 7:48:00 AM,"2,420"
-5/21/2024 9:40:00 AM,Enterococci,61,5/21/2024 9:40:00 AM,41`;
+6/4/2024 9:08:00 AM,Enterococci,61,6/4/2024 9:08:00 AM,0.5
+6/11/2024 8:21:00 AM,Enterococci,61,6/11/2024 8:21:00 AM,12
+6/18/2024 9:02:00 AM,Enterococci,61,6/18/2024 9:02:00 AM,240
+6/19/2024 3:00:00 AM,Enterococci,61,6/19/2024 3:00:00 AM,"1,410"
+6/24/2024 9:13:00 AM,Enterococci,61,6/24/2024 9:13:00 AM,26
+7/1/2024 8:47:00 AM,Enterococci,61,7/1/2024 8:47:00 AM,61
+7/9/2024 8:12:00 AM,Enterococci,61,7/9/2024 8:12:00 AM,88
+7/16/2024 9:18:00 AM,Enterococci,61,7/16/2024 9:18:00 AM,14
+7/18/2024 11:28:00 AM,Enterococci,61,7/18/2024 11:28:00 AM,11
+7/23/2024 9:20:00 AM,Enterococci,61,7/23/2024 9:20:00 AM,29
+7/30/2024 9:20:00 AM,Enterococci,61,7/30/2024 9:20:00 AM,49
+8/7/2024 2:45:00 AM,Enterococci,61,8/7/2024 2:45:00 AM,52
+8/7/2024 9:02:00 AM,Enterococci,61,8/7/2024 9:02:00 AM,133
+8/13/2024 9:21:00 AM,Enterococci,61,8/13/2024 9:21:00 AM,12
+8/14/2024 2:03:00 AM,Enterococci,61,8/14/2024 2:03:00 AM,275
+8/20/2024 10:10:00 AM,Enterococci,61,8/20/2024 10:10:00 AM,177
+8/22/2024 10:05:00 AM,Enterococci,61,8/22/2024 10:05:00 AM,25
+8/27/2024 7:05:00 AM,Enterococci,61,8/27/2024 7:05:00 AM,7
+8/28/2024 1:52:00 AM,Enterococci,61,8/28/2024 1:52:00 AM,10
+`;
 
         async function fetchData() {
             if (isTestMode) {
@@ -371,6 +384,10 @@
             // Sort and set table rows
             const sortedRows = sortTableByDate(rows.slice(1));
             sortedRows.forEach(row => {
+            	if (row.length < 3) {
+					return;
+            	}
+
                 const tr = document.createElement('tr');
                 row.forEach((column, index) => {
                     const td = document.createElement('td');
@@ -395,8 +412,6 @@
                     } else {
                         statusTd.innerHTML = `<span class="status-badge status-safe">Below Threshold</span>`;
                     }
-                } else {
-                    statusTd.textContent = 'N/A';
                 }
                 tr.appendChild(statusTd);
                 if (tr.innerText !== "") {
