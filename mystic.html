@@ -292,7 +292,7 @@
         
         // Test status data in CSV format
         const testStatusData = `Beach Status,Name,Town
-Open,Shannon Beach @ Upper Mystic (DCR),Winchester
+Closed,Shannon Beach @ Upper Mystic (DCR),Winchester
 `;
 
         async function fetchData() {
@@ -378,7 +378,7 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
                 
                 if (status) {
                     const statusClass = status.toLowerCase() === 'open' ? 'status-safe' : 'status-danger';
-                    const statusText = status.toLowerCase() === 'open' ? 'Open for Swimming' : 'Closed to Swimming';
+                    const statusText = status.toLowerCase() === 'open' ? 'Open for Swimming' : 'Closed for Swimming';
                     
                     currentStatusDiv.innerHTML = `
                         <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
