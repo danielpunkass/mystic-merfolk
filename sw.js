@@ -308,7 +308,7 @@ self.addEventListener('notificationclick', event => {
                 }
                 // If no existing client, open new one
                 if (self.clients.openWindow) {
-                    return self.clients.openWindow('/mystic.html');
+                    return self.clients.openWindow('/water/mystic.html');
                 }
             })
         );
