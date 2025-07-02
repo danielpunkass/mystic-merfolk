@@ -1,0 +1,286 @@
+// Service Worker for Beach Status Notifications
+const CACHE_NAME = 'beach-status-v1';
+const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
+
+// Status URLs
+const statusURL = 'https://jalkut.com/water/beachdata.php?u=' + encodeURIComponent('https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y') + '&b=' + encodeURIComponent(beachName);
+
+// Install event
+self.addEventListener('install', event => {
+    console.log('Service Worker installing');
+    self.skipWaiting();
+});
+
+// Activate event
+self.addEventListener('activate', event => {
+    console.log('Service Worker activating');
+    event.waitUntil(self.clients.claim());
+});
+
+// Background sync for periodic status checks
+self.addEventListener('sync', event => {
+    if (event.tag === 'beach-status-check') {
+        event.waitUntil(checkBeachStatus());
+    }
+});
+
+// Periodic background sync (Chrome only)
+self.addEventListener('periodicsync', event => {
+    if (event.tag === 'beach-status-periodic') {
+        event.waitUntil(checkBeachStatus());
+    }
+});
+
+// Get configuration settings from IndexedDB
+async function getConfigSettings() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open('BeachStatusDB', 1);
+        
+        request.onerror = () => resolve({ 
+            isTestMode: false, 
+            testStatusData: null, 
+            syncFrequencyMinutes: 5 
+        });
+        
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains('status')) {
+                db.createObjectStore('status', { keyPath: 'id' });
+            }
+        };
+        
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(['status'], 'readonly');
+            const store = transaction.objectStore('status');
+            const getRequest = store.get('config');
+            
+            getRequest.onsuccess = () => {
+                db.close();
+                if (getRequest.result) {
+                    resolve({
+                        isTestMode: getRequest.result.isTestMode,
+                        testStatusData: getRequest.result.testStatusData,
+                        syncFrequencyMinutes: getRequest.result.syncFrequencyMinutes || 5
+                    });
+                } else {
+                    resolve({ 
+                        isTestMode: false, 
+                        testStatusData: null, 
+                        syncFrequencyMinutes: 5 
+                    });
+                }
+            };
+            
+            getRequest.onerror = () => {
+                db.close();
+                resolve({ 
+                    isTestMode: false, 
+                    testStatusData: null, 
+                    syncFrequencyMinutes: 5 
+                });
+            };
+        };
+    });
+}
+
+// Check beach status and send notifications
+async function checkBeachStatus() {
+    try {
+        console.log('Service Worker: Checking beach status...');
+        
+        // Get configuration settings
+        const config = await getConfigSettings();
+        console.log('Service Worker: Config settings:', config);
+        
+        let statusData;
+        
+        if (config.isTestMode && config.testStatusData) {
+            // Use test data from IndexedDB
+            console.log('Service Worker: Using test data from IndexedDB');
+            statusData = config.testStatusData;
+        } else {
+            // Fetch real data
+            console.log('Service Worker: Fetching real data');
+            const response = await fetch(statusURL, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/csv',
+                },
+                mode: 'cors'
+            });
+            
+            if (!response.ok) {
+                throw new Error('Status response was not ok: ' + response.statusText);
+            }
+            
+            statusData = await response.text();
+        }
+        
+        const currentStatus = parseStatusData(statusData);
+        
+        // Get previous status from storage
+        const previousStatus = await getStoredStatus();
+        
+        console.log('Service Worker: Status check - Previous:', previousStatus, 'Current:', currentStatus);
+        
+        // Always store current status (even on first run)
+        if (currentStatus) {
+            await storeStatus(currentStatus);
+            console.log('Service Worker: Status stored:', currentStatus);
+        }
+        
+        // Send notification only if status changed and we have notification permission
+        if (previousStatus && previousStatus !== currentStatus && currentStatus) {
+            console.log('Service Worker: Status changed, attempting notification...');
+            await showStatusNotification(currentStatus, previousStatus);
+        } else if (!previousStatus) {
+            console.log('Service Worker: First run, status stored but no notification sent');
+        }
+        
+    } catch (error) {
+        console.error('Service Worker: Error checking beach status:', error);
+    }
+}
+
+// Parse status data from CSV
+function parseStatusData(statusData) {
+    try {
+        const lines = statusData.trim().split('\n');
+        if (lines.length < 2) {
+            return null;
+        }
+        
+        // Skip header row and get first data row
+        const dataRow = lines[1].split(',');
+        const status = dataRow[0]?.trim();
+        
+        return status ? status.toLowerCase() : null;
+    } catch (error) {
+        console.error('Service Worker: Error parsing status data:', error);
+        return null;
+    }
+}
+
+// Show desktop notification for status changes
+async function showStatusNotification(newStatus, previousStatus) {
+    const isOpen = newStatus === 'open';
+    const title = 'Shannon Beach Status Update';
+    const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
+    const body = `Swimming status changed to: ${statusText}`;
+    const icon = isOpen ? '🏊‍♂️' : '🚫';
+    
+    // Check if we have notification permission
+    const permission = await self.registration.showNotification(title, {
+        body: body,
+        icon: `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${icon}</text></svg>`,
+        requireInteraction: true,
+        tag: 'beach-status',
+        badge: `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊‍♂️</text></svg>`,
+        data: {
+            status: newStatus,
+            timestamp: Date.now()
+        }
+    });
+    
+    console.log('Service Worker: Notification sent for status change:', previousStatus, '->', newStatus);
+}
+
+// Store status in IndexedDB
+async function storeStatus(status) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open('BeachStatusDB', 1);
+        
+        request.onerror = () => reject(request.error);
+        
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains('status')) {
+                db.createObjectStore('status', { keyPath: 'id' });
+            }
+        };
+        
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(['status'], 'readwrite');
+            const store = transaction.objectStore('status');
+            
+            store.put({
+                id: 'current',
+                status: status,
+                timestamp: Date.now()
+            });
+            
+            transaction.oncomplete = () => {
+                db.close();
+                resolve();
+            };
+            
+            transaction.onerror = () => {
+                db.close();
+                reject(transaction.error);
+            };
+        };
+    });
+}
+
+// Get stored status from IndexedDB
+async function getStoredStatus() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open('BeachStatusDB', 1);
+        
+        request.onerror = () => resolve(null); // Return null if DB doesn't exist yet
+        
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains('status')) {
+                db.createObjectStore('status', { keyPath: 'id' });
+            }
+        };
+        
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(['status'], 'readonly');
+            const store = transaction.objectStore('status');
+            const getRequest = store.get('current');
+            
+            getRequest.onsuccess = () => {
+                db.close();
+                resolve(getRequest.result ? getRequest.result.status : null);
+            };
+            
+            getRequest.onerror = () => {
+                db.close();
+                resolve(null);
+            };
+        };
+    });
+}
+
+// Handle notification clicks
+self.addEventListener('notificationclick', event => {
+    event.notification.close();
+    
+    // Focus or open the beach status page
+    event.waitUntil(
+        self.clients.matchAll().then(clients => {
+            // Try to focus existing client
+            for (const client of clients) {
+                if (client.url.includes('mystic.html') && 'focus' in client) {
+                    return client.focus();
+                }
+            }
+            // If no existing client, open new one
+            if (self.clients.openWindow) {
+                return self.clients.openWindow('/mystic.html');
+            }
+        })
+    );
+});
+
+// Message handling from main thread
+self.addEventListener('message', event => {
+    if (event.data && event.data.type === 'CHECK_STATUS') {
+        checkBeachStatus();
+    }
+});
