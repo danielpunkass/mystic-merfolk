@@ -197,7 +197,7 @@ async function showStatusNotification(newStatus, previousStatus) {
             status: newStatus,
             previousStatus: previousStatus,
             timestamp: Date.now(),
-            url: '/mystic.html'
+            url: '/water/mystic.html'
         }
     };
     
