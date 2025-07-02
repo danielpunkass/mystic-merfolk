@@ -1,5 +1,5 @@
-// Service Worker for Beach Status Notifications
-const CACHE_NAME = 'beach-status-v1';
+// Service Worker for Beach Status Notifications  
+const CACHE_NAME = 'beach-status-v4'; // Increment version to force reload
 const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
 
 // Status URLs
@@ -95,7 +95,11 @@ async function checkBeachStatus() {
         
         let statusData;
         
-        if (config.isTestMode && config.testStatusData) {
+        if (config.statusOverride) {
+            // Use status override from debug panel
+            console.log('Service Worker: Using status override:', config.statusOverride);
+            statusData = `Beach Status,Name,Town\n${config.statusOverride.charAt(0).toUpperCase() + config.statusOverride.slice(1)},Shannon Beach @ Upper Mystic (DCR),Winchester`;
+        } else if (config.isTestMode && config.testStatusData) {
             // Use test data from IndexedDB
             console.log('Service Worker: Using test data from IndexedDB');
             statusData = config.testStatusData;
@@ -162,28 +166,51 @@ function parseStatusData(statusData) {
     }
 }
 
+// Use simple emoji icon as fallback - browsers handle this better
+function createNotificationIcon(isOpen) {
+    const emoji = isOpen ? '🏊‍♂️' : '🚫';
+    // Simple SVG that most browsers can handle
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><text y="80" x="50" font-size="80" text-anchor="middle">${emoji}</text></svg>`;
+    return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
 // Show desktop notification for status changes
 async function showStatusNotification(newStatus, previousStatus) {
     const isOpen = newStatus === 'open';
     const title = 'Shannon Beach Status Update';
     const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
     const body = `Swimming status changed to: ${statusText}`;
-    const icon = isOpen ? '🏊‍♂️' : '🚫';
     
-    // Check if we have notification permission
-    const permission = await self.registration.showNotification(title, {
+    // Create custom icon and badge
+    const icon = createNotificationIcon(isOpen);
+    const badge = createNotificationIcon(false); // Always use closed icon for badge
+    
+    // Simplified notification options that actually work
+    const notificationOptions = {
         body: body,
-        icon: `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${icon}</text></svg>`,
-        requireInteraction: true,
-        tag: 'beach-status',
-        badge: `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊‍♂️</text></svg>`,
+        icon: icon,
+        requireInteraction: true,  // This is the main persistence flag that works
+        tag: 'beach-status',       // Keep same tag to replace old notifications
+        renotify: true,           // Force show even with same tag
+        silent: false,            // Allow sound
         data: {
             status: newStatus,
-            timestamp: Date.now()
+            previousStatus: previousStatus,
+            timestamp: Date.now(),
+            url: '/mystic.html'
         }
-    });
+    };
     
-    console.log('Service Worker: Notification sent for status change:', previousStatus, '->', newStatus);
+    try {
+        await self.registration.showNotification(title, notificationOptions);
+        console.log('Service Worker: Persistent notification sent for status change:', previousStatus, '->', newStatus);
+        
+        // Simple debug logging
+        console.log('Service Worker: Notification shown with icon:', icon.substring(0, 50) + '...');
+        
+    } catch (error) {
+        console.error('Service Worker: Error showing notification:', error);
+    }
 }
 
 // Store status in IndexedDB
@@ -257,25 +284,40 @@ async function getStoredStatus() {
     });
 }
 
-// Handle notification clicks
+// Handle notification clicks and action buttons
 self.addEventListener('notificationclick', event => {
-    event.notification.close();
+    console.log('Service Worker: Notification clicked:', event.action);
     
-    // Focus or open the beach status page
-    event.waitUntil(
-        self.clients.matchAll().then(clients => {
-            // Try to focus existing client
-            for (const client of clients) {
-                if (client.url.includes('mystic.html') && 'focus' in client) {
-                    return client.focus();
+    // Handle action button clicks
+    if (event.action === 'dismiss') {
+        event.notification.close();
+        return;
+    }
+    
+    if (event.action === 'view' || !event.action) {
+        event.notification.close();
+        
+        // Focus or open the beach status page
+        event.waitUntil(
+            self.clients.matchAll({ type: 'window' }).then(clients => {
+                // Try to focus existing client
+                for (const client of clients) {
+                    if (client.url.includes('mystic.html') && 'focus' in client) {
+                        return client.focus();
+                    }
                 }
-            }
-            // If no existing client, open new one
-            if (self.clients.openWindow) {
-                return self.clients.openWindow('/mystic.html');
-            }
-        })
-    );
+                // If no existing client, open new one
+                if (self.clients.openWindow) {
+                    return self.clients.openWindow('/mystic.html');
+                }
+            })
+        );
+    }
+});
+
+// Handle notification close events
+self.addEventListener('notificationclose', event => {
+    console.log('Service Worker: Notification closed by user');
 });
 
 // Message handling from main thread
