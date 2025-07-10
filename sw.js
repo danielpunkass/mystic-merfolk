@@ -10,7 +10,7 @@ function getCSOApiUrl() {
     const twoWeeksAgo = new Date();
     twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
     
-    const dateStr = `${(twoWeeksAgo.getMonth() + 1).toString().padStart(2, '0')}/${twoWeeksAgo.getDate().toString().padStart(2, '0')}/${twoWeeksAgo.getFullYear()}`;
+    const dateStr = `${twoWeeksAgo.getDate().toString().padStart(2, '0')}/${(twoWeeksAgo.getMonth() + 1).toString().padStart(2, '0')}/${twoWeeksAgo.getFullYear()}`;
     
     return `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate=${dateStr}`;
 }
