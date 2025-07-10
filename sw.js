@@ -1,5 +1,5 @@
 // Service Worker for Beach Status Notifications  
-const CACHE_NAME = 'beach-status-v5'; // Increment version to force reload
+const CACHE_NAME = 'beach-status-v6'; // Increment version to force reload
 const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
 
 // Status URLs
@@ -21,10 +21,12 @@ async function fetchCSOData() {
         const csoUrl = getCSOApiUrl();
         console.log('Service Worker: Fetching CSO data from:', csoUrl);
         
-        const response = await fetch(csoUrl, {
+        // Use beachdata.php proxy for CSO requests
+        const proxyUrl = `https://jalkut.com/water/beachdata.php?u=${encodeURIComponent(csoUrl)}`;
+        
+        const response = await fetch(proxyUrl, {
             method: 'GET',
             headers: {
-                'Referer': 'https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/',
                 'Content-Type': 'application/json'
             },
             mode: 'cors'

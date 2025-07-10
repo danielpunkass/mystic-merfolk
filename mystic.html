@@ -760,10 +760,14 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
                 const csoUrl = getCSOApiUrl();
                 console.log('Fetching CSO data from:', csoUrl);
                 
-                const response = await fetch(csoUrl, {
+                // Use beachdata.php proxy for CSO requests
+                const proxyUrl = window.location.hostname === 'localhost' 
+                    ? csoUrl  // Direct call for localhost testing
+                    : `https://jalkut.com/water/beachdata.php?u=${encodeURIComponent(csoUrl)}`;
+                
+                const response = await fetch(proxyUrl, {
                     method: 'GET',
                     headers: {
-                        'Referer': 'https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/',
                         'Content-Type': 'application/json'
                     },
                     mode: 'cors'

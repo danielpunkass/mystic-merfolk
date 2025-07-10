@@ -2,7 +2,19 @@
 // Get the URL from the query string
 $baseURL = isset($_GET['u']) ? $_GET['u'] : 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y';
 $beachName = isset($_GET['b']) ? $_GET['b'] : 'Shannon Beach @ Upper Mystic (DCR)';
-$url = $baseURL . '&Name=' . urlencode($beachName);
+
+// Check if this is a CSO API request
+$isCSORequest = strpos($baseURL, 'eeaonline.eea.state.ma.us/dep/CSOAPI') !== false;
+
+if ($isCSORequest) {
+    // For CSO API, use the URL as-is (it already has all required parameters)
+    $url = $baseURL;
+    $referer = 'https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/';
+} else {
+    // For beach data CSV, append the beach name parameter
+    $url = $baseURL . '&Name=' . urlencode($beachName);
+    $referer = 'https://datavisualization.dph.mass.gov';
+}
 
 // Initialize a cURL session
 $ch = curl_init();
@@ -14,7 +26,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-	'Referer: https://datavisualization.dph.mass.gov'
+	'Referer: ' . $referer
 ));
 
 // Execute the cURL request
@@ -33,7 +45,10 @@ if ($response === false) {
 	}
 	header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 	header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization");
-	header("Content-Type: text/plain");
+	
+	// Set appropriate content type based on request type
+	$contentType = $isCSORequest ? 'application/json' : 'text/plain';
+	header("Content-Type: $contentType");
 
 	// Output the response
 	echo $response;
