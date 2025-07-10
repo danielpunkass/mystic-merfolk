@@ -13,14 +13,17 @@ This is a beach water quality monitoring dashboard that displays data from Massa
 ## Architecture
 
 ### Data Flow
-1. HTML pages make requests to `beachdata.php` for both sample data and beach status
-2. PHP proxy fetches CSV data from two Mass.gov endpoints:
+1. HTML pages make requests to `beachdata.php` for sample data and beach status
+2. Direct API requests to Massachusetts EEA for CSO incident data
+3. Data sources:
    - Sample data: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv`
    - Beach status: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv`
-3. Data is parsed client-side using custom CSV parser and displayed in:
+   - CSO incidents: `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/`
+4. Data is parsed client-side and displayed in:
    - Current Status section showing open/closed beach status
+   - CSO Incidents section (when recent incidents exist affecting Mystic Lake)
    - Recent Samples table with sortable data and threshold indicators
-4. Both data sources auto-refresh every 5 minutes
+5. All data sources auto-refresh every 5 minutes
 
 ### Key Components
 - **mystic.html**: Main dashboard for Shannon Beach @ Upper Mystic (DCR)
@@ -34,6 +37,13 @@ This is a beach water quality monitoring dashboard that displays data from Massa
 Active API endpoints:
 - **Sample data**: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv`
 - **Beach status**: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv`
+- **CSO incidents**: `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate={date}`
+
+### CSO API Requirements
+- **Referer header**: Must include `Referer: https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/`
+- **Date parameter**: `incidentFromDate` automatically set to 2 weeks ago from current date
+- **Response format**: JSON with incidents array containing volume, duration, rainfall, and location data
+- **Filtering**: Client-side filters for incidents affecting Mystic Lake specifically
 
 The TODO file mentions additional endpoints:
 - Closure data: `BeachesDashboardMockup_test/ClosureTable.csv`
@@ -133,3 +143,26 @@ When using `?test=1` URL parameter:
 3. Close tab but keep Safari running
 4. Edit test data in IndexedDB or modify `testStatusData` in code
 5. Notifications appear when status changes are detected
+
+## CSO Incident Monitoring
+
+The application monitors Combined Sewage Overflow (CSO) incidents affecting Mystic Lake from the Massachusetts Department of Environmental Protection.
+
+### CSO Features
+- **Real-time monitoring**: Checks for incidents in the last 2 weeks
+- **Mystic Lake filtering**: Only displays incidents affecting Upper Mystic Lake specifically
+- **Conditional display**: CSO section only appears when relevant incidents exist
+- **Detailed information**: Shows incident number, date/time, volume, duration, rainfall, and location
+- **Service worker integration**: Background monitoring includes CSO data fetching
+
+### CSO Display
+- **Warning styling**: Orange/amber color scheme to indicate water quality concerns
+- **Incident cards**: Each incident displayed in individual cards with grid layout
+- **Data fields**: Time, Location, Volume (gallons), Duration, Rainfall (inches)
+- **Auto-hiding**: Section disappears when no recent Mystic Lake incidents
+
+### CSO Test Mode
+When using `?test=1`:
+- Shows sample CSO incident data
+- Demonstrates the display format and styling
+- Tests the filtering logic for Mystic Lake incidents

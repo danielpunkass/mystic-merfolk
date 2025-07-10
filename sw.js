@@ -1,9 +1,49 @@
 // Service Worker for Beach Status Notifications  
-const CACHE_NAME = 'beach-status-v4'; // Increment version to force reload
+const CACHE_NAME = 'beach-status-v5'; // Increment version to force reload
 const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
 
 // Status URLs
 const statusURL = 'https://jalkut.com/water/beachdata.php?u=' + encodeURIComponent('https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y') + '&b=' + encodeURIComponent(beachName);
+
+// Generate CSO API URL for the last 2 weeks
+function getCSOApiUrl() {
+    const twoWeeksAgo = new Date();
+    twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+    
+    const dateStr = `${(twoWeeksAgo.getMonth() + 1).toString().padStart(2, '0')}/${twoWeeksAgo.getDate().toString().padStart(2, '0')}/${twoWeeksAgo.getFullYear()}`;
+    
+    return `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate=${dateStr}`;
+}
+
+// Fetch CSO incidents data
+async function fetchCSOData() {
+    try {
+        const csoUrl = getCSOApiUrl();
+        console.log('Service Worker: Fetching CSO data from:', csoUrl);
+        
+        const response = await fetch(csoUrl, {
+            method: 'GET',
+            headers: {
+                'Referer': 'https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/',
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors'
+        });
+        
+        if (!response.ok) {
+            throw new Error('CSO data response was not ok ' + response.statusText);
+        }
+        
+        const csoData = await response.json();
+        console.log('Service Worker: CSO data received, incidents count:', csoData.results?.length || 0);
+        
+        return csoData;
+    } catch (error) {
+        console.error('Service Worker: Error fetching CSO data:', error);
+        // Return empty result on error so the rest of the app continues working
+        return { results: [], rowCount: 0 };
+    }
+}
 
 // Install event
 self.addEventListener('install', event => {
@@ -94,6 +134,7 @@ async function checkBeachStatus() {
         console.log('Service Worker: Config settings:', config);
         
         let statusData;
+        let csoData = { results: [], rowCount: 0 };
         
         if (config.statusOverride) {
             // Use status override from debug panel
@@ -103,25 +144,43 @@ async function checkBeachStatus() {
             // Use test data from IndexedDB
             console.log('Service Worker: Using test data from IndexedDB');
             statusData = config.testStatusData;
+            // For test mode, also check if there's test CSO data
+            try {
+                csoData = await fetchCSOData(); // This will be handled by the test data in main page
+            } catch (error) {
+                console.log('Service Worker: Error fetching CSO test data:', error);
+            }
         } else {
-            // Fetch real data
+            // Fetch real data - both status and CSO
             console.log('Service Worker: Fetching real data');
-            const response = await fetch(statusURL, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'text/csv',
-                },
-                mode: 'cors'
-            });
+            const [statusResponse, csoDataResult] = await Promise.all([
+                fetch(statusURL, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'text/csv',
+                    },
+                    mode: 'cors'
+                }),
+                fetchCSOData()
+            ]);
             
-            if (!response.ok) {
-                throw new Error('Status response was not ok: ' + response.statusText);
+            if (!statusResponse.ok) {
+                throw new Error('Status response was not ok: ' + statusResponse.statusText);
             }
             
-            statusData = await response.text();
+            statusData = await statusResponse.text();
+            csoData = csoDataResult;
         }
         
         const currentStatus = parseStatusData(statusData);
+        
+        // Check CSO incidents affecting Mystic Lake
+        const mysticCSOIncidents = csoData.results?.filter(incident => {
+            const waterBody = incident.waterBodyDescription?.toLowerCase() || '';
+            return waterBody.includes('mystic') || waterBody.includes('upper mystic');
+        }) || [];
+        
+        console.log('Service Worker: CSO incidents affecting Mystic Lake:', mysticCSOIncidents.length);
         
         // Get previous status from storage
         const previousStatus = await getStoredStatus();

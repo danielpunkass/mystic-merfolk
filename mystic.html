@@ -187,6 +187,51 @@
             color: #991b1b !important;
         }
 
+        .cso-card {
+            background: linear-gradient(135deg, #fef3c7, #fef9e7) !important;
+            border: 2px solid #f59e0b !important;
+        }
+        
+        .cso-card h2 {
+            color: #92400e !important;
+        }
+        
+        .cso-card p {
+            color: #92400e !important;
+        }
+
+        .cso-incident {
+            background: rgba(251, 146, 60, 0.1);
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cso-incident h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cso-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #78350f;
+        }
+
+        .cso-detail {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .cso-detail strong {
+            color: #92400e;
+        }
+
         .last-updated {
             text-align: center;
             color: #64748b;
@@ -353,6 +398,17 @@
             </div>
         </div>
         
+        <!-- CSO Incidents Section (hidden by default) -->
+        <div class="card cso-card" id="cso-card" style="display: none;">
+            <div id="cso-incidents" style="padding: 2rem;">
+                <h2 style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">⚠️ Recent CSO Incidents</h2>
+                <p style="margin: 0 0 1.5rem 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">Combined Sewage Overflow events reported in the Winchester area affecting Mystic Lake within the last 2 weeks.</p>
+                <div id="cso-list">
+                    <!-- CSO incidents will be inserted here -->
+                </div>
+            </div>
+        </div>
+        
         <div class="card">
             <h2 style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Single Sample Test Results</h2>
             <div class="table-container">
@@ -457,6 +513,26 @@
         const testStatusData = `Beach Status,Name,Town
 Open,Shannon Beach @ Upper Mystic (DCR),Winchester
 `;
+
+        // Test CSO data
+        const testCSOData = {
+            "results": [
+                {
+                    "incidentId": "test-cso-1",
+                    "incidentNumber": "25000123",
+                    "incidentDate": "2025-01-05T00:00:00",
+                    "incidentTime": "14:30",
+                    "eventType": "SSO – System Surcharging Under High Flow Conditions",
+                    "permiteeName": "WINCHESTER, TOWN OF",
+                    "waterBodyDescription": "Upper Mystic Lake",
+                    "volumnOfEvent": "25000",
+                    "rainfallData": "1.85",
+                    "hours": "6",
+                    "minutes": "30"
+                }
+            ],
+            "rowCount": 1
+        };
 
         // Register service worker
         async function registerServiceWorker() {
@@ -664,18 +740,66 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
             }
         }
 
+        // Generate CSO API URL for the last 2 weeks
+        function getCSOApiUrl() {
+            const twoWeeksAgo = new Date();
+            twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+            
+            const dateStr = `${(twoWeeksAgo.getMonth() + 1).toString().padStart(2, '0')}/${twoWeeksAgo.getDate().toString().padStart(2, '0')}/${twoWeeksAgo.getFullYear()}`;
+            
+            return `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate=${dateStr}`;
+        }
+
+        // Fetch CSO incidents data
+        async function fetchCSOData() {
+            if (isTestMode) {
+                return testCSOData;
+            }
+            
+            try {
+                const csoUrl = getCSOApiUrl();
+                console.log('Fetching CSO data from:', csoUrl);
+                
+                const response = await fetch(csoUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Referer': 'https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/',
+                        'Content-Type': 'application/json'
+                    },
+                    mode: 'cors'
+                });
+                
+                if (!response.ok) {
+                    throw new Error('CSO data response was not ok ' + response.statusText);
+                }
+                
+                const csoData = await response.json();
+                console.log('CSO data received:', csoData);
+                
+                return csoData;
+            } catch (error) {
+                console.error('Error fetching CSO data:', error);
+                // Return empty result on error so the rest of the app continues working
+                return { results: [], rowCount: 0 };
+            }
+        }
+
         async function fetchData() {
             if (isTestMode) {
                 // Return test data immediately
                 return new Promise(resolve => {
                     // Add a small delay to simulate loading
-                    setTimeout(() => resolve({ samplesData: testData, statusData: testStatusData }), 500);
+                    setTimeout(() => resolve({ 
+                        samplesData: testData, 
+                        statusData: testStatusData,
+                        csoData: testCSOData 
+                    }), 500);
                 });
             }
             
             try {
-                // Fetch both samples data and status data in parallel
-                const [samplesResponse, statusResponse] = await Promise.all([
+                // Fetch samples data, status data, and CSO data in parallel
+                const [samplesResponse, statusResponse, csoData] = await Promise.all([
                     fetch(dataURL, {
                         method: 'GET',
                         headers: {
@@ -689,7 +813,8 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
                             'Content-Type': 'text/csv',
                         },
                         mode: 'cors'
-                    })
+                    }),
+                    fetchCSOData()
                 ]);
                 
                 if (!samplesResponse.ok) {
@@ -702,7 +827,7 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
                 const samplesData = await samplesResponse.text();
                 const statusData = await statusResponse.text();
                 
-                return { samplesData, statusData };
+                return { samplesData, statusData, csoData };
             } catch (error) {
                 console.error('Error fetching data:', error);
                 throw error;
@@ -717,7 +842,7 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
             
             try {
                 let data = await fetchData();
-                updateWithData(data.samplesData, data.statusData);
+                updateWithData(data.samplesData, data.statusData, data.csoData);
             } catch (error) {
                 console.error('Error updating data:', error);
             } finally {
@@ -877,9 +1002,81 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
             }
         }
         
-        function updateWithData(samplesData, statusData) {
+        // Update CSO incidents display
+        function updateCSOIncidents(csoData) {
+            const csoCard = document.getElementById('cso-card');
+            const csoList = document.getElementById('cso-list');
+            
+            if (!csoData || !csoData.results || csoData.results.length === 0) {
+                // Hide CSO section if no incidents
+                csoCard.style.display = 'none';
+                return;
+            }
+            
+            // Filter incidents affecting Mystic Lake
+            const mysticIncidents = csoData.results.filter(incident => {
+                const waterBody = incident.waterBodyDescription?.toLowerCase() || '';
+                return waterBody.includes('mystic') || waterBody.includes('upper mystic');
+            });
+            
+            if (mysticIncidents.length === 0) {
+                csoCard.style.display = 'none';
+                return;
+            }
+            
+            // Show CSO section and populate incidents
+            csoCard.style.display = 'block';
+            csoList.innerHTML = '';
+            
+            mysticIncidents.forEach(incident => {
+                const incidentDate = new Date(incident.incidentDate);
+                const formattedDate = incidentDate.toLocaleDateString();
+                const formattedTime = incident.incidentTime || 'Unknown time';
+                
+                const incidentDiv = document.createElement('div');
+                incidentDiv.className = 'cso-incident';
+                
+                const volume = incident.volumnOfEvent ? `${parseInt(incident.volumnOfEvent).toLocaleString()} gallons` : 'Volume unknown';
+                const rainfall = incident.rainfallData ? `${incident.rainfallData} inches` : 'Rainfall unknown';
+                const duration = incident.hours && incident.minutes ? 
+                    `${incident.hours}h ${incident.minutes}m` : 
+                    (incident.hours ? `${incident.hours} hours` : 'Duration unknown');
+                
+                incidentDiv.innerHTML = `
+                    <h4>${formattedDate}</h4>
+                    <div class="cso-details">
+                        <div class="cso-detail">
+                            <strong>Time:</strong> ${formattedTime}
+                        </div>
+<!--                        <div class="cso-detail">
+                            <strong>Location:</strong> ${incident.waterBodyDescription}
+                        </div> -->
+                        <div class="cso-detail">
+                            <strong>Volume:</strong> ${volume}
+                        </div>
+                        <div class="cso-detail">
+                            <strong>Duration:</strong> ${duration}
+                        </div>
+                        <div class="cso-detail">
+                            <strong>Rainfall:</strong> ${rainfall}
+                        </div>
+                    </div>
+                `;
+                
+                csoList.appendChild(incidentDiv);
+            });
+            
+            console.log(`CSO: Found ${mysticIncidents.length} incidents affecting Mystic Lake`);
+        }
+
+        function updateWithData(samplesData, statusData, csoData) {
             // Process status data first
             updateCurrentStatus(statusData);
+            
+            // Process CSO data
+            if (csoData) {
+                updateCSOIncidents(csoData);
+            }
             
             // Then process samples data
             const data = samplesData;
@@ -1010,7 +1207,7 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
             checkNotificationStatus();
 
             fetchPromise.then(data => {
-                updateWithData(data.samplesData, data.statusData);
+                updateWithData(data.samplesData, data.statusData, data.csoData);
                 
                 // Store config settings in IndexedDB for service worker
                 // Use faster sync frequency for test mode (30 seconds vs 5 minutes)
