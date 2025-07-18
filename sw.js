@@ -141,7 +141,7 @@ async function checkBeachStatus() {
         if (config.statusOverride) {
             // Use status override from debug panel
             console.log('Service Worker: Using status override:', config.statusOverride);
-            statusData = `Beach Status,Name,Town\n${config.statusOverride.charAt(0).toUpperCase() + config.statusOverride.slice(1)},Shannon Beach @ Upper Mystic (DCR),Winchester`;
+            statusData = `Name,Status of Beach,Town\nShannon Beach @ Upper Mystic (DCR),${config.statusOverride.charAt(0).toUpperCase() + config.statusOverride.slice(1)},Winchester`;
         } else if (config.isTestMode && config.testStatusData) {
             // Use test data from IndexedDB
             console.log('Service Worker: Using test data from IndexedDB');
