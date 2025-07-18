@@ -471,7 +471,6 @@
         const isTestMode = urlParams.get('test') === '1';
         
         // Notification state tracking
-        let previousStatus = null;
         let notificationsEnabled = false;
         let serviceWorkerRegistration = null;
         
@@ -981,14 +980,6 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     storeStatusInDB(status.toLowerCase()).catch(error => {
                         console.error('Error storing status in IndexedDB:', error);
                     });
-                    
-                    // Check for status change and show notification
-                    if (previousStatus !== null && previousStatus !== status.toLowerCase()) {
-                        showStatusNotification(status, previousStatus);
-                    }
-                    
-                    // Update previous status
-                    previousStatus = status.toLowerCase();
                     
                     // Update heading
                     statusHeading.textContent = `Current Status: ${statusText}`;

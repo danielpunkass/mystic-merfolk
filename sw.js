@@ -218,7 +218,7 @@ function parseStatusData(statusData) {
         
         // Skip header row and get first data row
         const dataRow = lines[1].split(',');
-        const status = dataRow[0]?.trim();
+        const status = dataRow[1]?.trim(); // Status is in the second column
         
         return status ? status.toLowerCase() : null;
     } catch (error) {
