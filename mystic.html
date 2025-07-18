@@ -510,8 +510,8 @@
 `;
         
         // Test status data in CSV format
-        const testStatusData = `Beach Status,Name,Town
-Open,Shannon Beach @ Upper Mystic (DCR),Winchester
+        const testStatusData = `Name, Status of Beach, Town
+Shannon Beach @ Upper Mystic (DCR),Open,Winchester
 `;
 
         // Test CSO data
@@ -971,7 +971,7 @@ Open,Shannon Beach @ Upper Mystic (DCR),Winchester
                 
                 // Skip header row and get first data row
                 const dataRow = lines[1].split(',');
-                const status = dataRow[0]?.trim();
+                const status = dataRow[1]?.trim();
                 
                 if (status) {
                     const isOpen = status.toLowerCase() === 'open';
