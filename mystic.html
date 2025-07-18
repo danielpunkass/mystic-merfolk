@@ -1265,7 +1265,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     await storeStatusInDB(status);
                     
                     // Trigger visual update
-                    const mockCSV = `Beach Status,Name,Town\n${status.charAt(0).toUpperCase() + status.slice(1)},Shannon Beach @ Upper Mystic (DCR),Winchester`;
+                    const mockCSV = `Name,Status of Beach,Town\nShannon Beach @ Upper Mystic (DCR),${status.charAt(0).toUpperCase() + status.slice(1)},Winchester`;
                     updateCurrentStatus(mockCSV);
                     
                     console.log('Status overridden to:', status);
