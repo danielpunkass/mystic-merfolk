@@ -696,6 +696,9 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
         
         // Enable notifications - called by user click
         async function enableNotifications() {
+            // DISABLED: Notification functionality disabled
+            return;
+            
             const banner = document.getElementById('notification-banner');
             const success = await requestNotificationPermission();
             
@@ -726,6 +729,10 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
         // Check and show notification banner
         function checkNotificationStatus() {
             const banner = document.getElementById('notification-banner');
+            
+            // DISABLED: Notification functionality disabled
+            banner.style.display = 'none';
+            return;
             
             if (!('Notification' in window)) {
                 return; // Browser doesn't support notifications
@@ -1195,11 +1202,11 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
         window.addEventListener('load', async () => {
             console.log("Page has finished loading.");
             
-            // Register service worker first
-            await registerServiceWorker();
+            // DISABLED: Service worker registration disabled
+            // await registerServiceWorker();
             
-            // Check notification status and show banner if needed
-            checkNotificationStatus();
+            // DISABLED: Notification status checking disabled
+            // checkNotificationStatus();
 
             fetchPromise.then(data => {
                 updateWithData(data.samplesData, data.statusData, data.csoData);
