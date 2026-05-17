@@ -160,42 +160,64 @@
             background: #fee2e2;
             color: #991b1b;
         }
-        
+
         .status-card-open {
             background: linear-gradient(135deg, #dcfce7, #f0fdf4) !important;
             border: 2px solid #22c55e !important;
         }
-        
+
         .status-card-closed {
             background: linear-gradient(135deg, #fee2e2, #fef2f2) !important;
             border: 2px solid #ef4444 !important;
         }
-        
+
         .status-card-open h2 {
             color: #166534 !important;
         }
-        
+
         .status-card-closed h2 {
             color: #991b1b !important;
         }
-        
+
         .status-card-open p {
             color: #166534 !important;
         }
-        
+
         .status-card-closed p {
             color: #991b1b !important;
+        }
+
+        .status-card-offseason {
+            background: linear-gradient(135deg, #e0e7ef, #f1f5f9) !important;
+            border: 2px solid #64748b !important;
+        }
+
+        .status-card-offseason h2 {
+            color: #334155 !important;
+        }
+
+        .status-card-offseason p {
+            color: #334155 !important;
+        }
+
+        .status-card-offseason a {
+            color: #0369a1;
+            font-weight: 600;
+        }
+
+        .hidden-until-revealed {
+            display: none;
         }
 
         .cso-card {
             background: linear-gradient(135deg, #fef3c7, #fef9e7) !important;
             border: 2px solid #f59e0b !important;
         }
-        
+
         .cso-card h2 {
             color: #92400e !important;
         }
-        
+
         .cso-card p {
             color: #92400e !important;
         }
@@ -385,19 +407,19 @@
             <h1>🏊‍♂️ Upper Mystic Water Quality</h1>
             <div class="subtitle">A concise snapshot of current and recent water conditions at Shannon Beach. Data from the <a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
         </div>
-        
+
         <div id="notification-banner" class="notification-banner" style="display: none;">
             <span>🔔 Get notified when swimming status changes!</span>
             <button onclick="enableNotifications()">Enable Notifications</button>
         </div>
-        
+
         <div class="card" id="status-card">
             <div id="current-status" style="padding: 2rem;">
                 <h2 id="status-heading" style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">Current Status: Loading...</h2>
                 <p id="status-description" style="margin: 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">This is the official status for Shannon Beach specifically, based on single samples and the cumulative geometric mean of recent results. As always, swim at your own risk and at the discretion of your own best judgement!</p>
             </div>
         </div>
-        
+
         <!-- CSO Incidents Section (hidden by default) -->
         <div class="card cso-card" id="cso-card" style="display: none;">
             <div id="cso-incidents" style="padding: 2rem;">
@@ -408,9 +430,9 @@
                 </div>
             </div>
         </div>
-        
-        <div class="card">
-            <h2 style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Single Sample Test Results</h2>
+
+        <div class="card" id="results-card">
+            <h2 id="results-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Single Sample Test Results</h2>
             <div class="table-container">
                 <div id="loading" class="loading">Loading beach data...</div>
                 <table id="data-table" style="display: none;">
@@ -428,7 +450,7 @@
                 <!-- Last updated time will be inserted here -->
             </div>
         </div>
-        
+
         <!-- Debug Panel (only shown in test mode) -->
         <div id="debug-panel" class="debug-panel" style="display: none;">
             <h3>🛠️ Debug Controls</h3>
@@ -459,26 +481,50 @@
             </div>
         </div>
     </div>
-    
+
     <div id="refresh-indicator" class="refresh-indicator">
         Refreshing data...
     </div>
-    
+
     <script>
-    	// Could have a popup here to let you choose from beaches    	
+    	// Could have a popup here to let you choose from beaches
     	const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
         const urlParams = new URLSearchParams(window.location.search);
         const isTestMode = urlParams.get('test') === '1';
-        
+        // ?season=open|closed overrides the date-based season check (for testing/preview)
+        const seasonOverride = urlParams.get('season');
+
+        // Official monitoring season: Memorial Day (last Mon of May) through Labor Day (first Mon of Sep).
+        function memorialDay(year) {
+            const may31 = new Date(year, 4, 31);
+            const offset = (may31.getDay() + 6) % 7; // days back to Monday
+            return new Date(year, 4, 31 - offset);
+        }
+        function laborDay(year) {
+            const sep1 = new Date(year, 8, 1);
+            const offset = (8 - sep1.getDay()) % 7; // days forward to Monday
+            return new Date(year, 8, 1 + offset);
+        }
+        function isInSeason(date = new Date()) {
+            if (seasonOverride === 'open') return true;
+            if (seasonOverride === 'closed') return false;
+            const y = date.getFullYear();
+            return date >= memorialDay(y) && date <= laborDay(y);
+        }
+        function mostRecentSeasonYear(date = new Date()) {
+            const y = date.getFullYear();
+            return date > laborDay(y) ? y : y - 1;
+        }
+
         // Notification state tracking
         let notificationsEnabled = false;
         let serviceWorkerRegistration = null;
-        
+
         // Use direct URL for local testing (bypasses CORS proxy)
-        const dataURL = window.location.hostname === 'localhost' 
+        const dataURL = window.location.hostname === 'localhost'
             ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y&Name=' + encodeURIComponent(beachName)
             : 'https://jalkut.com/water/beachdata.php?b=' + beachName;
-            
+
         const statusURL = window.location.hostname === 'localhost'
             ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y&Name=' + encodeURIComponent(beachName)
             : 'https://jalkut.com/water/beachdata.php?u=' + encodeURIComponent('https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y') + '&b=' + encodeURIComponent(beachName);
@@ -507,7 +553,7 @@
 8/27/2024 7:05:00 AM,Enterococci,61,8/27/2024 7:05:00 AM,7
 8/28/2024 1:52:00 AM,Enterococci,61,8/28/2024 1:52:00 AM,10
 `;
-        
+
         // Test status data in CSV format
         const testStatusData = `Name, Status of Beach, Town
 Shannon Beach @ Upper Mystic (DCR),Open,Winchester
@@ -539,7 +585,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 try {
                     serviceWorkerRegistration = await navigator.serviceWorker.register('./sw.js');
                     console.log('Service Worker registered:', serviceWorkerRegistration);
-                    
+
                     // Set up periodic background sync if supported (Chrome only)
                     if ('periodicSync' in serviceWorkerRegistration) {
                         try {
@@ -551,7 +597,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                             console.log('Periodic background sync not supported:', error);
                         }
                     }
-                    
+
                     return true;
                 } catch (error) {
                     console.error('Service Worker registration failed:', error);
@@ -569,13 +615,13 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 console.log('This browser does not support notifications');
                 return false;
             }
-            
+
             if (Notification.permission === 'granted') {
                 notificationsEnabled = true;
                 await setupBackgroundSync();
                 return true;
             }
-            
+
             if (Notification.permission !== 'denied') {
                 const permission = await Notification.requestPermission();
                 notificationsEnabled = permission === 'granted';
@@ -584,10 +630,10 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 }
                 return notificationsEnabled;
             }
-            
+
             return false;
         }
-        
+
         // Set up background sync for status checking
         async function setupBackgroundSync() {
             if (serviceWorkerRegistration) {
@@ -596,7 +642,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     try {
                         await serviceWorkerRegistration.sync.register('beach-status-check');
                         console.log('Background sync registered');
-                        
+
                         // Set up recurring sync registration
                         setInterval(async () => {
                             try {
@@ -605,7 +651,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                                 console.log('Background sync re-registration failed:', error);
                             }
                         }, 5 * 60 * 1000);
-                        
+
                     } catch (error) {
                         console.log('Background sync not supported:', error);
                         setupFallbackTimer();
@@ -616,20 +662,20 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 }
             }
         }
-        
+
         // Get sync frequency from IndexedDB
         async function getSyncFrequency() {
             return new Promise((resolve) => {
                 const request = indexedDB.open('BeachStatusDB', 1);
-                
+
                 request.onerror = () => resolve(5); // Default 5 minutes
-                
+
                 request.onsuccess = (event) => {
                     const db = event.target.result;
                     const transaction = db.transaction(['status'], 'readonly');
                     const store = transaction.objectStore('status');
                     const getRequest = store.get('config');
-                    
+
                     getRequest.onsuccess = () => {
                         db.close();
                         if (getRequest.result && getRequest.result.syncFrequencyMinutes) {
@@ -638,7 +684,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                             resolve(5); // Default 5 minutes
                         }
                     };
-                    
+
                     getRequest.onerror = () => {
                         db.close();
                         resolve(5); // Default 5 minutes
@@ -651,9 +697,9 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
         async function setupFallbackTimer() {
             const syncFrequencyMinutes = await getSyncFrequency();
             const intervalMs = syncFrequencyMinutes * 60 * 1000;
-            
+
             console.log(`Fallback: Setting up timer with ${syncFrequencyMinutes} minute frequency`);
-            
+
             // Send message to service worker at configured intervals
             setInterval(() => {
                 if (serviceWorkerRegistration && serviceWorkerRegistration.active) {
@@ -663,7 +709,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     console.log('Fallback: Sent status check message to service worker');
                 }
             }, intervalMs);
-            
+
             // Send initial check message
             setTimeout(() => {
                 if (serviceWorkerRegistration && serviceWorkerRegistration.active) {
@@ -674,18 +720,18 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 }
             }, 1000);
         }
-        
+
         // Show desktop notification for status changes
         function showStatusNotification(newStatus, previousStatus) {
             if (!notificationsEnabled) return;
-            
+
             const isOpen = newStatus.toLowerCase() === 'open';
             const title = `Shannon Beach Status Update`;
             const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
             const body = `Swimming status changed to: ${statusText}`;
-            
+
             const icon = isOpen ? '🏊‍♂️' : '🚫';
-            
+
             new Notification(title, {
                 body: body,
                 icon: `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${icon}</text></svg>`,
@@ -693,18 +739,18 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 tag: 'beach-status'
             });
         }
-        
+
         // Enable notifications - called by user click
         async function enableNotifications() {
             // DISABLED: Notification functionality disabled
             return;
-            
+
             const banner = document.getElementById('notification-banner');
             const success = await requestNotificationPermission();
-            
+
             // Hide banner regardless of success/failure to avoid it staying visible
             banner.style.display = 'none';
-            
+
             if (success) {
                 // Show a brief confirmation
                 const refreshIndicator = document.getElementById('refresh-indicator');
@@ -725,19 +771,19 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 }, 2000);
             }
         }
-        
+
         // Check and show notification banner
         function checkNotificationStatus() {
             const banner = document.getElementById('notification-banner');
-            
+
             // DISABLED: Notification functionality disabled
             banner.style.display = 'none';
             return;
-            
+
             if (!('Notification' in window)) {
                 return; // Browser doesn't support notifications
             }
-            
+
             if (Notification.permission === 'default') {
                 banner.style.display = 'block';
             } else if (Notification.permission === 'granted') {
@@ -750,9 +796,9 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
         function getCSOApiUrl() {
             const twoWeeksAgo = new Date();
             twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
-            
+
     		const dateStr = `${twoWeeksAgo.getDate().toString().padStart(2, '0')}/${(twoWeeksAgo.getMonth() + 1).toString().padStart(2, '0')}/${twoWeeksAgo.getFullYear()}`;
-            
+
             return `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate=${dateStr}`;
         }
 
@@ -761,16 +807,16 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
             if (isTestMode) {
                 return testCSOData;
             }
-            
+
             try {
                 const csoUrl = getCSOApiUrl();
                 console.log('Fetching CSO data from:', csoUrl);
-                
+
                 // Use beachdata.php proxy for CSO requests
-                const proxyUrl = window.location.hostname === 'localhost' 
+                const proxyUrl = window.location.hostname === 'localhost'
                     ? csoUrl  // Direct call for localhost testing
                     : `https://jalkut.com/water/beachdata.php?u=${encodeURIComponent(csoUrl)}`;
-                
+
                 const response = await fetch(proxyUrl, {
                     method: 'GET',
                     headers: {
@@ -778,14 +824,14 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     },
                     mode: 'cors'
                 });
-                
+
                 if (!response.ok) {
                     throw new Error('CSO data response was not ok ' + response.statusText);
                 }
-                
+
                 const csoData = await response.json();
                 console.log('CSO data received:', csoData);
-                
+
                 return csoData;
             } catch (error) {
                 console.error('Error fetching CSO data:', error);
@@ -799,14 +845,14 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 // Return test data immediately
                 return new Promise(resolve => {
                     // Add a small delay to simulate loading
-                    setTimeout(() => resolve({ 
-                        samplesData: testData, 
+                    setTimeout(() => resolve({
+                        samplesData: testData,
                         statusData: testStatusData,
-                        csoData: testCSOData 
+                        csoData: testCSOData
                     }), 500);
                 });
             }
-            
+
             try {
                 // Fetch samples data, status data, and CSO data in parallel
                 const [samplesResponse, statusResponse, csoData] = await Promise.all([
@@ -826,30 +872,30 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     }),
                     fetchCSOData()
                 ]);
-                
+
                 if (!samplesResponse.ok) {
                     throw new Error('Samples data response was not ok ' + samplesResponse.statusText);
                 }
                 if (!statusResponse.ok) {
                     throw new Error('Status data response was not ok ' + statusResponse.statusText);
                 }
-                
+
                 const samplesData = await samplesResponse.text();
                 const statusData = await statusResponse.text();
-                
+
                 return { samplesData, statusData, csoData };
             } catch (error) {
                 console.error('Error fetching data:', error);
                 throw error;
             }
         }
-        
+
         async function update() {
             const refreshIndicator = document.getElementById('refresh-indicator');
-            
+
             // Show refresh indicator
             refreshIndicator.classList.add('show');
-            
+
             try {
                 let data = await fetchData();
                 updateWithData(data.samplesData, data.statusData, data.csoData);
@@ -862,38 +908,38 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 }, 2000);
             }
         }
-        
+
         // Store status in IndexedDB (same database as service worker)
         async function storeStatusInDB(status) {
             return new Promise((resolve, reject) => {
                 const request = indexedDB.open('BeachStatusDB', 1);
-                
+
                 request.onerror = () => reject(request.error);
-                
+
                 request.onupgradeneeded = (event) => {
                     const db = event.target.result;
                     if (!db.objectStoreNames.contains('status')) {
                         db.createObjectStore('status', { keyPath: 'id' });
                     }
                 };
-                
+
                 request.onsuccess = (event) => {
                     const db = event.target.result;
                     const transaction = db.transaction(['status'], 'readwrite');
                     const store = transaction.objectStore('status');
-                    
+
                     store.put({
                         id: 'current',
                         status: status,
                         timestamp: Date.now()
                     });
-                    
+
                     transaction.oncomplete = () => {
                         db.close();
                         console.log('Main page: Status stored in IndexedDB:', status);
                         resolve();
                     };
-                    
+
                     transaction.onerror = () => {
                         db.close();
                         reject(transaction.error);
@@ -901,29 +947,29 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 };
             });
         }
-        
+
         // Store configuration settings in IndexedDB (only if not already present)
         async function storeConfigInDB(isTestMode, testStatusData = null, syncFrequencyMinutes = 5) {
             return new Promise((resolve, reject) => {
                 const request = indexedDB.open('BeachStatusDB', 1);
-                
+
                 request.onerror = () => reject(request.error);
-                
+
                 request.onupgradeneeded = (event) => {
                     const db = event.target.result;
                     if (!db.objectStoreNames.contains('status')) {
                         db.createObjectStore('status', { keyPath: 'id' });
                     }
                 };
-                
+
                 request.onsuccess = (event) => {
                     const db = event.target.result;
                     const transaction = db.transaction(['status'], 'readwrite');
                     const store = transaction.objectStore('status');
-                    
+
                     // First check if config record already exists
                     const getRequest = store.get('config');
-                    
+
                     getRequest.onsuccess = () => {
                         if (getRequest.result) {
                             // Config settings already exist, don't overwrite
@@ -939,7 +985,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                                 syncFrequencyMinutes: syncFrequencyMinutes,
                                 timestamp: Date.now()
                             });
-                            
+
                             transaction.oncomplete = () => {
                                 db.close();
                                 console.log('Main page: Config stored in IndexedDB - Test mode:', isTestMode, 'Sync frequency:', syncFrequencyMinutes, 'minutes');
@@ -947,12 +993,12 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                             };
                         }
                     };
-                    
+
                     getRequest.onerror = () => {
                         db.close();
                         reject(getRequest.error);
                     };
-                    
+
                     transaction.onerror = () => {
                         db.close();
                         reject(transaction.error);
@@ -961,11 +1007,36 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
             });
         }
 
+        function wireHistoricalLink() {
+            const link = document.getElementById('historical-link');
+            if (!link || link.dataset.wired === '1') return;
+            link.dataset.wired = '1';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = document.getElementById('results-card');
+                card.classList.remove('hidden-until-revealed');
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+
         function updateCurrentStatus(statusData) {
             const statusCard = document.getElementById('status-card');
             const statusHeading = document.getElementById('status-heading');
             const statusDescription = document.getElementById('status-description');
-            
+
+            if (!isInSeason()) {
+                const year = mostRecentSeasonYear();
+                statusCard.className = 'card status-card-offseason';
+                statusHeading.textContent = 'Current Status: Closed for Season';
+                statusDescription.innerHTML =
+                    'Official water quality monitoring at Shannon Beach runs from Memorial Day through Labor Day. ' +
+                    'Outside that window the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
+                    'but there is no published monitoring, so conditions are unknown. ' +
+                    '<br><br>' +
+                    `<a href="#results-card" id="historical-link">View ${year} season historical readings →</a>`;
+                return;
+            }
+
             try {
                 // Parse status CSV data
                 const lines = statusData.trim().split('\n');
@@ -974,25 +1045,25 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     statusDescription.textContent = 'Status information is currently unavailable. There is an issue at the state web site preventing this page from accessing the beach status. Please check back later for updates.';
                     return;
                 }
-                
+
                 // Skip header row and get first data row
                 const dataRow = lines[1].split(',');
                 const status = dataRow[1]?.trim();
-                
+
                 if (status) {
                     const isOpen = status.toLowerCase() === 'open';
                     const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
-                    
+
                     // Store status immediately in IndexedDB
                     storeStatusInDB(status.toLowerCase()).catch(error => {
                         console.error('Error storing status in IndexedDB:', error);
                     });
-                    
+
                     // Update heading
                     statusHeading.textContent = `Current Status: ${statusText}`;
-                    
+
                     // Update card styling based on status
-                    statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';                    
+                    statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';
                 } else {
                     statusHeading.textContent = 'Current Status: Information Unavailable';
                     statusDescription.textContent = 'Status information is currently unavailable. Please check back later for updates.';
@@ -1003,47 +1074,47 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 statusDescription.textContent = 'There was an error loading status information. Please refresh the page.';
             }
         }
-        
+
         // Update CSO incidents display
         function updateCSOIncidents(csoData) {
             const csoCard = document.getElementById('cso-card');
             const csoList = document.getElementById('cso-list');
-            
+
             if (!csoData || !csoData.results || csoData.results.length === 0) {
                 // Hide CSO section if no incidents
                 csoCard.style.display = 'none';
                 return;
             }
-            
+
             // Filter incidents affecting Mystic Lake
             const mysticIncidents = csoData.results.filter(incident => {
                 const waterBody = incident.waterBodyDescription?.toLowerCase() || '';
                 return waterBody.includes('mystic') || waterBody.includes('upper mystic');
             });
-            
+
             if (mysticIncidents.length === 0) {
                 csoCard.style.display = 'none';
                 return;
             }
-            
+
             // Show CSO section and populate incidents
             csoCard.style.display = 'block';
             csoList.innerHTML = '';
-            
+
             mysticIncidents.forEach(incident => {
                 const incidentDate = new Date(incident.incidentDate);
                 const formattedDate = incidentDate.toLocaleDateString();
                 const formattedTime = incident.incidentTime || 'Unknown time';
-                
+
                 const incidentDiv = document.createElement('div');
                 incidentDiv.className = 'cso-incident';
-                
+
                 const volume = incident.volumnOfEvent ? `${parseInt(incident.volumnOfEvent).toLocaleString()} gallons` : 'Volume unknown';
                 const rainfall = incident.rainfallData ? `${incident.rainfallData} inches` : 'Rainfall unknown';
-                const duration = incident.hours && incident.minutes ? 
-                    `${incident.hours}h ${incident.minutes}m` : 
+                const duration = incident.hours && incident.minutes ?
+                    `${incident.hours}h ${incident.minutes}m` :
                     (incident.hours ? `${incident.hours} hours` : 'Duration unknown');
-                
+
                 incidentDiv.innerHTML = `
                     <h4>${formattedDate}</h4>
                     <div class="cso-details">
@@ -1064,22 +1135,22 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                         </div>
                     </div>
                 `;
-                
+
                 csoList.appendChild(incidentDiv);
             });
-            
+
             console.log(`CSO: Found ${mysticIncidents.length} incidents affecting Mystic Lake`);
         }
 
         function updateWithData(samplesData, statusData, csoData) {
             // Process status data first
             updateCurrentStatus(statusData);
-            
+
             // Process CSO data
             if (csoData) {
                 updateCSOIncidents(csoData);
             }
-            
+
             // Then process samples data
             const data = samplesData;
             const rows = [];
@@ -1087,7 +1158,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
             let currentField = '';
             let insideQuotes = false;
 			var pushedColumns = 0;
-			
+
             for (let i = 0; i < data.length; i++) {
                 const char = data[i];
 
@@ -1101,7 +1172,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
 					pushedColumns += 1;
                     currentField = '';
                 } else if (char === '\n' && !insideQuotes) {
-                    currentRow.push(currentField);                    
+                    currentRow.push(currentField);
                     rows.push(currentRow);
                     currentRow = [];
                     pushedColumns = 0;
@@ -1119,6 +1190,30 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
             const loadingDiv = document.getElementById('loading');
             const dataTable = document.getElementById('data-table');
             const lastUpdatedDiv = document.getElementById('last-updated');
+            const resultsCard = document.getElementById('results-card');
+            const resultsHeading = document.getElementById('results-heading');
+
+            const offSeason = !isInSeason();
+            const historicalYear = mostRecentSeasonYear();
+
+            if (offSeason) {
+                // Filter sample rows (skip header) to the most recent completed season
+                const header = rows[0];
+                const filtered = rows.slice(1).filter(r => {
+                    if (!r[0]) return false;
+                    const d = new Date(r[0]);
+                    return !isNaN(d) && d.getFullYear() === historicalYear;
+                });
+                rows.length = 0;
+                rows.push(header, ...filtered);
+
+                resultsHeading.textContent = `${historicalYear} Season Historical Readings`;
+                resultsCard.classList.add('hidden-until-revealed');
+                wireHistoricalLink();
+            } else {
+                resultsHeading.textContent = 'Single Sample Test Results';
+                resultsCard.classList.remove('hidden-until-revealed');
+            }
 
             // Clear existing table data
             tableHead.innerHTML = '';
@@ -1132,7 +1227,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
                 tableHead.appendChild(th);
             });
-            
+
             // Add Status header
             const statusTh = document.createElement('th');
             statusTh.textContent = 'Status';
@@ -1152,7 +1247,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     td.textContent = column;
                     tr.appendChild(td);
                 });
-                
+
                 // Add calculated status column
                 const statusTd = document.createElement('td');
                 if (row.length >= 3) {
@@ -1160,7 +1255,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     // 0: Date and Time, 1: Indicator, 2: Threshold, 3: Results
                     const threshold = parseFloat(row[2]); // Threshold column
                     const result = parseFloat(row[3]?.replace(/,/g, '') || '0'); // Results column, remove commas
-                    
+
                     if (result > threshold) {
                         statusTd.innerHTML = `<span class="status-badge status-danger">Above Threshold</span>`;
                     } else if (result === threshold) {
@@ -1178,13 +1273,13 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
             // Hide loading and show table
             loadingDiv.style.display = 'none';
             dataTable.style.display = 'table';
-            
+
             // Show last updated time
             const testModeText = isTestMode ? ' (Test Mode)' : '';
             lastUpdatedDiv.innerHTML = `Last updated: ${new Date().toLocaleString()}${testModeText}`;
             lastUpdatedDiv.style.display = 'block';
         }
-        
+
 
   		function sortTableByDate(rows) {
             return rows.sort((a, b) => {
@@ -1201,26 +1296,26 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
         // Wait for both the fetch to complete and the page to finish loading
         window.addEventListener('load', async () => {
             console.log("Page has finished loading.");
-            
+
             // DISABLED: Service worker registration disabled
             // await registerServiceWorker();
-            
+
             // DISABLED: Notification status checking disabled
             // checkNotificationStatus();
 
             fetchPromise.then(data => {
                 updateWithData(data.samplesData, data.statusData, data.csoData);
-                
+
                 // Store config settings in IndexedDB for service worker
                 // Use faster sync frequency for test mode (30 seconds vs 5 minutes)
                 const syncFrequency = isTestMode ? 0.5 : 5; // minutes
                 storeConfigInDB(isTestMode, isTestMode ? testStatusData : null, syncFrequency).catch(error => {
                     console.error('Error storing config in IndexedDB:', error);
                 });
-                
+
                 // Initialize debug panel if in test mode
                 initializeDebugPanel();
-                
+
                 // Send initial status to service worker for storage
                 if (serviceWorkerRegistration && serviceWorkerRegistration.active) {
                     setTimeout(() => {
@@ -1229,7 +1324,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                         });
                     }, 1000);
                 }
-                
+
 				setInterval(update, 5 * 60 * 1000); // Refresh every 5 minutes
             });
         });
@@ -1249,7 +1344,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 alert('Frequency must be at least 0.1 minutes (6 seconds)');
                 return;
             }
-            
+
             try {
                 await updateConfigInDB({ syncFrequencyMinutes: frequency });
                 updateDebugStatus();
@@ -1259,36 +1354,36 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 alert('Error updating sync frequency');
             }
         }
-        
+
         async function updateStatusOverride() {
             const status = document.getElementById('status-override').value;
-            
+
             try {
                 if (status) {
                     // Store override status
                     await updateConfigInDB({ statusOverride: status });
-                    
+
                     // Update current status immediately
                     await storeStatusInDB(status);
-                    
+
                     // Trigger visual update
                     const mockCSV = `Name,Status of Beach,Town\nShannon Beach @ Upper Mystic (DCR),${status.charAt(0).toUpperCase() + status.slice(1)},Winchester`;
                     updateCurrentStatus(mockCSV);
-                    
+
                     console.log('Status overridden to:', status);
                 } else {
                     // Remove override
                     await updateConfigInDB({ statusOverride: null });
                     console.log('Status override removed');
                 }
-                
+
                 updateDebugStatus();
             } catch (error) {
                 console.error('Error updating status override:', error);
                 alert('Error updating status override');
             }
         }
-        
+
         async function triggerStatusCheck() {
             if (serviceWorkerRegistration && serviceWorkerRegistration.active) {
                 serviceWorkerRegistration.active.postMessage({
@@ -1300,7 +1395,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 alert('Service worker not active');
             }
         }
-        
+
         async function forceServiceWorkerUpdate() {
             try {
                 // Unregister current service worker
@@ -1309,7 +1404,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     await registration.unregister();
                     console.log('Service worker unregistered');
                 }
-                
+
                 // Wait a moment then re-register
                 setTimeout(async () => {
                     await registerServiceWorker();
@@ -1317,7 +1412,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     console.log('Service worker re-registered');
                     alert('Service worker updated! New version should be active.');
                 }, 1000);
-                
+
             } catch (error) {
                 console.error('Error updating service worker:', error);
                 alert('Error updating service worker');
@@ -1343,29 +1438,29 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 }
             }
         }
-        
+
         // Update config in IndexedDB (partial update)
         async function updateConfigInDB(updates) {
             return new Promise((resolve, reject) => {
                 const request = indexedDB.open('BeachStatusDB', 1);
-                
+
                 request.onerror = () => reject(request.error);
-                
+
                 request.onupgradeneeded = (event) => {
                     const db = event.target.result;
                     if (!db.objectStoreNames.contains('status')) {
                         db.createObjectStore('status', { keyPath: 'id' });
                     }
                 };
-                
+
                 request.onsuccess = (event) => {
                     const db = event.target.result;
                     const transaction = db.transaction(['status'], 'readwrite');
                     const store = transaction.objectStore('status');
-                    
+
                     // Get existing config
                     const getRequest = store.get('config');
-                    
+
                     getRequest.onsuccess = () => {
                         const existingConfig = getRequest.result || {
                             id: 'config',
@@ -1374,23 +1469,23 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                             syncFrequencyMinutes: 0.5,
                             timestamp: Date.now()
                         };
-                        
+
                         // Merge updates
                         const updatedConfig = { ...existingConfig, ...updates, timestamp: Date.now() };
-                        
+
                         store.put(updatedConfig);
-                        
+
                         transaction.oncomplete = () => {
                             db.close();
                             resolve();
                         };
                     };
-                    
+
                     getRequest.onerror = () => {
                         db.close();
                         reject(getRequest.error);
                     };
-                    
+
                     transaction.onerror = () => {
                         db.close();
                         reject(transaction.error);
@@ -1398,13 +1493,13 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 };
             });
         }
-        
+
         // Update debug status display
         async function updateDebugStatus() {
             try {
                 const config = await getConfigFromDB();
                 const currentStatus = await getCurrentStatusFromDB();
-                
+
                 const statusEl = document.getElementById('debug-status');
                 statusEl.innerHTML = `
                     <strong>Current Configuration:</strong><br>
@@ -1420,25 +1515,25 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 console.error('Error updating debug status:', error);
             }
         }
-        
+
         // Get config from IndexedDB
         async function getConfigFromDB() {
             return new Promise((resolve) => {
                 const request = indexedDB.open('BeachStatusDB', 1);
-                
+
                 request.onerror = () => resolve({});
-                
+
                 request.onsuccess = (event) => {
                     const db = event.target.result;
                     const transaction = db.transaction(['status'], 'readonly');
                     const store = transaction.objectStore('status');
                     const getRequest = store.get('config');
-                    
+
                     getRequest.onsuccess = () => {
                         db.close();
                         resolve(getRequest.result || {});
                     };
-                    
+
                     getRequest.onerror = () => {
                         db.close();
                         resolve({});
@@ -1446,25 +1541,25 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 };
             });
         }
-        
+
         // Get current status from IndexedDB
         async function getCurrentStatusFromDB() {
             return new Promise((resolve) => {
                 const request = indexedDB.open('BeachStatusDB', 1);
-                
+
                 request.onerror = () => resolve(null);
-                
+
                 request.onsuccess = (event) => {
                     const db = event.target.result;
                     const transaction = db.transaction(['status'], 'readonly');
                     const store = transaction.objectStore('status');
                     const getRequest = store.get('current');
-                    
+
                     getRequest.onsuccess = () => {
                         db.close();
                         resolve(getRequest.result ? getRequest.result.status : null);
                     };
-                    
+
                     getRequest.onerror = () => {
                         db.close();
                         resolve(null);
@@ -1472,13 +1567,13 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 };
             });
         }
-        
+
         // Show debug panel in test mode
         function initializeDebugPanel() {
             if (isTestMode) {
                 document.getElementById('debug-panel').style.display = 'block';
                 updateDebugStatus();
-                
+
                 // Update debug status every 5 seconds
                 setInterval(updateDebugStatus, 5000);
             }
