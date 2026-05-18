@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "incidentId": "test-cso-1",
+      "incidentNumber": "26000123",
+      "incidentDate": "2026-05-10T00:00:00",
+      "incidentTime": "14:30",
+      "eventType": "SSO – System Surcharging Under High Flow Conditions",
+      "permiteeName": "WINCHESTER, TOWN OF",
+      "waterBodyDescription": "Upper Mystic Lake",
+      "volumnOfEvent": "25000",
+      "rainfallData": "1.85",
+      "hours": "6",
+      "minutes": "30"
+    }
+  ],
+  "rowCount": 1
+}

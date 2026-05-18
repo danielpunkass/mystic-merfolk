@@ -451,6 +451,28 @@
             </div>
         </div>
 
+        <!-- Link to past season's historical readings (shown in open season; off-season uses the
+             same mechanism via the status card link instead). -->
+        <div id="historical-link-card" style="display: none; text-align: center; margin-bottom: 2rem;">
+            <a href="#historical-card" id="in-season-historical-link" style="color: #0369a1; font-weight: 600; text-decoration: none;">
+                View <span id="historical-link-year"></span> season historical readings →
+            </a>
+        </div>
+
+        <!-- Historical readings card, revealed on click. -->
+        <div class="card" id="historical-card" style="display: none;">
+            <h2 id="historical-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Historical Readings</h2>
+            <div class="table-container">
+                <div id="historical-loading" class="loading">Loading historical readings...</div>
+                <table id="historical-table" style="display: none;">
+                    <thead>
+                        <tr id="historical-table-head"></tr>
+                    </thead>
+                    <tbody id="historical-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
         <!-- Debug Panel (only shown in test mode) -->
         <div id="debug-panel" class="debug-panel" style="display: none;">
             <h3>🛠️ Debug Controls</h3>
@@ -493,6 +515,20 @@
         const isTestMode = urlParams.get('test') === '1';
         // ?season=open|closed overrides the date-based season check (for testing/preview)
         const seasonOverride = urlParams.get('season');
+        // Stub URLs for testing scenarios — point any of these at a file in /test-data/
+        // (or any URL). Relative URLs are fetched directly; absolute URLs go through the proxy.
+        const customDataURL = urlParams.get('data-url');
+        const customStatusURL = urlParams.get('status-url');
+        const customCSOURL = urlParams.get('cso-url');
+
+        function isAbsoluteURL(url) {
+            return /^https?:\/\//i.test(url);
+        }
+        // Resolve an override URL: absolute → route through proxy for CORS; relative → use as-is.
+        function resolveOverride(url) {
+            if (!isAbsoluteURL(url)) return url;
+            return 'https://jalkut.com/water/beachdata.php?u=' + encodeURIComponent(url);
+        }
 
         // Official monitoring season: Memorial Day (last Mon of May) through Labor Day (first Mon of Sep).
         function memorialDay(year) {
@@ -521,63 +557,65 @@
         let serviceWorkerRegistration = null;
 
         // Use direct URL for local testing (bypasses CORS proxy)
-        const dataURL = window.location.hostname === 'localhost'
+        const liveDataURL = window.location.hostname === 'localhost'
             ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y&Name=' + encodeURIComponent(beachName)
             : 'https://jalkut.com/water/beachdata.php?b=' + beachName;
+
+        // Off-season reads from the server-side archive (populated visit-by-visit during the season).
+        // The archive endpoint also opportunistically re-fetches upstream while upstream still has rows.
+        function getDataURL() {
+            if (customDataURL) return resolveOverride(customDataURL);
+            if (isInSeason()) return liveDataURL;
+            const year = mostRecentSeasonYear();
+            return 'https://jalkut.com/water/beachdata.php?archive=' + year + '&b=' + encodeURIComponent(beachName);
+        }
+
+        function getStatusURL() {
+            return customStatusURL ? resolveOverride(customStatusURL) : statusURL;
+        }
+
+        function wireHistoricalLink() {
+            const link = document.getElementById('historical-link');
+            if (!link || link.dataset.wired === '1') return;
+            link.dataset.wired = '1';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = document.getElementById('results-card');
+                card.classList.remove('hidden-until-revealed');
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+
+        function renderOffSeasonUI() {
+            const year = mostRecentSeasonYear();
+            const statusCard = document.getElementById('status-card');
+            const statusHeading = document.getElementById('status-heading');
+            const statusDescription = document.getElementById('status-description');
+            const resultsCard = document.getElementById('results-card');
+            const resultsHeading = document.getElementById('results-heading');
+
+            statusCard.className = 'card status-card-offseason';
+            statusHeading.textContent = 'Current Status: Closed for Season';
+            statusDescription.innerHTML =
+                'Official water quality monitoring at Shannon Beach runs from Memorial Day through Labor Day. ' +
+                'Outside that window the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
+                'but there is no published monitoring, so conditions are unknown.' +
+                '<br><br>' +
+                `<a href="#results-card" id="historical-link">View ${year} season historical readings →</a>`;
+
+            resultsHeading.textContent = `${year} Season Historical Readings`;
+            resultsCard.classList.add('hidden-until-revealed');
+            wireHistoricalLink();
+        }
+
+        // Apply off-season UI synchronously before first paint so the "Loading..." status and
+        // results-card spinner never flash. The script tag is at the bottom of <body>, so the
+        // elements below already exist.
+        if (!isInSeason()) renderOffSeasonUI();
 
         const statusURL = window.location.hostname === 'localhost'
             ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y&Name=' + encodeURIComponent(beachName)
             : 'https://jalkut.com/water/beachdata.php?u=' + encodeURIComponent('https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y') + '&b=' + encodeURIComponent(beachName);
-
-        // Test data in CSV format
-        const testData = `Date and Time,Indicator,Threshold,Date and Time,Results
-5/21/2024 9:40:00 AM,Enterococci,61,5/21/2024 9:40:00 AM,41
-5/28/2024 7:48:00 AM,Enterococci,61,5/28/2024 7:48:00 AM,"2,420"
-6/4/2024 9:08:00 AM,Enterococci,61,6/4/2024 9:08:00 AM,0.5
-6/11/2024 8:21:00 AM,Enterococci,61,6/11/2024 8:21:00 AM,12
-6/18/2024 9:02:00 AM,Enterococci,61,6/18/2024 9:02:00 AM,240
-6/19/2024 3:00:00 AM,Enterococci,61,6/19/2024 3:00:00 AM,"1,410"
-6/24/2024 9:13:00 AM,Enterococci,61,6/24/2024 9:13:00 AM,26
-7/1/2024 8:47:00 AM,Enterococci,61,7/1/2024 8:47:00 AM,61
-7/9/2024 8:12:00 AM,Enterococci,61,7/9/2024 8:12:00 AM,88
-7/16/2024 9:18:00 AM,Enterococci,61,7/16/2024 9:18:00 AM,14
-7/18/2024 11:28:00 AM,Enterococci,61,7/18/2024 11:28:00 AM,11
-7/23/2024 9:20:00 AM,Enterococci,61,7/23/2024 9:20:00 AM,29
-7/30/2024 9:20:00 AM,Enterococci,61,7/30/2024 9:20:00 AM,49
-8/7/2024 2:45:00 AM,Enterococci,61,8/7/2024 2:45:00 AM,52
-8/7/2024 9:02:00 AM,Enterococci,61,8/7/2024 9:02:00 AM,133
-8/13/2024 9:21:00 AM,Enterococci,61,8/13/2024 9:21:00 AM,12
-8/14/2024 2:03:00 AM,Enterococci,61,8/14/2024 2:03:00 AM,275
-8/20/2024 10:10:00 AM,Enterococci,61,8/20/2024 10:10:00 AM,177
-8/22/2024 10:05:00 AM,Enterococci,61,8/22/2024 10:05:00 AM,25
-8/27/2024 7:05:00 AM,Enterococci,61,8/27/2024 7:05:00 AM,7
-8/28/2024 1:52:00 AM,Enterococci,61,8/28/2024 1:52:00 AM,10
-`;
-
-        // Test status data in CSV format
-        const testStatusData = `Name, Status of Beach, Town
-Shannon Beach @ Upper Mystic (DCR),Open,Winchester
-`;
-
-        // Test CSO data
-        const testCSOData = {
-            "results": [
-                {
-                    "incidentId": "test-cso-1",
-                    "incidentNumber": "25000123",
-                    "incidentDate": "2025-01-05T00:00:00",
-                    "incidentTime": "14:30",
-                    "eventType": "SSO – System Surcharging Under High Flow Conditions",
-                    "permiteeName": "WINCHESTER, TOWN OF",
-                    "waterBodyDescription": "Upper Mystic Lake",
-                    "volumnOfEvent": "25000",
-                    "rainfallData": "1.85",
-                    "hours": "6",
-                    "minutes": "30"
-                }
-            ],
-            "rowCount": 1
-        };
 
         // Register service worker
         async function registerServiceWorker() {
@@ -804,20 +842,20 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
 
         // Fetch CSO incidents data
         async function fetchCSOData() {
-            if (isTestMode) {
-                return testCSOData;
-            }
-
             try {
-                const csoUrl = getCSOApiUrl();
-                console.log('Fetching CSO data from:', csoUrl);
+                let fetchUrl;
+                if (customCSOURL) {
+                    fetchUrl = resolveOverride(customCSOURL);
+                } else {
+                    const csoUrl = getCSOApiUrl();
+                    // Use beachdata.php proxy for CSO requests (except on localhost, where we go direct).
+                    fetchUrl = window.location.hostname === 'localhost'
+                        ? csoUrl
+                        : `https://jalkut.com/water/beachdata.php?u=${encodeURIComponent(csoUrl)}`;
+                }
+                console.log('Fetching CSO data from:', fetchUrl);
 
-                // Use beachdata.php proxy for CSO requests
-                const proxyUrl = window.location.hostname === 'localhost'
-                    ? csoUrl  // Direct call for localhost testing
-                    : `https://jalkut.com/water/beachdata.php?u=${encodeURIComponent(csoUrl)}`;
-
-                const response = await fetch(proxyUrl, {
+                const response = await fetch(fetchUrl, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -841,47 +879,27 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
         }
 
         async function fetchData() {
-            if (isTestMode) {
-                // Return test data immediately
-                return new Promise(resolve => {
-                    // Add a small delay to simulate loading
-                    setTimeout(() => resolve({
-                        samplesData: testData,
-                        statusData: testStatusData,
-                        csoData: testCSOData
-                    }), 500);
-                });
-            }
-
             try {
-                // Fetch samples data, status data, and CSO data in parallel
+                // Off-season: skip the live status fetch (status is "Closed for Season"),
+                // unless ?status-url= explicitly overrides — then honor the override.
+                const skipStatus = !isInSeason() && !customStatusURL;
+                const csvFetchOpts = { method: 'GET', headers: { 'Content-Type': 'text/csv' }, mode: 'cors' };
+
                 const [samplesResponse, statusResponse, csoData] = await Promise.all([
-                    fetch(dataURL, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'text/csv',
-                        },
-                        mode: 'cors'
-                    }),
-                    fetch(statusURL, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'text/csv',
-                        },
-                        mode: 'cors'
-                    }),
+                    fetch(getDataURL(), csvFetchOpts),
+                    skipStatus ? Promise.resolve(null) : fetch(getStatusURL(), csvFetchOpts),
                     fetchCSOData()
                 ]);
 
                 if (!samplesResponse.ok) {
                     throw new Error('Samples data response was not ok ' + samplesResponse.statusText);
                 }
-                if (!statusResponse.ok) {
+                if (statusResponse && !statusResponse.ok) {
                     throw new Error('Status data response was not ok ' + statusResponse.statusText);
                 }
 
                 const samplesData = await samplesResponse.text();
-                const statusData = await statusResponse.text();
+                const statusData = statusResponse ? await statusResponse.text() : null;
 
                 return { samplesData, statusData, csoData };
             } catch (error) {
@@ -949,7 +967,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
         }
 
         // Store configuration settings in IndexedDB (only if not already present)
-        async function storeConfigInDB(isTestMode, testStatusData = null, syncFrequencyMinutes = 5) {
+        async function storeConfigInDB(isTestMode, syncFrequencyMinutes = 5) {
             return new Promise((resolve, reject) => {
                 const request = indexedDB.open('BeachStatusDB', 1);
 
@@ -981,7 +999,6 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                             store.put({
                                 id: 'config',
                                 isTestMode: isTestMode,
-                                testStatusData: testStatusData,
                                 syncFrequencyMinutes: syncFrequencyMinutes,
                                 timestamp: Date.now()
                             });
@@ -1007,33 +1024,13 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
             });
         }
 
-        function wireHistoricalLink() {
-            const link = document.getElementById('historical-link');
-            if (!link || link.dataset.wired === '1') return;
-            link.dataset.wired = '1';
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const card = document.getElementById('results-card');
-                card.classList.remove('hidden-until-revealed');
-                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        }
-
         function updateCurrentStatus(statusData) {
             const statusCard = document.getElementById('status-card');
             const statusHeading = document.getElementById('status-heading');
             const statusDescription = document.getElementById('status-description');
 
             if (!isInSeason()) {
-                const year = mostRecentSeasonYear();
-                statusCard.className = 'card status-card-offseason';
-                statusHeading.textContent = 'Current Status: Closed for Season';
-                statusDescription.innerHTML =
-                    'Official water quality monitoring at Shannon Beach runs from Memorial Day through Labor Day. ' +
-                    'Outside that window the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
-                    'but there is no published monitoring, so conditions are unknown. ' +
-                    '<br><br>' +
-                    `<a href="#results-card" id="historical-link">View ${year} season historical readings →</a>`;
+                renderOffSeasonUI();
                 return;
             }
 
@@ -1142,34 +1139,22 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
             console.log(`CSO: Found ${mysticIncidents.length} incidents affecting Mystic Lake`);
         }
 
-        function updateWithData(samplesData, statusData, csoData) {
-            // Process status data first
-            updateCurrentStatus(statusData);
-
-            // Process CSO data
-            if (csoData) {
-                updateCSOIncidents(csoData);
-            }
-
-            // Then process samples data
-            const data = samplesData;
+        // Custom parser for the DPH Results.csv format: handles quoted fields and skips the
+        // duplicate date column at index 3.
+        function parseSamplesCSV(text) {
             const rows = [];
             let currentRow = [];
             let currentField = '';
             let insideQuotes = false;
-			var pushedColumns = 0;
+            let pushedColumns = 0;
 
-            for (let i = 0; i < data.length; i++) {
-                const char = data[i];
-
-                if (char === '"' && (i === 0 || data[i - 1] !== '\\')) {
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                if (char === '"' && (i === 0 || text[i - 1] !== '\\')) {
                     insideQuotes = !insideQuotes;
                 } else if (char === ',' && !insideQuotes) {
-                	// Skip over fourth column (index 3), redundant date field
-                	if (pushedColumns != 3) {
-	                    currentRow.push(currentField);
-					}
-					pushedColumns += 1;
+                    if (pushedColumns !== 3) currentRow.push(currentField);
+                    pushedColumns += 1;
                     currentField = '';
                 } else if (char === '\n' && !insideQuotes) {
                     currentRow.push(currentField);
@@ -1181,23 +1166,71 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                     currentField += char;
                 }
             }
-            // Add the last field and row
             currentRow.push(currentField);
             rows.push(currentRow);
+            return rows;
+        }
 
-            const tableHead = document.getElementById('table-head');
-            const tableBody = document.getElementById('table-body');
-            const loadingDiv = document.getElementById('loading');
-            const dataTable = document.getElementById('data-table');
-            const lastUpdatedDiv = document.getElementById('last-updated');
-            const resultsCard = document.getElementById('results-card');
-            const resultsHeading = document.getElementById('results-heading');
+        // Render parsed sample rows into the given table head/body elements with a calculated
+        // status column based on threshold comparison.
+        function renderSamplesTable(rows, tableHead, tableBody) {
+            tableHead.innerHTML = '';
+            tableBody.innerHTML = '';
+
+            const headers = rows[0] || [];
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
+                tableHead.appendChild(th);
+            });
+
+            const statusTh = document.createElement('th');
+            statusTh.textContent = 'Status';
+            statusTh.addEventListener('click', () => sortTableByDate(rows.slice(1)));
+            tableHead.appendChild(statusTh);
+
+            const sortedRows = sortTableByDate(rows.slice(1));
+            sortedRows.forEach(row => {
+                if (row.length < 3) return;
+
+                const tr = document.createElement('tr');
+                row.forEach((column) => {
+                    const td = document.createElement('td');
+                    td.textContent = column;
+                    tr.appendChild(td);
+                });
+
+                const statusTd = document.createElement('td');
+                // Columns after dropping the duplicate date: 0:Date, 1:Indicator, 2:Threshold, 3:Results
+                const threshold = parseFloat(row[2]);
+                const result = parseFloat(row[3]?.replace(/,/g, '') || '0');
+                if (result > threshold) {
+                    statusTd.innerHTML = `<span class="status-badge status-danger">Above Threshold</span>`;
+                } else if (result === threshold) {
+                    statusTd.innerHTML = `<span class="status-badge status-warning">At Threshold</span>`;
+                } else {
+                    statusTd.innerHTML = `<span class="status-badge status-safe">Below Threshold</span>`;
+                }
+                tr.appendChild(statusTd);
+
+                if (tr.innerText !== '') tableBody.appendChild(tr);
+            });
+        }
+
+        function updateWithData(samplesData, statusData, csoData) {
+            updateCurrentStatus(statusData);
+            if (csoData) updateCSOIncidents(csoData);
+
+            const rows = parseSamplesCSV(samplesData);
 
             const offSeason = !isInSeason();
             const historicalYear = mostRecentSeasonYear();
 
             if (offSeason) {
-                // Filter sample rows (skip header) to the most recent completed season
+                // Filter sample rows (skip header) to the most recent completed season.
+                // The off-season status card / heading / hidden-card state is set by
+                // renderOffSeasonUI() (called synchronously on load + from updateCurrentStatus).
                 const header = rows[0];
                 const filtered = rows.slice(1).filter(r => {
                     if (!r[0]) return false;
@@ -1206,78 +1239,80 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 });
                 rows.length = 0;
                 rows.push(header, ...filtered);
-
-                resultsHeading.textContent = `${historicalYear} Season Historical Readings`;
-                resultsCard.classList.add('hidden-until-revealed');
-                wireHistoricalLink();
             } else {
-                resultsHeading.textContent = 'Single Sample Test Results';
+                const resultsCard = document.getElementById('results-card');
+                document.getElementById('results-heading').textContent = 'Single Sample Test Results';
                 resultsCard.classList.remove('hidden-until-revealed');
+                showInSeasonHistoricalLink();
             }
 
-            // Clear existing table data
-            tableHead.innerHTML = '';
-            tableBody.innerHTML = '';
+            renderSamplesTable(rows,
+                document.getElementById('table-head'),
+                document.getElementById('table-body'));
 
-            // Set table headers
-            const headers = rows[0];
-            headers.forEach(header => {
-                const th = document.createElement('th');
-                th.textContent = header;
-                th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
-                tableHead.appendChild(th);
-            });
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('data-table').style.display = 'table';
 
-            // Add Status header
-            const statusTh = document.createElement('th');
-            statusTh.textContent = 'Status';
-            statusTh.addEventListener('click', () => sortTableByDate(rows.slice(1)));
-            tableHead.appendChild(statusTh);
-
-            // Sort and set table rows
-            const sortedRows = sortTableByDate(rows.slice(1));
-            sortedRows.forEach(row => {
-            	if (row.length < 3) {
-					return;
-            	}
-
-                const tr = document.createElement('tr');
-                row.forEach((column, index) => {
-                    const td = document.createElement('td');
-                    td.textContent = column;
-                    tr.appendChild(td);
-                });
-
-                // Add calculated status column
-                const statusTd = document.createElement('td');
-                if (row.length >= 3) {
-                    // Since we skip column 3 (duplicate date), the indices are:
-                    // 0: Date and Time, 1: Indicator, 2: Threshold, 3: Results
-                    const threshold = parseFloat(row[2]); // Threshold column
-                    const result = parseFloat(row[3]?.replace(/,/g, '') || '0'); // Results column, remove commas
-
-                    if (result > threshold) {
-                        statusTd.innerHTML = `<span class="status-badge status-danger">Above Threshold</span>`;
-                    } else if (result === threshold) {
-                        statusTd.innerHTML = `<span class="status-badge status-warning">At Threshold</span>`;
-                    } else {
-                        statusTd.innerHTML = `<span class="status-badge status-safe">Below Threshold</span>`;
-                    }
-                }
-                tr.appendChild(statusTd);
-                if (tr.innerText !== "") {
-                	tableBody.appendChild(tr);
-                }
-            });
-
-            // Hide loading and show table
-            loadingDiv.style.display = 'none';
-            dataTable.style.display = 'table';
-
-            // Show last updated time
             const testModeText = isTestMode ? ' (Test Mode)' : '';
+            const lastUpdatedDiv = document.getElementById('last-updated');
             lastUpdatedDiv.innerHTML = `Last updated: ${new Date().toLocaleString()}${testModeText}`;
             lastUpdatedDiv.style.display = 'block';
+        }
+
+        // In-season: expose a link to the most recent past season's archived readings.
+        function showInSeasonHistoricalLink() {
+            const year = mostRecentSeasonYear();
+            const linkCard = document.getElementById('historical-link-card');
+            const link = document.getElementById('in-season-historical-link');
+            document.getElementById('historical-link-year').textContent = year;
+            linkCard.style.display = 'block';
+            if (link.dataset.wired === '1') return;
+            link.dataset.wired = '1';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadHistoricalSeason(year);
+            });
+        }
+
+        let historicalSeasonLoaded = null;
+        async function loadHistoricalSeason(year) {
+            const card = document.getElementById('historical-card');
+            const heading = document.getElementById('historical-heading');
+            const loading = document.getElementById('historical-loading');
+            const table = document.getElementById('historical-table');
+
+            card.style.display = 'block';
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            if (historicalSeasonLoaded === year) return;
+
+            heading.textContent = `${year} Season Historical Readings`;
+            loading.style.display = 'block';
+            table.style.display = 'none';
+
+            try {
+                const url = 'https://jalkut.com/water/beachdata.php?archive=' + year +
+                    '&b=' + encodeURIComponent(beachName);
+                const response = await fetch(url, { method: 'GET', mode: 'cors' });
+                if (!response.ok) throw new Error('Archive response not ok: ' + response.statusText);
+                const csv = await response.text();
+                const allRows = parseSamplesCSV(csv);
+                const header = allRows[0];
+                const filtered = allRows.slice(1).filter(r => {
+                    if (!r[0]) return false;
+                    const d = new Date(r[0]);
+                    return !isNaN(d) && d.getFullYear() === year;
+                });
+                renderSamplesTable([header, ...filtered],
+                    document.getElementById('historical-table-head'),
+                    document.getElementById('historical-table-body'));
+                loading.style.display = 'none';
+                table.style.display = 'table';
+                historicalSeasonLoaded = year;
+            } catch (error) {
+                console.error('Error loading historical readings:', error);
+                loading.textContent = 'Could not load historical readings.';
+            }
         }
 
 
@@ -1309,7 +1344,7 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                 // Store config settings in IndexedDB for service worker
                 // Use faster sync frequency for test mode (30 seconds vs 5 minutes)
                 const syncFrequency = isTestMode ? 0.5 : 5; // minutes
-                storeConfigInDB(isTestMode, isTestMode ? testStatusData : null, syncFrequency).catch(error => {
+                storeConfigInDB(isTestMode, syncFrequency).catch(error => {
                     console.error('Error storing config in IndexedDB:', error);
                 });
 
@@ -1465,7 +1500,6 @@ Shannon Beach @ Upper Mystic (DCR),Open,Winchester
                         const existingConfig = getRequest.result || {
                             id: 'config',
                             isTestMode: isTestMode,
-                            testStatusData: isTestMode ? testStatusData : null,
                             syncFrequencyMinutes: 0.5,
                             timestamp: Date.now()
                         };
