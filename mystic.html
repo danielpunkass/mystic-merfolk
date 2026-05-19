@@ -521,13 +521,14 @@
         const customStatusURL = urlParams.get('status-url');
         const customCSOURL = urlParams.get('cso-url');
 
-        function isAbsoluteURL(url) {
-            return /^https?:\/\//i.test(url);
-        }
-        // Resolve an override URL: absolute → route through proxy for CORS; relative → use as-is.
+        // Test-mode overrides may point at any URL; we no longer wrap absolute URLs in a
+        // server-side proxy (the proxy is gone — the site is fully static now). If an absolute
+        // URL is provided that triggers CORS, it's on the test caller.
         function resolveOverride(url) {
-            if (!isAbsoluteURL(url)) return url;
-            return 'https://jalkut.com/water/beachdata.php?u=' + encodeURIComponent(url);
+            return url;
+        }
+        function isJsonUrl(url) {
+            return /\.json(\?|#|$)/i.test(url);
         }
 
         // Official monitoring season: Memorial Day (last Mon of May) through Labor Day (first Mon of Sep).
@@ -556,18 +557,17 @@
         let notificationsEnabled = false;
         let serviceWorkerRegistration = null;
 
-        // Use direct URL for local testing (bypasses CORS proxy)
-        const liveDataURL = window.location.hostname === 'localhost'
-            ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y&Name=' + encodeURIComponent(beachName)
-            : 'https://jalkut.com/water/beachdata.php?b=' + beachName;
+        // Data is baked into /data/*.json by sync_water_data.py running as a scheduled
+        // GitHub Action; the page is fully static. Off-season we fall back to the per-year
+        // archive CSVs committed to the repo at /archive/<beach>/<year>.csv.
+        const beachArchiveKey = 'Shannon_Beach_Upper_Mystic_DCR';
+        const liveDataURL = 'data/samples.json';
 
-        // Off-season reads from the server-side archive (populated visit-by-visit during the season).
-        // The archive endpoint also opportunistically re-fetches upstream while upstream still has rows.
         function getDataURL() {
             if (customDataURL) return resolveOverride(customDataURL);
             if (isInSeason()) return liveDataURL;
             const year = mostRecentSeasonYear();
-            return 'https://jalkut.com/water/beachdata.php?archive=' + year + '&b=' + encodeURIComponent(beachName);
+            return `archive/${beachArchiveKey}/${year}.csv`;
         }
 
         function getStatusURL() {
@@ -613,9 +613,7 @@
         // elements below already exist.
         if (!isInSeason()) renderOffSeasonUI();
 
-        const statusURL = window.location.hostname === 'localhost'
-            ? 'https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y&Name=' + encodeURIComponent(beachName)
-            : 'https://jalkut.com/water/beachdata.php?u=' + encodeURIComponent('https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y') + '&b=' + encodeURIComponent(beachName);
+        const statusURL = 'data/status.json';
 
         // Register service worker
         async function registerServiceWorker() {
@@ -830,82 +828,73 @@
             }
         }
 
-        // Generate CSO API URL for the last 2 weeks
-        function getCSOApiUrl() {
-            const twoWeeksAgo = new Date();
-            twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+        const csoURL = 'data/cso.json';
 
-    		const dateStr = `${twoWeeksAgo.getDate().toString().padStart(2, '0')}/${(twoWeeksAgo.getMonth() + 1).toString().padStart(2, '0')}/${twoWeeksAgo.getFullYear()}`;
-
-            return `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate=${dateStr}`;
-        }
-
-        // Fetch CSO incidents data
+        // CSO incident data is pre-fetched and filtered to the Winchester window by the
+        // sync job; the page just reads the resulting static JSON.
         async function fetchCSOData() {
+            const fetchUrl = customCSOURL ? resolveOverride(customCSOURL) : csoURL;
             try {
-                let fetchUrl;
-                if (customCSOURL) {
-                    fetchUrl = resolveOverride(customCSOURL);
-                } else {
-                    const csoUrl = getCSOApiUrl();
-                    // Use beachdata.php proxy for CSO requests (except on localhost, where we go direct).
-                    fetchUrl = window.location.hostname === 'localhost'
-                        ? csoUrl
-                        : `https://jalkut.com/water/beachdata.php?u=${encodeURIComponent(csoUrl)}`;
-                }
-                console.log('Fetching CSO data from:', fetchUrl);
-
-                const response = await fetch(fetchUrl, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    mode: 'cors'
-                });
-
+                const response = await fetch(fetchUrl, { cache: 'no-store' });
                 if (!response.ok) {
                     throw new Error('CSO data response was not ok ' + response.statusText);
                 }
-
-                const csoData = await response.json();
-                console.log('CSO data received:', csoData);
-
-                return csoData;
+                return await response.json();
             } catch (error) {
                 console.error('Error fetching CSO data:', error);
-                // Return empty result on error so the rest of the app continues working
                 return { results: [], rowCount: 0 };
             }
         }
 
-        async function fetchData() {
+        // Read a samples source — either JSON ({headers, rows}) or upstream-shaped CSV
+        // (for archive fallback and test fixtures). Normalize both to {headers, rows}.
+        async function fetchSamples(url) {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Samples response not ok: ' + response.statusText);
+            if (isJsonUrl(url)) return await response.json();
+            const csv = await response.text();
+            const rows = parseSamplesCSV(csv);
+            return { headers: rows[0] || [], rows: rows.slice(1) };
+        }
+
+        // Read a status source — JSON ({name, status, town}) or BeachList.csv-style fixture.
+        async function fetchStatus(url) {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Status response not ok: ' + response.statusText);
+            if (isJsonUrl(url)) return await response.json();
+            const csv = await response.text();
+            const lines = csv.trim().split('\n');
+            if (lines.length < 2) return null;
+            const cells = lines[1].split(',').map(c => c.trim());
+            return { name: cells[0], status: cells[1], town: cells[2] };
+        }
+
+        async function fetchMeta() {
             try {
-                // Off-season: skip the live status fetch (status is "Closed for Season"),
-                // unless ?status-url= explicitly overrides — then honor the override.
-                const skipStatus = !isInSeason() && !customStatusURL;
-                const csvFetchOpts = { method: 'GET', headers: { 'Content-Type': 'text/csv' }, mode: 'cors' };
-
-                const [samplesResponse, statusResponse, csoData] = await Promise.all([
-                    fetch(getDataURL(), csvFetchOpts),
-                    skipStatus ? Promise.resolve(null) : fetch(getStatusURL(), csvFetchOpts),
-                    fetchCSOData()
-                ]);
-
-                if (!samplesResponse.ok) {
-                    throw new Error('Samples data response was not ok ' + samplesResponse.statusText);
-                }
-                if (statusResponse && !statusResponse.ok) {
-                    throw new Error('Status data response was not ok ' + statusResponse.statusText);
-                }
-
-                const samplesData = await samplesResponse.text();
-                const statusData = statusResponse ? await statusResponse.text() : null;
-
-                return { samplesData, statusData, csoData };
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                throw error;
+                const response = await fetch('data/meta.json', { cache: 'no-store' });
+                if (!response.ok) return null;
+                return await response.json();
+            } catch (e) {
+                return null;
             }
+        }
+
+        async function fetchData() {
+            // Off-season: skip the status fetch (off-season UI is rendered synchronously)
+            // unless ?status-url= explicitly overrides.
+            const skipStatus = !isInSeason() && !customStatusURL;
+            const samplesP = fetchSamples(getDataURL());
+            const statusP = skipStatus ? Promise.resolve(null) : fetchStatus(getStatusURL());
+            const csoP = fetchCSOData();
+            const metaP = fetchMeta();
+
+            const [samples, status, cso, meta] = await Promise.all([
+                samplesP.catch(e => { console.error('samples:', e); throw e; }),
+                statusP.catch(e => { console.error('status:', e); return null; }),
+                csoP,
+                metaP,
+            ]);
+            return { samples, status, cso, meta };
         }
 
         async function update() {
@@ -916,7 +905,7 @@
 
             try {
                 let data = await fetchData();
-                updateWithData(data.samplesData, data.statusData, data.csoData);
+                updateWithData(data.samples, data.status, data.cso, data.meta);
             } catch (error) {
                 console.error('Error updating data:', error);
             } finally {
@@ -1024,7 +1013,7 @@
             });
         }
 
-        function updateCurrentStatus(statusData) {
+        function updateCurrentStatus(statusObj) {
             const statusCard = document.getElementById('status-card');
             const statusHeading = document.getElementById('status-heading');
             const statusDescription = document.getElementById('status-description');
@@ -1034,42 +1023,22 @@
                 return;
             }
 
-            try {
-                // Parse status CSV data
-                const lines = statusData.trim().split('\n');
-                if (lines.length < 2) {
-                    statusHeading.textContent = 'Current Status: Information Unavailable';
-                    statusDescription.textContent = 'Status information is currently unavailable. There is an issue at the state web site preventing this page from accessing the beach status. Please check back later for updates.';
-                    return;
-                }
-
-                // Skip header row and get first data row
-                const dataRow = lines[1].split(',');
-                const status = dataRow[1]?.trim();
-
-                if (status) {
-                    const isOpen = status.toLowerCase() === 'open';
-                    const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
-
-                    // Store status immediately in IndexedDB
-                    storeStatusInDB(status.toLowerCase()).catch(error => {
-                        console.error('Error storing status in IndexedDB:', error);
-                    });
-
-                    // Update heading
-                    statusHeading.textContent = `Current Status: ${statusText}`;
-
-                    // Update card styling based on status
-                    statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';
-                } else {
-                    statusHeading.textContent = 'Current Status: Information Unavailable';
-                    statusDescription.textContent = 'Status information is currently unavailable. Please check back later for updates.';
-                }
-            } catch (error) {
-                console.error('Error parsing status data:', error);
-                statusHeading.textContent = 'Current Status: Error Loading';
-                statusDescription.textContent = 'There was an error loading status information. Please refresh the page.';
+            const status = statusObj && statusObj.status ? statusObj.status.trim() : '';
+            if (!status) {
+                statusHeading.textContent = 'Current Status: Information Unavailable';
+                statusDescription.textContent = 'Status information is currently unavailable. Please check back later for updates.';
+                return;
             }
+
+            const isOpen = status.toLowerCase() === 'open';
+            const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
+
+            storeStatusInDB(status.toLowerCase()).catch(error => {
+                console.error('Error storing status in IndexedDB:', error);
+            });
+
+            statusHeading.textContent = `Current Status: ${statusText}`;
+            statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';
         }
 
         // Update CSO incidents display
@@ -1218,27 +1187,25 @@
             });
         }
 
-        function updateWithData(samplesData, statusData, csoData) {
-            updateCurrentStatus(statusData);
+        function updateWithData(samples, status, csoData, meta) {
+            updateCurrentStatus(status);
             if (csoData) updateCSOIncidents(csoData);
 
-            const rows = parseSamplesCSV(samplesData);
+            const headers = (samples && samples.headers) || [];
+            let dataRows = (samples && samples.rows) || [];
 
             const offSeason = !isInSeason();
             const historicalYear = mostRecentSeasonYear();
 
             if (offSeason) {
-                // Filter sample rows (skip header) to the most recent completed season.
-                // The off-season status card / heading / hidden-card state is set by
-                // renderOffSeasonUI() (called synchronously on load + from updateCurrentStatus).
-                const header = rows[0];
-                const filtered = rows.slice(1).filter(r => {
+                // Filter sample rows to the most recent completed season. The off-season
+                // status card / heading / hidden-card state is set by renderOffSeasonUI()
+                // (called synchronously on load + from updateCurrentStatus).
+                dataRows = dataRows.filter(r => {
                     if (!r[0]) return false;
                     const d = new Date(r[0]);
                     return !isNaN(d) && d.getFullYear() === historicalYear;
                 });
-                rows.length = 0;
-                rows.push(header, ...filtered);
             } else {
                 const resultsCard = document.getElementById('results-card');
                 document.getElementById('results-heading').textContent = 'Single Sample Test Results';
@@ -1246,7 +1213,7 @@
                 showInSeasonHistoricalLink();
             }
 
-            renderSamplesTable(rows,
+            renderSamplesTable([headers, ...dataRows],
                 document.getElementById('table-head'),
                 document.getElementById('table-body'));
 
@@ -1255,7 +1222,14 @@
 
             const testModeText = isTestMode ? ' (Test Mode)' : '';
             const lastUpdatedDiv = document.getElementById('last-updated');
-            lastUpdatedDiv.innerHTML = `Last updated: ${new Date().toLocaleString()}${testModeText}`;
+            const syncedAt = meta && meta.lastSynced
+                ? new Date(meta.lastSynced).toLocaleString()
+                : null;
+            const syncedLine = syncedAt
+                ? `<br><span class="sync-line">Data last synced: ${syncedAt}</span>`
+                : '';
+            lastUpdatedDiv.innerHTML =
+                `Page rendered: ${new Date().toLocaleString()}${testModeText}${syncedLine}`;
             lastUpdatedDiv.style.display = 'block';
         }
 
@@ -1291,9 +1265,8 @@
             table.style.display = 'none';
 
             try {
-                const url = 'https://jalkut.com/water/beachdata.php?archive=' + year +
-                    '&b=' + encodeURIComponent(beachName);
-                const response = await fetch(url, { method: 'GET', mode: 'cors' });
+                const url = `archive/${beachArchiveKey}/${year}.csv`;
+                const response = await fetch(url, { cache: 'no-store' });
                 if (!response.ok) throw new Error('Archive response not ok: ' + response.statusText);
                 const csv = await response.text();
                 const allRows = parseSamplesCSV(csv);
@@ -1339,7 +1312,8 @@
             // checkNotificationStatus();
 
             fetchPromise.then(data => {
-                updateWithData(data.samplesData, data.statusData, data.csoData);
+                if (!data) return;
+                updateWithData(data.samples, data.status, data.cso, data.meta);
 
                 // Store config settings in IndexedDB for service worker
                 // Use faster sync frequency for test mode (30 seconds vs 5 minutes)
@@ -1402,8 +1376,11 @@
                     await storeStatusInDB(status);
 
                     // Trigger visual update
-                    const mockCSV = `Name,Status of Beach,Town\nShannon Beach @ Upper Mystic (DCR),${status.charAt(0).toUpperCase() + status.slice(1)},Winchester`;
-                    updateCurrentStatus(mockCSV);
+                    updateCurrentStatus({
+                        name: beachName,
+                        status: status.charAt(0).toUpperCase() + status.slice(1),
+                        town: 'Winchester',
+                    });
 
                     console.log('Status overridden to:', status);
                 } else {

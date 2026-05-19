@@ -1,0 +1,79 @@
+name: Sync data and deploy to Pages
+
+on:
+  schedule:
+    # Hourly, 17 past to avoid the top-of-hour cron rush on GH-hosted runners.
+    # The Python script itself decides whether to do a full in-season sync or a
+    # lighter off-season pass.
+    - cron: '17 * * * *'
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'data/**'
+      - 'archive/**'
+  workflow_dispatch:
+
+# Only one deploy at a time; cancel older queued ones rather than queueing up.
+concurrency:
+  group: pages-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  sync-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run sync (only on cron / manual)
+        if: github.event_name != 'push'
+        run: python sync_water_data.py
+
+      - name: Commit refreshed data + archive
+        if: github.event_name != 'push'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data archive
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Auto-sync water data [skip ci]"
+            git push
+          fi
+
+      - name: Stage site/ for Pages deploy
+        run: |
+          rm -rf site
+          mkdir -p site
+          # Copy only the files that should be served publicly. Everything else
+          # (sync script, archive raw CSVs, PHP proxy, .htaccess, .claude/, etc.)
+          # stays out of the deploy artifact.
+          cp index.html mystic.html simple.html sw.js site/
+          cp -R data site/data
+          cp -R archive site/archive
+          cp -R test-data site/test-data
+          [ -f CNAME ] && cp CNAME site/ || true
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

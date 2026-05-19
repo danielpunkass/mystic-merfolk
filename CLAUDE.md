@@ -4,165 +4,166 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a beach water quality monitoring dashboard that displays data from Massachusetts Department of Public Health. The project consists of:
+This is a beach water quality monitoring dashboard for Shannon Beach @ Upper Mystic
+(DCR), displaying data from the Massachusetts Department of Public Health.
 
-- **HTML dashboards** (`mystic.html`, `simple.html`) for displaying beach water quality data
-- **PHP proxy** (`beachdata.php`) to handle CORS and fetch CSV data from Mass.gov APIs  
-- **Apache configuration** (`.htaccess`) for CORS headers
+The site is **fully static** and served from GitHub Pages at `water.jalkut.com`. A
+scheduled GitHub Action runs `sync_water_data.py` periodically to fetch upstream
+data and commit refreshed `data/*.json` and `archive/<beach>/<year>.csv` files
+back to the repo. The page loads only same-origin static files at runtime — no
+PHP proxy, no CORS workaround, no live API call from the browser.
 
 ## Architecture
 
 ### Data Flow
-1. HTML pages make requests to `beachdata.php` for sample data and beach status
-2. Direct API requests to Massachusetts EEA for CSO incident data
-3. Data sources:
-   - Sample data: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv`
-   - Beach status: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv`
-   - CSO incidents: `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/`
-4. Data is parsed client-side and displayed in:
-   - Current Status section showing open/closed beach status
-   - CSO Incidents section (when recent incidents exist affecting Mystic Lake)
-   - Recent Samples table with sortable data and threshold indicators
-5. All data sources auto-refresh every 5 minutes
 
-### Key Components
-- **mystic.html**: Main dashboard for Shannon Beach @ Upper Mystic (DCR)
-- **beachdata.php**: CORS proxy that accepts `?b=` (beach name) and `?u=` (base URL) parameters
-- **simple.html**: Test page for CORS functionality
-- **sw.js**: Service worker providing background notifications when swimming status changes
-- Custom CSV parser in JavaScript handles quoted fields and skips redundant date columns
+```
+GitHub Action (hourly cron)
+  └─► sync_water_data.py
+        ├─► fetch Results.csv  (Mass DPH)  ─► data/samples.json
+        ├─► fetch BeachList.csv (Mass DPH) ─► data/status.json
+        ├─► fetch CSO incidents (Mass DEP) ─► data/cso.json
+        ├─► merge into archive/<beach>/<year>.csv
+        └─► write data/meta.json (lastSynced, season, ...)
+  └─► commit refreshed data + archive
+  └─► stage site/ and deploy to GitHub Pages
+```
 
-## Data Sources
+At page-load time, `mystic.html` fetches `data/samples.json`, `data/status.json`,
+`data/cso.json`, and `data/meta.json` directly. Off-season it reads
+`archive/Shannon_Beach_Upper_Mystic_DCR/<year>.csv` instead of `data/samples.json`.
 
-Active API endpoints:
-- **Sample data**: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv`
-- **Beach status**: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv`
-- **CSO incidents**: `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate={date}`
+### Key Files
 
-### CSO API Requirements
-- **Referer header**: Must include `Referer: https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/`
-- **Date parameter**: `incidentFromDate` automatically set to 2 weeks ago from current date
-- **Response format**: JSON with incidents array containing volume, duration, rainfall, and location data
-- **Filtering**: Client-side filters for incidents affecting Mystic Lake specifically
+- **`mystic.html`** — Main dashboard. Vanilla JS, no frameworks. Loads static JSON
+  from `data/`, renders current status, CSO incidents card, samples table, and a
+  "Data last synced" line driven by `meta.json`.
+- **`simple.html`** — Tiny page kept for diagnostics.
+- **`sw.js`** — Service worker (currently registration is disabled in `mystic.html`).
+  Reads the same `data/*.json` and posts a desktop notification on status change.
+- **`sync_water_data.py`** — Python 3 stdlib script that does all upstream fetching.
+  Stdlib only (urllib + csv + json) — no external deps, no requirements.txt.
+- **`.github/workflows/sync.yml`** — Hourly cron that runs the sync script, commits
+  data changes, stages `site/`, and deploys via `actions/deploy-pages`.
+- **`CNAME`** — `water.jalkut.com`.
 
-The TODO file mentions additional endpoints:
-- Closure data: `BeachesDashboardMockup_test/ClosureTable.csv`
-- Geometric mean data: `BeachesDashboardMockup_test/Geomean.csv`
+### Upstream Endpoints (consumed by sync script only)
 
-## Development Notes
+- Sample data: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y&Name=<beach>`
+  — needs `Referer: https://datavisualization.dph.mass.gov`
+- Beach status: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y&Name=<beach>`
+  — same referer
+- CSO incidents: `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate=<DD/MM/YYYY>`
+  — needs `Referer: https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/`
 
-### Server Requirements
-- PHP with cURL support
-- Apache with mod_headers for CORS configuration
-- Web server accessible at `jalkut.com/water/` domain
+### Static Data Shapes
 
-### CORS Configuration
-- `.htaccess` allows requests from `https://jalkut.com`
-- `beachdata.php` sets wildcard CORS headers for broader access
-- Both approaches are used for different access patterns
+- `data/samples.json` → `{ "headers": [...], "rows": [[date, indicator, threshold, results], ...] }`
+- `data/status.json` → `{ "name", "status", "town" }`
+- `data/cso.json` → `{ "results": [...], "rowCount": N, "windowStart": "YYYY-MM-DD" }`
+  — Front-end still filters `results` to Mystic Lake by `waterBodyDescription`.
+- `data/meta.json` → `{ "lastSynced", "season", "today", "beach", "samples", "status", "cso", "errors", "schemaVersion" }`
 
-### JavaScript Architecture
-- Vanilla JavaScript, no frameworks
-- Custom CSV parsing logic handles Massachusetts DPH CSV format
-- Parallel data fetching for both sample data and beach status
-- Two-section UI:
-  - **Current Status**: Shows open/closed beach status with location info
-  - **Recent Test Results**: Sortable table with threshold indicators
-- Table sorting by date (newest first)
-- Early fetch initiation to minimize loading time
-- Test mode support with sample data for both endpoints
+### Season Logic
+
+Memorial Day through Labor Day = "in-season". The Python sync script and the JS
+both implement the same calendar math. Off-season, upstream stops publishing
+samples, so the script writes a stub `status.json` (`"Closed for Season"`) and
+the page reads from `archive/Shannon_Beach_Upper_Mystic_DCR/<year>.csv` for the
+most recent completed season.
 
 ## Local Development
 
-### Running a Local Web Server
-To test the application locally, you need to run a web server that supports PHP:
+The site is fully static. Any static file server works:
 
-**PHP Built-in Server** (recommended for development):
 ```bash
-php -S localhost:8000
+python3 -m http.server 8000
 ```
 
-**Python HTTP Server** (for static content only):
-```bash
-# Python 3
-python -m http.server 8000
+Then open `http://localhost:8000/mystic.html`. The page reads from `data/*.json`
+and `archive/...csv` — both committed to the repo — so it works fully offline
+once the repo is cloned.
 
-# Python 2
-python -m SimpleHTTPServer 8000
+To regenerate the static data locally:
+
+```bash
+python3 sync_water_data.py
 ```
 
-**Node.js/npm servers**:
-```bash
-# Using http-server
-npx http-server -p 8000
+This hits the live Mass DPH / Mass DEP endpoints and rewrites `data/*.json` plus
+appends to `archive/<beach>/<year>.csv`. No external deps required.
 
-# Using live-server
-npx live-server --port=8000
-```
+### Test Mode
 
-**Apache/Nginx**: Configure virtual host pointing to project directory
+Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
+- `?data-url=test-data/results-typical.csv`
+- `?status-url=test-data/status-open.csv`
+- `?cso-url=test-data/cso-mystic-incident.json`
 
-After starting the server, access the dashboard at:
-- Main dashboard: `http://localhost:8000/mystic.html`
-- Test page: `http://localhost:8000/simple.html`
+The page's `fetchSamples` / `fetchStatus` helpers accept either JSON
+(`*.json`) or the upstream CSV format, so existing CSV fixtures continue to work.
 
-**Note**: The PHP built-in server is recommended since the application uses `beachdata.php` for CORS proxying. Static servers won't execute PHP code.
+### Test Mode Configuration
+
+When using `?test=1`:
+- 30-second sync frequency (vs. 5-minute prod default)
+- Test config persisted in `BeachStatusDB` IndexedDB so the service worker sees it
+- Debug panel exposes sync frequency, status override, SW controls, DB clear
+
+## Deployment
+
+GitHub Pages source = **GitHub Actions** (not branch). The workflow at
+`.github/workflows/sync.yml`:
+
+1. Runs hourly on cron (`17 * * * *`)
+2. Executes `sync_water_data.py`
+3. Commits any changed `data/` or `archive/` files back to `main`
+   (uses `[skip ci]` so the resulting push doesn't loop into another deploy)
+4. Stages a `site/` directory containing only the public files
+   (`mystic.html`, `simple.html`, `index.html`, `sw.js`, `data/`, `archive/`,
+   `test-data/`, `CNAME`) — `sync_water_data.py`, `beachdata.php`, `.htaccess`,
+   `.claude/`, and shell scripts are not deployed
+5. Uploads as a Pages artifact and deploys via `actions/deploy-pages@v4`
+
+DNS: `water.jalkut.com` CNAME → `<github-pages-host>`. Custom domain configured
+via the `CNAME` file at the repo root and the Pages settings UI.
 
 ## Desktop Notifications
 
-The application provides desktop notifications when swimming status changes from open to closed (or vice versa).
+The application can provide desktop notifications when swimming status changes
+(open ↔ closed). Currently disabled in production (`registerServiceWorker()`
+call is commented out in `mystic.html`).
 
-### Notification Features
-- **Background operation**: Works even when browser tab is closed (but Safari must remain open)
-- **Service worker powered**: Uses `sw.js` for reliable background monitoring
-- **User permission required**: Shows banner prompting user to enable notifications
-- **Status change detection**: Only notifies when status actually changes between open/closed
-- **Persistent notifications**: Require user interaction to dismiss
+### Architecture
 
-### Notification Architecture
-- **Main page**: Displays status and stores configuration in IndexedDB
-- **Service worker**: Monitors status changes and sends notifications in background
-- **Shared database**: `BeachStatusDB` IndexedDB stores status history and configuration
-- **Configurable frequency**: Sync frequency stored in database (5 minutes default, 30 seconds in test mode)
+- **Main page**: Renders current state and writes config (test mode flag, sync
+  frequency) to `BeachStatusDB` IndexedDB.
+- **Service worker (`sw.js`)**: On `sync` / `periodicsync` events, fetches
+  `data/status.json` and `data/cso.json` and compares against the last value in
+  IndexedDB. If status flipped, posts a notification.
+- **Shared `BeachStatusDB`** records:
+  - `current` — `{ id: 'current', status: 'open'|'closed', timestamp }`
+  - `config` — `{ id: 'config', isTestMode, syncFrequencyMinutes, statusOverride? }`
 
-### IndexedDB Storage
-The application stores data in `BeachStatusDB` with these records:
-- **`current`**: Latest swimming status (open/closed) 
-- **`config`**: Configuration including test mode, test data, and sync frequency
-
-### Test Mode Configuration
-When using `?test=1` URL parameter:
-- Uses local test data instead of live API
-- Sets sync frequency to 30 seconds for faster testing
-- Test data and settings stored in IndexedDB for service worker access
-- Manual test data editing supported (won't be overwritten)
-
-### Notification Testing
-1. Visit `?test=1` to enable test mode with fast 30-second sync
-2. Enable notifications via banner button
-3. Close tab but keep Safari running
-4. Edit test data in IndexedDB or modify `testStatusData` in code
-5. Notifications appear when status changes are detected
+Because the SW now reads same-origin static JSON, it no longer needs the PHP
+proxy or any CORS workaround.
 
 ## CSO Incident Monitoring
 
-The application monitors Combined Sewage Overflow (CSO) incidents affecting Mystic Lake from the Massachusetts Department of Environmental Protection.
+CSO incidents are pre-fetched by the sync script for the last 2 weeks of
+Winchester events and written to `data/cso.json`. The front-end filters down
+to Mystic Lake-related incidents (`waterBodyDescription` contains "mystic")
+and shows them in a warning-styled card. The card auto-hides when there are
+no relevant incidents.
 
-### CSO Features
-- **Real-time monitoring**: Checks for incidents in the last 2 weeks
-- **Mystic Lake filtering**: Only displays incidents affecting Upper Mystic Lake specifically
-- **Conditional display**: CSO section only appears when relevant incidents exist
-- **Detailed information**: Shows incident number, date/time, volume, duration, rainfall, and location
-- **Service worker integration**: Background monitoring includes CSO data fetching
+## Legacy Files
 
-### CSO Display
-- **Warning styling**: Orange/amber color scheme to indicate water quality concerns
-- **Incident cards**: Each incident displayed in individual cards with grid layout
-- **Data fields**: Time, Location, Volume (gallons), Duration, Rainfall (inches)
-- **Auto-hiding**: Section disappears when no recent Mystic Lake incidents
+Until the GitHub Pages migration is fully verified, the following legacy files
+remain in the repo but are excluded from the deploy artifact:
 
-### CSO Test Mode
-When using `?test=1`:
-- Shows sample CSO incident data
-- Demonstrates the display format and styling
-- Tests the filtering logic for Mystic Lake incidents
+- `beachdata.php` — old PHP CORS proxy (no longer referenced by the page)
+- `.htaccess` — old Apache CORS config (irrelevant on Pages)
+- `database.js` — currently unused; retain in case SW notifications get
+  re-enabled and want to share schema with the page
+
+These can be deleted once `water.jalkut.com` is confirmed serving correctly.
