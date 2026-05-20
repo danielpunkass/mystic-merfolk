@@ -29,17 +29,17 @@ GitHub Action (hourly cron)
   └─► stage site/ and deploy to GitHub Pages
 ```
 
-At page-load time, `mystic.html` fetches `data/samples.json`, `data/status.json`,
+At page-load time, `index.html` fetches `data/samples.json`, `data/status.json`,
 `data/cso.json`, and `data/meta.json` directly. Off-season it reads
 `archive/Shannon_Beach_Upper_Mystic_DCR/<year>.csv` instead of `data/samples.json`.
 
 ### Key Files
 
-- **`mystic.html`** — Main dashboard. Vanilla JS, no frameworks. Loads static JSON
+- **`index.html`** — Main dashboard. Vanilla JS, no frameworks. Loads static JSON
   from `data/`, renders current status, CSO incidents card, samples table, and a
   "Data last synced" line driven by `meta.json`.
 - **`simple.html`** — Tiny page kept for diagnostics.
-- **`sw.js`** — Service worker (currently registration is disabled in `mystic.html`).
+- **`sw.js`** — Service worker (currently registration is disabled in `index.html`).
   Reads the same `data/*.json` and posts a desktop notification on status change.
 - **`sync_water_data.py`** — Python 3 stdlib script that does all upstream fetching.
   Stdlib only (urllib + csv + json) — no external deps, no requirements.txt.
@@ -80,7 +80,7 @@ The site is fully static. Any static file server works:
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000/mystic.html`. The page reads from `data/*.json`
+Then open `http://localhost:8000/`. The page reads from `data/*.json`
 and `archive/...csv` — both committed to the repo — so it works fully offline
 once the repo is cloned.
 
@@ -120,7 +120,7 @@ GitHub Pages source = **GitHub Actions** (not branch). The workflow at
 3. Commits any changed `data/` or `archive/` files back to `main`
    (uses `[skip ci]` so the resulting push doesn't loop into another deploy)
 4. Stages a `site/` directory containing only the public files
-   (`mystic.html`, `simple.html`, `index.html`, `sw.js`, `data/`, `archive/`,
+   (`index.html`, `simple.html`, `sw.js`, `data/`, `archive/`,
    `test-data/`, `CNAME`) — `sync_water_data.py`, `beachdata.php`, `.htaccess`,
    `.claude/`, and shell scripts are not deployed
 5. Uploads as a Pages artifact and deploys via `actions/deploy-pages@v4`
@@ -132,7 +132,7 @@ via the `CNAME` file at the repo root and the Pages settings UI.
 
 The application can provide desktop notifications when swimming status changes
 (open ↔ closed). Currently disabled in production (`registerServiceWorker()`
-call is commented out in `mystic.html`).
+call is commented out in `index.html`).
 
 ### Architecture
 

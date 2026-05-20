@@ -222,7 +222,7 @@ async function showStatusNotification(newStatus, previousStatus) {
             status: newStatus,
             previousStatus: previousStatus,
             timestamp: Date.now(),
-            url: '/water/mystic.html'
+            url: '/'
         }
     };
 
@@ -327,13 +327,13 @@ self.addEventListener('notificationclick', event => {
             self.clients.matchAll({ type: 'window' }).then(clients => {
                 // Try to focus existing client
                 for (const client of clients) {
-                    if (client.url.includes('mystic.html') && 'focus' in client) {
+                    if ('focus' in client) {
                         return client.focus();
                     }
                 }
                 // If no existing client, open new one
                 if (self.clients.openWindow) {
-                    return self.clients.openWindow('/water/mystic.html');
+                    return self.clients.openWindow('/');
                 }
             })
         );

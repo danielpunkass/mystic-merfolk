@@ -2,11 +2,1596 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=mystic.html">
-    <link rel="canonical" href="mystic.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upper Mystic Water Quality</title>
+    <meta name="description" content="A concise snapshot of current and recent water conditions at Shannon Beach.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊‍♂️</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f9ff 100%);
+            min-height: 100vh;
+            color: #1a365d;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #0284c7, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #64748b;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e2e8f0;
+            border-top: 2px solid #0284c7;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #0ea5e9;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        th:hover {
+            background: #0284c7;
+        }
+
+        td {
+            background: rgba(255, 255, 255, 0.8);
+            transition: background 0.2s ease;
+        }
+
+        tr:hover td {
+            background: rgba(240, 249, 255, 0.8);
+        }
+
+        tr:nth-child(even) td {
+            background: rgba(241, 250, 255, 0.5);
+        }
+
+        tr:nth-child(even):hover td {
+            background: rgba(224, 242, 254, 0.8);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-safe {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-card-open {
+            background: linear-gradient(135deg, #dcfce7, #f0fdf4) !important;
+            border: 2px solid #22c55e !important;
+        }
+
+        .status-card-closed {
+            background: linear-gradient(135deg, #fee2e2, #fef2f2) !important;
+            border: 2px solid #ef4444 !important;
+        }
+
+        .status-card-open h2 {
+            color: #166534 !important;
+        }
+
+        .status-card-closed h2 {
+            color: #991b1b !important;
+        }
+
+        .status-card-open p {
+            color: #166534 !important;
+        }
+
+        .status-card-closed p {
+            color: #991b1b !important;
+        }
+
+        .status-card-offseason {
+            background: linear-gradient(135deg, #e0e7ef, #f1f5f9) !important;
+            border: 2px solid #64748b !important;
+        }
+
+        .status-card-offseason h2 {
+            color: #334155 !important;
+        }
+
+        .status-card-offseason p {
+            color: #334155 !important;
+        }
+
+        .status-card-offseason a {
+            color: #0369a1;
+            font-weight: 600;
+        }
+
+        .hidden-until-revealed {
+            display: none;
+        }
+
+        .cso-card {
+            background: linear-gradient(135deg, #fef3c7, #fef9e7) !important;
+            border: 2px solid #f59e0b !important;
+        }
+
+        .cso-card h2 {
+            color: #92400e !important;
+        }
+
+        .cso-card p {
+            color: #92400e !important;
+        }
+
+        .cso-incident {
+            background: rgba(251, 146, 60, 0.1);
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cso-incident h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cso-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #78350f;
+        }
+
+        .cso-detail {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .cso-detail strong {
+            color: #92400e;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .table-container {
+                border-radius: 12px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            }
+        }
+
+        .refresh-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .refresh-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification-banner {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-banner button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .notification-banner button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .debug-panel {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border: 2px solid #6b7280;
+        }
+
+        .debug-panel h3 {
+            margin: 0 0 1rem 0;
+            color: #f59e0b;
+            font-size: 1.2rem;
+        }
+
+        .debug-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .debug-control {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .debug-control label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .debug-control input, .debug-control select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #6b7280;
+            border-radius: 6px;
+            background: #1f2937;
+            color: white;
+        }
+
+        .debug-control button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: background 0.2s ease;
+        }
+
+        .debug-control button:hover {
+            background: #2563eb;
+        }
+
+        .debug-status {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid #10b981;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to <a href="mystic.html">mystic.html</a>…</p>
+    <div class="container">
+        <div class="header">
+            <h1>🏊‍♂️ Upper Mystic Water Quality</h1>
+            <div class="subtitle">A concise snapshot of current and recent water conditions at Shannon Beach. Data from the <a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
+        </div>
+
+        <div id="notification-banner" class="notification-banner" style="display: none;">
+            <span>🔔 Get notified when swimming status changes!</span>
+            <button onclick="enableNotifications()">Enable Notifications</button>
+        </div>
+
+        <div class="card" id="status-card">
+            <div id="current-status" style="padding: 2rem;">
+                <h2 id="status-heading" style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">Current Status: Loading...</h2>
+                <p id="status-description" style="margin: 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">This is the official status for Shannon Beach specifically, based on single samples and the cumulative geometric mean of recent results. As always, swim at your own risk and at the discretion of your own best judgement!</p>
+            </div>
+        </div>
+
+        <!-- CSO Incidents Section (hidden by default) -->
+        <div class="card cso-card" id="cso-card" style="display: none;">
+            <div id="cso-incidents" style="padding: 2rem;">
+                <h2 style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">⚠️ Recent CSO Incidents</h2>
+                <p style="margin: 0 0 1.5rem 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">Combined Sewage Overflow events reported in the Winchester area affecting Mystic Lake within the last 2 weeks.</p>
+                <div id="cso-list">
+                    <!-- CSO incidents will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="results-card">
+            <h2 id="results-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Single Sample Test Results</h2>
+            <div class="table-container">
+                <div id="loading" class="loading">Loading beach data...</div>
+                <table id="data-table" style="display: none;">
+                    <thead>
+                        <tr id="table-head">
+                            <!-- Table headers will be inserted here -->
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Table data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="last-updated" class="last-updated" style="display: none;">
+                <!-- Last updated time will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Link to past season's historical readings (shown in open season; off-season uses the
+             same mechanism via the status card link instead). -->
+        <div id="historical-link-card" style="display: none; text-align: center; margin-bottom: 2rem;">
+            <a href="#historical-card" id="in-season-historical-link" style="color: #0369a1; font-weight: 600; text-decoration: none;">
+                View <span id="historical-link-year"></span> season historical readings →
+            </a>
+        </div>
+
+        <!-- Historical readings card, revealed on click. -->
+        <div class="card" id="historical-card" style="display: none;">
+            <h2 id="historical-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Historical Readings</h2>
+            <div class="table-container">
+                <div id="historical-loading" class="loading">Loading historical readings...</div>
+                <table id="historical-table" style="display: none;">
+                    <thead>
+                        <tr id="historical-table-head"></tr>
+                    </thead>
+                    <tbody id="historical-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Debug Panel (only shown in test mode) -->
+        <div id="debug-panel" class="debug-panel" style="display: none;">
+            <h3>🛠️ Debug Controls</h3>
+            <div class="debug-controls">
+                <div class="debug-control">
+                    <label>Sync Frequency (minutes)</label>
+                    <input type="number" id="sync-frequency" value="0.5" step="0.1" min="0.1">
+                    <button onclick="updateSyncFrequency()">Update Frequency</button>
+                </div>
+                <div class="debug-control">
+                    <label>Current Status Override</label>
+                    <select id="status-override">
+                        <option value="">Use Test Data</option>
+                        <option value="open">Force Open</option>
+                        <option value="closed">Force Closed</option>
+                    </select>
+                    <button onclick="updateStatusOverride()">Update Status</button>
+                </div>
+                <div class="debug-control">
+                    <label>Service Worker Actions</label>
+                    <button onclick="triggerStatusCheck()">Trigger Status Check</button>
+                    <button onclick="forceServiceWorkerUpdate()">Force SW Update</button>
+                    <button onclick="clearDatabase()">Clear Database</button>
+                </div>
+            </div>
+            <div id="debug-status" class="debug-status">
+                Debug panel loaded. Current configuration will be displayed here.
+            </div>
+        </div>
+    </div>
+
+    <div id="refresh-indicator" class="refresh-indicator">
+        Refreshing data...
+    </div>
+
+    <script>
+    	// Could have a popup here to let you choose from beaches
+    	const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
+        const urlParams = new URLSearchParams(window.location.search);
+        const isTestMode = urlParams.get('test') === '1';
+        // ?season=open|closed overrides the date-based season check (for testing/preview)
+        const seasonOverride = urlParams.get('season');
+        // Stub URLs for testing scenarios — point any of these at a file in /test-data/
+        // (or any URL). Relative URLs are fetched directly; absolute URLs go through the proxy.
+        const customDataURL = urlParams.get('data-url');
+        const customStatusURL = urlParams.get('status-url');
+        const customCSOURL = urlParams.get('cso-url');
+
+        // Test-mode overrides may point at any URL; we no longer wrap absolute URLs in a
+        // server-side proxy (the proxy is gone — the site is fully static now). If an absolute
+        // URL is provided that triggers CORS, it's on the test caller.
+        function resolveOverride(url) {
+            return url;
+        }
+        function isJsonUrl(url) {
+            return /\.json(\?|#|$)/i.test(url);
+        }
+
+        // Official monitoring season: Memorial Day (last Mon of May) through Labor Day (first Mon of Sep).
+        function memorialDay(year) {
+            const may31 = new Date(year, 4, 31);
+            const offset = (may31.getDay() + 6) % 7; // days back to Monday
+            return new Date(year, 4, 31 - offset);
+        }
+        function laborDay(year) {
+            const sep1 = new Date(year, 8, 1);
+            const offset = (8 - sep1.getDay()) % 7; // days forward to Monday
+            return new Date(year, 8, 1 + offset);
+        }
+        function isInSeason(date = new Date()) {
+            if (seasonOverride === 'open') return true;
+            if (seasonOverride === 'closed') return false;
+            const y = date.getFullYear();
+            return date >= memorialDay(y) && date <= laborDay(y);
+        }
+        function mostRecentSeasonYear(date = new Date()) {
+            const y = date.getFullYear();
+            return date > laborDay(y) ? y : y - 1;
+        }
+
+        // Notification state tracking
+        let notificationsEnabled = false;
+        let serviceWorkerRegistration = null;
+
+        // Data is baked into /data/*.json by sync_water_data.py running as a scheduled
+        // GitHub Action; the page is fully static. Off-season we fall back to the per-year
+        // archive CSVs committed to the repo at /archive/<beach>/<year>.csv.
+        const beachArchiveKey = 'Shannon_Beach_Upper_Mystic_DCR';
+        const liveDataURL = 'data/samples.json';
+
+        function getDataURL() {
+            if (customDataURL) return resolveOverride(customDataURL);
+            if (isInSeason()) return liveDataURL;
+            const year = mostRecentSeasonYear();
+            return `archive/${beachArchiveKey}/${year}.csv`;
+        }
+
+        function getStatusURL() {
+            return customStatusURL ? resolveOverride(customStatusURL) : statusURL;
+        }
+
+        function wireHistoricalLink() {
+            const link = document.getElementById('historical-link');
+            if (!link || link.dataset.wired === '1') return;
+            link.dataset.wired = '1';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = document.getElementById('results-card');
+                card.classList.remove('hidden-until-revealed');
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+
+        function renderOffSeasonUI() {
+            const year = mostRecentSeasonYear();
+            const statusCard = document.getElementById('status-card');
+            const statusHeading = document.getElementById('status-heading');
+            const statusDescription = document.getElementById('status-description');
+            const resultsCard = document.getElementById('results-card');
+            const resultsHeading = document.getElementById('results-heading');
+
+            statusCard.className = 'card status-card-offseason';
+            statusHeading.textContent = 'Current Status: Closed for Season';
+            statusDescription.innerHTML =
+                'Official water quality monitoring at Shannon Beach runs from Memorial Day through Labor Day. ' +
+                'Outside that window the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
+                'but there is no published monitoring, so conditions are unknown.' +
+                '<br><br>' +
+                `<a href="#results-card" id="historical-link">View ${year} season historical readings →</a>`;
+
+            resultsHeading.textContent = `${year} Season Historical Readings`;
+            resultsCard.classList.add('hidden-until-revealed');
+            wireHistoricalLink();
+        }
+
+        // Apply off-season UI synchronously before first paint so the "Loading..." status and
+        // results-card spinner never flash. The script tag is at the bottom of <body>, so the
+        // elements below already exist.
+        if (!isInSeason()) renderOffSeasonUI();
+
+        const statusURL = 'data/status.json';
+
+        // Register service worker
+        async function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                try {
+                    serviceWorkerRegistration = await navigator.serviceWorker.register('./sw.js');
+                    console.log('Service Worker registered:', serviceWorkerRegistration);
+
+                    // Set up periodic background sync if supported (Chrome only)
+                    if ('periodicSync' in serviceWorkerRegistration) {
+                        try {
+                            await serviceWorkerRegistration.periodicSync.register('beach-status-periodic', {
+                                minInterval: 5 * 60 * 1000, // 5 minutes
+                            });
+                            console.log('Periodic background sync registered');
+                        } catch (error) {
+                            console.log('Periodic background sync not supported:', error);
+                        }
+                    }
+
+                    return true;
+                } catch (error) {
+                    console.error('Service Worker registration failed:', error);
+                    return false;
+                }
+            } else {
+                console.log('Service Workers not supported');
+                return false;
+            }
+        }
+
+        // Request notification permission
+        async function requestNotificationPermission() {
+            if (!('Notification' in window)) {
+                console.log('This browser does not support notifications');
+                return false;
+            }
+
+            if (Notification.permission === 'granted') {
+                notificationsEnabled = true;
+                await setupBackgroundSync();
+                return true;
+            }
+
+            if (Notification.permission !== 'denied') {
+                const permission = await Notification.requestPermission();
+                notificationsEnabled = permission === 'granted';
+                if (notificationsEnabled) {
+                    await setupBackgroundSync();
+                }
+                return notificationsEnabled;
+            }
+
+            return false;
+        }
+
+        // Set up background sync for status checking
+        async function setupBackgroundSync() {
+            if (serviceWorkerRegistration) {
+                // Try background sync first
+                if ('sync' in serviceWorkerRegistration) {
+                    try {
+                        await serviceWorkerRegistration.sync.register('beach-status-check');
+                        console.log('Background sync registered');
+
+                        // Set up recurring sync registration
+                        setInterval(async () => {
+                            try {
+                                await serviceWorkerRegistration.sync.register('beach-status-check');
+                            } catch (error) {
+                                console.log('Background sync re-registration failed:', error);
+                            }
+                        }, 5 * 60 * 1000);
+
+                    } catch (error) {
+                        console.log('Background sync not supported:', error);
+                        setupFallbackTimer();
+                    }
+                } else {
+                    console.log('Background sync not available, using fallback timer');
+                    setupFallbackTimer();
+                }
+            }
+        }
+
+        // Get sync frequency from IndexedDB
+        async function getSyncFrequency() {
+            return new Promise((resolve) => {
+                const request = indexedDB.open('BeachStatusDB', 1);
+
+                request.onerror = () => resolve(5); // Default 5 minutes
+
+                request.onsuccess = (event) => {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['status'], 'readonly');
+                    const store = transaction.objectStore('status');
+                    const getRequest = store.get('config');
+
+                    getRequest.onsuccess = () => {
+                        db.close();
+                        if (getRequest.result && getRequest.result.syncFrequencyMinutes) {
+                            resolve(getRequest.result.syncFrequencyMinutes);
+                        } else {
+                            resolve(5); // Default 5 minutes
+                        }
+                    };
+
+                    getRequest.onerror = () => {
+                        db.close();
+                        resolve(5); // Default 5 minutes
+                    };
+                };
+            });
+        }
+
+        // Fallback timer for browsers without background sync
+        async function setupFallbackTimer() {
+            const syncFrequencyMinutes = await getSyncFrequency();
+            const intervalMs = syncFrequencyMinutes * 60 * 1000;
+
+            console.log(`Fallback: Setting up timer with ${syncFrequencyMinutes} minute frequency`);
+
+            // Send message to service worker at configured intervals
+            setInterval(() => {
+                if (serviceWorkerRegistration && serviceWorkerRegistration.active) {
+                    serviceWorkerRegistration.active.postMessage({
+                        type: 'CHECK_STATUS'
+                    });
+                    console.log('Fallback: Sent status check message to service worker');
+                }
+            }, intervalMs);
+
+            // Send initial check message
+            setTimeout(() => {
+                if (serviceWorkerRegistration && serviceWorkerRegistration.active) {
+                    serviceWorkerRegistration.active.postMessage({
+                        type: 'CHECK_STATUS'
+                    });
+                    console.log('Fallback: Sent initial status check message to service worker');
+                }
+            }, 1000);
+        }
+
+        // Show desktop notification for status changes
+        function showStatusNotification(newStatus, previousStatus) {
+            if (!notificationsEnabled) return;
+
+            const isOpen = newStatus.toLowerCase() === 'open';
+            const title = `Shannon Beach Status Update`;
+            const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
+            const body = `Swimming status changed to: ${statusText}`;
+
+            const icon = isOpen ? '🏊‍♂️' : '🚫';
+
+            new Notification(title, {
+                body: body,
+                icon: `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${icon}</text></svg>`,
+                requireInteraction: true,
+                tag: 'beach-status'
+            });
+        }
+
+        // Enable notifications - called by user click
+        async function enableNotifications() {
+            // DISABLED: Notification functionality disabled
+            return;
+
+            const banner = document.getElementById('notification-banner');
+            const success = await requestNotificationPermission();
+
+            // Hide banner regardless of success/failure to avoid it staying visible
+            banner.style.display = 'none';
+
+            if (success) {
+                // Show a brief confirmation
+                const refreshIndicator = document.getElementById('refresh-indicator');
+                refreshIndicator.textContent = 'Notifications enabled!';
+                refreshIndicator.classList.add('show');
+                setTimeout(() => {
+                    refreshIndicator.classList.remove('show');
+                    refreshIndicator.textContent = 'Refreshing data...';
+                }, 2000);
+            } else {
+                // Show error message if permission was denied
+                const refreshIndicator = document.getElementById('refresh-indicator');
+                refreshIndicator.textContent = 'Notifications blocked';
+                refreshIndicator.classList.add('show');
+                setTimeout(() => {
+                    refreshIndicator.classList.remove('show');
+                    refreshIndicator.textContent = 'Refreshing data...';
+                }, 2000);
+            }
+        }
+
+        // Check and show notification banner
+        function checkNotificationStatus() {
+            const banner = document.getElementById('notification-banner');
+
+            // DISABLED: Notification functionality disabled
+            banner.style.display = 'none';
+            return;
+
+            if (!('Notification' in window)) {
+                return; // Browser doesn't support notifications
+            }
+
+            if (Notification.permission === 'default') {
+                banner.style.display = 'block';
+            } else if (Notification.permission === 'granted') {
+                notificationsEnabled = true;
+                banner.style.display = 'none';
+            }
+        }
+
+        const csoURL = 'data/cso.json';
+
+        // CSO incident data is pre-fetched and filtered to the Winchester window by the
+        // sync job; the page just reads the resulting static JSON.
+        async function fetchCSOData() {
+            const fetchUrl = customCSOURL ? resolveOverride(customCSOURL) : csoURL;
+            try {
+                const response = await fetch(fetchUrl, { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error('CSO data response was not ok ' + response.statusText);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error fetching CSO data:', error);
+                return { results: [], rowCount: 0 };
+            }
+        }
+
+        // Read a samples source — either JSON ({headers, rows}) or upstream-shaped CSV
+        // (for archive fallback and test fixtures). Normalize both to {headers, rows}.
+        async function fetchSamples(url) {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Samples response not ok: ' + response.statusText);
+            if (isJsonUrl(url)) return await response.json();
+            const csv = await response.text();
+            const rows = parseSamplesCSV(csv);
+            return { headers: rows[0] || [], rows: rows.slice(1) };
+        }
+
+        // Read a status source — JSON ({name, status, town}) or BeachList.csv-style fixture.
+        async function fetchStatus(url) {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Status response not ok: ' + response.statusText);
+            if (isJsonUrl(url)) return await response.json();
+            const csv = await response.text();
+            const lines = csv.trim().split('\n');
+            if (lines.length < 2) return null;
+            const cells = lines[1].split(',').map(c => c.trim());
+            return { name: cells[0], status: cells[1], town: cells[2] };
+        }
+
+        async function fetchMeta() {
+            try {
+                const response = await fetch('data/meta.json', { cache: 'no-store' });
+                if (!response.ok) return null;
+                return await response.json();
+            } catch (e) {
+                return null;
+            }
+        }
+
+        async function fetchData() {
+            // Off-season: skip the status fetch (off-season UI is rendered synchronously)
+            // unless ?status-url= explicitly overrides.
+            const skipStatus = !isInSeason() && !customStatusURL;
+            const samplesP = fetchSamples(getDataURL());
+            const statusP = skipStatus ? Promise.resolve(null) : fetchStatus(getStatusURL());
+            const csoP = fetchCSOData();
+            const metaP = fetchMeta();
+
+            const [samples, status, cso, meta] = await Promise.all([
+                samplesP.catch(e => { console.error('samples:', e); throw e; }),
+                statusP.catch(e => { console.error('status:', e); return null; }),
+                csoP,
+                metaP,
+            ]);
+            return { samples, status, cso, meta };
+        }
+
+        async function update() {
+            const refreshIndicator = document.getElementById('refresh-indicator');
+
+            // Show refresh indicator
+            refreshIndicator.classList.add('show');
+
+            try {
+                let data = await fetchData();
+                updateWithData(data.samples, data.status, data.cso, data.meta);
+            } catch (error) {
+                console.error('Error updating data:', error);
+            } finally {
+                // Hide refresh indicator after a delay
+                setTimeout(() => {
+                    refreshIndicator.classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        // Store status in IndexedDB (same database as service worker)
+        async function storeStatusInDB(status) {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open('BeachStatusDB', 1);
+
+                request.onerror = () => reject(request.error);
+
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains('status')) {
+                        db.createObjectStore('status', { keyPath: 'id' });
+                    }
+                };
+
+                request.onsuccess = (event) => {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['status'], 'readwrite');
+                    const store = transaction.objectStore('status');
+
+                    store.put({
+                        id: 'current',
+                        status: status,
+                        timestamp: Date.now()
+                    });
+
+                    transaction.oncomplete = () => {
+                        db.close();
+                        console.log('Main page: Status stored in IndexedDB:', status);
+                        resolve();
+                    };
+
+                    transaction.onerror = () => {
+                        db.close();
+                        reject(transaction.error);
+                    };
+                };
+            });
+        }
+
+        // Store configuration settings in IndexedDB (only if not already present)
+        async function storeConfigInDB(isTestMode, syncFrequencyMinutes = 5) {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open('BeachStatusDB', 1);
+
+                request.onerror = () => reject(request.error);
+
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains('status')) {
+                        db.createObjectStore('status', { keyPath: 'id' });
+                    }
+                };
+
+                request.onsuccess = (event) => {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['status'], 'readwrite');
+                    const store = transaction.objectStore('status');
+
+                    // First check if config record already exists
+                    const getRequest = store.get('config');
+
+                    getRequest.onsuccess = () => {
+                        if (getRequest.result) {
+                            // Config settings already exist, don't overwrite
+                            console.log('Main page: Config settings already exist, not overwriting');
+                            db.close();
+                            resolve();
+                        } else {
+                            // No existing config settings, store new ones
+                            store.put({
+                                id: 'config',
+                                isTestMode: isTestMode,
+                                syncFrequencyMinutes: syncFrequencyMinutes,
+                                timestamp: Date.now()
+                            });
+
+                            transaction.oncomplete = () => {
+                                db.close();
+                                console.log('Main page: Config stored in IndexedDB - Test mode:', isTestMode, 'Sync frequency:', syncFrequencyMinutes, 'minutes');
+                                resolve();
+                            };
+                        }
+                    };
+
+                    getRequest.onerror = () => {
+                        db.close();
+                        reject(getRequest.error);
+                    };
+
+                    transaction.onerror = () => {
+                        db.close();
+                        reject(transaction.error);
+                    };
+                };
+            });
+        }
+
+        function updateCurrentStatus(statusObj) {
+            const statusCard = document.getElementById('status-card');
+            const statusHeading = document.getElementById('status-heading');
+            const statusDescription = document.getElementById('status-description');
+
+            if (!isInSeason()) {
+                renderOffSeasonUI();
+                return;
+            }
+
+            const status = statusObj && statusObj.status ? statusObj.status.trim() : '';
+            if (!status) {
+                statusHeading.textContent = 'Current Status: Information Unavailable';
+                statusDescription.textContent = 'Status information is currently unavailable. Please check back later for updates.';
+                return;
+            }
+
+            const isOpen = status.toLowerCase() === 'open';
+            const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
+
+            storeStatusInDB(status.toLowerCase()).catch(error => {
+                console.error('Error storing status in IndexedDB:', error);
+            });
+
+            statusHeading.textContent = `Current Status: ${statusText}`;
+            statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';
+        }
+
+        // Update CSO incidents display
+        function updateCSOIncidents(csoData) {
+            const csoCard = document.getElementById('cso-card');
+            const csoList = document.getElementById('cso-list');
+
+            if (!csoData || !csoData.results || csoData.results.length === 0) {
+                // Hide CSO section if no incidents
+                csoCard.style.display = 'none';
+                return;
+            }
+
+            // Filter incidents affecting Mystic Lake
+            const mysticIncidents = csoData.results.filter(incident => {
+                const waterBody = incident.waterBodyDescription?.toLowerCase() || '';
+                return waterBody.includes('mystic') || waterBody.includes('upper mystic');
+            });
+
+            if (mysticIncidents.length === 0) {
+                csoCard.style.display = 'none';
+                return;
+            }
+
+            // Show CSO section and populate incidents
+            csoCard.style.display = 'block';
+            csoList.innerHTML = '';
+
+            mysticIncidents.forEach(incident => {
+                const incidentDate = new Date(incident.incidentDate);
+                const formattedDate = incidentDate.toLocaleDateString();
+                const formattedTime = incident.incidentTime || 'Unknown time';
+
+                const incidentDiv = document.createElement('div');
+                incidentDiv.className = 'cso-incident';
+
+                const volume = incident.volumnOfEvent ? `${parseInt(incident.volumnOfEvent).toLocaleString()} gallons` : 'Volume unknown';
+                const rainfall = incident.rainfallData ? `${incident.rainfallData} inches` : 'Rainfall unknown';
+                const duration = incident.hours && incident.minutes ?
+                    `${incident.hours}h ${incident.minutes}m` :
+                    (incident.hours ? `${incident.hours} hours` : 'Duration unknown');
+
+                incidentDiv.innerHTML = `
+                    <h4>${formattedDate}</h4>
+                    <div class="cso-details">
+                        <div class="cso-detail">
+                            <strong>Time:</strong> ${formattedTime}
+                        </div>
+<!--                        <div class="cso-detail">
+                            <strong>Location:</strong> ${incident.waterBodyDescription}
+                        </div> -->
+                        <div class="cso-detail">
+                            <strong>Volume:</strong> ${volume}
+                        </div>
+                        <div class="cso-detail">
+                            <strong>Duration:</strong> ${duration}
+                        </div>
+                        <div class="cso-detail">
+                            <strong>Rainfall:</strong> ${rainfall}
+                        </div>
+                    </div>
+                `;
+
+                csoList.appendChild(incidentDiv);
+            });
+
+            console.log(`CSO: Found ${mysticIncidents.length} incidents affecting Mystic Lake`);
+        }
+
+        // Custom parser for the DPH Results.csv format: handles quoted fields and skips the
+        // duplicate date column at index 3.
+        function parseSamplesCSV(text) {
+            const rows = [];
+            let currentRow = [];
+            let currentField = '';
+            let insideQuotes = false;
+            let pushedColumns = 0;
+
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                if (char === '"' && (i === 0 || text[i - 1] !== '\\')) {
+                    insideQuotes = !insideQuotes;
+                } else if (char === ',' && !insideQuotes) {
+                    if (pushedColumns !== 3) currentRow.push(currentField);
+                    pushedColumns += 1;
+                    currentField = '';
+                } else if (char === '\n' && !insideQuotes) {
+                    currentRow.push(currentField);
+                    rows.push(currentRow);
+                    currentRow = [];
+                    pushedColumns = 0;
+                    currentField = '';
+                } else {
+                    currentField += char;
+                }
+            }
+            currentRow.push(currentField);
+            rows.push(currentRow);
+            return rows;
+        }
+
+        // Render parsed sample rows into the given table head/body elements with a calculated
+        // status column based on threshold comparison.
+        function renderSamplesTable(rows, tableHead, tableBody) {
+            tableHead.innerHTML = '';
+            tableBody.innerHTML = '';
+
+            const headers = rows[0] || [];
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
+                tableHead.appendChild(th);
+            });
+
+            const statusTh = document.createElement('th');
+            statusTh.textContent = 'Status';
+            statusTh.addEventListener('click', () => sortTableByDate(rows.slice(1)));
+            tableHead.appendChild(statusTh);
+
+            const sortedRows = sortTableByDate(rows.slice(1));
+            sortedRows.forEach(row => {
+                if (row.length < 3) return;
+
+                const tr = document.createElement('tr');
+                row.forEach((column) => {
+                    const td = document.createElement('td');
+                    td.textContent = column;
+                    tr.appendChild(td);
+                });
+
+                const statusTd = document.createElement('td');
+                // Columns after dropping the duplicate date: 0:Date, 1:Indicator, 2:Threshold, 3:Results
+                const threshold = parseFloat(row[2]);
+                const result = parseFloat(row[3]?.replace(/,/g, '') || '0');
+                if (result > threshold) {
+                    statusTd.innerHTML = `<span class="status-badge status-danger">Above Threshold</span>`;
+                } else if (result === threshold) {
+                    statusTd.innerHTML = `<span class="status-badge status-warning">At Threshold</span>`;
+                } else {
+                    statusTd.innerHTML = `<span class="status-badge status-safe">Below Threshold</span>`;
+                }
+                tr.appendChild(statusTd);
+
+                if (tr.innerText !== '') tableBody.appendChild(tr);
+            });
+        }
+
+        function updateWithData(samples, status, csoData, meta) {
+            updateCurrentStatus(status);
+            if (csoData) updateCSOIncidents(csoData);
+
+            const headers = (samples && samples.headers) || [];
+            let dataRows = (samples && samples.rows) || [];
+
+            const offSeason = !isInSeason();
+            const historicalYear = mostRecentSeasonYear();
+
+            if (offSeason) {
+                // Filter sample rows to the most recent completed season. The off-season
+                // status card / heading / hidden-card state is set by renderOffSeasonUI()
+                // (called synchronously on load + from updateCurrentStatus).
+                dataRows = dataRows.filter(r => {
+                    if (!r[0]) return false;
+                    const d = new Date(r[0]);
+                    return !isNaN(d) && d.getFullYear() === historicalYear;
+                });
+            } else {
+                const resultsCard = document.getElementById('results-card');
+                document.getElementById('results-heading').textContent = 'Single Sample Test Results';
+                resultsCard.classList.remove('hidden-until-revealed');
+                showInSeasonHistoricalLink();
+            }
+
+            renderSamplesTable([headers, ...dataRows],
+                document.getElementById('table-head'),
+                document.getElementById('table-body'));
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('data-table').style.display = 'table';
+
+            const testModeText = isTestMode ? ' (Test Mode)' : '';
+            const lastUpdatedDiv = document.getElementById('last-updated');
+            const syncedAt = meta && meta.lastSynced
+                ? new Date(meta.lastSynced).toLocaleString()
+                : null;
+            const syncedLine = syncedAt
+                ? `<br><span class="sync-line">Data last synced: ${syncedAt}</span>`
+                : '';
+            lastUpdatedDiv.innerHTML =
+                `Page rendered: ${new Date().toLocaleString()}${testModeText}${syncedLine}`;
+            lastUpdatedDiv.style.display = 'block';
+        }
+
+        // In-season: expose a link to the most recent past season's archived readings.
+        function showInSeasonHistoricalLink() {
+            const year = mostRecentSeasonYear();
+            const linkCard = document.getElementById('historical-link-card');
+            const link = document.getElementById('in-season-historical-link');
+            document.getElementById('historical-link-year').textContent = year;
+            linkCard.style.display = 'block';
+            if (link.dataset.wired === '1') return;
+            link.dataset.wired = '1';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadHistoricalSeason(year);
+            });
+        }
+
+        let historicalSeasonLoaded = null;
+        async function loadHistoricalSeason(year) {
+            const card = document.getElementById('historical-card');
+            const heading = document.getElementById('historical-heading');
+            const loading = document.getElementById('historical-loading');
+            const table = document.getElementById('historical-table');
+
+            card.style.display = 'block';
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            if (historicalSeasonLoaded === year) return;
+
+            heading.textContent = `${year} Season Historical Readings`;
+            loading.style.display = 'block';
+            table.style.display = 'none';
+
+            try {
+                const url = `archive/${beachArchiveKey}/${year}.csv`;
+                const response = await fetch(url, { cache: 'no-store' });
+                if (!response.ok) throw new Error('Archive response not ok: ' + response.statusText);
+                const csv = await response.text();
+                const allRows = parseSamplesCSV(csv);
+                const header = allRows[0];
+                const filtered = allRows.slice(1).filter(r => {
+                    if (!r[0]) return false;
+                    const d = new Date(r[0]);
+                    return !isNaN(d) && d.getFullYear() === year;
+                });
+                renderSamplesTable([header, ...filtered],
+                    document.getElementById('historical-table-head'),
+                    document.getElementById('historical-table-body'));
+                loading.style.display = 'none';
+                table.style.display = 'table';
+                historicalSeasonLoaded = year;
+            } catch (error) {
+                console.error('Error loading historical readings:', error);
+                loading.textContent = 'Could not load historical readings.';
+            }
+        }
+
+
+  		function sortTableByDate(rows) {
+            return rows.sort((a, b) => {
+                const dateA = new Date(a[0]); // First column contains the date
+                const dateB = new Date(b[0]); // First column contains the date
+                return dateB - dateA; // Most recent first (descending order)
+            });
+        }
+
+        // Start the fetch as soon as possible
+        let fetchPromise = fetchData()
+            .catch(error => console.error('Error fetching data:', error));
+
+        // Wait for both the fetch to complete and the page to finish loading
+        window.addEventListener('load', async () => {
+            console.log("Page has finished loading.");
+
+            // DISABLED: Service worker registration disabled
+            // await registerServiceWorker();
+
+            // DISABLED: Notification status checking disabled
+            // checkNotificationStatus();
+
+            fetchPromise.then(data => {
+                if (!data) return;
+                updateWithData(data.samples, data.status, data.cso, data.meta);
+
+                // Store config settings in IndexedDB for service worker
+                // Use faster sync frequency for test mode (30 seconds vs 5 minutes)
+                const syncFrequency = isTestMode ? 0.5 : 5; // minutes
+                storeConfigInDB(isTestMode, syncFrequency).catch(error => {
+                    console.error('Error storing config in IndexedDB:', error);
+                });
+
+                // Initialize debug panel if in test mode
+                initializeDebugPanel();
+
+                // Send initial status to service worker for storage
+                if (serviceWorkerRegistration && serviceWorkerRegistration.active) {
+                    setTimeout(() => {
+                        serviceWorkerRegistration.active.postMessage({
+                            type: 'CHECK_STATUS'
+                        });
+                    }, 1000);
+                }
+
+				setInterval(update, 5 * 60 * 1000); // Refresh every 5 minutes
+            });
+        });
+
+        // Force refresh when user returns to tab
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                console.log('Tab became visible, refreshing data...');
+                update(); // Force refresh when user returns
+            }
+        });
+
+        // Debug panel functions
+        async function updateSyncFrequency() {
+            const frequency = parseFloat(document.getElementById('sync-frequency').value);
+            if (frequency < 0.1) {
+                alert('Frequency must be at least 0.1 minutes (6 seconds)');
+                return;
+            }
+
+            try {
+                await updateConfigInDB({ syncFrequencyMinutes: frequency });
+                updateDebugStatus();
+                console.log('Sync frequency updated to', frequency, 'minutes');
+            } catch (error) {
+                console.error('Error updating sync frequency:', error);
+                alert('Error updating sync frequency');
+            }
+        }
+
+        async function updateStatusOverride() {
+            const status = document.getElementById('status-override').value;
+
+            try {
+                if (status) {
+                    // Store override status
+                    await updateConfigInDB({ statusOverride: status });
+
+                    // Update current status immediately
+                    await storeStatusInDB(status);
+
+                    // Trigger visual update
+                    updateCurrentStatus({
+                        name: beachName,
+                        status: status.charAt(0).toUpperCase() + status.slice(1),
+                        town: 'Winchester',
+                    });
+
+                    console.log('Status overridden to:', status);
+                } else {
+                    // Remove override
+                    await updateConfigInDB({ statusOverride: null });
+                    console.log('Status override removed');
+                }
+
+                updateDebugStatus();
+            } catch (error) {
+                console.error('Error updating status override:', error);
+                alert('Error updating status override');
+            }
+        }
+
+        async function triggerStatusCheck() {
+            if (serviceWorkerRegistration && serviceWorkerRegistration.active) {
+                serviceWorkerRegistration.active.postMessage({
+                    type: 'CHECK_STATUS'
+                });
+                console.log('Triggered service worker status check');
+                updateDebugStatus();
+            } else {
+                alert('Service worker not active');
+            }
+        }
+
+        async function forceServiceWorkerUpdate() {
+            try {
+                // Unregister current service worker
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                for (let registration of registrations) {
+                    await registration.unregister();
+                    console.log('Service worker unregistered');
+                }
+
+                // Wait a moment then re-register
+                setTimeout(async () => {
+                    await registerServiceWorker();
+                    updateDebugStatus();
+                    console.log('Service worker re-registered');
+                    alert('Service worker updated! New version should be active.');
+                }, 1000);
+
+            } catch (error) {
+                console.error('Error updating service worker:', error);
+                alert('Error updating service worker');
+            }
+        }
+
+        async function clearDatabase() {
+            if (confirm('Clear all IndexedDB data? This will reset all settings.')) {
+                try {
+                    const request = indexedDB.deleteDatabase('BeachStatusDB');
+                    request.onsuccess = () => {
+                        console.log('Database cleared');
+                        updateDebugStatus();
+                        alert('Database cleared. Refresh page to reinitialize.');
+                    };
+                    request.onerror = () => {
+                        console.error('Error clearing database');
+                        alert('Error clearing database');
+                    };
+                } catch (error) {
+                    console.error('Error clearing database:', error);
+                    alert('Error clearing database');
+                }
+            }
+        }
+
+        // Update config in IndexedDB (partial update)
+        async function updateConfigInDB(updates) {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open('BeachStatusDB', 1);
+
+                request.onerror = () => reject(request.error);
+
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains('status')) {
+                        db.createObjectStore('status', { keyPath: 'id' });
+                    }
+                };
+
+                request.onsuccess = (event) => {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['status'], 'readwrite');
+                    const store = transaction.objectStore('status');
+
+                    // Get existing config
+                    const getRequest = store.get('config');
+
+                    getRequest.onsuccess = () => {
+                        const existingConfig = getRequest.result || {
+                            id: 'config',
+                            isTestMode: isTestMode,
+                            syncFrequencyMinutes: 0.5,
+                            timestamp: Date.now()
+                        };
+
+                        // Merge updates
+                        const updatedConfig = { ...existingConfig, ...updates, timestamp: Date.now() };
+
+                        store.put(updatedConfig);
+
+                        transaction.oncomplete = () => {
+                            db.close();
+                            resolve();
+                        };
+                    };
+
+                    getRequest.onerror = () => {
+                        db.close();
+                        reject(getRequest.error);
+                    };
+
+                    transaction.onerror = () => {
+                        db.close();
+                        reject(transaction.error);
+                    };
+                };
+            });
+        }
+
+        // Update debug status display
+        async function updateDebugStatus() {
+            try {
+                const config = await getConfigFromDB();
+                const currentStatus = await getCurrentStatusFromDB();
+
+                const statusEl = document.getElementById('debug-status');
+                statusEl.innerHTML = `
+                    <strong>Current Configuration:</strong><br>
+                    Test Mode: ${config.isTestMode}<br>
+                    Sync Frequency: ${config.syncFrequencyMinutes} minutes<br>
+                    Status Override: ${config.statusOverride || 'None'}<br>
+                    Current Status: ${currentStatus || 'Unknown'}<br>
+                    Service Worker: ${serviceWorkerRegistration ? 'Active' : 'Inactive'}<br>
+                    Notifications: ${notificationsEnabled ? 'Enabled' : 'Disabled'}<br>
+                    Last Updated: ${new Date().toLocaleTimeString()}
+                `;
+            } catch (error) {
+                console.error('Error updating debug status:', error);
+            }
+        }
+
+        // Get config from IndexedDB
+        async function getConfigFromDB() {
+            return new Promise((resolve) => {
+                const request = indexedDB.open('BeachStatusDB', 1);
+
+                request.onerror = () => resolve({});
+
+                request.onsuccess = (event) => {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['status'], 'readonly');
+                    const store = transaction.objectStore('status');
+                    const getRequest = store.get('config');
+
+                    getRequest.onsuccess = () => {
+                        db.close();
+                        resolve(getRequest.result || {});
+                    };
+
+                    getRequest.onerror = () => {
+                        db.close();
+                        resolve({});
+                    };
+                };
+            });
+        }
+
+        // Get current status from IndexedDB
+        async function getCurrentStatusFromDB() {
+            return new Promise((resolve) => {
+                const request = indexedDB.open('BeachStatusDB', 1);
+
+                request.onerror = () => resolve(null);
+
+                request.onsuccess = (event) => {
+                    const db = event.target.result;
+                    const transaction = db.transaction(['status'], 'readonly');
+                    const store = transaction.objectStore('status');
+                    const getRequest = store.get('current');
+
+                    getRequest.onsuccess = () => {
+                        db.close();
+                        resolve(getRequest.result ? getRequest.result.status : null);
+                    };
+
+                    getRequest.onerror = () => {
+                        db.close();
+                        resolve(null);
+                    };
+                };
+            });
+        }
+
+        // Show debug panel in test mode
+        function initializeDebugPanel() {
+            if (isTestMode) {
+                document.getElementById('debug-panel').style.display = 'block';
+                updateDebugStatus();
+
+                // Update debug status every 5 seconds
+                setInterval(updateDebugStatus, 5000);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+        });
+    </script>
 </body>
 </html>
