@@ -532,6 +532,7 @@
         }
 
         // Official monitoring season: Memorial Day (last Mon of May) through Labor Day (first Mon of Sep).
+        // We widen the in-season window by a week on each side to catch early/late readings.
         function memorialDay(year) {
             const may31 = new Date(year, 4, 31);
             const offset = (may31.getDay() + 6) % 7; // days back to Monday
@@ -542,15 +543,23 @@
             const offset = (8 - sep1.getDay()) % 7; // days forward to Monday
             return new Date(year, 8, 1 + offset);
         }
+        function seasonStart(year) {
+            const d = memorialDay(year);
+            return new Date(d.getFullYear(), d.getMonth(), d.getDate() - 7);
+        }
+        function seasonEnd(year) {
+            const d = laborDay(year);
+            return new Date(d.getFullYear(), d.getMonth(), d.getDate() + 7);
+        }
         function isInSeason(date = new Date()) {
             if (seasonOverride === 'open') return true;
             if (seasonOverride === 'closed') return false;
             const y = date.getFullYear();
-            return date >= memorialDay(y) && date <= laborDay(y);
+            return date >= seasonStart(y) && date <= seasonEnd(y);
         }
         function mostRecentSeasonYear(date = new Date()) {
             const y = date.getFullYear();
-            return date > laborDay(y) ? y : y - 1;
+            return date > seasonEnd(y) ? y : y - 1;
         }
 
         // Notification state tracking

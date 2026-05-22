@@ -73,14 +73,27 @@ def _labor_day(year: int) -> dt.date:
     return sep1 + dt.timedelta(days=(7 - sep1.weekday()) % 7)  # forward to Monday
 
 
+# One-week buffer on each end catches early/late readings the state may publish
+# outside the official Memorial Day–Labor Day window.
+_SEASON_BUFFER = dt.timedelta(days=7)
+
+
+def _season_start(year: int) -> dt.date:
+    return _memorial_day(year) - _SEASON_BUFFER
+
+
+def _season_end(year: int) -> dt.date:
+    return _labor_day(year) + _SEASON_BUFFER
+
+
 def is_in_season(today: dt.date | None = None) -> bool:
     today = today or dt.date.today()
-    return _memorial_day(today.year) <= today <= _labor_day(today.year)
+    return _season_start(today.year) <= today <= _season_end(today.year)
 
 
 def most_recent_season_year(today: dt.date | None = None) -> int:
     today = today or dt.date.today()
-    return today.year if today > _labor_day(today.year) else today.year - 1
+    return today.year if today > _season_end(today.year) else today.year - 1
 
 
 # ---------- http ----------
