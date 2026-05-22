@@ -258,6 +258,91 @@ def write_json(path: Path, payload) -> None:
     )
 
 
+# ---------- debug probe ----------
+
+WORKBOOK_PATH = "BeachesDashboard-CloudVersion-2025"
+VIEW_PATH_FOR_PROBE = "Results"
+
+
+def _probe_view_config() -> dict | None:
+    """
+    Fetch the workbook view HTML and pull out the embedded tsConfigContainer JSON.
+    Returns the parsed config or None if not found.
+    """
+    import html as _html
+    url = (
+        f"https://datavisualization.dph.mass.gov/views/{WORKBOOK_PATH}/"
+        f"{VIEW_PATH_FOR_PROBE}?:embed=y&:showVizHome=no"
+    )
+    body = http_get(url, DPH_REFERER, accept="text/html").decode(
+        "utf-8", errors="replace"
+    )
+    m = re.search(
+        r'id="tsConfigContainer"[^>]*>(.+?)</textarea>', body, re.DOTALL
+    )
+    if not m:
+        return None
+    try:
+        return json.loads(_html.unescape(m.group(1)))
+    except json.JSONDecodeError:
+        return None
+
+
+def _sheet_slug(name: str) -> str:
+    # Tableau view URLs strip whitespace and parentheses from sheet names.
+    return re.sub(r"[\s\(\)]+", "", name)
+
+
+def debug_tableau_probe() -> int:
+    """
+    Probe the upstream Tableau workbook for diagnostic purposes:
+      - dump the visible_sheets list and key config flags
+      - hit each sheet's CSV endpoint and report row count + current-year hits
+    Used to figure out where 2026 readings will land once DPH publishes them.
+    """
+    print(f"# Probing workbook: {WORKBOOK_PATH}")
+    cfg = _probe_view_config()
+    if not cfg:
+        print("ERROR: could not extract tsConfigContainer from view HTML")
+        return 1
+
+    print(f"  sessionid:             {cfg.get('sessionid')}")
+    print(f"  vizql_root:            {cfg.get('vizql_root')}")
+    print(f"  allow_view_underlying: {cfg.get('allow_view_underlying')}")
+    print(f"  visible_sheets:        {cfg.get('visible_sheets')}")
+    print()
+
+    current_year = dt.date.today().year
+    beach_q = urllib.parse.quote(BEACH_NAME)
+    sheets = cfg.get("visible_sheets") or []
+    for sheet in sheets:
+        slug = _sheet_slug(sheet)
+        url = (
+            f"https://datavisualization.dph.mass.gov/views/{WORKBOOK_PATH}/"
+            f"{slug}.csv?:refresh=y&Name={beach_q}"
+        )
+        try:
+            body = http_get(url, DPH_REFERER, accept="text/csv").decode(
+                "utf-8-sig", errors="replace"
+            )
+        except Exception as e:  # noqa: BLE001
+            print(f"  [ERR] {sheet!r} -> /{slug}.csv: {e}")
+            continue
+        lines = [ln for ln in body.splitlines() if ln.strip()]
+        current_hits = [
+            ln for ln in lines[1:] if re.search(rf"/{current_year}\b", ln)
+        ]
+        print(
+            f"  [ok ] {sheet!r} -> /{slug}.csv: {len(lines)} lines, "
+            f"{len(current_hits)} {current_year}-dated rows"
+        )
+        if lines:
+            print(f"        header: {lines[0][:160]}")
+        for ln in current_hits[:3]:
+            print(f"        * {ln[:160]}")
+    return 0
+
+
 # ---------- main ----------
 
 def main() -> int:
@@ -357,4 +442,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    if "--debug-tableau" in sys.argv[1:]:
+        sys.exit(debug_tableau_probe())
     sys.exit(main())

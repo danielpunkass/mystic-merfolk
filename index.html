@@ -435,6 +435,9 @@
             <h2 id="results-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Single Sample Test Results</h2>
             <div class="table-container">
                 <div id="loading" class="loading">Loading beach data...</div>
+                <div id="awaiting-first-reading" style="display: none; padding: 1.5rem; color: #334155; line-height: 1.5;">
+                    <p style="margin: 0;">Official water quality monitoring is just beginning for the season. No readings have been posted yet for this year. Sampling typically runs weekly from Memorial Day through Labor Day.</p>
+                </div>
                 <table id="data-table" style="display: none;">
                     <thead>
                         <tr id="table-head">
@@ -1033,6 +1036,19 @@
             }
 
             const status = statusObj && statusObj.status ? statusObj.status.trim() : '';
+            // Upstream reports "Off-season" during the buffer window before sampling
+            // officially resumes. Don't render "Closed for Swimming" — that implies
+            // a known bacterial closure. Use the off-season copy instead.
+            if (status.toLowerCase() === 'off-season') {
+                statusCard.className = 'card status-card-offseason';
+                statusHeading.textContent = 'Current Status: Monitoring not yet active';
+                statusDescription.innerHTML =
+                    'Official water quality monitoring at Shannon Beach has not yet begun for this season. ' +
+                    'It typically resumes around Memorial Day and runs weekly through Labor Day. ' +
+                    'In the meantime, the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
+                    'but conditions are unknown.';
+                return;
+            }
             if (!status) {
                 statusHeading.textContent = 'Current Status: Information Unavailable';
                 statusDescription.textContent = 'Status information is currently unavailable. Please check back later for updates.';
@@ -1205,6 +1221,16 @@
 
             const offSeason = !isInSeason();
             const historicalYear = mostRecentSeasonYear();
+            const currentYear = new Date().getFullYear();
+            const currentYearRows = dataRows.filter(r => {
+                if (!r[0]) return false;
+                const d = new Date(r[0]);
+                return !isNaN(d) && d.getFullYear() === currentYear;
+            });
+            // In-season but upstream hasn't published any current-year readings yet
+            // (e.g., in the buffer week before Memorial Day). Show a placeholder
+            // instead of last year's rows masquerading as current.
+            const awaitingFirstReading = !offSeason && currentYearRows.length === 0;
 
             if (offSeason) {
                 // Filter sample rows to the most recent completed season. The off-season
@@ -1217,7 +1243,10 @@
                 });
             } else {
                 const resultsCard = document.getElementById('results-card');
-                document.getElementById('results-heading').textContent = 'Single Sample Test Results';
+                document.getElementById('results-heading').textContent =
+                    awaitingFirstReading
+                        ? 'Awaiting first reading of the season'
+                        : 'Single Sample Test Results';
                 resultsCard.classList.remove('hidden-until-revealed');
                 showInSeasonHistoricalLink();
             }
@@ -1227,7 +1256,15 @@
                 document.getElementById('table-body'));
 
             document.getElementById('loading').style.display = 'none';
-            document.getElementById('data-table').style.display = 'table';
+            const dataTable = document.getElementById('data-table');
+            const awaitingEl = document.getElementById('awaiting-first-reading');
+            if (awaitingFirstReading) {
+                dataTable.style.display = 'none';
+                awaitingEl.style.display = 'block';
+            } else {
+                dataTable.style.display = 'table';
+                awaitingEl.style.display = 'none';
+            }
 
             const testModeText = isTestMode ? ' (Test Mode)' : '';
             const lastUpdatedDiv = document.getElementById('last-updated');
