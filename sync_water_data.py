@@ -23,6 +23,7 @@ import datetime as dt
 import io
 import json
 import re
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -123,6 +124,36 @@ def fetch_status_csv() -> str:
     url = BEACHLIST_URL + "&Name=" + urllib.parse.quote(BEACH_NAME)
     body = http_get(url, DPH_REFERER, accept="text/csv")
     return body.decode("utf-8-sig", errors="replace")
+
+
+BROWSER_FETCH_SCRIPT = REPO_ROOT / "fetch_tableau_cloud.py"
+BROWSER_FETCH_TIMEOUT = 180
+
+
+def fetch_via_browser() -> dict:
+    """
+    Run the Playwright-based fetcher (fetch_tableau_cloud.py) as a subprocess and
+    return its parsed JSON: { samples, samplesCsv, status, testResultsRowCount }.
+
+    Isolated in a subprocess so this stdlib-only script never imports Playwright;
+    the GitHub Action installs Playwright into the same interpreter. Raises on any
+    failure so the caller can fall back to the legacy static endpoints.
+    """
+    proc = subprocess.run(
+        [sys.executable, str(BROWSER_FETCH_SCRIPT)],
+        capture_output=True,
+        text=True,
+        timeout=BROWSER_FETCH_TIMEOUT,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(
+            f"browser fetch exited {proc.returncode}: "
+            f"{(proc.stderr or proc.stdout).strip()[:300]}"
+        )
+    data = json.loads(proc.stdout)
+    if not data.get("samples"):
+        raise RuntimeError(f"browser fetch returned no samples: {data.get('errors')}")
+    return data
 
 
 def fetch_cso(window_days: int = 14) -> tuple[dict, str]:
@@ -360,33 +391,65 @@ def main() -> int:
     errors: list[str] = []
 
     # --- Samples + status: in-season only (upstream stops publishing off-season) ---
+    samples_source = "none"
     if in_season:
+        # Primary source (2026+): the live "Beach Water Quality Dashboard" on
+        # Tableau Cloud, read via a headless browser (fetch_tableau_cloud.py).
+        # The legacy datavisualization.dph.mass.gov endpoints are frozen at the
+        # 2025 season's end, so they are only a resilience fallback now.
+        browser_data = None
         try:
-            samples_csv = fetch_samples_csv()
-            samples = parse_samples_csv(samples_csv)
+            browser_data = fetch_via_browser()
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"browser: {e}")
+
+        if browser_data:
+            samples = browser_data["samples"]
             sample_count = len(samples["rows"])
             write_json(DATA_DIR / "samples.json", samples)
             samples_status = "ok"
+            samples_source = "browser"
             try:
-                archive_results_csv(samples_csv, BEACH_NAME)
+                archive_results_csv(browser_data["samplesCsv"], BEACH_NAME)
             except Exception as e:  # noqa: BLE001
                 errors.append(f"archive: {e}")
-        except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as e:
-            errors.append(f"samples: {e}")
-            samples_status = "error"
 
-        try:
-            status_csv = fetch_status_csv()
-            status = parse_status_csv(status_csv)
-            if status:
+            status = browser_data.get("status")
+            if status and status.get("status"):
                 write_json(DATA_DIR / "status.json", status)
                 status_status = "ok"
             else:
-                errors.append("status: empty or unparseable response")
+                errors.append("status: missing from browser fetch")
                 status_status = "error"
-        except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as e:
-            errors.append(f"status: {e}")
-            status_status = "error"
+        else:
+            # Fallback: legacy static endpoints.
+            try:
+                samples_csv = fetch_samples_csv()
+                samples = parse_samples_csv(samples_csv)
+                sample_count = len(samples["rows"])
+                write_json(DATA_DIR / "samples.json", samples)
+                samples_status = "ok"
+                samples_source = "legacy"
+                try:
+                    archive_results_csv(samples_csv, BEACH_NAME)
+                except Exception as e:  # noqa: BLE001
+                    errors.append(f"archive: {e}")
+            except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as e:
+                errors.append(f"samples: {e}")
+                samples_status = "error"
+
+            try:
+                status_csv = fetch_status_csv()
+                status = parse_status_csv(status_csv)
+                if status:
+                    write_json(DATA_DIR / "status.json", status)
+                    status_status = "ok"
+                else:
+                    errors.append("status: empty or unparseable response")
+                    status_status = "error"
+            except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as e:
+                errors.append(f"status: {e}")
+                status_status = "error"
     else:
         # Off-season: surface an explicit "Closed for Season" status so the page
         # can render a consistent state if it does decide to read status.json.
@@ -425,7 +488,7 @@ def main() -> int:
         "today": today.isoformat(),
         "beach": BEACH_NAME,
         "mostRecentSeasonYear": most_recent_season_year(today),
-        "samples": {"status": samples_status, "count": sample_count},
+        "samples": {"status": samples_status, "count": sample_count, "source": samples_source},
         "status": {"status": status_status},
         "cso": {"status": cso_status, "count": cso_count},
         "errors": errors,

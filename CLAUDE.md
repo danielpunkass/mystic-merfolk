@@ -20,11 +20,14 @@ PHP proxy, no CORS workaround, no live API call from the browser.
 ```
 GitHub Action (hourly cron)
   └─► sync_water_data.py
-        ├─► fetch Results.csv  (Mass DPH)  ─► data/samples.json
-        ├─► fetch BeachList.csv (Mass DPH) ─► data/status.json
+        ├─► in-season samples + status:
+        │     PRIMARY  fetch_tableau_cloud.py (headless Chromium / Playwright)
+        │              reads the live "Beach Water Quality Dashboard" on
+        │              Tableau Cloud ─► data/samples.json + data/status.json
+        │     FALLBACK legacy datavisualization.dph.mass.gov CSV endpoints
         ├─► fetch CSO incidents (Mass DEP) ─► data/cso.json
-        ├─► merge into archive/<beach>/<year>.csv
-        └─► write data/meta.json (lastSynced, season, ...)
+        ├─► merge samples into archive/<beach>/<year>.csv
+        └─► write data/meta.json (lastSynced, season, samples.source, ...)
   └─► commit refreshed data + archive
   └─► stage site/ and deploy to GitHub Pages
 ```
@@ -32,6 +35,20 @@ GitHub Action (hourly cron)
 At page-load time, `index.html` fetches `data/samples.json`, `data/status.json`,
 `data/cso.json`, and `data/meta.json` directly. Off-season it reads
 `archive/Shannon_Beach_Upper_Mystic_DCR/<year>.csv` instead of `data/samples.json`.
+
+**Why the headless browser?** In 2026 DPH moved the live dashboard from the old
+Tableau Server (`datavisualization.dph.mass.gov`, workbook
+`BeachesDashboard-CloudVersion-2025`) to Tableau Cloud
+(`prod-useast-b.online.tableau.com`, site `eohhspublic`, workbook
+`BeachWaterQualityDashboard`). The old per-beach CSV endpoints are frozen at the
+2025 season's end. The current readings live only in the new workbook's
+`TestResultsTable` worksheet, which has no static CSV endpoint (data loads lazily
+and underlying-data export is disabled). The official "Download Full Dataset"
+button is a Tableau extension that reads it via `getSummaryDataAsync()`;
+`fetch_tableau_cloud.py` does the same with the Embedding API in a headless
+browser, authenticating with the public connected-app JWT from
+`publicdashboardtoken.mass.gov`. `meta.json.samples.source` records which path
+ran (`browser` | `legacy` | `none`).
 
 ### Key Files
 
@@ -41,19 +58,41 @@ At page-load time, `index.html` fetches `data/samples.json`, `data/status.json`,
 - **`simple.html`** — Tiny page kept for diagnostics.
 - **`sw.js`** — Service worker (currently registration is disabled in `index.html`).
   Reads the same `data/*.json` and posts a desktop notification on status change.
-- **`sync_water_data.py`** — Python 3 stdlib script that does all upstream fetching.
-  Stdlib only (urllib + csv + json) — no external deps, no requirements.txt.
-- **`.github/workflows/sync.yml`** — Hourly cron that runs the sync script, commits
-  data changes, stages `site/`, and deploys via `actions/deploy-pages`.
+- **`sync_water_data.py`** — Python 3 stdlib orchestrator. Stdlib only (urllib +
+  csv + json). Shells out to `fetch_tableau_cloud.py` for the in-season primary
+  fetch; everything else (CSO, legacy fallback, archiving, meta) is stdlib.
+- **`fetch_tableau_cloud.py`** — Playwright/headless-Chromium fetcher for the live
+  Tableau Cloud workbook. **Only file with a third-party dep.** Standalone CLI that
+  prints JSON (`samples`, `samplesCsv`, `status`, …); run via subprocess so the
+  orchestrator stays importable without Playwright. Run it directly to debug:
+  `python3 fetch_tableau_cloud.py`.
+- **`.github/workflows/sync.yml`** — Hourly cron. Installs Playwright + Chromium,
+  runs the sync script, commits data changes, stages `site/`, deploys via
+  `actions/deploy-pages`. `fetch_tableau_cloud.py` is NOT deployed to the site.
 - **`CNAME`** — `water.jalkut.com`.
 
-### Upstream Endpoints (consumed by sync script only)
+### Upstream Endpoints
+
+Primary (in-season samples + status), consumed by `fetch_tableau_cloud.py` via the
+Tableau JS Embedding API in a headless browser:
+
+- Public access token: `https://publicdashboardtoken.mass.gov/tokens/requestpublicaccess?connectedapp=DPH-BCEH-BDD-BD`
+  → `{ "token": "<JWT>" }`
+- Workbook: `https://prod-useast-b.online.tableau.com/t/eohhspublic/views/BeachWaterQualityDashboard/<view>`
+  — `TestResultsTable` worksheet → all-beach readings (Town, Name, Date, Indicator,
+  GeoMean, Results); `Map` worksheet → per-beach status (Beach Name, Beach Status, …).
+  Both read with `getSummaryDataAsync({maxRows:0, ignoreSelection:true})`.
+
+Legacy fallback only (frozen at 2025 season end), consumed by `sync_water_data.py`:
 
 - Sample data: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/Results.csv?refresh=y&Name=<beach>`
   — needs `Referer: https://datavisualization.dph.mass.gov`
 - Beach status: `https://datavisualization.dph.mass.gov/views/BeachesDashboard-CloudVersion-2025/BeachList.csv?:refresh=y&Name=<beach>`
   — same referer
-- CSO incidents: `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate=<DD/MM/YYYY>`
+
+CSO incidents (year-round, stdlib):
+
+- `https://eeaonline.eea.state.ma.us/dep/CSOAPI/api/Incident/GetIncidentsBySearchFields/?municipality=WINCHESTER&pageNumber=1&incidentFromDate=<DD/MM/YYYY>`
   — needs `Referer: https://eeaonline.eea.state.ma.us/portal/dep/cso-data-portal/`
 
 ### Static Data Shapes
@@ -87,11 +126,19 @@ once the repo is cloned.
 To regenerate the static data locally:
 
 ```bash
-python3 sync_water_data.py
+# One-time: the in-season primary fetch needs Playwright + Chromium.
+python3 -m venv .venv && . .venv/bin/activate
+pip install playwright && playwright install chromium
+
+python sync_water_data.py
 ```
 
-This hits the live Mass DPH / Mass DEP endpoints and rewrites `data/*.json` plus
-appends to `archive/<beach>/<year>.csv`. No external deps required.
+This rewrites `data/*.json` and appends to `archive/<beach>/<year>.csv`. In-season
+it drives the live Tableau Cloud dashboard via headless Chromium
+(`fetch_tableau_cloud.py`); CSO data and the legacy fallback use stdlib only. If
+Playwright isn't installed, the sync still runs — it logs the browser error and
+falls back to the (frozen 2025) legacy endpoints, with `meta.json.samples.source`
+= `legacy`.
 
 ### Test Mode
 
