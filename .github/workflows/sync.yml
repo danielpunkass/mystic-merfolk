@@ -62,7 +62,15 @@ jobs:
             echo "No data changes to commit."
           else
             git commit -m "Auto-sync water data [skip ci]"
-            git push
+            # Another run may have pushed while we were syncing. Rebase and retry.
+            for i in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push rejected, rebasing on origin/main and retrying ($i)..."
+              git pull --rebase origin main
+              sleep $((RANDOM % 5 + 2))
+            done
           fi
 
       - name: Stage site/ for Pages deploy
