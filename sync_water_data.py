@@ -289,6 +289,33 @@ def write_json(path: Path, payload) -> None:
     )
 
 
+def preserve_current_year_samples(year: int) -> int:
+    """Rewrite samples.json keeping only the current season's readings.
+
+    Used when the in-season live fetch fails: rather than letting a stale
+    fallback leave last year's numbers in place (which the page would either
+    show as current or — worse — pair with an "Off-season" status), we drop any
+    prior-year rows and keep only readings we'd already captured for `year`. If
+    none survive, the page shows its honest "Awaiting first reading" placeholder.
+    Returns the surviving row count.
+    """
+    path = DATA_DIR / "samples.json"
+    headers = ["Date and Time", "Indicator", "Threshold: Single-Sample", "Results"]
+    rows: list = []
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text(encoding="utf-8"))
+            headers = existing.get("headers") or headers
+            for r in existing.get("rows", []):
+                m = re.search(r"/(\d{4})\b", r[0]) if r and r[0] else None
+                if m and int(m.group(1)) == year:
+                    rows.append(r)
+        except (json.JSONDecodeError, OSError, KeyError):
+            rows = []
+    write_json(path, {"headers": headers, "rows": rows})
+    return len(rows)
+
+
 # ---------- debug probe ----------
 
 WORKBOOK_PATH = "BeachesDashboard-CloudVersion-2025"
@@ -422,34 +449,23 @@ def main() -> int:
                 errors.append("status: missing from browser fetch")
                 status_status = "error"
         else:
-            # Fallback: legacy static endpoints.
-            try:
-                samples_csv = fetch_samples_csv()
-                samples = parse_samples_csv(samples_csv)
-                sample_count = len(samples["rows"])
-                write_json(DATA_DIR / "samples.json", samples)
-                samples_status = "ok"
-                samples_source = "legacy"
-                try:
-                    archive_results_csv(samples_csv, BEACH_NAME)
-                except Exception as e:  # noqa: BLE001
-                    errors.append(f"archive: {e}")
-            except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as e:
-                errors.append(f"samples: {e}")
-                samples_status = "error"
-
-            try:
-                status_csv = fetch_status_csv()
-                status = parse_status_csv(status_csv)
-                if status:
-                    write_json(DATA_DIR / "status.json", status)
-                    status_status = "ok"
-                else:
-                    errors.append("status: empty or unparseable response")
-                    status_status = "error"
-            except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as e:
-                errors.append(f"status: {e}")
-                status_status = "error"
+            # The live Tableau Cloud fetch is the only source of current-season
+            # readings. The legacy datavisualization.dph.mass.gov endpoints are
+            # frozen at the 2025 season's end, so in-season they report a stale
+            # "Off-season" status and last year's samples. Falling back to them
+            # would clobber good data and make the page claim monitoring hasn't
+            # started yet. Instead, publish an explicit "unavailable" state: keep
+            # only readings we'd already captured for the current year and write
+            # an empty status so the page shows "Information Unavailable" rather
+            # than a misleading stale value.
+            sample_count = preserve_current_year_samples(today.year)
+            samples_status = "unavailable"
+            samples_source = "none"
+            write_json(
+                DATA_DIR / "status.json",
+                {"name": BEACH_NAME, "status": "", "town": "Winchester"},
+            )
+            status_status = "unavailable"
     else:
         # Off-season: surface an explicit "Closed for Season" status so the page
         # can render a consistent state if it does decide to read status.json.
@@ -497,9 +513,15 @@ def main() -> int:
     write_json(DATA_DIR / "meta.json", meta)
 
     print(json.dumps(meta, indent=2))
-    # Non-zero exit only if every fetcher failed; partial failures still let the
-    # workflow commit whatever did succeed.
-    if errors and samples_status != "ok" and status_status not in {"ok", "off-season"} and cso_status != "ok":
+    # Non-zero exit only if every fetcher failed in an unhandled way; partial
+    # failures (and the handled in-season "unavailable" state) still let the
+    # workflow commit whatever did succeed and deploy.
+    if (
+        errors
+        and samples_status not in {"ok", "unavailable"}
+        and status_status not in {"ok", "off-season", "unavailable"}
+        and cso_status != "ok"
+    ):
         return 1
     return 0
 

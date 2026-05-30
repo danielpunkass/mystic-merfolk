@@ -1231,6 +1231,13 @@
             // (e.g., in the buffer week before Memorial Day). Show a placeholder
             // instead of last year's rows masquerading as current.
             const awaitingFirstReading = !offSeason && currentYearRows.length === 0;
+            // Distinguish "the season hasn't produced readings yet" from "the
+            // upstream source is temporarily unreachable" (sync recorded the
+            // live fetch as unavailable). Both show a placeholder, but the copy
+            // should be honest about which it is.
+            const dataUnavailable = awaitingFirstReading
+                && meta && meta.samples && meta.samples.source === 'none'
+                && meta.samples.status === 'unavailable';
 
             if (offSeason) {
                 // Filter sample rows to the most recent completed season. The off-season
@@ -1244,9 +1251,11 @@
             } else {
                 const resultsCard = document.getElementById('results-card');
                 document.getElementById('results-heading').textContent =
-                    awaitingFirstReading
-                        ? 'Awaiting first reading of the season'
-                        : 'Single Sample Test Results';
+                    dataUnavailable
+                        ? 'Latest readings temporarily unavailable'
+                        : awaitingFirstReading
+                            ? 'Awaiting first reading of the season'
+                            : 'Single Sample Test Results';
                 resultsCard.classList.remove('hidden-until-revealed');
                 showInSeasonHistoricalLink();
             }
@@ -1259,6 +1268,9 @@
             const dataTable = document.getElementById('data-table');
             const awaitingEl = document.getElementById('awaiting-first-reading');
             if (awaitingFirstReading) {
+                if (dataUnavailable) {
+                    awaitingEl.innerHTML = '<p style="margin: 0;">The latest readings could not be retrieved from the state’s water-quality dashboard right now. Monitoring is active — this is a temporary problem fetching the data, not a closure. The most recent completed season’s readings are linked below.</p>';
+                }
                 dataTable.style.display = 'none';
                 awaitingEl.style.display = 'block';
             } else {

@@ -24,7 +24,9 @@ GitHub Action (hourly cron)
         │     PRIMARY  fetch_tableau_cloud.py (headless Chromium / Playwright)
         │              reads the live "Beach Water Quality Dashboard" on
         │              Tableau Cloud ─► data/samples.json + data/status.json
-        │     FALLBACK legacy datavisualization.dph.mass.gov CSV endpoints
+        │     ON FAIL  publish an "unavailable" state (empty status.json +
+        │              current-year-only samples.json) — NOT the frozen legacy
+        │              endpoints, which would clobber good data with 2025 values
         ├─► fetch CSO incidents (Mass DEP) ─► data/cso.json
         ├─► merge samples into archive/<beach>/<year>.csv
         └─► write data/meta.json (lastSynced, season, samples.source, ...)
@@ -48,7 +50,22 @@ button is a Tableau extension that reads it via `getSummaryDataAsync()`;
 `fetch_tableau_cloud.py` does the same with the Embedding API in a headless
 browser, authenticating with the public connected-app JWT from
 `publicdashboardtoken.mass.gov`. `meta.json.samples.source` records which path
-ran (`browser` | `legacy` | `none`).
+ran (`browser` | `none`).
+
+**Export currently blocked (since ~May 2026).** DPH revoked the public "Guest"
+group's summary-data download permission on the workbook: `getSummaryDataAsync()`
+now returns `403 PermissionDeniedException` on every worksheet, and the workbook
+renders server-side (`renderMode: render-mode-server`) so there is no client-side
+data to scrape — the clean extraction path is closed until DPH restores it. While
+it's down, the in-season sync publishes an explicit **"unavailable"** state
+(`samples.source` = `none`, empty `status.json`) rather than falling back to the
+frozen 2025 legacy endpoints; the page then shows "Information Unavailable" /
+"Latest readings temporarily unavailable" instead of a misleading stale value.
+`.github/workflows/probe-export.yml` runs the real fetch daily and opens a GitHub
+issue when the export starts working again (the hourly sync then self-heals,
+flipping `samples.source` back to `browser`). The legacy `datavisualization.dph.
+mass.gov` CSV fetchers remain in `sync_water_data.py` but are no longer wired into
+the in-season path.
 
 ### Key Files
 
@@ -60,7 +77,9 @@ ran (`browser` | `legacy` | `none`).
   Reads the same `data/*.json` and posts a desktop notification on status change.
 - **`sync_water_data.py`** — Python 3 stdlib orchestrator. Stdlib only (urllib +
   csv + json). Shells out to `fetch_tableau_cloud.py` for the in-season primary
-  fetch; everything else (CSO, legacy fallback, archiving, meta) is stdlib.
+  fetch; everything else (CSO, archiving, meta, the "unavailable" fallback) is
+  stdlib. `preserve_current_year_samples()` keeps the page honest when the live
+  fetch fails (drops stale prior-year rows rather than showing them as current).
 - **`fetch_tableau_cloud.py`** — Playwright/headless-Chromium fetcher for the live
   Tableau Cloud workbook. **Only file with a third-party dep.** Standalone CLI that
   prints JSON (`samples`, `samplesCsv`, `status`, …); run via subprocess so the
@@ -69,6 +88,10 @@ ran (`browser` | `legacy` | `none`).
 - **`.github/workflows/sync.yml`** — Hourly cron. Installs Playwright + Chromium,
   runs the sync script, commits data changes, stages `site/`, deploys via
   `actions/deploy-pages`. `fetch_tableau_cloud.py` is NOT deployed to the site.
+- **`.github/workflows/probe-export.yml`** — Daily watchdog for the blocked
+  Tableau export (see "Export currently blocked" above). Runs `fetch_tableau_cloud.py`
+  and opens a GitHub issue if/when the summary-data export is reachable again;
+  silent while it's still 403. Does not deploy.
 - **`CNAME`** — `water.jalkut.com`.
 
 ### Upstream Endpoints
@@ -135,10 +158,10 @@ python sync_water_data.py
 
 This rewrites `data/*.json` and appends to `archive/<beach>/<year>.csv`. In-season
 it drives the live Tableau Cloud dashboard via headless Chromium
-(`fetch_tableau_cloud.py`); CSO data and the legacy fallback use stdlib only. If
-Playwright isn't installed, the sync still runs — it logs the browser error and
-falls back to the (frozen 2025) legacy endpoints, with `meta.json.samples.source`
-= `legacy`.
+(`fetch_tableau_cloud.py`); CSO data uses stdlib only. If Playwright isn't
+installed (or the Tableau export is blocked — see "Export currently blocked"
+above), the sync still runs: it logs the browser error and publishes the
+"unavailable" state, with `meta.json.samples.source` = `none`.
 
 ### Test Mode
 

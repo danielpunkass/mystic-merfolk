@@ -1,0 +1,87 @@
+name: Probe DPH Tableau export
+
+# Background
+# ----------
+# In May 2026 DPH revoked the public "Guest" group's summary-data download
+# permission on the Beach Water Quality Dashboard workbook: getSummaryDataAsync()
+# — the only path fetch_tableau_cloud.py has to the live readings — now returns
+# 403 PermissionDeniedException, and the workbook renders server-side so there is
+# no client-side data to scrape. The hourly sync (sync.yml) handles this
+# gracefully by publishing an "unavailable" state instead of stale data, and it
+# will self-heal automatically once the export works again.
+#
+# This workflow is the watchdog for that recovery: it runs the real fetch once a
+# day and, the moment the export starts working again, opens a GitHub issue so a
+# human gets notified (GitHub emails on new issues). While the export is still
+# blocked it does nothing and stays quiet.
+
+on:
+  schedule:
+    - cron: '37 13 * * *'   # once daily, ~13:37 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: probe-export
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Playwright + Chromium
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Probe the live export
+        id: probe
+        run: |
+          # fetch_tableau_cloud.py exits 0 only when it actually reads samples.
+          if python fetch_tableau_cloud.py > /tmp/probe.json 2> /tmp/probe.err; then
+            echo "Export reachable — live data was read successfully."
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Export still blocked. Last error:"
+            cat /tmp/probe.err || true
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open an issue if the export is back
+        if: steps.probe.outputs.ok == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="DPH Tableau data export is reachable again"
+          count=$(gh issue list --state open --json title \
+            --jq "[.[] | select(.title==\"$title\")] | length")
+          if [ "$count" != "0" ]; then
+            echo "An open issue with that title already exists; not duplicating."
+            exit 0
+          fi
+          body=$(printf '%s\n' \
+            "The daily probe (.github/workflows/probe-export.yml) successfully read" \
+            "live data from the DPH Beach Water Quality Dashboard via" \
+            "fetch_tableau_cloud.py." \
+            "" \
+            "The summary-data export that had been returning 403" \
+            "PermissionDeniedException appears to be working again. No action is" \
+            "strictly required — the hourly sync (sync.yml) attempts the same fetch" \
+            "and will self-heal automatically, flipping meta.json samples.source" \
+            "back to \"browser\" and resuming live readings." \
+            "" \
+            "This issue was opened automatically to flag the recovery. Close it" \
+            "once you've confirmed the live data is flowing on the dashboard.")
+          gh issue create --title "$title" --body "$body"
