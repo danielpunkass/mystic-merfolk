@@ -5,5 +5,18 @@
     "Threshold: Single-Sample",
     "Results"
   ],
-  "rows": []
+  "rows": [
+    [
+      "5/26/2026 9:20:00 AM",
+      "Enterococci",
+      "61",
+      "16.60"
+    ],
+    [
+      "5/19/2026 6:40:00 AM",
+      "Enterococci",
+      "61",
+      "15.50"
+    ]
+  ]
 }
