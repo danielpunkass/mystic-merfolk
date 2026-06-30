@@ -1829,13 +1829,13 @@
                 resolvePendingSlug();
                 ensureSelectionValid();
                 populateSelectors();
-                // A shared /beach/<slug> link becomes the visitor's selection:
-                // persist it to the cookie and normalize the URL (e.g. if the slug
-                // was unknown and we fell back to a default).
-                if (pendingBeachSlug) {
-                    setCookie(BEACH_COOKIE, selectedBeach);
-                    updatePermalink();
-                }
+                // Always reflect the visible beach in the address bar as a
+                // /beach/<slug>/ permalink — even when it came from the cookie or
+                // the default — so the URL is always shareable. (Guarded on the
+                // index being present so we never point at an un-deployed path.)
+                if (beachIndex.length) updatePermalink();
+                // A shared /beach/<slug> link also becomes the saved preference.
+                if (pendingBeachSlug) setCookie(BEACH_COOKIE, selectedBeach);
                 await renderSelected();
 
                 // Store config settings in IndexedDB for service worker
