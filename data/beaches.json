@@ -1611,6 +1611,11 @@
       "status": "Open"
     },
     {
+      "name": "Clark",
+      "town": "Ipswich",
+      "status": "Closed"
+    },
+    {
       "name": "Crane",
       "town": "Ipswich",
       "status": "Closed"
@@ -1653,6 +1658,11 @@
     {
       "name": "Rocky Nook",
       "town": "Kingston",
+      "status": "Open"
+    },
+    {
+      "name": "Clear Pond",
+      "town": "Lakeville",
       "status": "Open"
     },
     {
@@ -3546,12 +3556,32 @@
       "status": "Open"
     },
     {
+      "name": "Bell Pond Beach",
+      "town": "Worcester",
+      "status": "Open"
+    },
+    {
+      "name": "Coes Pond Beach (Mill St.)",
+      "town": "Worcester",
+      "status": "Open"
+    },
+    {
+      "name": "Indian Lake Public Beach (Sherburne Ave)",
+      "town": "Worcester",
+      "status": "Open"
+    },
+    {
       "name": "Lake Quinsigamond-Lake Park Beach (DCR)",
       "town": "Worcester",
       "status": "Open"
     },
     {
       "name": "Lake Quinsigamond-Regatta Point Beach (DCR)",
+      "town": "Worcester",
+      "status": "Open"
+    },
+    {
+      "name": "Shore Park",
       "town": "Worcester",
       "status": "Open"
     },
