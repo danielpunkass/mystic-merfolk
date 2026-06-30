@@ -97,6 +97,27 @@ jobs:
           meta["commit"] = sys.argv[1]
           p.write_text(json.dumps(meta, indent=2) + "\n")
           PY
+          # Pre-render a clean /beach/<slug>/ permalink for every beach: each is a
+          # copy of the app served as a real file (HTTP 200), so shared deep links
+          # resolve without a 404 fallback. <base href="/"> in index.html keeps the
+          # copies' data/ and archive/ fetches resolving from the site root. A beach
+          # that first appears between deploys won't have a dir until the next run —
+          # an accepted gap (there's no data to show for it yet anyway).
+          python3 - <<'PY'
+          import json, pathlib, re, shutil
+          def slug(name):
+              return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+          beaches = json.loads(pathlib.Path("site/data/beaches.json").read_text()).get("beaches", [])
+          app = pathlib.Path("site/index.html").read_text()
+          for b in beaches:
+              s = slug(b.get("name", ""))
+              if not s:
+                  continue
+              out = pathlib.Path("site/beach", s)
+              out.mkdir(parents=True, exist_ok=True)
+              (out / "index.html").write_text(app)
+          print(f"pre-rendered {len(beaches)} beach permalink pages")
+          PY
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

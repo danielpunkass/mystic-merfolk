@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- The app is also served from pre-rendered /beach/<slug>/ permalink pages
+         (generated at deploy time), so anchor all relative data/archive fetches to
+         the site root regardless of the current path depth. -->
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upper Mystic Water Quality</title>
     <meta name="description" content="A concise snapshot of current and recent water conditions at Shannon Beach.">
@@ -613,9 +617,34 @@
     	        `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}; SameSite=Lax`;
     	}
 
-    	// The currently selected beach. Seeded synchronously from the cookie so the
-    	// off-season UI (rendered before first paint) names the right beach; the
-    	// dropdowns and live data are wired up after fetch.
+    	// Permalinks are path-based: /beach/<slug>. The slug is derived from the
+    	// beach name; reversing it needs the loaded index, so a path slug is held in
+    	// pendingBeachSlug and resolved to a beach after data loads.
+    	function beachToSlug(name) {
+    	    return (name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    	}
+    	function parseBeachSlugFromPath() {
+    	    const m = window.location.pathname.match(/\/beach\/([^/]+)\/?$/);
+    	    return m ? decodeURIComponent(m[1]).toLowerCase() : null;
+    	}
+    	// Rewrite the address bar to /beach/<slug> (preserving any query string, e.g.
+    	// test-mode params) so the URL can be copied/shared to deep-link a beach.
+    	function updatePermalink() {
+    	    try {
+    	        const url = new URL(window.location.href);
+    	        // Trailing slash matches the pre-rendered /beach/<slug>/index.html
+    	        // directory, so a shared link loads directly (no 301 to add the slash).
+    	        url.pathname = '/beach/' + beachToSlug(selectedBeach) + '/';
+    	        window.history.replaceState(null, '', url);
+    	    } catch (e) { /* history not available; non-fatal */ }
+    	}
+
+    	// The currently selected beach. Precedence: a /beach/<slug> permalink (a
+    	// shared link) wins over the cookie, which is the visitor's implied default;
+    	// otherwise fall back to DEFAULT_BEACH. The slug resolves once the index is
+    	// loaded; until then we seed synchronously from the cookie so the off-season
+    	// UI (rendered before first paint) names a sensible beach.
+    	const pendingBeachSlug = parseBeachSlugFromPath();
     	let selectedBeach = getCookie(BEACH_COOKIE) || DEFAULT_BEACH;
 
     	// All-beaches data, loaded once per refresh. beachIndex drives the dropdowns
@@ -744,11 +773,53 @@
                 `Official water quality monitoring at ${shortBeachName(selectedBeach)} runs from Memorial Day through Labor Day. ` +
                 'Outside that window the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
                 'but there is no published monitoring, so conditions are unknown.' +
-                '<br><br>' +
-                `<a href="#results-card" id="historical-link">View ${year} season historical readings →</a>`;
+                '<br><br><span id="offseason-historical-wrap"></span>';
 
             resultsHeading.textContent = `${year} Season Historical Readings`;
             resultsCard.classList.add('hidden-until-revealed');
+            // The "view historical readings" link is added asynchronously, only if
+            // this beach actually has an archived season.
+            updateOffSeasonHistoricalLink(year);
+        }
+
+        // Whether an archived CSV with readings for `year` exists for `beach`.
+        // Archives are committed only for some beaches (currently Shannon), so this
+        // gates the "view historical readings" affordances. Result is cached.
+        const _archiveAvailability = {};
+        async function hasHistoricalReadings(beach, year) {
+            const cacheKey = `${beach}|${year}`;
+            if (cacheKey in _archiveAvailability) return _archiveAvailability[cacheKey];
+            let available = false;
+            try {
+                const resp = await fetch(getArchiveURL(beach), { cache: 'no-store' });
+                if (resp.ok) {
+                    const rows = parseSamplesCSV(await resp.text());
+                    available = rows.slice(1).some(r => {
+                        if (!r[0]) return false;
+                        const d = new Date(r[0]);
+                        return !isNaN(d) && d.getFullYear() === year;
+                    });
+                }
+            } catch (e) {
+                available = false;
+            }
+            _archiveAvailability[cacheKey] = available;
+            return available;
+        }
+
+        async function updateOffSeasonHistoricalLink(year) {
+            const wrap = document.getElementById('offseason-historical-wrap');
+            if (!wrap) return;
+            const beachAtCall = selectedBeach;
+            const available = await hasHistoricalReadings(beachAtCall, year);
+            // Selection may have changed while the check was in flight.
+            if (beachAtCall !== selectedBeach) return;
+            if (!available) {
+                wrap.innerHTML = '';
+                return;
+            }
+            wrap.innerHTML =
+                `<a href="#results-card" id="historical-link">View ${year} season historical readings →</a>`;
             wireHistoricalLink();
         }
 
@@ -1124,6 +1195,16 @@
             selectedBeach = fallback.name;
         }
 
+        // Resolve a /beach/<slug> permalink against the loaded index (slugs are
+        // lossy, so this needs the full beach list). No-op if there's no slug or no
+        // match. Called once on initial load — not on background refreshes, which
+        // would otherwise clobber a selection the visitor made after landing.
+        function resolvePendingSlug() {
+            if (!pendingBeachSlug || !beachIndex.length) return;
+            const match = beachIndex.find(b => beachToSlug(b.name) === pendingBeachSlug);
+            if (match) selectedBeach = match.name;
+        }
+
         function townOf(beach) {
             return beach.town || 'Other';
         }
@@ -1207,6 +1288,7 @@
             // Selecting a town jumps to its first beach.
             selectedBeach = document.getElementById('beach-select').value;
             setCookie(BEACH_COOKIE, selectedBeach);
+            updatePermalink();
             resetHistorical();
             await renderSelected();
         }
@@ -1214,6 +1296,7 @@
         async function onBeachChange() {
             selectedBeach = document.getElementById('beach-select').value;
             setCookie(BEACH_COOKIE, selectedBeach);
+            updatePermalink();
             resetHistorical();
             await renderSelected();
         }
@@ -1630,10 +1713,15 @@
             lastUpdatedDiv.style.display = 'block';
         }
 
-        // In-season: expose a link to the most recent past season's archived readings.
-        function showInSeasonHistoricalLink() {
+        // In-season: expose a link to the most recent past season's archived
+        // readings — but only when this beach actually has an archived season.
+        async function showInSeasonHistoricalLink() {
             const year = mostRecentSeasonYear();
             const linkCard = document.getElementById('historical-link-card');
+            const beachAtCall = selectedBeach;
+            const available = await hasHistoricalReadings(beachAtCall, year);
+            if (beachAtCall !== selectedBeach) return;  // selection changed mid-check
+            if (!available) { linkCard.style.display = 'none'; return; }
             const link = document.getElementById('in-season-historical-link');
             document.getElementById('historical-link-year').textContent = year;
             linkCard.style.display = 'block';
@@ -1709,8 +1797,16 @@
             // checkNotificationStatus();
 
             loadPromise.then(async () => {
+                resolvePendingSlug();
                 ensureSelectionValid();
                 populateSelectors();
+                // A shared /beach/<slug> link becomes the visitor's selection:
+                // persist it to the cookie and normalize the URL (e.g. if the slug
+                // was unknown and we fell back to a default).
+                if (pendingBeachSlug) {
+                    setCookie(BEACH_COOKIE, selectedBeach);
+                    updatePermalink();
+                }
                 await renderSelected();
 
                 // Store config settings in IndexedDB for service worker
