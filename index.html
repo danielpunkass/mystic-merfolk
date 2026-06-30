@@ -7,7 +7,7 @@
          the site root regardless of the current path depth. -->
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upper Mystic Water Quality</title>
+    <title>Massachusetts Water Quality</title>
     <meta name="description" content="A concise snapshot of current and recent water conditions at Shannon Beach.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊‍♂️</text></svg>">
     <style>
@@ -470,7 +470,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 id="page-title">🏊‍♂️ Upper Mystic Water Quality</h1>
+            <h1 id="page-title">🏊‍♂️ Massachusetts Water Quality</h1>
             <div class="subtitle">A concise snapshot of current and recent water conditions. Data from the <a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
         </div>
 
@@ -511,6 +511,18 @@
                 <div id="cso-list">
                     <!-- CSO incidents will be inserted here -->
                 </div>
+            </div>
+        </div>
+
+        <div class="card" id="geomean-card" style="display: none;">
+            <h2 id="geomean-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Geometric Mean Test Results</h2>
+            <div class="table-container">
+                <table id="geomean-table">
+                    <thead>
+                        <tr id="geomean-table-head"></tr>
+                    </thead>
+                    <tbody id="geomean-table-body"></tbody>
+                </table>
             </div>
         </div>
 
@@ -1176,7 +1188,7 @@
                 }
                 const headers = allBeachesData.headers || [];
                 const entry = allBeachesData.beaches && allBeachesData.beaches[selectedBeach];
-                return { headers, rows: entry ? entry.rows : [] };
+                return { headers, rows: entry ? entry.rows : [], geoMean: entry ? entry.geoMean : null };
             }
             // Off-season: per-beach archive (only beaches with a committed archive resolve).
             try {
@@ -1197,15 +1209,16 @@
             try { return await fetchStatus(statusURL); } catch (e) { return null; }
         }
 
-        function updatePageTitle() {
+        // The visible page heading reflects the selected beach; the browser-tab
+        // title stays the site name (set statically in <title>).
+        function updatePageHeading() {
             const titleEl = document.getElementById('page-title');
             if (titleEl) titleEl.textContent = `🏊‍♂️ ${shortBeachName(selectedBeach)}`;
-            document.title = `${shortBeachName(selectedBeach)} Water Quality`;
         }
 
         // Render everything for the currently selected beach from already-loaded data.
         async function renderSelected() {
-            updatePageTitle();
+            updatePageHeading();
             const samples = await getSelectedSamples();
             const status = await getSelectedStatus();
             updateWithData(samples, status, csoData, metaData);
@@ -1608,7 +1621,10 @@
             const headers = rows[0] || [];
             headers.forEach(header => {
                 const th = document.createElement('th');
-                th.textContent = header;
+                // Collapse "Threshold: Single-Sample" / "Threshold: Geometric Mean"
+                // to just "Threshold" so the single-sample and geomean tables share
+                // identical headers (and thus matching column widths).
+                th.textContent = /^threshold/i.test(header) ? 'Threshold' : header;
                 th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
                 tableHead.appendChild(th);
             });
@@ -1646,8 +1662,28 @@
             });
         }
 
+        // Render the "Geometric Mean Test Results" card with just the most recent
+        // geomean reading (reusing the single-sample table styling + status badge).
+        // Hidden when there's no geomean for the selected beach (off-season, early
+        // season before a geomean is computed, or a beach without one).
+        function updateGeoMean(geoMean) {
+            const card = document.getElementById('geomean-card');
+            const value = geoMean && geoMean.value;
+            if (!value || isNaN(parseFloat(String(value).replace(/,/g, '')))) {
+                card.style.display = 'none';
+                return;
+            }
+            const headers = ['Date and Time', 'Indicator', 'Threshold: Geometric Mean', 'Results'];
+            const row = [geoMean.date, geoMean.indicator, geoMean.threshold, geoMean.value];
+            renderSamplesTable([headers, row],
+                document.getElementById('geomean-table-head'),
+                document.getElementById('geomean-table-body'));
+            card.style.display = 'block';
+        }
+
         function updateWithData(samples, status, csoData, meta) {
             updateCurrentStatus(status);
+            updateGeoMean(samples && samples.geoMean);
             // CSO incidents are only meaningful for the Mystic Lakes; hide the card
             // entirely for any other beach.
             if (csoData && isMysticBeach(selectedBeach)) {

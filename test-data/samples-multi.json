@@ -6,7 +6,8 @@
       "rows": [
         ["6/26/2026 9:00:00 AM", "Enterococci", "61", "12.00"],
         ["6/19/2026 9:00:00 AM", "Enterococci", "61", "4.00"]
-      ]
+      ],
+      "geoMean": { "date": "6/26/2026 9:00:00 AM", "indicator": "Enterococci", "threshold": "33", "value": "8.00" }
     },
     "Tenean Beach": {
       "town": "Boston",
@@ -33,7 +34,8 @@
         ["6/26/2026 10:03:00 AM", "Enterococci", "61", "118.70"],
         ["6/24/2026 3:00:00 PM", "Enterococci", "61", "30.10"],
         ["6/23/2026 9:40:00 AM", "Enterococci", "61", "8.50"]
-      ]
+      ],
+      "geoMean": { "date": "6/26/2026 10:03:00 AM", "indicator": "Enterococci", "threshold": "33", "value": "59.32" }
     }
   }
 }

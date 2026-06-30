@@ -72,6 +72,15 @@ SINGLE_SAMPLE_THRESHOLDS = {
 }
 DEFAULT_THRESHOLD = "61"
 
+# Geometric-mean standards (freshwater bathing-beach values, CFU/100 ml). Mirrors
+# the single-sample approximation: a fixed per-indicator threshold rather than the
+# marine/fresh split DPH applies. Shannon (the default beach) is freshwater.
+GEOMEAN_THRESHOLDS = {
+    "Enterococci": "33",
+    "E. Coli": "126",
+}
+DEFAULT_GEOMEAN_THRESHOLD = "33"
+
 PAGE_TIMEOUT_MS = 60_000
 RESULT_POLL_SECONDS = 60
 # One initial attempt plus this many retries. The viz occasionally never reaches
@@ -213,8 +222,13 @@ def build_all_samples(test_results: dict) -> dict:
         i_town = _col(cols, "Town")
     except KeyError:
         i_town = None
+    try:
+        i_gm = _col(cols, "AGG(GeoMean (CFU/100 ml))", "GeoMean")
+    except KeyError:
+        i_gm = None
 
-    beaches: dict = {}
+    # name -> {town, items: [(date, indicator, threshold, result, geomean), ...]}
+    raw: dict = {}
     for r in test_results["rows"]:
         name = (r[i_name] or "").strip()
         if not name:
@@ -226,13 +240,32 @@ def build_all_samples(test_results: dict) -> dict:
         result = (r[i_res] or "").strip()
         threshold = SINGLE_SAMPLE_THRESHOLDS.get(indicator, DEFAULT_THRESHOLD)
         town = (r[i_town].strip() if i_town is not None and r[i_town] else "")
-        entry = beaches.setdefault(name, {"town": town, "rows": []})
-        if town and not entry["town"]:
-            entry["town"] = town
-        entry["rows"].append([date, indicator, threshold, result])
+        geomean = (r[i_gm].strip() if i_gm is not None and r[i_gm] else "")
+        d = raw.setdefault(name, {"town": town, "items": []})
+        if town and not d["town"]:
+            d["town"] = town
+        d["items"].append((date, indicator, threshold, result, geomean))
 
-    for entry in beaches.values():
-        entry["rows"].sort(key=_row_sort_key, reverse=True)
+    beaches: dict = {}
+    for name, d in raw.items():
+        items = sorted(d["items"], key=lambda it: _row_sort_key([it[0]]), reverse=True)
+        entry = {
+            "town": d["town"],
+            "rows": [[it[0], it[1], it[2], it[3]] for it in items],
+        }
+        # The geometric mean is cumulative, so the most recent reading carries the
+        # current-season value. Surface just that latest non-null geomean.
+        for it in items:
+            gm = it[4]
+            if gm and gm.lower() != "null":
+                entry["geoMean"] = {
+                    "date": it[0],
+                    "indicator": it[1],
+                    "threshold": GEOMEAN_THRESHOLDS.get(it[1], DEFAULT_GEOMEAN_THRESHOLD),
+                    "value": gm,
+                }
+                break
+        beaches[name] = entry
 
     return {"headers": list(SAMPLE_HEADERS), "beaches": beaches}
 

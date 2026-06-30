@@ -128,9 +128,12 @@ CSO incidents (year-round, stdlib):
 ### Static Data Shapes
 
 - `data/samples.json` → all-beaches, keyed by beach name:
-  `{ "headers": [...], "beaches": { "<beach name>": { "town", "rows": [[date, indicator, threshold, results], ...] } } }`
-  The page filters to the selected beach client-side. (The old single-beach
-  `{ headers, rows }` shape is still read for back-compat.)
+  `{ "headers": [...], "beaches": { "<beach name>": { "town", "rows": [[date, indicator, threshold, results], ...], "geoMean"?: { "date", "indicator", "threshold", "value" } } } }`
+  The page filters to the selected beach client-side. `geoMean` (optional) is the
+  most recent non-null cumulative geometric mean for the beach — it drives the
+  "Geometric Mean Test Results" card and uses freshwater geomean thresholds
+  (Enterococci 33, E. Coli 126). (The old single-beach `{ headers, rows }` shape is
+  still read for back-compat.)
 - `data/beaches.json` → `{ "beaches": [ { "name", "town", "status" }, ... ] }`
   — the index that drives the Town/Beach selector and carries per-beach status.
   Only beaches with readings are listed: DPH's `Map` worksheet names some sites at
