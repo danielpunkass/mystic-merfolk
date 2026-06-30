@@ -133,6 +133,11 @@ CSO incidents (year-round, stdlib):
   `{ headers, rows }` shape is still read for back-compat.)
 - `data/beaches.json` → `{ "beaches": [ { "name", "town", "status" }, ... ] }`
   — the index that drives the Town/Beach selector and carries per-beach status.
+  Only beaches with readings are listed: DPH's `Map` worksheet names some sites at
+  the water-body level (e.g. `Lake Dennison State Park (DCR)`) while readings come
+  in at the sampling-point level (`... @Day Use Beach`), so those status-only
+  aggregate entries are excluded (`build_beach_index`) to keep the selector to
+  beaches that actually have data.
   Off-season every `status` is `"Closed for Season"`; on an in-season fetch
   failure they are blanked (`""`) while the beach list is preserved.
 - `data/status.json` → `{ "name", "status", "town" }` — the **default beach
@@ -145,14 +150,36 @@ CSO incidents (year-round, stdlib):
 
 ### Town/Beach Selector
 
-The header carries cascading **Town → Beach** dropdowns built from
-`beaches.json`. The selection defaults to Winchester / Shannon Beach @ Upper
-Mystic and is persisted in a `selectedBeach` cookie (1-year max-age) so returning
-visitors land on their last-viewed beach. In-season the page loads the whole
-all-beaches `samples.json` once and re-filters on selection (no refetch);
-off-season it loads `archive/<beach key>/<year>.csv` per beach — archives are
-currently committed only for Shannon, so other beaches show a "no archived
-readings" note off-season.
+The header carries cascading **Town → Beach** dropdowns (collapsed behind a
+"Looking for another beach?" link) built from `beaches.json`. The selection
+defaults to Winchester / Shannon Beach @ Upper Mystic and is persisted in a
+`selectedBeach` cookie (1-year max-age) so returning visitors land on their
+last-viewed beach. In-season the page loads the whole all-beaches `samples.json`
+once and re-filters on selection (no refetch); off-season it loads
+`archive/<beach key>/<year>.csv` per beach — archives are currently committed
+only for Shannon, so other beaches show a "no archived readings" note
+off-season. The "view historical readings" links appear only when the selected
+beach actually has an archived season.
+
+### Beach Permalinks & Slug Overrides
+
+Each beach has a shareable path permalink `/beach/<slug>/`. Precedence on load is
+**path slug → cookie → default**; selecting a beach rewrites the address bar via
+`history.replaceState` and persists the choice. These are **real HTTP 200s**, not
+an SPA 404 trick: the deploy (`sync.yml`) pre-renders a copy of the app at
+`site/beach/<slug>/index.html` for every beach in `beaches.json`, and
+`<base href="/">` in `index.html` keeps each copy's `data/`/`archive/` fetches
+rooted. A beach that first appears between deploys has no page until the next sync
+(accepted — it has no data yet).
+
+Slugs are derived from the beach name (`lowercase`, non-alphanumeric → `-`), but
+**`slug-overrides.json`** (`{ "<exact beach name>": "<custom slug>" }`, committed
+at the repo root and staged to the site) lets the project publish a friendlier
+permalink — e.g. `"Shannon Beach @ Upper Mystic (DCR)"` → `upper-mystic`. The
+front-end fetches this table; the deploy reads it to name the directories. For an
+overridden beach the **derived slug is also pre-rendered as an alias** and still
+resolves (then normalizes to the override), so links shared before an override was
+added keep working. Test override: `?slug-overrides-url=`.
 
 ### Season Logic
 

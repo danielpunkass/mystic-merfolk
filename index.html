@@ -620,8 +620,17 @@
     	// Permalinks are path-based: /beach/<slug>. The slug is derived from the
     	// beach name; reversing it needs the loaded index, so a path slug is held in
     	// pendingBeachSlug and resolved to a beach after data loads.
-    	function beachToSlug(name) {
+    	//
+    	// Slug overrides (slug-overrides.json, beach name -> custom slug) let the
+    	// project publish a friendlier permalink than the derived one, e.g.
+    	// "Shannon Beach @ Upper Mystic (DCR)" -> "upper-mystic". The derived slug
+    	// still resolves as an alias so older links keep working.
+    	let slugOverrides = {};
+    	function derivedSlug(name) {
     	    return (name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    	}
+    	function beachToSlug(name) {
+    	    return slugOverrides[name] || derivedSlug(name);
     	}
     	function parseBeachSlugFromPath() {
     	    const m = window.location.pathname.match(/\/beach\/([^/]+)\/?$/);
@@ -688,6 +697,7 @@
         // ?samples-url= (the keyed all-beaches readings).
         const customBeachesURL = urlParams.get('beaches-url');
         const customSamplesURL = urlParams.get('samples-url');
+        const customSlugOverridesURL = urlParams.get('slug-overrides-url');
 
         // Test-mode overrides may point at any URL; we no longer wrap absolute URLs in a
         // server-side proxy (the proxy is gone — the site is fully static now). If an absolute
@@ -1110,6 +1120,19 @@
             }
         }
 
+        // Slug overrides: { "<beach name>": "<custom slug>" }. Empty object if the
+        // file is absent (older deploy) — slugs then fall back to the derived form.
+        async function fetchSlugOverrides() {
+            try {
+                const response = await fetch(customSlugOverridesURL || 'slug-overrides.json', { cache: 'no-store' });
+                if (!response.ok) return {};
+                const data = await response.json();
+                return (data && typeof data === 'object' && !Array.isArray(data)) ? data : {};
+            } catch (e) {
+                return {};
+            }
+        }
+
         // The in-season all-beaches readings: { headers, beaches: { name: { town, rows } } }.
         async function fetchAllBeachesSamples() {
             const response = await fetch(customSamplesURL || liveDataURL, { cache: 'no-store' });
@@ -1127,18 +1150,20 @@
         // single-beach), so we skip those fetches when an override is present.
         async function loadAll() {
             const wantSamples = !customDataURL && isInSeason();
-            const [idx, allS, cso, meta] = await Promise.all([
+            const [idx, allS, cso, meta, overrides] = await Promise.all([
                 customStatusURL ? Promise.resolve([]) : fetchBeachIndex(),
                 wantSamples
                     ? fetchAllBeachesSamples().catch(e => { console.error('samples:', e); return null; })
                     : Promise.resolve(null),
                 fetchCSOData(),
                 fetchMeta(),
+                fetchSlugOverrides(),
             ]);
             beachIndex = idx || [];
             allBeachesData = allS;
             csoData = cso;
             metaData = meta;
+            slugOverrides = overrides || {};
         }
 
         // Resolve the selected beach's sample rows in {headers, rows} shape.
@@ -1201,7 +1226,11 @@
         // would otherwise clobber a selection the visitor made after landing.
         function resolvePendingSlug() {
             if (!pendingBeachSlug || !beachIndex.length) return;
-            const match = beachIndex.find(b => beachToSlug(b.name) === pendingBeachSlug);
+            // Match the override slug or the derived slug, so links shared before an
+            // override was added still resolve (then normalize to the new slug).
+            const match = beachIndex.find(b =>
+                beachToSlug(b.name) === pendingBeachSlug ||
+                derivedSlug(b.name) === pendingBeachSlug);
             if (match) selectedBeach = match.name;
         }
 

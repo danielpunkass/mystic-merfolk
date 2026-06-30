@@ -262,21 +262,27 @@ def build_all_statuses(map_data: dict) -> list[dict]:
 
 
 def build_beach_index(all_samples: dict, statuses: list[dict]) -> list[dict]:
-    """Union of monitored beaches (Map) and beaches with readings, sorted by
-    town then name, for the front-end Town/Beach selector."""
-    by_name: dict[str, dict] = {}
-    for s in statuses:
-        by_name[s["name"]] = {
-            "name": s["name"],
-            "town": s.get("town", ""),
-            "status": s.get("status", ""),
-        }
+    """Beaches with readings, carrying their Map status when one exists, sorted by
+    town then name, for the front-end Town/Beach selector.
+
+    The Map worksheet names some locations at the site / water-body level (e.g.
+    "Lake Dennison State Park (DCR)") while TestResultsTable reports readings at
+    the individual sampling-point level (e.g. "... @Day Use Beach"). Those
+    parent/aggregate Map entries have a status but no point-level readings, so we
+    exclude such status-only entries — the selector lists only beaches that
+    actually have data. A reading point with no matching Map status is kept with
+    an empty status.
+    """
+    status_by_name = {s["name"]: s for s in statuses}
+    out: list[dict] = []
     for name, entry in (all_samples.get("beaches") or {}).items():
-        if name not in by_name:
-            by_name[name] = {"name": name, "town": entry.get("town", ""), "status": ""}
-        elif not by_name[name]["town"] and entry.get("town"):
-            by_name[name]["town"] = entry["town"]
-    return sorted(by_name.values(), key=lambda b: (b["town"].lower(), b["name"].lower()))
+        st = status_by_name.get(name)
+        out.append({
+            "name": name,
+            "town": entry.get("town") or (st.get("town", "") if st else ""),
+            "status": st.get("status", "") if st else "",
+        })
+    return sorted(out, key=lambda b: (b["town"].lower(), b["name"].lower()))
 
 
 def build_samples(test_results: dict, beach_name: str) -> tuple[dict, str]:

@@ -82,6 +82,9 @@ jobs:
           # (sync script, archive raw CSVs, PHP proxy, .htaccess, .claude/, etc.)
           # stays out of the deploy artifact.
           cp index.html mystic.html simple.html sw.js site/
+          # Slug-override table (beach name -> friendly permalink slug); the page
+          # fetches it to generate/resolve /beach/<slug>/ links.
+          [ -f slug-overrides.json ] && cp slug-overrides.json site/ || true
           cp -R data site/data
           cp -R archive site/archive
           cp -R test-data site/test-data
@@ -104,19 +107,36 @@ jobs:
           # that first appears between deploys won't have a dir until the next run —
           # an accepted gap (there's no data to show for it yet anyway).
           python3 - <<'PY'
-          import json, pathlib, re, shutil
-          def slug(name):
+          import json, pathlib, re
+          def derived(name):
               return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+          overrides = {}
+          ov = pathlib.Path("slug-overrides.json")
+          if ov.exists():
+              try:
+                  overrides = json.loads(ov.read_text())
+              except Exception:
+                  overrides = {}
           beaches = json.loads(pathlib.Path("site/data/beaches.json").read_text()).get("beaches", [])
           app = pathlib.Path("site/index.html").read_text()
+          pages = 0
           for b in beaches:
-              s = slug(b.get("name", ""))
-              if not s:
+              name = b.get("name", "")
+              d = derived(name)
+              if not d:
                   continue
-              out = pathlib.Path("site/beach", s)
-              out.mkdir(parents=True, exist_ok=True)
-              (out / "index.html").write_text(app)
-          print(f"pre-rendered {len(beaches)} beach permalink pages")
+              # Friendly slug (if any) plus the derived slug as an alias, so links
+              # shared before an override was added still resolve.
+              slugs = {d}
+              if overrides.get(name):
+                  slugs.add(overrides[name])
+              for s in slugs:
+                  out = pathlib.Path("site/beach", s)
+                  out.mkdir(parents=True, exist_ok=True)
+                  (out / "index.html").write_text(app)
+                  pages += 1
+          print(f"pre-rendered {pages} permalink pages for {len(beaches)} beaches "
+                f"({len(overrides)} slug overrides)")
           PY
 
       - name: Upload Pages artifact

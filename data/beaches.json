@@ -11,11 +11,6 @@
       "status": "Open"
     },
     {
-      "name": "Robinson Pond Beach (DCR)",
-      "town": "Agawam",
-      "status": "Open"
-    },
-    {
       "name": "Glen Devin Condominiums",
       "town": "Amesbury",
       "status": "Open"
@@ -31,11 +26,6 @@
       "status": "Open"
     },
     {
-      "name": "Puffers Pond (AKA Factory Hollow Pond)",
-      "town": "Amherst",
-      "status": "Open"
-    },
-    {
       "name": "Puffers Pond (AKA Factory Hollow Pond) @Mill St.",
       "town": "Amherst",
       "status": ""
@@ -44,11 +34,6 @@
       "name": "Puffers Pond (AKA Factory Hollow Pond) @State St.",
       "town": "Amherst",
       "status": ""
-    },
-    {
-      "name": "Pomps Pond",
-      "town": "Andover",
-      "status": "Open"
     },
     {
       "name": "Pomps Pond @Center",
@@ -89,11 +74,6 @@
       "name": "Arlington Reservoir",
       "town": "Arlington",
       "status": "Open"
-    },
-    {
-      "name": "Damon Pond Beach (DCR)",
-      "town": "Ashby",
-      "status": "Closed"
     },
     {
       "name": "Ashfield Park Beach",
@@ -236,11 +216,6 @@
       "status": "Open"
     },
     {
-      "name": "Springs Brook Park Bathing Beach",
-      "town": "Bedford",
-      "status": "Open"
-    },
-    {
       "name": "Belchertown Town Beach (Lake Arcadia)",
       "town": "Belchertown",
       "status": "Open"
@@ -311,18 +286,8 @@
       "status": "Open"
     },
     {
-      "name": "Nutting Lake - Micozzi Beach",
-      "town": "Billerica",
-      "status": "Open"
-    },
-    {
       "name": "Bolton Town Beach",
       "town": "Bolton",
-      "status": "Open"
-    },
-    {
-      "name": "Carson Beach (DCR)",
-      "town": "Boston",
       "status": "Open"
     },
     {
@@ -342,11 +307,6 @@
     },
     {
       "name": "City Point Beach (DCR)",
-      "town": "Boston",
-      "status": "Open"
-    },
-    {
-      "name": "Constitution (DCR)",
       "town": "Boston",
       "status": "Open"
     },
@@ -377,11 +337,6 @@
     },
     {
       "name": "Malibu (DCR)",
-      "town": "Boston",
-      "status": "Open"
-    },
-    {
-      "name": "Pleasure Bay (DCR)",
       "town": "Boston",
       "status": "Open"
     },
@@ -466,11 +421,6 @@
       "status": "Open"
     },
     {
-      "name": "Sunset Lake",
-      "town": "Braintree",
-      "status": "Open"
-    },
-    {
       "name": "Sunset Lake @Location 1",
       "town": "Braintree",
       "status": ""
@@ -479,11 +429,6 @@
       "name": "Breakwater Landing",
       "town": "Brewster",
       "status": "Open"
-    },
-    {
-      "name": "Cliff Pond (DCR)",
-      "town": "Brewster",
-      "status": "Closed"
     },
     {
       "name": "Cliff Pond (DCR) @DYS",
@@ -568,16 +513,6 @@
     {
       "name": "South Pond",
       "town": "Brookfield",
-      "status": "Open"
-    },
-    {
-      "name": "John's Pond",
-      "town": "Carver",
-      "status": "Open"
-    },
-    {
-      "name": "Sampson's Pond",
-      "town": "Carver",
       "status": "Open"
     },
     {
@@ -717,11 +652,6 @@
     },
     {
       "name": "Walden Pond - Main (DCR)",
-      "town": "Concord",
-      "status": "Open"
-    },
-    {
-      "name": "Walden Pond - Red Cross (DCR)",
       "town": "Concord",
       "status": "Open"
     },
@@ -966,41 +896,6 @@
       "status": "Open"
     },
     {
-      "name": "Grossman Beach",
-      "town": "Dover",
-      "status": "Open"
-    },
-    {
-      "name": "Powissett",
-      "town": "Dover",
-      "status": "Open"
-    },
-    {
-      "name": "Grove",
-      "town": "Dracut",
-      "status": "Open"
-    },
-    {
-      "name": "Hilltop",
-      "town": "Dracut",
-      "status": "Open"
-    },
-    {
-      "name": "Mascuppic",
-      "town": "Dracut",
-      "status": "Open"
-    },
-    {
-      "name": "Richardson",
-      "town": "Dracut",
-      "status": "Open"
-    },
-    {
-      "name": "Sandbar Beach Club",
-      "town": "Dracut",
-      "status": "Open"
-    },
-    {
       "name": "Merino Pond",
       "town": "Dudley",
       "status": "Open"
@@ -1028,11 +923,6 @@
     {
       "name": "West End",
       "town": "Duxbury",
-      "status": "Open"
-    },
-    {
-      "name": "Lake Lashaway",
-      "town": "East Brookfield",
       "status": "Open"
     },
     {
@@ -1106,11 +996,6 @@
       "status": "Open"
     },
     {
-      "name": "Nauset Light (National Seashore)",
-      "town": "Eastham",
-      "status": "Open"
-    },
-    {
       "name": "Nauset Light (National Seashore) @Location 1",
       "town": "Eastham",
       "status": ""
@@ -1141,11 +1026,6 @@
       "status": "Open"
     },
     {
-      "name": "Town Pool",
-      "town": "Easton",
-      "status": "Open"
-    },
-    {
       "name": "Bend in the Road",
       "town": "Edgartown",
       "status": "Open"
@@ -1171,19 +1051,9 @@
       "status": "Open"
     },
     {
-      "name": "Joseph Sylvia State Beach",
-      "town": "Edgartown",
-      "status": "Open"
-    },
-    {
       "name": "Joseph Sylvia State Beach @Big Bridge",
       "town": "Edgartown",
       "status": ""
-    },
-    {
-      "name": "Norton Point East",
-      "town": "Edgartown",
-      "status": "Open"
     },
     {
       "name": "Norton Point East @Main",
@@ -1476,11 +1346,6 @@
       "status": "Open"
     },
     {
-      "name": "Silver Lake Beach",
-      "town": "Grafton",
-      "status": "Open"
-    },
-    {
       "name": "Lake Mansfield",
       "town": "Great Barrington",
       "status": "Open"
@@ -1496,11 +1361,6 @@
       "status": "Open"
     },
     {
-      "name": "Baby Beach Lost Lake",
-      "town": "Groton",
-      "status": "Open"
-    },
-    {
       "name": "Groton Town Beach (Sargisson Beach)",
       "town": "Groton",
       "status": "Open"
@@ -1513,11 +1373,6 @@
     {
       "name": "Lingan Street",
       "town": "Halifax",
-      "status": "Open"
-    },
-    {
-      "name": "Cranberry Cove (aka Camp Kiwanee)",
-      "town": "Hanson",
       "status": "Open"
     },
     {
@@ -1636,11 +1491,6 @@
       "status": "Open"
     },
     {
-      "name": "Plugs Pond",
-      "town": "Haverhill",
-      "status": "Open"
-    },
-    {
       "name": "Plugs Pond @Main",
       "town": "Haverhill",
       "status": ""
@@ -1666,21 +1516,6 @@
       "status": "Open"
     },
     {
-      "name": "Collette Drive Beach",
-      "town": "Holland",
-      "status": "Open"
-    },
-    {
-      "name": "Craig Road Beach",
-      "town": "Holland",
-      "status": "Open"
-    },
-    {
-      "name": "Holland Pond North",
-      "town": "Holland",
-      "status": "Open"
-    },
-    {
       "name": "Pleasure Point",
       "town": "Holliston",
       "status": "Open"
@@ -1688,16 +1523,6 @@
     {
       "name": "Stoddard Park",
       "town": "Holliston",
-      "status": "Open"
-    },
-    {
-      "name": "Sandy Beach (Hopkinton)",
-      "town": "Hopkinton",
-      "status": "Open"
-    },
-    {
-      "name": "Asnacomet Pond Beach (DCR)",
-      "town": "Hubbardston",
       "status": "Open"
     },
     {
@@ -1746,11 +1571,6 @@
       "status": "Open"
     },
     {
-      "name": "Nantasket (DCR)",
-      "town": "Hull",
-      "status": "Open"
-    },
-    {
       "name": "Nantasket (DCR) @Bathhouse",
       "town": "Hull",
       "status": ""
@@ -1772,11 +1592,6 @@
     },
     {
       "name": "Newport",
-      "town": "Hull",
-      "status": "Open"
-    },
-    {
-      "name": "Peddocks Island (DCR)",
       "town": "Hull",
       "status": "Open"
     },
@@ -1811,19 +1626,9 @@
       "status": "Closed"
     },
     {
-      "name": "Pavilion",
-      "town": "Ipswich",
-      "status": "Closed"
-    },
-    {
       "name": "Pavilion @Main",
       "town": "Ipswich",
       "status": ""
-    },
-    {
-      "name": "Sandy Point - Plum Island (DCR)",
-      "town": "Ipswich",
-      "status": "Closed"
     },
     {
       "name": "Sandy Point - Plum Island (DCR) @North",
@@ -1848,11 +1653,6 @@
     {
       "name": "Rocky Nook",
       "town": "Kingston",
-      "status": "Open"
-    },
-    {
-      "name": "Clear Pond",
-      "town": "Lakeville",
       "status": "Open"
     },
     {
@@ -1886,11 +1686,6 @@
       "status": "Open"
     },
     {
-      "name": "Littleton Town Beach",
-      "town": "Littleton",
-      "status": "Open"
-    },
-    {
       "name": "Arrive Lunenburg (Lake Whalom)",
       "town": "Lunenburg",
       "status": "Open"
@@ -1908,11 +1703,6 @@
     {
       "name": "Lunenburg Town Beach",
       "town": "Lunenburg",
-      "status": "Open"
-    },
-    {
-      "name": "Kings (DCR)",
-      "town": "Lynn",
       "status": "Open"
     },
     {
@@ -1947,11 +1737,6 @@
     },
     {
       "name": "Magnolia East",
-      "town": "Manchester",
-      "status": "Open"
-    },
-    {
-      "name": "Singing",
       "town": "Manchester",
       "status": "Open"
     },
@@ -2041,11 +1826,6 @@
       "status": "Open"
     },
     {
-      "name": "Silver Shell",
-      "town": "Marion",
-      "status": "Open"
-    },
-    {
       "name": "Silver Shell @North Jetty",
       "town": "Marion",
       "status": ""
@@ -2056,22 +1836,12 @@
       "status": ""
     },
     {
-      "name": "Tabor Academy",
-      "town": "Marion",
-      "status": "Open"
-    },
-    {
       "name": "Tabor Academy @North",
       "town": "Marion",
       "status": ""
     },
     {
       "name": "Henry F Collins Beach",
-      "town": "Marlborough",
-      "status": "Open"
-    },
-    {
-      "name": "Memorial Beach (Marlborough)",
       "town": "Marlborough",
       "status": "Open"
     },
@@ -2096,11 +1866,6 @@
       "status": "Open"
     },
     {
-      "name": "Fieldston",
-      "town": "Marshfield",
-      "status": "Open"
-    },
-    {
       "name": "Fieldston @Hartford Rd.",
       "town": "Marshfield",
       "status": ""
@@ -2112,11 +1877,6 @@
     },
     {
       "name": "Rexhame",
-      "town": "Marshfield",
-      "status": "Open"
-    },
-    {
-      "name": "Sunrise",
       "town": "Marshfield",
       "status": "Open"
     },
@@ -2141,11 +1901,6 @@
       "status": "Open"
     },
     {
-      "name": "John's Pond (Public)",
-      "town": "Mashpee",
-      "status": "Open"
-    },
-    {
       "name": "John's Pond (Public) @John's Pond (Back Road)",
       "town": "Mashpee",
       "status": ""
@@ -2154,11 +1909,6 @@
       "name": "John's Pond (Public) @John's Pond, Brickyard Rd",
       "town": "Mashpee",
       "status": ""
-    },
-    {
-      "name": "Santuit Pond",
-      "town": "Mashpee",
-      "status": "Open"
     },
     {
       "name": "Santuit Pond @Bryants Neck",
@@ -2172,11 +1922,6 @@
     },
     {
       "name": "Seconsett Island Causeway",
-      "town": "Mashpee",
-      "status": "Open"
-    },
-    {
-      "name": "South Cape Beach (DCR)",
       "town": "Mashpee",
       "status": "Open"
     },
@@ -2211,11 +1956,6 @@
       "status": "Open"
     },
     {
-      "name": "Hinkley",
-      "town": "Medfield",
-      "status": "Open"
-    },
-    {
       "name": "Hinkley @Left",
       "town": "Medfield",
       "status": ""
@@ -2226,11 +1966,6 @@
       "status": ""
     },
     {
-      "name": "Wrights Pond",
-      "town": "Medford",
-      "status": "Open"
-    },
-    {
       "name": "Wrights Pond @Deep End",
       "town": "Medford",
       "status": ""
@@ -2239,11 +1974,6 @@
       "name": "Wrights Pond @Shallow End",
       "town": "Medford",
       "status": ""
-    },
-    {
-      "name": "Mendon Town Beach",
-      "town": "Mendon",
-      "status": "Open"
     },
     {
       "name": "Forest Lake: Swimming Beach",
@@ -2258,16 +1988,6 @@
     {
       "name": "Camp Yomechas",
       "town": "Middleborough",
-      "status": "Open"
-    },
-    {
-      "name": "Woods Pond Cabins",
-      "town": "Middleborough",
-      "status": "Open"
-    },
-    {
-      "name": "Thunderbridge",
-      "town": "Middleton",
       "status": "Open"
     },
     {
@@ -2297,11 +2017,6 @@
     },
     {
       "name": "Forty Steps Beach",
-      "town": "Nahant",
-      "status": "Open"
-    },
-    {
-      "name": "Nahant Beach (DCR)",
       "town": "Nahant",
       "status": "Open"
     },
@@ -2421,16 +2136,6 @@
       "status": "Open"
     },
     {
-      "name": "Memorial Beach (Dug Pond)",
-      "town": "Natick",
-      "status": "Open"
-    },
-    {
-      "name": "400 Beach",
-      "town": "New Bedford",
-      "status": "Open"
-    },
-    {
       "name": "400 Beach @North",
       "town": "New Bedford",
       "status": ""
@@ -2467,11 +2172,6 @@
     },
     {
       "name": "Tabor Park South",
-      "town": "New Bedford",
-      "status": "Open"
-    },
-    {
-      "name": "Tower Beach",
       "town": "New Bedford",
       "status": "Open"
     },
@@ -2596,11 +2296,6 @@
       "status": "Open"
     },
     {
-      "name": "Orange Town Beach",
-      "town": "Orange",
-      "status": "Open"
-    },
-    {
       "name": "Orange Town Beach @Location 1",
       "town": "Orange",
       "status": ""
@@ -2631,11 +2326,6 @@
       "status": "Open"
     },
     {
-      "name": "Otis Town Beach",
-      "town": "Otis",
-      "status": "Open"
-    },
-    {
       "name": "White Lily Pond Beach",
       "town": "Otis",
       "status": ""
@@ -2646,52 +2336,7 @@
       "status": "Open"
     },
     {
-      "name": "Furnace Colony",
-      "town": "Pembroke",
-      "status": "Open"
-    },
-    {
-      "name": "Little Sandy",
-      "town": "Pembroke",
-      "status": "Closed"
-    },
-    {
-      "name": "Oldham Pond",
-      "town": "Pembroke",
-      "status": "Open"
-    },
-    {
-      "name": "Stetson",
-      "town": "Pembroke",
-      "status": "Open"
-    },
-    {
-      "name": "Queen Lake Beach",
-      "town": "Phillipston",
-      "status": "Open"
-    },
-    {
       "name": "Lulu Pond Beach (DCR)",
-      "town": "Pittsfield",
-      "status": "Open"
-    },
-    {
-      "name": "Onota Lake - Controy Pavillion",
-      "town": "Pittsfield",
-      "status": "Open"
-    },
-    {
-      "name": "Onota Lake - Decom Beach",
-      "town": "Pittsfield",
-      "status": "Open"
-    },
-    {
-      "name": "Onota Lake - Public Beach at Burbank Park",
-      "town": "Pittsfield",
-      "status": "Open"
-    },
-    {
-      "name": "Pontoosuc Lake - Decom Beach",
       "town": "Pittsfield",
       "status": "Open"
     },
@@ -2721,16 +2366,6 @@
       "status": "Open"
     },
     {
-      "name": "Ellis Haven",
-      "town": "Plymouth",
-      "status": "Open"
-    },
-    {
-      "name": "Fearings Pond (DCR)",
-      "town": "Plymouth",
-      "status": "Open"
-    },
-    {
       "name": "Fearings Pond (DCR) @Beach 1",
       "town": "Plymouth",
       "status": ""
@@ -2739,11 +2374,6 @@
       "name": "Fearings Pond (DCR) @Beach 2",
       "town": "Plymouth",
       "status": ""
-    },
-    {
-      "name": "Fresh Pond",
-      "town": "Plymouth",
-      "status": "Open"
     },
     {
       "name": "Fresh Pond @1 (End Pond)",
@@ -2757,16 +2387,6 @@
     },
     {
       "name": "Hedges Pond",
-      "town": "Plymouth",
-      "status": "Open"
-    },
-    {
-      "name": "Indian Head Resort",
-      "town": "Plymouth",
-      "status": "Open"
-    },
-    {
-      "name": "Morton Park",
       "town": "Plymouth",
       "status": "Open"
     },
@@ -2791,19 +2411,9 @@
       "status": "Open"
     },
     {
-      "name": "Plymouth Beach - 3",
-      "town": "Plymouth",
-      "status": "Open"
-    },
-    {
       "name": "Plymouth Beach - 3 @Location 1",
       "town": "Plymouth",
       "status": ""
-    },
-    {
-      "name": "Sandy Pond Campground",
-      "town": "Plymouth",
-      "status": "Open"
     },
     {
       "name": "White Horse - Full Sail",
@@ -2876,19 +2486,9 @@
       "status": "Open"
     },
     {
-      "name": "Race Point (National Seashore)",
-      "town": "Provincetown",
-      "status": "Open"
-    },
-    {
       "name": "Race Point (National Seashore) @Location 1",
       "town": "Provincetown",
       "status": ""
-    },
-    {
-      "name": "Ryder Street",
-      "town": "Provincetown",
-      "status": "Open"
     },
     {
       "name": "Ryder Street @Middle",
@@ -2986,11 +2586,6 @@
       "status": "Open"
     },
     {
-      "name": "Wollaston (DCR)",
-      "town": "Quincy",
-      "status": "Open"
-    },
-    {
       "name": "Wollaston (DCR) @Channing Street",
       "town": "Quincy",
       "status": ""
@@ -3009,11 +2604,6 @@
       "name": "Wollaston (DCR) @Sachem Street",
       "town": "Quincy",
       "status": ""
-    },
-    {
-      "name": "Revere (DCR)",
-      "town": "Revere",
-      "status": "Open"
     },
     {
       "name": "Revere (DCR) @Beach St.",
@@ -3056,11 +2646,6 @@
       "status": "Closed"
     },
     {
-      "name": "Hartsuff Park",
-      "town": "Rockland",
-      "status": "Open"
-    },
-    {
       "name": "Back Beach",
       "town": "Rockport",
       "status": "Open"
@@ -3096,11 +2681,6 @@
       "status": "Open"
     },
     {
-      "name": "Rowe Town Beach at Pelham Park",
-      "town": "Rowe",
-      "status": "Open"
-    },
-    {
       "name": "Rowe Town Beach at Pelham Park @Center",
       "town": "Rowe",
       "status": ""
@@ -3118,11 +2698,6 @@
     {
       "name": "Whitehall Pond Beach (DCR)",
       "town": "Rutland",
-      "status": "Open"
-    },
-    {
-      "name": "Camp Naumkeag",
-      "town": "Salem",
       "status": "Open"
     },
     {
@@ -3236,11 +2811,6 @@
       "status": "Open"
     },
     {
-      "name": "Sun Retreats Peters",
-      "town": "Sandwich",
-      "status": "Open"
-    },
-    {
       "name": "Sun Retreats Peters @North Beach",
       "town": "Sandwich",
       "status": ""
@@ -3316,11 +2886,6 @@
       "status": "Open"
     },
     {
-      "name": "Veterans' Memorial Park Beach",
-      "town": "Sharon",
-      "status": "Open"
-    },
-    {
       "name": "Veterans' Memorial Park Beach @Central",
       "town": "Sharon",
       "status": ""
@@ -3361,19 +2926,9 @@
       "status": "Open"
     },
     {
-      "name": "Bass Pond",
-      "town": "Springfield",
-      "status": "Open"
-    },
-    {
       "name": "Bass Pond @Right",
       "town": "Springfield",
       "status": ""
-    },
-    {
-      "name": "Camp Wilder",
-      "town": "Springfield",
-      "status": "Open"
     },
     {
       "name": "Camp Wilder @Right",
@@ -3381,28 +2936,13 @@
       "status": ""
     },
     {
-      "name": "Paddle Club",
-      "town": "Springfield",
-      "status": "Open"
-    },
-    {
       "name": "Paddle Club @Right",
       "town": "Springfield",
       "status": ""
     },
     {
-      "name": "Lake Waushacum",
-      "town": "Sterling",
-      "status": "Open"
-    },
-    {
       "name": "Stockbridge Town Beach (Stockbridge Bowl)",
       "town": "Stockbridge",
-      "status": "Open"
-    },
-    {
-      "name": "Ames Pond",
-      "town": "Stoughton",
       "status": "Open"
     },
     {
@@ -3611,21 +3151,6 @@
       "status": "Open"
     },
     {
-      "name": "Tyringham Park Beach",
-      "town": "Tyringham",
-      "status": "Open"
-    },
-    {
-      "name": "Upton Town Beach",
-      "town": "Upton",
-      "status": "Open"
-    },
-    {
-      "name": "Pout Pond Beach",
-      "town": "Uxbridge",
-      "status": "Open"
-    },
-    {
       "name": "Sichols",
       "town": "Wales",
       "status": "Open"
@@ -3667,11 +3192,6 @@
     },
     {
       "name": "Little Harbor",
-      "town": "Wareham",
-      "status": "Open"
-    },
-    {
-      "name": "Maple Park Campground",
       "town": "Wareham",
       "status": "Open"
     },
@@ -3741,21 +3261,6 @@
       "status": "Open"
     },
     {
-      "name": "Comin's Pond",
-      "town": "Warren",
-      "status": "Open"
-    },
-    {
-      "name": "Moores Pond Beach",
-      "town": "Warwick",
-      "status": "Open"
-    },
-    {
-      "name": "Wayland Town Beach",
-      "town": "Wayland",
-      "status": "Open"
-    },
-    {
       "name": "Wayland Town Beach @Left",
       "town": "Wayland",
       "status": ""
@@ -3771,19 +3276,9 @@
       "status": "Open"
     },
     {
-      "name": "Memorial Beach (Webster)",
-      "town": "Webster",
-      "status": "Open"
-    },
-    {
       "name": "Memorial Beach (Webster) @Location 1",
       "town": "Webster",
       "status": ""
-    },
-    {
-      "name": "Morses Beach",
-      "town": "Wellesley",
-      "status": "Open"
     },
     {
       "name": "Burton Baker",
@@ -3841,11 +3336,6 @@
       "status": "Open"
     },
     {
-      "name": "Marconi (National Seashore)",
-      "town": "Wellfleet",
-      "status": "Open"
-    },
-    {
       "name": "Marconi (National Seashore) @Location 1",
       "town": "Wellfleet",
       "status": ""
@@ -3891,22 +3381,12 @@
       "status": "Open"
     },
     {
-      "name": "Lake Wickaboag - Main Beach",
-      "town": "West Brookfield",
-      "status": "Open"
-    },
-    {
       "name": "Card Pond Beach",
       "town": "West Stockbridge",
       "status": "Open"
     },
     {
       "name": "Ice House Pond",
-      "town": "West Tisbury",
-      "status": "Open"
-    },
-    {
-      "name": "Lambert's Cove Beach",
       "town": "West Tisbury",
       "status": "Open"
     },
@@ -3921,19 +3401,9 @@
       "status": "Open"
     },
     {
-      "name": "Long Point (Ocean)",
-      "town": "West Tisbury",
-      "status": "Open"
-    },
-    {
       "name": "Long Point (Ocean) @Central",
       "town": "West Tisbury",
       "status": ""
-    },
-    {
-      "name": "Seth's Pond",
-      "town": "West Tisbury",
-      "status": "Open"
     },
     {
       "name": "Seth's Pond @Focus",
@@ -3946,11 +3416,6 @@
       "status": ""
     },
     {
-      "name": "Lake Chauncy Beach",
-      "town": "Westborough",
-      "status": "Open"
-    },
-    {
       "name": "Hampton Ponds - Kingsley Beach (DCR)",
       "town": "Westfield",
       "status": "Open"
@@ -3958,36 +3423,6 @@
     {
       "name": "Hampton Ponds - Lamberts Beach (DCR)",
       "town": "Westfield",
-      "status": "Open"
-    },
-    {
-      "name": "East Boston Camps - Boys Beach",
-      "town": "Westford",
-      "status": "Open"
-    },
-    {
-      "name": "East Boston Camps - Day Care",
-      "town": "Westford",
-      "status": "Open"
-    },
-    {
-      "name": "East Boston Camps - Girls Beach",
-      "town": "Westford",
-      "status": "Open"
-    },
-    {
-      "name": "Edwards Town Beach",
-      "town": "Westford",
-      "status": "Open"
-    },
-    {
-      "name": "Forge Village Beach",
-      "town": "Westford",
-      "status": "Open"
-    },
-    {
-      "name": "NVSR: Tiki Pond 1",
-      "town": "Westford",
       "status": "Open"
     },
     {
@@ -4041,16 +3476,6 @@
       "status": "Open"
     },
     {
-      "name": "North Beach (Westwood)",
-      "town": "Westwood",
-      "status": "Open"
-    },
-    {
-      "name": "Summer Beach",
-      "town": "Westwood",
-      "status": "Open"
-    },
-    {
       "name": "George E. Lane",
       "town": "Weymouth",
       "status": "Open"
@@ -4066,23 +3491,8 @@
       "status": "Open"
     },
     {
-      "name": "Spec Pond Beach",
-      "town": "Wilbraham",
-      "status": "Open"
-    },
-    {
       "name": "Margaret Lindley Park",
       "town": "Williamstown",
-      "status": "Open"
-    },
-    {
-      "name": "Wilmington Town Beach",
-      "town": "Wilmington",
-      "status": "Open"
-    },
-    {
-      "name": "Lake Dennison State Park (DCR)",
-      "town": "Winchendon",
       "status": "Open"
     },
     {
@@ -4136,32 +3546,12 @@
       "status": "Open"
     },
     {
-      "name": "Bell Pond Beach",
-      "town": "Worcester",
-      "status": "Open"
-    },
-    {
-      "name": "Coes Pond Beach (Mill St.)",
-      "town": "Worcester",
-      "status": "Open"
-    },
-    {
-      "name": "Indian Lake Public Beach (Sherburne Ave)",
-      "town": "Worcester",
-      "status": "Open"
-    },
-    {
       "name": "Lake Quinsigamond-Lake Park Beach (DCR)",
       "town": "Worcester",
       "status": "Open"
     },
     {
       "name": "Lake Quinsigamond-Regatta Point Beach (DCR)",
-      "town": "Worcester",
-      "status": "Open"
-    },
-    {
-      "name": "Shore Park",
       "town": "Worcester",
       "status": "Open"
     },
@@ -4197,11 +3587,6 @@
     },
     {
       "name": "Bayview Street",
-      "town": "Yarmouth",
-      "status": "Open"
-    },
-    {
-      "name": "Colonial Acres East",
       "town": "Yarmouth",
       "status": "Open"
     },
