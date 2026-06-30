@@ -1103,12 +1103,12 @@
     {
       "name": "Clammer's Beach",
       "town": "Essex",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Front Beach (Essex)",
       "town": "Essex",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Fort Phoenix (DCR)",
@@ -1738,7 +1738,7 @@
     {
       "name": "Magnolia East",
       "town": "Manchester",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Singing @Location 1",
@@ -2193,7 +2193,7 @@
     {
       "name": "Plum Island",
       "town": "Newbury",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Plum Island - 55th St.",
@@ -2743,7 +2743,7 @@
     {
       "name": "Ocean Avenue",
       "town": "Salem",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Osgood",
@@ -2973,7 +2973,7 @@
     {
       "name": "Kings",
       "town": "Swampscott",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "New Ocean/Eisman's",
@@ -3178,7 +3178,7 @@
     {
       "name": "Forbes",
       "town": "Wareham",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Hamilton Beach",
@@ -3213,7 +3213,7 @@
     {
       "name": "Pinehurst",
       "town": "Wareham",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Point Independence",
@@ -3238,7 +3238,7 @@
     {
       "name": "Standish Shores",
       "town": "Wareham",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Swift's",
