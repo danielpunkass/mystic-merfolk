@@ -86,6 +86,17 @@ jobs:
           cp -R archive site/archive
           cp -R test-data site/test-data
           [ -f CNAME ] && cp CNAME site/ || true
+          # Stamp the deployed commit SHA into the staged meta.json so the page
+          # can show which commit is live. It can't go in the committed copy
+          # (chicken/egg: the SHA isn't known until the commit that contains it
+          # exists), so we patch the deploy artifact only.
+          python3 - "$(git rev-parse --short HEAD)" <<'PY'
+          import json, pathlib, sys
+          p = pathlib.Path("site/data/meta.json")
+          meta = json.loads(p.read_text())
+          meta["commit"] = sys.argv[1]
+          p.write_text(json.dumps(meta, indent=2) + "\n")
+          PY
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -1286,8 +1286,11 @@
             const syncedLine = syncedAt
                 ? `<br><span class="sync-line">Data last synced: ${syncedAt}</span>`
                 : '';
+            const commitLine = meta && meta.commit
+                ? `<br><span class="sync-line">Commit: ${meta.commit}</span>`
+                : '';
             lastUpdatedDiv.innerHTML =
-                `Page rendered: ${new Date().toLocaleString()}${testModeText}${syncedLine}`;
+                `Page rendered: ${new Date().toLocaleString()}${testModeText}${syncedLine}${commitLine}`;
             lastUpdatedDiv.style.display = 'block';
         }
 
