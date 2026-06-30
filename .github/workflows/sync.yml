@@ -2,10 +2,11 @@ name: Sync data and deploy to Pages
 
 on:
   schedule:
-    # Hourly, 17 past to avoid the top-of-hour cron rush on GH-hosted runners.
-    # The Python script itself decides whether to do a full in-season sync or a
-    # lighter off-season pass.
-    - cron: '17 * * * *'
+    # Every 15 min, offset off the top-of-hour cron rush on GH-hosted runners.
+    # GitHub may delay or drop scheduled runs under load, so treat this as a
+    # best-effort ceiling, not a guarantee. The Python script itself decides
+    # whether to do a full in-season sync or a lighter off-season pass.
+    - cron: '2,17,32,47 * * * *'
   push:
     branches: [main]
     paths-ignore:

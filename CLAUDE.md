@@ -18,7 +18,7 @@ PHP proxy, no CORS workaround, no live API call from the browser.
 ### Data Flow
 
 ```
-GitHub Action (hourly cron)
+GitHub Action (15-min cron)
   └─► sync_water_data.py
         ├─► in-season samples + status:
         │     PRIMARY  fetch_tableau_cloud.py (headless Chromium / Playwright)
@@ -44,28 +44,33 @@ Tableau Server (`datavisualization.dph.mass.gov`, workbook
 (`prod-useast-b.online.tableau.com`, site `eohhspublic`, workbook
 `BeachWaterQualityDashboard`). The old per-beach CSV endpoints are frozen at the
 2025 season's end. The current readings live only in the new workbook's
-`TestResultsTable` worksheet, which has no static CSV endpoint (data loads lazily
-and underlying-data export is disabled). The official "Download Full Dataset"
+`TestResultsTable` worksheet, which has no static CSV URL (the data loads lazily
+into the live viz). The official "Download Full Dataset"
 button is a Tableau extension that reads it via `getSummaryDataAsync()`;
 `fetch_tableau_cloud.py` does the same with the Embedding API in a headless
 browser, authenticating with the public connected-app JWT from
 `publicdashboardtoken.mass.gov`. `meta.json.samples.source` records which path
 ran (`browser` | `none`).
 
-**Export currently blocked (since ~May 2026).** DPH revoked the public "Guest"
-group's summary-data download permission on the workbook: `getSummaryDataAsync()`
-now returns `403 PermissionDeniedException` on every worksheet, and the workbook
-renders server-side (`renderMode: render-mode-server`) so there is no client-side
-data to scrape — the clean extraction path is closed until DPH restores it. While
-it's down, the in-season sync publishes an explicit **"unavailable"** state
-(`samples.source` = `none`, empty `status.json`) rather than falling back to the
-frozen 2025 legacy endpoints; the page then shows "Information Unavailable" /
-"Latest readings temporarily unavailable" instead of a misleading stale value.
-`.github/workflows/probe-export.yml` runs the real fetch daily and opens a GitHub
-issue when the export starts working again (the hourly sync then self-heals,
-flipping `samples.source` back to `browser`). The legacy `datavisualization.dph.
-mass.gov` CSV fetchers remain in `sync_water_data.py` but are no longer wired into
-the in-season path.
+**Export reliability.** The export normally works: in late June 2026 nearly every
+sync succeeded with `samples.source` = `browser`. (There was an earlier stretch
+around May 2026 where DPH had revoked the public "Guest" group's summary-data
+download permission and `getSummaryDataAsync()` returned `403
+PermissionDeniedException`; that has since been restored.) The failures seen now
+are usually **transient load flakes**, not access blocks: the headless viz
+occasionally never reaches `firstinteractive` within the poll window (the embed's
+`window.__r` stays `{status:"init"}`), which surfaces as a `fatal: ...: {"status":
+"init"}` error — distinct from a `403`. To absorb these, `fetch_tableau_cloud.py`
+reloads and retries (`1 + FETCH_RETRIES`, currently 3 attempts total, 3s backoff)
+before giving up. On a genuine/persistent failure the in-season sync still
+publishes an explicit **"unavailable"** state (`samples.source` = `none`, empty
+`status.json`) rather than falling back to the frozen 2025 legacy endpoints; the
+page then shows "Information Unavailable" / "Latest readings temporarily
+unavailable" instead of a misleading stale value, and the next 15-min run
+typically self-heals. `.github/workflows/probe-export.yml` runs the real fetch
+daily as a watchdog and opens a GitHub issue if the export breaks for an extended
+period. The legacy `datavisualization.dph.mass.gov` CSV fetchers remain in
+`sync_water_data.py` but are no longer wired into the in-season path.
 
 ### Key Files
 
@@ -85,13 +90,13 @@ the in-season path.
   prints JSON (`samples`, `samplesCsv`, `status`, …); run via subprocess so the
   orchestrator stays importable without Playwright. Run it directly to debug:
   `python3 fetch_tableau_cloud.py`.
-- **`.github/workflows/sync.yml`** — Hourly cron. Installs Playwright + Chromium,
+- **`.github/workflows/sync.yml`** — Every-15-min cron. Installs Playwright + Chromium,
   runs the sync script, commits data changes, stages `site/`, deploys via
   `actions/deploy-pages`. `fetch_tableau_cloud.py` is NOT deployed to the site.
-- **`.github/workflows/probe-export.yml`** — Daily watchdog for the blocked
-  Tableau export (see "Export currently blocked" above). Runs `fetch_tableau_cloud.py`
-  and opens a GitHub issue if/when the summary-data export is reachable again;
-  silent while it's still 403. Does not deploy.
+- **`.github/workflows/probe-export.yml`** — Daily watchdog for the Tableau export
+  (see "Export reliability" above). Runs `fetch_tableau_cloud.py` and opens a GitHub
+  issue if the summary-data export breaks for an extended period; silent while it
+  works. Does not deploy.
 - **`CNAME`** — `water.jalkut.com`.
 
 ### Upstream Endpoints
@@ -159,7 +164,7 @@ python sync_water_data.py
 This rewrites `data/*.json` and appends to `archive/<beach>/<year>.csv`. In-season
 it drives the live Tableau Cloud dashboard via headless Chromium
 (`fetch_tableau_cloud.py`); CSO data uses stdlib only. If Playwright isn't
-installed (or the Tableau export is blocked — see "Export currently blocked"
+installed (or the Tableau fetch fails after its retries — see "Export reliability"
 above), the sync still runs: it logs the browser error and publishes the
 "unavailable" state, with `meta.json.samples.source` = `none`.
 
@@ -185,7 +190,7 @@ When using `?test=1`:
 GitHub Pages source = **GitHub Actions** (not branch). The workflow at
 `.github/workflows/sync.yml`:
 
-1. Runs hourly on cron (`17 * * * *`)
+1. Runs every 15 min on cron (`2,17,32,47 * * * *`)
 2. Executes `sync_water_data.py`
 3. Commits any changed `data/` or `archive/` files back to `main`
    (uses `[skip ci]` so the resulting push doesn't loop into another deploy)

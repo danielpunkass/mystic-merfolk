@@ -68,6 +68,11 @@ DEFAULT_THRESHOLD = "61"
 
 PAGE_TIMEOUT_MS = 60_000
 RESULT_POLL_SECONDS = 60
+# One initial attempt plus this many retries. The viz occasionally never reaches
+# "firstinteractive" within the poll window (status stays "init") — a transient
+# headless-render flake, not a real block — so reloading usually succeeds.
+FETCH_RETRIES = 2
+RETRY_BACKOFF_SECONDS = 3
 
 
 def fetch_public_token() -> str:
@@ -128,18 +133,31 @@ def _serve_dir(directory: str) -> tuple[socketserver.TCPServer, int]:
 
 
 def _read_worksheet(page, base_url: str, view: str) -> dict:
-    """Load an embed page for one worksheet and return its summary-data result."""
+    """Load an embed page for one worksheet and return its summary-data result.
+
+    Re-navigating reloads the viz from scratch (the inline script resets
+    window.__r), so on a transient failure we simply reload and try again, up to
+    FETCH_RETRIES extra times before giving up.
+    """
     import time
-    page.goto(f"{base_url}/{view}.html", wait_until="load", timeout=PAGE_TIMEOUT_MS)
-    result = None
-    for _ in range(RESULT_POLL_SECONDS):
-        result = page.evaluate("() => window.__r")
-        if result and result.get("status") in ("ok", "error", "loaderror"):
-            break
-        time.sleep(1)
-    if not result or result.get("status") != "ok":
-        raise RuntimeError(f"{view}: {json.dumps(result)[:300] if result else 'no result'}")
-    return result
+    last = None
+    for attempt in range(1 + FETCH_RETRIES):
+        if attempt:
+            time.sleep(RETRY_BACKOFF_SECONDS)
+        page.goto(f"{base_url}/{view}.html", wait_until="load", timeout=PAGE_TIMEOUT_MS)
+        result = None
+        for _ in range(RESULT_POLL_SECONDS):
+            result = page.evaluate("() => window.__r")
+            if result and result.get("status") in ("ok", "error", "loaderror"):
+                break
+            time.sleep(1)
+        if result and result.get("status") == "ok":
+            return result
+        last = result
+    raise RuntimeError(
+        f"{view}: {json.dumps(last)[:300] if last else 'no result'} "
+        f"(after {1 + FETCH_RETRIES} attempts)"
+    )
 
 
 def _normalize_date(value: str) -> str:
