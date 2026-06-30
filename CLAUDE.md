@@ -263,6 +263,20 @@ GitHub Pages source = **GitHub Actions** (not branch). The workflow at
 DNS: `water.jalkut.com` CNAME → `<github-pages-host>`. Custom domain configured
 via the `CNAME` file at the repo root and the Pages settings UI.
 
+### Sync scheduling (external trigger)
+
+GitHub's `schedule:` cron is best-effort and frequently drops/delays runs (the
+every-15-min cron in practice fired only every few hours), so data freshness is
+driven by an **external trigger** instead. `trigger_sync.py` (stdlib Python 3)
+fires the workflow via `workflow_dispatch` against the GitHub API, and runs on a
+**cron on `Cielo.local`** (an always-on machine, not part of this repo) every 15
+minutes. The token comes from `GITHUB_TOKEN`/`GH_TOKEN` in the environment (a PAT
+with Actions: write), kept on that machine — not in the repo or GitHub Secrets
+(Secrets are only readable inside Actions runs, not from an external client). The
+`schedule:` block in `sync.yml` is retained as a best-effort fallback. Note: only
+`schedule`/`workflow_dispatch` runs actually sync — `push` events skip the sync
+and just redeploy the committed `data/`.
+
 ## Desktop Notifications
 
 The application can provide desktop notifications when swimming status changes
