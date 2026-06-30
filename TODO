@@ -1,3 +1,11 @@
 ? Fetch and parse the closure data from https://datavisualization.dph.mass.gov/views/BeachesDashboardMockup_test/ClosureTable.csv?:refresh=y
 ? Fetch and parse geometric mean testing data from https://datavisualization.dph.mass.gov/views/BeachesDashboardMockup_test/Geomean.csv?:refresh=y&Name=Shannon%20Beach%20@%20Upper%20Mystic%20(DCR)
 	and merge it with the same table
+? Archive past-season readings for ALL beaches, not just Shannon
+	currently sync only archives BEACH_NAME (Shannon) via samplesCsv; the fetcher
+	now returns every beach (allSamples), so the sync could write a per-beach
+	archive/<key>/<year>.csv for each. Trade-offs: ~742x more committed CSV files;
+	no back-fill (history only accrues from switch-on); archive format is the
+	legacy 5-col single-sample shape, so geomean wouldn't be captured unless the
+	format is extended. Open question: key archive dirs by the friendly slug to
+	match the /beach/<slug>/ permalinks?

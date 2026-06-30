@@ -845,9 +845,12 @@
             wireHistoricalLink();
         }
 
-        // Apply off-season UI synchronously before first paint so the "Loading..." status and
-        // results-card spinner never flash. The script tag is at the bottom of <body>, so the
-        // elements below already exist.
+        // Set the heading and (off-season) status synchronously before first paint so
+        // neither the placeholder "Massachusetts Water Quality" heading nor the
+        // "Loading..." status flashes. The script tag is at the bottom of <body>, so the
+        // elements above already exist. selectedBeach comes from the cookie (which always
+        // tracks the current beach), so a reload shows the right name immediately.
+        updatePageHeading();
         if (!isInSeason()) renderOffSeasonUI();
 
         const statusURL = 'data/status.json';
