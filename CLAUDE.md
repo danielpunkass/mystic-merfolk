@@ -93,10 +93,11 @@ period. The legacy `datavisualization.dph.mass.gov` CSV fetchers remain in
 - **`.github/workflows/sync.yml`** — Every-15-min cron. Installs Playwright + Chromium,
   runs the sync script, commits data changes, stages `site/`, deploys via
   `actions/deploy-pages`. `fetch_tableau_cloud.py` is NOT deployed to the site.
-- **`.github/workflows/probe-export.yml`** — Daily watchdog for the Tableau export
-  (see "Export reliability" above). Runs `fetch_tableau_cloud.py` and opens a GitHub
-  issue if the summary-data export breaks for an extended period; silent while it
-  works. Does not deploy.
+- **`.github/workflows/probe-export.yml`** — Watchdog for a *sustained* export
+  outage (see "Export reliability" above). Runs every 6h; reads the `samples.source`
+  history from `data/meta.json` commits (not a live fetch — no Playwright) and opens
+  a GitHub issue only when in-season syncs have failed continuously for ≥4h, then
+  auto-closes it on recovery. Single transient flakes stay quiet. Does not deploy.
 - **`CNAME`** — `water.jalkut.com`.
 
 ### Upstream Endpoints

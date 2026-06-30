@@ -1,23 +1,24 @@
-name: Probe DPH Tableau export
+name: Watch DPH Tableau export
 
 # Background
 # ----------
-# In May 2026 DPH revoked the public "Guest" group's summary-data download
-# permission on the Beach Water Quality Dashboard workbook: getSummaryDataAsync()
-# — the only path fetch_tableau_cloud.py has to the live readings — now returns
-# 403 PermissionDeniedException, and the workbook renders server-side so there is
-# no client-side data to scrape. The hourly sync (sync.yml) handles this
-# gracefully by publishing an "unavailable" state instead of stale data, and it
-# will self-heal automatically once the export works again.
+# The in-season sync (sync.yml) fetches the live DPH Beach Water Quality Dashboard
+# every 15 min via fetch_tableau_cloud.py and records the outcome in
+# data/meta.json: samples.source = "browser" on success, "none" on failure. That
+# committed history is a high-resolution log of whether the export is working.
 #
-# This workflow is the watchdog for that recovery: it runs the real fetch once a
-# day and, the moment the export starts working again, opens a GitHub issue so a
-# human gets notified (GitHub emails on new issues). While the export is still
-# blocked it does nothing and stays quiet.
+# The export normally works; occasional single-run failures are transient
+# headless-render flakes, not access blocks (see CLAUDE.md "Export reliability").
+# This watchdog therefore alerts only on a SUSTAINED outage — the export failing
+# continuously for several hours — by reading the meta.json history rather than
+# doing its own one-shot fetch (which would itself be flake-prone). It opens a
+# GitHub issue when a sustained outage is detected and auto-closes it on recovery.
+#
+# No Playwright needed: this only reads git history + parses JSON.
 
 on:
   schedule:
-    - cron: '37 13 * * *'   # once daily, ~13:37 UTC
+    - cron: '37 */6 * * *'   # every 6h, at :37
   workflow_dispatch:
 
 permissions:
@@ -25,63 +26,120 @@ permissions:
   issues: write
 
 concurrency:
-  group: probe-export
+  group: watch-export
   cancel-in-progress: false
 
 jobs:
-  probe:
+  watch:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout (full history so meta.json can be walked)
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          fetch-depth: 0
 
-      - name: Install Playwright + Chromium
+      - name: Evaluate recent sync outcomes
+        id: eval
         run: |
-          python -m pip install --upgrade pip
-          pip install playwright
-          python -m playwright install --with-deps chromium
+          python3 - <<'PY'
+          import json, os, subprocess
+          from datetime import datetime
 
-      - name: Probe the live export
-        id: probe
-        run: |
-          # fetch_tableau_cloud.py exits 0 only when it actually reads samples.
-          if python fetch_tableau_cloud.py > /tmp/probe.json 2> /tmp/probe.err; then
-            echo "Export reachable — live data was read successfully."
-            echo "ok=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Export still blocked. Last error:"
-            cat /tmp/probe.err || true
-            echo "ok=false" >> "$GITHUB_OUTPUT"
-          fi
+          OUTAGE_HOURS = 4.0   # continuous in-season failure before paging
 
-      - name: Open an issue if the export is back
-        if: steps.probe.outputs.ok == 'true'
+          def out(k, v):
+              with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                  f.write(f"{k}={v}\n")
+
+          # Commits touching meta.json, newest first (one per sync run).
+          hashes = subprocess.run(
+              ["git", "log", "-80", "--format=%H", "--", "data/meta.json"],
+              capture_output=True, text=True).stdout.split()
+
+          entries = []  # (lastSynced dt, samples.source, season)
+          for h in hashes:
+              raw = subprocess.run(["git", "show", f"{h}:data/meta.json"],
+                                   capture_output=True, text=True).stdout
+              if not raw.strip():
+                  continue
+              try:
+                  m = json.loads(raw)
+                  dt = datetime.fromisoformat(m["lastSynced"])
+              except Exception:
+                  continue
+              src = (m.get("samples") or {}).get("source")
+              entries.append((dt, src, m.get("season")))
+
+          if not entries:
+              print("No meta.json history found."); out("outage", "false"); out("reason", "no-history"); raise SystemExit
+
+          latest_dt, latest_src, latest_season = entries[0]
+
+          if latest_season != "in":
+              print(f"Off-season (season={latest_season}); outage concept N/A.")
+              out("outage", "false"); out("reason", "off-season"); raise SystemExit
+
+          if latest_src == "browser":
+              print("Latest sync healthy (samples.source=browser).")
+              out("outage", "false"); out("reason", "healthy"); raise SystemExit
+
+          # Walk the consecutive non-browser streak back from newest.
+          streak = []
+          for dt, src, _ in entries:
+              if src == "browser":
+                  break
+              streak.append(dt)
+          oldest = streak[-1]
+          span = (latest_dt - oldest).total_seconds() / 3600.0
+          print(f"Failing streak: {len(streak)} syncs over {span:.1f}h since {oldest.isoformat()}.")
+          out("streak_count", str(len(streak)))
+          out("span_hours", f"{span:.1f}")
+          out("first_fail", oldest.isoformat())
+          out("latest_synced", latest_dt.isoformat())
+          out("outage", "true" if span >= OUTAGE_HOURS else "false")
+          out("reason", "sustained" if span >= OUTAGE_HOURS else "too-short")
+          PY
+
+      - name: Open an issue on sustained outage
+        if: steps.eval.outputs.outage == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          title="DPH Tableau data export is reachable again"
-          count=$(gh issue list --state open --json title \
+          title="DPH Tableau data export appears to be down"
+          open=$(gh issue list --state open --json title \
             --jq "[.[] | select(.title==\"$title\")] | length")
-          if [ "$count" != "0" ]; then
-            echo "An open issue with that title already exists; not duplicating."
+          if [ "$open" != "0" ]; then
+            echo "An outage issue is already open; not duplicating."
             exit 0
           fi
           body=$(printf '%s\n' \
-            "The daily probe (.github/workflows/probe-export.yml) successfully read" \
-            "live data from the DPH Beach Water Quality Dashboard via" \
-            "fetch_tableau_cloud.py." \
+            "The DPH Beach Water Quality Dashboard export has been failing for a" \
+            "sustained period — the in-season sync (sync.yml) has not produced a" \
+            "successful live read in hours." \
             "" \
-            "The summary-data export that had been returning 403" \
-            "PermissionDeniedException appears to be working again. No action is" \
-            "strictly required — the hourly sync (sync.yml) attempts the same fetch" \
-            "and will self-heal automatically, flipping meta.json samples.source" \
-            "back to \"browser\" and resuming live readings." \
+            "Detected by .github/workflows/probe-export.yml from data/meta.json history:" \
+            "- Failed syncs in a row: ${{ steps.eval.outputs.streak_count }}" \
+            "- Duration: ~${{ steps.eval.outputs.span_hours }}h (since ${{ steps.eval.outputs.first_fail }})" \
+            "- Latest sync: ${{ steps.eval.outputs.latest_synced }} (samples.source != browser)" \
             "" \
-            "This issue was opened automatically to flag the recovery. Close it" \
-            "once you've confirmed the live data is flowing on the dashboard.")
+            "The site is showing the \"unavailable\" state meanwhile. This is longer" \
+            "than a transient flake, so it may be a real block: check whether DPH has" \
+            "re-revoked getSummaryDataAsync (403 PermissionDeniedException) or changed" \
+            "the workbook. Debug with: python3 fetch_tableau_cloud.py" \
+            "" \
+            "The sync self-heals automatically when the export recovers, and this" \
+            "issue will auto-close on the next watchdog run that sees a healthy sync.")
           gh issue create --title "$title" --body "$body"
+
+      - name: Auto-close the outage issue on recovery
+        if: steps.eval.outputs.outage == 'false' && steps.eval.outputs.reason == 'healthy'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="DPH Tableau data export appears to be down"
+          nums=$(gh issue list --state open --json number,title \
+            --jq ".[] | select(.title==\"$title\") | .number")
+          for n in $nums; do
+            gh issue comment "$n" --body "Export recovered — latest sync reports samples.source=browser. Auto-closing."
+            gh issue close "$n"
+          done
