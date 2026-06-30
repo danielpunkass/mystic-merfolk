@@ -23,7 +23,8 @@ GitHub Action (15-min cron)
         ├─► in-season samples + status:
         │     PRIMARY  fetch_tableau_cloud.py (headless Chromium / Playwright)
         │              reads the live "Beach Water Quality Dashboard" on
-        │              Tableau Cloud ─► data/samples.json + data/status.json
+        │              Tableau Cloud ─► data/samples.json (all beaches, keyed) +
+        │              data/beaches.json (selector index + status) + data/status.json
         │     ON FAIL  publish an "unavailable" state (empty status.json +
         │              current-year-only samples.json) — NOT the frozen legacy
         │              endpoints, which would clobber good data with 2025 values
@@ -126,11 +127,32 @@ CSO incidents (year-round, stdlib):
 
 ### Static Data Shapes
 
-- `data/samples.json` → `{ "headers": [...], "rows": [[date, indicator, threshold, results], ...] }`
-- `data/status.json` → `{ "name", "status", "town" }`
+- `data/samples.json` → all-beaches, keyed by beach name:
+  `{ "headers": [...], "beaches": { "<beach name>": { "town", "rows": [[date, indicator, threshold, results], ...] } } }`
+  The page filters to the selected beach client-side. (The old single-beach
+  `{ headers, rows }` shape is still read for back-compat.)
+- `data/beaches.json` → `{ "beaches": [ { "name", "town", "status" }, ... ] }`
+  — the index that drives the Town/Beach selector and carries per-beach status.
+  Off-season every `status` is `"Closed for Season"`; on an in-season fetch
+  failure they are blanked (`""`) while the beach list is preserved.
+- `data/status.json` → `{ "name", "status", "town" }` — the **default beach
+  only** (Shannon), kept for the currently-disabled service worker. The page
+  reads per-beach status from `beaches.json`, not this file.
 - `data/cso.json` → `{ "results": [...], "rowCount": N, "windowStart": "YYYY-MM-DD" }`
-  — Front-end still filters `results` to Mystic Lake by `waterBodyDescription`.
+  — Front-end filters `results` to Mystic Lake by `waterBodyDescription` and only
+  shows the CSO card when the selected beach is a Mystic beach (`/mystic/i`).
 - `data/meta.json` → `{ "lastSynced", "season", "today", "beach", "samples", "status", "cso", "errors", "schemaVersion" }`
+
+### Town/Beach Selector
+
+The header carries cascading **Town → Beach** dropdowns built from
+`beaches.json`. The selection defaults to Winchester / Shannon Beach @ Upper
+Mystic and is persisted in a `selectedBeach` cookie (1-year max-age) so returning
+visitors land on their last-viewed beach. In-season the page loads the whole
+all-beaches `samples.json` once and re-filters on selection (no refetch);
+off-season it loads `archive/<beach key>/<year>.csv` per beach — archives are
+currently committed only for Shannon, so other beaches show a "no archived
+readings" note off-season.
 
 ### Season Logic
 
@@ -172,9 +194,16 @@ above), the sync still runs: it logs the browser error and publishes the
 ### Test Mode
 
 Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
-- `?data-url=test-data/results-typical.csv`
+- `?data-url=test-data/results-typical.csv` — single-beach samples (bypasses the
+  all-beaches selector model)
 - `?status-url=test-data/status-open.csv`
 - `?cso-url=test-data/cso-mystic-incident.json`
+- `?beaches-url=test-data/beaches-multi.json` — the Town/Beach selector index
+- `?samples-url=test-data/samples-multi.json` — the all-beaches keyed readings
+- `?season=open|closed` — override the date-based season check
+
+To exercise the multi-beach selector locally, combine the last two, e.g.
+`?season=open&beaches-url=test-data/beaches-multi.json&samples-url=test-data/samples-multi.json`.
 
 The page's `fetchSamples` / `fetchStatus` helpers accept either JSON
 (`*.json`) or the upstream CSV format, so existing CSV fixtures continue to work.

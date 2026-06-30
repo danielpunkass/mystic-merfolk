@@ -264,6 +264,68 @@
             border-radius: 8px;
         }
 
+        .change-beach-row {
+            text-align: center;
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+        }
+
+        .change-beach-row a {
+            color: #0369a1;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .change-beach-row a:hover {
+            text-decoration: underline;
+        }
+
+        .beach-selector {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .beach-selector .field {
+            flex: 1 1 200px;
+            min-width: 160px;
+        }
+
+        .beach-selector .field.beach-field {
+            flex: 2 1 280px;
+        }
+
+        .beach-selector label {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0369a1;
+        }
+
+        .beach-selector select {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            background: #fff;
+            color: #1a365d;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .beach-selector select:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -404,8 +466,25 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏊‍♂️ Upper Mystic Water Quality</h1>
-            <div class="subtitle">A concise snapshot of current and recent water conditions at Shannon Beach. Data from the <a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
+            <h1 id="page-title">🏊‍♂️ Upper Mystic Water Quality</h1>
+            <div class="subtitle">A concise snapshot of current and recent water conditions. Data from the <a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
+        </div>
+
+        <div class="change-beach-row" id="change-beach-row" style="display: none;">
+            <a href="#" id="change-beach-link">Looking for another beach? Click here to change…</a>
+        </div>
+
+        <div class="card" id="beach-selector-card" style="display: none;">
+            <div class="beach-selector">
+                <div class="field">
+                    <label for="town-select">Town</label>
+                    <select id="town-select"></select>
+                </div>
+                <div class="field beach-field">
+                    <label for="beach-select">Beach</label>
+                    <select id="beach-select"></select>
+                </div>
+            </div>
         </div>
 
         <div id="notification-banner" class="notification-banner" style="display: none;">
@@ -512,8 +591,61 @@
     </div>
 
     <script>
-    	// Could have a popup here to let you choose from beaches
-    	const beachName = 'Shannon Beach @ Upper Mystic (DCR)';
+    	// The default beach. Returning visitors are taken to whichever beach they
+    	// last selected (persisted in a cookie); first-time visitors land here.
+    	const DEFAULT_BEACH = 'Shannon Beach @ Upper Mystic (DCR)';
+    	const BEACH_COOKIE = 'selectedBeach';
+
+    	// --- cookie helpers ---------------------------------------------------
+    	function getCookie(name) {
+    	    const prefix = name + '=';
+    	    const parts = document.cookie ? document.cookie.split('; ') : [];
+    	    for (const part of parts) {
+    	        if (part.indexOf(prefix) === 0) {
+    	            return decodeURIComponent(part.slice(prefix.length));
+    	        }
+    	    }
+    	    return null;
+    	}
+    	function setCookie(name, value, days = 365) {
+    	    const maxAge = days * 24 * 60 * 60;
+    	    document.cookie =
+    	        `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}; SameSite=Lax`;
+    	}
+
+    	// The currently selected beach. Seeded synchronously from the cookie so the
+    	// off-season UI (rendered before first paint) names the right beach; the
+    	// dropdowns and live data are wired up after fetch.
+    	let selectedBeach = getCookie(BEACH_COOKIE) || DEFAULT_BEACH;
+
+    	// All-beaches data, loaded once per refresh. beachIndex drives the dropdowns
+    	// and carries per-beach status; allBeachesData holds the in-season readings.
+    	let beachIndex = [];
+    	let allBeachesData = null;
+    	let csoData = null;
+    	let metaData = null;
+
+    	function shortBeachName(name) {
+    	    return (name || '').replace(/\s*\((?:DCR|MWRA|DPH)\)\s*$/i, '').trim();
+    	}
+    	// Mirror sync_water_data.py's _sanitize_beach_key so archive paths line up.
+    	function archiveKeyFor(name) {
+    	    return (name || '').replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+    	}
+    	// CSO incidents are only relevant to the Mystic Lakes (Winchester); the card
+    	// stays hidden for any other beach.
+    	function isMysticBeach(name) {
+    	    return /mystic/i.test(name || '');
+    	}
+    	function getBeachEntry(name) {
+    	    return beachIndex.find(b => b.name === name) || null;
+    	}
+    	function getStatusForBeach(name) {
+    	    const entry = getBeachEntry(name);
+    	    if (!entry) return null;
+    	    return { name: entry.name, status: entry.status, town: entry.town };
+    	}
+
         const urlParams = new URLSearchParams(window.location.search);
         const isTestMode = urlParams.get('test') === '1';
         // ?season=open|closed overrides the date-based season check (for testing/preview)
@@ -523,6 +655,10 @@
         const customDataURL = urlParams.get('data-url');
         const customStatusURL = urlParams.get('status-url');
         const customCSOURL = urlParams.get('cso-url');
+        // All-beaches selector fixtures: ?beaches-url= (the index) and
+        // ?samples-url= (the keyed all-beaches readings).
+        const customBeachesURL = urlParams.get('beaches-url');
+        const customSamplesURL = urlParams.get('samples-url');
 
         // Test-mode overrides may point at any URL; we no longer wrap absolute URLs in a
         // server-side proxy (the proxy is gone — the site is fully static now). If an absolute
@@ -572,18 +708,14 @@
         // Data is baked into /data/*.json by sync_water_data.py running as a scheduled
         // GitHub Action; the page is fully static. Off-season we fall back to the per-year
         // archive CSVs committed to the repo at /archive/<beach>/<year>.csv.
-        const beachArchiveKey = 'Shannon_Beach_Upper_Mystic_DCR';
-        const liveDataURL = 'data/samples.json';
+        const liveDataURL = 'data/samples.json';   // all-beaches, in-season
+        const beachesURL = 'data/beaches.json';    // index + per-beach status
 
-        function getDataURL() {
-            if (customDataURL) return resolveOverride(customDataURL);
-            if (isInSeason()) return liveDataURL;
+        // Off-season archive path for a given beach. Only beaches with a committed
+        // archive (currently Shannon Beach) resolve; others 404 and render empty.
+        function getArchiveURL(name = selectedBeach) {
             const year = mostRecentSeasonYear();
-            return `archive/${beachArchiveKey}/${year}.csv`;
-        }
-
-        function getStatusURL() {
-            return customStatusURL ? resolveOverride(customStatusURL) : statusURL;
+            return `archive/${archiveKeyFor(name)}/${year}.csv`;
         }
 
         function wireHistoricalLink() {
@@ -609,7 +741,7 @@
             statusCard.className = 'card status-card-offseason';
             statusHeading.textContent = 'Current Status: Closed for Season';
             statusDescription.innerHTML =
-                'Official water quality monitoring at Shannon Beach runs from Memorial Day through Labor Day. ' +
+                `Official water quality monitoring at ${shortBeachName(selectedBeach)} runs from Memorial Day through Labor Day. ` +
                 'Outside that window the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
                 'but there is no published monitoring, so conditions are unknown.' +
                 '<br><br>' +
@@ -891,22 +1023,206 @@
             }
         }
 
-        async function fetchData() {
-            // Off-season: skip the status fetch (off-season UI is rendered synchronously)
-            // unless ?status-url= explicitly overrides.
-            const skipStatus = !isInSeason() && !customStatusURL;
-            const samplesP = fetchSamples(getDataURL());
-            const statusP = skipStatus ? Promise.resolve(null) : fetchStatus(getStatusURL());
-            const csoP = fetchCSOData();
-            const metaP = fetchMeta();
+        // --- all-beaches data loading ----------------------------------------
 
-            const [samples, status, cso, meta] = await Promise.all([
-                samplesP.catch(e => { console.error('samples:', e); throw e; }),
-                statusP.catch(e => { console.error('status:', e); return null; }),
-                csoP,
-                metaP,
+        // The dropdown index ({name, town, status} per beach). Empty array if
+        // beaches.json is absent (older deploy / pure fixture) → selector hidden.
+        async function fetchBeachIndex() {
+            try {
+                const response = await fetch(customBeachesURL || beachesURL, { cache: 'no-store' });
+                if (!response.ok) return [];
+                const data = await response.json();
+                return Array.isArray(data.beaches) ? data.beaches : [];
+            } catch (e) {
+                console.error('beaches:', e);
+                return [];
+            }
+        }
+
+        // The in-season all-beaches readings: { headers, beaches: { name: { town, rows } } }.
+        async function fetchAllBeachesSamples() {
+            const response = await fetch(customSamplesURL || liveDataURL, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Samples response not ok: ' + response.statusText);
+            const data = await response.json();
+            // Back-compat: wrap a legacy single-beach file under the default beach.
+            if (data && !data.beaches && Array.isArray(data.rows)) {
+                return { headers: data.headers || [], beaches: { [DEFAULT_BEACH]: { town: 'Winchester', rows: data.rows } } };
+            }
+            return data;
+        }
+
+        // Refresh all shared data (index, in-season samples, CSO, meta) in parallel.
+        // Test-mode URL overrides bypass the all-beaches model (the fixtures are
+        // single-beach), so we skip those fetches when an override is present.
+        async function loadAll() {
+            const wantSamples = !customDataURL && isInSeason();
+            const [idx, allS, cso, meta] = await Promise.all([
+                customStatusURL ? Promise.resolve([]) : fetchBeachIndex(),
+                wantSamples
+                    ? fetchAllBeachesSamples().catch(e => { console.error('samples:', e); return null; })
+                    : Promise.resolve(null),
+                fetchCSOData(),
+                fetchMeta(),
             ]);
-            return { samples, status, cso, meta };
+            beachIndex = idx || [];
+            allBeachesData = allS;
+            csoData = cso;
+            metaData = meta;
+        }
+
+        // Resolve the selected beach's sample rows in {headers, rows} shape.
+        async function getSelectedSamples() {
+            if (customDataURL) return fetchSamples(resolveOverride(customDataURL));
+            if (isInSeason()) {
+                if (!allBeachesData) {
+                    try { allBeachesData = await fetchAllBeachesSamples(); }
+                    catch (e) { console.error('samples:', e); return { headers: [], rows: [] }; }
+                }
+                const headers = allBeachesData.headers || [];
+                const entry = allBeachesData.beaches && allBeachesData.beaches[selectedBeach];
+                return { headers, rows: entry ? entry.rows : [] };
+            }
+            // Off-season: per-beach archive (only beaches with a committed archive resolve).
+            try {
+                return await fetchSamples(getArchiveURL(selectedBeach));
+            } catch (e) {
+                console.error('archive:', e);
+                return { headers: [], rows: [] };
+            }
+        }
+
+        // Resolve the selected beach's status object.
+        async function getSelectedStatus() {
+            if (customStatusURL) return fetchStatus(resolveOverride(customStatusURL));
+            if (!isInSeason()) return null;   // off-season UI is rendered separately
+            const fromIndex = getStatusForBeach(selectedBeach);
+            if (fromIndex) return fromIndex;
+            // Back-compat: no beaches.json (older deploy) — read the default status.json.
+            try { return await fetchStatus(statusURL); } catch (e) { return null; }
+        }
+
+        function updatePageTitle() {
+            const titleEl = document.getElementById('page-title');
+            if (titleEl) titleEl.textContent = `🏊‍♂️ ${shortBeachName(selectedBeach)}`;
+            document.title = `${shortBeachName(selectedBeach)} Water Quality`;
+        }
+
+        // Render everything for the currently selected beach from already-loaded data.
+        async function renderSelected() {
+            updatePageTitle();
+            const samples = await getSelectedSamples();
+            const status = await getSelectedStatus();
+            updateWithData(samples, status, csoData, metaData);
+        }
+
+        // --- Town/Beach selector ---------------------------------------------
+
+        function ensureSelectionValid() {
+            if (!beachIndex.length) return;   // selector hidden; keep current selection
+            if (beachIndex.some(b => b.name === selectedBeach)) return;
+            const fallback = beachIndex.find(b => b.name === DEFAULT_BEACH) || beachIndex[0];
+            selectedBeach = fallback.name;
+        }
+
+        function townOf(beach) {
+            return beach.town || 'Other';
+        }
+
+        function populateBeachSelect(town) {
+            const beachSel = document.getElementById('beach-select');
+            const beaches = beachIndex
+                .filter(b => townOf(b) === town)
+                .sort((a, b) => a.name.localeCompare(b.name));
+            beachSel.innerHTML = '';
+            beaches.forEach(b => {
+                const opt = document.createElement('option');
+                opt.value = b.name;
+                opt.textContent = shortBeachName(b.name);
+                beachSel.appendChild(opt);
+            });
+        }
+
+        // The selectors stay collapsed behind the "Looking for another beach?"
+        // link until the visitor opts in; opening them keeps them open across
+        // selection changes and background refreshes.
+        let selectorExpanded = false;
+
+        function applySelectorVisibility() {
+            const card = document.getElementById('beach-selector-card');
+            const row = document.getElementById('change-beach-row');
+            if (!beachIndex.length) {
+                card.style.display = 'none';
+                row.style.display = 'none';
+                return;
+            }
+            card.style.display = selectorExpanded ? 'block' : 'none';
+            row.style.display = selectorExpanded ? 'none' : 'block';
+        }
+
+        function wireChangeBeachLink() {
+            const link = document.getElementById('change-beach-link');
+            if (!link || link.dataset.wired === '1') return;
+            link.dataset.wired = '1';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                selectorExpanded = true;
+                applySelectorVisibility();
+                document.getElementById('beach-selector-card')
+                    .scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                document.getElementById('town-select').focus();
+            });
+        }
+
+        function populateSelectors() {
+            const townSel = document.getElementById('town-select');
+            const beachSel = document.getElementById('beach-select');
+            wireChangeBeachLink();
+            if (!beachIndex.length) { applySelectorVisibility(); return; }
+
+            const selEntry = getBeachEntry(selectedBeach) || beachIndex[0];
+            const selectedTown = townOf(selEntry);
+
+            const towns = [...new Set(beachIndex.map(townOf))].sort((a, b) => a.localeCompare(b));
+            townSel.innerHTML = '';
+            towns.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t;
+                opt.textContent = t;
+                if (t === selectedTown) opt.selected = true;
+                townSel.appendChild(opt);
+            });
+
+            populateBeachSelect(townSel.value);
+            beachSel.value = selectedBeach;
+
+            townSel.onchange = onTownChange;
+            beachSel.onchange = onBeachChange;
+
+            applySelectorVisibility();
+        }
+
+        async function onTownChange() {
+            const town = document.getElementById('town-select').value;
+            populateBeachSelect(town);
+            // Selecting a town jumps to its first beach.
+            selectedBeach = document.getElementById('beach-select').value;
+            setCookie(BEACH_COOKIE, selectedBeach);
+            resetHistorical();
+            await renderSelected();
+        }
+
+        async function onBeachChange() {
+            selectedBeach = document.getElementById('beach-select').value;
+            setCookie(BEACH_COOKIE, selectedBeach);
+            resetHistorical();
+            await renderSelected();
+        }
+
+        // Archive differs per beach; collapse + invalidate the historical card on switch.
+        function resetHistorical() {
+            historicalSeasonLoaded = null;
+            const card = document.getElementById('historical-card');
+            if (card) card.style.display = 'none';
         }
 
         async function update() {
@@ -916,8 +1232,10 @@
             refreshIndicator.classList.add('show');
 
             try {
-                let data = await fetchData();
-                updateWithData(data.samples, data.status, data.cso, data.meta);
+                await loadAll();
+                ensureSelectionValid();
+                populateSelectors();
+                await renderSelected();
             } catch (error) {
                 console.error('Error updating data:', error);
             } finally {
@@ -1043,7 +1361,7 @@
                 statusCard.className = 'card status-card-offseason';
                 statusHeading.textContent = 'Current Status: Monitoring not yet active';
                 statusDescription.innerHTML =
-                    'Official water quality monitoring at Shannon Beach has not yet begun for this season. ' +
+                    `Official water quality monitoring at ${shortBeachName(selectedBeach)} has not yet begun for this season. ` +
                     'It typically resumes around Memorial Day and runs weekly through Labor Day. ' +
                     'In the meantime, the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
                     'but conditions are unknown.';
@@ -1063,6 +1381,10 @@
             });
 
             statusHeading.textContent = `Current Status: ${statusText}`;
+            statusDescription.innerHTML =
+                `This is the official status for ${shortBeachName(selectedBeach)} specifically, based on single ` +
+                'samples and the cumulative geometric mean of recent results. As always, swim at your own ' +
+                'risk and at the discretion of your own best judgement!';
             statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';
         }
 
@@ -1214,7 +1536,13 @@
 
         function updateWithData(samples, status, csoData, meta) {
             updateCurrentStatus(status);
-            if (csoData) updateCSOIncidents(csoData);
+            // CSO incidents are only meaningful for the Mystic Lakes; hide the card
+            // entirely for any other beach.
+            if (csoData && isMysticBeach(selectedBeach)) {
+                updateCSOIncidents(csoData);
+            } else {
+                document.getElementById('cso-card').style.display = 'none';
+            }
 
             const headers = (samples && samples.headers) || [];
             let dataRows = (samples && samples.rows) || [];
@@ -1273,6 +1601,14 @@
                 }
                 dataTable.style.display = 'none';
                 awaitingEl.style.display = 'block';
+            } else if (offSeason && dataRows.length === 0) {
+                // Off-season with no archived readings for this beach (archives are
+                // currently committed only for Shannon Beach).
+                awaitingEl.innerHTML =
+                    `<p style="margin: 0;">No archived past-season readings are available for ${shortBeachName(selectedBeach)} yet. ` +
+                    'Historical readings are currently archived only for Shannon Beach @ Upper Mystic.</p>';
+                dataTable.style.display = 'none';
+                awaitingEl.style.display = 'block';
             } else {
                 dataTable.style.display = 'table';
                 awaitingEl.style.display = 'none';
@@ -1326,7 +1662,7 @@
             table.style.display = 'none';
 
             try {
-                const url = `archive/${beachArchiveKey}/${year}.csv`;
+                const url = getArchiveURL(selectedBeach);
                 const response = await fetch(url, { cache: 'no-store' });
                 if (!response.ok) throw new Error('Archive response not ok: ' + response.statusText);
                 const csv = await response.text();
@@ -1358,8 +1694,8 @@
             });
         }
 
-        // Start the fetch as soon as possible
-        let fetchPromise = fetchData()
+        // Start loading shared data as soon as possible.
+        let loadPromise = loadAll()
             .catch(error => console.error('Error fetching data:', error));
 
         // Wait for both the fetch to complete and the page to finish loading
@@ -1372,9 +1708,10 @@
             // DISABLED: Notification status checking disabled
             // checkNotificationStatus();
 
-            fetchPromise.then(data => {
-                if (!data) return;
-                updateWithData(data.samples, data.status, data.cso, data.meta);
+            loadPromise.then(async () => {
+                ensureSelectionValid();
+                populateSelectors();
+                await renderSelected();
 
                 // Store config settings in IndexedDB for service worker
                 // Use faster sync frequency for test mode (30 seconds vs 5 minutes)
@@ -1438,9 +1775,9 @@
 
                     // Trigger visual update
                     updateCurrentStatus({
-                        name: beachName,
+                        name: selectedBeach,
                         status: status.charAt(0).toUpperCase() + status.slice(1),
-                        town: 'Winchester',
+                        town: (getBeachEntry(selectedBeach) || {}).town || 'Winchester',
                     });
 
                     console.log('Status overridden to:', status);

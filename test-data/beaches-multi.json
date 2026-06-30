@@ -1,0 +1,9 @@
+{
+  "beaches": [
+    { "name": "Carson Beach", "town": "Boston", "status": "Open" },
+    { "name": "Tenean Beach", "town": "Boston", "status": "Closed" },
+    { "name": "Wollaston Beach", "town": "Quincy", "status": "Open" },
+    { "name": "Revere Beach", "town": "Revere", "status": "Open" },
+    { "name": "Shannon Beach @ Upper Mystic (DCR)", "town": "Winchester", "status": "Closed" }
+  ]
+}

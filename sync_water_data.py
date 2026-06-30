@@ -289,31 +289,67 @@ def write_json(path: Path, payload) -> None:
     )
 
 
+SAMPLE_HEADERS = ["Date and Time", "Indicator", "Threshold: Single-Sample", "Results"]
+
+
+def _row_is_year(row: list, year: int) -> bool:
+    m = re.search(r"/(\d{4})\b", row[0]) if row and row[0] else None
+    return bool(m and int(m.group(1)) == year)
+
+
 def preserve_current_year_samples(year: int) -> int:
-    """Rewrite samples.json keeping only the current season's readings.
+    """Rewrite the all-beaches samples.json keeping only the current season's readings.
 
     Used when the in-season live fetch fails: rather than letting a stale
     fallback leave last year's numbers in place (which the page would either
     show as current or — worse — pair with an "Off-season" status), we drop any
     prior-year rows and keep only readings we'd already captured for `year`. If
     none survive, the page shows its honest "Awaiting first reading" placeholder.
-    Returns the surviving row count.
+    Returns the surviving row count across all beaches.
+
+    Handles both the current all-beaches shape ({headers, beaches: {name: {town,
+    rows}}}) and the legacy single-beach shape ({headers, rows}) for the first
+    run after this change ships.
     """
     path = DATA_DIR / "samples.json"
-    headers = ["Date and Time", "Indicator", "Threshold: Single-Sample", "Results"]
-    rows: list = []
+    headers = list(SAMPLE_HEADERS)
+    beaches: dict = {}
+    total = 0
     if path.exists():
         try:
             existing = json.loads(path.read_text(encoding="utf-8"))
             headers = existing.get("headers") or headers
-            for r in existing.get("rows", []):
-                m = re.search(r"/(\d{4})\b", r[0]) if r and r[0] else None
-                if m and int(m.group(1)) == year:
-                    rows.append(r)
-        except (json.JSONDecodeError, OSError, KeyError):
-            rows = []
-    write_json(path, {"headers": headers, "rows": rows})
-    return len(rows)
+            if existing.get("beaches") is not None:
+                source = existing["beaches"]
+            else:  # legacy single-beach shape
+                source = {BEACH_NAME: {"town": "Winchester", "rows": existing.get("rows", [])}}
+            for name, entry in source.items():
+                kept = [r for r in entry.get("rows", []) if _row_is_year(r, year)]
+                if kept:
+                    beaches[name] = {"town": entry.get("town", ""), "rows": kept}
+                    total += len(kept)
+        except (json.JSONDecodeError, OSError, KeyError, AttributeError):
+            beaches = {}
+            total = 0
+    write_json(path, {"headers": headers, "beaches": beaches})
+    return total
+
+
+def rewrite_beach_statuses(value: str) -> None:
+    """Rewrite the per-beach statuses in beaches.json to a fixed value, preserving
+    the beach list. Used off-season ("Closed for Season") and when the in-season
+    live fetch fails (blank "" → page shows the status as unavailable) so the
+    Town/Beach dropdown keeps working without surfacing stale statuses."""
+    path = DATA_DIR / "beaches.json"
+    if not path.exists():
+        return
+    try:
+        existing = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return
+    for beach in existing.get("beaches", []):
+        beach["status"] = value
+    write_json(path, existing)
 
 
 # ---------- debug probe ----------
@@ -431,16 +467,32 @@ def main() -> int:
             errors.append(f"browser: {e}")
 
         if browser_data:
-            samples = browser_data["samples"]
-            sample_count = len(samples["rows"])
-            write_json(DATA_DIR / "samples.json", samples)
+            # All-beaches dataset powers the front-end Town/Beach selector. Fall
+            # back to wrapping the default beach if an older fetcher only returned
+            # the single-beach `samples` shape.
+            all_samples = browser_data.get("allSamples")
+            if not all_samples:
+                default = browser_data["samples"]
+                all_samples = {
+                    "headers": default.get("headers", list(SAMPLE_HEADERS)),
+                    "beaches": {BEACH_NAME: {"town": "Winchester", "rows": default["rows"]}},
+                }
+            sample_count = sum(len(b.get("rows", [])) for b in all_samples["beaches"].values())
+            write_json(DATA_DIR / "samples.json", all_samples)
             samples_status = "ok"
             samples_source = "browser"
+
+            beach_index = browser_data.get("beaches") or []
+            write_json(DATA_DIR / "beaches.json", {"beaches": beach_index})
+
             try:
                 archive_results_csv(browser_data["samplesCsv"], BEACH_NAME)
             except Exception as e:  # noqa: BLE001
                 errors.append(f"archive: {e}")
 
+            # status.json carries the default beach only, for the (currently
+            # disabled) service worker; the page reads per-beach statuses from
+            # beaches.json instead.
             status = browser_data.get("status")
             if status and status.get("status"):
                 write_json(DATA_DIR / "status.json", status)
@@ -461,6 +513,9 @@ def main() -> int:
             sample_count = preserve_current_year_samples(today.year)
             samples_status = "unavailable"
             samples_source = "none"
+            # Keep the beach list (so the selector still works) but blank the
+            # statuses rather than leaving stale ones in place.
+            rewrite_beach_statuses("")
             write_json(
                 DATA_DIR / "status.json",
                 {"name": BEACH_NAME, "status": "", "town": "Winchester"},
@@ -469,6 +524,7 @@ def main() -> int:
     else:
         # Off-season: surface an explicit "Closed for Season" status so the page
         # can render a consistent state if it does decide to read status.json.
+        rewrite_beach_statuses("Closed for Season")
         write_json(
             DATA_DIR / "status.json",
             {

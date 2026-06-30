@@ -26,9 +26,15 @@ Prints JSON to stdout:
     "samples": { "headers": [...], "rows": [[date, indicator, threshold, results], ...] },
     "samplesCsv": "<5-column CSV matching the legacy Results.csv shape>",
     "status":  { "name": ..., "status": ..., "town": ... },
+    "allSamples": { "headers": [...], "beaches": { "<name>": { "town", "rows" } } },
+    "beaches": [ { "name", "town", "status" }, ... ],
     "testResultsRowCount": <int>,
     "errors": [ ... ]
   }
+
+`samples`/`samplesCsv`/`status` cover the default beach (for the per-beach archive
+and the SW-compat status.json); `allSamples`/`beaches` cover every beach in the
+workbook and power the front-end's Town/Beach selector.
 
 Requires Playwright (`pip install playwright` + `playwright install chromium`).
 Kept separate from sync_water_data.py so that script stays stdlib-only; the sync
@@ -178,6 +184,101 @@ def _col(columns: list[str], *candidates: str) -> int:
     raise KeyError(f"none of {candidates} in {columns}")
 
 
+SAMPLE_HEADERS = ["Date and Time", "Indicator", "Threshold: Single-Sample", "Results"]
+
+
+def _row_sort_key(row: list[str]):
+    # Sort newest first to match the legacy table ordering.
+    from datetime import datetime
+    for fmt in ("%m/%d/%Y %I:%M:%S %p", "%m/%d/%Y"):
+        try:
+            return datetime.strptime(row[0], fmt)
+        except ValueError:
+            continue
+    return datetime.min
+
+
+def build_all_samples(test_results: dict) -> dict:
+    """Group every beach's readings into {headers, beaches: {name: {town, rows}}}.
+
+    The TestResultsTable worksheet carries all beaches statewide; we keep them
+    all so the front-end can offer a Town/Beach selector and filter client-side.
+    """
+    cols = test_results["columns"]
+    i_name = _col(cols, "Name")
+    i_date = _col(cols, "Date")
+    i_ind = _col(cols, "Indicator")
+    i_res = _col(cols, "AGG(Results (CFU/100 ml))", "Results")
+    try:
+        i_town = _col(cols, "Town")
+    except KeyError:
+        i_town = None
+
+    beaches: dict = {}
+    for r in test_results["rows"]:
+        name = (r[i_name] or "").strip()
+        if not name:
+            continue
+        date = _normalize_date(r[i_date])
+        if not date or date.lower() == "null":
+            continue  # no reading for this row
+        indicator = (r[i_ind] or "").strip()
+        result = (r[i_res] or "").strip()
+        threshold = SINGLE_SAMPLE_THRESHOLDS.get(indicator, DEFAULT_THRESHOLD)
+        town = (r[i_town].strip() if i_town is not None and r[i_town] else "")
+        entry = beaches.setdefault(name, {"town": town, "rows": []})
+        if town and not entry["town"]:
+            entry["town"] = town
+        entry["rows"].append([date, indicator, threshold, result])
+
+    for entry in beaches.values():
+        entry["rows"].sort(key=_row_sort_key, reverse=True)
+
+    return {"headers": list(SAMPLE_HEADERS), "beaches": beaches}
+
+
+def build_all_statuses(map_data: dict) -> list[dict]:
+    """Every beach's current status from the Map worksheet: [{name, town, status}]."""
+    cols = map_data["columns"]
+    i_name = _col(cols, "Beach Name", "Name")
+    i_status = _col(cols, "Beach Status", "Status")
+    try:
+        i_town = _col(cols, "Town")
+    except KeyError:
+        i_town = None
+    out: list[dict] = []
+    seen: set[str] = set()
+    for r in map_data["rows"]:
+        name = (r[i_name] or "").strip()
+        if not name or name in seen:
+            continue
+        seen.add(name)
+        out.append({
+            "name": name,
+            "status": (r[i_status] or "").strip(),
+            "town": (r[i_town].strip() if i_town is not None and r[i_town] else ""),
+        })
+    return out
+
+
+def build_beach_index(all_samples: dict, statuses: list[dict]) -> list[dict]:
+    """Union of monitored beaches (Map) and beaches with readings, sorted by
+    town then name, for the front-end Town/Beach selector."""
+    by_name: dict[str, dict] = {}
+    for s in statuses:
+        by_name[s["name"]] = {
+            "name": s["name"],
+            "town": s.get("town", ""),
+            "status": s.get("status", ""),
+        }
+    for name, entry in (all_samples.get("beaches") or {}).items():
+        if name not in by_name:
+            by_name[name] = {"name": name, "town": entry.get("town", ""), "status": ""}
+        elif not by_name[name]["town"] and entry.get("town"):
+            by_name[name]["town"] = entry["town"]
+    return sorted(by_name.values(), key=lambda b: (b["town"].lower(), b["name"].lower()))
+
+
 def build_samples(test_results: dict, beach_name: str) -> tuple[dict, str]:
     cols = test_results["columns"]
     i_name = _col(cols, "Name")
@@ -197,18 +298,9 @@ def build_samples(test_results: dict, beach_name: str) -> tuple[dict, str]:
         threshold = SINGLE_SAMPLE_THRESHOLDS.get(indicator, DEFAULT_THRESHOLD)
         rows.append([date, indicator, threshold, result])
 
-    # Sort newest first to match the legacy table ordering.
-    def _key(row):
-        from datetime import datetime
-        for fmt in ("%m/%d/%Y %I:%M:%S %p", "%m/%d/%Y"):
-            try:
-                return datetime.strptime(row[0], fmt)
-            except ValueError:
-                continue
-        return datetime.min
-    rows.sort(key=_key, reverse=True)
+    rows.sort(key=_row_sort_key, reverse=True)
 
-    headers = ["Date and Time", "Indicator", "Threshold: Single-Sample", "Results"]
+    headers = list(SAMPLE_HEADERS)
     samples = {"headers": headers, "rows": rows}
 
     # CSV in the legacy 5-column shape (duplicate Date column at index 3) so the
@@ -257,12 +349,19 @@ def fetch_all(beach_name: str = BEACH_NAME) -> dict:
                 page = browser.new_page()
                 test_results = _read_worksheet(page, base_url, "TestResultsTable")
                 out["testResultsRowCount"] = len(test_results["rows"])
+                # Default beach (back-compat: drives the per-beach archive CSV and
+                # the SW-compat status.json) plus the full all-beaches dataset that
+                # powers the front-end Town/Beach selector.
                 samples, samples_csv = build_samples(test_results, beach_name)
                 out["samples"] = samples
                 out["samplesCsv"] = samples_csv
+                all_samples = build_all_samples(test_results)
+                out["allSamples"] = all_samples
 
+                statuses: list[dict] = []
                 try:
                     map_data = _read_worksheet(page, base_url, "Map")
+                    statuses = build_all_statuses(map_data)
                     status = build_status(map_data, beach_name)
                     if status:
                         out["status"] = status
@@ -270,6 +369,7 @@ def fetch_all(beach_name: str = BEACH_NAME) -> dict:
                         errors.append("status: beach not found in Map worksheet")
                 except Exception as e:  # noqa: BLE001
                     errors.append(f"status: {e}")
+                out["beaches"] = build_beach_index(all_samples, statuses)
             finally:
                 browser.close()
     finally:

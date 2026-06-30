@@ -1,0 +1,39 @@
+{
+  "headers": ["Date and Time", "Indicator", "Threshold: Single-Sample", "Results"],
+  "beaches": {
+    "Carson Beach": {
+      "town": "Boston",
+      "rows": [
+        ["6/26/2026 9:00:00 AM", "Enterococci", "61", "12.00"],
+        ["6/19/2026 9:00:00 AM", "Enterococci", "61", "4.00"]
+      ]
+    },
+    "Tenean Beach": {
+      "town": "Boston",
+      "rows": [
+        ["6/26/2026 9:30:00 AM", "Enterococci", "61", "240.00"],
+        ["6/19/2026 9:30:00 AM", "Enterococci", "61", "61.00"]
+      ]
+    },
+    "Wollaston Beach": {
+      "town": "Quincy",
+      "rows": [
+        ["6/25/2026 8:45:00 AM", "Enterococci", "61", "8.00"]
+      ]
+    },
+    "Revere Beach": {
+      "town": "Revere",
+      "rows": [
+        ["6/26/2026 8:00:00 AM", "Enterococci", "61", "3.00"]
+      ]
+    },
+    "Shannon Beach @ Upper Mystic (DCR)": {
+      "town": "Winchester",
+      "rows": [
+        ["6/26/2026 10:03:00 AM", "Enterococci", "61", "118.70"],
+        ["6/24/2026 3:00:00 PM", "Enterococci", "61", "30.10"],
+        ["6/23/2026 9:40:00 AM", "Enterococci", "61", "8.50"]
+      ]
+    }
+  }
+}
