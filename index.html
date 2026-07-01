@@ -386,29 +386,7 @@
             gap: 1rem;
             flex-wrap: wrap;
             align-items: flex-end;
-            padding: 1rem 1.5rem;
-        }
-
-        .beach-selector-actions {
-            display: flex;
-            justify-content: flex-end;
-            padding: 0 1.5rem 1.25rem;
-        }
-
-        .selector-done {
-            background: #0ea5e9;
-            color: #fff;
-            border: none;
-            padding: 0.6rem 1.75rem;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            min-height: 44px;
-        }
-
-        .selector-done:hover {
-            background: #0284c7;
+            padding: 1rem 1.5rem 1.5rem;
         }
 
         .beach-selector .field {
@@ -745,9 +723,6 @@
                     <label for="beach-select">Beach</label>
                     <select id="beach-select"></select>
                 </div>
-            </div>
-            <div class="beach-selector-actions">
-                <button type="button" class="selector-done" id="selector-done">Done</button>
             </div>
         </div>
 
@@ -1561,7 +1536,7 @@
         // The add-beach card stays collapsed behind the "Add beach…" chip until the
         // visitor opts in. Once open it stays open across selection changes and
         // background refreshes (the recents row remains visible alongside it) until
-        // the visitor dismisses it with Done / ×.
+        // the visitor dismisses it with the × button.
         let selectorExpanded = false;
 
         function applySelectorVisibility() {
@@ -1592,15 +1567,13 @@
             applySelectorVisibility();
         }
 
-        // The close (×) and Done buttons live in static markup, so wire them once.
+        // The close (×) button lives in static markup, so wire it once.
         function wireSelectorDismiss() {
-            ['selector-close', 'selector-done'].forEach(id => {
-                const btn = document.getElementById(id);
-                if (btn && btn.dataset.wired !== '1') {
-                    btn.dataset.wired = '1';
-                    btn.addEventListener('click', (e) => { e.preventDefault(); closeSelector(); });
-                }
-            });
+            const btn = document.getElementById('selector-close');
+            if (btn && btn.dataset.wired !== '1') {
+                btn.dataset.wired = '1';
+                btn.addEventListener('click', (e) => { e.preventDefault(); closeSelector(); });
+            }
         }
 
         // Build one quick-switch beach link. Real /beach/<slug>/ hrefs so they can be
