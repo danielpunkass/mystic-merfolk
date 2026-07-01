@@ -678,10 +678,10 @@
 
     	// Recently-viewed beaches, surfaced as quick-switch links under the title so
     	// visitors can hop between the beaches they care about. Persisted in a cookie
-    	// as a most-recent-first JSON array of beach names. RECENT_BEACHES_LIMIT is
-    	// how many *other* beaches (besides the current one) to show — bump to taste.
+    	// as an ordered JSON array of beach names (newly-discovered beaches prepended).
+    	// The list is unbounded — visitors prune it themselves via each beach's remove
+    	// control — so there's no display or storage cap.
     	const RECENT_BEACH_COOKIE = 'recentBeaches';
-    	const RECENT_BEACHES_LIMIT = 3;
 
     	function getRecentBeaches() {
     	    try {
@@ -698,10 +698,8 @@
     	    // Already tracked: leave the order alone so hopping between recent beaches
     	    // never reshuffles the list (only genuinely new beaches move things).
     	    if (list.includes(name)) return;
-    	    // New beach: add to the front. Keep one extra beyond the display limit so a
-    	    // full list survives the current beach being filtered out of the "others".
-    	    const next = [name, ...list].slice(0, RECENT_BEACHES_LIMIT + 1);
-    	    setCookie(RECENT_BEACH_COOKIE, JSON.stringify(next));
+    	    // New beach: add to the front. The list is unbounded; visitors trim it.
+    	    setCookie(RECENT_BEACH_COOKIE, JSON.stringify([name, ...list]));
     	}
     	function removeRecentBeach(name) {
     	    const next = getRecentBeaches().filter(n => n !== name);
@@ -1417,10 +1415,12 @@
             return wrap;
         }
 
-        // Render the "current beach + recent beaches" nav that sits where the old
-        // "Looking for another beach?" link was. The current beach leads, followed by
-        // up to RECENT_BEACHES_LIMIT recently-viewed others (each removable on hover),
-        // then a "Find beach…" escape hatch that opens the full Town/Beach selector.
+        // Render the recent-beaches nav that sits where the old "Looking for another
+        // beach?" link was. Beaches are shown in their stable stored order (the whole
+        // list — it's unbounded and visitor-pruned); the current beach is highlighted
+        // *in place* rather than hoisted to the front, so clicking a recent beach never
+        // reshuffles the list. Non-current beaches are removable on hover; a trailing
+        // "Find beach…" escape hatch opens the full Town/Beach selector.
         function renderRecentBeachLinks() {
             const nav = document.getElementById('recent-beaches');
             if (!nav) return;
@@ -1435,14 +1435,18 @@
                 return s;
             };
 
-            nav.appendChild(buildRecentBeachLink(selectedBeach, true));
-            getRecentBeaches()
-                .filter(name => name !== selectedBeach && getBeachEntry(name))
-                .slice(0, RECENT_BEACHES_LIMIT)
-                .forEach(name => {
-                    nav.appendChild(sep());
-                    nav.appendChild(buildRecentBeachItem(name));
-                });
+            // Stored order, current beach kept in its slot. Guard-prepend the current
+            // beach only if it isn't tracked yet (it normally is, via recordRecentBeach).
+            let names = getRecentBeaches().filter(name => getBeachEntry(name));
+            if (!names.includes(selectedBeach) && getBeachEntry(selectedBeach)) {
+                names = [selectedBeach, ...names];
+            }
+            names.forEach((name, i) => {
+                if (i > 0) nav.appendChild(sep());
+                nav.appendChild(name === selectedBeach
+                    ? buildRecentBeachLink(name, true)
+                    : buildRecentBeachItem(name));
+            });
 
             nav.appendChild(sep());
             const more = document.createElement('a');
