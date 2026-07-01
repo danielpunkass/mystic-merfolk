@@ -350,12 +350,65 @@
             }
         }
 
+        .beach-selector-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem 0;
+        }
+
+        .beach-selector-title {
+            font-weight: 700;
+            color: #1a365d;
+            font-size: 1.1rem;
+        }
+
+        .selector-close {
+            border: none;
+            background: transparent;
+            color: #64748b;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 8px;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .selector-close:hover {
+            color: #1a365d;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
         .beach-selector {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
             align-items: flex-end;
-            padding: 1.5rem;
+            padding: 1rem 1.5rem;
+        }
+
+        .beach-selector-actions {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 1.5rem 1.25rem;
+        }
+
+        .selector-done {
+            background: #0ea5e9;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.75rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            min-height: 44px;
+        }
+
+        .selector-done:hover {
+            background: #0284c7;
         }
 
         .beach-selector .field {
@@ -679,6 +732,10 @@
         </div>
 
         <div class="card" id="beach-selector-card" style="display: none;">
+            <div class="beach-selector-header">
+                <span class="beach-selector-title">Add a beach</span>
+                <button type="button" class="selector-close" id="selector-close" aria-label="Close">×</button>
+            </div>
             <div class="beach-selector">
                 <div class="field">
                     <label for="town-select">Town</label>
@@ -688,6 +745,9 @@
                     <label for="beach-select">Beach</label>
                     <select id="beach-select"></select>
                 </div>
+            </div>
+            <div class="beach-selector-actions">
+                <button type="button" class="selector-done" id="selector-done">Done</button>
             </div>
         </div>
 
@@ -1498,9 +1558,10 @@
             });
         }
 
-        // The selectors stay collapsed behind the "Looking for another beach?"
-        // link until the visitor opts in; opening them keeps them open across
-        // selection changes and background refreshes.
+        // The add-beach card stays collapsed behind the "Add beach…" chip until the
+        // visitor opts in. Once open it stays open across selection changes and
+        // background refreshes (the recents row remains visible alongside it) until
+        // the visitor dismisses it with Done / ×.
         let selectorExpanded = false;
 
         function applySelectorVisibility() {
@@ -1511,8 +1572,10 @@
                 row.style.display = 'none';
                 return;
             }
+            // The recents row stays visible whenever there are beaches — including
+            // while the add-beach card is open — so the history is always at hand.
+            row.style.display = 'block';
             card.style.display = selectorExpanded ? 'block' : 'none';
-            row.style.display = selectorExpanded ? 'none' : 'block';
         }
 
         function openSelector() {
@@ -1521,6 +1584,23 @@
             document.getElementById('beach-selector-card')
                 .scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             document.getElementById('town-select').focus();
+        }
+
+        // Dismiss the add-beach card after the visitor is done changing beaches.
+        function closeSelector() {
+            selectorExpanded = false;
+            applySelectorVisibility();
+        }
+
+        // The close (×) and Done buttons live in static markup, so wire them once.
+        function wireSelectorDismiss() {
+            ['selector-close', 'selector-done'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn && btn.dataset.wired !== '1') {
+                    btn.dataset.wired = '1';
+                    btn.addEventListener('click', (e) => { e.preventDefault(); closeSelector(); });
+                }
+            });
         }
 
         // Build one quick-switch beach link. Real /beach/<slug>/ hrefs so they can be
@@ -1589,7 +1669,7 @@
             more.href = '#';
             more.id = 'change-beach-link';
             more.className = 'recent-more';
-            more.textContent = 'Find beach…';
+            more.textContent = 'Add beach…';
             nav.appendChild(more);
 
             // On the phone chip layout the nav scrolls horizontally rather than
@@ -1633,6 +1713,7 @@
             const townSel = document.getElementById('town-select');
             const beachSel = document.getElementById('beach-select');
             wireRecentBeachNav();
+            wireSelectorDismiss();
             if (!beachIndex.length) { renderRecentBeachLinks(); applySelectorVisibility(); return; }
 
             const selEntry = getBeachEntry(selectedBeach) || beachIndex[0];
