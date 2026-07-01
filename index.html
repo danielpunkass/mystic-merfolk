@@ -274,7 +274,15 @@
             margin-bottom: 2rem;
         }
 
-        .change-beach-row a {
+        .recent-beaches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .recent-beaches a {
             color: #64748b;
             font-weight: 600;
             font-size: 0.95rem;
@@ -282,8 +290,28 @@
             cursor: pointer;
         }
 
-        .change-beach-row a:hover {
+        .recent-beaches a:hover {
             text-decoration: underline;
+        }
+
+        /* The beach being viewed: emphasized and inert. */
+        .recent-beach-current {
+            color: #1a365d !important;
+            cursor: default;
+        }
+
+        .recent-beach-current:hover {
+            text-decoration: none !important;
+        }
+
+        .recent-sep {
+            color: #cbd5e1;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .recent-more {
+            font-style: italic;
         }
 
         .beach-selector {
@@ -475,7 +503,7 @@
         </div>
 
         <div class="change-beach-row" id="change-beach-row" style="display: none;">
-            <a href="#" id="change-beach-link">Looking for another beach? Click here to change…</a>
+            <nav class="recent-beaches" id="recent-beaches" aria-label="Recently viewed beaches"></nav>
         </div>
 
         <div class="card" id="beach-selector-card" style="display: none;">
@@ -611,6 +639,31 @@
     	// last selected (persisted in a cookie); first-time visitors land here.
     	const DEFAULT_BEACH = 'Shannon Beach @ Upper Mystic (DCR)';
     	const BEACH_COOKIE = 'selectedBeach';
+
+    	// Recently-viewed beaches, surfaced as quick-switch links under the title so
+    	// visitors can hop between the beaches they care about. Persisted in a cookie
+    	// as a most-recent-first JSON array of beach names. RECENT_BEACHES_LIMIT is
+    	// how many *other* beaches (besides the current one) to show — bump to taste.
+    	const RECENT_BEACH_COOKIE = 'recentBeaches';
+    	const RECENT_BEACHES_LIMIT = 3;
+
+    	function getRecentBeaches() {
+    	    try {
+    	        const raw = getCookie(RECENT_BEACH_COOKIE);
+    	        const list = raw ? JSON.parse(raw) : [];
+    	        return Array.isArray(list) ? list.filter(n => typeof n === 'string') : [];
+    	    } catch (e) {
+    	        return [];
+    	    }
+    	}
+    	function recordRecentBeach(name) {
+    	    if (!name) return;
+    	    // Move to front, de-duplicate. Keep one extra beyond the display limit so a
+    	    // full list survives the current beach being filtered out of the "others".
+    	    const next = [name, ...getRecentBeaches().filter(n => n !== name)]
+    	        .slice(0, RECENT_BEACHES_LIMIT + 1);
+    	    setCookie(RECENT_BEACH_COOKIE, JSON.stringify(next));
+    	}
 
     	// --- cookie helpers ---------------------------------------------------
     	function getCookie(name) {
@@ -1285,25 +1338,87 @@
             row.style.display = selectorExpanded ? 'none' : 'block';
         }
 
-        function wireChangeBeachLink() {
-            const link = document.getElementById('change-beach-link');
-            if (!link || link.dataset.wired === '1') return;
-            link.dataset.wired = '1';
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                selectorExpanded = true;
-                applySelectorVisibility();
-                document.getElementById('beach-selector-card')
-                    .scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                document.getElementById('town-select').focus();
+        function openSelector() {
+            selectorExpanded = true;
+            applySelectorVisibility();
+            document.getElementById('beach-selector-card')
+                .scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            document.getElementById('town-select').focus();
+        }
+
+        // Build one quick-switch beach link. Real /beach/<slug>/ hrefs so they can be
+        // opened in a new tab / shared; clicks are intercepted to switch in place.
+        function buildRecentBeachLink(name, isCurrent) {
+            const a = document.createElement('a');
+            a.href = '/beach/' + beachToSlug(name) + '/';
+            a.className = 'recent-beach' + (isCurrent ? ' recent-beach-current' : '');
+            a.dataset.beach = name;
+            a.textContent = shortBeachName(name);
+            if (isCurrent) a.setAttribute('aria-current', 'page');
+            return a;
+        }
+
+        // Render the "current beach + recent beaches" nav that sits where the old
+        // "Looking for another beach?" link was. The current beach leads, followed by
+        // up to RECENT_BEACHES_LIMIT recently-viewed others, then an "Another beach…"
+        // escape hatch that opens the full Town/Beach selector.
+        function renderRecentBeachLinks() {
+            const nav = document.getElementById('recent-beaches');
+            if (!nav) return;
+            nav.innerHTML = '';
+            if (!beachIndex.length) return;
+
+            const sep = () => {
+                const s = document.createElement('span');
+                s.className = 'recent-sep';
+                s.setAttribute('aria-hidden', 'true');
+                s.textContent = '·';
+                return s;
+            };
+
+            nav.appendChild(buildRecentBeachLink(selectedBeach, true));
+            getRecentBeaches()
+                .filter(name => name !== selectedBeach && getBeachEntry(name))
+                .slice(0, RECENT_BEACHES_LIMIT)
+                .forEach(name => {
+                    nav.appendChild(sep());
+                    nav.appendChild(buildRecentBeachLink(name, false));
+                });
+
+            nav.appendChild(sep());
+            const more = document.createElement('a');
+            more.href = '#';
+            more.id = 'change-beach-link';
+            more.className = 'recent-more';
+            more.textContent = 'Another beach…';
+            nav.appendChild(more);
+        }
+
+        // Delegated so it survives renderRecentBeachLinks() rebuilding the children.
+        function wireRecentBeachNav() {
+            const nav = document.getElementById('recent-beaches');
+            if (!nav || nav.dataset.wired === '1') return;
+            nav.dataset.wired = '1';
+            nav.addEventListener('click', async (e) => {
+                if (e.target.closest('#change-beach-link')) {
+                    e.preventDefault();
+                    openSelector();
+                    return;
+                }
+                const link = e.target.closest('a[data-beach]');
+                if (link) {
+                    e.preventDefault();
+                    const name = link.dataset.beach;
+                    if (name && name !== selectedBeach) await selectBeach(name);
+                }
             });
         }
 
         function populateSelectors() {
             const townSel = document.getElementById('town-select');
             const beachSel = document.getElementById('beach-select');
-            wireChangeBeachLink();
-            if (!beachIndex.length) { applySelectorVisibility(); return; }
+            wireRecentBeachNav();
+            if (!beachIndex.length) { renderRecentBeachLinks(); applySelectorVisibility(); return; }
 
             const selEntry = getBeachEntry(selectedBeach) || beachIndex[0];
             const selectedTown = townOf(selEntry);
@@ -1324,26 +1439,48 @@
             townSel.onchange = onTownChange;
             beachSel.onchange = onBeachChange;
 
+            renderRecentBeachLinks();
             applySelectorVisibility();
+        }
+
+        // Keep the Town/Beach dropdowns in sync with selectedBeach after a switch
+        // made elsewhere (e.g. a recent-beach link), so an open selector matches.
+        function syncSelectorToSelection() {
+            const townSel = document.getElementById('town-select');
+            const beachSel = document.getElementById('beach-select');
+            if (!townSel || !beachSel || !beachIndex.length) return;
+            const selEntry = getBeachEntry(selectedBeach);
+            if (!selEntry) return;
+            const town = townOf(selEntry);
+            if (townSel.value !== town) {
+                townSel.value = town;
+                populateBeachSelect(town);
+            }
+            beachSel.value = selectedBeach;
+        }
+
+        // The single path for switching beaches: persist, record as recent, update
+        // the permalink, resync the selector + recent links, and re-render.
+        async function selectBeach(name) {
+            selectedBeach = name;
+            setCookie(BEACH_COOKIE, selectedBeach);
+            recordRecentBeach(selectedBeach);
+            updatePermalink();
+            resetHistorical();
+            syncSelectorToSelection();
+            renderRecentBeachLinks();
+            await renderSelected();
         }
 
         async function onTownChange() {
             const town = document.getElementById('town-select').value;
             populateBeachSelect(town);
             // Selecting a town jumps to its first beach.
-            selectedBeach = document.getElementById('beach-select').value;
-            setCookie(BEACH_COOKIE, selectedBeach);
-            updatePermalink();
-            resetHistorical();
-            await renderSelected();
+            await selectBeach(document.getElementById('beach-select').value);
         }
 
         async function onBeachChange() {
-            selectedBeach = document.getElementById('beach-select').value;
-            setCookie(BEACH_COOKIE, selectedBeach);
-            updatePermalink();
-            resetHistorical();
-            await renderSelected();
+            await selectBeach(document.getElementById('beach-select').value);
         }
 
         // Archive differs per beach; collapse + invalidate the historical card on switch.
@@ -1867,6 +2004,9 @@
             loadPromise.then(async () => {
                 resolvePendingSlug();
                 ensureSelectionValid();
+                // Log the landing beach so it leads the recent-beaches list and
+                // returning visitors see their history.
+                if (beachIndex.length) recordRecentBeach(selectedBeach);
                 populateSelectors();
                 // Always reflect the visible beach in the address bar as a
                 // /beach/<slug>/ permalink — even when it came from the cookie or
