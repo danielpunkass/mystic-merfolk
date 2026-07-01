@@ -314,6 +314,42 @@
             font-style: italic;
         }
 
+        /* A recent beach and its hover-revealed remove control. */
+        .recent-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.1rem;
+        }
+
+        .recent-remove {
+            border: none;
+            background: transparent;
+            padding: 0 0.15rem;
+            font-size: 1rem;
+            line-height: 1;
+            color: #94a3b8;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.12s ease, color 0.12s ease;
+        }
+
+        /* Reveal on hover; keep it reachable via keyboard focus. */
+        .recent-item:hover .recent-remove,
+        .recent-remove:focus-visible {
+            opacity: 1;
+        }
+
+        .recent-remove:hover {
+            color: #ef4444;
+        }
+
+        /* Touch devices have no hover — keep remove controls always visible. */
+        @media (hover: none) {
+            .recent-remove {
+                opacity: 1;
+            }
+        }
+
         .beach-selector {
             display: flex;
             gap: 1rem;
@@ -658,10 +694,17 @@
     	}
     	function recordRecentBeach(name) {
     	    if (!name) return;
-    	    // Move to front, de-duplicate. Keep one extra beyond the display limit so a
+    	    const list = getRecentBeaches();
+    	    // Already tracked: leave the order alone so hopping between recent beaches
+    	    // never reshuffles the list (only genuinely new beaches move things).
+    	    if (list.includes(name)) return;
+    	    // New beach: add to the front. Keep one extra beyond the display limit so a
     	    // full list survives the current beach being filtered out of the "others".
-    	    const next = [name, ...getRecentBeaches().filter(n => n !== name)]
-    	        .slice(0, RECENT_BEACHES_LIMIT + 1);
+    	    const next = [name, ...list].slice(0, RECENT_BEACHES_LIMIT + 1);
+    	    setCookie(RECENT_BEACH_COOKIE, JSON.stringify(next));
+    	}
+    	function removeRecentBeach(name) {
+    	    const next = getRecentBeaches().filter(n => n !== name);
     	    setCookie(RECENT_BEACH_COOKIE, JSON.stringify(next));
     	}
 
@@ -1358,10 +1401,26 @@
             return a;
         }
 
+        // A recent (non-current) beach: the switch link plus a remove control that
+        // surfaces on hover, letting visitors prune the list.
+        function buildRecentBeachItem(name) {
+            const wrap = document.createElement('span');
+            wrap.className = 'recent-item';
+            wrap.appendChild(buildRecentBeachLink(name, false));
+            const rm = document.createElement('button');
+            rm.type = 'button';
+            rm.className = 'recent-remove';
+            rm.dataset.remove = name;
+            rm.setAttribute('aria-label', 'Remove ' + shortBeachName(name) + ' from recent beaches');
+            rm.textContent = '×';
+            wrap.appendChild(rm);
+            return wrap;
+        }
+
         // Render the "current beach + recent beaches" nav that sits where the old
         // "Looking for another beach?" link was. The current beach leads, followed by
-        // up to RECENT_BEACHES_LIMIT recently-viewed others, then an "Another beach…"
-        // escape hatch that opens the full Town/Beach selector.
+        // up to RECENT_BEACHES_LIMIT recently-viewed others (each removable on hover),
+        // then a "Find beach…" escape hatch that opens the full Town/Beach selector.
         function renderRecentBeachLinks() {
             const nav = document.getElementById('recent-beaches');
             if (!nav) return;
@@ -1382,7 +1441,7 @@
                 .slice(0, RECENT_BEACHES_LIMIT)
                 .forEach(name => {
                     nav.appendChild(sep());
-                    nav.appendChild(buildRecentBeachLink(name, false));
+                    nav.appendChild(buildRecentBeachItem(name));
                 });
 
             nav.appendChild(sep());
@@ -1390,7 +1449,7 @@
             more.href = '#';
             more.id = 'change-beach-link';
             more.className = 'recent-more';
-            more.textContent = 'Another beach…';
+            more.textContent = 'Find beach…';
             nav.appendChild(more);
         }
 
@@ -1400,6 +1459,13 @@
             if (!nav || nav.dataset.wired === '1') return;
             nav.dataset.wired = '1';
             nav.addEventListener('click', async (e) => {
+                const remove = e.target.closest('.recent-remove');
+                if (remove) {
+                    e.preventDefault();
+                    removeRecentBeach(remove.dataset.remove);
+                    renderRecentBeachLinks();
+                    return;
+                }
                 if (e.target.closest('#change-beach-link')) {
                     e.preventDefault();
                     openSelector();
