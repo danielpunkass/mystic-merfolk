@@ -414,6 +414,142 @@
             }
         }
 
+        /* Phone layout (≤600px). iPads/tablets keep the normal table + centered nav;
+           the fixes below target the size class where the 5-column table overflows and
+           the wrapping nav gets unwieldy. */
+        @media (max-width: 600px) {
+            /* --- Tighter header so "Current Status" isn't pushed below the fold --- */
+            h1 { font-size: 1.6rem; }
+            .subtitle { font-size: 0.9rem; }
+            #status-heading { font-size: 1.4rem !important; }
+            #current-status,
+            #cso-incidents { padding: 1.25rem !important; }
+
+            /* --- Recent-beaches: a horizontally-scrollable row of chips --- */
+            .recent-beaches {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                gap: 0.4rem;
+                padding-bottom: 0.35rem;
+                margin: 0 -0.25rem;
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
+                scrollbar-width: none;          /* Firefox */
+                -webkit-overflow-scrolling: touch;
+            }
+            .recent-beaches::-webkit-scrollbar { display: none; }  /* WebKit */
+            .recent-sep { display: none; }      /* chips carry their own spacing */
+
+            /* Each chip (current link, recent-item wrapper, and Find link) */
+            .recent-beaches > a,
+            .recent-item {
+                flex: 0 0 auto;
+                min-height: 44px;
+                border-radius: 999px;
+                border: 1px solid #cbd5e1;
+                background: rgba(255, 255, 255, 0.75);
+                display: inline-flex;
+                align-items: center;
+                box-sizing: border-box;
+            }
+            .recent-beaches > a { padding: 0 0.95rem; }
+            .recent-item { padding-left: 0.95rem; }        /* × supplies right padding */
+            .recent-item .recent-beach { padding: 0; }
+
+            /* Current beach: a filled chip that stands out even mid-list. */
+            .recent-beach-current {
+                background: #0ea5e9 !important;
+                border-color: #0ea5e9 !important;
+                color: #fff !important;
+            }
+            .recent-beaches a { text-decoration: none !important; }
+
+            /* Remove control: always visible on touch, ≥44px tall tap target. */
+            .recent-remove {
+                opacity: 1;
+                min-width: 40px;
+                min-height: 44px;
+                font-size: 1.25rem;
+                color: #64748b;
+            }
+            .recent-more { font-style: normal; border-style: dashed; }
+
+            /* --- Data tables → stacked cards: nothing clips, no horizontal scroll --- */
+            .table-container { overflow-x: visible; box-shadow: none; }
+            #geomean-table thead,
+            #data-table thead,
+            #historical-table thead { display: none; }
+            #geomean-table,
+            #data-table,
+            #historical-table,
+            #geomean-table tbody,
+            #data-table tbody,
+            #historical-table tbody,
+            #geomean-table tr,
+            #data-table tr,
+            #historical-table tr,
+            #geomean-table td,
+            #data-table td,
+            #historical-table td { display: block; }
+
+            #geomean-table tbody tr,
+            #data-table tbody tr,
+            #historical-table tbody tr {
+                padding: 0.85rem 1rem;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            #geomean-table tbody tr:nth-child(even),
+            #data-table tbody tr:nth-child(even),
+            #historical-table tbody tr:nth-child(even) {
+                background: rgba(241, 250, 255, 0.6);
+            }
+
+            #geomean-table td,
+            #data-table td,
+            #historical-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 1rem;
+                text-align: right;
+                padding: 0.2rem 0 !important;
+                border: none !important;
+                background: transparent !important;
+                font-size: 0.9rem;
+            }
+            #geomean-table td::before,
+            #data-table td::before,
+            #historical-table td::before {
+                content: attr(data-label);
+                flex: 0 0 auto;
+                text-align: left;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                letter-spacing: 0.4px;
+                color: #64748b;
+            }
+            /* First cell (date) is the card title: left-aligned, no label. */
+            #geomean-table td:first-child,
+            #data-table td:first-child,
+            #historical-table td:first-child {
+                display: block;
+                text-align: left;
+                font-weight: 700;
+                font-size: 1rem;
+                color: #1a365d;
+                margin-bottom: 0.35rem;
+            }
+            #geomean-table td:first-child::before,
+            #data-table td:first-child::before,
+            #historical-table td:first-child::before { display: none; }
+            /* Status row: give the badge a little breathing room. */
+            #geomean-table td:last-child,
+            #data-table td:last-child,
+            #historical-table td:last-child { padding-top: 0.4rem !important; }
+        }
+
         .refresh-indicator {
             position: fixed;
             top: 20px;
@@ -1455,6 +1591,15 @@
             more.className = 'recent-more';
             more.textContent = 'Find beach…';
             nav.appendChild(more);
+
+            // On the phone chip layout the nav scrolls horizontally rather than
+            // wrapping; keep the current beach's chip in view (no-op when it fits).
+            const cur = nav.querySelector('.recent-beach-current');
+            if (cur && nav.scrollWidth > nav.clientWidth) {
+                const navRect = nav.getBoundingClientRect();
+                const curRect = cur.getBoundingClientRect();
+                nav.scrollLeft += (curRect.left - navRect.left) - (nav.clientWidth - curRect.width) / 2;
+            }
         }
 
         // Delegated so it survives renderRecentBeachLinks() rebuilding the children.
@@ -1829,12 +1974,14 @@
             tableBody.innerHTML = '';
 
             const headers = rows[0] || [];
-            headers.forEach(header => {
+            // Collapse "Threshold: Single-Sample" / "Threshold: Geometric Mean" to just
+            // "Threshold" so the single-sample and geomean tables share identical headers
+            // (and thus matching column widths). These normalized labels are reused as
+            // each <td>'s data-label, which drives the stacked-card layout on phones.
+            const headerLabels = headers.map(h => /^threshold/i.test(h) ? 'Threshold' : h);
+            headerLabels.forEach(label => {
                 const th = document.createElement('th');
-                // Collapse "Threshold: Single-Sample" / "Threshold: Geometric Mean"
-                // to just "Threshold" so the single-sample and geomean tables share
-                // identical headers (and thus matching column widths).
-                th.textContent = /^threshold/i.test(header) ? 'Threshold' : header;
+                th.textContent = label;
                 th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
                 tableHead.appendChild(th);
             });
@@ -1849,13 +1996,15 @@
                 if (row.length < 3) return;
 
                 const tr = document.createElement('tr');
-                row.forEach((column) => {
+                row.forEach((column, i) => {
                     const td = document.createElement('td');
                     td.textContent = column;
+                    td.dataset.label = headerLabels[i] || '';
                     tr.appendChild(td);
                 });
 
                 const statusTd = document.createElement('td');
+                statusTd.dataset.label = 'Status';
                 // Columns after dropping the duplicate date: 0:Date, 1:Indicator, 2:Threshold, 3:Results
                 const threshold = parseFloat(row[2]);
                 const result = parseFloat(row[3]?.replace(/,/g, '') || '0');
