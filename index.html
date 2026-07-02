@@ -499,15 +499,17 @@
                 box-sizing: border-box;
             }
             .recent-beaches > a { padding: 0 0.95rem; }
-            .recent-item { padding-left: 0.95rem; }        /* × supplies right padding */
+            .recent-item { padding-left: 0.95rem; }         /* × supplies right padding */
+            .recent-item:not(:has(.recent-remove)) { padding-right: 0.95rem; }
             .recent-item .recent-beach { padding: 0; }
 
             /* Current beach: a filled chip that stands out even mid-list. */
-            .recent-beach-current {
+            .recent-item-current {
                 background: #0ea5e9 !important;
                 border-color: #0ea5e9 !important;
-                color: #fff !important;
             }
+            .recent-item-current .recent-beach-current { color: #fff !important; }
+            .recent-item-current .recent-remove { color: rgba(255, 255, 255, 0.9); }
             .recent-beaches a { text-decoration: none !important; }
 
             /* Remove control: always visible on touch, ≥44px tall tap target. */
@@ -1618,19 +1620,23 @@
             return a;
         }
 
-        // A recent (non-current) beach: the switch link plus a remove control that
-        // surfaces on hover, letting visitors prune the list.
-        function buildRecentBeachItem(name) {
+        // A recent beach: the switch link plus (when removable) a remove control that
+        // surfaces on hover, letting visitors prune the list. The current beach is
+        // removable too — removing it switches to a neighbour (see the nav handler) —
+        // so only the sole remaining beach is left non-removable.
+        function buildRecentBeachItem(name, isCurrent, removable) {
             const wrap = document.createElement('span');
-            wrap.className = 'recent-item';
-            wrap.appendChild(buildRecentBeachLink(name, false));
-            const rm = document.createElement('button');
-            rm.type = 'button';
-            rm.className = 'recent-remove';
-            rm.dataset.remove = name;
-            rm.setAttribute('aria-label', 'Remove ' + shortBeachName(name) + ' from recent beaches');
-            rm.textContent = '×';
-            wrap.appendChild(rm);
+            wrap.className = 'recent-item' + (isCurrent ? ' recent-item-current' : '');
+            wrap.appendChild(buildRecentBeachLink(name, isCurrent));
+            if (removable) {
+                const rm = document.createElement('button');
+                rm.type = 'button';
+                rm.className = 'recent-remove';
+                rm.dataset.remove = name;
+                rm.setAttribute('aria-label', 'Remove ' + shortBeachName(name) + ' from recent beaches');
+                rm.textContent = '×';
+                wrap.appendChild(rm);
+            }
             return wrap;
         }
 
@@ -1660,11 +1666,12 @@
             if (!names.includes(selectedBeach) && getBeachEntry(selectedBeach)) {
                 names = [selectedBeach, ...names];
             }
+            // Every beach is removable except the sole remaining one (nothing to fall
+            // back to), so the current beach gets a × as long as there are others.
+            const removable = names.length > 1;
             names.forEach((name, i) => {
                 if (i > 0) nav.appendChild(sep());
-                nav.appendChild(name === selectedBeach
-                    ? buildRecentBeachLink(name, true)
-                    : buildRecentBeachItem(name));
+                nav.appendChild(buildRecentBeachItem(name, name === selectedBeach, removable));
             });
 
             nav.appendChild(sep());
@@ -1694,8 +1701,24 @@
                 const remove = e.target.closest('.recent-remove');
                 if (remove) {
                     e.preventDefault();
-                    removeRecentBeach(remove.dataset.remove);
-                    renderRecentBeachLinks();
+                    const name = remove.dataset.remove;
+                    const list = getRecentBeaches();
+                    const survivors = list.filter(n => n !== name && getBeachEntry(n));
+                    if (name === selectedBeach && survivors.length) {
+                        // Removing the active beach: switch to the nearest surviving
+                        // neighbour (forward first, then back) so a beach stays selected.
+                        const idx = list.indexOf(name);
+                        let fallback = null;
+                        for (let j = idx + 1; j < list.length && !fallback; j++)
+                            if (survivors.includes(list[j])) fallback = list[j];
+                        for (let j = idx - 1; j >= 0 && !fallback; j--)
+                            if (survivors.includes(list[j])) fallback = list[j];
+                        removeRecentBeach(name);
+                        await selectBeach(fallback);
+                    } else {
+                        removeRecentBeach(name);
+                        renderRecentBeachLinks();
+                    }
                     return;
                 }
                 if (e.target.closest('#change-beach-link')) {
