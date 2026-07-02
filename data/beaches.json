@@ -1105,14 +1105,12 @@
     {
       "name": "Clammer's Beach",
       "town": "Essex",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Front Beach (Essex)",
       "town": "Essex",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Fort Phoenix (DCR)",
@@ -2801,14 +2799,12 @@
     {
       "name": "Salisbury Beach Center - Broadway St. (DCR)",
       "town": "Salisbury",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Salisbury Beach, Main (DCR)",
       "town": "Salisbury",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "East Sandwich",
