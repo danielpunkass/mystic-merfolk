@@ -463,7 +463,8 @@
     {
       "name": "Flax Pond (DCR)",
       "town": "Brewster",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Linnell Landing",
@@ -728,7 +729,8 @@
     {
       "name": "Moses Smith Creek",
       "town": "Dartmouth",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Nonquitt",
@@ -1103,12 +1105,14 @@
     {
       "name": "Clammer's Beach",
       "town": "Essex",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Front Beach (Essex)",
       "town": "Essex",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Fort Phoenix (DCR)",
@@ -1283,7 +1287,8 @@
     {
       "name": "Freetown Town Beach",
       "town": "Freetown",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Dunn Pond (DCR)",
@@ -1513,7 +1518,8 @@
     {
       "name": "Eagle Lake",
       "town": "Holden",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Pleasure Point",
@@ -1733,7 +1739,8 @@
     {
       "name": "Lynn Shore Beach (DCR)",
       "town": "Lynn",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Stacey's Brook Outfall (No Swimming) (DCR)",
@@ -1748,7 +1755,8 @@
     {
       "name": "Magnolia East",
       "town": "Manchester",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Singing @Location 1",
@@ -2118,7 +2126,8 @@
     {
       "name": "Sesachacha Pond",
       "town": "Nantucket",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Sewerbeds",
@@ -2208,27 +2217,32 @@
     {
       "name": "Plum Island - 55th St.",
       "town": "Newburyport",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Plum Island - end of island 1",
       "town": "Newburyport",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Plum Island - end of island 2",
       "town": "Newburyport",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Plum Island Point",
       "town": "Newburyport",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Crystal Lake (Newton)",
       "town": "Newton",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Windsor Lake",
@@ -2468,7 +2482,8 @@
     {
       "name": "Court Street",
       "town": "Provincetown",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Herring Cove (National Seashore)",
@@ -2653,7 +2668,8 @@
     {
       "name": "S.P.E.N.A. Beach",
       "town": "Rochester",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Back Beach",
@@ -2713,7 +2729,8 @@
     {
       "name": "Children's Island - Back",
       "town": "Salem",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Children's Island - Dock",
@@ -2723,7 +2740,8 @@
     {
       "name": "Children's Island - Wally",
       "town": "Salem",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Collins Cove",
@@ -2783,12 +2801,14 @@
     {
       "name": "Salisbury Beach Center - Broadway St. (DCR)",
       "town": "Salisbury",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Salisbury Beach, Main (DCR)",
       "town": "Salisbury",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "East Sandwich",
@@ -2848,7 +2868,8 @@
     {
       "name": "Peckham Pond @ Camp Nihan (DCR)",
       "town": "Saugus",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "North Pond Beach (DCR)",
@@ -2983,7 +3004,8 @@
     {
       "name": "Kings",
       "town": "Swampscott",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "New Ocean/Eisman's",
@@ -3178,7 +3200,8 @@
     {
       "name": "Briarwood",
       "town": "Wareham",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "East Boulevard",
@@ -3223,7 +3246,8 @@
     {
       "name": "Pinehurst",
       "town": "Wareham",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Point Independence",
@@ -3263,7 +3287,8 @@
     {
       "name": "Wareham Lake Shores",
       "town": "Wareham",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "White Island Association",
@@ -3518,12 +3543,14 @@
     {
       "name": "Shannon Beach @ Upper Mystic (DCR)",
       "town": "Winchester",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Donovans",
       "town": "Winthrop",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Grandview",
@@ -3538,7 +3565,8 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Winthrop Beach (DCR)",
