@@ -393,7 +393,7 @@
     {
       "name": "Patuisset",
       "town": "Bourne",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Picture Lake (Flax Pond)",
@@ -713,7 +713,7 @@
     {
       "name": "Hidden Bay",
       "town": "Dartmouth",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Jones Town Beach North",
@@ -1513,7 +1513,7 @@
     {
       "name": "Eagle Lake",
       "town": "Holden",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Pleasure Point",
@@ -1613,12 +1613,12 @@
     {
       "name": "Clark",
       "town": "Ipswich",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Crane",
       "town": "Ipswich",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Hood Pond-boat ramp",
@@ -1628,7 +1628,7 @@
     {
       "name": "Little Neck",
       "town": "Ipswich",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Pavilion @Main",
@@ -1648,7 +1648,7 @@
     {
       "name": "Steep Hill",
       "town": "Ipswich",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Gray's (Kingston)",
@@ -1733,7 +1733,7 @@
     {
       "name": "Lynn Shore Beach (DCR)",
       "town": "Lynn",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Stacey's Brook Outfall (No Swimming) (DCR)",
@@ -2203,7 +2203,7 @@
     {
       "name": "Plum Island",
       "town": "Newbury",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Plum Island - 55th St.",
@@ -2243,7 +2243,7 @@
     {
       "name": "Frye Pond Beach (DCR)",
       "town": "North Andover",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Stevens Pond - Center",
@@ -2468,7 +2468,7 @@
     {
       "name": "Court Street",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Herring Cove (National Seashore)",
@@ -2983,7 +2983,7 @@
     {
       "name": "Kings",
       "town": "Swampscott",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "New Ocean/Eisman's",
@@ -3043,12 +3043,12 @@
     {
       "name": "Beamans Pond - Campground (DCR)",
       "town": "Templeton",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Beamans Pond - Day Use (DCR)",
       "town": "Templeton",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Hilman's Point",
