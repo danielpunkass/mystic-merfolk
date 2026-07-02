@@ -183,6 +183,19 @@
             color: #991b1b !important;
         }
 
+        /* Closure-reason subheading under the "Closed for Swimming" heading. */
+        .status-reason {
+            margin: 0 0 1rem 0;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #991b1b;
+        }
+
+        .status-reason .status-reason-label {
+            font-weight: 500;
+            opacity: 0.85;
+        }
+
         .status-card-open p {
             color: #166534 !important;
         }
@@ -351,9 +364,6 @@
         }
 
         .beach-selector-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             padding: 1.25rem 1.5rem 0;
         }
 
@@ -363,30 +373,34 @@
             font-size: 1.1rem;
         }
 
-        .selector-close {
-            border: none;
-            background: transparent;
-            color: #64748b;
-            font-size: 1.5rem;
-            line-height: 1;
-            cursor: pointer;
-            padding: 0.25rem 0.5rem;
-            border-radius: 8px;
-            min-width: 44px;
-            min-height: 44px;
-        }
-
-        .selector-close:hover {
-            color: #1a365d;
-            background: rgba(0, 0, 0, 0.05);
-        }
-
         .beach-selector {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
             align-items: flex-end;
-            padding: 1rem 1.5rem 1.5rem;
+            padding: 1rem 1.5rem;
+        }
+
+        .beach-selector-actions {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 1.5rem 1.25rem;
+        }
+
+        .selector-add {
+            background: #0ea5e9;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 2rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            min-height: 44px;
+        }
+
+        .selector-add:hover {
+            background: #0284c7;
         }
 
         .beach-selector .field {
@@ -712,7 +726,6 @@
         <div class="card" id="beach-selector-card" style="display: none;">
             <div class="beach-selector-header">
                 <span class="beach-selector-title">Add a beach</span>
-                <button type="button" class="selector-close" id="selector-close" aria-label="Close">×</button>
             </div>
             <div class="beach-selector">
                 <div class="field">
@@ -724,6 +737,9 @@
                     <select id="beach-select"></select>
                 </div>
             </div>
+            <div class="beach-selector-actions">
+                <button type="button" class="selector-add" id="selector-add">Add</button>
+            </div>
         </div>
 
         <div id="notification-banner" class="notification-banner" style="display: none;">
@@ -734,6 +750,7 @@
         <div class="card" id="status-card">
             <div id="current-status" style="padding: 2rem;">
                 <h2 id="status-heading" style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">Current Status: Loading...</h2>
+                <div id="status-reason" class="status-reason" style="display: none;"></div>
                 <p id="status-description" style="margin: 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">This is the official status for Shannon Beach specifically, based on single samples and the cumulative geometric mean of recent results. As always, swim at your own risk and at the discretion of your own best judgement!</p>
             </div>
         </div>
@@ -958,7 +975,7 @@
     	function getStatusForBeach(name) {
     	    const entry = getBeachEntry(name);
     	    if (!entry) return null;
-    	    return { name: entry.name, status: entry.status, town: entry.town };
+    	    return { name: entry.name, status: entry.status, town: entry.town, reason: entry.reason };
     	}
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -1534,9 +1551,9 @@
         }
 
         // The add-beach card stays collapsed behind the "Add beach…" chip until the
-        // visitor opts in. Once open it stays open across selection changes and
-        // background refreshes (the recents row remains visible alongside it) until
-        // the visitor dismisses it with the × button.
+        // visitor opts in. Once open it stays open (the recents row remains visible
+        // alongside it) while the visitor stages a Town/Beach choice, and auto-dismisses
+        // when they click "Add".
         let selectorExpanded = false;
 
         function applySelectorVisibility() {
@@ -1555,24 +1572,37 @@
 
         function openSelector() {
             selectorExpanded = true;
+            // Start the staged selection from the current beach.
+            syncSelectorToSelection();
             applySelectorVisibility();
             document.getElementById('beach-selector-card')
                 .scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             document.getElementById('town-select').focus();
         }
 
-        // Dismiss the add-beach card after the visitor is done changing beaches.
         function closeSelector() {
             selectorExpanded = false;
             applySelectorVisibility();
         }
 
-        // The close (×) button lives in static markup, so wire it once.
-        function wireSelectorDismiss() {
-            const btn = document.getElementById('selector-close');
+        // Commit the staged Town/Beach dropdown choice: make it the active beach, add
+        // it to recents, then auto-dismiss. This is the ONLY point at which changing
+        // beaches via the add-beach card takes effect — the dropdowns stage a choice
+        // but don't alter any state until "Add" is clicked.
+        async function commitStagedBeach() {
+            const name = document.getElementById('beach-select').value;
+            if (name && name !== selectedBeach) {
+                await selectBeach(name);
+            }
+            closeSelector();
+        }
+
+        // The "Add" button lives in static markup, so wire it once.
+        function wireSelectorAdd() {
+            const btn = document.getElementById('selector-add');
             if (btn && btn.dataset.wired !== '1') {
                 btn.dataset.wired = '1';
-                btn.addEventListener('click', (e) => { e.preventDefault(); closeSelector(); });
+                btn.addEventListener('click', (e) => { e.preventDefault(); commitStagedBeach(); });
             }
         }
 
@@ -1686,11 +1716,18 @@
             const townSel = document.getElementById('town-select');
             const beachSel = document.getElementById('beach-select');
             wireRecentBeachNav();
-            wireSelectorDismiss();
+            wireSelectorAdd();
             if (!beachIndex.length) { renderRecentBeachLinks(); applySelectorVisibility(); return; }
 
-            const selEntry = getBeachEntry(selectedBeach) || beachIndex[0];
-            const selectedTown = townOf(selEntry);
+            // While the card is open, preserve the visitor's in-progress (staged)
+            // dropdown choice across background refreshes; otherwise anchor the
+            // dropdowns to the active beach.
+            const preserveStaged = selectorExpanded;
+            const stagedTown = townSel.value;
+            const stagedBeach = beachSel.value;
+
+            const anchorEntry = getBeachEntry(selectedBeach) || beachIndex[0];
+            const anchorTown = preserveStaged && stagedTown ? stagedTown : townOf(anchorEntry);
 
             const towns = [...new Set(beachIndex.map(townOf))].sort((a, b) => a.localeCompare(b));
             townSel.innerHTML = '';
@@ -1698,15 +1735,17 @@
                 const opt = document.createElement('option');
                 opt.value = t;
                 opt.textContent = t;
-                if (t === selectedTown) opt.selected = true;
+                if (t === anchorTown) opt.selected = true;
                 townSel.appendChild(opt);
             });
 
             populateBeachSelect(townSel.value);
-            beachSel.value = selectedBeach;
+            beachSel.value = preserveStaged && stagedBeach ? stagedBeach : selectedBeach;
 
+            // Town change restages the beach list; the beach dropdown only stages a
+            // value — neither commits until "Add" is clicked (see commitStagedBeach).
             townSel.onchange = onTownChange;
-            beachSel.onchange = onBeachChange;
+            beachSel.onchange = null;
 
             renderRecentBeachLinks();
             applySelectorVisibility();
@@ -1741,15 +1780,10 @@
             await renderSelected();
         }
 
-        async function onTownChange() {
-            const town = document.getElementById('town-select').value;
-            populateBeachSelect(town);
-            // Selecting a town jumps to its first beach.
-            await selectBeach(document.getElementById('beach-select').value);
-        }
-
-        async function onBeachChange() {
-            await selectBeach(document.getElementById('beach-select').value);
+        // Staging only: repopulate the beach list for the chosen town. No active-beach
+        // change happens here — that waits for "Add" (commitStagedBeach).
+        function onTownChange() {
+            populateBeachSelect(document.getElementById('town-select').value);
         }
 
         // Archive differs per beach; collapse + invalidate the historical card on switch.
@@ -1881,6 +1915,10 @@
             const statusCard = document.getElementById('status-card');
             const statusHeading = document.getElementById('status-heading');
             const statusDescription = document.getElementById('status-description');
+            const statusReason = document.getElementById('status-reason');
+
+            // Hidden by default; only the "Closed" branch with a stated reason shows it.
+            if (statusReason) statusReason.style.display = 'none';
 
             if (!isInSeason()) {
                 renderOffSeasonUI();
@@ -1920,6 +1958,19 @@
                 'samples and the cumulative geometric mean of recent results. As always, swim at your own ' +
                 'risk and at the discretion of your own best judgement!';
             statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';
+
+            // When closed, surface the state's stated reason (e.g. "Bacterial
+            // Exceedance") as a subheading beneath the main heading.
+            const reason = statusObj && statusObj.reason ? String(statusObj.reason).trim() : '';
+            if (statusReason && !isOpen && reason) {
+                statusReason.textContent = '';
+                const label = document.createElement('span');
+                label.className = 'status-reason-label';
+                label.textContent = 'Reason: ';
+                statusReason.appendChild(label);
+                statusReason.appendChild(document.createTextNode(reason));
+                statusReason.style.display = 'block';
+            }
         }
 
         // Update CSO incidents display
