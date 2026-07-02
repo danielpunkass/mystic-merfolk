@@ -294,6 +294,24 @@ def build_all_statuses(map_data: dict) -> list[dict]:
     return out
 
 
+def build_closure_reasons(closure_data: dict) -> dict:
+    """Map full beach name -> stated closure reason from the Closures dashboard's
+    ClosureTable worksheet (e.g. "Bacterial Exceedance", "Harmful Cyanobacteria
+    Bloom", "CSO/SSO event"). Keyed by the same full beach name used by the Map
+    and TestResultsTable worksheets, so it joins directly onto a beach's status.
+    """
+    cols = closure_data["columns"]
+    i_beach = _col(cols, "Beach", "Beach Name", "Name")
+    i_reason = _col(cols, "Closure Reason", "Reason")
+    out: dict[str, str] = {}
+    for r in closure_data["rows"]:
+        name = (r[i_beach] or "").strip()
+        reason = (r[i_reason] or "").strip()
+        if name and reason and name not in out:
+            out[name] = reason
+    return out
+
+
 def build_beach_index(all_samples: dict, statuses: list[dict]) -> list[dict]:
     """Beaches with readings, carrying their Map status when one exists, sorted by
     town then name, for the front-end Town/Beach selector.
@@ -310,11 +328,14 @@ def build_beach_index(all_samples: dict, statuses: list[dict]) -> list[dict]:
     out: list[dict] = []
     for name, entry in (all_samples.get("beaches") or {}).items():
         st = status_by_name.get(name)
-        out.append({
+        beach = {
             "name": name,
             "town": entry.get("town") or (st.get("town", "") if st else ""),
             "status": st.get("status", "") if st else "",
-        })
+        }
+        if st and st.get("reason"):
+            beach["reason"] = st["reason"]
+        out.append(beach)
     return sorted(out, key=lambda b: (b["town"].lower(), b["name"].lower()))
 
 
@@ -375,7 +396,7 @@ def fetch_all(beach_name: str = BEACH_NAME) -> dict:
     token = fetch_public_token()
 
     tmpdir = tempfile.mkdtemp(prefix="tableau-embed-")
-    for view in ("TestResultsTable", "Map"):
+    for view in ("TestResultsTable", "Map", "Closures"):
         Path(tmpdir, f"{view}.html").write_text(_embed_html(token, view), encoding="utf-8")
 
     httpd, port = _serve_dir(tmpdir)
@@ -408,6 +429,28 @@ def fetch_all(beach_name: str = BEACH_NAME) -> dict:
                         errors.append("status: beach not found in Map worksheet")
                 except Exception as e:  # noqa: BLE001
                     errors.append(f"status: {e}")
+
+                # Stated closure reason (e.g. "Bacterial Exceedance") from the Closures
+                # dashboard's ClosureTable, attached to any currently-Closed beach.
+                # Best-effort: a failure here means no reason is shown, never a failed
+                # sync. Gated on the live status so a beach that has since reopened
+                # doesn't carry a stale seasonal reason.
+                try:
+                    closure_data = _read_worksheet(page, base_url, "Closures")
+                    reasons = build_closure_reasons(closure_data)
+                    for s in statuses:
+                        if s.get("status", "").strip().lower() == "closed":
+                            r = reasons.get(s["name"])
+                            if r:
+                                s["reason"] = r
+                    cur = out.get("status")
+                    if cur and cur.get("status", "").strip().lower() == "closed":
+                        r = reasons.get(cur["name"])
+                        if r:
+                            cur["reason"] = r
+                except Exception as e:  # noqa: BLE001
+                    errors.append(f"closures: {e}")
+
                 out["beaches"] = build_beach_index(all_samples, statuses)
             finally:
                 browser.close()

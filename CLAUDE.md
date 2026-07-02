@@ -110,8 +110,12 @@ Tableau JS Embedding API in a headless browser:
   → `{ "token": "<JWT>" }`
 - Workbook: `https://prod-useast-b.online.tableau.com/t/eohhspublic/views/BeachWaterQualityDashboard/<view>`
   — `TestResultsTable` worksheet → all-beach readings (Town, Name, Date, Indicator,
-  GeoMean, Results); `Map` worksheet → per-beach status (Beach Name, Beach Status, …).
-  Both read with `getSummaryDataAsync({maxRows:0, ignoreSelection:true})`.
+  GeoMean, Results); `Map` worksheet → per-beach status (Beach Name, Beach Status, …);
+  `Closures` view's `ClosureTable` worksheet → stated closure reason per closed beach
+  (Town, Beach, Closure Reason). All read with
+  `getSummaryDataAsync({maxRows:0, ignoreSelection:true})` (the summary-data API only
+  — underlying/full-column data is `403 PermissionDenied` for the public token, so a
+  reason must be a field placed on a worksheet, which is why `ClosureTable` is used).
 
 Legacy fallback only (frozen at 2025 season end), consumed by `sync_water_data.py`:
 
@@ -134,7 +138,7 @@ CSO incidents (year-round, stdlib):
   "Geometric Mean Test Results" card and uses freshwater geomean thresholds
   (Enterococci 33, E. Coli 126). (The old single-beach `{ headers, rows }` shape is
   still read for back-compat.)
-- `data/beaches.json` → `{ "beaches": [ { "name", "town", "status" }, ... ] }`
+- `data/beaches.json` → `{ "beaches": [ { "name", "town", "status", "reason"? }, ... ] }`
   — the index that drives the Town/Beach selector and carries per-beach status.
   Only beaches with readings are listed: DPH's `Map` worksheet names some sites at
   the water-body level (e.g. `Lake Dennison State Park (DCR)`) while readings come
@@ -142,9 +146,15 @@ CSO incidents (year-round, stdlib):
   aggregate entries are excluded (`build_beach_index`) to keep the selector to
   beaches that actually have data.
   Off-season every `status` is `"Closed for Season"`; on an in-season fetch
-  failure they are blanked (`""`) while the beach list is preserved.
-- `data/status.json` → `{ "name", "status", "town" }` — the **default beach
-  only** (Shannon), kept for the currently-disabled service worker. The page
+  failure they are blanked (`""`) while the beach list is preserved. `reason`
+  (optional) is the state's stated closure reason (e.g. `"Bacterial Exceedance"`,
+  `"Harmful Cyanobacteria Bloom"`, `"CSO/SSO event"`), present only on
+  currently-`Closed` beaches. It comes from the `Closures` dashboard's
+  `ClosureTable` worksheet (Town, Beach, Closure Reason), joined onto the Map
+  status by full beach name (`build_closure_reasons`), and drives the closure-reason
+  subheading in the red "Closed for Swimming" status card.
+- `data/status.json` → `{ "name", "status", "town", "reason"? }` — the **default
+  beach only** (Shannon), kept for the currently-disabled service worker. The page
   reads per-beach status from `beaches.json`, not this file.
 - `data/cso.json` → `{ "results": [...], "rowCount": N, "windowStart": "YYYY-MM-DD" }`
   — Front-end filters `results` to Mystic Lake by `waterBodyDescription` and only
