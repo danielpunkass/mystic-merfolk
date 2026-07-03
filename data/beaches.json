@@ -1736,8 +1736,7 @@
     {
       "name": "Lynn Shore Beach (DCR)",
       "town": "Lynn",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Closed"
     },
     {
       "name": "Stacey's Brook Outfall (No Swimming) (DCR)",
@@ -2998,7 +2997,7 @@
       "name": "Kings",
       "town": "Swampscott",
       "status": "Closed",
-      "reason": "CSO/SSO event"
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "New Ocean/Eisman's",
@@ -3558,7 +3557,8 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Winthrop Beach (DCR)",
