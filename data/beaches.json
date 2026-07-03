@@ -1285,8 +1285,7 @@
     {
       "name": "Freetown Town Beach",
       "town": "Freetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Closed"
     },
     {
       "name": "Dunn Pond (DCR)",
@@ -2239,8 +2238,7 @@
     {
       "name": "Crystal Lake (Newton)",
       "town": "Newton",
-      "status": "Closed",
-      "reason": "Harmful Cyanobacteria Bloom"
+      "status": "Closed"
     },
     {
       "name": "Windsor Lake",
@@ -2666,8 +2664,7 @@
     {
       "name": "S.P.E.N.A. Beach",
       "town": "Rochester",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Closed"
     },
     {
       "name": "Back Beach",
@@ -2738,8 +2735,7 @@
     {
       "name": "Children's Island - Wally",
       "town": "Salem",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Closed"
     },
     {
       "name": "Collins Cove",
@@ -3561,8 +3557,7 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Closed"
     },
     {
       "name": "Winthrop Beach (DCR)",
