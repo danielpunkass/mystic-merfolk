@@ -1285,7 +1285,7 @@
     {
       "name": "Freetown Town Beach",
       "town": "Freetown",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Dunn Pond (DCR)",
@@ -2238,7 +2238,7 @@
     {
       "name": "Crystal Lake (Newton)",
       "town": "Newton",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Windsor Lake",
@@ -2549,7 +2549,8 @@
     {
       "name": "Broady (Baker)",
       "town": "Quincy",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Chikatawbot",
@@ -2664,7 +2665,7 @@
     {
       "name": "S.P.E.N.A. Beach",
       "town": "Rochester",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Back Beach",
@@ -2735,7 +2736,7 @@
     {
       "name": "Children's Island - Wally",
       "town": "Salem",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Collins Cove",
@@ -3547,7 +3548,8 @@
     {
       "name": "Grandview",
       "town": "Winthrop",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Halford",
@@ -3557,7 +3559,7 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Winthrop Beach (DCR)",
