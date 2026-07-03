@@ -3548,8 +3548,7 @@
     {
       "name": "Grandview",
       "town": "Winthrop",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Halford",
@@ -3559,7 +3558,7 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Winthrop Beach (DCR)",
