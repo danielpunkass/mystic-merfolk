@@ -338,8 +338,7 @@
     {
       "name": "Malibu (DCR)",
       "town": "Boston",
-      "status": "Closed",
-      "reason": "Other"
+      "status": "Closed"
     },
     {
       "name": "Pleasure Bay (DCR) @Broadway",
@@ -364,8 +363,7 @@
     {
       "name": "Tenean (DCR)",
       "town": "Boston",
-      "status": "Closed",
-      "reason": "Other"
+      "status": "Closed"
     },
     {
       "name": "Barlows Landing",
@@ -897,6 +895,11 @@
     {
       "name": "Wallum Lake Terrace",
       "town": "Douglas",
+      "status": "Open"
+    },
+    {
+      "name": "Mascuppic",
+      "town": "Dracut",
       "status": "Open"
     },
     {
@@ -2007,6 +2010,11 @@
       "status": "Open"
     },
     {
+      "name": "Woods Pond Cabins",
+      "town": "Middleborough",
+      "status": "Open"
+    },
+    {
       "name": "Thunderbridge @Center",
       "town": "Middleton",
       "status": ""
@@ -2479,8 +2487,7 @@
     {
       "name": "Court Street",
       "town": "Provincetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Closed"
     },
     {
       "name": "Herring Cove (National Seashore)",
