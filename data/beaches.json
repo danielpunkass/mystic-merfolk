@@ -1820,7 +1820,8 @@
     {
       "name": "Converse Point",
       "town": "Marion",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Dexter Lane",
