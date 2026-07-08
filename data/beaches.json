@@ -168,7 +168,8 @@
     {
       "name": "Keyes Beach (Sea Street)",
       "town": "Barnstable",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Loop",
@@ -338,7 +339,7 @@
     {
       "name": "Malibu (DCR)",
       "town": "Boston",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Pleasure Bay (DCR) @Broadway",
@@ -363,7 +364,7 @@
     {
       "name": "Tenean (DCR)",
       "town": "Boston",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Barlows Landing",
@@ -865,7 +866,8 @@
     {
       "name": "West Dennis (Residential)",
       "town": "Dennis",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "West Dennis (Snack Bar)",
@@ -1777,7 +1779,8 @@
     {
       "name": "West Manchester",
       "town": "Manchester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "White",
@@ -1817,7 +1820,7 @@
     {
       "name": "Converse Point",
       "town": "Marion",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Dexter Lane",
@@ -2457,7 +2460,8 @@
     {
       "name": "333 Commercial Street",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "451 Commercial Street",
@@ -2467,7 +2471,8 @@
     {
       "name": "593 Commercial Street",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "637 Commercial Street",
@@ -2487,7 +2492,7 @@
     {
       "name": "Court Street",
       "town": "Provincetown",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Herring Cove (National Seashore)",
@@ -2497,12 +2502,14 @@
     {
       "name": "Johnson Street",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Kendall Lane",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Provincetown Inn East",
@@ -2527,12 +2534,14 @@
     {
       "name": "Town Landing - Breakwater",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Town Landing - Snail Road",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Town Landing - West of Coast Guard",
@@ -2547,7 +2556,8 @@
     {
       "name": "Winston Ave",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Avalon",
@@ -2673,7 +2683,8 @@
     {
       "name": "S.P.E.N.A. Beach",
       "town": "Rochester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Back Beach",
@@ -2744,7 +2755,8 @@
     {
       "name": "Children's Island - Wally",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Collins Cove",
@@ -2774,7 +2786,8 @@
     {
       "name": "Ocean Avenue",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Osgood",
@@ -2794,7 +2807,8 @@
     {
       "name": "Willow Avenue",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Willows Pier",
