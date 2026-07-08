@@ -284,7 +284,7 @@
     {
       "name": "Woodbury",
       "town": "Beverly",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Bolton Town Beach",
@@ -680,7 +680,7 @@
     {
       "name": "Sandy Beach (Danvers)",
       "town": "Danvers",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Anthony Beach",
@@ -720,12 +720,12 @@
     {
       "name": "Jones Town Beach North",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Jones Town Beach South",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Moses Smith Creek",
@@ -3051,12 +3051,12 @@
     {
       "name": "Coles River Club off Harbor Rd",
       "town": "Swansea",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Leeside",
       "town": "Swansea",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Sandy Beach (Swansea)",
@@ -3066,7 +3066,7 @@
     {
       "name": "Swansea Town Beach",
       "town": "Swansea",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Massasoit Campers Beach (DCR)",
@@ -3096,7 +3096,7 @@
     {
       "name": "Owen Little Way",
       "town": "Tisbury",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Owen Park",
@@ -3121,7 +3121,7 @@
     {
       "name": "Vineyard Harbor Motel",
       "town": "Tisbury",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "name": "Pearl Hill Pond Beach (DCR)",
