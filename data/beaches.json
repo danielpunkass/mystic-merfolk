@@ -1302,7 +1302,8 @@
     {
       "name": "Freetown Town Beach",
       "town": "Freetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Dunn Pond (DCR)",
@@ -1809,12 +1810,14 @@
     {
       "name": "Gas House",
       "town": "Marblehead",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Grace Oliver",
       "town": "Marblehead",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Stramski",
@@ -3612,8 +3615,7 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Winthrop Beach (DCR)",

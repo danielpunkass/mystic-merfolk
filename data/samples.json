@@ -9855,6 +9855,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "7/1/2026 11:46:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
+        [
           "6/26/2026 9:57:00 AM",
           "E. Coli",
           "235",
@@ -9886,15 +9892,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/26/2026 9:57:00 AM",
+        "date": "7/1/2026 11:46:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.52"
+        "value": "2.52"
       }
     },
     "Lake Manchaug Camping": {
       "town": "Douglas",
       "rows": [
+        [
+          "7/1/2026 11:53:00 AM",
+          "E. Coli",
+          "235",
+          "28.80"
+        ],
         [
           "6/26/2026 10:06:00 AM",
           "E. Coli",
@@ -9933,10 +9945,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/26/2026 10:06:00 AM",
+        "date": "7/1/2026 11:53:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.75"
+        "value": "9.97"
       }
     },
     "Wallum Lake (DCR)": {
@@ -10002,6 +10014,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "7/1/2026 11:28:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "6/26/2026 9:22:00 AM",
           "E. Coli",
           "235",
@@ -10039,10 +10057,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/26/2026 9:22:00 AM",
+        "date": "7/1/2026 11:28:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.87"
+        "value": "1.33"
       }
     },
     "Mascuppic": {
@@ -11769,6 +11787,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "7/8/2026 2:53:00 PM",
+          "Enterococci",
+          "61",
+          "4.00"
+        ],
+        [
           "7/1/2026 9:30:00 AM",
           "Enterococci",
           "61",
@@ -11792,7 +11816,13 @@
           "61",
           "0.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/8/2026 2:53:00 PM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "1.99"
+      }
     },
     "Fort Phoenix (DCR)": {
       "town": "Fairhaven",
@@ -11863,6 +11893,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "7/8/2026 1:48:00 PM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
+        [
           "7/1/2026 8:18:00 AM",
           "Enterococci",
           "61",
@@ -11886,11 +11922,23 @@
           "61",
           "2.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/8/2026 1:48:00 PM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "6.25"
+      }
     },
     "Sandy Beach (Raymond Street)": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "7/8/2026 1:38:00 PM",
+          "Enterococci",
+          "61",
+          "17.00"
+        ],
         [
           "7/1/2026 9:11:00 AM",
           "Enterococci",
@@ -11915,11 +11963,23 @@
           "61",
           "0.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/8/2026 1:38:00 PM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "2.50"
+      }
     },
     "Seaview": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "7/8/2026 2:31:00 PM",
+          "Enterococci",
+          "61",
+          "80.00"
+        ],
         [
           "7/1/2026 9:05:00 AM",
           "Enterococci",
@@ -11944,11 +12004,23 @@
           "61",
           "0.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/8/2026 2:31:00 PM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "2.40"
+      }
     },
     "West Island Causeway": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "7/8/2026 2:20:00 PM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
         [
           "7/1/2026 8:53:00 AM",
           "Enterococci",
@@ -11973,11 +12045,23 @@
           "61",
           "0.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/8/2026 2:20:00 PM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "1.27"
+      }
     },
     "West Island Town Beach": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "7/8/2026 2:08:00 PM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "7/1/2026 8:43:00 AM",
           "Enterococci",
@@ -12002,7 +12086,13 @@
           "61",
           "0.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/8/2026 2:08:00 PM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "0.94"
+      }
     },
     "Bikepath - Trunk River (East)": {
       "town": "Falmouth",
@@ -15813,6 +15903,12 @@
       "town": "Hudson",
       "rows": [
         [
+          "7/7/2026 10:13:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "6/30/2026 10:25:00 AM",
           "E. Coli",
           "235",
@@ -15856,10 +15952,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/30/2026 10:25:00 AM",
+        "date": "7/7/2026 10:13:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.22"
+        "value": "9.36"
       }
     },
     "A Street Bay Side": {
@@ -17225,6 +17321,12 @@
       "town": "Lanesborough",
       "rows": [
         [
+          "7/8/2026 6:03:00 AM",
+          "E. Coli",
+          "235",
+          "43.20"
+        ],
+        [
           "6/29/2026 8:18:00 AM",
           "E. Coli",
           "235",
@@ -17268,10 +17370,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 8:18:00 AM",
+        "date": "7/8/2026 6:03:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "20.81"
+        "value": "31.78"
       }
     },
     "Lee Town Beach": {
@@ -23706,6 +23808,12 @@
       "town": "North Adams",
       "rows": [
         [
+          "7/8/2026 11:27:00 AM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "6/29/2026 11:35:00 AM",
           "E. Coli",
           "235",
@@ -23749,7 +23857,7 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 11:35:00 AM",
+        "date": "7/8/2026 11:27:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "6.44"
@@ -24243,6 +24351,12 @@
       "town": "Orange",
       "rows": [
         [
+          "7/8/2026 11:17:00 AM",
+          "E. Coli",
+          "235",
+          "210.50"
+        ],
+        [
           "6/29/2026 8:10:00 AM",
           "E. Coli",
           "235",
@@ -24286,10 +24400,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 8:10:00 AM",
+        "date": "7/8/2026 11:17:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.75"
+        "value": "17.04"
       }
     },
     "Crystal Lake (Orleans)": {
@@ -24567,6 +24681,12 @@
       "town": "Otis",
       "rows": [
         [
+          "7/8/2026 11:34:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
+        [
           "6/30/2026 11:34:00 AM",
           "E. Coli",
           "235",
@@ -24610,10 +24730,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/30/2026 11:34:00 AM",
+        "date": "7/8/2026 11:34:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.54"
+        "value": "10.11"
       }
     },
     "Carbuncle Pond": {
@@ -24696,6 +24816,12 @@
       "town": "Plainfield",
       "rows": [
         [
+          "7/8/2026 8:33:00 AM",
+          "E. Coli",
+          "235",
+          "86.50"
+        ],
+        [
           "6/30/2026 5:56:00 AM",
           "E. Coli",
           "235",
@@ -24739,10 +24865,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/30/2026 5:56:00 AM",
+        "date": "7/8/2026 8:33:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.61"
+        "value": "7.31"
       }
     },
     "Barrett Pond (DCR)": {
@@ -29170,6 +29296,12 @@
       "town": "Rowe",
       "rows": [
         [
+          "7/8/2026 10:25:00 AM",
+          "E. Coli",
+          "235",
+          "39.30"
+        ],
+        [
           "6/29/2026 10:23:00 AM",
           "E. Coli",
           "235",
@@ -29213,15 +29345,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 10:23:00 AM",
+        "date": "7/8/2026 10:25:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.95"
+        "value": "11.86"
       }
     },
     "Rowe Town Beach at Pelham Park @Right": {
       "town": "Rowe",
       "rows": [
+        [
+          "7/8/2026 10:26:00 AM",
+          "E. Coli",
+          "235",
+          "57.10"
+        ],
         [
           "6/29/2026 10:25:00 AM",
           "E. Coli",
@@ -29266,10 +29404,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 10:25:00 AM",
+        "date": "7/8/2026 10:26:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.24"
+        "value": "16.09"
       }
     },
     "H.A. Moses Beach (Scout Reservation)": {
@@ -35708,6 +35846,12 @@
       "town": "Williamstown",
       "rows": [
         [
+          "7/8/2026 5:38:00 AM",
+          "E. Coli",
+          "235",
+          "206.40"
+        ],
+        [
           "6/29/2026 7:35:00 AM",
           "E. Coli",
           "235",
@@ -35757,10 +35901,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 7:35:00 AM",
+        "date": "7/8/2026 5:38:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "27.85"
+        "value": "54.04"
       }
     },
     "Lake Dennison State Park (DCR) @Day Use Beach": {
@@ -36434,6 +36578,12 @@
       "town": "Wrentham",
       "rows": [
         [
+          "7/6/2026 10:05:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "6/30/2026 8:58:00 AM",
           "E. Coli",
           "235",
@@ -36477,7 +36627,7 @@
         ]
       ],
       "geoMean": {
-        "date": "6/30/2026 8:58:00 AM",
+        "date": "7/6/2026 10:05:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "6.11"
