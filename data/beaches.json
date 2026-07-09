@@ -1249,7 +1249,8 @@
     {
       "name": "Surf Drive (East)",
       "town": "Falmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Surf Drive (Pool)",
