@@ -260,7 +260,8 @@
     {
       "name": "Mingo",
       "town": "Beverly",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Obear Park",
@@ -285,8 +286,7 @@
     {
       "name": "Woodbury",
       "town": "Beverly",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Bolton Town Beach",
@@ -468,8 +468,7 @@
     {
       "name": "Flax Pond (DCR)",
       "town": "Brewster",
-      "status": "Closed",
-      "reason": "Harmful Cyanobacteria Bloom"
+      "status": "Open"
     },
     {
       "name": "Linnell Landing",
@@ -721,8 +720,7 @@
     {
       "name": "Hidden Bay",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Jones Town Beach North",
@@ -3122,8 +3120,7 @@
     {
       "name": "Owen Little Way",
       "town": "Tisbury",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Owen Park",
@@ -3333,8 +3330,7 @@
     {
       "name": "Wareham Lake Shores",
       "town": "Wareham",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "White Island Association",
@@ -3615,7 +3611,8 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Winthrop Beach (DCR)",
