@@ -12362,6 +12362,12 @@
       "town": "Falmouth",
       "rows": [
         [
+          "7/8/2026 9:06:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/7/2026 8:16:00 AM",
           "Enterococci",
           "61",
@@ -12399,7 +12405,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 8:16:00 AM",
+        "date": "7/8/2026 9:06:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "16.07"
@@ -12408,6 +12414,12 @@
     "Bikepath - Trunk River (West)": {
       "town": "Falmouth",
       "rows": [
+        [
+          "7/8/2026 10:00:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/7/2026 8:10:00 AM",
           "Enterococci",
@@ -12446,15 +12458,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 8:10:00 AM",
+        "date": "7/8/2026 10:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "15.19"
+        "value": "13.23"
       }
     },
     "Bristol (East)": {
       "town": "Falmouth",
       "rows": [
+        [
+          "7/8/2026 12:13:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/7/2026 10:21:00 AM",
           "Enterococci",
@@ -12493,7 +12511,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 10:21:00 AM",
+        "date": "7/8/2026 12:13:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "15.72"
@@ -12502,6 +12520,12 @@
     "Bristol (West)": {
       "town": "Falmouth",
       "rows": [
+        [
+          "7/8/2026 12:15:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/7/2026 10:23:00 AM",
           "Enterococci",
@@ -12540,10 +12564,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 10:23:00 AM",
+        "date": "7/8/2026 12:15:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "12.99"
+        "value": "14.92"
       }
     },
     "Chapoquoit": {
@@ -12644,6 +12668,12 @@
       "town": "Falmouth",
       "rows": [
         [
+          "7/8/2026 11:59:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/7/2026 10:07:00 AM",
           "Enterococci",
           "61",
@@ -12681,7 +12711,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 10:07:00 AM",
+        "date": "7/8/2026 11:59:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "11.91"
@@ -12690,6 +12720,12 @@
     "Falmouth Heights (West)": {
       "town": "Falmouth",
       "rows": [
+        [
+          "7/8/2026 12:01:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/7/2026 10:09:00 AM",
           "Enterococci",
@@ -12728,10 +12764,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 10:09:00 AM",
+        "date": "7/8/2026 12:01:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "12.26"
+        "value": "14.09"
       }
     },
     "Grew's Pond": {
@@ -12926,6 +12962,12 @@
       "town": "Falmouth",
       "rows": [
         [
+          "7/8/2026 9:28:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/7/2026 8:54:00 AM",
           "Enterococci",
           "61",
@@ -12963,7 +13005,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 8:54:00 AM",
+        "date": "7/8/2026 9:28:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "19.09"
@@ -13179,6 +13221,12 @@
       "town": "Falmouth",
       "rows": [
         [
+          "7/8/2026 9:47:00 AM",
+          "Enterococci",
+          "61",
+          "31.00"
+        ],
+        [
           "7/7/2026 9:20:00 AM",
           "Enterococci",
           "61",
@@ -13216,15 +13264,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 9:20:00 AM",
+        "date": "7/8/2026 9:47:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "31.53"
+        "value": "45.42"
       }
     },
     "Surf Drive (Pool)": {
       "town": "Falmouth",
       "rows": [
+        [
+          "7/8/2026 9:37:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/7/2026 9:23:00 AM",
           "Enterococci",
@@ -13263,7 +13317,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 9:23:00 AM",
+        "date": "7/8/2026 9:37:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "15.55"
@@ -13272,6 +13326,12 @@
     "Surf Drive (West)": {
       "town": "Falmouth",
       "rows": [
+        [
+          "7/8/2026 9:42:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/7/2026 9:29:00 AM",
           "Enterococci",
@@ -13310,10 +13370,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 9:29:00 AM",
+        "date": "7/8/2026 9:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "11.91"
+        "value": "13.69"
       }
     },
     "Washburn Island Campers Beach (DCR)": {
