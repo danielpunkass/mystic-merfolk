@@ -127,7 +127,11 @@ def fetch_status_csv() -> str:
 
 
 BROWSER_FETCH_SCRIPT = REPO_ROOT / "fetch_tableau_cloud.py"
-BROWSER_FETCH_TIMEOUT = 180
+# Generous: the fetcher now forces a data-source refreshAsync() on each of its
+# three worksheet reads (so the summary data matches the live dashboard rather
+# than a ~day-stale cached extract), which adds seconds per read, and it retries
+# transient load flakes. The cron is every 15 min, so a long ceiling is fine.
+BROWSER_FETCH_TIMEOUT = 300
 
 
 def fetch_via_browser() -> dict:

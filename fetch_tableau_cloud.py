@@ -99,17 +99,36 @@ def fetch_public_token() -> str:
             "Origin": "https://www.mass.gov",
         },
     )
-    with urllib.request.urlopen(req, timeout=30) as r:
-        payload = json.loads(r.read().decode("utf-8", "replace"))
-    token = payload.get("token")
-    if not token:
-        raise RuntimeError(f"token endpoint returned no token: {payload!r}")
-    return token
+    # The token endpoint occasionally times out; a single blip shouldn't abort an
+    # otherwise-healthy fetch, so retry a few times with a short backoff.
+    import time
+    last_err: Exception | None = None
+    for attempt in range(1 + FETCH_RETRIES):
+        if attempt:
+            time.sleep(RETRY_BACKOFF_SECONDS)
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                payload = json.loads(r.read().decode("utf-8", "replace"))
+            token = payload.get("token")
+            if not token:
+                raise RuntimeError(f"token endpoint returned no token: {payload!r}")
+            return token
+        except Exception as e:  # noqa: BLE001 — transient network/HTTP; retry
+            last_err = e
+    raise RuntimeError(f"token fetch failed after {1 + FETCH_RETRIES} attempts: {last_err}")
 
 
 def _embed_html(token: str, view: str) -> str:
     # Loads a single worksheet and reads its full summary data via the
     # Embedding API. ignoreSelection + maxRows:0 returns every row unfiltered.
+    #
+    # Before reading, force a data-source refresh. DPH's shared "Beaches
+    # DataSource" lags the live data by ~a day: getSummaryDataAsync() otherwise
+    # returns a stale cached extract (e.g. newest reading a full day behind what
+    # the workbook's own Download -> Crosstab produces). refreshAsync() re-queries
+    # the source so the summary read matches the live dashboard. Best-effort: a
+    # refresh failure still falls through to a read of whatever's cached rather
+    # than failing the whole fetch.
     return f"""<!DOCTYPE html><html><head><meta charset="utf-8">
 <script type="module" src="{EMBED_API}"></script></head><body>
 <tableau-viz id="viz" src="{VIEW_BASE}/{view}" token="{token}" toolbar="hidden"></tableau-viz>
@@ -122,9 +141,18 @@ viz.addEventListener("firstinteractive", async () => {{
     const ws = sheet.sheetType === "worksheet"
       ? sheet
       : (sheet.worksheets || []).find(w => w.name === "{view}") || (sheet.worksheets || [])[0];
+    const refreshLog = [];
+    try {{
+      const dss = await ws.getDataSourcesAsync();
+      for (const ds of dss) {{
+        try {{ await ds.refreshAsync(); refreshLog.push("ok:" + ds.name); }}
+        catch (e) {{ refreshLog.push("fail:" + String(e && e.message || e)); }}
+      }}
+    }} catch (e) {{ refreshLog.push("getDataSources:" + String(e && e.message || e)); }}
     const dt = await ws.getSummaryDataAsync({{ maxRows: 0, ignoreSelection: true }});
     window.__r = {{
       status: "ok",
+      refreshLog,
       columns: dt.columns.map(c => c.fieldName),
       rows: dt.data.map(r => r.map(c => c.formattedValue)),
     }};
@@ -159,13 +187,17 @@ def _read_worksheet(page, base_url: str, view: str) -> dict:
     for attempt in range(1 + FETCH_RETRIES):
         if attempt:
             time.sleep(RETRY_BACKOFF_SECONDS)
-        page.goto(f"{base_url}/{view}.html", wait_until="load", timeout=PAGE_TIMEOUT_MS)
         result = None
-        for _ in range(RESULT_POLL_SECONDS):
-            result = page.evaluate("() => window.__r")
-            if result and result.get("status") in ("ok", "error", "loaderror"):
-                break
-            time.sleep(1)
+        try:
+            page.goto(f"{base_url}/{view}.html", wait_until="load", timeout=PAGE_TIMEOUT_MS)
+            for _ in range(RESULT_POLL_SECONDS):
+                result = page.evaluate("() => window.__r")
+                if result and result.get("status") in ("ok", "error", "loaderror"):
+                    break
+                time.sleep(1)
+        except Exception as e:  # noqa: BLE001 — a goto/eval timeout is a transient
+            # flake; record it and reload rather than aborting the whole fetch.
+            result = {"status": "loaderror", "message": str(e)}
         if result and result.get("status") == "ok":
             return result
         last = result

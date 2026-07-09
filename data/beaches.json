@@ -88,7 +88,8 @@
     {
       "name": "Hopkinton Reservoir-Main Beach (DCR)",
       "town": "Ashland",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Hopkinton Reservoir-Upper Beach (DCR)",
@@ -133,7 +134,8 @@
     {
       "name": "Eugenia Fortes",
       "town": "Barnstable",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Hamblin's Pond",
@@ -168,8 +170,7 @@
     {
       "name": "Keyes Beach (Sea Street)",
       "town": "Barnstable",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Loop",
@@ -284,7 +285,8 @@
     {
       "name": "Woodbury",
       "town": "Beverly",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Bolton Town Beach",
@@ -680,7 +682,8 @@
     {
       "name": "Sandy Beach (Danvers)",
       "town": "Danvers",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Anthony Beach",
@@ -715,17 +718,20 @@
     {
       "name": "Hidden Bay",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Jones Town Beach North",
       "town": "Dartmouth",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Jones Town Beach South",
       "town": "Dartmouth",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Moses Smith Creek",
@@ -866,8 +872,7 @@
     {
       "name": "West Dennis (Residential)",
       "town": "Dennis",
-      "status": "Closed",
-      "reason": "Other"
+      "status": "Open"
     },
     {
       "name": "West Dennis (Snack Bar)",
@@ -1779,8 +1784,7 @@
     {
       "name": "West Manchester",
       "town": "Manchester",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "White",
@@ -2488,7 +2492,8 @@
     {
       "name": "Atlantic Avenue (Provincetown)",
       "town": "Provincetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Court Street",
@@ -2740,7 +2745,8 @@
     {
       "name": "Whitehall Pond Beach (DCR)",
       "town": "Rutland",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Children's Island - Back",
@@ -2819,7 +2825,8 @@
     {
       "name": "Salisbury Beach Center - Broadway St. (DCR)",
       "town": "Salisbury",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Salisbury Beach, Main (DCR)",
@@ -2879,7 +2886,8 @@
     {
       "name": "Pearce Lake @ Breakheart Reservation (DCR)",
       "town": "Saugus",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Peckham Pond @ Camp Nihan (DCR)",
@@ -2993,6 +3001,11 @@
       "status": "Open"
     },
     {
+      "name": "Ames Pond",
+      "town": "Stoughton",
+      "status": "Open"
+    },
+    {
       "name": "Lake Boone",
       "town": "Stow",
       "status": "Open"
@@ -3051,12 +3064,14 @@
     {
       "name": "Coles River Club off Harbor Rd",
       "town": "Swansea",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Leeside",
       "town": "Swansea",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Sandy Beach (Swansea)",
@@ -3066,7 +3081,8 @@
     {
       "name": "Swansea Town Beach",
       "town": "Swansea",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "Massasoit Campers Beach (DCR)",
@@ -3081,12 +3097,14 @@
     {
       "name": "Beamans Pond - Campground (DCR)",
       "town": "Templeton",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Beamans Pond - Day Use (DCR)",
       "town": "Templeton",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Hilman's Point",
@@ -3096,7 +3114,8 @@
     {
       "name": "Owen Little Way",
       "town": "Tisbury",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Owen Park",
@@ -3121,12 +3140,14 @@
     {
       "name": "Vineyard Harbor Motel",
       "town": "Tisbury",
-      "status": "Closed"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Pearl Hill Pond Beach (DCR)",
       "town": "Townsend",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Ballston",
@@ -3262,8 +3283,7 @@
     {
       "name": "Pinehurst",
       "town": "Wareham",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Point Independence",
@@ -3288,7 +3308,8 @@
     {
       "name": "Standish Shores",
       "town": "Wareham",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Swift's",
@@ -3309,6 +3330,11 @@
     {
       "name": "White Island Association",
       "town": "Wareham",
+      "status": "Open"
+    },
+    {
+      "name": "Comin's Pond",
+      "town": "Warren",
       "status": "Open"
     },
     {
@@ -3559,8 +3585,7 @@
     {
       "name": "Shannon Beach @ Upper Mystic (DCR)",
       "town": "Winchester",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Donovans",
@@ -3617,7 +3642,8 @@
     {
       "name": "Lake Quinsigamond-Lake Park Beach (DCR)",
       "town": "Worcester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Lake Quinsigamond-Regatta Point Beach (DCR)",
