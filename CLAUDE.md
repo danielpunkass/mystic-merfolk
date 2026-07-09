@@ -50,8 +50,10 @@ into the live viz). The official "Download Full Dataset"
 button is a Tableau extension that reads it via `getSummaryDataAsync()`;
 `fetch_tableau_cloud.py` does the same with the Embedding API in a headless
 browser, authenticating with the public connected-app JWT from
-`publicdashboardtoken.mass.gov`. `meta.json.samples.source` records which path
-ran (`browser` | `none`).
+`publicdashboardtoken.mass.gov`. **Before each read it must force a data-source
+refresh** (`getDataSourcesAsync()` → `refreshAsync()`) — otherwise
+`getSummaryDataAsync()` returns a day-stale cached extract (see "Data freshness"
+below). `meta.json.samples.source` records which path ran (`browser` | `none`).
 
 **Export reliability.** The export normally works: in late June 2026 nearly every
 sync succeeded with `samples.source` = `browser`. (There was an earlier stretch
@@ -72,6 +74,26 @@ typically self-heals. `.github/workflows/probe-export.yml` runs the real fetch
 daily as a watchdog and opens a GitHub issue if the export breaks for an extended
 period. The legacy `datavisualization.dph.mass.gov` CSV fetchers remain in
 `sync_water_data.py` but are no longer wired into the in-season path.
+
+**Data freshness — a successful fetch is NOT automatically a fresh one.** Distinct
+from the failure modes above (which announce themselves as errors), there is a
+*silent* mode where the fetch succeeds — `samples.source` = `browser`,
+`samples.status` = `ok`, `errors` empty — yet the committed readings are ~a day
+stale. Cause: `getSummaryDataAsync()` reads whatever DPH's shared "Beaches
+DataSource" has **cached**, and that extract lags the live data by roughly a day.
+Loading the view fresh each run does not re-query it, and the `:refresh=yes`
+view-URL parameter only busts the *render* cache (verified: it returns byte-identical
+stale rows). The workbook's own toolbar **Download → Crosstab** implicitly forces a
+live re-query, which is why a hand-downloaded CSV can contain readings the scrape
+lacks. The fix (shipped 2026-07-08): `_embed_html` calls `getDataSourcesAsync()`
+then `refreshAsync()` on each data source before `getSummaryDataAsync()`
+(best-effort — it logs each refresh in `window.__r.refreshLog` and still reads on
+failure). This runs on all three worksheet reads and adds seconds each, so
+`BROWSER_FETCH_TIMEOUT` is 300s and `_read_worksheet` catches/retries `page.goto`
+timeouts instead of aborting. **Symptom to watch for:** readings frozen at an old
+date while syncs keep reporting `source: browser` with no errors ⇒ suspect the
+data-source cache, not the fetch. (This is a *fourth* mode the export can be in,
+beyond `403`, `init` flake, and the "unavailable" fallback.)
 
 ### Key Files
 
@@ -115,7 +137,9 @@ Tableau JS Embedding API in a headless browser:
   (Town, Beach, Closure Reason). All read with
   `getSummaryDataAsync({maxRows:0, ignoreSelection:true})` (the summary-data API only
   — underlying/full-column data is `403 PermissionDenied` for the public token, so a
-  reason must be a field placed on a worksheet, which is why `ClosureTable` is used).
+  reason must be a field placed on a worksheet, which is why `ClosureTable` is used),
+  each preceded by a `refreshAsync()` on the worksheet's data source so the summary
+  reflects live data rather than the ~day-stale cached extract (see "Data freshness").
 
 Legacy fallback only (frozen at 2025 season end), consumed by `sync_water_data.py`:
 
