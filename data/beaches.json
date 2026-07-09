@@ -341,7 +341,8 @@
     {
       "name": "Malibu (DCR)",
       "town": "Boston",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Pleasure Bay (DCR) @Broadway",
@@ -366,7 +367,8 @@
     {
       "name": "Tenean (DCR)",
       "town": "Boston",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Barlows Landing",
@@ -693,7 +695,8 @@
     {
       "name": "Apponagansett Town Beach",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Barney's Joy - Channel",
@@ -1273,7 +1276,8 @@
     {
       "name": "Wood Neck River",
       "town": "Falmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Learned Pond Beach",
@@ -3299,7 +3303,8 @@
     {
       "name": "Shangri-La",
       "town": "Wareham",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Shell Point",
