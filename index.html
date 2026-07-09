@@ -95,6 +95,31 @@
             font-size: 0.95rem;
         }
 
+        /* The Single Sample and Geometric Mean cards render through the same
+           code path and share identical column headers, but each <table> sizes
+           its columns from its own content by default — so a one-row geomean
+           table and a multi-row samples table drift out of alignment. Impose a
+           single fixed column geometry on both so the columns line up card-to-
+           card regardless of the values (or header text) in any given cell. */
+        .results-table {
+            table-layout: fixed;
+            min-width: 640px;
+        }
+
+        .results-table th:nth-child(1),
+        .results-table td:nth-child(1) { width: 26%; } /* Date and Time */
+        .results-table th:nth-child(2),
+        .results-table td:nth-child(2) { width: 19%; } /* Indicator */
+        .results-table th:nth-child(3),
+        .results-table td:nth-child(3) { width: 18%; } /* Threshold */
+        .results-table th:nth-child(4),
+        .results-table td:nth-child(4) { width: 15%; } /* Results */
+        .results-table th:nth-child(5),
+        .results-table td:nth-child(5) { width: 22%; } /* Status */
+
+        .results-table th,
+        .results-table td { overflow-wrap: break-word; }
+
         th, td {
             padding: 1rem;
             text-align: left;
@@ -524,6 +549,12 @@
 
             /* --- Data tables → stacked cards: nothing clips, no horizontal scroll --- */
             .table-container { overflow-x: visible; box-shadow: none; }
+            /* Undo the desktop fixed column geometry: once the rows become stacked
+               cards the shared min-width would force horizontal overflow and the
+               per-column widths would crush each stacked field. */
+            .results-table { min-width: 0; table-layout: auto; }
+            .results-table th,
+            .results-table td { width: auto !important; }
             #geomean-table thead,
             #data-table thead,
             #historical-table thead { display: none; }
@@ -771,7 +802,7 @@
         <div class="card" id="geomean-card" style="display: none;">
             <h2 id="geomean-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Geometric Mean Test Results</h2>
             <div class="table-container">
-                <table id="geomean-table">
+                <table id="geomean-table" class="results-table">
                     <thead>
                         <tr id="geomean-table-head"></tr>
                     </thead>
@@ -787,7 +818,7 @@
                 <div id="awaiting-first-reading" style="display: none; padding: 1.5rem; color: #334155; line-height: 1.5;">
                     <p style="margin: 0;">Official water quality monitoring is just beginning for the season. No readings have been posted yet for this year. Sampling typically runs weekly from Memorial Day through Labor Day.</p>
                 </div>
-                <table id="data-table" style="display: none;">
+                <table id="data-table" class="results-table" style="display: none;">
                     <thead>
                         <tr id="table-head">
                             <!-- Table headers will be inserted here -->
