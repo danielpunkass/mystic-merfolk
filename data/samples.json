@@ -12975,6 +12975,12 @@
       "town": "Framingham",
       "rows": [
         [
+          "7/6/2026 1:36:00 PM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
+        [
           "6/29/2026 1:16:00 PM",
           "E. Coli",
           "235",
@@ -13018,15 +13024,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 1:16:00 PM",
+        "date": "7/6/2026 1:36:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "15.85"
+        "value": "18.88"
       }
     },
     "Saxonville Beach": {
       "town": "Framingham",
       "rows": [
+        [
+          "7/6/2026 1:56:00 PM",
+          "E. Coli",
+          "235",
+          "220.00"
+        ],
         [
           "6/29/2026 12:55:00 PM",
           "E. Coli",
@@ -13071,15 +13083,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 12:55:00 PM",
+        "date": "7/6/2026 1:56:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "30.99"
+        "value": "75.87"
       }
     },
     "Waushakum Beach": {
       "town": "Framingham",
       "rows": [
+        [
+          "7/6/2026 1:19:00 PM",
+          "E. Coli",
+          "235",
+          "124.00"
+        ],
         [
           "6/29/2026 1:39:00 PM",
           "E. Coli",
@@ -13124,10 +13142,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 1:39:00 PM",
+        "date": "7/6/2026 1:19:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "48.18"
+        "value": "79.71"
       }
     },
     "Chilson Beach": {
@@ -15462,6 +15480,12 @@
       "town": "Holliston",
       "rows": [
         [
+          "7/6/2026 8:27:00 AM",
+          "E. Coli",
+          "235",
+          "8.00"
+        ],
+        [
           "6/29/2026 9:09:00 AM",
           "E. Coli",
           "235",
@@ -15505,15 +15529,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 9:09:00 AM",
+        "date": "7/6/2026 8:27:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "20.86"
+        "value": "16.24"
       }
     },
     "Stoddard Park": {
       "town": "Holliston",
       "rows": [
+        [
+          "7/6/2026 8:19:00 AM",
+          "E. Coli",
+          "235",
+          "15.00"
+        ],
         [
           "6/29/2026 9:05:00 AM",
           "E. Coli",
@@ -15558,10 +15588,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 9:05:00 AM",
+        "date": "7/6/2026 8:19:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.84"
+        "value": "15.52"
       }
     },
     "Asnacomet Pond Beach (DCR) @Middle": {
@@ -30448,6 +30478,12 @@
       "town": "Spencer",
       "rows": [
         [
+          "7/6/2026 11:24:00 AM",
+          "E. Coli",
+          "235",
+          "214.30"
+        ],
+        [
           "6/29/2026 12:03:00 PM",
           "E. Coli",
           "235",
@@ -30471,7 +30507,13 @@
           "235",
           "2.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/6/2026 11:24:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "7.06"
+      }
     },
     "Bass Pond @Right": {
       "town": "Springfield",

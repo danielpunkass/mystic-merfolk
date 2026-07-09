@@ -1022,7 +1022,8 @@
     {
       "name": "Salt Pond",
       "town": "Eastham",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Thumpertown",
