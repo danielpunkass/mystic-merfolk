@@ -19043,6 +19043,12 @@
       "town": "Lynn",
       "rows": [
         [
+          "7/8/2026 4:40:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/7/2026 9:50:00 AM",
           "Enterococci",
           "61",
@@ -19098,10 +19104,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 9:50:00 AM",
+        "date": "7/8/2026 4:40:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "17.67"
+        "value": "20.30"
       }
     },
     "Stacey's Brook Outfall (No Swimming) (DCR)": {
@@ -22180,6 +22186,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "7/8/2026 4:10:00 PM",
+          "Enterococci",
+          "61",
+          "86.00"
+        ],
+        [
           "7/7/2026 8:45:00 AM",
           "Enterococci",
           "61",
@@ -22241,15 +22253,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 8:45:00 AM",
+        "date": "7/8/2026 4:10:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "29.04"
+        "value": "26.58"
       }
     },
     "Nahant Beach (DCR) @2 (Parking Section 12)": {
       "town": "Nahant",
       "rows": [
+        [
+          "7/8/2026 3:50:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/7/2026 8:35:00 AM",
           "Enterococci",
@@ -22306,10 +22324,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 8:35:00 AM",
+        "date": "7/8/2026 3:50:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "16.96"
+        "value": "19.48"
       }
     },
     "Nahant Beach (DCR) @3 (Flagpole/Halfway)": {
