@@ -20340,6 +20340,12 @@
       "town": "Marblehead",
       "rows": [
         [
+          "7/9/2026 2:20:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/8/2026 7:04:00 AM",
           "Enterococci",
           "61",
@@ -20377,7 +20383,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 7:04:00 AM",
+        "date": "7/9/2026 2:20:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "25.18"
@@ -20386,6 +20392,12 @@
     "Grace Oliver": {
       "town": "Marblehead",
       "rows": [
+        [
+          "7/9/2026 2:30:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/8/2026 7:09:00 AM",
           "Enterococci",
@@ -20430,7 +20442,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 7:09:00 AM",
+        "date": "7/9/2026 2:30:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "25.80"
