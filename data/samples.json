@@ -1250,6 +1250,12 @@
       "town": "Barnstable",
       "rows": [
         [
+          "7/9/2026 1:50:00 PM",
+          "Enterococci",
+          "61",
+          "20.00"
+        ],
+        [
           "7/9/2026 8:39:00 AM",
           "Enterococci",
           "61",
@@ -1305,7 +1311,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 8:39:00 AM",
+        "date": "7/9/2026 1:50:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "81.42"
@@ -5627,6 +5633,12 @@
       "town": "Braintree",
       "rows": [
         [
+          "7/9/2026 7:00:00 AM",
+          "Enterococci",
+          "61",
+          "169.00"
+        ],
+        [
           "6/29/2026 11:55:00 AM",
           "Enterococci",
           "61",
@@ -5650,11 +5662,23 @@
           "61",
           "31.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/9/2026 7:00:00 AM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "27.68"
+      }
     },
     "Sunset Lake @Location 1": {
       "town": "Braintree",
       "rows": [
+        [
+          "7/9/2026 7:20:00 AM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
         [
           "6/29/2026 11:35:00 AM",
           "E. Coli",
@@ -5679,7 +5703,13 @@
           "235",
           "2.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/9/2026 7:20:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "10.37"
+      }
     },
     "Breakwater Landing": {
       "town": "Brewster",
@@ -11823,12 +11853,6 @@
           "31.00"
         ],
         [
-          "7/6/2026 5:16:00 AM",
-          "Enterococci",
-          "61",
-          "31.00"
-        ],
-        [
           "6/29/2026 8:20:00 AM",
           "Enterococci",
           "61",
@@ -11857,7 +11881,7 @@
         "date": "7/6/2026 8:17:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "10.37"
+        "value": "8.27"
       }
     },
     "Norton Point East @Main": {
@@ -16148,6 +16172,12 @@
     "Hingham Town Beach": {
       "town": "Hingham",
       "rows": [
+        [
+          "7/9/2026 6:52:00 AM",
+          "Enterococci",
+          "61",
+          "31.00"
+        ],
         [
           "6/30/2026 12:58:00 PM",
           "Enterococci",
@@ -20791,6 +20821,12 @@
       "town": "Marion",
       "rows": [
         [
+          "7/8/2026 10:27:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
+        [
           "7/6/2026 8:21:00 AM",
           "Enterococci",
           "61",
@@ -20822,10 +20858,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 8:21:00 AM",
+        "date": "7/8/2026 10:27:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.59"
+        "value": "3.99"
       }
     },
     "Tabor Academy @North": {
@@ -24371,6 +24407,12 @@
       "town": "Newburyport",
       "rows": [
         [
+          "7/9/2026 12:40:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/7/2026 9:28:00 AM",
           "Enterococci",
           "61",
@@ -24432,7 +24474,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 9:28:00 AM",
+        "date": "7/9/2026 12:40:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.00"
@@ -24441,6 +24483,12 @@
     "Plum Island - end of island 1": {
       "town": "Newburyport",
       "rows": [
+        [
+          "7/9/2026 12:43:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/7/2026 9:31:00 AM",
           "Enterococci",
@@ -24509,7 +24557,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 9:31:00 AM",
+        "date": "7/9/2026 12:43:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.74"
@@ -24518,6 +24566,12 @@
     "Plum Island - end of island 2": {
       "town": "Newburyport",
       "rows": [
+        [
+          "7/9/2026 12:25:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/7/2026 9:07:00 AM",
           "Enterococci",
@@ -24592,15 +24646,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 9:07:00 AM",
+        "date": "7/9/2026 12:25:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "8.71"
+        "value": "6.60"
       }
     },
     "Plum Island Point": {
       "town": "Newburyport",
       "rows": [
+        [
+          "7/9/2026 12:16:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/7/2026 8:53:00 AM",
           "Enterococci",
@@ -24669,7 +24729,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 8:53:00 AM",
+        "date": "7/9/2026 12:16:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "17.50"
@@ -25099,6 +25159,12 @@
     "Joseph Sylvia State Beach - Big Bridge": {
       "town": "Oak Bluffs",
       "rows": [
+        [
+          "7/6/2026 5:16:00 AM",
+          "Enterococci",
+          "61",
+          "31.00"
+        ],
         [
           "6/8/2026 5:16:00 AM",
           "Enterococci",
@@ -27738,6 +27804,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/9/2026 10:37:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/8/2026 6:02:00 AM",
           "Enterococci",
           "61",
@@ -27769,7 +27841,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 6:02:00 AM",
+        "date": "7/9/2026 10:37:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "21.42"
@@ -27778,6 +27850,12 @@
     "Broady (Baker)": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/9/2026 11:34:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/8/2026 6:41:00 AM",
           "Enterococci",
@@ -27816,15 +27894,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 6:41:00 AM",
+        "date": "7/9/2026 11:34:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "68.77"
+        "value": "39.02"
       }
     },
     "Chikatawbot": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/9/2026 11:09:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/8/2026 6:22:00 AM",
           "Enterococci",
@@ -27857,10 +27941,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 6:22:00 AM",
+        "date": "7/9/2026 11:09:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "25.94"
+        "value": "17.03"
       }
     },
     "Edgewater (Quincy)": {
@@ -27949,6 +28033,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/9/2026 11:22:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/8/2026 6:33:00 AM",
           "Enterococci",
           "61",
@@ -27980,15 +28070,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 6:33:00 AM",
+        "date": "7/9/2026 11:22:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "15.31"
+        "value": "17.58"
       }
     },
     "Merrymount": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/9/2026 11:02:00 AM",
+          "Enterococci",
+          "61",
+          "75.00"
+        ],
         [
           "7/8/2026 5:52:00 AM",
           "Enterococci",
@@ -28021,15 +28117,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 5:52:00 AM",
+        "date": "7/9/2026 11:02:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "22.46"
+        "value": "38.60"
       }
     },
     "Mound": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/9/2026 10:51:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/8/2026 6:12:00 AM",
           "Enterococci",
@@ -28062,7 +28164,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 6:12:00 AM",
+        "date": "7/9/2026 10:51:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "26.48"
@@ -28113,6 +28215,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/9/2026 11:15:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/8/2026 6:28:00 AM",
           "Enterococci",
           "61",
@@ -28144,7 +28252,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 6:28:00 AM",
+        "date": "7/9/2026 11:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "21.24"
