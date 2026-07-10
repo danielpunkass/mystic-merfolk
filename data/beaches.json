@@ -1809,14 +1809,12 @@
     {
       "name": "Gas House",
       "town": "Marblehead",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Grace Oliver",
       "town": "Marblehead",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Stramski",
@@ -2483,8 +2481,7 @@
     {
       "name": "593 Commercial Street",
       "town": "Provincetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "637 Commercial Street",
@@ -2499,8 +2496,7 @@
     {
       "name": "Atlantic Avenue (Provincetown)",
       "town": "Provincetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Court Street",
