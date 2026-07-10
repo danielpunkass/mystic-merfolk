@@ -10384,6 +10384,12 @@
       "town": "Dudley",
       "rows": [
         [
+          "7/6/2026 8:35:00 AM",
+          "E. Coli",
+          "235",
+          "21.10"
+        ],
+        [
           "6/29/2026 9:10:00 AM",
           "E. Coli",
           "235",
@@ -10427,10 +10433,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 9:10:00 AM",
+        "date": "7/6/2026 8:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "38.65"
+        "value": "39.64"
       }
     },
     "Duxbury Beach @ Bath House": {
@@ -32085,6 +32091,12 @@
       "town": "Sturbridge",
       "rows": [
         [
+          "7/6/2026 10:05:00 AM",
+          "E. Coli",
+          "235",
+          "53.80"
+        ],
+        [
           "6/29/2026 8:40:00 AM",
           "E. Coli",
           "235",
@@ -32161,6 +32173,12 @@
       "town": "Sutton",
       "rows": [
         [
+          "7/6/2026 2:24:00 PM",
+          "E. Coli",
+          "235",
+          "42.60"
+        ],
+        [
           "6/29/2026 2:40:00 PM",
           "E. Coli",
           "235",
@@ -32184,7 +32202,13 @@
           "235",
           "3.10"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/6/2026 2:24:00 PM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "11.28"
+      }
     },
     "Fisherman's": {
       "town": "Swampscott",
@@ -34852,6 +34876,12 @@
       "town": "Webster",
       "rows": [
         [
+          "7/2/2026 9:53:00 AM",
+          "E. Coli",
+          "235",
+          "29.50"
+        ],
+        [
           "6/26/2026 12:05:00 PM",
           "E. Coli",
           "235",
@@ -34889,15 +34919,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/26/2026 12:05:00 PM",
+        "date": "7/2/2026 9:53:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.81"
+        "value": "9.12"
       }
     },
     "Memorial Beach (Webster) @Location 1": {
       "town": "Webster",
       "rows": [
+        [
+          "7/6/2026 11:52:00 AM",
+          "E. Coli",
+          "235",
+          "15.80"
+        ],
         [
           "7/2/2026 9:18:00 AM",
           "E. Coli",
@@ -34942,10 +34978,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/2/2026 9:18:00 AM",
+        "date": "7/6/2026 11:52:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "34.81"
+        "value": "71.71"
       }
     },
     "Burton Baker": {
