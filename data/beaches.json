@@ -341,8 +341,7 @@
     {
       "name": "Malibu (DCR)",
       "town": "Boston",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Pleasure Bay (DCR) @Broadway",
@@ -367,8 +366,7 @@
     {
       "name": "Tenean (DCR)",
       "town": "Boston",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Barlows Landing",
@@ -1829,8 +1827,7 @@
     {
       "name": "Converse Point",
       "town": "Marion",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Dexter Lane",
@@ -2602,7 +2599,8 @@
     {
       "name": "Merrymount",
       "town": "Quincy",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Mound",
@@ -2748,8 +2746,7 @@
     {
       "name": "Whitehall Pond Beach (DCR)",
       "town": "Rutland",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Children's Island - Back",
@@ -2828,8 +2825,7 @@
     {
       "name": "Salisbury Beach Center - Broadway St. (DCR)",
       "town": "Salisbury",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Salisbury Beach, Main (DCR)",
