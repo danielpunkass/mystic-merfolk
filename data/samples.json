@@ -2110,6 +2110,12 @@
       "town": "Becket",
       "rows": [
         [
+          "7/9/2026 10:20:00 AM",
+          "E. Coli",
+          "235",
+          "203.50"
+        ],
+        [
           "6/29/2026 10:58:00 AM",
           "E. Coli",
           "235",
@@ -2153,10 +2159,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 10:58:00 AM",
+        "date": "7/9/2026 10:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.43"
+        "value": "11.40"
       }
     },
     "Belchertown Town Beach (Lake Arcadia)": {
@@ -7450,6 +7456,12 @@
       "town": "Chesterfield",
       "rows": [
         [
+          "7/9/2026 7:41:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
+        [
           "6/29/2026 7:25:00 AM",
           "E. Coli",
           "235",
@@ -7473,7 +7485,13 @@
           "235",
           "5.20"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/9/2026 7:41:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "3.63"
+      }
     },
     "Chicopee Beach (DCR)": {
       "town": "Chicopee",
@@ -8237,6 +8255,12 @@
       "town": "Dartmouth",
       "rows": [
         [
+          "7/9/2026 10:20:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
+        [
           "7/8/2026 9:16:00 AM",
           "Enterococci",
           "61",
@@ -8298,10 +8322,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 9:16:00 AM",
+        "date": "7/9/2026 10:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "45.89"
+        "value": "13.24"
       }
     },
     "Barney's Joy - Channel": {
@@ -8495,6 +8519,12 @@
       "town": "Dartmouth",
       "rows": [
         [
+          "7/9/2026 10:40:00 AM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
+        [
           "7/8/2026 8:31:00 AM",
           "Enterococci",
           "61",
@@ -8544,10 +8574,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 8:31:00 AM",
+        "date": "7/9/2026 10:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "3.61"
+        "value": "4.14"
       }
     },
     "Jones Town Beach South": {
@@ -16052,6 +16082,12 @@
       "town": "Hinsdale",
       "rows": [
         [
+          "7/9/2026 9:31:00 AM",
+          "E. Coli",
+          "235",
+          "23.10"
+        ],
+        [
           "6/29/2026 8:53:00 AM",
           "E. Coli",
           "235",
@@ -16095,10 +16131,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 8:53:00 AM",
+        "date": "7/9/2026 9:31:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "17.69"
+        "value": "22.21"
       }
     },
     "Eagle Lake": {
@@ -22165,6 +22201,12 @@
       "town": "Monterey",
       "rows": [
         [
+          "7/9/2026 11:26:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "7/1/2026 12:34:00 PM",
           "E. Coli",
           "235",
@@ -24548,6 +24590,12 @@
       "town": "North Attleborough",
       "rows": [
         [
+          "6/29/2026 10:53:00 AM",
+          "E. Coli",
+          "235",
+          "230.00"
+        ],
+        [
           "6/22/2026 10:48:00 AM",
           "E. Coli",
           "235",
@@ -24564,6 +24612,12 @@
     "Whitings Pond": {
       "town": "North Attleborough",
       "rows": [
+        [
+          "6/29/2026 11:12:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
         [
           "6/22/2026 11:00:00 AM",
           "E. Coli",
@@ -29574,6 +29628,12 @@
       "town": "Rochester",
       "rows": [
         [
+          "7/9/2026 9:00:00 AM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
+        [
           "7/6/2026 8:15:00 AM",
           "Enterococci",
           "61",
@@ -29605,10 +29665,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 8:15:00 AM",
+        "date": "7/9/2026 9:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "35.77"
+        "value": "23.60"
       }
     },
     "Back Beach": {
@@ -30020,6 +30080,12 @@
       "town": "Russell",
       "rows": [
         [
+          "7/9/2026 9:32:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/1/2026 10:29:00 AM",
           "E. Coli",
           "235",
@@ -30043,7 +30109,13 @@
           "235",
           "0.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/9/2026 9:32:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "1.25"
+      }
     },
     "Whitehall Pond Beach (DCR)": {
       "town": "Rutland",
@@ -31822,6 +31894,12 @@
     "South Pond Beach": {
       "town": "Southwick",
       "rows": [
+        [
+          "7/6/2026 12:37:00 PM",
+          "E. Coli",
+          "235",
+          "8.60"
+        ],
         [
           "6/29/2026 11:08:00 AM",
           "E. Coli",
@@ -34981,7 +35059,7 @@
         "date": "7/6/2026 11:52:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "71.71"
+        "value": "26.64"
       }
     },
     "Burton Baker": {
