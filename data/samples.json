@@ -19802,6 +19802,18 @@
       "town": "Manchester",
       "rows": [
         [
+          "7/9/2026 2:40:00 PM",
+          "Enterococci",
+          "61",
+          "62.00"
+        ],
+        [
+          "7/9/2026 10:23:00 AM",
+          "Enterococci",
+          "61",
+          "41.00"
+        ],
+        [
           "7/8/2026 2:55:00 PM",
           "Enterococci",
           "61",
@@ -19899,10 +19911,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 2:55:00 PM",
+        "date": "7/9/2026 2:40:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "65.50"
+        "value": "37.61"
       }
     },
     "Singing @Location 1": {
@@ -24336,6 +24348,12 @@
       "town": "Newbury",
       "rows": [
         [
+          "7/9/2026 11:30:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/8/2026 7:45:00 AM",
           "Enterococci",
           "61",
@@ -24397,7 +24415,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 7:45:00 AM",
+        "date": "7/9/2026 11:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.74"

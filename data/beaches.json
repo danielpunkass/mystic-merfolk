@@ -421,7 +421,8 @@
     {
       "name": "Smith Beach",
       "town": "Braintree",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Sunset Lake @Location 1",
