@@ -1262,6 +1262,12 @@
       "town": "Barnstable",
       "rows": [
         [
+          "7/10/2026 8:09:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/9/2026 1:50:00 PM",
           "Enterococci",
           "61",
@@ -1323,10 +1329,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 1:50:00 PM",
+        "date": "7/10/2026 8:09:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "81.42"
+        "value": "29.64"
       }
     },
     "Hamblin's Pond": {
@@ -11556,6 +11562,12 @@
       "town": "Eastham",
       "rows": [
         [
+          "7/10/2026 8:06:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/9/2026 8:24:00 AM",
           "Enterococci",
           "61",
@@ -11611,10 +11623,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 8:24:00 AM",
+        "date": "7/10/2026 8:06:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "47.05"
+        "value": "35.65"
       }
     },
     "Thumpertown": {
@@ -13479,6 +13491,12 @@
       "town": "Falmouth",
       "rows": [
         [
+          "7/10/2026 5:58:00 AM",
+          "Enterococci",
+          "61",
+          "20.00"
+        ],
+        [
           "7/9/2026 7:28:00 AM",
           "Enterococci",
           "61",
@@ -13528,10 +13546,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 7:28:00 AM",
+        "date": "7/10/2026 5:58:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "45.42"
+        "value": "34.87"
       }
     },
     "Surf Drive (Pool)": {
@@ -13750,6 +13768,12 @@
       "town": "Falmouth",
       "rows": [
         [
+          "7/10/2026 5:34:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/9/2026 5:14:00 AM",
           "Enterococci",
           "61",
@@ -13805,10 +13829,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 5:14:00 AM",
+        "date": "7/10/2026 5:34:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "41.99"
+        "value": "36.55"
       }
     },
     "Learned Pond Beach": {
@@ -23214,6 +23238,12 @@
       "town": "Nantucket",
       "rows": [
         [
+          "7/10/2026 9:32:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/9/2026 7:21:00 AM",
           "Enterococci",
           "61",
@@ -23245,7 +23275,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 7:21:00 AM",
+        "date": "7/10/2026 9:32:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "14.48"
@@ -26881,6 +26911,12 @@
       "town": "Provincetown",
       "rows": [
         [
+          "7/10/2026 9:10:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/9/2026 9:40:00 AM",
           "Enterococci",
           "61",
@@ -26936,7 +26972,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 9:40:00 AM",
+        "date": "7/10/2026 9:10:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "41.62"
@@ -27323,6 +27359,12 @@
       "town": "Provincetown",
       "rows": [
         [
+          "7/10/2026 9:06:00 AM",
+          "Enterococci",
+          "61",
+          "20.00"
+        ],
+        [
           "7/9/2026 9:33:00 AM",
           "Enterococci",
           "61",
@@ -27390,7 +27432,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 9:33:00 AM",
+        "date": "7/10/2026 9:06:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "50.74"
@@ -27399,6 +27441,12 @@
     "Kendall Lane": {
       "town": "Provincetown",
       "rows": [
+        [
+          "7/10/2026 8:59:00 AM",
+          "Enterococci",
+          "61",
+          "53.00"
+        ],
         [
           "7/9/2026 9:21:00 AM",
           "Enterococci",
@@ -27485,10 +27533,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 9:21:00 AM",
+        "date": "7/10/2026 8:59:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "51.63"
+        "value": "82.78"
       }
     },
     "Provincetown Inn East": {
@@ -27665,6 +27713,12 @@
       "town": "Provincetown",
       "rows": [
         [
+          "7/10/2026 8:47:00 AM",
+          "Enterococci",
+          "61",
+          "53.00"
+        ],
+        [
           "7/9/2026 9:02:00 AM",
           "Enterococci",
           "61",
@@ -27726,15 +27780,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 9:02:00 AM",
+        "date": "7/10/2026 8:47:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "66.45"
+        "value": "106.56"
       }
     },
     "Town Landing - Snail Road": {
       "town": "Provincetown",
       "rows": [
+        [
+          "7/10/2026 8:52:00 AM",
+          "Enterococci",
+          "61",
+          "53.00"
+        ],
         [
           "7/9/2026 9:08:00 AM",
           "Enterococci",
@@ -27797,10 +27857,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 9:08:00 AM",
+        "date": "7/10/2026 8:52:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "72.68"
+        "value": "116.53"
       }
     },
     "Town Landing - West of Coast Guard": {
