@@ -366,7 +366,8 @@
     {
       "name": "Tenean (DCR)",
       "town": "Boston",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Barlows Landing",
