@@ -134,8 +134,7 @@
     {
       "name": "Eugenia Fortes",
       "town": "Barnstable",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Hamblin's Pond",
@@ -1246,8 +1245,7 @@
     {
       "name": "Surf Drive (East)",
       "town": "Falmouth",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Surf Drive (Pool)",
