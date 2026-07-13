@@ -724,14 +724,12 @@
     {
       "name": "Jones Town Beach North",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Jones Town Beach South",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Moses Smith Creek",
