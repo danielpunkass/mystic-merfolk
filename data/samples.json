@@ -7638,6 +7638,12 @@
       "town": "Chelmsford",
       "rows": [
         [
+          "7/8/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "83.00"
+        ],
+        [
           "7/1/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -7675,15 +7681,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/1/2026 9:30:00 AM",
+        "date": "7/8/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.44"
+        "value": "13.84"
       }
     },
     "Heart Pond": {
       "town": "Chelmsford",
       "rows": [
+        [
+          "7/8/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "15.00"
+        ],
         [
           "7/1/2026 10:00:00 AM",
           "E. Coli",
@@ -7728,10 +7740,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/1/2026 10:00:00 AM",
+        "date": "7/8/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.63"
+        "value": "10.03"
       }
     },
     "Ashmere Project-Camp Chesterfield Beach": {
@@ -15228,6 +15240,12 @@
       "town": "Halifax",
       "rows": [
         [
+          "7/7/2026 9:50:00 AM",
+          "E. Coli",
+          "235",
+          "8.00"
+        ],
+        [
           "6/30/2026 9:45:00 AM",
           "E. Coli",
           "235",
@@ -15271,15 +15289,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/30/2026 9:45:00 AM",
+        "date": "7/7/2026 9:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.18"
+        "value": "6.79"
       }
     },
     "Lingan Street": {
       "town": "Halifax",
       "rows": [
+        [
+          "7/7/2026 9:40:00 AM",
+          "E. Coli",
+          "235",
+          "50.00"
+        ],
         [
           "6/30/2026 9:25:00 AM",
           "E. Coli",
@@ -15324,10 +15348,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/30/2026 9:25:00 AM",
+        "date": "7/7/2026 9:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "12.85"
+        "value": "20.36"
       }
     },
     "Harvard Town Beach": {
@@ -22430,6 +22454,12 @@
       "town": "Methuen",
       "rows": [
         [
+          "7/9/2026 8:35:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "6/25/2026 9:05:00 AM",
           "E. Coli",
           "235",
@@ -22461,10 +22491,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/25/2026 9:05:00 AM",
+        "date": "7/9/2026 8:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "18.58"
+        "value": "16.51"
       }
     },
     "Camp Avoda": {
