@@ -22501,6 +22501,12 @@
       "town": "Middleborough",
       "rows": [
         [
+          "7/7/2026 9:20:00 AM",
+          "E. Coli",
+          "235",
+          "15.00"
+        ],
+        [
           "6/30/2026 8:40:00 AM",
           "E. Coli",
           "235",
@@ -22518,11 +22524,23 @@
           "235",
           "2.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/7/2026 9:20:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "3.58"
+      }
     },
     "Camp Yomechas": {
       "town": "Middleborough",
       "rows": [
+        [
+          "7/7/2026 9:00:00 AM",
+          "E. Coli",
+          "235",
+          "92.00"
+        ],
         [
           "6/30/2026 8:25:00 AM",
           "E. Coli",
@@ -22567,15 +22585,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/30/2026 8:25:00 AM",
+        "date": "7/7/2026 9:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "*"
+        "value": "20.57"
       }
     },
     "Woods Pond Cabins": {
       "town": "Middleborough",
       "rows": [
+        [
+          "7/7/2026 9:45:00 AM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
         [
           "6/30/2026 8:50:00 AM",
           "E. Coli",
