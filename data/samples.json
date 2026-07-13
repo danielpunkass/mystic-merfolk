@@ -22570,7 +22570,7 @@
         "date": "6/30/2026 8:25:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.58"
+        "value": "*"
       }
     },
     "Woods Pond Cabins": {
@@ -35968,6 +35968,12 @@
       "town": "Webster",
       "rows": [
         [
+          "7/8/2026 12:04:00 PM",
+          "E. Coli",
+          "235",
+          "64.50"
+        ],
+        [
           "7/2/2026 9:53:00 AM",
           "E. Coli",
           "235",
@@ -36011,15 +36017,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/2/2026 9:53:00 AM",
+        "date": "7/8/2026 12:04:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.12"
+        "value": "16.74"
       }
     },
     "Memorial Beach (Webster) @Location 1": {
       "town": "Webster",
       "rows": [
+        [
+          "7/8/2026 11:11:00 AM",
+          "E. Coli",
+          "235",
+          "47.40"
+        ],
         [
           "7/6/2026 11:52:00 AM",
           "E. Coli",
@@ -36070,10 +36082,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 11:52:00 AM",
+        "date": "7/8/2026 11:11:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "26.64"
+        "value": "43.46"
       }
     },
     "Burton Baker": {
