@@ -169,7 +169,8 @@
     {
       "name": "Keyes Beach (Sea Street)",
       "town": "Barnstable",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Loop",
@@ -3060,8 +3061,7 @@
     {
       "name": "Leeside",
       "town": "Swansea",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Sandy Beach (Swansea)",
@@ -3071,8 +3071,7 @@
     {
       "name": "Swansea Town Beach",
       "town": "Swansea",
-      "status": "Closed",
-      "reason": "Other"
+      "status": "Open"
     },
     {
       "name": "Massasoit Campers Beach (DCR)",

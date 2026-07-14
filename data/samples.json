@@ -5933,6 +5933,12 @@
       "town": "Braintree",
       "rows": [
         [
+          "7/13/2026 11:30:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/9/2026 7:00:00 AM",
           "Enterococci",
           "61",
@@ -5964,15 +5970,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 7:00:00 AM",
+        "date": "7/13/2026 11:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "27.68"
+        "value": "22.07"
       }
     },
     "Sunset Lake @Location 1": {
       "town": "Braintree",
       "rows": [
+        [
+          "7/13/2026 11:10:00 AM",
+          "E. Coli",
+          "235",
+          "88.00"
+        ],
         [
           "7/9/2026 7:20:00 AM",
           "E. Coli",
@@ -6005,10 +6017,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 7:20:00 AM",
+        "date": "7/13/2026 11:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.37"
+        "value": "21.14"
       }
     },
     "Breakwater Landing": {
@@ -16701,6 +16713,12 @@
       "town": "Hingham",
       "rows": [
         [
+          "7/13/2026 11:00:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/9/2026 6:52:00 AM",
           "Enterococci",
           "61",
@@ -16724,7 +16742,13 @@
           "61",
           "5.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 11:00:00 AM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "8.27"
+      }
     },
     "Plunkett Lake Beach": {
       "town": "Hinsdale",
@@ -23256,6 +23280,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "7/13/2026 7:15:00 AM",
+          "Enterococci",
+          "61",
+          "135.00"
+        ],
+        [
           "7/6/2026 7:15:00 AM",
           "Enterococci",
           "61",
@@ -23311,15 +23341,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 7:15:00 AM",
+        "date": "7/13/2026 7:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "19.27"
+        "value": "16.91"
       }
     },
     "Forty Steps Beach": {
       "town": "Nahant",
       "rows": [
+        [
+          "7/13/2026 7:45:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/6/2026 7:45:00 AM",
           "Enterococci",
@@ -23370,10 +23406,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 7:45:00 AM",
+        "date": "7/13/2026 7:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "7.58"
+        "value": "5.74"
       }
     },
     "Nahant Beach (DCR) @1 (North/Ward Bathhouse)": {
@@ -23664,6 +23700,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "7/13/2026 7:30:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/6/2026 7:30:00 AM",
           "Enterococci",
           "61",
@@ -23713,7 +23755,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 7:30:00 AM",
+        "date": "7/13/2026 7:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "15.34"
@@ -23722,6 +23764,12 @@
     "Tudor": {
       "town": "Nahant",
       "rows": [
+        [
+          "7/13/2026 8:00:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/6/2026 8:00:00 AM",
           "Enterococci",
@@ -23772,7 +23820,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 8:00:00 AM",
+        "date": "7/13/2026 8:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "8.71"
@@ -33537,6 +33585,12 @@
       "town": "Sherborn",
       "rows": [
         [
+          "7/13/2026 8:54:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "6/29/2026 11:35:00 AM",
           "E. Coli",
           "235",
@@ -33580,7 +33634,7 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 11:35:00 AM",
+        "date": "7/13/2026 8:54:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "3.30"
@@ -33660,6 +33714,12 @@
       "town": "Somerset",
       "rows": [
         [
+          "7/13/2026 8:15:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/6/2026 8:15:00 AM",
           "Enterococci",
           "61",
@@ -33683,7 +33743,13 @@
           "61",
           "5.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 8:15:00 AM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "12.58"
+      }
     },
     "South Pond Beach": {
       "town": "Southwick",
@@ -34398,6 +34464,12 @@
       "town": "Swansea",
       "rows": [
         [
+          "7/13/2026 6:45:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/6/2026 9:00:00 AM",
           "Enterococci",
           "61",
@@ -34421,11 +34493,23 @@
           "61",
           "108.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 6:45:00 AM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "14.01"
+      }
     },
     "Coles River Club off Harbor Rd": {
       "town": "Swansea",
       "rows": [
+        [
+          "7/13/2026 7:05:00 AM",
+          "Enterococci",
+          "61",
+          "30.00"
+        ],
         [
           "7/6/2026 6:30:00 AM",
           "Enterococci",
@@ -34450,11 +34534,23 @@
           "61",
           "95.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 7:05:00 AM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "35.18"
+      }
     },
     "Leeside": {
       "town": "Swansea",
       "rows": [
+        [
+          "7/13/2026 6:40:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/6/2026 8:45:00 AM",
           "Enterococci",
@@ -34479,11 +34575,23 @@
           "61",
           "41.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 6:40:00 AM",
+        "indicator": "Enterococci",
+        "threshold": "33",
+        "value": "23.66"
+      }
     },
     "Sandy Beach (Swansea)": {
       "town": "Swansea",
       "rows": [
+        [
+          "7/13/2026 6:30:00 AM",
+          "Enterococci",
+          "61",
+          "75.00"
+        ],
         [
           "7/6/2026 5:50:00 AM",
           "Enterococci",
@@ -34516,15 +34624,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 5:50:00 AM",
+        "date": "7/13/2026 6:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "33.36"
+        "value": "14.26"
       }
     },
     "Swansea Town Beach": {
       "town": "Swansea",
       "rows": [
+        [
+          "7/13/2026 6:20:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/6/2026 5:32:00 AM",
           "Enterococci",
@@ -34557,10 +34671,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 5:32:00 AM",
+        "date": "7/13/2026 6:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "45.27"
+        "value": "20.39"
       }
     },
     "Massasoit Campers Beach (DCR)": {
@@ -36720,6 +36834,12 @@
       "town": "Wayland",
       "rows": [
         [
+          "7/13/2026 10:45:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/6/2026 10:50:00 AM",
           "E. Coli",
           "235",
@@ -36769,15 +36889,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 10:50:00 AM",
+        "date": "7/13/2026 10:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.01"
+        "value": "4.72"
       }
     },
     "Wayland Town Beach @Right": {
       "town": "Wayland",
       "rows": [
+        [
+          "7/13/2026 10:40:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
         [
           "7/6/2026 10:40:00 AM",
           "E. Coli",
@@ -36828,10 +36954,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 10:40:00 AM",
+        "date": "7/13/2026 10:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.22"
+        "value": "10.84"
       }
     },
     "Lakeside Boat Ramp": {
