@@ -12212,6 +12212,12 @@
       "town": "Egremont",
       "rows": [
         [
+          "7/13/2026 10:41:00 AM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "7/6/2026 10:55:00 AM",
           "E. Coli",
           "235",
@@ -12279,10 +12285,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 10:55:00 AM",
+        "date": "7/13/2026 10:41:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.32"
+        "value": "5.31"
       }
     },
     "Laurel Lake (DCR)": {
@@ -15010,6 +15016,12 @@
       "town": "Great Barrington",
       "rows": [
         [
+          "7/13/2026 10:09:00 AM",
+          "E. Coli",
+          "235",
+          "5.10"
+        ],
+        [
           "7/6/2026 10:24:00 AM",
           "E. Coli",
           "235",
@@ -15059,15 +15071,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 10:24:00 AM",
+        "date": "7/13/2026 10:09:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.44"
+        "value": "2.00"
       }
     },
     "Old Maid's Park": {
       "town": "Great Barrington",
       "rows": [
+        [
+          "7/13/2026 9:46:00 AM",
+          "E. Coli",
+          "235",
+          "53.70"
+        ],
         [
           "7/6/2026 10:08:00 AM",
           "E. Coli",
@@ -15118,10 +15136,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 10:08:00 AM",
+        "date": "7/13/2026 9:46:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "61.65"
+        "value": "69.22"
       }
     },
     "Greenfield Municipal Bathing Beach": {
@@ -18173,6 +18191,12 @@
       "town": "Lanesborough",
       "rows": [
         [
+          "7/13/2026 12:19:00 PM",
+          "E. Coli",
+          "235",
+          "214.20"
+        ],
+        [
           "7/8/2026 6:03:00 AM",
           "E. Coli",
           "235",
@@ -18222,10 +18246,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 6:03:00 AM",
+        "date": "7/13/2026 12:19:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "31.78"
+        "value": "51.76"
       }
     },
     "Lee Town Beach": {
@@ -25176,6 +25200,12 @@
       "town": "North Adams",
       "rows": [
         [
+          "7/13/2026 11:32:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
+        [
           "7/8/2026 11:27:00 AM",
           "E. Coli",
           "235",
@@ -25225,10 +25255,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 11:27:00 AM",
+        "date": "7/13/2026 11:32:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.44"
+        "value": "5.26"
       }
     },
     "Berry Pond Beach (DCR)": {
@@ -26232,6 +26262,12 @@
       "town": "Plainfield",
       "rows": [
         [
+          "7/13/2026 9:07:00 AM",
+          "E. Coli",
+          "235",
+          "10.80"
+        ],
+        [
           "7/8/2026 8:33:00 AM",
           "E. Coli",
           "235",
@@ -26281,10 +26317,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 8:33:00 AM",
+        "date": "7/13/2026 9:07:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.31"
+        "value": "13.51"
       }
     },
     "Barrett Pond (DCR)": {
@@ -30524,6 +30560,12 @@
       "town": "Richmond",
       "rows": [
         [
+          "7/13/2026 8:31:00 AM",
+          "E. Coli",
+          "235",
+          "14.80"
+        ],
+        [
           "7/6/2026 8:54:00 AM",
           "E. Coli",
           "235",
@@ -30555,15 +30597,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 8:54:00 AM",
+        "date": "7/13/2026 8:31:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "27.18"
+        "value": "25.94"
       }
     },
     "Richmond Town Beach": {
       "town": "Richmond",
       "rows": [
+        [
+          "7/13/2026 8:23:00 AM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
         [
           "7/6/2026 8:45:00 AM",
           "E. Coli",
@@ -30614,15 +30662,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 8:45:00 AM",
+        "date": "7/13/2026 8:23:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "13.70"
+        "value": "9.54"
       }
     },
     "S.P.E.N.A. Beach": {
       "town": "Rochester",
       "rows": [
+        [
+          "7/13/2026 8:00:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/9/2026 9:00:00 AM",
           "Enterococci",
@@ -30661,10 +30715,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 9:00:00 AM",
+        "date": "7/13/2026 8:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "23.60"
+        "value": "16.97"
       }
     },
     "Back Beach": {
@@ -30958,6 +31012,12 @@
       "town": "Rowe",
       "rows": [
         [
+          "7/13/2026 10:10:00 AM",
+          "E. Coli",
+          "235",
+          "13.20"
+        ],
+        [
           "7/8/2026 10:25:00 AM",
           "E. Coli",
           "235",
@@ -31007,15 +31067,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 10:25:00 AM",
+        "date": "7/13/2026 10:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.86"
+        "value": "14.28"
       }
     },
     "Rowe Town Beach at Pelham Park @Right": {
       "town": "Rowe",
       "rows": [
+        [
+          "7/13/2026 10:12:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
         [
           "7/8/2026 10:26:00 AM",
           "E. Coli",
@@ -31066,10 +31132,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 10:26:00 AM",
+        "date": "7/13/2026 10:12:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "16.09"
+        "value": "10.64"
       }
     },
     "H.A. Moses Beach (Scout Reservation)": {
@@ -36936,6 +37002,12 @@
       "town": "West Stockbridge",
       "rows": [
         [
+          "7/13/2026 9:22:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/6/2026 9:47:00 AM",
           "E. Coli",
           "235",
@@ -36985,10 +37057,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 9:47:00 AM",
+        "date": "7/13/2026 9:22:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.87"
+        "value": "9.74"
       }
     },
     "Ice House Pond": {
@@ -37778,6 +37850,12 @@
       "town": "Williamstown",
       "rows": [
         [
+          "7/13/2026 11:53:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "7/8/2026 5:38:00 AM",
           "E. Coli",
           "235",
@@ -37833,10 +37911,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 5:38:00 AM",
+        "date": "7/13/2026 11:53:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "54.04"
+        "value": "45.49"
       }
     },
     "Lake Dennison State Park (DCR) @Day Use Beach": {
