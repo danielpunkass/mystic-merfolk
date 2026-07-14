@@ -2043,7 +2043,8 @@
     {
       "name": "Black Rock (Nahant)",
       "town": "Nahant",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Forty Steps Beach",
@@ -3103,7 +3104,8 @@
     {
       "name": "Owen Little Way",
       "town": "Tisbury",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Owen Park",
@@ -3128,8 +3130,7 @@
     {
       "name": "Vineyard Harbor Motel",
       "town": "Tisbury",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Pearl Hill Pond Beach (DCR)",
