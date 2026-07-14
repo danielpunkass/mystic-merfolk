@@ -365,8 +365,7 @@
     {
       "name": "Tenean (DCR)",
       "town": "Boston",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Barlows Landing",
@@ -1758,13 +1757,13 @@
     {
       "name": "Black",
       "town": "Manchester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Magnolia East",
       "town": "Manchester",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Singing @Location 1",
