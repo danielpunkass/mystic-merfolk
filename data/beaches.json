@@ -1756,8 +1756,7 @@
     {
       "name": "Black",
       "town": "Manchester",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Magnolia East",
@@ -2460,8 +2459,7 @@
     {
       "name": "333 Commercial Street",
       "town": "Provincetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "451 Commercial Street",
@@ -2501,14 +2499,12 @@
     {
       "name": "Johnson Street",
       "town": "Provincetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Kendall Lane",
       "town": "Provincetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Provincetown Inn East",
@@ -2533,8 +2529,7 @@
     {
       "name": "Town Landing - Breakwater",
       "town": "Provincetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Town Landing - Snail Road",
