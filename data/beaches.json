@@ -421,8 +421,7 @@
     {
       "name": "Smith Beach",
       "town": "Braintree",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Sunset Lake @Location 1",
@@ -1018,8 +1017,7 @@
     {
       "name": "Salt Pond",
       "town": "Eastham",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Thumpertown",
@@ -2882,8 +2880,7 @@
     {
       "name": "Peckham Pond @ Camp Nihan (DCR)",
       "town": "Saugus",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "North Pond Beach (DCR)",

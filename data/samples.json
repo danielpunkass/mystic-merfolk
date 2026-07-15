@@ -2355,6 +2355,12 @@
       "town": "Belchertown",
       "rows": [
         [
+          "7/13/2026 10:20:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
+        [
           "7/6/2026 10:15:00 AM",
           "E. Coli",
           "235",
@@ -2398,7 +2404,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 10:15:00 AM",
+        "date": "7/13/2026 10:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "10.00"
@@ -11025,6 +11031,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "7/8/2026 8:33:00 AM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "7/1/2026 11:46:00 AM",
           "E. Coli",
           "235",
@@ -11062,15 +11074,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/1/2026 11:46:00 AM",
+        "date": "7/8/2026 8:33:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.52"
+        "value": "3.05"
       }
     },
     "Lake Manchaug Camping": {
       "town": "Douglas",
       "rows": [
+        [
+          "7/8/2026 8:45:00 AM",
+          "E. Coli",
+          "235",
+          "25.60"
+        ],
         [
           "7/1/2026 11:53:00 AM",
           "E. Coli",
@@ -11115,10 +11133,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/1/2026 11:53:00 AM",
+        "date": "7/8/2026 8:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.97"
+        "value": "8.79"
       }
     },
     "Wallum Lake (DCR)": {
@@ -11184,6 +11202,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "7/8/2026 9:10:00 AM",
+          "E. Coli",
+          "235",
+          "83.60"
+        ],
+        [
           "7/1/2026 11:28:00 AM",
           "E. Coli",
           "235",
@@ -11227,10 +11251,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/1/2026 11:28:00 AM",
+        "date": "7/8/2026 9:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.33"
+        "value": "3.69"
       }
     },
     "Mascuppic": {
@@ -18988,6 +19012,12 @@
       "town": "Lee",
       "rows": [
         [
+          "7/13/2026 11:30:00 AM",
+          "E. Coli",
+          "235",
+          "7.00"
+        ],
+        [
           "7/8/2026 12:50:00 PM",
           "E. Coli",
           "235",
@@ -19019,15 +19049,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 12:50:00 PM",
+        "date": "7/13/2026 11:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.30"
+        "value": "8.56"
       }
     },
     "Lenox Town Beach (Laurel Lake)": {
       "town": "Lenox",
       "rows": [
+        [
+          "7/13/2026 11:19:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
         [
           "7/8/2026 9:22:00 AM",
           "E. Coli",
@@ -19066,10 +19102,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 9:22:00 AM",
+        "date": "7/13/2026 11:19:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.64"
+        "value": "4.28"
       }
     },
     "Old Reservoir Swim Area  #1": {
@@ -27134,6 +27170,24 @@
       "town": "Oxford",
       "rows": [
         [
+          "6/29/2026 2:00:00 PM",
+          "E. Coli",
+          "235",
+          "18.70"
+        ],
+        [
+          "6/26/2026 10:40:00 AM",
+          "E. Coli",
+          "235",
+          "117.80"
+        ],
+        [
+          "6/15/2026 11:06:00 AM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "6/9/2026 9:13:00 AM",
           "E. Coli",
           "235",
@@ -27145,7 +27199,13 @@
           "235",
           "36.40"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "6/29/2026 2:00:00 PM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "19.16"
+      }
     },
     "Lulu Pond Beach (DCR)": {
       "town": "Pittsfield",
@@ -33609,6 +33669,12 @@
       "town": "Saugus",
       "rows": [
         [
+          "7/13/2026 7:00:00 AM",
+          "Enterococci",
+          "61",
+          "19.50"
+        ],
+        [
           "7/7/2026 9:15:00 AM",
           "Enterococci",
           "61",
@@ -33670,10 +33736,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 9:15:00 AM",
+        "date": "7/13/2026 7:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "24.18"
+        "value": "21.30"
       }
     },
     "North Pond Beach (DCR)": {
@@ -33990,6 +34056,12 @@
       "town": "Sharon",
       "rows": [
         [
+          "7/13/2026 8:28:00 AM",
+          "E. Coli",
+          "235",
+          "45.00"
+        ],
+        [
           "6/29/2026 10:47:00 AM",
           "E. Coli",
           "235",
@@ -34027,15 +34099,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 10:47:00 AM",
+        "date": "7/13/2026 8:28:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.66"
+        "value": "17.22"
       }
     },
     "Veterans' Memorial Park Beach @Central": {
       "town": "Sharon",
       "rows": [
+        [
+          "7/13/2026 8:19:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "6/29/2026 10:59:00 AM",
           "E. Coli",
@@ -34074,15 +34152,21 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 10:59:00 AM",
+        "date": "7/13/2026 8:19:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.50"
+        "value": "8.33"
       }
     },
     "Veterans' Memorial Park Beach @Swimming dock": {
       "town": "Sharon",
       "rows": [
+        [
+          "7/13/2026 8:11:00 AM",
+          "E. Coli",
+          "235",
+          "20.00"
+        ],
         [
           "6/29/2026 11:06:00 AM",
           "E. Coli",
@@ -34121,10 +34205,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 11:06:00 AM",
+        "date": "7/13/2026 8:11:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.00"
+        "value": "6.60"
       }
     },
     "Farm Pond": {
@@ -34500,6 +34584,12 @@
       "town": "Stockbridge",
       "rows": [
         [
+          "7/13/2026 10:15:00 AM",
+          "E. Coli",
+          "235",
+          "19.00"
+        ],
+        [
           "7/8/2026 9:53:00 AM",
           "E. Coli",
           "235",
@@ -34543,10 +34633,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 9:53:00 AM",
+        "date": "7/13/2026 10:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "29.62"
+        "value": "38.68"
       }
     },
     "Ames Pond": {
