@@ -682,8 +682,7 @@
     {
       "name": "Sandy Beach (Danvers)",
       "town": "Danvers",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Anthony Beach",
@@ -3236,7 +3235,8 @@
     {
       "name": "Forbes",
       "town": "Wareham",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Hamilton Beach",
@@ -3307,7 +3307,8 @@
     {
       "name": "Swift's Neck",
       "town": "Wareham",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Wareham Lake Shores",
