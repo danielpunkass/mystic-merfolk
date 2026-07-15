@@ -28430,6 +28430,12 @@
       "town": "Oxford",
       "rows": [
         [
+          "7/13/2026 12:50:00 PM",
+          "E. Coli",
+          "235",
+          "19.90"
+        ],
+        [
           "6/29/2026 2:00:00 PM",
           "E. Coli",
           "235",
@@ -28461,10 +28467,10 @@
         ]
       ],
       "geoMean": {
-        "date": "6/29/2026 2:00:00 PM",
+        "date": "7/13/2026 12:50:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.16"
+        "value": "16.98"
       }
     },
     "Lulu Pond Beach (DCR)": {
@@ -38033,6 +38039,12 @@
       "town": "Wales",
       "rows": [
         [
+          "7/13/2026 9:08:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "7/6/2026 8:59:00 AM",
           "E. Coli",
           "235",
@@ -38082,15 +38094,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 8:59:00 AM",
+        "date": "7/13/2026 9:08:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.09"
+        "value": "8.08"
       }
     },
     "Wales Town Beach": {
       "town": "Wales",
       "rows": [
+        [
+          "7/13/2026 9:26:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
         [
           "7/6/2026 9:18:00 AM",
           "E. Coli",
@@ -38141,10 +38159,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 9:18:00 AM",
+        "date": "7/13/2026 9:26:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.58"
+        "value": "5.68"
       }
     },
     "Blackmore Pond": {
