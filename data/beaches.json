@@ -1122,7 +1122,8 @@
     {
       "name": "Fort Phoenix (DCR)",
       "town": "Fairhaven",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Fort Phoenix - Town Beach",
@@ -2263,7 +2264,8 @@
     {
       "name": "Frye Pond Beach (DCR)",
       "town": "North Andover",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Stevens Pond - Center",
@@ -2874,8 +2876,7 @@
     {
       "name": "Pearce Lake @ Breakheart Reservation (DCR)",
       "town": "Saugus",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Peckham Pond @ Camp Nihan (DCR)",
@@ -3130,8 +3131,7 @@
     {
       "name": "Pearl Hill Pond Beach (DCR)",
       "town": "Townsend",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Ballston",
@@ -3627,13 +3627,13 @@
     {
       "name": "Lake Quinsigamond-Lake Park Beach (DCR)",
       "town": "Worcester",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Lake Quinsigamond-Regatta Point Beach (DCR)",
       "town": "Worcester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Shore Park",
