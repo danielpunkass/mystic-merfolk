@@ -3136,7 +3136,8 @@
     {
       "name": "Beach Point Landing",
       "town": "Truro",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Coast Guard (Town)",
