@@ -8154,6 +8154,12 @@
       "town": "Chelmsford",
       "rows": [
         [
+          "7/14/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
+        [
           "7/8/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -8197,15 +8203,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 9:30:00 AM",
+        "date": "7/14/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "13.84"
+        "value": "15.90"
       }
     },
     "Heart Pond": {
       "town": "Chelmsford",
       "rows": [
+        [
+          "7/14/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "7/8/2026 10:00:00 AM",
           "E. Coli",
@@ -8256,10 +8268,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 10:00:00 AM",
+        "date": "7/14/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.03"
+        "value": "9.38"
       }
     },
     "Ashmere Project-Camp Chesterfield Beach": {
@@ -15491,6 +15503,12 @@
       "town": "Freetown",
       "rows": [
         [
+          "7/15/2026 8:30:00 AM",
+          "Enterococci",
+          "61",
+          "14.00"
+        ],
+        [
           "7/8/2026 9:50:00 AM",
           "Enterococci",
           "61",
@@ -15540,10 +15558,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 9:50:00 AM",
+        "date": "7/15/2026 8:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "10.84"
+        "value": "18.37"
       }
     },
     "Dunn Pond (DCR)": {
@@ -17995,6 +18013,12 @@
       "town": "Holden",
       "rows": [
         [
+          "7/14/2026 12:06:00 PM",
+          "E. Coli",
+          "235",
+          "2,400.00"
+        ],
+        [
           "7/7/2026 11:30:00 AM",
           "E. Coli",
           "235",
@@ -18044,10 +18068,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 11:30:00 AM",
+        "date": "7/14/2026 12:06:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "106.83"
+        "value": "326.50"
       }
     },
     "Pleasure Point": {
