@@ -644,6 +644,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "7/14/2026 3:55:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/9/2026 12:50:00 PM",
           "E. Coli",
           "235",
@@ -705,7 +711,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 12:50:00 PM",
+        "date": "7/14/2026 3:55:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -16520,6 +16526,12 @@
       "town": "Greenfield",
       "rows": [
         [
+          "7/14/2026 9:05:00 AM",
+          "E. Coli",
+          "235",
+          "93.00"
+        ],
+        [
           "7/7/2026 7:45:00 AM",
           "E. Coli",
           "235",
@@ -16563,10 +16575,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 7:45:00 AM",
+        "date": "7/14/2026 9:05:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "76.75"
+        "value": "106.59"
       }
     },
     "Groton Town Beach (Sargisson Beach)": {
@@ -20000,6 +20012,12 @@
       "town": "Lexington",
       "rows": [
         [
+          "7/14/2026 2:21:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/7/2026 3:50:00 PM",
           "Enterococci",
           "61",
@@ -20043,7 +20061,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 3:50:00 PM",
+        "date": "7/14/2026 2:21:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "6.60"
@@ -20052,6 +20070,12 @@
     "Old Reservoir Swim Area  #2": {
       "town": "Lexington",
       "rows": [
+        [
+          "7/14/2026 2:23:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/7/2026 3:51:00 PM",
           "Enterococci",
@@ -20096,7 +20120,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 3:51:00 PM",
+        "date": "7/14/2026 2:23:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.74"
@@ -24316,6 +24340,12 @@
       "town": "Medford",
       "rows": [
         [
+          "7/14/2026 1:42:00 PM",
+          "E. Coli",
+          "235",
+          "20.00"
+        ],
+        [
           "7/7/2026 2:33:00 PM",
           "E. Coli",
           "235",
@@ -24347,15 +24377,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 2:33:00 PM",
+        "date": "7/14/2026 1:42:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "13.15"
+        "value": "13.93"
       }
     },
     "Wrights Pond @Shallow End": {
       "town": "Medford",
       "rows": [
+        [
+          "7/14/2026 1:41:00 PM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
         [
           "7/7/2026 2:32:00 PM",
           "E. Coli",
@@ -24388,10 +24424,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/7/2026 2:32:00 PM",
+        "date": "7/14/2026 1:41:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.64"
+        "value": "12.36"
       }
     },
     "Forest Lake: Swimming Beach": {
@@ -24750,6 +24786,12 @@
     "Lake Garfield": {
       "town": "Monterey",
       "rows": [
+        [
+          "7/15/2026 11:29:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
         [
           "7/9/2026 11:26:00 AM",
           "E. Coli",
@@ -27678,6 +27720,12 @@
       "town": "Northampton",
       "rows": [
         [
+          "7/14/2026 10:55:00 AM",
+          "E. Coli",
+          "235",
+          "4.00"
+        ],
+        [
           "7/8/2026 10:55:00 AM",
           "E. Coli",
           "235",
@@ -27733,10 +27781,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 10:55:00 AM",
+        "date": "7/14/2026 10:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "24.30"
+        "value": "19.85"
       }
     },
     "Eastville Town Beach - Harbor side": {
@@ -28029,6 +28077,12 @@
       "town": "Orange",
       "rows": [
         [
+          "7/15/2026 11:32:00 AM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
+        [
           "7/8/2026 11:17:00 AM",
           "E. Coli",
           "235",
@@ -28078,10 +28132,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 11:17:00 AM",
+        "date": "7/15/2026 11:32:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "17.04"
+        "value": "29.67"
       }
     },
     "Crystal Lake (Orleans)": {
@@ -33866,6 +33920,12 @@
       "town": "Russell",
       "rows": [
         [
+          "7/15/2026 9:37:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
+        [
           "7/9/2026 9:32:00 AM",
           "E. Coli",
           "235",
@@ -33897,10 +33957,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 9:32:00 AM",
+        "date": "7/15/2026 9:37:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.25"
+        "value": "1.80"
       }
     },
     "Whitehall Pond Beach (DCR)": {

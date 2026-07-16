@@ -917,7 +917,8 @@
     {
       "name": "Landing Road",
       "town": "Duxbury",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Residents Beach (Duxbury Beach)",
@@ -1294,8 +1295,7 @@
     {
       "name": "Freetown Town Beach",
       "town": "Freetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Dunn Pond (DCR)",
