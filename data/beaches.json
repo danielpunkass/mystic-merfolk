@@ -1204,7 +1204,8 @@
     {
       "name": "Megansett",
       "town": "Falmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Menauhant (East)",
@@ -1244,7 +1245,8 @@
     {
       "name": "Surf Drive (East)",
       "town": "Falmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Surf Drive (Pool)",
@@ -1269,8 +1271,7 @@
     {
       "name": "Wood Neck River",
       "town": "Falmouth",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Learned Pond Beach",
@@ -2011,7 +2012,8 @@
     {
       "name": "Camp Yomechas",
       "town": "Middleborough",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Woods Pond Cabins",
