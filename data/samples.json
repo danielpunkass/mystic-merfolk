@@ -2380,6 +2380,12 @@
       "town": "Becket",
       "rows": [
         [
+          "7/16/2026 9:42:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "7/9/2026 10:20:00 AM",
           "E. Coli",
           "235",
@@ -2429,10 +2435,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 10:20:00 AM",
+        "date": "7/16/2026 9:42:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.40"
+        "value": "12.05"
       }
     },
     "Belchertown Town Beach (Lake Arcadia)": {
@@ -8488,6 +8494,12 @@
       "town": "Chesterfield",
       "rows": [
         [
+          "7/16/2026 7:34:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "7/9/2026 7:41:00 AM",
           "E. Coli",
           "235",
@@ -8519,10 +8531,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 7:41:00 AM",
+        "date": "7/16/2026 7:34:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.63"
+        "value": "3.46"
       }
     },
     "Chicopee Beach (DCR)": {
@@ -13844,6 +13856,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "7/16/2026 6:55:00 AM",
+          "Enterococci",
+          "61",
+          "6.00"
+        ],
+        [
           "7/14/2026 8:10:00 AM",
           "Enterococci",
           "61",
@@ -13905,10 +13923,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 8:10:00 AM",
+        "date": "7/16/2026 6:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "47.29"
+        "value": "22.43"
       }
     },
     "Manhattan Avenue": {
@@ -18236,6 +18254,12 @@
       "town": "Hinsdale",
       "rows": [
         [
+          "7/16/2026 8:58:00 AM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
+        [
           "7/9/2026 9:31:00 AM",
           "E. Coli",
           "235",
@@ -18285,10 +18309,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/9/2026 9:31:00 AM",
+        "date": "7/16/2026 8:58:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "22.21"
+        "value": "18.94"
       }
     },
     "Eagle Lake": {
@@ -31835,7 +31859,7 @@
           "7/8/2026 5:32:00 AM",
           "Enterococci",
           "61",
-          "0.50"
+          "51.00"
         ],
         [
           "6/30/2026 11:39:00 AM",
@@ -31866,7 +31890,7 @@
         "date": "7/14/2026 11:06:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.54"
+        "value": "11.46"
       }
     },
     "Parkhurst": {
@@ -31929,7 +31953,7 @@
           "7/8/2026 7:14:00 AM",
           "Enterococci",
           "61",
-          "1.00"
+          "52.00"
         ],
         [
           "6/30/2026 1:50:00 PM",
@@ -31960,7 +31984,7 @@
         "date": "7/14/2026 12:56:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "6.31"
+        "value": "13.91"
       }
     },
     "Wollaston (DCR) @Channing Street": {
@@ -36640,6 +36664,12 @@
     "South Pond Beach": {
       "town": "Southwick",
       "rows": [
+        [
+          "7/16/2026 9:45:00 AM",
+          "E. Coli",
+          "235",
+          "17.00"
+        ],
         [
           "7/6/2026 12:37:00 PM",
           "E. Coli",
