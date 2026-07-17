@@ -3081,8 +3081,7 @@
     {
       "name": "Beamans Pond - Day Use (DCR)",
       "town": "Templeton",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Hilman's Point",
@@ -3624,8 +3623,7 @@
     {
       "name": "Lake Quinsigamond-Regatta Point Beach (DCR)",
       "town": "Worcester",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Shore Park",

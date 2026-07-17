@@ -1843,6 +1843,12 @@
       "town": "Barnstable",
       "rows": [
         [
+          "7/16/2026 8:17:00 AM",
+          "Enterococci",
+          "61",
+          "1,091.00"
+        ],
+        [
           "7/15/2026 12:29:00 PM",
           "Enterococci",
           "61",
@@ -1928,10 +1934,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:29:00 PM",
+        "date": "7/16/2026 8:17:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "67.45"
+        "value": "100.31"
       }
     },
     "Loop": {
@@ -37841,6 +37847,12 @@
       "town": "Templeton",
       "rows": [
         [
+          "7/16/2026 8:18:00 AM",
+          "Enterococci",
+          "61",
+          "15.60"
+        ],
+        [
           "7/14/2026 8:12:00 AM",
           "Enterococci",
           "61",
@@ -37896,15 +37908,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 8:12:00 AM",
+        "date": "7/16/2026 8:18:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "79.04"
+        "value": "47.67"
       }
     },
     "Beamans Pond - Day Use (DCR)": {
       "town": "Templeton",
       "rows": [
+        [
+          "7/16/2026 8:09:00 AM",
+          "Enterococci",
+          "61",
+          "2.00"
+        ],
         [
           "7/14/2026 8:08:00 AM",
           "Enterococci",
@@ -37961,10 +37979,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 8:08:00 AM",
+        "date": "7/16/2026 8:09:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "72.31"
+        "value": "30.19"
       }
     },
     "Hilman's Point": {
@@ -42953,6 +42971,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "7/16/2026 8:08:00 AM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
+        [
           "7/14/2026 7:49:00 AM",
           "Enterococci",
           "61",
@@ -43008,10 +43032,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 7:49:00 AM",
+        "date": "7/16/2026 8:08:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "11.27"
+        "value": "8.13"
       }
     },
     "Shore Park": {
