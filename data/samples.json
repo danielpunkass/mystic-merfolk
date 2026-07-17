@@ -10,6 +10,12 @@
       "town": "Abington",
       "rows": [
         [
+          "7/15/2026 9:00:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/8/2026 1:08:00 PM",
           "E. Coli",
           "235",
@@ -41,7 +47,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 1:08:00 PM",
+        "date": "7/15/2026 9:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -11960,6 +11966,12 @@
       "town": "Duxbury",
       "rows": [
         [
+          "7/15/2026 12:28:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/14/2026 12:22:00 PM",
           "Enterococci",
           "61",
@@ -12003,10 +12015,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 12:22:00 PM",
+        "date": "7/15/2026 12:28:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "55.46"
+        "value": "39.88"
       }
     },
     "Residents Beach (Duxbury Beach)": {
@@ -15732,6 +15744,12 @@
       "town": "Franklin",
       "rows": [
         [
+          "7/15/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/8/2026 10:00:00 AM",
           "E. Coli",
           "235",
@@ -15763,10 +15781,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 10:00:00 AM",
+        "date": "7/15/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.48"
+        "value": "6.01"
       }
     },
     "Freetown Town Beach": {
@@ -24672,6 +24690,12 @@
       "town": "Medfield",
       "rows": [
         [
+          "7/15/2026 4:19:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/8/2026 4:18:00 PM",
           "E. Coli",
           "235",
@@ -24695,11 +24719,23 @@
           "235",
           "2.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/15/2026 4:19:00 PM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "3.30"
+      }
     },
     "Hinkley @Right": {
       "town": "Medfield",
       "rows": [
+        [
+          "7/15/2026 4:21:00 PM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "7/8/2026 4:19:00 PM",
           "E. Coli",
@@ -24724,7 +24760,13 @@
           "235",
           "5.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/15/2026 4:21:00 PM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "3.30"
+      }
     },
     "Wrights Pond @Deep End": {
       "town": "Medford",
