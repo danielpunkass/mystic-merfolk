@@ -1023,6 +1023,12 @@
       "town": "Ayer",
       "rows": [
         [
+          "7/13/2026 11:10:00 AM",
+          "E. Coli",
+          "235",
+          "4.00"
+        ],
+        [
           "7/6/2026 11:48:00 AM",
           "E. Coli",
           "235",
@@ -1046,11 +1052,23 @@
           "235",
           "14.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 11:10:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "7.05"
+      }
     },
     "Mirror Lake": {
       "town": "Ayer",
       "rows": [
+        [
+          "7/13/2026 11:25:00 AM",
+          "E. Coli",
+          "235",
+          "13.00"
+        ],
         [
           "7/6/2026 12:08:00 PM",
           "E. Coli",
@@ -1075,7 +1093,13 @@
           "235",
           "7.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 11:25:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "3.91"
+      }
     },
     "Covell's": {
       "town": "Barnstable",
@@ -3277,6 +3301,12 @@
       "town": "Bolton",
       "rows": [
         [
+          "7/13/2026 1:05:00 PM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "7/6/2026 1:44:00 PM",
           "E. Coli",
           "235",
@@ -3326,10 +3356,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 1:44:00 PM",
+        "date": "7/13/2026 1:05:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.25"
+        "value": "2.05"
       }
     },
     "Carson Beach (DCR) @Bathhouse": {
@@ -16921,6 +16951,12 @@
       "town": "Groton",
       "rows": [
         [
+          "7/13/2026 7:35:00 AM",
+          "E. Coli",
+          "235",
+          "11.00"
+        ],
+        [
           "7/6/2026 8:07:00 AM",
           "E. Coli",
           "235",
@@ -16970,10 +17006,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 8:07:00 AM",
+        "date": "7/13/2026 7:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.66"
+        "value": "6.93"
       }
     },
     "Holmes Street": {
@@ -17110,6 +17146,12 @@
       "town": "Harvard",
       "rows": [
         [
+          "7/13/2026 12:30:00 PM",
+          "E. Coli",
+          "235",
+          "3.00"
+        ],
+        [
           "7/6/2026 1:10:00 PM",
           "E. Coli",
           "235",
@@ -17141,10 +17183,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 1:10:00 PM",
+        "date": "7/13/2026 12:30:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.49"
+        "value": "5.86"
       }
     },
     "Atlantic Avenue (Harwich)": {
@@ -20190,6 +20232,12 @@
       "town": "Lancaster",
       "rows": [
         [
+          "7/13/2026 11:58:00 AM",
+          "E. Coli",
+          "235",
+          "6.00"
+        ],
+        [
           "7/6/2026 12:40:00 PM",
           "E. Coli",
           "235",
@@ -20213,7 +20261,13 @@
           "235",
           "10.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 11:58:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "6.54"
+      }
     },
     "Sunrise Beach": {
       "town": "Lanesborough",
@@ -20502,6 +20556,12 @@
       "town": "Lunenburg",
       "rows": [
         [
+          "7/13/2026 10:08:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/6/2026 10:49:00 AM",
           "E. Coli",
           "235",
@@ -20551,15 +20611,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 10:49:00 AM",
+        "date": "7/13/2026 10:08:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "13.49"
+        "value": "11.14"
       }
     },
     "Hickory Hills (Hemlock Drive)": {
       "town": "Lunenburg",
       "rows": [
+        [
+          "7/13/2026 8:47:00 AM",
+          "E. Coli",
+          "235",
+          "13.00"
+        ],
         [
           "7/6/2026 9:39:00 AM",
           "E. Coli",
@@ -20610,15 +20676,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 9:39:00 AM",
+        "date": "7/13/2026 8:47:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.89"
+        "value": "6.56"
       }
     },
     "Hickory Hills (Island Rd.)": {
       "town": "Lunenburg",
       "rows": [
+        [
+          "7/13/2026 8:33:00 AM",
+          "E. Coli",
+          "235",
+          "6.00"
+        ],
         [
           "7/6/2026 9:06:00 AM",
           "E. Coli",
@@ -20669,15 +20741,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 9:06:00 AM",
+        "date": "7/13/2026 8:33:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.48"
+        "value": "3.73"
       }
     },
     "Lunenburg Town Beach": {
       "town": "Lunenburg",
       "rows": [
+        [
+          "7/13/2026 10:16:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
         [
           "7/6/2026 10:56:00 AM",
           "E. Coli",
@@ -20710,10 +20788,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 10:56:00 AM",
+        "date": "7/13/2026 10:16:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.78"
+        "value": "5.53"
       }
     },
     "Kings (DCR) @Eastern Ave.": {
@@ -37108,6 +37186,12 @@
       "town": "Stow",
       "rows": [
         [
+          "7/13/2026 1:28:00 PM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/6/2026 2:06:00 PM",
           "E. Coli",
           "235",
@@ -37139,10 +37223,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/6/2026 2:06:00 PM",
+        "date": "7/13/2026 1:28:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.49"
+        "value": "2.93"
       }
     },
     "Cedar Lake Recreation Area": {
