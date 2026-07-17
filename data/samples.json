@@ -7711,6 +7711,12 @@
       "town": "Chatham",
       "rows": [
         [
+          "7/16/2026 12:02:00 PM",
+          "Enterococci",
+          "61",
+          "42.00"
+        ],
+        [
           "7/15/2026 9:54:00 AM",
           "Enterococci",
           "61",
@@ -7754,10 +7760,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:54:00 AM",
+        "date": "7/16/2026 12:02:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "26.92"
+        "value": "28.60"
       }
     },
     "Cockle Cove": {
@@ -7817,6 +7823,12 @@
       "town": "Chatham",
       "rows": [
         [
+          "7/16/2026 11:02:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/15/2026 10:31:00 AM",
           "Enterococci",
           "61",
@@ -7860,10 +7872,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:31:00 AM",
+        "date": "7/16/2026 11:02:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "20.48"
+        "value": "14.22"
       }
     },
     "Goose Pond": {
@@ -14729,6 +14741,12 @@
       "town": "Falmouth",
       "rows": [
         [
+          "7/16/2026 10:07:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/15/2026 8:20:00 AM",
           "Enterococci",
           "61",
@@ -14778,10 +14796,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 8:20:00 AM",
+        "date": "7/16/2026 10:07:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "19.84"
+        "value": "22.79"
       }
     },
     "Menauhant (East)": {
@@ -38502,6 +38520,12 @@
       "town": "Truro",
       "rows": [
         [
+          "7/16/2026 10:56:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/15/2026 11:19:00 AM",
           "Enterococci",
           "61",
@@ -38551,10 +38575,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 11:19:00 AM",
+        "date": "7/16/2026 10:56:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "23.33"
+        "value": "26.80"
       }
     },
     "Coast Guard (Town)": {
@@ -40542,6 +40566,12 @@
       "town": "Wellfleet",
       "rows": [
         [
+          "7/16/2026 11:25:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/8/2026 8:51:00 AM",
           "Enterococci",
           "61",
@@ -40579,10 +40609,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 8:51:00 AM",
+        "date": "7/16/2026 11:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "5.00"
+        "value": "5.74"
       }
     },
     "Duck Pond": {
@@ -41146,6 +41176,12 @@
       "town": "Wellfleet",
       "rows": [
         [
+          "7/16/2026 11:37:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/8/2026 9:02:00 AM",
           "Enterococci",
           "61",
@@ -41183,7 +41219,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/8/2026 9:02:00 AM",
+        "date": "7/16/2026 11:37:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "18.52"
