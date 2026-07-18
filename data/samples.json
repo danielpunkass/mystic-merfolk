@@ -12080,6 +12080,12 @@
       "town": "Duxbury",
       "rows": [
         [
+          "7/17/2026 1:46:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/15/2026 12:28:00 PM",
           "Enterococci",
           "61",
@@ -12129,7 +12135,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:28:00 PM",
+        "date": "7/17/2026 1:46:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "39.88"
