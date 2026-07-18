@@ -3632,6 +3632,12 @@
       "town": "Boston",
       "rows": [
         [
+          "7/17/2026 8:25:00 AM",
+          "Enterococci",
+          "61",
+          "4.00"
+        ],
+        [
           "7/16/2026 10:50:00 AM",
           "Enterococci",
           "61",
@@ -3993,15 +3999,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 10:50:00 AM",
+        "date": "7/17/2026 8:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "9.58"
+        "value": "9.16"
       }
     },
     "Constitution (DCR) @North": {
       "town": "Boston",
       "rows": [
+        [
+          "7/17/2026 8:35:00 AM",
+          "Enterococci",
+          "61",
+          "8.00"
+        ],
         [
           "7/16/2026 10:40:00 AM",
           "Enterococci",
@@ -4364,15 +4376,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 10:40:00 AM",
+        "date": "7/17/2026 8:35:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "7.91"
+        "value": "7.57"
       }
     },
     "Constitution (DCR) @Rec Center": {
       "town": "Boston",
       "rows": [
+        [
+          "7/17/2026 8:15:00 AM",
+          "Enterococci",
+          "61",
+          "3.00"
+        ],
         [
           "7/16/2026 11:00:00 AM",
           "Enterococci",
@@ -4735,10 +4753,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 11:00:00 AM",
+        "date": "7/17/2026 8:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "11.50"
+        "value": "5.72"
       }
     },
     "Lovell's Island (DCR)": {
@@ -4874,6 +4892,12 @@
     "Malibu (DCR)": {
       "town": "Boston",
       "rows": [
+        [
+          "7/17/2026 2:02:00 PM",
+          "Enterococci",
+          "61",
+          "7.00"
+        ],
         [
           "7/16/2026 12:10:00 PM",
           "Enterococci",
@@ -5230,10 +5254,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 12:10:00 PM",
+        "date": "7/17/2026 2:02:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "11.12"
+        "value": "10.35"
       }
     },
     "Pleasure Bay (DCR) @Broadway": {
@@ -5499,6 +5523,12 @@
     "Tenean (DCR)": {
       "town": "Boston",
       "rows": [
+        [
+          "7/17/2026 1:13:00 PM",
+          "Enterococci",
+          "61",
+          "6.00"
+        ],
         [
           "7/16/2026 12:25:00 PM",
           "Enterococci",
@@ -5855,10 +5885,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 12:25:00 PM",
+        "date": "7/17/2026 1:13:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "5.49"
+        "value": "4.96"
       }
     },
     "Barlows Landing": {
@@ -20804,6 +20834,12 @@
       "town": "Lynn",
       "rows": [
         [
+          "7/17/2026 7:05:00 AM",
+          "Enterococci",
+          "61",
+          "32.00"
+        ],
+        [
           "7/16/2026 9:00:00 AM",
           "Enterococci",
           "61",
@@ -21165,15 +21201,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 9:00:00 AM",
+        "date": "7/17/2026 7:05:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "17.57"
+        "value": "14.94"
       }
     },
     "Kings (DCR) @Kimball Rd.": {
       "town": "Lynn",
       "rows": [
+        [
+          "7/17/2026 6:30:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/16/2026 9:15:00 AM",
           "Enterococci",
@@ -21536,7 +21578,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 9:15:00 AM",
+        "date": "7/17/2026 6:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "4.78"
@@ -21545,6 +21587,12 @@
     "Kings (DCR) @Pierce Rd.": {
       "town": "Lynn",
       "rows": [
+        [
+          "7/17/2026 6:45:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/16/2026 9:09:00 AM",
           "Enterococci",
@@ -21907,7 +21955,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 9:09:00 AM",
+        "date": "7/17/2026 6:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "7.86"
@@ -21993,6 +22041,12 @@
     "Stacey's Brook Outfall (No Swimming) (DCR)": {
       "town": "Lynn",
       "rows": [
+        [
+          "7/17/2026 7:20:00 AM",
+          "Enterococci",
+          "61",
+          "730.00"
+        ],
         [
           "7/16/2026 8:50:00 AM",
           "Enterococci",
@@ -22355,10 +22409,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 8:50:00 AM",
+        "date": "7/17/2026 7:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "849.12"
+        "value": "789.58"
       }
     },
     "Black": {
@@ -32195,6 +32249,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/17/2026 7:30:00 AM",
+          "Enterococci",
+          "61",
+          "8.00"
+        ],
+        [
           "7/16/2026 8:50:00 AM",
           "Enterococci",
           "61",
@@ -32550,15 +32610,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 8:50:00 AM",
+        "date": "7/17/2026 7:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.78"
+        "value": "5.25"
       }
     },
     "Wollaston (DCR) @Milton Street": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/17/2026 8:05:00 AM",
+          "Enterococci",
+          "61",
+          "4.00"
+        ],
         [
           "7/16/2026 9:04:00 AM",
           "Enterococci",
@@ -32915,15 +32981,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 9:04:00 AM",
+        "date": "7/17/2026 8:05:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.16"
+        "value": "3.98"
       }
     },
     "Wollaston (DCR) @Rice Road": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/17/2026 6:50:00 AM",
+          "Enterococci",
+          "61",
+          "8.00"
+        ],
         [
           "7/16/2026 8:25:00 AM",
           "Enterococci",
@@ -33280,15 +33352,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 8:25:00 AM",
+        "date": "7/17/2026 6:50:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "5.49"
+        "value": "5.25"
       }
     },
     "Wollaston (DCR) @Sachem Street": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/17/2026 7:05:00 AM",
+          "Enterococci",
+          "61",
+          "15.00"
+        ],
         [
           "7/16/2026 8:40:00 AM",
           "Enterococci",
@@ -33645,10 +33723,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 8:40:00 AM",
+        "date": "7/17/2026 7:05:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.78"
+        "value": "5.96"
       }
     },
     "Revere (DCR) @Beach St.": {
