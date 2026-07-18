@@ -37433,6 +37433,12 @@
       "town": "Swampscott",
       "rows": [
         [
+          "7/17/2026 8:14:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/15/2026 10:00:00 AM",
           "Enterococci",
           "61",
@@ -37476,10 +37482,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:00:00 AM",
+        "date": "7/17/2026 8:14:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "87.55"
+        "value": "76.21"
       }
     },
     "New Ocean/Eisman's": {
