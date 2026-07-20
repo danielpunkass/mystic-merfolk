@@ -31775,6 +31775,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/15/2026 1:41:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/14/2026 12:16:00 PM",
           "Enterococci",
           "61",
@@ -31824,10 +31830,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 12:16:00 PM",
+        "date": "7/15/2026 1:41:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "56.03"
+        "value": "19.69"
       }
     },
     "Chikatawbot": {
@@ -31887,6 +31893,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/15/2026 1:57:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/14/2026 12:44:00 PM",
           "Enterococci",
           "61",
@@ -31924,10 +31936,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 12:44:00 PM",
+        "date": "7/15/2026 1:57:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "15.64"
+        "value": "17.97"
       }
     },
     "Germantown Firestation": {
@@ -32034,6 +32046,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/15/2026 1:27:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/14/2026 11:25:00 AM",
           "Enterococci",
           "61",
@@ -32077,10 +32095,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 11:25:00 AM",
+        "date": "7/15/2026 1:27:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "38.60"
+        "value": "33.60"
       }
     },
     "Mound": {
@@ -32140,6 +32158,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/15/2026 1:19:00 PM",
+          "Enterococci",
+          "61",
+          "107.00"
+        ],
+        [
           "7/14/2026 11:12:00 AM",
           "Enterococci",
           "61",
@@ -32177,10 +32201,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 11:12:00 AM",
+        "date": "7/15/2026 1:19:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "31.90"
+        "value": "35.47"
       }
     },
     "Norton Beach": {
