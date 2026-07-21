@@ -3105,12 +3105,14 @@
     {
       "name": "Tashmoo Beach",
       "town": "Tisbury",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "Tashmoo Cut",
       "town": "Tisbury",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "Vineyard Harbor Motel",

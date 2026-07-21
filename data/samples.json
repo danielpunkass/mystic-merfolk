@@ -20323,6 +20323,12 @@
       "town": "Lakeville",
       "rows": [
         [
+          "7/9/2026 9:09:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "6/29/2026 9:15:00 AM",
           "E. Coli",
           "235",
@@ -20340,7 +20346,13 @@
           "235",
           "5.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/9/2026 9:09:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "5.00"
+      }
     },
     "Lancaster Town Beach": {
       "town": "Lancaster",
@@ -26987,6 +26999,12 @@
       "town": "New Bedford",
       "rows": [
         [
+          "7/20/2026 9:53:00 AM",
+          "Enterococci",
+          "61",
+          "250.00"
+        ],
+        [
           "7/14/2026 10:45:00 AM",
           "Enterococci",
           "61",
@@ -27054,15 +27072,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:45:00 AM",
+        "date": "7/20/2026 9:53:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.28"
+        "value": "9.79"
       }
     },
     "400 Beach @South": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:55:00 AM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
         [
           "7/14/2026 10:48:00 AM",
           "Enterococci",
@@ -27131,15 +27155,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:48:00 AM",
+        "date": "7/20/2026 9:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "11.29"
+        "value": "9.06"
       }
     },
     "Davy's Locker": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:48:00 AM",
+          "Enterococci",
+          "61",
+          "11.00"
+        ],
         [
           "7/14/2026 10:40:00 AM",
           "Enterococci",
@@ -27202,15 +27232,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:40:00 AM",
+        "date": "7/20/2026 9:48:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "8.64"
+        "value": "10.12"
       }
     },
     "J. Beach": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:55:00 AM",
+          "Enterococci",
+          "61",
+          "4.00"
+        ],
         [
           "7/14/2026 10:48:00 AM",
           "Enterococci",
@@ -27279,15 +27315,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:48:00 AM",
+        "date": "7/20/2026 9:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "13.77"
+        "value": "12.70"
       }
     },
     "Kids Beach": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:53:00 AM",
+          "Enterococci",
+          "61",
+          "42.00"
+        ],
         [
           "7/14/2026 10:45:00 AM",
           "Enterococci",
@@ -27350,15 +27392,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:45:00 AM",
+        "date": "7/20/2026 9:53:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "5.54"
+        "value": "5.93"
       }
     },
     "O'Tools": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:45:00 AM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
         [
           "7/14/2026 10:35:00 AM",
           "Enterococci",
@@ -27421,15 +27469,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:35:00 AM",
+        "date": "7/20/2026 9:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "6.96"
+        "value": "3.44"
       }
     },
     "Squid": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:57:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/14/2026 10:50:00 AM",
           "Enterococci",
@@ -27492,15 +27546,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:50:00 AM",
+        "date": "7/20/2026 9:57:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "6.09"
+        "value": "5.62"
       }
     },
     "Tabor Park South": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:39:00 AM",
+          "Enterococci",
+          "61",
+          "3.00"
+        ],
         [
           "7/14/2026 10:28:00 AM",
           "Enterococci",
@@ -27563,15 +27623,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:28:00 AM",
+        "date": "7/20/2026 9:39:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "16.15"
+        "value": "20.12"
       }
     },
     "Tower Beach @Tower 1": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:45:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "7/14/2026 10:31:00 AM",
           "Enterococci",
@@ -27634,15 +27700,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:31:00 AM",
+        "date": "7/20/2026 9:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "17.95"
+        "value": "11.84"
       }
     },
     "Tower Beach @Tower 4": {
       "town": "New Bedford",
       "rows": [
+        [
+          "7/20/2026 9:42:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "7/14/2026 10:35:00 AM",
           "Enterococci",
@@ -27705,10 +27777,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:35:00 AM",
+        "date": "7/20/2026 9:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "2.34"
+        "value": "1.48"
       }
     },
     "York Lake Beach (DCR)": {
@@ -34410,6 +34482,12 @@
       "town": "Rochester",
       "rows": [
         [
+          "7/20/2026 8:00:00 AM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
+        [
           "7/13/2026 8:00:00 AM",
           "Enterococci",
           "61",
@@ -34453,10 +34531,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 8:00:00 AM",
+        "date": "7/20/2026 8:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "16.97"
+        "value": "7.21"
       }
     },
     "Back Beach": {
@@ -37070,6 +37148,12 @@
       "town": "Shrewsbury",
       "rows": [
         [
+          "7/16/2026 10:15:00 AM",
+          "E. Coli",
+          "235",
+          "21.80"
+        ],
+        [
           "7/9/2026 10:20:00 AM",
           "E. Coli",
           "235",
@@ -37093,7 +37177,13 @@
           "235",
           "21.10"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/16/2026 10:15:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "20.75"
+      }
     },
     "Lake Wyola (DCR)": {
       "town": "Shutesbury",
@@ -43347,6 +43437,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "7/20/2026 10:35:00 AM",
+          "E. Coli",
+          "235",
+          "17.50"
+        ],
+        [
           "7/13/2026 10:21:00 AM",
           "E. Coli",
           "235",
@@ -43370,6 +43466,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "7/20/2026 11:19:00 AM",
+          "E. Coli",
+          "235",
+          "248.10"
+        ],
+        [
           "7/13/2026 11:04:00 AM",
           "E. Coli",
           "235",
@@ -43392,6 +43494,12 @@
     "Indian Lake Public Beach (Sherburne Ave)": {
       "town": "Worcester",
       "rows": [
+        [
+          "7/20/2026 10:49:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
         [
           "7/13/2026 10:37:00 AM",
           "E. Coli",
@@ -43558,6 +43666,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "7/20/2026 10:58:00 AM",
+          "E. Coli",
+          "235",
+          "16.90"
+        ],
+        [
           "7/13/2026 10:47:00 AM",
           "E. Coli",
           "235",
@@ -43580,6 +43694,12 @@
     "Smith Pond": {
       "town": "Worcester",
       "rows": [
+        [
+          "7/20/2026 11:35:00 AM",
+          "E. Coli",
+          "235",
+          "114.50"
+        ],
         [
           "7/13/2026 11:18:00 AM",
           "E. Coli",
@@ -43612,10 +43732,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 11:18:00 AM",
+        "date": "7/20/2026 11:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "20.32"
+        "value": "32.53"
       }
     },
     "Sweatt Beach": {
