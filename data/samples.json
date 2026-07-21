@@ -26040,6 +26040,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "7/20/2026 7:15:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/15/2026 7:15:00 AM",
           "Enterococci",
           "61",
@@ -26107,15 +26113,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 7:15:00 AM",
+        "date": "7/20/2026 7:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "19.43"
+        "value": "22.32"
       }
     },
     "Forty Steps Beach": {
       "town": "Nahant",
       "rows": [
+        [
+          "7/20/2026 7:45:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/13/2026 7:45:00 AM",
           "Enterococci",
@@ -26172,10 +26184,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 7:45:00 AM",
+        "date": "7/20/2026 7:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "5.74"
+        "value": "5.00"
       }
     },
     "Nahant Beach (DCR) @1 (North/Ward Bathhouse)": {
@@ -26490,6 +26502,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "7/20/2026 7:30:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/13/2026 7:30:00 AM",
           "Enterococci",
           "61",
@@ -26545,15 +26563,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 7:30:00 AM",
+        "date": "7/20/2026 7:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "15.34"
+        "value": "13.36"
       }
     },
     "Tudor": {
       "town": "Nahant",
       "rows": [
+        [
+          "7/20/2026 8:00:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/13/2026 8:00:00 AM",
           "Enterococci",
@@ -26610,10 +26634,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 8:00:00 AM",
+        "date": "7/20/2026 8:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "8.71"
+        "value": "6.60"
       }
     },
     "40th Pole": {
@@ -37731,6 +37755,12 @@
       "town": "Sherborn",
       "rows": [
         [
+          "7/20/2026 10:40:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/13/2026 8:54:00 AM",
           "E. Coli",
           "235",
@@ -37780,7 +37810,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 8:54:00 AM",
+        "date": "7/20/2026 10:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "3.30"
@@ -37925,6 +37955,12 @@
       "town": "Southwick",
       "rows": [
         [
+          "7/20/2026 12:55:00 PM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
+        [
           "7/16/2026 9:45:00 AM",
           "E. Coli",
           "235",
@@ -37948,7 +37984,13 @@
           "235",
           "1.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/20/2026 12:55:00 PM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "4.72"
+      }
     },
     "Luther Hill Park": {
       "town": "Spencer",
@@ -41436,6 +41478,12 @@
       "town": "Wayland",
       "rows": [
         [
+          "7/20/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/13/2026 10:45:00 AM",
           "E. Coli",
           "235",
@@ -41491,15 +41539,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 10:45:00 AM",
+        "date": "7/20/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.72"
+        "value": "5.42"
       }
     },
     "Wayland Town Beach @Right": {
       "town": "Wayland",
       "rows": [
+        [
+          "7/20/2026 9:50:00 AM",
+          "E. Coli",
+          "235",
+          "20.00"
+        ],
         [
           "7/13/2026 10:40:00 AM",
           "E. Coli",
@@ -41556,10 +41610,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 10:40:00 AM",
+        "date": "7/20/2026 9:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.84"
+        "value": "16.44"
       }
     },
     "Lakeside Boat Ramp": {

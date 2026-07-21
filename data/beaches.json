@@ -1684,7 +1684,8 @@
     {
       "name": "Sunrise Beach",
       "town": "Lanesborough",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Lee Town Beach",
