@@ -37575,6 +37575,12 @@
       "town": "Springfield",
       "rows": [
         [
+          "7/20/2026 9:31:00 AM",
+          "Enterococci",
+          "61",
+          "16.40"
+        ],
+        [
           "7/13/2026 8:58:00 AM",
           "Enterococci",
           "61",
@@ -37606,10 +37612,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 8:58:00 AM",
+        "date": "7/20/2026 9:31:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "8.02"
+        "value": "9.43"
       }
     },
     "Camp Wilder @Right": {
@@ -37675,6 +37681,12 @@
       "town": "Springfield",
       "rows": [
         [
+          "7/20/2026 9:18:00 AM",
+          "Enterococci",
+          "61",
+          "2.00"
+        ],
+        [
           "7/13/2026 8:47:00 AM",
           "Enterococci",
           "61",
@@ -37712,10 +37724,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 8:47:00 AM",
+        "date": "7/20/2026 9:18:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "29.56"
+        "value": "18.36"
       }
     },
     "Stockbridge Town Beach (Stockbridge Bowl)": {
@@ -37781,6 +37793,24 @@
       "town": "Stoughton",
       "rows": [
         [
+          "7/13/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "40.00"
+        ],
+        [
+          "7/6/2026 9:45:00 AM",
+          "E. Coli",
+          "235",
+          "50.00"
+        ],
+        [
+          "6/29/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
+        [
           "6/22/2026 10:00:00 AM",
           "E. Coli",
           "235",
@@ -37798,7 +37828,13 @@
           "235",
           "5.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/13/2026 9:30:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "28.85"
+      }
     },
     "Lake Boone": {
       "town": "Stow",
