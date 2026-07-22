@@ -922,8 +922,7 @@
     {
       "name": "Landing Road",
       "town": "Duxbury",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Residents Beach (Duxbury Beach)",
@@ -2236,22 +2235,26 @@
     {
       "name": "Plum Island - 55th St.",
       "town": "Newburyport",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "Plum Island - end of island 1",
       "town": "Newburyport",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "Plum Island - end of island 2",
       "town": "Newburyport",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "Plum Island Point",
       "town": "Newburyport",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Crystal Lake (Newton)",
@@ -3229,8 +3232,7 @@
     {
       "name": "Briarwood",
       "town": "Wareham",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "East Boulevard",
