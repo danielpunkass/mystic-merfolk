@@ -88,8 +88,7 @@
     {
       "name": "Hopkinton Reservoir-Main Beach (DCR)",
       "town": "Ashland",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Hopkinton Reservoir-Upper Beach (DCR)",
@@ -681,7 +680,8 @@
     {
       "name": "Sandy Beach (Danvers)",
       "town": "Danvers",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Anthony Beach",
@@ -2592,12 +2592,14 @@
     {
       "name": "Merrymount",
       "town": "Quincy",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Mound",
       "town": "Quincy",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Nickerson",
@@ -3084,8 +3086,7 @@
     {
       "name": "Beamans Pond - Campground (DCR)",
       "town": "Templeton",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Beamans Pond - Day Use (DCR)",
