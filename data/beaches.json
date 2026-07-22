@@ -2375,7 +2375,8 @@
     {
       "name": "Carbuncle Pond",
       "town": "Oxford",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Lulu Pond Beach (DCR)",
@@ -3626,7 +3627,8 @@
     {
       "name": "Coes Pond Beach (Mill St.)",
       "town": "Worcester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Indian Lake Public Beach (Sherburne Ave)",
