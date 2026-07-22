@@ -81,7 +81,8 @@ jobs:
           # Copy only the files that should be served publicly. Everything else
           # (sync script, archive raw CSVs, PHP proxy, .htaccess, .claude/, etc.)
           # stays out of the deploy artifact.
-          cp index.html mystic.html simple.html sw.js site/
+          cp index.html mystic.html sw.js site/
+          cp -R faq site/faq
           # Slug-override table (beach name -> friendly permalink slug); the page
           # fetches it to generate/resolve /beach/<slug>/ links.
           [ -f slug-overrides.json ] && cp slug-overrides.json site/ || true

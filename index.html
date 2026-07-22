@@ -52,6 +52,25 @@
             margin-bottom: 2rem;
         }
 
+        /* FAQ link line under the subtitle. Pull up against the subtitle's
+           2rem bottom margin; restore an opaque text fill since .header's
+           gradient text effect sets -webkit-text-fill-color: transparent. */
+        .faq-link {
+            margin-top: -1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .faq-link a {
+            color: #0369a1;
+            -webkit-text-fill-color: #0369a1;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .faq-link a:hover {
+            text-decoration: underline;
+        }
+
         .card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
@@ -749,7 +768,8 @@
     <div class="container">
         <div class="header">
             <h1 id="page-title">🏊‍♂️ Massachusetts Water Quality</h1>
-            <div class="subtitle">A concise snapshot of current and recent water conditions. Data from the <a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
+            <div class="subtitle">A concise snapshot of current and recent water conditions. Data from the <a id="dph-link" href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
+            <div class="faq-link"><a href="/faq/">🛟 Swimming Safety FAQ</a></div>
         </div>
 
         <div class="change-beach-row" id="change-beach-row" style="display: none;">
@@ -1532,6 +1552,27 @@
         function updatePageHeading() {
             const titleEl = document.getElementById('page-title');
             if (titleEl) titleEl.textContent = `🏊‍♂️ ${shortBeachName(selectedBeach)}`;
+            updateDphLink();
+        }
+
+        // Deep-link the subtitle's "DCR Water Quality" anchor to the selected
+        // beach. The mass.gov wrapper page can't pre-select a beach (its Drupal
+        // embed passes a fixed URL to the Tableau JS API and ignores the page
+        // query string), but the legacy Tableau Server it embeds allows guest
+        // access and honors Tableau's standard URL-filter parameters, so link
+        // straight to the ResultsGraphs view with Town/Name pre-applied. The
+        // filter values must match DPH's data exactly — which they do, since
+        // beach names and towns come from the same upstream. Fall back to the
+        // mass.gov page when the town isn't known (no beaches.json yet).
+        function updateDphLink() {
+            const link = document.getElementById('dph-link');
+            if (!link) return;
+            const entry = getBeachEntry(selectedBeach);
+            link.href = entry && entry.town
+                ? 'https://datavisualization.dph.mass.gov/views/BeachWaterQualityDashboard/ResultsGraphs' +
+                  '?Town=' + encodeURIComponent(entry.town) +
+                  '&Name=' + encodeURIComponent(selectedBeach)
+                : 'https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard';
         }
 
         // Render everything for the currently selected beach from already-loaded data.

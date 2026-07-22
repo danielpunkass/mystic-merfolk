@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming Safety FAQ — Massachusetts Water Quality</title>
+    <meta name="description" content="Answers to common questions about swimming safety: where to swim, how rain and CSOs affect water quality, and how to gauge whether the water is safe.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊‍♂️</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f9ff 100%);
+            min-height: 100vh;
+            color: #1a365d;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #0284c7, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .site-link {
+            color: #0369a1;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .site-link:hover {
+            text-decoration: underline;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .card h2 {
+            color: #1a365d;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0.25rem 0 0.5rem;
+        }
+
+        .card .section-intro {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            border-top: 1px solid #e2e8f0;
+            padding: 1.25rem 0 0.25rem;
+            margin-top: 1rem;
+        }
+
+        .faq-item h3 {
+            color: #0369a1;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            color: #334155;
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-item ul {
+            color: #334155;
+            margin: 0 0 0.75rem 1.25rem;
+        }
+
+        .faq-item li {
+            margin-bottom: 0.35rem;
+        }
+
+        .faq-item a {
+            color: #0369a1;
+            font-weight: 600;
+        }
+
+        /* Callout for the rain-delay rule of thumb — mirrors the dashboard's
+           amber CSO-warning styling so "caution" reads the same site-wide. */
+        .callout {
+            background: linear-gradient(135deg, #fef3c7, #fef9e7);
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #92400e;
+        }
+
+        .callout strong {
+            color: #78350f;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1.25rem 1.25rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏊‍♂️ Swimming Safety FAQ</h1>
+            <div class="subtitle">Common questions about where, when, and how to swim safely.</div>
+            <a class="site-link" href="/">🏊‍♂️ Water Quality Dashboard</a>
+        </div>
+
+        <div class="card">
+            <h2>🗺️ Where to Swim</h2>
+            <p class="section-intro">Finding a beach — and knowing whether it's open before you go.</p>
+
+            <div class="faq-item">
+                <h3>How do I know if a beach is open for swimming?</h3>
+                <p>Check the <a href="/">dashboard</a>: it shows the official state status for the beach
+                you select, based on the Massachusetts Department of Public Health's water quality
+                testing. A beach posted as "Closed" has exceeded bacteria limits or has another active
+                hazard (like a harmful algae bloom or a sewage release), and the dashboard shows the
+                stated closure reason when the state provides one.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What resources can I use to gauge water safety?</h3>
+                <ul>
+                    <li><a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">Massachusetts DPH Beach Water Quality Dashboard</a> — the official source for test results and beach postings statewide (and the source of this site's data).</li>
+                    <li><a href="https://www.mwra.com/your-sewer-system/cso">MWRA: Combined Sewer Overflows</a> — explains CSOs and tracks discharge notifications for the Boston-area sewer system.</li>
+                    <li><a href="https://mysticriver.org/">Mystic River Watershed Association</a> — local water quality monitoring and advocacy for the Mystic River watershed.</li>
+                    <li><a href="https://www.epa.gov/beaches">EPA BEACH Act resources</a> — general guidance on beach water quality and health.</li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is a posted "Open" status a guarantee the water is safe?</h3>
+                <p>No. Sampling is typically weekly during the season, so conditions can change between
+                tests — especially after rain. Treat the posted status as one input alongside recent
+                weather, water clarity, and your own judgment.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🛟 Swimming Safely</h2>
+            <p class="section-intro">How weather and water conditions affect whether it's a good day to swim.</p>
+
+            <div class="faq-item">
+                <h3>Should I swim after it rains?</h3>
+                <div class="callout">
+                    <strong>Rule of thumb: wait 24–72 hours after heavy rain before swimming.</strong>
+                </div>
+                <p>Heavy rain washes bacteria and pollutants from streets, storm drains, and — in some
+                communities — overflowing sewers directly into lakes and rivers. Bacteria levels are
+                usually highest right after a storm and typically return to normal within a few days.
+                Because official testing is weekly, a beach may still be posted "Open" from a sample
+                taken before the rain, so the waiting period is your best protection after a storm.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is a CSO?</h3>
+                <p>A CSO (Combined Sewer Overflow) happens in older sewer systems where sewage and
+                stormwater share the same pipes. In dry weather everything flows to a treatment plant,
+                but during heavy rain the combined volume can exceed the system's capacity. To prevent
+                sewage from backing up into streets and homes, the excess — a mix of stormwater and
+                untreated or partially treated sewage — discharges directly into rivers, lakes, and
+                harbors. Swimming should be avoided near a recent CSO discharge. Learn more at the
+                <a href="https://www.mwra.com/your-sewer-system/cso">MWRA's CSO page</a>.</p>
+                <p>When a CSO event is reported near the Mystic Lakes, the
+                <a href="/">dashboard</a> shows a warning card with the incident details.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What do the bacteria test results mean?</h3>
+                <p>Massachusetts tests freshwater beaches for indicator bacteria — E. coli and
+                Enterococci — whose presence suggests possible sewage or animal-waste contamination.
+                When a single sample or the running geometric mean of recent samples exceeds the state
+                threshold, the beach is posted against swimming until a follow-up sample passes.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What else should I watch for?</h3>
+                <ul>
+                    <li>Unusually murky water, surface scum, or a green paint-like sheen (possible harmful algae bloom).</li>
+                    <li>Strong odors, visible debris, or discolored water after storms.</li>
+                    <li>Posted advisories at the beach itself — on-site signage can be more current than online status.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🤝 Swim Together</h2>
+            <p class="section-intro">Water quality is only part of swimming safety — company and visibility matter too.</p>
+
+            <div class="faq-item">
+                <h3>Why shouldn't I swim alone?</h3>
+                <p>Most drownings happen when no one is nearby to help. Swim with a buddy, and prefer
+                beaches and hours with lifeguards on duty. Even strong swimmers can be surprised by
+                cold water, cramps, or fatigue in open water.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How can I make open-water swimming safer?</h3>
+                <ul>
+                    <li>Swim parallel to shore rather than straight out, and know your exit points.</li>
+                    <li>Use a brightly colored swim buoy or cap so boats and companions can see you.</li>
+                    <li>Enter cold water gradually — sudden immersion can cause gasping and panic.</li>
+                    <li>Keep close, active watch on children; designate an adult "water watcher."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            This FAQ is general guidance, not medical or safety advice. Conditions change quickly —
+            always swim at your own discretion. <a class="site-link" href="/">Check current conditions →</a>
+        </div>
+    </div>
+</body>
+</html>

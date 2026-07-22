@@ -100,7 +100,6 @@ beyond `403`, `init` flake, and the "unavailable" fallback.)
 - **`index.html`** — Main dashboard. Vanilla JS, no frameworks. Loads static JSON
   from `data/`, renders current status, CSO incidents card, samples table, and a
   "Data last synced" line driven by `meta.json`.
-- **`simple.html`** — Tiny page kept for diagnostics.
 - **`sw.js`** — Service worker (currently registration is disabled in `index.html`).
   Reads the same `data/*.json` and posts a desktop notification on status change.
 - **`sync_water_data.py`** — Python 3 stdlib orchestrator. Stdlib only (urllib +
@@ -228,13 +227,17 @@ most recent completed season.
 
 ## Local Development
 
-The site is fully static. Any static file server works:
+The site is fully static. Serve it with the dev server:
 
 ```bash
-python3 -m http.server 8000
+python3 serve.py            # default port 8000
 ```
 
-Then open `http://localhost:8000/`. The page reads from `data/*.json`
+Then open `http://localhost:8000/`. `serve.py` is a thin stdlib wrapper around
+`http.server` that additionally answers `/beach/<slug>/` permalink URLs with
+`index.html` — in production those pages are pre-rendered at deploy time and
+don't exist in the repo, so under a plain `python3 -m http.server` they 404
+(the plain server still works for everything else). The page reads from `data/*.json`
 and `archive/...csv` — both committed to the repo — so it works fully offline
 once the repo is cloned.
 
@@ -289,7 +292,7 @@ GitHub Pages source = **GitHub Actions** (not branch). The workflow at
 3. Commits any changed `data/` or `archive/` files back to `main`
    (uses `[skip ci]` so the resulting push doesn't loop into another deploy)
 4. Stages a `site/` directory containing only the public files
-   (`index.html`, `simple.html`, `sw.js`, `data/`, `archive/`,
+   (`index.html`, `sw.js`, `faq/`, `data/`, `archive/`,
    `test-data/`, `CNAME`) — `sync_water_data.py`, `beachdata.php`, `.htaccess`,
    `.claude/`, and shell scripts are not deployed
 5. Uploads as a Pages artifact and deploys via `actions/deploy-pages@v4`
