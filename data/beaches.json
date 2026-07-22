@@ -686,7 +686,8 @@
     {
       "name": "Anthony Beach",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Apponagansett Town Beach",
@@ -716,17 +717,20 @@
     {
       "name": "Hidden Bay",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Jones Town Beach North",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Jones Town Beach South",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Moses Smith Creek",
@@ -742,7 +746,8 @@
     {
       "name": "Oak Hill Shores",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Round Hill",
@@ -1383,6 +1388,11 @@
     {
       "name": "Lingan Street",
       "town": "Halifax",
+      "status": "Open"
+    },
+    {
+      "name": "Cranberry Cove (aka Camp Kiwanee)",
+      "town": "Hanson",
       "status": "Open"
     },
     {

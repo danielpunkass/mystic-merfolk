@@ -17916,6 +17916,23 @@
         "value": "12.01"
       }
     },
+    "Cranberry Cove (aka Camp Kiwanee)": {
+      "town": "Hanson",
+      "rows": [
+        [
+          "6/29/2026 9:39:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
+          "6/17/2026 8:46:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ]
+      ]
+    },
     "Harvard Town Beach": {
       "town": "Harvard",
       "rows": [
@@ -24743,6 +24760,12 @@
       "town": "Marlborough",
       "rows": [
         [
+          "7/20/2026 10:35:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
+        [
           "7/13/2026 11:10:00 AM",
           "E. Coli",
           "235",
@@ -24798,15 +24821,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 11:10:00 AM",
+        "date": "7/20/2026 10:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.32"
+        "value": "7.81"
       }
     },
     "Memorial Beach (Marlborough) @Middle": {
       "town": "Marlborough",
       "rows": [
+        [
+          "7/20/2026 10:10:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
         [
           "7/13/2026 10:20:00 AM",
           "E. Coli",
@@ -24863,15 +24892,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 10:20:00 AM",
+        "date": "7/20/2026 10:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.65"
+        "value": "10.69"
       }
     },
     "Richard P. Sharon Beach": {
       "town": "Marlborough",
       "rows": [
+        [
+          "7/20/2026 10:30:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
         [
           "7/13/2026 11:00:00 AM",
           "E. Coli",
@@ -24928,10 +24963,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 11:00:00 AM",
+        "date": "7/20/2026 10:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.28"
+        "value": "2.85"
       }
     },
     "Bluefish Cove Beach": {
@@ -27881,6 +27916,12 @@
       "town": "New Bedford",
       "rows": [
         [
+          "7/21/2026 9:40:00 AM",
+          "Enterococci",
+          "61",
+          "7.00"
+        ],
+        [
           "7/20/2026 9:53:00 AM",
           "Enterococci",
           "61",
@@ -27954,10 +27995,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 9:53:00 AM",
+        "date": "7/21/2026 9:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "9.79"
+        "value": "11.60"
       }
     },
     "400 Beach @South": {
@@ -29415,6 +29456,12 @@
       "town": "North Andover",
       "rows": [
         [
+          "7/20/2026 9:05:00 AM",
+          "E. Coli",
+          "235",
+          "7.50"
+        ],
+        [
           "7/13/2026 9:15:00 AM",
           "E. Coli",
           "235",
@@ -29438,7 +29485,13 @@
           "235",
           "9.40"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/20/2026 9:05:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "9.24"
+      }
     },
     "Falls Pond": {
       "town": "North Attleborough",
@@ -44995,6 +45048,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "7/21/2026 10:53:00 AM",
+          "E. Coli",
+          "235",
+          "79.40"
+        ],
+        [
           "7/20/2026 11:19:00 AM",
           "E. Coli",
           "235",
@@ -45018,7 +45077,13 @@
           "235",
           "28.20"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/21/2026 10:53:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "35.17"
+      }
     },
     "Indian Lake Public Beach (Sherburne Ave)": {
       "town": "Worcester",
