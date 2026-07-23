@@ -340,7 +340,8 @@
     {
       "name": "Malibu (DCR)",
       "town": "Boston",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Pleasure Bay (DCR) @Broadway",
