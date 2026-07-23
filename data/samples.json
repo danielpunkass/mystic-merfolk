@@ -710,6 +710,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "7/21/2026 2:48:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/15/2026 12:34:00 PM",
           "E. Coli",
           "235",
@@ -783,7 +789,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:34:00 PM",
+        "date": "7/21/2026 2:48:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -22189,6 +22195,12 @@
       "town": "Lexington",
       "rows": [
         [
+          "7/21/2026 3:20:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/14/2026 2:21:00 PM",
           "Enterococci",
           "61",
@@ -22238,7 +22250,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 2:21:00 PM",
+        "date": "7/21/2026 3:20:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "6.60"
@@ -22247,6 +22259,12 @@
     "Old Reservoir Swim Area  #2": {
       "town": "Lexington",
       "rows": [
+        [
+          "7/21/2026 3:21:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/14/2026 2:23:00 PM",
           "Enterococci",
@@ -22297,7 +22315,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 2:23:00 PM",
+        "date": "7/21/2026 3:21:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.74"
@@ -27027,6 +27045,12 @@
       "town": "Medford",
       "rows": [
         [
+          "7/21/2026 3:28:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/14/2026 1:42:00 PM",
           "E. Coli",
           "235",
@@ -27064,7 +27088,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 1:42:00 PM",
+        "date": "7/21/2026 3:28:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "13.93"
@@ -27073,6 +27097,12 @@
     "Wrights Pond @Shallow End": {
       "town": "Medford",
       "rows": [
+        [
+          "7/21/2026 3:25:00 PM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "7/14/2026 1:41:00 PM",
           "E. Coli",
@@ -27111,10 +27141,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 1:41:00 PM",
+        "date": "7/21/2026 3:25:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "12.36"
+        "value": "9.36"
       }
     },
     "Forest Lake: Swimming Beach": {
