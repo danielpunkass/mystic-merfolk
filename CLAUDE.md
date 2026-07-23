@@ -131,7 +131,9 @@ Tableau JS Embedding API in a headless browser:
   → `{ "token": "<JWT>" }`
 - Workbook: `https://prod-useast-b.online.tableau.com/t/eohhspublic/views/BeachWaterQualityDashboard/<view>`
   — `TestResultsTable` worksheet → all-beach readings (Town, Name, Date, Indicator,
-  GeoMean, Results); `Map` worksheet → per-beach status (Beach Name, Beach Status, …);
+  GeoMean, Results); `Map` worksheet → per-beach status and water type (Beach Name,
+  Beach Status, Marine or Freshwater, …), the latter selecting each beach's
+  threshold standard;
   `Closures` view's `ClosureTable` worksheet → stated closure reason per closed beach
   (Town, Beach, Closure Reason). All read with
   `getSummaryDataAsync({maxRows:0, ignoreSelection:true})` (the summary-data API only
@@ -158,9 +160,11 @@ CSO incidents (year-round, stdlib):
   `{ "headers": [...], "beaches": { "<beach name>": { "town", "rows": [[date, indicator, threshold, results], ...], "geoMean"?: { "date", "indicator", "threshold", "value" } } } }`
   The page filters to the selected beach client-side. `geoMean` (optional) is the
   most recent non-null cumulative geometric mean for the beach — it drives the
-  "Geometric Mean Test Results" card and uses freshwater geomean thresholds
-  (Enterococci 33, E. Coli 126). (The old single-beach `{ headers, rows }` shape is
-  still read for back-compat.)
+  "Geometric Mean Test Results" card. Sample-row and geomean thresholds are
+  stamped per beach by water type (the Map worksheet's "Marine or Freshwater"
+  field; 105 CMR 445): freshwater Enterococci 61/33, E. Coli 235/126; marine
+  Enterococci 104/35. A beach with no Map match falls back to freshwater values.
+  (The old single-beach `{ headers, rows }` shape is still read for back-compat.)
 - `data/beaches.json` → `{ "beaches": [ { "name", "town", "status", "reason"? }, ... ] }`
   — the index that drives the Town/Beach selector and carries per-beach status.
   Only beaches with readings are listed: DPH's `Map` worksheet names some sites at

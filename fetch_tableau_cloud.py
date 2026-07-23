@@ -64,22 +64,31 @@ VIEW_BASE = (
 EMBED_API = "https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.js"
 
 # TestResultsTable carries Date/Indicator/GeoMean/Results but no threshold column.
-# The single-sample thresholds are fixed per indicator (CFU/100 ml); these match
-# what the legacy Results.csv reported. Default falls back to Enterococci's value.
+# Massachusetts bathing-beach standards (105 CMR 445) differ by water type — e.g.
+# the Enterococci single-sample limit is 61 CFU/100 ml at freshwater beaches but
+# 104 at marine beaches — and the Map worksheet's "Marine or Freshwater" field
+# says which standard applies to each beach (see build_water_types). A beach with
+# no Map match falls back to the freshwater values (the pre-split behavior).
 SINGLE_SAMPLE_THRESHOLDS = {
-    "Enterococci": "61",
-    "E. Coli": "235",
+    "Freshwater": {"Enterococci": "61", "E. Coli": "235"},
+    "Marine": {"Enterococci": "104"},
 }
-DEFAULT_THRESHOLD = "61"
-
-# Geometric-mean standards (freshwater bathing-beach values, CFU/100 ml). Mirrors
-# the single-sample approximation: a fixed per-indicator threshold rather than the
-# marine/fresh split DPH applies. Shannon (the default beach) is freshwater.
 GEOMEAN_THRESHOLDS = {
-    "Enterococci": "33",
-    "E. Coli": "126",
+    "Freshwater": {"Enterococci": "33", "E. Coli": "126"},
+    "Marine": {"Enterococci": "35"},
 }
-DEFAULT_GEOMEAN_THRESHOLD = "33"
+DEFAULT_WATER_TYPE = "Freshwater"
+
+
+def _threshold(table: dict, water_type: str, indicator: str) -> str:
+    """Threshold for a water type + indicator, falling back to the freshwater
+    value for the indicator (marine beaches are only tested with Enterococci, so
+    an unexpected combo means bad upstream data, not a real marine standard),
+    then to freshwater Enterococci."""
+    by_type = table.get(water_type) or table[DEFAULT_WATER_TYPE]
+    return (by_type.get(indicator)
+            or table[DEFAULT_WATER_TYPE].get(indicator)
+            or table[DEFAULT_WATER_TYPE]["Enterococci"])
 
 PAGE_TIMEOUT_MS = 60_000
 RESULT_POLL_SECONDS = 60
@@ -239,12 +248,15 @@ def _row_sort_key(row: list[str]):
     return datetime.min
 
 
-def build_all_samples(test_results: dict) -> dict:
+def build_all_samples(test_results: dict, water_types: dict | None = None) -> dict:
     """Group every beach's readings into {headers, beaches: {name: {town, rows}}}.
 
     The TestResultsTable worksheet carries all beaches statewide; we keep them
     all so the front-end can offer a Town/Beach selector and filter client-side.
+    water_types maps beach name -> "Marine"/"Freshwater" (from the Map worksheet)
+    so each beach gets the threshold standard that actually applies to it.
     """
+    water_types = water_types or {}
     cols = test_results["columns"]
     i_name = _col(cols, "Name")
     i_date = _col(cols, "Date")
@@ -270,7 +282,8 @@ def build_all_samples(test_results: dict) -> dict:
             continue  # no reading for this row
         indicator = (r[i_ind] or "").strip()
         result = (r[i_res] or "").strip()
-        threshold = SINGLE_SAMPLE_THRESHOLDS.get(indicator, DEFAULT_THRESHOLD)
+        water_type = water_types.get(name, DEFAULT_WATER_TYPE)
+        threshold = _threshold(SINGLE_SAMPLE_THRESHOLDS, water_type, indicator)
         town = (r[i_town].strip() if i_town is not None and r[i_town] else "")
         geomean = (r[i_gm].strip() if i_gm is not None and r[i_gm] else "")
         d = raw.setdefault(name, {"town": town, "items": []})
@@ -293,7 +306,10 @@ def build_all_samples(test_results: dict) -> dict:
                 entry["geoMean"] = {
                     "date": it[0],
                     "indicator": it[1],
-                    "threshold": GEOMEAN_THRESHOLDS.get(it[1], DEFAULT_GEOMEAN_THRESHOLD),
+                    "threshold": _threshold(
+                        GEOMEAN_THRESHOLDS,
+                        water_types.get(name, DEFAULT_WATER_TYPE),
+                        it[1]),
                     "value": gm,
                 }
                 break
@@ -323,6 +339,24 @@ def build_all_statuses(map_data: dict) -> list[dict]:
             "status": (r[i_status] or "").strip(),
             "town": (r[i_town].strip() if i_town is not None and r[i_town] else ""),
         })
+    return out
+
+
+def build_water_types(map_data: dict) -> dict:
+    """Map full beach name -> "Marine" / "Freshwater" from the Map worksheet,
+    which determines the threshold standard that applies (105 CMR 445)."""
+    cols = map_data["columns"]
+    i_name = _col(cols, "Beach Name", "Name")
+    try:
+        i_type = _col(cols, "Marine or Freshwater")
+    except KeyError:
+        return {}
+    out: dict[str, str] = {}
+    for r in map_data["rows"]:
+        name = (r[i_name] or "").strip()
+        wtype = (r[i_type] or "").strip()
+        if name and wtype and name not in out:
+            out[name] = wtype
     return out
 
 
@@ -371,13 +405,15 @@ def build_beach_index(all_samples: dict, statuses: list[dict]) -> list[dict]:
     return sorted(out, key=lambda b: (b["town"].lower(), b["name"].lower()))
 
 
-def build_samples(test_results: dict, beach_name: str) -> tuple[dict, str]:
+def build_samples(test_results: dict, beach_name: str,
+                  water_types: dict | None = None) -> tuple[dict, str]:
     cols = test_results["columns"]
     i_name = _col(cols, "Name")
     i_date = _col(cols, "Date")
     i_ind = _col(cols, "Indicator")
     i_res = _col(cols, "AGG(Results (CFU/100 ml))", "Results")
 
+    water_type = (water_types or {}).get(beach_name, DEFAULT_WATER_TYPE)
     rows = []
     for r in test_results["rows"]:
         if r[i_name] != beach_name:
@@ -387,7 +423,7 @@ def build_samples(test_results: dict, beach_name: str) -> tuple[dict, str]:
         result = (r[i_res] or "").strip()
         if not date or date.lower() == "null":
             continue  # no reading for this row
-        threshold = SINGLE_SAMPLE_THRESHOLDS.get(indicator, DEFAULT_THRESHOLD)
+        threshold = _threshold(SINGLE_SAMPLE_THRESHOLDS, water_type, indicator)
         rows.append([date, indicator, threshold, result])
 
     rows.sort(key=_row_sort_key, reverse=True)
@@ -441,26 +477,37 @@ def fetch_all(beach_name: str = BEACH_NAME) -> dict:
                 page = browser.new_page()
                 test_results = _read_worksheet(page, base_url, "TestResultsTable")
                 out["testResultsRowCount"] = len(test_results["rows"])
-                # Default beach (back-compat: drives the per-beach archive CSV and
-                # the SW-compat status.json) plus the full all-beaches dataset that
-                # powers the front-end Town/Beach selector.
-                samples, samples_csv = build_samples(test_results, beach_name)
-                out["samples"] = samples
-                out["samplesCsv"] = samples_csv
-                all_samples = build_all_samples(test_results)
-                out["allSamples"] = all_samples
 
+                # The Map worksheet is read before the sample builders because it
+                # carries each beach's "Marine or Freshwater" designation, which
+                # selects the threshold standard the builders stamp on each row.
+                # Still best-effort: on a Map failure the builders fall back to
+                # freshwater thresholds for everyone (the pre-split behavior).
                 statuses: list[dict] = []
+                water_types: dict = {}
+                map_data = None
                 try:
                     map_data = _read_worksheet(page, base_url, "Map")
                     statuses = build_all_statuses(map_data)
+                    water_types = build_water_types(map_data)
+                except Exception as e:  # noqa: BLE001
+                    errors.append(f"status: {e}")
+
+                # Default beach (back-compat: drives the per-beach archive CSV and
+                # the SW-compat status.json) plus the full all-beaches dataset that
+                # powers the front-end Town/Beach selector.
+                samples, samples_csv = build_samples(test_results, beach_name, water_types)
+                out["samples"] = samples
+                out["samplesCsv"] = samples_csv
+                all_samples = build_all_samples(test_results, water_types)
+                out["allSamples"] = all_samples
+
+                if map_data is not None:
                     status = build_status(map_data, beach_name)
                     if status:
                         out["status"] = status
                     else:
                         errors.append("status: beach not found in Map worksheet")
-                except Exception as e:  # noqa: BLE001
-                    errors.append(f"status: {e}")
 
                 # Stated closure reason (e.g. "Bacterial Exceedance") from the Closures
                 # dashboard's ClosureTable, attached to any currently-Closed beach.
