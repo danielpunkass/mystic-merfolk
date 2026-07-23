@@ -10,6 +10,12 @@
       "town": "Abington",
       "rows": [
         [
+          "7/22/2026 8:00:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/15/2026 9:00:00 AM",
           "E. Coli",
           "235",
@@ -47,7 +53,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:00:00 AM",
+        "date": "7/22/2026 8:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -465,6 +471,12 @@
       "town": "Andover",
       "rows": [
         [
+          "7/22/2026 11:24:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/15/2026 10:57:00 AM",
           "E. Coli",
           "235",
@@ -502,15 +514,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:57:00 AM",
+        "date": "7/22/2026 11:24:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.88"
+        "value": "8.08"
       }
     },
     "Pomps Pond @Left": {
       "town": "Andover",
       "rows": [
+        [
+          "7/22/2026 11:23:00 AM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
         [
           "7/15/2026 10:56:00 AM",
           "E. Coli",
@@ -549,15 +567,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:56:00 AM",
+        "date": "7/22/2026 11:23:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.66"
+        "value": "7.10"
       }
     },
     "Pomps Pond @Right": {
       "town": "Andover",
       "rows": [
+        [
+          "7/22/2026 11:25:00 AM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
         [
           "7/15/2026 10:58:00 AM",
           "E. Coli",
@@ -596,10 +620,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:58:00 AM",
+        "date": "7/22/2026 11:25:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.96"
+        "value": "5.25"
       }
     },
     "Lobsterville": {
@@ -710,6 +734,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "7/22/2026 1:00:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/21/2026 2:48:00 PM",
           "E. Coli",
           "235",
@@ -789,7 +819,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 2:48:00 PM",
+        "date": "7/22/2026 1:00:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -2005,6 +2035,12 @@
       "town": "Barnstable",
       "rows": [
         [
+          "7/22/2026 10:00:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/21/2026 9:56:00 AM",
           "Enterococci",
           "104",
@@ -2114,10 +2150,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:56:00 AM",
+        "date": "7/22/2026 10:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "123.73"
+        "value": "71.99"
       }
     },
     "Loop": {
@@ -6387,6 +6423,12 @@
       "town": "Bourne",
       "rows": [
         [
+          "7/22/2026 8:10:00 AM",
+          "Enterococci",
+          "104",
+          "192.00"
+        ],
+        [
           "7/15/2026 10:18:00 AM",
           "Enterococci",
           "104",
@@ -6430,15 +6472,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:18:00 AM",
+        "date": "7/22/2026 8:10:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.60"
+        "value": "11.91"
       }
     },
     "Cataumet Harbor": {
       "town": "Bourne",
       "rows": [
+        [
+          "7/22/2026 7:13:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/15/2026 7:11:00 AM",
           "Enterococci",
@@ -6483,15 +6531,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 7:11:00 AM",
+        "date": "7/22/2026 7:13:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "31.19"
+        "value": "21.52"
       }
     },
     "Electric Avenue": {
       "town": "Bourne",
       "rows": [
+        [
+          "7/22/2026 9:46:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/15/2026 11:55:00 AM",
           "Enterococci",
@@ -6536,7 +6590,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 11:55:00 AM",
+        "date": "7/22/2026 9:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.20"
@@ -6545,6 +6599,12 @@
     "Gilder Road": {
       "town": "Bourne",
       "rows": [
+        [
+          "7/22/2026 9:25:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/15/2026 11:29:00 AM",
           "Enterococci",
@@ -6589,7 +6649,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 11:29:00 AM",
+        "date": "7/22/2026 9:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.58"
@@ -6615,6 +6675,12 @@
     "Patuisset": {
       "town": "Bourne",
       "rows": [
+        [
+          "7/22/2026 8:01:00 AM",
+          "Enterococci",
+          "104",
+          "150.00"
+        ],
         [
           "7/15/2026 10:11:00 AM",
           "Enterococci",
@@ -6695,15 +6761,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:11:00 AM",
+        "date": "7/22/2026 8:01:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "18.15"
+        "value": "16.33"
       }
     },
     "Picture Lake (Flax Pond)": {
       "town": "Bourne",
       "rows": [
+        [
+          "7/22/2026 6:59:00 AM",
+          "E. Coli",
+          "235",
+          "12.60"
+        ],
         [
           "7/15/2026 6:55:00 AM",
           "E. Coli",
@@ -6748,15 +6820,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 6:55:00 AM",
+        "date": "7/22/2026 6:59:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.72"
+        "value": "14.74"
       }
     },
     "Queen Sewell Pond": {
       "town": "Bourne",
       "rows": [
+        [
+          "7/22/2026 9:52:00 AM",
+          "E. Coli",
+          "235",
+          "23.80"
+        ],
         [
           "7/15/2026 12:02:00 PM",
           "E. Coli",
@@ -6801,15 +6879,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:02:00 PM",
+        "date": "7/22/2026 9:52:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "17.86"
+        "value": "25.52"
       }
     },
     "Sagamore": {
       "town": "Bourne",
       "rows": [
+        [
+          "7/22/2026 10:25:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/15/2026 12:30:00 PM",
           "Enterococci",
@@ -6854,7 +6938,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:30:00 PM",
+        "date": "7/22/2026 10:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -7390,6 +7474,12 @@
       "town": "Brewster",
       "rows": [
         [
+          "7/22/2026 7:39:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "7/15/2026 10:57:00 AM",
           "Enterococci",
           "104",
@@ -7433,7 +7523,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:57:00 AM",
+        "date": "7/22/2026 7:39:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "13.03"
@@ -8342,6 +8432,12 @@
       "town": "Chatham",
       "rows": [
         [
+          "7/22/2026 9:36:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "7/15/2026 8:43:00 AM",
           "Enterococci",
           "104",
@@ -8385,15 +8481,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 8:43:00 AM",
+        "date": "7/22/2026 9:36:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.00"
+        "value": "5.74"
       }
     },
     "Bucks Creek": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 8:19:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/16/2026 12:02:00 PM",
           "Enterococci",
@@ -8444,7 +8546,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 12:02:00 PM",
+        "date": "7/22/2026 8:19:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "28.60"
@@ -8453,6 +8555,12 @@
     "Cockle Cove": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 8:04:00 AM",
+          "Enterococci",
+          "104",
+          "31.00"
+        ],
         [
           "7/15/2026 10:17:00 AM",
           "Enterococci",
@@ -8497,15 +8605,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:17:00 AM",
+        "date": "7/22/2026 8:04:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.20"
+        "value": "10.37"
       }
     },
     "Forest Street": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 7:49:00 AM",
+          "Enterococci",
+          "104",
+          "42.00"
+        ],
         [
           "7/16/2026 11:02:00 AM",
           "Enterococci",
@@ -8556,15 +8670,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 11:02:00 AM",
+        "date": "7/22/2026 7:49:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "14.22"
+        "value": "21.76"
       }
     },
     "Goose Pond": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 10:34:00 AM",
+          "E. Coli",
+          "235",
+          "10.90"
+        ],
         [
           "7/15/2026 7:45:00 AM",
           "E. Coli",
@@ -8609,15 +8729,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 7:45:00 AM",
+        "date": "7/22/2026 10:34:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "0.87"
+        "value": "1.61"
       }
     },
     "Hardings (East)": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 8:42:00 AM",
+          "Enterococci",
+          "104",
+          "42.00"
+        ],
         [
           "7/15/2026 9:25:00 AM",
           "Enterococci",
@@ -8662,15 +8788,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:25:00 AM",
+        "date": "7/22/2026 8:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "8.71"
+        "value": "10.10"
       }
     },
     "Hardings (West)": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 8:49:00 AM",
+          "Enterococci",
+          "104",
+          "31.00"
+        ],
         [
           "7/15/2026 9:32:00 AM",
           "Enterococci",
@@ -8715,15 +8847,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:32:00 AM",
+        "date": "7/22/2026 8:49:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "13.78"
+        "value": "11.92"
       }
     },
     "Jacknife Harbor": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 10:47:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/15/2026 7:25:00 AM",
           "Enterococci",
@@ -8768,15 +8906,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 7:25:00 AM",
+        "date": "7/22/2026 10:47:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.60"
+        "value": "7.58"
       }
     },
     "Lighthouse": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 9:26:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/15/2026 8:53:00 AM",
           "Enterococci",
@@ -8821,7 +8965,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 8:53:00 AM",
+        "date": "7/22/2026 9:26:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -8830,6 +8974,12 @@
     "Oyster Pond": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 9:11:00 AM",
+          "Enterococci",
+          "104",
+          "831.00"
+        ],
         [
           "7/15/2026 10:58:00 AM",
           "Enterococci",
@@ -8886,15 +9036,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:58:00 AM",
+        "date": "7/22/2026 9:11:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "13.03"
+        "value": "27.45"
       }
     },
     "Pleasant Street": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 7:40:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
         [
           "7/15/2026 10:42:00 AM",
           "Enterococci",
@@ -8939,7 +9095,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:42:00 AM",
+        "date": "7/22/2026 7:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "10.10"
@@ -8948,6 +9104,12 @@
     "Ridgevale": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 8:22:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
         [
           "7/15/2026 9:59:00 AM",
           "Enterococci",
@@ -8992,15 +9154,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:59:00 AM",
+        "date": "7/22/2026 8:22:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.00"
+        "value": "11.49"
       }
     },
     "Schoolhouse Pond": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 10:25:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
         [
           "7/15/2026 7:54:00 AM",
           "E. Coli",
@@ -9045,15 +9213,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 7:54:00 AM",
+        "date": "7/22/2026 10:25:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.81"
+        "value": "2.08"
       }
     },
     "White Pond Town Landing": {
       "town": "Chatham",
       "rows": [
+        [
+          "7/22/2026 10:08:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
         [
           "7/15/2026 8:10:00 AM",
           "E. Coli",
@@ -9098,10 +9272,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 8:10:00 AM",
+        "date": "7/22/2026 10:08:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.84"
+        "value": "3.10"
       }
     },
     "Freeman Lake": {
@@ -11967,62 +12141,62 @@
         [
           "7/20/2026 8:20:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "5.00"
         ],
         [
           "7/13/2026 8:30:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "10.00"
         ],
         [
           "7/6/2026 8:22:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "42.00"
         ],
         [
           "6/29/2026 8:26:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "5.00"
         ],
         [
           "6/22/2026 8:15:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "5.00"
         ],
         [
           "6/16/2026 11:13:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "5.00"
         ],
         [
           "6/15/2026 8:33:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "254.00"
         ],
         [
           "6/8/2026 8:40:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "5.00"
         ],
         [
           "6/1/2026 8:45:00 AM",
           "Enterococci",
-          "104",
+          "61",
           "5.00"
         ]
       ],
       "geoMean": {
         "date": "7/20/2026 8:20:00 AM",
         "indicator": "Enterococci",
-        "threshold": "35",
+        "threshold": "33",
         "value": "8.79"
       }
     },
@@ -19876,6 +20050,12 @@
       "town": "Haverhill",
       "rows": [
         [
+          "7/22/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "56.00"
+        ],
+        [
           "7/15/2026 9:40:00 AM",
           "E. Coli",
           "235",
@@ -19919,15 +20099,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:40:00 AM",
+        "date": "7/22/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.19"
+        "value": "19.31"
       }
     },
     "Plugs Pond @Side": {
       "town": "Haverhill",
       "rows": [
+        [
+          "7/22/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "28.00"
+        ],
         [
           "7/15/2026 9:40:00 AM",
           "E. Coli",
@@ -19972,10 +20158,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:40:00 AM",
+        "date": "7/22/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "25.63"
+        "value": "27.41"
       }
     },
     "Hingham Town Beach": {
@@ -26341,6 +26527,12 @@
       "town": "Mashpee",
       "rows": [
         [
+          "7/22/2026 8:20:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/15/2026 8:09:00 AM",
           "E. Coli",
           "235",
@@ -26384,10 +26576,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 8:09:00 AM",
+        "date": "7/22/2026 8:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.17"
+        "value": "4.79"
       }
     },
     "Callies": {
@@ -26410,6 +26602,12 @@
     "Camp Farley (Mashpee-Wakeby Pond)": {
       "town": "Mashpee",
       "rows": [
+        [
+          "7/22/2026 8:41:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
         [
           "7/15/2026 8:24:00 AM",
           "E. Coli",
@@ -26454,10 +26652,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 8:24:00 AM",
+        "date": "7/22/2026 8:41:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.08"
+        "value": "3.17"
       }
     },
     "John's Pond (Public) @John's Pond (Back Road)": {
@@ -26582,6 +26780,12 @@
       "town": "Mashpee",
       "rows": [
         [
+          "7/22/2026 7:21:00 AM",
+          "E. Coli",
+          "235",
+          "45.90"
+        ],
+        [
           "7/15/2026 7:11:00 AM",
           "E. Coli",
           "235",
@@ -26631,15 +26835,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 7:11:00 AM",
+        "date": "7/22/2026 7:21:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "26.02"
+        "value": "18.75"
       }
     },
     "Santuit Pond @Town Landing": {
       "town": "Mashpee",
       "rows": [
+        [
+          "7/22/2026 7:39:00 AM",
+          "E. Coli",
+          "235",
+          "125.90"
+        ],
         [
           "7/15/2026 7:29:00 AM",
           "E. Coli",
@@ -26684,15 +26894,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 7:29:00 AM",
+        "date": "7/22/2026 7:39:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "16.87"
+        "value": "24.00"
       }
     },
     "Seconsett Island Causeway": {
       "town": "Mashpee",
       "rows": [
+        [
+          "7/22/2026 9:43:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/15/2026 9:40:00 AM",
           "Enterococci",
@@ -26737,10 +26953,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:40:00 AM",
+        "date": "7/22/2026 9:43:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "11.92"
+        "value": "8.27"
       }
     },
     "South Cape Beach (DCR) @Location 1": {
@@ -26818,6 +27034,12 @@
       "town": "Mashpee",
       "rows": [
         [
+          "7/22/2026 10:02:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "7/15/2026 10:01:00 AM",
           "Enterococci",
           "61",
@@ -26861,10 +27083,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:01:00 AM",
+        "date": "7/22/2026 10:02:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "5.74"
+        "value": "6.60"
       }
     },
     "Aucoot": {
@@ -30451,6 +30673,12 @@
       "town": "Newburyport",
       "rows": [
         [
+          "7/22/2026 1:20:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/21/2026 9:03:00 AM",
           "Enterococci",
           "104",
@@ -30536,10 +30764,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:03:00 AM",
+        "date": "7/22/2026 1:20:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "40.19"
+        "value": "26.39"
       }
     },
     "Crystal Lake (Newton)": {
@@ -31363,6 +31591,12 @@
       "town": "Orleans",
       "rows": [
         [
+          "7/22/2026 9:28:00 AM",
+          "E. Coli",
+          "235",
+          "10.40"
+        ],
+        [
           "7/15/2026 9:20:00 AM",
           "E. Coli",
           "235",
@@ -31418,15 +31652,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:20:00 AM",
+        "date": "7/22/2026 9:28:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "12.59"
+        "value": "15.17"
       }
     },
     "Nauset": {
       "town": "Orleans",
       "rows": [
+        [
+          "7/22/2026 9:15:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/15/2026 9:45:00 AM",
           "Enterococci",
@@ -31483,7 +31723,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:45:00 AM",
+        "date": "7/22/2026 9:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.00"
@@ -31492,6 +31732,12 @@
     "Pilgrim Lake": {
       "town": "Orleans",
       "rows": [
+        [
+          "7/22/2026 9:40:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
         [
           "7/15/2026 9:30:00 AM",
           "E. Coli",
@@ -31548,15 +31794,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:30:00 AM",
+        "date": "7/22/2026 9:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.39"
+        "value": "6.34"
       }
     },
     "Skaket": {
       "town": "Orleans",
       "rows": [
+        [
+          "7/22/2026 7:01:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/15/2026 10:15:00 AM",
           "Enterococci",
@@ -31613,7 +31865,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:15:00 AM",
+        "date": "7/22/2026 7:01:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "9.50"
@@ -39181,6 +39433,12 @@
       "town": "Sandwich",
       "rows": [
         [
+          "7/22/2026 9:17:00 AM",
+          "E. Coli",
+          "235",
+          "14.50"
+        ],
+        [
           "7/14/2026 10:55:00 AM",
           "E. Coli",
           "235",
@@ -39224,15 +39482,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:55:00 AM",
+        "date": "7/22/2026 9:17:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.11"
+        "value": "7.01"
       }
     },
     "Sun Retreats Peters @South Beach": {
       "town": "Sandwich",
       "rows": [
+        [
+          "7/22/2026 9:23:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
         [
           "7/14/2026 11:01:00 AM",
           "E. Coli",
@@ -39277,10 +39541,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 11:01:00 AM",
+        "date": "7/22/2026 9:23:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.53"
+        "value": "5.11"
       }
     },
     "Town Neck Beach": {
@@ -44460,6 +44724,12 @@
       "town": "Wellfleet",
       "rows": [
         [
+          "7/22/2026 7:51:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/15/2026 12:23:00 PM",
           "Enterococci",
           "104",
@@ -44503,7 +44773,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:23:00 PM",
+        "date": "7/22/2026 7:51:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -44512,6 +44782,12 @@
     "Cahoon Hollow": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 9:53:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/15/2026 9:03:00 AM",
           "Enterococci",
@@ -44556,7 +44832,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:03:00 AM",
+        "date": "7/22/2026 9:53:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -44565,6 +44841,12 @@
     "Duck Harbor": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 8:13:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/16/2026 11:25:00 AM",
           "Enterococci",
@@ -44609,7 +44891,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 11:25:00 AM",
+        "date": "7/22/2026 8:13:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -44618,6 +44900,12 @@
     "Duck Pond": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 10:28:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
         [
           "7/15/2026 8:37:00 AM",
           "E. Coli",
@@ -44662,15 +44950,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 8:37:00 AM",
+        "date": "7/22/2026 10:28:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.45"
+        "value": "2.81"
       }
     },
     "Great Pond (Wellfleet)": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 10:15:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
         [
           "7/15/2026 8:53:00 AM",
           "E. Coli",
@@ -44715,15 +45009,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 8:53:00 AM",
+        "date": "7/22/2026 10:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.45"
+        "value": "1.67"
       }
     },
     "Gull Pond (2) - Steele Rd.": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 9:32:00 AM",
+          "E. Coli",
+          "235",
+          "0.50"
+        ],
         [
           "7/15/2026 9:40:00 AM",
           "E. Coli",
@@ -44768,15 +45068,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:40:00 AM",
+        "date": "7/22/2026 9:32:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.46"
+        "value": "2.14"
       }
     },
     "Gull Pond Landing": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 9:21:00 AM",
+          "E. Coli",
+          "235",
+          "11.00"
+        ],
         [
           "7/15/2026 9:26:00 AM",
           "E. Coli",
@@ -44821,15 +45127,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:26:00 AM",
+        "date": "7/22/2026 9:21:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.33"
+        "value": "8.04"
       }
     },
     "Higgins Pond": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
         [
           "7/15/2026 9:38:00 AM",
           "E. Coli",
@@ -44874,10 +45186,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:38:00 AM",
+        "date": "7/22/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.50"
+        "value": "10.79"
       }
     },
     "Indian Neck": {
@@ -44900,6 +45212,12 @@
     "Long Pond (Wellfleet)": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 10:04:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
         [
           "7/15/2026 9:14:00 AM",
           "E. Coli",
@@ -44944,10 +45262,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:14:00 AM",
+        "date": "7/22/2026 10:04:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.06"
+        "value": "3.86"
       }
     },
     "Maguire Landing (Lecount Hollow)": {
@@ -45012,6 +45330,12 @@
       "town": "Wellfleet",
       "rows": [
         [
+          "7/22/2026 8:47:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "7/15/2026 12:07:00 PM",
           "Enterococci",
           "104",
@@ -45055,10 +45379,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:07:00 PM",
+        "date": "7/22/2026 8:47:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.20"
+        "value": "5.74"
       }
     },
     "Newcomb Hollow": {
@@ -45081,6 +45405,12 @@
     "Omaha Road": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 7:42:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/15/2026 12:33:00 PM",
           "Enterococci",
@@ -45125,15 +45455,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:33:00 PM",
+        "date": "7/22/2026 7:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.00"
+        "value": "5.74"
       }
     },
     "Powers Landing": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 8:42:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
         [
           "7/15/2026 12:01:00 PM",
           "Enterococci",
@@ -45178,15 +45514,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 12:01:00 PM",
+        "date": "7/22/2026 8:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "8.71"
+        "value": "11.49"
       }
     },
     "The Gut": {
       "town": "Wellfleet",
       "rows": [
+        [
+          "7/22/2026 8:25:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/16/2026 11:37:00 AM",
           "Enterococci",
@@ -45231,10 +45573,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 11:37:00 AM",
+        "date": "7/22/2026 8:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "18.52"
+        "value": "13.27"
       }
     },
     "White Crest": {

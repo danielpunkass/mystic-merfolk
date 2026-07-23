@@ -838,7 +838,7 @@
     {
       "name": "Raycroft",
       "town": "Dennis",
-      "status": "Open"
+      "status": ""
     },
     {
       "name": "Scargo Lake",
@@ -2237,26 +2237,22 @@
     {
       "name": "Plum Island - 55th St.",
       "town": "Newburyport",
-      "status": "Closed",
-      "reason": "Other"
+      "status": "Open"
     },
     {
       "name": "Plum Island - end of island 1",
       "town": "Newburyport",
-      "status": "Closed",
-      "reason": "Other"
+      "status": "Open"
     },
     {
       "name": "Plum Island - end of island 2",
       "town": "Newburyport",
-      "status": "Closed",
-      "reason": "Other"
+      "status": "Open"
     },
     {
       "name": "Plum Island Point",
       "town": "Newburyport",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Crystal Lake (Newton)",
