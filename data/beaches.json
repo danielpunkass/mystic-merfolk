@@ -1814,7 +1814,8 @@
     {
       "name": "Grace Oliver",
       "town": "Marblehead",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Stramski",
@@ -2596,8 +2597,7 @@
     {
       "name": "Merrymount",
       "town": "Quincy",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Mound",
@@ -3601,8 +3601,7 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Winthrop Beach (DCR)",
