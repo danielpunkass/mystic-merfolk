@@ -30743,6 +30743,12 @@
       "town": "Northampton",
       "rows": [
         [
+          "7/21/2026 11:45:00 AM",
+          "E. Coli",
+          "235",
+          "25.00"
+        ],
+        [
           "7/14/2026 10:55:00 AM",
           "E. Coli",
           "235",
@@ -30804,10 +30810,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 10:55:00 AM",
+        "date": "7/21/2026 11:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.85"
+        "value": "19.70"
       }
     },
     "Eastville Town Beach - Harbor side": {
@@ -31130,6 +31136,12 @@
       "town": "Orange",
       "rows": [
         [
+          "7/22/2026 12:55:00 PM",
+          "E. Coli",
+          "235",
+          "22.60"
+        ],
+        [
           "7/15/2026 11:32:00 AM",
           "E. Coli",
           "235",
@@ -31185,10 +31197,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 11:32:00 AM",
+        "date": "7/22/2026 12:55:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "29.67"
+        "value": "29.88"
       }
     },
     "Crystal Lake (Orleans)": {
@@ -40185,6 +40197,12 @@
       "town": "Spencer",
       "rows": [
         [
+          "7/20/2026 12:28:00 PM",
+          "E. Coli",
+          "235",
+          "115.30"
+        ],
+        [
           "7/13/2026 11:55:00 AM",
           "E. Coli",
           "235",
@@ -40222,10 +40240,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 11:55:00 AM",
+        "date": "7/20/2026 12:28:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.43"
+        "value": "28.00"
       }
     },
     "Bass Pond @Right": {
@@ -42489,6 +42507,12 @@
       "town": "Wales",
       "rows": [
         [
+          "7/20/2026 9:32:00 AM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "7/13/2026 9:08:00 AM",
           "E. Coli",
           "235",
@@ -42544,15 +42568,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 9:08:00 AM",
+        "date": "7/20/2026 9:32:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.08"
+        "value": "6.71"
       }
     },
     "Wales Town Beach": {
       "town": "Wales",
       "rows": [
+        [
+          "7/20/2026 9:51:00 AM",
+          "E. Coli",
+          "235",
+          "8.60"
+        ],
         [
           "7/13/2026 9:26:00 AM",
           "E. Coli",
@@ -42609,7 +42639,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/13/2026 9:26:00 AM",
+        "date": "7/20/2026 9:51:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "5.68"
