@@ -18057,12 +18057,6 @@
       "town": "Gloucester",
       "rows": [
         [
-          "7/20/2026 11:45:00 PM",
-          "Enterococci",
-          "104",
-          "20.00"
-        ],
-        [
           "7/20/2026 11:45:00 AM",
           "Enterococci",
           "104",
@@ -18124,10 +18118,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 11:45:00 PM",
+        "date": "7/20/2026 11:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.00"
+        "value": "7.58"
       }
     },
     "Plum Cove": {
@@ -18223,12 +18217,6 @@
       "town": "Gloucester",
       "rows": [
         [
-          "7/20/2026 11:00:00 PM",
-          "Enterococci",
-          "104",
-          "5.00"
-        ],
-        [
           "7/20/2026 11:00:00 AM",
           "Enterococci",
           "104",
@@ -18302,10 +18290,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 11:00:00 PM",
+        "date": "7/20/2026 11:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.00"
+        "value": "7.62"
       }
     },
     "Upper Highland Lake - Campers Beach (DCR)": {
@@ -27311,6 +27299,12 @@
       "town": "Medfield",
       "rows": [
         [
+          "7/22/2026 4:21:00 PM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
+        [
           "7/15/2026 4:19:00 PM",
           "E. Coli",
           "235",
@@ -27342,15 +27336,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 4:19:00 PM",
+        "date": "7/22/2026 4:21:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.30"
+        "value": "4.35"
       }
     },
     "Hinkley @Right": {
       "town": "Medfield",
       "rows": [
+        [
+          "7/22/2026 4:22:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "7/15/2026 4:21:00 PM",
           "E. Coli",
@@ -27383,10 +27383,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 4:21:00 PM",
+        "date": "7/22/2026 4:22:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.30"
+        "value": "2.87"
       }
     },
     "Wrights Pond @Deep End": {
