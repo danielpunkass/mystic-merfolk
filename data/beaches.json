@@ -2591,8 +2591,7 @@
     {
       "name": "Mound",
       "town": "Quincy",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Nickerson",
