@@ -168,8 +168,7 @@
     {
       "name": "Keyes Beach (Sea Street)",
       "town": "Barnstable",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Loop",
@@ -340,8 +339,7 @@
     {
       "name": "Malibu (DCR)",
       "town": "Boston",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Pleasure Bay (DCR) @Broadway",
@@ -571,7 +569,8 @@
     {
       "name": "Oyster Pond",
       "town": "Chatham",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Pleasant Street",
@@ -1689,8 +1688,7 @@
     {
       "name": "Sunrise Beach",
       "town": "Lanesborough",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Lee Town Beach",
@@ -2783,8 +2781,7 @@
     {
       "name": "Ocean Avenue",
       "town": "Salem",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Osgood",
@@ -2804,8 +2801,7 @@
     {
       "name": "Willow Avenue",
       "town": "Salem",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Willows Pier",
