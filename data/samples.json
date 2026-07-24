@@ -10185,6 +10185,12 @@
       "town": "Concord",
       "rows": [
         [
+          "7/21/2026 2:54:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/14/2026 3:33:00 PM",
           "E. Coli",
           "235",
@@ -10234,7 +10240,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 3:33:00 PM",
+        "date": "7/21/2026 2:54:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "8.79"
@@ -10356,6 +10362,12 @@
       "town": "Dartmouth",
       "rows": [
         [
+          "7/23/2026 10:00:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
+        [
           "7/21/2026 9:57:00 AM",
           "Enterococci",
           "104",
@@ -10393,10 +10405,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:57:00 AM",
+        "date": "7/23/2026 10:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "2.97"
+        "value": "2.59"
       }
     },
     "Apponagansett Town Beach": {
@@ -10710,6 +10722,12 @@
       "town": "Dartmouth",
       "rows": [
         [
+          "7/23/2026 10:16:00 AM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
+        [
           "7/21/2026 10:22:00 AM",
           "Enterococci",
           "104",
@@ -10747,15 +10765,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:22:00 AM",
+        "date": "7/23/2026 10:16:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "20.42"
+        "value": "8.93"
       }
     },
     "Jones Town Beach North": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "7/23/2026 10:26:00 AM",
+          "Enterococci",
+          "104",
+          "30.00"
+        ],
         [
           "7/21/2026 10:35:00 AM",
           "Enterococci",
@@ -10824,15 +10848,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:35:00 AM",
+        "date": "7/23/2026 10:26:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.28"
+        "value": "9.95"
       }
     },
     "Jones Town Beach South": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "7/23/2026 10:30:00 AM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
         [
           "7/21/2026 10:38:00 AM",
           "Enterococci",
@@ -10895,10 +10925,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:38:00 AM",
+        "date": "7/23/2026 10:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.50"
+        "value": "9.68"
       }
     },
     "Moses Smith Creek": {
@@ -11035,6 +11065,12 @@
       "town": "Dartmouth",
       "rows": [
         [
+          "7/23/2026 10:06:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
+        [
           "7/21/2026 10:05:00 AM",
           "Enterococci",
           "104",
@@ -11078,10 +11114,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:05:00 AM",
+        "date": "7/23/2026 10:06:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "4.32"
+        "value": "3.27"
       }
     },
     "Round Hill": {
@@ -22270,6 +22306,12 @@
       "town": "Lanesborough",
       "rows": [
         [
+          "7/23/2026 6:20:00 AM",
+          "E. Coli",
+          "235",
+          "7.40"
+        ],
+        [
           "7/20/2026 12:35:00 PM",
           "E. Coli",
           "235",
@@ -22331,10 +22373,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 12:35:00 PM",
+        "date": "7/23/2026 6:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "136.88"
+        "value": "83.77"
       }
     },
     "Lee Town Beach": {
@@ -27900,6 +27942,12 @@
       "town": "Monterey",
       "rows": [
         [
+          "7/23/2026 11:20:00 AM",
+          "E. Coli",
+          "235",
+          "22.80"
+        ],
+        [
           "7/15/2026 11:29:00 AM",
           "E. Coli",
           "235",
@@ -27923,7 +27971,13 @@
           "235",
           "5.20"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/23/2026 11:20:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "6.65"
+      }
     },
     "Black Rock (Nahant)": {
       "town": "Nahant",
@@ -31069,6 +31123,18 @@
       "town": "North Attleborough",
       "rows": [
         [
+          "7/20/2026 2:56:00 PM",
+          "E. Coli",
+          "235",
+          "30.00"
+        ],
+        [
+          "7/13/2026 10:45:00 AM",
+          "E. Coli",
+          "235",
+          "30.00"
+        ],
+        [
           "7/6/2026 3:32:00 PM",
           "E. Coli",
           "235",
@@ -31092,11 +31158,29 @@
           "235",
           "130.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/20/2026 2:56:00 PM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "33.37"
+      }
     },
     "Whitings Pond": {
       "town": "North Attleborough",
       "rows": [
+        [
+          "7/20/2026 10:48:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
+        [
+          "7/13/2026 10:57:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
         [
           "7/6/2026 10:46:00 AM",
           "E. Coli",
@@ -31121,7 +31205,13 @@
           "235",
           "20.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/20/2026 10:48:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "12.46"
+      }
     },
     "Musante Beach": {
       "town": "Northampton",
@@ -38071,6 +38161,12 @@
       "town": "Russell",
       "rows": [
         [
+          "7/23/2026 9:24:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
+        [
           "7/15/2026 9:37:00 AM",
           "E. Coli",
           "235",
@@ -38108,10 +38204,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 9:37:00 AM",
+        "date": "7/23/2026 9:24:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.80"
+        "value": "2.25"
       }
     },
     "Whitehall Pond Beach (DCR)": {

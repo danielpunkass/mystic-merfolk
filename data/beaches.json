@@ -687,8 +687,7 @@
     {
       "name": "Anthony Beach",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Apponagansett Town Beach",
@@ -718,20 +717,17 @@
     {
       "name": "Hidden Bay",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Jones Town Beach North",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Jones Town Beach South",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Moses Smith Creek",
@@ -747,8 +743,7 @@
     {
       "name": "Oak Hill Shores",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "CSO/SSO event"
+      "status": "Open"
     },
     {
       "name": "Round Hill",
@@ -3056,8 +3051,7 @@
     {
       "name": "Coles River Club off Harbor Rd",
       "town": "Swansea",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Leeside",
