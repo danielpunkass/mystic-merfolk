@@ -25444,6 +25444,12 @@
       "town": "Marblehead",
       "rows": [
         [
+          "7/23/2026 10:34:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/22/2026 7:26:00 AM",
           "Enterococci",
           "104",
@@ -25505,10 +25511,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 7:26:00 AM",
+        "date": "7/23/2026 10:34:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "48.20"
+        "value": "36.53"
       }
     },
     "Stramski": {
@@ -31113,6 +31119,12 @@
       "town": "North Andover",
       "rows": [
         [
+          "7/23/2026 9:30:00 AM",
+          "Enterococci",
+          "61",
+          "6.00"
+        ],
+        [
           "7/21/2026 8:25:00 AM",
           "Enterococci",
           "61",
@@ -31174,10 +31186,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 8:25:00 AM",
+        "date": "7/23/2026 9:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "36.10"
+        "value": "17.82"
       }
     },
     "Stevens Pond - Center": {
@@ -35195,6 +35207,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/23/2026 1:30:00 PM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "7/22/2026 10:56:00 AM",
           "Enterococci",
           "104",
@@ -35256,15 +35274,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 10:56:00 AM",
+        "date": "7/23/2026 1:30:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "30.88"
+        "value": "23.70"
       }
     },
     "Mound": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/23/2026 1:42:00 PM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
         [
           "7/22/2026 11:15:00 AM",
           "Enterococci",
@@ -35321,15 +35345,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 11:15:00 AM",
+        "date": "7/23/2026 1:42:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "41.36"
+        "value": "15.62"
       }
     },
     "Nickerson": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/23/2026 1:22:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/22/2026 11:32:00 AM",
           "Enterococci",
@@ -35386,10 +35416,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 11:32:00 AM",
+        "date": "7/23/2026 1:22:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "54.03"
+        "value": "37.51"
       }
     },
     "Norton Beach": {
@@ -41470,6 +41500,12 @@
       "town": "Swampscott",
       "rows": [
         [
+          "7/23/2026 10:12:00 AM",
+          "Enterococci",
+          "104",
+          "63.00"
+        ],
+        [
           "7/22/2026 9:57:00 AM",
           "Enterococci",
           "104",
@@ -41525,10 +41561,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 9:57:00 AM",
+        "date": "7/23/2026 10:12:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "40.69"
+        "value": "31.89"
       }
     },
     "New Ocean/Eisman's": {
