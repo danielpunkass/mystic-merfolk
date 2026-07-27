@@ -4004,6 +4004,12 @@
       "town": "Boston",
       "rows": [
         [
+          "7/26/2026 10:12:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/25/2026 9:15:00 AM",
           "Enterococci",
           "61",
@@ -4429,6 +4435,12 @@
       "town": "Boston",
       "rows": [
         [
+          "7/26/2026 10:00:00 AM",
+          "Enterococci",
+          "61",
+          "20.00"
+        ],
+        [
           "7/25/2026 9:10:00 AM",
           "Enterococci",
           "61",
@@ -4853,6 +4865,12 @@
     "Constitution (DCR) @Rec Center": {
       "town": "Boston",
       "rows": [
+        [
+          "7/26/2026 10:25:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/25/2026 9:20:00 AM",
           "Enterococci",
@@ -5420,6 +5438,12 @@
     "Malibu (DCR)": {
       "town": "Boston",
       "rows": [
+        [
+          "7/26/2026 8:30:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/25/2026 8:56:00 AM",
           "Enterococci",
@@ -6123,6 +6147,12 @@
     "Tenean (DCR)": {
       "town": "Boston",
       "rows": [
+        [
+          "7/26/2026 8:20:00 AM",
+          "Enterococci",
+          "104",
+          "52.00"
+        ],
         [
           "7/25/2026 9:11:00 AM",
           "Enterococci",
@@ -23071,6 +23101,12 @@
       "town": "Lynn",
       "rows": [
         [
+          "7/26/2026 8:23:00 AM",
+          "Enterococci",
+          "61",
+          "51.00"
+        ],
+        [
           "7/25/2026 8:05:00 AM",
           "Enterococci",
           "61",
@@ -23496,6 +23532,12 @@
       "town": "Lynn",
       "rows": [
         [
+          "7/26/2026 8:50:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/25/2026 8:20:00 AM",
           "Enterococci",
           "61",
@@ -23920,6 +23962,12 @@
     "Kings (DCR) @Pierce Rd.": {
       "town": "Lynn",
       "rows": [
+        [
+          "7/26/2026 8:40:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/25/2026 8:15:00 AM",
           "Enterococci",
@@ -24428,6 +24476,12 @@
     "Stacey's Brook Outfall (No Swimming) (DCR)": {
       "town": "Lynn",
       "rows": [
+        [
+          "7/26/2026 8:10:00 AM",
+          "Enterococci",
+          "104",
+          "243.00"
+        ],
         [
           "7/25/2026 8:00:00 AM",
           "Enterococci",
@@ -27835,6 +27889,12 @@
       "town": "Methuen",
       "rows": [
         [
+          "7/24/2026 6:15:00 PM",
+          "E. Coli",
+          "235",
+          "25.90"
+        ],
+        [
           "7/17/2026 8:45:00 AM",
           "E. Coli",
           "235",
@@ -27884,10 +27944,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/17/2026 8:45:00 AM",
+        "date": "7/24/2026 6:15:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "13.05"
+        "value": "13.39"
       }
     },
     "Camp Avoda": {
@@ -35830,6 +35890,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/26/2026 8:00:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/25/2026 9:52:00 AM",
           "Enterococci",
           "61",
@@ -36248,6 +36314,12 @@
     "Wollaston (DCR) @Milton Street": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/26/2026 8:05:00 AM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "7/25/2026 10:01:00 AM",
           "Enterococci",
@@ -36668,6 +36740,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "7/26/2026 7:45:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/25/2026 9:32:00 AM",
           "Enterococci",
           "61",
@@ -37086,6 +37164,12 @@
     "Wollaston (DCR) @Sachem Street": {
       "town": "Quincy",
       "rows": [
+        [
+          "7/26/2026 7:50:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/25/2026 9:40:00 AM",
           "Enterococci",
