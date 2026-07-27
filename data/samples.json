@@ -18900,6 +18900,12 @@
       "town": "Halifax",
       "rows": [
         [
+          "7/21/2026 9:40:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/14/2026 9:50:00 AM",
           "E. Coli",
           "235",
@@ -18955,15 +18961,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 9:50:00 AM",
+        "date": "7/21/2026 9:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.32"
+        "value": "3.62"
       }
     },
     "Lingan Street": {
       "town": "Halifax",
       "rows": [
+        [
+          "7/21/2026 9:25:00 AM",
+          "E. Coli",
+          "235",
+          "28.00"
+        ],
         [
           "7/14/2026 9:40:00 AM",
           "E. Coli",
@@ -19020,10 +19032,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 9:40:00 AM",
+        "date": "7/21/2026 9:25:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "12.01"
+        "value": "11.18"
       }
     },
     "Cranberry Cove (aka Camp Kiwanee)": {
@@ -48288,6 +48300,12 @@
       "town": "Wrentham",
       "rows": [
         [
+          "7/21/2026 9:40:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/14/2026 8:40:00 AM",
           "E. Coli",
           "235",
@@ -48343,10 +48361,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 8:40:00 AM",
+        "date": "7/21/2026 9:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.36"
+        "value": "4.32"
       }
     },
     "Bass River East": {
