@@ -15008,6 +15008,12 @@
       "town": "Edgartown",
       "rows": [
         [
+          "7/27/2026 8:20:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/20/2026 8:23:00 AM",
           "Enterococci",
           "104",
@@ -15051,7 +15057,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:23:00 AM",
+        "date": "7/27/2026 8:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -15171,6 +15177,12 @@
       "town": "Edgartown",
       "rows": [
         [
+          "7/27/2026 8:28:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/20/2026 8:15:00 AM",
           "Enterococci",
           "61",
@@ -15214,7 +15226,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:15:00 AM",
+        "date": "7/27/2026 8:28:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "7.20"
@@ -15270,6 +15282,12 @@
       "town": "Edgartown",
       "rows": [
         [
+          "7/27/2026 8:50:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/20/2026 9:01:00 AM",
           "Enterococci",
           "104",
@@ -15307,7 +15325,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 9:01:00 AM",
+        "date": "7/27/2026 8:50:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.58"
@@ -18050,6 +18068,12 @@
       "town": "Gloucester",
       "rows": [
         [
+          "7/27/2026 10:30:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/20/2026 10:00:00 AM",
           "Enterococci",
           "104",
@@ -18111,7 +18135,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:00:00 AM",
+        "date": "7/27/2026 10:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.20"
@@ -18120,6 +18144,12 @@
     "Good Harbor": {
       "town": "Gloucester",
       "rows": [
+        [
+          "7/27/2026 12:05:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/20/2026 12:15:00 PM",
           "Enterococci",
@@ -18182,7 +18212,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 12:15:00 PM",
+        "date": "7/27/2026 12:05:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -18191,6 +18221,12 @@
     "Good Harbor Creek": {
       "town": "Gloucester",
       "rows": [
+        [
+          "7/27/2026 9:30:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/20/2026 6:30:00 AM",
           "Enterococci",
@@ -18277,15 +18313,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 6:30:00 AM",
+        "date": "7/27/2026 9:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.58"
+        "value": "6.60"
       }
     },
     "Half Moon": {
       "town": "Gloucester",
       "rows": [
+        [
+          "7/27/2026 10:45:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/20/2026 10:15:00 AM",
           "Enterococci",
@@ -18348,7 +18390,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:15:00 AM",
+        "date": "7/27/2026 10:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "9.50"
@@ -18357,6 +18399,12 @@
     "Niles": {
       "town": "Gloucester",
       "rows": [
+        [
+          "7/27/2026 9:45:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/20/2026 6:45:00 AM",
           "Enterococci",
@@ -18425,7 +18473,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 6:45:00 AM",
+        "date": "7/27/2026 9:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -18434,6 +18482,12 @@
     "Pavilion Beach": {
       "town": "Gloucester",
       "rows": [
+        [
+          "7/27/2026 10:00:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/20/2026 11:45:00 AM",
           "Enterococci",
@@ -18496,7 +18550,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 11:45:00 AM",
+        "date": "7/27/2026 10:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.58"
@@ -18505,6 +18559,12 @@
     "Plum Cove": {
       "town": "Gloucester",
       "rows": [
+        [
+          "7/27/2026 11:15:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/20/2026 7:00:00 AM",
           "Enterococci",
@@ -18585,7 +18645,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 7:00:00 AM",
+        "date": "7/27/2026 11:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -18594,6 +18654,12 @@
     "Wingaersheek": {
       "town": "Gloucester",
       "rows": [
+        [
+          "7/27/2026 11:45:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/20/2026 11:00:00 AM",
           "Enterococci",
@@ -18668,10 +18734,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 11:00:00 AM",
+        "date": "7/27/2026 11:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.62"
+        "value": "5.00"
       }
     },
     "Upper Highland Lake - Campers Beach (DCR)": {
@@ -26692,6 +26758,12 @@
       "town": "Marlborough",
       "rows": [
         [
+          "7/27/2026 10:40:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "7/20/2026 10:35:00 AM",
           "E. Coli",
           "235",
@@ -26753,7 +26825,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:35:00 AM",
+        "date": "7/27/2026 10:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "7.81"
@@ -26762,6 +26834,12 @@
     "Memorial Beach (Marlborough) @Middle": {
       "town": "Marlborough",
       "rows": [
+        [
+          "7/27/2026 10:15:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
         [
           "7/20/2026 10:10:00 AM",
           "E. Coli",
@@ -26824,15 +26902,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:10:00 AM",
+        "date": "7/27/2026 10:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.69"
+        "value": "5.55"
       }
     },
     "Richard P. Sharon Beach": {
       "town": "Marlborough",
       "rows": [
+        [
+          "7/27/2026 10:35:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
         [
           "7/20/2026 10:30:00 AM",
           "E. Coli",
@@ -26895,10 +26979,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:30:00 AM",
+        "date": "7/27/2026 10:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.85"
+        "value": "2.48"
       }
     },
     "Bluefish Cove Beach": {
@@ -41705,6 +41789,12 @@
       "town": "Somerset",
       "rows": [
         [
+          "7/27/2026 8:15:00 AM",
+          "Enterococci",
+          "104",
+          "31.00"
+        ],
+        [
           "7/20/2026 8:00:00 AM",
           "Enterococci",
           "104",
@@ -41742,10 +41832,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:00:00 AM",
+        "date": "7/27/2026 8:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "12.58"
+        "value": "18.12"
       }
     },
     "South Pond Beach": {
@@ -43315,6 +43405,12 @@
       "town": "Tisbury",
       "rows": [
         [
+          "7/27/2026 8:45:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "7/20/2026 8:50:00 AM",
           "Enterococci",
           "104",
@@ -43370,15 +43466,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:50:00 AM",
+        "date": "7/27/2026 8:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "84.56"
+        "value": "39.13"
       }
     },
     "Owen Park": {
       "town": "Tisbury",
       "rows": [
+        [
+          "7/27/2026 8:30:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/20/2026 8:35:00 AM",
           "Enterococci",
@@ -43423,10 +43525,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:35:00 AM",
+        "date": "7/27/2026 8:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.99"
+        "value": "9.17"
       }
     },
     "Sound @ Wilfred's Pond Preserve": {
@@ -43586,6 +43688,12 @@
       "town": "Tisbury",
       "rows": [
         [
+          "7/27/2026 8:15:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/20/2026 8:25:00 AM",
           "Enterococci",
           "104",
@@ -43641,10 +43749,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:25:00 AM",
+        "date": "7/27/2026 8:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "28.07"
+        "value": "15.51"
       }
     },
     "Pearl Hill Pond Beach (DCR)": {
