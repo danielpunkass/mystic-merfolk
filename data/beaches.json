@@ -248,7 +248,8 @@
     {
       "name": "Independence Park",
       "town": "Beverly",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Lynch Park",
@@ -610,7 +611,8 @@
     {
       "name": "Chicopee Beach (DCR)",
       "town": "Chicopee",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Great Rock Bight",
@@ -3014,7 +3016,8 @@
     {
       "name": "Kings",
       "town": "Swampscott",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "New Ocean/Eisman's",
