@@ -13382,7 +13382,7 @@
         "date": "7/23/2026 11:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "63.81"
+        "value": "130.94"
       }
     },
     "Duxbury Beach @ Bath House": {
@@ -38105,6 +38105,12 @@
       "town": "Rochester",
       "rows": [
         [
+          "7/27/2026 8:00:00 AM",
+          "Enterococci",
+          "61",
+          "3.00"
+        ],
+        [
           "7/20/2026 8:00:00 AM",
           "Enterococci",
           "61",
@@ -38154,10 +38160,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:00:00 AM",
+        "date": "7/27/2026 8:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "7.21"
+        "value": "4.18"
       }
     },
     "Back Beach": {
