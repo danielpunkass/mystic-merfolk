@@ -3230,8 +3230,7 @@
     {
       "name": "Forbes",
       "town": "Wareham",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Hamilton Beach",
@@ -3291,8 +3290,7 @@
     {
       "name": "Standish Shores",
       "town": "Wareham",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Swift's",
