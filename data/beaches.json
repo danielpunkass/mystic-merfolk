@@ -2780,12 +2780,14 @@
     {
       "name": "Ocean Avenue",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Osgood",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Steps",
