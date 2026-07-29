@@ -88,7 +88,8 @@
     {
       "name": "Hopkinton Reservoir-Main Beach (DCR)",
       "town": "Ashland",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Hopkinton Reservoir-Upper Beach (DCR)",
@@ -2731,7 +2732,8 @@
     {
       "name": "Whitehall Pond Beach (DCR)",
       "town": "Rutland",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "Children's Island - Back",
@@ -2875,7 +2877,8 @@
     {
       "name": "Peckham Pond @ Camp Nihan (DCR)",
       "town": "Saugus",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "North Pond Beach (DCR)",
