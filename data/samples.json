@@ -16101,6 +16101,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "7/28/2026 9:16:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
+        [
           "7/22/2026 2:37:00 PM",
           "Enterococci",
           "104",
@@ -16144,10 +16150,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 2:37:00 PM",
+        "date": "7/28/2026 9:16:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.99"
+        "value": "1.00"
       }
     },
     "Fort Phoenix (DCR)": {
@@ -16237,6 +16243,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "7/28/2026 8:21:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/22/2026 1:45:00 PM",
           "Enterococci",
           "104",
@@ -16280,15 +16292,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 1:45:00 PM",
+        "date": "7/28/2026 8:21:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.56"
+        "value": "8.37"
       }
     },
     "Sandy Beach (Raymond Street)": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "7/28/2026 8:28:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "7/22/2026 1:50:00 PM",
           "Enterococci",
@@ -16333,15 +16351,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 1:50:00 PM",
+        "date": "7/28/2026 8:28:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.91"
+        "value": "2.20"
       }
     },
     "Seaview": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "7/28/2026 8:35:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "7/22/2026 1:56:00 PM",
           "Enterococci",
@@ -16386,15 +16410,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 1:56:00 PM",
+        "date": "7/28/2026 8:35:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "2.40"
+        "value": "2.09"
       }
     },
     "West Island Causeway": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "7/28/2026 8:49:00 AM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
         [
           "7/22/2026 2:18:00 PM",
           "Enterococci",
@@ -16439,15 +16469,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 2:18:00 PM",
+        "date": "7/28/2026 8:49:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.66"
+        "value": "0.87"
       }
     },
     "West Island Town Beach": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "7/28/2026 8:59:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "7/22/2026 2:10:00 PM",
           "Enterococci",
@@ -16492,7 +16528,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 2:10:00 PM",
+        "date": "7/28/2026 8:59:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "0.82"
