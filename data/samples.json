@@ -2866,6 +2866,12 @@
       "town": "Becket",
       "rows": [
         [
+          "7/28/2026 10:45:00 AM",
+          "E. Coli",
+          "235",
+          "24.60"
+        ],
+        [
           "7/20/2026 1:18:00 PM",
           "E. Coli",
           "235",
@@ -2927,10 +2933,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 1:18:00 PM",
+        "date": "7/28/2026 10:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "15.29"
+        "value": "33.32"
       }
     },
     "Belchertown Town Beach (Lake Arcadia)": {
@@ -8926,6 +8932,12 @@
       "town": "Brookfield",
       "rows": [
         [
+          "7/27/2026 12:15:00 PM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "7/20/2026 10:32:00 AM",
           "E. Coli",
           "235",
@@ -8987,10 +8999,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:32:00 AM",
+        "date": "7/27/2026 12:15:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.65"
+        "value": "10.20"
       }
     },
     "Cold River Pool (DCR)": {
@@ -10072,6 +10084,12 @@
       "town": "Chesterfield",
       "rows": [
         [
+          "7/28/2026 7:35:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/21/2026 7:35:00 AM",
           "E. Coli",
           "235",
@@ -10115,10 +10133,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 7:35:00 AM",
+        "date": "7/28/2026 7:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.01"
+        "value": "2.40"
       }
     },
     "Chicopee Beach (DCR)": {
@@ -13827,6 +13845,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "7/23/2026 8:05:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "7/16/2026 8:46:00 AM",
           "E. Coli",
           "235",
@@ -13876,7 +13900,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 8:46:00 AM",
+        "date": "7/23/2026 8:05:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.31"
@@ -13885,6 +13909,12 @@
     "Lake Manchaug Camping": {
       "town": "Douglas",
       "rows": [
+        [
+          "7/23/2026 8:18:00 AM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
         [
           "7/16/2026 8:55:00 AM",
           "E. Coli",
@@ -13941,10 +13971,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 8:55:00 AM",
+        "date": "7/23/2026 8:18:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.81"
+        "value": "10.84"
       }
     },
     "Wallum Lake (DCR)": {
@@ -14028,6 +14058,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "7/23/2026 7:48:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/16/2026 8:32:00 AM",
           "E. Coli",
           "235",
@@ -14083,10 +14119,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 8:32:00 AM",
+        "date": "7/23/2026 7:48:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.69"
+        "value": "4.24"
       }
     },
     "Mascuppic": {
@@ -21547,6 +21583,12 @@
       "town": "Hinsdale",
       "rows": [
         [
+          "7/28/2026 10:02:00 AM",
+          "E. Coli",
+          "235",
+          "36.40"
+        ],
+        [
           "7/21/2026 9:00:00 AM",
           "E. Coli",
           "235",
@@ -21608,10 +21650,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:00:00 AM",
+        "date": "7/28/2026 10:02:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "17.71"
+        "value": "20.32"
       }
     },
     "Eagle Lake": {
@@ -34022,6 +34064,12 @@
       "town": "Otis",
       "rows": [
         [
+          "7/28/2026 12:21:00 PM",
+          "E. Coli",
+          "235",
+          "8.60"
+        ],
+        [
           "7/21/2026 10:57:00 AM",
           "E. Coli",
           "235",
@@ -34083,10 +34131,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:57:00 AM",
+        "date": "7/28/2026 12:21:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.74"
+        "value": "5.50"
       }
     },
     "Carbuncle Pond": {
@@ -43171,6 +43219,12 @@
       "town": "Shrewsbury",
       "rows": [
         [
+          "7/23/2026 11:15:00 AM",
+          "E. Coli",
+          "235",
+          "49.60"
+        ],
+        [
           "7/16/2026 10:15:00 AM",
           "E. Coli",
           "235",
@@ -43202,10 +43256,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/16/2026 10:15:00 AM",
+        "date": "7/23/2026 11:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "20.75"
+        "value": "24.62"
       }
     },
     "Lake Wyola (DCR)": {
@@ -43772,6 +43826,12 @@
       "town": "Sturbridge",
       "rows": [
         [
+          "7/27/2026 8:50:00 AM",
+          "E. Coli",
+          "235",
+          "16.90"
+        ],
+        [
           "7/20/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -43803,10 +43863,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 9:30:00 AM",
+        "date": "7/27/2026 8:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "86.06"
+        "value": "69.64"
       }
     },
     "Wells State Park - Walker Pond Beach (DCR)": {
