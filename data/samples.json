@@ -28407,6 +28407,12 @@
       "town": "Mattapoisett",
       "rows": [
         [
+          "7/28/2026 8:25:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
+        [
           "7/21/2026 8:20:00 AM",
           "Enterococci",
           "104",
@@ -28450,15 +28456,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 8:20:00 AM",
+        "date": "7/28/2026 8:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "3.52"
+        "value": "3.07"
       }
     },
     "Mattapoisett Town Beach": {
       "town": "Mattapoisett",
       "rows": [
+        [
+          "7/28/2026 7:46:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/21/2026 8:05:00 AM",
           "Enterococci",
@@ -28509,15 +28521,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 8:05:00 AM",
+        "date": "7/28/2026 7:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.20"
+        "value": "6.55"
       }
     },
     "Ned's Point": {
       "town": "Mattapoisett",
       "rows": [
+        [
+          "7/28/2026 8:00:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
         [
           "7/21/2026 8:40:00 AM",
           "Enterococci",
@@ -28562,7 +28580,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 8:40:00 AM",
+        "date": "7/28/2026 8:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "6.74"
@@ -28571,6 +28589,12 @@
     "Shining Tides Reservation": {
       "town": "Mattapoisett",
       "rows": [
+        [
+          "7/28/2026 7:30:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "7/21/2026 7:50:00 AM",
           "Enterococci",
@@ -28615,7 +28639,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 7:50:00 AM",
+        "date": "7/28/2026 7:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "10.47"
@@ -29019,6 +29043,12 @@
       "town": "Middleton",
       "rows": [
         [
+          "7/27/2026 8:10:00 AM",
+          "E. Coli",
+          "235",
+          "22.80"
+        ],
+        [
           "7/20/2026 8:05:00 AM",
           "E. Coli",
           "235",
@@ -29080,10 +29110,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:05:00 AM",
+        "date": "7/27/2026 8:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "29.73"
+        "value": "24.73"
       }
     },
     "Houghton's Pond @ Bathhouse (DCR)": {
