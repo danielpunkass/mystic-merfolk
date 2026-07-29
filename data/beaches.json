@@ -732,8 +732,7 @@
     {
       "name": "Moses Smith Creek",
       "town": "Dartmouth",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Nonquitt",
@@ -3072,7 +3071,8 @@
     {
       "name": "Watsons Pond (DCR)",
       "town": "Taunton",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Beamans Pond - Campground (DCR)",
