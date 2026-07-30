@@ -10,6 +10,12 @@
       "town": "Abington",
       "rows": [
         [
+          "7/29/2026 8:00:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/22/2026 8:00:00 AM",
           "E. Coli",
           "235",
@@ -53,7 +59,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 8:00:00 AM",
+        "date": "7/29/2026 8:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -525,6 +531,12 @@
       "town": "Andover",
       "rows": [
         [
+          "7/29/2026 9:42:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/22/2026 11:24:00 AM",
           "E. Coli",
           "235",
@@ -568,15 +580,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 11:24:00 AM",
+        "date": "7/29/2026 9:42:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.08"
+        "value": "9.28"
       }
     },
     "Pomps Pond @Left": {
       "town": "Andover",
       "rows": [
+        [
+          "7/29/2026 9:40:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "7/22/2026 11:23:00 AM",
           "E. Coli",
@@ -621,7 +639,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 11:23:00 AM",
+        "date": "7/29/2026 9:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "7.10"
@@ -630,6 +648,12 @@
     "Pomps Pond @Right": {
       "town": "Andover",
       "rows": [
+        [
+          "7/29/2026 9:45:00 AM",
+          "E. Coli",
+          "235",
+          "20.00"
+        ],
         [
           "7/22/2026 11:25:00 AM",
           "E. Coli",
@@ -674,10 +698,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 11:25:00 AM",
+        "date": "7/29/2026 9:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.25"
+        "value": "7.96"
       }
     },
     "Lobsterville": {
@@ -794,6 +818,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "7/29/2026 11:55:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/28/2026 2:47:00 PM",
           "E. Coli",
           "235",
@@ -885,7 +915,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 2:47:00 PM",
+        "date": "7/29/2026 11:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -21880,6 +21910,12 @@
       "town": "Haverhill",
       "rows": [
         [
+          "7/29/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
+        [
           "7/22/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -21929,15 +21965,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 9:30:00 AM",
+        "date": "7/29/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.31"
+        "value": "18.47"
       }
     },
     "Plugs Pond @Side": {
       "town": "Haverhill",
       "rows": [
+        [
+          "7/29/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "8.00"
+        ],
         [
           "7/22/2026 9:30:00 AM",
           "E. Coli",
@@ -21988,10 +22030,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 9:30:00 AM",
+        "date": "7/29/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "27.41"
+        "value": "22.01"
       }
     },
     "Hingham Town Beach": {
@@ -27409,6 +27451,12 @@
       "town": "Marblehead",
       "rows": [
         [
+          "7/29/2026 9:20:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/22/2026 7:11:00 AM",
           "Enterococci",
           "104",
@@ -27458,7 +27506,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 7:11:00 AM",
+        "date": "7/29/2026 9:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "15.77"
@@ -27467,6 +27515,12 @@
     "Devereux": {
       "town": "Marblehead",
       "rows": [
+        [
+          "7/29/2026 9:09:00 AM",
+          "Enterococci",
+          "104",
+          "41.00"
+        ],
         [
           "7/22/2026 6:58:00 AM",
           "Enterococci",
@@ -27517,15 +27571,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 6:58:00 AM",
+        "date": "7/29/2026 9:09:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "18.32"
+        "value": "27.90"
       }
     },
     "Gas House": {
       "town": "Marblehead",
       "rows": [
+        [
+          "7/29/2026 9:27:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/22/2026 7:20:00 AM",
           "Enterococci",
@@ -27582,15 +27642,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 7:20:00 AM",
+        "date": "7/29/2026 9:27:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "25.18"
+        "value": "15.76"
       }
     },
     "Grace Oliver": {
       "town": "Marblehead",
       "rows": [
+        [
+          "7/29/2026 9:38:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
         [
           "7/27/2026 10:20:00 AM",
           "Enterococci",
@@ -27665,15 +27731,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:20:00 AM",
+        "date": "7/29/2026 9:38:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "26.91"
+        "value": "35.50"
       }
     },
     "Stramski": {
       "town": "Marblehead",
       "rows": [
+        [
+          "7/29/2026 9:50:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/22/2026 7:40:00 AM",
           "Enterococci",
@@ -27724,7 +27796,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 7:40:00 AM",
+        "date": "7/29/2026 9:50:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "20.49"
@@ -43760,6 +43832,12 @@
       "town": "Scituate",
       "rows": [
         [
+          "7/29/2026 2:17:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/28/2026 9:52:00 AM",
           "Enterococci",
           "104",
@@ -43803,10 +43881,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 9:52:00 AM",
+        "date": "7/29/2026 2:17:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "27.21"
+        "value": "23.69"
       }
     },
     "Sand Hills": {
