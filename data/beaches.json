@@ -530,7 +530,8 @@
     {
       "name": "Bucks Creek",
       "town": "Chatham",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Cockle Cove",
@@ -906,7 +907,8 @@
     {
       "name": "Merino Pond",
       "town": "Dudley",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Duxbury Beach @ Bath House",
