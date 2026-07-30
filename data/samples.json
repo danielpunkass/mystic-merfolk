@@ -735,6 +735,12 @@
       "town": "Aquinnah",
       "rows": [
         [
+          "7/27/2026 3:43:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/20/2026 9:59:00 AM",
           "Enterococci",
           "104",
@@ -778,7 +784,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 9:59:00 AM",
+        "date": "7/27/2026 3:43:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "10.05"
@@ -787,6 +793,12 @@
     "Arlington Reservoir": {
       "town": "Arlington",
       "rows": [
+        [
+          "7/28/2026 2:47:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "7/22/2026 1:00:00 PM",
           "E. Coli",
@@ -873,7 +885,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 1:00:00 PM",
+        "date": "7/28/2026 2:47:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -14209,7 +14221,7 @@
           "7/23/2026 11:15:00 AM",
           "E. Coli",
           "235",
-          "575.50"
+          "275.50"
         ],
         [
           "7/20/2026 9:33:00 AM",
@@ -14276,7 +14288,7 @@
         "date": "7/27/2026 4:20:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "245.03"
+        "value": "211.46"
       }
     },
     "Duxbury Beach @ Bath House": {
@@ -18960,6 +18972,12 @@
       "town": "Franklin",
       "rows": [
         [
+          "7/28/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/15/2026 10:00:00 AM",
           "E. Coli",
           "235",
@@ -18997,7 +19015,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/15/2026 10:00:00 AM",
+        "date": "7/28/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "6.01"
@@ -24409,6 +24427,12 @@
       "town": "Lexington",
       "rows": [
         [
+          "7/28/2026 3:18:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/21/2026 3:20:00 PM",
           "Enterococci",
           "61",
@@ -24464,7 +24488,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 3:20:00 PM",
+        "date": "7/28/2026 3:18:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "6.60"
@@ -24473,6 +24497,12 @@
     "Old Reservoir Swim Area  #2": {
       "town": "Lexington",
       "rows": [
+        [
+          "7/28/2026 3:19:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/21/2026 3:21:00 PM",
           "Enterococci",
@@ -24529,10 +24559,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 3:21:00 PM",
+        "date": "7/28/2026 3:19:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "5.74"
+        "value": "5.00"
       }
     },
     "Arrive Lunenburg (Lake Whalom)": {
@@ -29651,6 +29681,12 @@
       "town": "Medfield",
       "rows": [
         [
+          "7/28/2026 4:09:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/22/2026 4:21:00 PM",
           "E. Coli",
           "235",
@@ -29688,7 +29724,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 4:21:00 PM",
+        "date": "7/28/2026 4:09:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "4.35"
@@ -29697,6 +29733,12 @@
     "Hinkley @Right": {
       "town": "Medfield",
       "rows": [
+        [
+          "7/28/2026 4:11:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "7/22/2026 4:22:00 PM",
           "E. Coli",
@@ -29735,7 +29777,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 4:22:00 PM",
+        "date": "7/28/2026 4:11:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.87"
@@ -29744,6 +29786,12 @@
     "Wrights Pond @Deep End": {
       "town": "Medford",
       "rows": [
+        [
+          "7/28/2026 1:54:00 PM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
         [
           "7/21/2026 3:28:00 PM",
           "E. Coli",
@@ -29788,15 +29836,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 3:28:00 PM",
+        "date": "7/28/2026 1:54:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "13.93"
+        "value": "12.85"
       }
     },
     "Wrights Pond @Shallow End": {
       "town": "Medford",
       "rows": [
+        [
+          "7/28/2026 1:53:00 PM",
+          "E. Coli",
+          "235",
+          "48.00"
+        ],
         [
           "7/21/2026 3:25:00 PM",
           "E. Coli",
@@ -29841,10 +29895,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 3:25:00 PM",
+        "date": "7/28/2026 1:53:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.36"
+        "value": "16.91"
       }
     },
     "Forest Lake: Swimming Beach": {
@@ -33921,6 +33975,12 @@
       "town": "Oak Bluffs",
       "rows": [
         [
+          "7/28/2026 9:47:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/27/2026 5:08:00 AM",
           "Enterococci",
           "104",
@@ -33970,10 +34030,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 5:08:00 AM",
+        "date": "7/28/2026 9:47:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "17.69"
+        "value": "13.40"
       }
     },
     "Inkwell Beach": {
@@ -35428,6 +35488,12 @@
       "town": "Plymouth",
       "rows": [
         [
+          "7/28/2026 10:15:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/21/2026 9:23:00 AM",
           "E. Coli",
           "235",
@@ -35471,15 +35537,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:23:00 AM",
+        "date": "7/28/2026 10:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.86"
+        "value": "10.67"
       }
     },
     "Fresh Pond @2 (Mid Pond)": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 10:18:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "7/21/2026 9:25:00 AM",
           "E. Coli",
@@ -35518,15 +35590,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:25:00 AM",
+        "date": "7/28/2026 10:18:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "21.32"
+        "value": "11.01"
       }
     },
     "Hedges Pond": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 9:45:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "7/21/2026 9:00:00 AM",
           "E. Coli",
@@ -35565,15 +35643,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:00:00 AM",
+        "date": "7/28/2026 9:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.78"
+        "value": "2.50"
       }
     },
     "Morton Park @Main": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 11:35:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
         [
           "7/21/2026 10:46:00 AM",
           "E. Coli",
@@ -35636,15 +35720,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:46:00 AM",
+        "date": "7/28/2026 11:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.43"
+        "value": "4.78"
       }
     },
     "Morton Park @Satellite 2 (cove)": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 11:45:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "7/21/2026 10:56:00 AM",
           "E. Coli",
@@ -35707,15 +35797,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:56:00 AM",
+        "date": "7/28/2026 11:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.47"
+        "value": "5.19"
       }
     },
     "Nelson Park": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 12:05:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/21/2026 11:13:00 AM",
           "Enterococci",
@@ -35778,15 +35874,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 11:13:00 AM",
+        "date": "7/28/2026 12:05:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.58"
+        "value": "5.74"
       }
     },
     "Plymouth Beach - 1": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 11:05:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/21/2026 10:15:00 AM",
           "Enterococci",
@@ -35849,7 +35951,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:15:00 AM",
+        "date": "7/28/2026 11:05:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -35858,6 +35960,12 @@
     "Plymouth Beach - 3 @Location 1": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 11:10:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/21/2026 10:20:00 AM",
           "Enterococci",
@@ -35920,7 +36028,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 10:20:00 AM",
+        "date": "7/28/2026 11:10:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.74"
@@ -35929,6 +36037,12 @@
     "White Horse - Full Sail": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 10:35:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/21/2026 9:45:00 AM",
           "Enterococci",
@@ -35991,7 +36105,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:45:00 AM",
+        "date": "7/28/2026 10:35:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.20"
@@ -36000,6 +36114,12 @@
     "White Horse - Hill Top": {
       "town": "Plymouth",
       "rows": [
+        [
+          "7/28/2026 10:45:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/21/2026 9:55:00 AM",
           "Enterococci",
@@ -36062,10 +36182,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 9:55:00 AM",
+        "date": "7/28/2026 10:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "9.50"
+        "value": "6.60"
       }
     },
     "333 Commercial Street": {
@@ -49849,6 +49969,12 @@
       "town": "West Tisbury",
       "rows": [
         [
+          "7/27/2026 9:42:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
+        [
           "7/20/2026 12:07:00 PM",
           "Enterococci",
           "61",
@@ -49892,7 +50018,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 12:07:00 PM",
+        "date": "7/27/2026 9:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "0.66"
@@ -49901,6 +50027,12 @@
     "Long Point (Ocean) @Central": {
       "town": "West Tisbury",
       "rows": [
+        [
+          "7/27/2026 9:46:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/20/2026 12:09:00 PM",
           "Enterococci",
@@ -49945,7 +50077,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 12:09:00 PM",
+        "date": "7/27/2026 9:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.00"
