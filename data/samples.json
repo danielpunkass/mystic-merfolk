@@ -24208,6 +24208,12 @@
       "town": "Lanesborough",
       "rows": [
         [
+          "7/29/2026 11:58:00 AM",
+          "E. Coli",
+          "235",
+          "117.80"
+        ],
+        [
           "7/23/2026 6:20:00 AM",
           "E. Coli",
           "235",
@@ -24275,10 +24281,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/23/2026 6:20:00 AM",
+        "date": "7/29/2026 11:58:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "83.77"
+        "value": "114.31"
       }
     },
     "Lee Town Beach": {
@@ -30264,6 +30270,12 @@
       "town": "Monterey",
       "rows": [
         [
+          "7/29/2026 10:59:00 AM",
+          "E. Coli",
+          "235",
+          "7.40"
+        ],
+        [
           "7/23/2026 11:20:00 AM",
           "E. Coli",
           "235",
@@ -30295,10 +30307,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/23/2026 11:20:00 AM",
+        "date": "7/29/2026 10:59:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.65"
+        "value": "7.14"
       }
     },
     "Black Rock (Nahant)": {
@@ -33431,6 +33443,12 @@
       "town": "North Adams",
       "rows": [
         [
+          "7/29/2026 10:55:00 AM",
+          "E. Coli",
+          "235",
+          "8.40"
+        ],
+        [
           "7/20/2026 11:40:00 AM",
           "E. Coli",
           "235",
@@ -33492,10 +33510,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 11:40:00 AM",
+        "date": "7/29/2026 10:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.83"
+        "value": "4.68"
       }
     },
     "Berry Pond Beach (DCR)": {
@@ -34226,6 +34244,12 @@
       "town": "Orange",
       "rows": [
         [
+          "7/29/2026 7:55:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
+        [
           "7/22/2026 12:55:00 PM",
           "E. Coli",
           "235",
@@ -34287,10 +34311,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 12:55:00 PM",
+        "date": "7/29/2026 7:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "29.88"
+        "value": "16.51"
       }
     },
     "Crystal Lake (Orleans)": {
@@ -34865,6 +34889,12 @@
       "town": "Plainfield",
       "rows": [
         [
+          "7/29/2026 6:47:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "7/20/2026 9:05:00 AM",
           "E. Coli",
           "235",
@@ -34926,10 +34956,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 9:05:00 AM",
+        "date": "7/29/2026 6:47:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.78"
+        "value": "8.00"
       }
     },
     "Barrett Pond (DCR)": {
@@ -41127,6 +41157,12 @@
       "town": "Rowe",
       "rows": [
         [
+          "7/29/2026 9:54:00 AM",
+          "E. Coli",
+          "235",
+          "19.70"
+        ],
+        [
           "7/20/2026 10:11:00 AM",
           "E. Coli",
           "235",
@@ -41188,15 +41224,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:11:00 AM",
+        "date": "7/29/2026 9:54:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "16.07"
+        "value": "15.54"
       }
     },
     "Rowe Town Beach at Pelham Park @Right": {
       "town": "Rowe",
       "rows": [
+        [
+          "7/29/2026 9:56:00 AM",
+          "E. Coli",
+          "235",
+          "14.40"
+        ],
         [
           "7/20/2026 10:12:00 AM",
           "E. Coli",
@@ -41259,15 +41301,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:12:00 AM",
+        "date": "7/29/2026 9:56:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.03"
+        "value": "7.10"
       }
     },
     "H.A. Moses Beach (Scout Reservation)": {
       "town": "Russell",
       "rows": [
+        [
+          "7/29/2026 9:15:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
         [
           "7/23/2026 9:24:00 AM",
           "E. Coli",
@@ -41312,10 +41360,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/23/2026 9:24:00 AM",
+        "date": "7/29/2026 9:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.25"
+        "value": "2.59"
       }
     },
     "Whitehall Pond Beach (DCR)": {
@@ -50658,6 +50706,12 @@
       "town": "Williamstown",
       "rows": [
         [
+          "7/29/2026 11:17:00 AM",
+          "E. Coli",
+          "235",
+          "206.40"
+        ],
+        [
           "7/20/2026 12:09:00 PM",
           "E. Coli",
           "235",
@@ -50725,10 +50779,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 12:09:00 PM",
+        "date": "7/29/2026 11:17:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.85"
+        "value": "29.50"
       }
     },
     "Lake Dennison State Park (DCR) @Day Use Beach": {
