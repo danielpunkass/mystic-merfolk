@@ -3592,7 +3592,8 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Winthrop Beach (DCR)",
