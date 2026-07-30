@@ -717,17 +717,20 @@
     {
       "name": "Hidden Bay",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Jones Town Beach North",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Jones Town Beach South",
       "town": "Dartmouth",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "CSO/SSO event"
     },
     {
       "name": "Moses Smith Creek",
