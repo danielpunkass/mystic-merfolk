@@ -48886,6 +48886,12 @@
       "town": "Wayland",
       "rows": [
         [
+          "7/27/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
+        [
           "7/20/2026 10:00:00 AM",
           "E. Coli",
           "235",
@@ -48947,15 +48953,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:00:00 AM",
+        "date": "7/27/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.42"
+        "value": "6.46"
       }
     },
     "Wayland Town Beach @Right": {
       "town": "Wayland",
       "rows": [
+        [
+          "7/27/2026 9:50:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "7/20/2026 9:50:00 AM",
           "E. Coli",
@@ -49018,10 +49030,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 9:50:00 AM",
+        "date": "7/27/2026 9:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "16.44"
+        "value": "10.46"
       }
     },
     "Lakeside Boat Ramp": {
