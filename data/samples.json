@@ -24567,6 +24567,12 @@
       "town": "Lee",
       "rows": [
         [
+          "7/27/2026 12:08:00 PM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/20/2026 10:48:00 AM",
           "E. Coli",
           "235",
@@ -24610,15 +24616,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:48:00 AM",
+        "date": "7/27/2026 12:08:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.83"
+        "value": "8.12"
       }
     },
     "Lenox Town Beach (Laurel Lake)": {
       "town": "Lenox",
       "rows": [
+        [
+          "7/27/2026 11:53:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
         [
           "7/20/2026 10:25:00 AM",
           "E. Coli",
@@ -24669,10 +24681,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:25:00 AM",
+        "date": "7/27/2026 11:53:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.35"
+        "value": "1.43"
       }
     },
     "Old Reservoir Swim Area  #1": {
@@ -44951,6 +44963,12 @@
       "town": "Stockbridge",
       "rows": [
         [
+          "7/27/2026 10:26:00 AM",
+          "E. Coli",
+          "235",
+          "6.00"
+        ],
+        [
           "7/20/2026 8:44:00 AM",
           "E. Coli",
           "235",
@@ -45006,10 +45024,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:44:00 AM",
+        "date": "7/27/2026 10:26:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "21.54"
+        "value": "10.78"
       }
     },
     "Ames Pond": {
