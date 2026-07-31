@@ -18,7 +18,11 @@ name: Watch DPH Tableau export
 
 on:
   schedule:
-    - cron: '37 */6 * * *'   # every 6h, at :37
+    # Every 2h, not 6h: sync.yml has no cron of its own, so this watchdog is the
+    # only thing that notices if the external dispatcher dies. At 6h a dead
+    # dispatcher could go unreported for ~10h (4h staleness + 6h until the next
+    # check). The job is cheap — git history + JSON, no Playwright.
+    - cron: '37 */2 * * *'
   workflow_dispatch:
 
 permissions:
@@ -43,9 +47,10 @@ jobs:
         run: |
           python3 - <<'PY'
           import json, os, subprocess
-          from datetime import datetime
+          from datetime import datetime, timezone
 
           OUTAGE_HOURS = 4.0   # continuous in-season failure before paging
+          STALE_HOURS  = 4.0   # no sync at all in this long => dispatcher is down
 
           def out(k, v):
               with open(os.environ["GITHUB_OUTPUT"], "a") as f:
@@ -75,6 +80,19 @@ jobs:
 
           latest_dt, latest_src, latest_season = entries[0]
 
+          # Are syncs happening AT ALL? sync.yml has no cron of its own — it is
+          # driven entirely by trigger_sync.py on Cielo.local via
+          # workflow_dispatch. If that machine, its cron, or its token dies, no
+          # new meta.json commits appear and every check below would keep
+          # reporting the last known-good state indefinitely. Silence is its own
+          # outage, so test it first and independently of season.
+          age = (datetime.now(timezone.utc) - latest_dt).total_seconds() / 3600.0
+          print(f"Most recent sync was {age:.1f}h ago ({latest_dt.isoformat()}).")
+          if age >= STALE_HOURS:
+              out("outage", "true"); out("kind", "stale"); out("reason", "stale")
+              out("age_hours", f"{age:.1f}"); out("latest_synced", latest_dt.isoformat())
+              raise SystemExit
+
           if latest_season != "in":
               print(f"Off-season (season={latest_season}); outage concept N/A.")
               out("outage", "false"); out("reason", "off-season"); raise SystemExit
@@ -96,12 +114,44 @@ jobs:
           out("span_hours", f"{span:.1f}")
           out("first_fail", oldest.isoformat())
           out("latest_synced", latest_dt.isoformat())
+          out("kind", "export")
           out("outage", "true" if span >= OUTAGE_HOURS else "false")
           out("reason", "sustained" if span >= OUTAGE_HOURS else "too-short")
           PY
 
-      - name: Open an issue on sustained outage
-        if: steps.eval.outputs.outage == 'true'
+      - name: Open an issue when syncs have stopped entirely
+        if: steps.eval.outputs.outage == 'true' && steps.eval.outputs.kind == 'stale'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Water data sync has stopped running"
+          open=$(gh issue list --state open --json title \
+            --jq "[.[] | select(.title==\"$title\")] | length")
+          if [ "$open" != "0" ]; then
+            echo "A stale-sync issue is already open; not duplicating."
+            exit 0
+          fi
+          body=$(printf '%s\n' \
+            "No new data/meta.json commit has landed in ~${{ steps.eval.outputs.age_hours }}h" \
+            "(most recent sync: ${{ steps.eval.outputs.latest_synced }}). The site is" \
+            "serving increasingly stale readings without showing any error, because" \
+            "nothing is failing — the sync simply is not running." \
+            "" \
+            "sync.yml has no cron of its own; it is driven entirely by trigger_sync.py" \
+            "on Cielo.local via workflow_dispatch every 15 min. Check, in order:" \
+            "- Is Cielo.local up, and is its cron entry still installed?" \
+            "- Is GITHUB_TOKEN/GH_TOKEN on that machine still valid (PAT expiry) with" \
+            "  Actions: write?" \
+            "- Did a sync.yml run fail? See the Actions tab." \
+            "" \
+            "Stopgap: run the workflow manually (Actions -> Sync data and deploy to" \
+            "Pages -> Run workflow), which syncs and deploys immediately." \
+            "" \
+            "This issue auto-closes once a recent sync is seen again.")
+          gh issue create --title "$title" --body "$body"
+
+      - name: Open an issue on sustained export outage
+        if: steps.eval.outputs.outage == 'true' && steps.eval.outputs.kind == 'export'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -131,7 +181,22 @@ jobs:
             "issue will auto-close on the next watchdog run that sees a healthy sync.")
           gh issue create --title "$title" --body "$body"
 
-      - name: Auto-close the outage issue on recovery
+      - name: Auto-close the stale-sync issue once syncs resume
+        # Any reason other than "stale" means a recent sync exists — the
+        # dispatcher is alive again, whatever the export is doing.
+        if: steps.eval.outputs.reason != 'stale' && steps.eval.outputs.reason != 'no-history'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Water data sync has stopped running"
+          nums=$(gh issue list --state open --json number,title \
+            --jq ".[] | select(.title==\"$title\") | .number")
+          for n in $nums; do
+            gh issue comment "$n" --body "Syncs have resumed — a recent data/meta.json commit is present. Auto-closing."
+            gh issue close "$n"
+          done
+
+      - name: Auto-close the export-outage issue on recovery
         if: steps.eval.outputs.outage == 'false' && steps.eval.outputs.reason == 'healthy'
         env:
           GH_TOKEN: ${{ github.token }}

@@ -1,12 +1,13 @@
 name: Sync data and deploy to Pages
 
 on:
-  schedule:
-    # Every 15 min, offset off the top-of-hour cron rush on GH-hosted runners.
-    # GitHub may delay or drop scheduled runs under load, so treat this as a
-    # best-effort ceiling, not a guarantee. The Python script itself decides
-    # whether to do a full in-season sync or a lighter off-season pass.
-    - cron: '2,17,32,47 * * * *'
+  # No schedule: here on purpose. GitHub's cron is best-effort — it delayed or
+  # dropped enough of the every-15-min runs that data freshness is driven
+  # externally instead, by trigger_sync.py on Cielo.local firing
+  # workflow_dispatch every 15 min. Keeping a schedule as well just doubled the
+  # run rate and collided the two triggers against each other. If the external
+  # dispatcher ever goes away, probe-export.yml's staleness check notices that
+  # syncs have stopped and opens an issue.
   push:
     branches: [main]
     paths-ignore:
@@ -34,13 +35,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Check out the *branch tip*, not github.sha. github.sha is pinned when
+          # the run is queued, and the concurrency group above routinely holds a
+          # run pending for a minute or two while the run ahead of it pushes new
+          # data — so github.sha is often already stale by the time we start,
+          # which guarantees a non-fast-forward push (and a meta.json conflict)
+          # later in the job.
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install Playwright + Chromium (only on cron / manual)
+      - name: Install Playwright + Chromium (dispatched runs only)
         # The in-season sample/status data now lives in DPH's Tableau Cloud
         # workbook, read by fetch_tableau_cloud.py via a headless browser.
         if: github.event_name != 'push'
@@ -49,7 +58,7 @@ jobs:
           pip install playwright
           python -m playwright install --with-deps chromium
 
-      - name: Run sync (only on cron / manual)
+      - name: Run sync (dispatched runs only)
         if: github.event_name != 'push'
         run: python sync_water_data.py
 
@@ -58,21 +67,51 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data archive
-          if git diff --cached --quiet; then
+          # Stage + commit data/archive. Returns 1 (no commit made) when the
+          # working tree already matches HEAD.
+          commit_data() {
+            git add data archive
+            if git diff --cached --quiet; then
+              return 1
+            fi
+            # A commit failure is a real error, not a "nothing to do".
+            git commit -m "Auto-sync water data [skip ci]" || exit 1
+          }
+
+          if ! commit_data; then
             echo "No data changes to commit."
-          else
-            git commit -m "Auto-sync water data [skip ci]"
-            # Another run may have pushed while we were syncing. Rebase and retry.
-            for i in 1 2 3 4 5; do
-              if git push; then
-                break
-              fi
-              echo "Push rejected, rebasing on origin/main and retrying ($i)..."
-              git pull --rebase origin main
-              sleep $((RANDOM % 5 + 2))
-            done
+            exit 0
           fi
+
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed on attempt $i."
+              exit 0
+            fi
+            echo "Push rejected — replaying our data on top of origin/main ($i)..."
+            # Don't rebase: data/ and archive/ are regenerated wholesale every
+            # run, so there is nothing to merge — ours is simply the newer
+            # complete snapshot, and a rebase is a guaranteed conflict (every
+            # run rewrites meta.json's lastSynced line). Instead, reset onto the
+            # remote tip and re-apply our freshly generated files. archive/ is a
+            # union merge of the full upstream season, so any row only the other
+            # run happened to see is re-added by the next sync.
+            saved="$(mktemp -d)"
+            cp -R data archive "$saved"/
+            git fetch origin main
+            git reset --hard origin/main
+            rm -rf data archive
+            cp -R "$saved/data" "$saved/archive" .
+            rm -rf "$saved"
+            if ! commit_data; then
+              echo "Remote already carries equivalent data; nothing to push."
+              exit 0
+            fi
+            sleep $((RANDOM % 5 + 2))
+          done
+
+          echo "::error::Could not push refreshed data after 5 attempts."
+          exit 1
 
       - name: Stage site/ for Pages deploy
         run: |

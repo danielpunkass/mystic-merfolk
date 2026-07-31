@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a beach water quality monitoring dashboard for Shannon Beach @ Upper Mystic
 (DCR), displaying data from the Massachusetts Department of Public Health.
 
-The site is **fully static** and served from GitHub Pages at `water.jalkut.com`. A
+The site is **fully static** and served from GitHub Pages at `water.mysticmerfolk.org`. A
 scheduled GitHub Action runs `sync_water_data.py` periodically to fetch upstream
 data and commit refreshed `data/*.json` and `archive/<beach>/<year>.csv` files
 back to the repo. The page loads only same-origin static files at runtime — no
@@ -18,7 +18,7 @@ PHP proxy, no CORS workaround, no live API call from the browser.
 ### Data Flow
 
 ```
-GitHub Action (15-min cron)
+GitHub Action (dispatched every 15 min from Cielo.local)
   └─► sync_water_data.py
         ├─► in-season samples + status:
         │     PRIMARY  fetch_tableau_cloud.py (headless Chromium / Playwright)
@@ -112,15 +112,23 @@ beyond `403`, `init` flake, and the "unavailable" fallback.)
   prints JSON (`samples`, `samplesCsv`, `status`, …); run via subprocess so the
   orchestrator stays importable without Playwright. Run it directly to debug:
   `python3 fetch_tableau_cloud.py`.
-- **`.github/workflows/sync.yml`** — Every-15-min cron. Installs Playwright + Chromium,
-  runs the sync script, commits data changes, stages `site/`, deploys via
-  `actions/deploy-pages`. `fetch_tableau_cloud.py` is NOT deployed to the site.
-- **`.github/workflows/probe-export.yml`** — Watchdog for a *sustained* export
-  outage (see "Export reliability" above). Runs every 6h; reads the `samples.source`
-  history from `data/meta.json` commits (not a live fetch — no Playwright) and opens
-  a GitHub issue only when in-season syncs have failed continuously for ≥4h, then
-  auto-closes it on recovery. Single transient flakes stay quiet. Does not deploy.
-- **`CNAME`** — `water.jalkut.com`.
+- **`.github/workflows/sync.yml`** — Installs Playwright + Chromium, runs the sync
+  script, commits data changes, stages `site/`, deploys via `actions/deploy-pages`.
+  `fetch_tableau_cloud.py` is NOT deployed to the site. It has **no `schedule:`
+  cron** — it is triggered externally (see "Sync scheduling" below).
+- **`.github/workflows/probe-export.yml`** — Watchdog, running every 2h. Reads the
+  `lastSynced` / `samples.source` history from `data/meta.json` commits (not a live
+  fetch — no Playwright) and opens a GitHub issue for either of two failures, each
+  auto-closing on recovery:
+  - **syncs stopped entirely** — no new `meta.json` commit in ≥4h, i.e. the
+    external dispatcher is down. This is the backstop for sync.yml having no cron
+    of its own; without it a dead dispatcher is silent, since nothing errors and
+    the page just keeps serving the last good data.
+  - **sustained export outage** — in-season syncs running but failing continuously
+    for ≥4h (see "Export reliability" above). Single transient flakes stay quiet.
+
+  Does not deploy.
+- **`CNAME`** — `water.mysticmerfolk.org`.
 
 ### Upstream Endpoints
 
@@ -291,17 +299,19 @@ When using `?test=1`:
 GitHub Pages source = **GitHub Actions** (not branch). The workflow at
 `.github/workflows/sync.yml`:
 
-1. Runs every 15 min on cron (`2,17,32,47 * * * *`)
+1. Is dispatched every 15 min from outside GitHub (see "Sync scheduling" below)
 2. Executes `sync_water_data.py`
 3. Commits any changed `data/` or `archive/` files back to `main`
-   (uses `[skip ci]` so the resulting push doesn't loop into another deploy)
+   (uses `[skip ci]` so the resulting push doesn't loop into another deploy).
+   Concurrent runs are handled by re-applying the freshly generated files on top
+   of `origin/main` and retrying — see "Concurrent runs" below
 4. Stages a `site/` directory containing only the public files
    (`index.html`, `sw.js`, `faq/`, `data/`, `archive/`,
    `test-data/`, `CNAME`) — `sync_water_data.py`, `beachdata.php`, `.htaccess`,
    `.claude/`, and shell scripts are not deployed
 5. Uploads as a Pages artifact and deploys via `actions/deploy-pages@v4`
 
-DNS: `water.jalkut.com` CNAME → `<github-pages-host>`. Custom domain configured
+DNS: `water.mysticmerfolk.org` CNAME → `<github-pages-host>`. Custom domain configured
 via the `CNAME` file at the repo root and the Pages settings UI.
 
 ### Sync scheduling (external trigger)
@@ -313,10 +323,39 @@ fires the workflow via `workflow_dispatch` against the GitHub API, and runs on a
 **cron on `Cielo.local`** (an always-on machine, not part of this repo) every 15
 minutes. The token comes from `GITHUB_TOKEN`/`GH_TOKEN` in the environment (a PAT
 with Actions: write), kept on that machine — not in the repo or GitHub Secrets
-(Secrets are only readable inside Actions runs, not from an external client). The
-`schedule:` block in `sync.yml` is retained as a best-effort fallback. Note: only
-`schedule`/`workflow_dispatch` runs actually sync — `push` events skip the sync
-and just redeploy the committed `data/`.
+(Secrets are only readable inside Actions runs, not from an external client).
+
+`sync.yml` has **no `schedule:` block at all** — it was dropped once the external
+dispatcher proved reliable. Keeping both meant ~2× the runs, and the two triggers
+firing seconds apart (e.g. `:59:43` schedule + `:00:01` dispatch) were the main
+source of the concurrent-run push failures described below. **Cielo.local is
+therefore the sole trigger, and a single point of failure** — that is what
+`probe-export.yml`'s stale-sync check exists to catch: if no `meta.json` commit
+lands for ≥4h it opens an issue pointing at the machine, its cron, and its PAT.
+A manual **Actions → Run workflow** is the stopgap.
+
+Note: only `workflow_dispatch` (and, if one is ever re-added, `schedule`) runs
+actually sync — `push` events skip the sync and just redeploy the committed
+`data/`.
+
+### Concurrent runs
+
+Two sync runs can still overlap (a manual dispatch during a scheduled one, a
+retry, a slow Playwright fetch). Two things keep that from failing the job:
+
+- **`actions/checkout` uses `ref: main`, not the default `github.sha`.**
+  `github.sha` is pinned when a run is *queued*, and the `pages-sync` concurrency
+  group routinely holds a run pending for a minute or more while the run ahead of
+  it pushes — so the default would check out an already-stale base and guarantee a
+  non-fast-forward push. This was the actual cause of the "sporadic merge issue"
+  failures.
+- **The commit step never rebases.** `data/` is a wholesale-regenerated snapshot
+  and every run rewrites `meta.json`'s `lastSynced` line, so a rebase is a
+  *guaranteed* conflict, and a conflict is fatal under the step's `bash -e`. On a
+  rejected push it instead saves the generated `data/` + `archive/`, resets hard
+  to `origin/main`, restores them, re-commits, and retries (5×, then fails
+  loudly). Ours-wins is safe: `archive/` is a union merge of the full upstream
+  season, so a row only the other run saw is re-added by the next sync.
 
 ## Desktop Notifications
 
@@ -356,4 +395,4 @@ remain in the repo but are excluded from the deploy artifact:
 - `database.js` — currently unused; retain in case SW notifications get
   re-enabled and want to share schema with the page
 
-These can be deleted once `water.jalkut.com` is confirmed serving correctly.
+These can be deleted once `water.mysticmerfolk.org` is confirmed serving correctly.
