@@ -50356,6 +50356,12 @@
       "town": "West Stockbridge",
       "rows": [
         [
+          "7/30/2026 8:16:00 AM",
+          "E. Coli",
+          "235",
+          "155.20"
+        ],
+        [
           "7/27/2026 10:55:00 AM",
           "E. Coli",
           "235",
@@ -50423,10 +50429,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:55:00 AM",
+        "date": "7/30/2026 8:16:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "42.78"
+        "value": "56.04"
       }
     },
     "Ice House Pond": {
