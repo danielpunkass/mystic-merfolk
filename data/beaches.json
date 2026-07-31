@@ -1812,7 +1812,8 @@
     {
       "name": "Grace Oliver",
       "town": "Marblehead",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Stramski",
