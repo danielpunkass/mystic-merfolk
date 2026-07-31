@@ -34223,6 +34223,12 @@
       "town": "Northampton",
       "rows": [
         [
+          "7/28/2026 10:55:00 AM",
+          "E. Coli",
+          "235",
+          "33.00"
+        ],
+        [
           "7/21/2026 11:45:00 AM",
           "E. Coli",
           "235",
@@ -34290,10 +34296,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/21/2026 11:45:00 AM",
+        "date": "7/28/2026 10:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.70"
+        "value": "23.06"
       }
     },
     "Eastville Town Beach - Harbor side": {
@@ -46043,6 +46049,12 @@
       "town": "Taunton",
       "rows": [
         [
+          "7/30/2026 9:00:00 AM",
+          "Enterococci",
+          "61",
+          "250.00"
+        ],
+        [
           "7/28/2026 8:20:00 AM",
           "Enterococci",
           "61",
@@ -46110,10 +46122,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 8:20:00 AM",
+        "date": "7/30/2026 9:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "5.44"
+        "value": "11.89"
       }
     },
     "Beamans Pond - Campground (DCR)": {
