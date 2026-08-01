@@ -1239,6 +1239,12 @@
       "town": "Ayer",
       "rows": [
         [
+          "7/27/2026 11:31:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/20/2026 11:15:00 AM",
           "E. Coli",
           "235",
@@ -1276,15 +1282,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 11:15:00 AM",
+        "date": "7/27/2026 11:31:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.78"
+        "value": "3.34"
       }
     },
     "Mirror Lake": {
       "town": "Ayer",
       "rows": [
+        [
+          "7/27/2026 10:56:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
         [
           "7/20/2026 11:00:00 AM",
           "E. Coli",
@@ -1323,7 +1335,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 11:00:00 AM",
+        "date": "7/27/2026 10:56:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.65"
@@ -3985,6 +3997,12 @@
       "town": "Bolton",
       "rows": [
         [
+          "7/27/2026 12:17:00 PM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/20/2026 12:20:00 PM",
           "E. Coli",
           "235",
@@ -4046,10 +4064,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 12:20:00 PM",
+        "date": "7/27/2026 12:17:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.17"
+        "value": "1.89"
       }
     },
     "Carson Beach (DCR) @Bathhouse": {
@@ -20480,6 +20498,12 @@
       "town": "Greenfield",
       "rows": [
         [
+          "7/31/2026 10:15:00 AM",
+          "E. Coli",
+          "235",
+          "155.00"
+        ],
+        [
           "7/20/2026 8:30:00 AM",
           "E. Coli",
           "235",
@@ -20535,15 +20559,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:30:00 AM",
+        "date": "7/31/2026 10:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "101.17"
+        "value": "103.70"
       }
     },
     "Groton Town Beach (Sargisson Beach)": {
       "town": "Groton",
       "rows": [
+        [
+          "7/27/2026 7:47:00 AM",
+          "E. Coli",
+          "235",
+          "11.00"
+        ],
         [
           "7/20/2026 7:33:00 AM",
           "E. Coli",
@@ -20606,7 +20636,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 7:33:00 AM",
+        "date": "7/27/2026 7:47:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "6.14"
@@ -20787,6 +20817,12 @@
       "town": "Harvard",
       "rows": [
         [
+          "7/27/2026 11:46:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/20/2026 11:41:00 AM",
           "E. Coli",
           "235",
@@ -20830,10 +20866,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 11:41:00 AM",
+        "date": "7/27/2026 11:46:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.53"
+        "value": "3.37"
       }
     },
     "Atlantic Avenue (Harwich)": {
@@ -24473,6 +24509,12 @@
       "town": "Lancaster",
       "rows": [
         [
+          "7/27/2026 10:33:00 AM",
+          "E. Coli",
+          "235",
+          "9.00"
+        ],
+        [
           "7/20/2026 10:27:00 AM",
           "E. Coli",
           "235",
@@ -24510,10 +24552,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:27:00 AM",
+        "date": "7/27/2026 10:33:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.45"
+        "value": "6.41"
       }
     },
     "Sunrise Beach": {
@@ -24869,6 +24911,12 @@
       "town": "Lunenburg",
       "rows": [
         [
+          "7/27/2026 9:58:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "7/20/2026 10:02:00 AM",
           "E. Coli",
           "235",
@@ -24930,15 +24978,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:02:00 AM",
+        "date": "7/27/2026 9:58:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.72"
+        "value": "4.06"
       }
     },
     "Hickory Hills (Hemlock Drive)": {
       "town": "Lunenburg",
       "rows": [
+        [
+          "7/27/2026 8:39:00 AM",
+          "E. Coli",
+          "235",
+          "14.00"
+        ],
         [
           "7/20/2026 8:42:00 AM",
           "E. Coli",
@@ -25001,15 +25055,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:42:00 AM",
+        "date": "7/27/2026 8:39:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.95"
+        "value": "8.93"
       }
     },
     "Hickory Hills (Island Rd.)": {
       "town": "Lunenburg",
       "rows": [
+        [
+          "7/27/2026 8:29:00 AM",
+          "E. Coli",
+          "235",
+          "3.00"
+        ],
         [
           "7/20/2026 8:31:00 AM",
           "E. Coli",
@@ -25072,15 +25132,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 8:31:00 AM",
+        "date": "7/27/2026 8:29:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.52"
+        "value": "3.18"
       }
     },
     "Lunenburg Town Beach": {
       "town": "Lunenburg",
       "rows": [
+        [
+          "7/27/2026 10:03:00 AM",
+          "E. Coli",
+          "235",
+          "3.00"
+        ],
         [
           "7/20/2026 10:06:00 AM",
           "E. Coli",
@@ -25125,10 +25191,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:06:00 AM",
+        "date": "7/27/2026 10:03:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.57"
+        "value": "3.87"
       }
     },
     "Kings (DCR) @Eastern Ave.": {
@@ -45177,6 +45243,12 @@
       "town": "Stow",
       "rows": [
         [
+          "7/27/2026 12:39:00 PM",
+          "E. Coli",
+          "235",
+          "8.00"
+        ],
+        [
           "7/20/2026 12:43:00 PM",
           "E. Coli",
           "235",
@@ -45220,10 +45292,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 12:43:00 PM",
+        "date": "7/27/2026 12:39:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.70"
+        "value": "3.10"
       }
     },
     "Cedar Lake Recreation Area": {
