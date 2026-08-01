@@ -27946,6 +27946,12 @@
       "town": "Marblehead",
       "rows": [
         [
+          "7/31/2026 9:15:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/29/2026 9:38:00 AM",
           "Enterococci",
           "104",
@@ -28025,10 +28031,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 9:38:00 AM",
+        "date": "7/31/2026 9:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "35.50"
+        "value": "30.91"
       }
     },
     "Stramski": {
