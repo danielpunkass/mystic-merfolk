@@ -9361,6 +9361,12 @@
       "town": "Chatham",
       "rows": [
         [
+          "7/31/2026 7:01:00 AM",
+          "Enterococci",
+          "104",
+          "42.00"
+        ],
+        [
           "7/30/2026 8:33:00 AM",
           "Enterococci",
           "104",
@@ -9428,10 +9434,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/30/2026 8:33:00 AM",
+        "date": "7/31/2026 7:01:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "74.89"
+        "value": "49.18"
       }
     },
     "Cockle Cove": {
