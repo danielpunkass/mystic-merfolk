@@ -1,23 +1,21 @@
 {
-  "lastSynced": "2026-08-03T11:11:41+00:00",
+  "lastSynced": "2026-08-03T11:16:12+00:00",
   "season": "in",
   "today": "2026-08-03",
   "beach": "Shannon Beach @ Upper Mystic (DCR)",
   "mostRecentSeasonYear": 2025,
   "samples": {
-    "status": "unavailable",
+    "status": "ok",
     "count": 7897,
-    "source": "none"
+    "source": "browser"
   },
   "status": {
-    "status": "unavailable"
+    "status": "ok"
   },
   "cso": {
     "status": "ok",
     "count": 0
   },
-  "errors": [
-    "browser: browser fetch exited 1: {\"errors\": [\"fatal: TestResultsTable: {\\\"status\\\": \\\"init\\\"} (after 3 attempts)\"]}"
-  ],
+  "errors": [],
   "schemaVersion": 1
 }
