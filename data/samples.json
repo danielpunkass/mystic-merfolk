@@ -47698,6 +47698,12 @@
       "town": "Tyngsborough",
       "rows": [
         [
+          "7/28/2026 12:11:00 PM",
+          "E. Coli",
+          "235",
+          "7.00"
+        ],
+        [
           "7/22/2026 1:40:00 PM",
           "E. Coli",
           "235",
@@ -47747,10 +47753,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/22/2026 1:40:00 PM",
+        "date": "7/28/2026 12:11:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "18.87"
+        "value": "13.46"
       }
     },
     "Pout Pond Beach": {
