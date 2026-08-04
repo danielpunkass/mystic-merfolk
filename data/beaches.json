@@ -682,7 +682,8 @@
     {
       "name": "Sandy Beach (Danvers)",
       "town": "Danvers",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Anthony Beach",
