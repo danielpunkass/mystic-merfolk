@@ -1296,7 +1296,8 @@
     {
       "name": "Freetown Town Beach",
       "town": "Freetown",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Dunn Pond (DCR)",

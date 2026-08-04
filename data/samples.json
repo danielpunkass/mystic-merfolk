@@ -19421,6 +19421,12 @@
       "town": "Freetown",
       "rows": [
         [
+          "8/3/2026 7:20:00 AM",
+          "Enterococci",
+          "61",
+          "70.00"
+        ],
+        [
           "7/27/2026 11:05:00 AM",
           "Enterococci",
           "61",
@@ -19488,10 +19494,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 11:05:00 AM",
+        "date": "8/3/2026 7:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "6.93"
+        "value": "11.33"
       }
     },
     "Dunn Pond (DCR)": {
@@ -28375,6 +28381,12 @@
       "town": "Marion",
       "rows": [
         [
+          "8/3/2026 7:56:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
+        [
           "7/27/2026 9:11:00 AM",
           "Enterococci",
           "104",
@@ -28418,15 +28430,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:11:00 AM",
+        "date": "8/3/2026 7:56:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.05"
+        "value": "0.91"
       }
     },
     "Converse Point": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 7:20:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
         [
           "7/27/2026 8:38:00 AM",
           "Enterococci",
@@ -28483,15 +28501,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 8:38:00 AM",
+        "date": "8/3/2026 7:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.77"
+        "value": "0.76"
       }
     },
     "Dexter Lane": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 8:35:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "7/27/2026 9:51:00 AM",
           "Enterococci",
@@ -28560,7 +28584,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:51:00 AM",
+        "date": "8/3/2026 8:35:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "4.42"
@@ -28569,6 +28593,12 @@
     "Island Wharf": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 8:04:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "7/27/2026 9:20:00 AM",
           "Enterococci",
@@ -28619,7 +28649,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:20:00 AM",
+        "date": "8/3/2026 8:04:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "0.72"
@@ -28628,6 +28658,12 @@
     "Oakdale Avenue": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 8:26:00 AM",
+          "Enterococci",
+          "104",
+          "6.00"
+        ],
         [
           "7/27/2026 9:39:00 AM",
           "Enterococci",
@@ -28678,15 +28714,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:39:00 AM",
+        "date": "8/3/2026 8:26:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.77"
+        "value": "6.89"
       }
     },
     "Piney Point": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 8:42:00 AM",
+          "Enterococci",
+          "104",
+          "3.00"
+        ],
         [
           "7/27/2026 10:02:00 AM",
           "Enterococci",
@@ -28737,15 +28779,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:02:00 AM",
+        "date": "8/3/2026 8:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.73"
+        "value": "2.47"
       }
     },
     "Planting Island": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 8:54:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "7/27/2026 10:12:00 AM",
           "Enterococci",
@@ -28796,7 +28844,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:12:00 AM",
+        "date": "8/3/2026 8:54:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "1.38"
@@ -28805,6 +28853,12 @@
     "Silver Shell @North Jetty": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 7:43:00 AM",
+          "Enterococci",
+          "61",
+          "2.00"
+        ],
         [
           "7/27/2026 8:58:00 AM",
           "Enterococci",
@@ -28861,15 +28915,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 8:58:00 AM",
+        "date": "8/3/2026 7:43:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "1.16"
+        "value": "0.66"
       }
     },
     "Silver Shell @South Jetty": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 7:34:00 AM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
         [
           "7/27/2026 8:56:00 AM",
           "Enterococci",
@@ -28926,15 +28986,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 8:56:00 AM",
+        "date": "8/3/2026 7:34:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "3.48"
+        "value": "1.25"
       }
     },
     "Tabor Academy @North": {
       "town": "Marion",
       "rows": [
+        [
+          "8/3/2026 8:15:00 AM",
+          "Enterococci",
+          "61",
+          "2.00"
+        ],
         [
           "7/27/2026 9:28:00 AM",
           "Enterococci",
@@ -28991,7 +29057,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:28:00 AM",
+        "date": "8/3/2026 8:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "1.64"
@@ -41806,6 +41872,12 @@
       "town": "Rochester",
       "rows": [
         [
+          "8/3/2026 7:45:00 AM",
+          "Enterococci",
+          "61",
+          "2.00"
+        ],
+        [
           "7/27/2026 8:00:00 AM",
           "Enterococci",
           "61",
@@ -41861,10 +41933,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 8:00:00 AM",
+        "date": "8/3/2026 7:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.18"
+        "value": "1.97"
       }
     },
     "Back Beach": {
