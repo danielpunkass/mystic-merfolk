@@ -69,6 +69,12 @@
       "town": "Acton",
       "rows": [
         [
+          "8/3/2026 2:10:00 PM",
+          "E. Coli",
+          "235",
+          "210.00"
+        ],
+        [
           "7/27/2026 10:42:00 AM",
           "E. Coli",
           "235",
@@ -142,10 +148,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:42:00 AM",
+        "date": "8/3/2026 2:10:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.78"
+        "value": "4.62"
       }
     },
     "Glen Devin Condominiums": {
@@ -19832,6 +19838,12 @@
       "town": "Gloucester",
       "rows": [
         [
+          "8/3/2026 12:30:00 PM",
+          "Enterococci",
+          "104",
+          "282.00"
+        ],
+        [
           "7/27/2026 10:30:00 AM",
           "Enterococci",
           "104",
@@ -19899,15 +19911,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:30:00 AM",
+        "date": "8/3/2026 12:30:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.20"
+        "value": "16.13"
       }
     },
     "Good Harbor": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/3/2026 2:15:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/27/2026 12:05:00 PM",
           "Enterococci",
@@ -19976,15 +19994,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 12:05:00 PM",
+        "date": "8/3/2026 2:15:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.00"
+        "value": "5.74"
       }
     },
     "Good Harbor Creek": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/3/2026 12:00:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/27/2026 9:30:00 AM",
           "Enterococci",
@@ -20077,7 +20101,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:30:00 AM",
+        "date": "8/3/2026 12:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "6.60"
@@ -20086,6 +20110,12 @@
     "Half Moon": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/3/2026 1:00:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/27/2026 10:45:00 AM",
           "Enterococci",
@@ -20154,15 +20184,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:45:00 AM",
+        "date": "8/3/2026 1:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "9.50"
+        "value": "10.92"
       }
     },
     "Niles": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/3/2026 1:30:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/27/2026 9:45:00 AM",
           "Enterococci",
@@ -20237,15 +20273,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:45:00 AM",
+        "date": "8/3/2026 1:30:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.00"
+        "value": "5.74"
       }
     },
     "Pavilion Beach": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/3/2026 1:15:00 PM",
+          "Enterococci",
+          "104",
+          "882.00"
+        ],
         [
           "7/27/2026 10:00:00 AM",
           "Enterococci",
@@ -20314,15 +20356,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:00:00 AM",
+        "date": "8/3/2026 1:15:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.58"
+        "value": "18.56"
       }
     },
     "Plum Cove": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/3/2026 1:45:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/27/2026 11:15:00 AM",
           "Enterococci",
@@ -20409,7 +20457,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 11:15:00 AM",
+        "date": "8/3/2026 1:45:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -20418,6 +20466,12 @@
     "Wingaersheek": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/3/2026 12:45:00 PM",
+          "Enterococci",
+          "104",
+          "63.00"
+        ],
         [
           "7/27/2026 11:45:00 AM",
           "Enterococci",
@@ -20498,10 +20552,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 11:45:00 AM",
+        "date": "8/3/2026 12:45:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.00"
+        "value": "8.30"
       }
     },
     "Upper Highland Lake - Campers Beach (DCR)": {
@@ -20669,6 +20723,17 @@
         "threshold": "33",
         "value": "0.95"
       }
+    },
+    "Silver Lake Beach": {
+      "town": "Grafton",
+      "rows": [
+        [
+          "7/6/2026 1:51:00 PM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ]
+      ]
     },
     "Lake Mansfield": {
       "town": "Great Barrington",
@@ -45607,6 +45672,12 @@
       "town": "Sherborn",
       "rows": [
         [
+          "8/3/2026 12:15:00 PM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
+        [
           "7/27/2026 11:20:00 AM",
           "E. Coli",
           "235",
@@ -45680,10 +45751,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 11:20:00 AM",
+        "date": "8/3/2026 12:15:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.87"
+        "value": "3.79"
       }
     },
     "Sunset Beach": {
@@ -50222,6 +50293,12 @@
       "town": "Wayland",
       "rows": [
         [
+          "8/3/2026 11:40:00 AM",
+          "E. Coli",
+          "235",
+          "108.00"
+        ],
+        [
           "7/27/2026 10:00:00 AM",
           "E. Coli",
           "235",
@@ -50289,15 +50366,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:00:00 AM",
+        "date": "8/3/2026 11:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.46"
+        "value": "13.72"
       }
     },
     "Wayland Town Beach @Right": {
       "town": "Wayland",
       "rows": [
+        [
+          "8/3/2026 11:30:00 AM",
+          "E. Coli",
+          "235",
+          "36.00"
+        ],
         [
           "7/27/2026 9:50:00 AM",
           "E. Coli",
@@ -50366,10 +50449,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:50:00 AM",
+        "date": "8/3/2026 11:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.46"
+        "value": "15.52"
       }
     },
     "Lakeside Boat Ramp": {
@@ -53621,6 +53704,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/3/2026 10:29:00 AM",
+          "E. Coli",
+          "235",
+          "9.80"
+        ],
+        [
           "7/27/2026 10:08:00 AM",
           "E. Coli",
           "235",
@@ -53652,15 +53741,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:08:00 AM",
+        "date": "8/3/2026 10:29:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.50"
+        "value": "9.17"
       }
     },
     "Coes Pond Beach (Mill St.)": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/3/2026 11:26:00 AM",
+          "E. Coli",
+          "235",
+          "209.80"
+        ],
         [
           "7/27/2026 10:50:00 AM",
           "E. Coli",
@@ -53699,15 +53794,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:50:00 AM",
+        "date": "8/3/2026 11:26:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "32.67"
+        "value": "76.40"
       }
     },
     "Indian Lake Public Beach (Sherburne Ave)": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/3/2026 10:53:00 AM",
+          "E. Coli",
+          "235",
+          "410.60"
+        ],
         [
           "7/27/2026 10:23:00 AM",
           "E. Coli",
@@ -53740,10 +53841,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:23:00 AM",
+        "date": "8/3/2026 10:53:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.61"
+        "value": "22.08"
       }
     },
     "Lake Quinsigamond-Lake Park Beach (DCR)": {
@@ -53916,6 +54017,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/3/2026 10:46:00 AM",
+          "E. Coli",
+          "235",
+          "209.80"
+        ],
+        [
           "7/27/2026 10:32:00 AM",
           "E. Coli",
           "235",
@@ -53947,15 +54054,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:32:00 AM",
+        "date": "8/3/2026 10:46:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "18.87"
+        "value": "32.25"
       }
     },
     "Smith Pond": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/3/2026 11:41:00 AM",
+          "E. Coli",
+          "235",
+          "488.40"
+        ],
         [
           "7/27/2026 11:05:00 AM",
           "E. Coli",
@@ -54000,10 +54113,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 11:05:00 AM",
+        "date": "8/3/2026 11:41:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "41.25"
+        "value": "64.35"
       }
     },
     "Sweatt Beach": {

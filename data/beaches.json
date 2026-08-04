@@ -279,7 +279,8 @@
     {
       "name": "West",
       "town": "Beverly",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Woodbury",
@@ -1357,6 +1358,11 @@
     {
       "name": "Upper Highland Lake - Day use area beach (DCR)",
       "town": "Goshen",
+      "status": "Open"
+    },
+    {
+      "name": "Silver Lake Beach",
+      "town": "Grafton",
       "status": "Open"
     },
     {
@@ -2774,7 +2780,8 @@
     {
       "name": "Forest River - Pioneer",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Forest River - Point",
@@ -2801,7 +2808,8 @@
     {
       "name": "Steps",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Waikiki Beach (Winter Island)",
@@ -2811,7 +2819,8 @@
     {
       "name": "Willow Avenue",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Willows Pier",
