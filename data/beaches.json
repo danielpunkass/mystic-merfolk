@@ -2291,12 +2291,14 @@
     {
       "name": "Falls Pond",
       "town": "North Attleborough",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Whitings Pond",
       "town": "North Attleborough",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Musante Beach",
