@@ -259,8 +259,7 @@
     {
       "name": "Mingo",
       "town": "Beverly",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Obear Park",
@@ -1699,7 +1698,8 @@
     {
       "name": "Sunrise Beach",
       "town": "Lanesborough",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Lee Town Beach",
