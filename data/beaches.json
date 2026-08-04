@@ -1338,7 +1338,8 @@
     {
       "name": "Pavilion Beach",
       "town": "Gloucester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Plum Cove",
