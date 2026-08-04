@@ -3080,6 +3080,12 @@
       "town": "Bellingham",
       "rows": [
         [
+          "7/28/2026 9:15:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
+        [
           "7/28/2026 9:00:00 AM",
           "E. Coli",
           "235",
@@ -3135,10 +3141,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 9:00:00 AM",
+        "date": "7/28/2026 9:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.74"
+        "value": "8.01"
       }
     },
     "Silver Lake": {
@@ -3149,6 +3155,12 @@
           "E. Coli",
           "235",
           "6.30"
+        ],
+        [
+          "7/21/2026 8:39:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
         ],
         [
           "7/14/2026 9:00:00 AM",
@@ -3203,7 +3215,7 @@
         "date": "7/28/2026 8:46:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.59"
+        "value": "7.84"
       }
     },
     "Brackenbury": {
@@ -24707,6 +24719,12 @@
       "town": "Lakeville",
       "rows": [
         [
+          "7/14/2026 8:40:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "7/9/2026 9:09:00 AM",
           "E. Coli",
           "235",
@@ -24730,7 +24748,13 @@
           "235",
           "5.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "7/14/2026 8:40:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "5.00"
+      }
     },
     "Lancaster Town Beach": {
       "town": "Lancaster",
@@ -25038,6 +25062,12 @@
           "5.00"
         ],
         [
+          "6/16/2026 2:17:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "6/9/2026 3:12:00 PM",
           "Enterococci",
           "61",
@@ -25107,6 +25137,12 @@
           "Enterococci",
           "61",
           "10.00"
+        ],
+        [
+          "6/16/2026 2:18:00 PM",
+          "Enterococci",
+          "61",
+          "20.00"
         ],
         [
           "6/9/2026 3:12:00 PM",
@@ -34663,6 +34699,12 @@
       "town": "North Andover",
       "rows": [
         [
+          "8/3/2026 9:00:00 AM",
+          "E. Coli",
+          "235",
+          "22.00"
+        ],
+        [
           "7/27/2026 8:45:00 AM",
           "E. Coli",
           "235",
@@ -34700,10 +34742,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 8:45:00 AM",
+        "date": "8/3/2026 9:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.40"
+        "value": "8.01"
       }
     },
     "Falls Pond": {
@@ -45475,6 +45517,12 @@
       "town": "Springfield",
       "rows": [
         [
+          "8/3/2026 9:19:00 AM",
+          "Enterococci",
+          "61",
+          "62.90"
+        ],
+        [
           "7/27/2026 9:50:00 AM",
           "Enterococci",
           "61",
@@ -45518,15 +45566,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:50:00 AM",
+        "date": "8/3/2026 9:19:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "13.97"
+        "value": "20.03"
       }
     },
     "Camp Wilder @Right": {
       "town": "Springfield",
       "rows": [
+        [
+          "8/3/2026 9:30:00 AM",
+          "Enterococci",
+          "61",
+          "131.40"
+        ],
         [
           "7/27/2026 10:20:00 AM",
           "Enterococci",
@@ -45589,15 +45643,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:20:00 AM",
+        "date": "8/3/2026 9:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "19.55"
+        "value": "28.18"
       }
     },
     "Paddle Club @Right": {
       "town": "Springfield",
       "rows": [
+        [
+          "8/3/2026 9:41:00 AM",
+          "Enterococci",
+          "61",
+          "42.20"
+        ],
         [
           "7/27/2026 9:32:00 AM",
           "Enterococci",
@@ -45648,10 +45708,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:32:00 AM",
+        "date": "8/3/2026 9:41:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "21.73"
+        "value": "15.03"
       }
     },
     "Lake Waushacum": {
