@@ -3080,6 +3080,12 @@
       "town": "Bellingham",
       "rows": [
         [
+          "7/28/2026 9:00:00 AM",
+          "E. Coli",
+          "235",
+          "55.70"
+        ],
+        [
           "7/14/2026 9:15:00 AM",
           "E. Coli",
           "235",
@@ -3129,15 +3135,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 9:15:00 AM",
+        "date": "7/28/2026 9:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.74"
+        "value": "10.74"
       }
     },
     "Silver Lake": {
       "town": "Bellingham",
       "rows": [
+        [
+          "7/28/2026 8:46:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
         [
           "7/14/2026 9:00:00 AM",
           "E. Coli",
@@ -3188,10 +3200,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 9:00:00 AM",
+        "date": "7/28/2026 8:46:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.70"
+        "value": "9.59"
       }
     },
     "Brackenbury": {
@@ -14573,6 +14585,12 @@
       "town": "Dracut",
       "rows": [
         [
+          "8/3/2026 7:30:00 AM",
+          "E. Coli",
+          "235",
+          "32.40"
+        ],
+        [
           "7/27/2026 8:00:00 AM",
           "E. Coli",
           "235",
@@ -14596,7 +14614,13 @@
           "235",
           "10.90"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "8/3/2026 7:30:00 AM",
+        "indicator": "E. Coli",
+        "threshold": "126",
+        "value": "8.99"
+      }
     },
     "Merino Pond": {
       "town": "Dudley",
@@ -24765,6 +24789,12 @@
       "town": "Lanesborough",
       "rows": [
         [
+          "8/3/2026 11:41:00 AM",
+          "E. Coli",
+          "235",
+          "203.50"
+        ],
+        [
           "7/29/2026 11:58:00 AM",
           "E. Coli",
           "235",
@@ -24838,10 +24868,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 11:58:00 AM",
+        "date": "8/3/2026 11:41:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "114.31"
+        "value": "155.85"
       }
     },
     "Lee Town Beach": {
@@ -31211,6 +31241,12 @@
       "town": "Monterey",
       "rows": [
         [
+          "8/3/2026 11:50:00 AM",
+          "E. Coli",
+          "235",
+          "7.50"
+        ],
+        [
           "7/29/2026 10:59:00 AM",
           "E. Coli",
           "235",
@@ -31248,10 +31284,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 10:59:00 AM",
+        "date": "8/3/2026 11:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.14"
+        "value": "6.36"
       }
     },
     "Black Rock (Nahant)": {
@@ -34384,6 +34420,12 @@
       "town": "North Adams",
       "rows": [
         [
+          "8/3/2026 11:00:00 AM",
+          "E. Coli",
+          "235",
+          "8.60"
+        ],
+        [
           "7/29/2026 10:55:00 AM",
           "E. Coli",
           "235",
@@ -34451,10 +34493,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 10:55:00 AM",
+        "date": "8/3/2026 11:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.68"
+        "value": "6.27"
       }
     },
     "Berry Pond Beach (DCR)": {
@@ -35866,6 +35908,12 @@
       "town": "Plainfield",
       "rows": [
         [
+          "8/3/2026 8:40:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "7/29/2026 6:47:00 AM",
           "E. Coli",
           "235",
@@ -35933,10 +35981,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 6:47:00 AM",
+        "date": "8/3/2026 8:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.00"
+        "value": "9.19"
       }
     },
     "Barrett Pond (DCR)": {
@@ -42320,6 +42368,12 @@
       "town": "Rowe",
       "rows": [
         [
+          "8/3/2026 9:40:00 AM",
+          "E. Coli",
+          "235",
+          "127.40"
+        ],
+        [
           "7/29/2026 9:54:00 AM",
           "E. Coli",
           "235",
@@ -42387,15 +42441,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 9:54:00 AM",
+        "date": "8/3/2026 9:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "15.54"
+        "value": "24.93"
       }
     },
     "Rowe Town Beach at Pelham Park @Right": {
       "town": "Rowe",
       "rows": [
+        [
+          "8/3/2026 9:41:00 AM",
+          "E. Coli",
+          "235",
+          "26.20"
+        ],
         [
           "7/29/2026 9:56:00 AM",
           "E. Coli",
@@ -42464,15 +42524,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 9:56:00 AM",
+        "date": "8/3/2026 9:41:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.10"
+        "value": "8.45"
       }
     },
     "H.A. Moses Beach (Scout Reservation)": {
       "town": "Russell",
       "rows": [
+        [
+          "8/3/2026 9:44:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
         [
           "7/29/2026 9:15:00 AM",
           "E. Coli",
@@ -42523,10 +42589,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 9:15:00 AM",
+        "date": "8/3/2026 9:44:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.59"
+        "value": "2.08"
       }
     },
     "Whitehall Pond Beach (DCR)": {
@@ -51753,6 +51819,12 @@
       "town": "Westport",
       "rows": [
         [
+          "8/3/2026 9:50:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "7/6/2026 9:20:00 AM",
           "Enterococci",
           "104",
@@ -51769,6 +51841,12 @@
     "Cherry and Webb": {
       "town": "Westport",
       "rows": [
+        [
+          "8/3/2026 9:15:00 AM",
+          "Enterococci",
+          "104",
+          "125.00"
+        ],
         [
           "7/6/2026 10:35:00 AM",
           "Enterococci",
@@ -51787,6 +51865,12 @@
       "town": "Westport",
       "rows": [
         [
+          "8/3/2026 8:45:00 AM",
+          "Enterococci",
+          "104",
+          "250.00"
+        ],
+        [
           "7/6/2026 11:05:00 AM",
           "Enterococci",
           "104",
@@ -51803,6 +51887,12 @@
     "Elephant Rock Beach Club": {
       "town": "Westport",
       "rows": [
+        [
+          "8/3/2026 10:20:00 AM",
+          "Enterococci",
+          "104",
+          "25.00"
+        ],
         [
           "7/6/2026 9:40:00 AM",
           "Enterococci",
@@ -51898,6 +51988,12 @@
       "town": "Westport",
       "rows": [
         [
+          "8/3/2026 10:55:00 AM",
+          "Enterococci",
+          "104",
+          "3.00"
+        ],
+        [
           "7/6/2026 9:50:00 AM",
           "Enterococci",
           "104",
@@ -51915,6 +52011,12 @@
       "town": "Westport",
       "rows": [
         [
+          "8/3/2026 10:40:00 AM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
+        [
           "7/6/2026 10:00:00 AM",
           "Enterococci",
           "104",
@@ -51931,6 +52033,12 @@
     "Town-Yacht": {
       "town": "Westport",
       "rows": [
+        [
+          "8/3/2026 9:30:00 AM",
+          "Enterococci",
+          "104",
+          "35.00"
+        ],
         [
           "7/6/2026 10:20:00 AM",
           "Enterococci",
@@ -52144,6 +52252,12 @@
       "town": "Williamstown",
       "rows": [
         [
+          "8/3/2026 11:18:00 AM",
+          "E. Coli",
+          "235",
+          "57.30"
+        ],
+        [
           "7/29/2026 11:17:00 AM",
           "E. Coli",
           "235",
@@ -52217,10 +52331,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 11:17:00 AM",
+        "date": "8/3/2026 11:18:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "29.50"
+        "value": "34.94"
       }
     },
     "Lake Dennison State Park (DCR) @Day Use Beach": {
