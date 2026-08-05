@@ -169,7 +169,8 @@
     {
       "name": "Keyes Beach (Sea Street)",
       "town": "Barnstable",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Loop",
@@ -3666,7 +3667,8 @@
     {
       "name": "Smith Pond",
       "town": "Worcester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Sweatt Beach",
