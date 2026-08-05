@@ -3646,7 +3646,8 @@
     {
       "name": "Indian Lake Public Beach (Sherburne Ave)",
       "town": "Worcester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Lake Quinsigamond-Lake Park Beach (DCR)",
@@ -3661,7 +3662,8 @@
     {
       "name": "Shore Park",
       "town": "Worcester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Smith Pond",
