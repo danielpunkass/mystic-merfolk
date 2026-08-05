@@ -36558,6 +36558,12 @@
       "town": "Otis",
       "rows": [
         [
+          "8/4/2026 10:55:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "7/28/2026 12:21:00 PM",
           "E. Coli",
           "235",
@@ -36625,10 +36631,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 12:21:00 PM",
+        "date": "8/4/2026 10:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.50"
+        "value": "5.81"
       }
     },
     "Carbuncle Pond": {
@@ -46077,6 +46083,12 @@
       "town": "Sharon",
       "rows": [
         [
+          "8/3/2026 10:13:00 AM",
+          "E. Coli",
+          "235",
+          "208.00"
+        ],
+        [
           "7/20/2026 10:34:00 AM",
           "E. Coli",
           "235",
@@ -46126,15 +46138,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:34:00 AM",
+        "date": "8/3/2026 10:13:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "17.22"
+        "value": "21.79"
       }
     },
     "Veterans' Memorial Park Beach @Central": {
       "town": "Sharon",
       "rows": [
+        [
+          "8/3/2026 10:34:00 AM",
+          "E. Coli",
+          "235",
+          "84.00"
+        ],
         [
           "7/20/2026 10:48:00 AM",
           "E. Coli",
@@ -46185,15 +46203,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:48:00 AM",
+        "date": "8/3/2026 10:34:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.33"
+        "value": "13.32"
       }
     },
     "Veterans' Memorial Park Beach @Swimming dock": {
       "town": "Sharon",
       "rows": [
+        [
+          "8/3/2026 10:38:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "7/20/2026 10:57:00 AM",
           "E. Coli",
@@ -46244,10 +46268,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 10:57:00 AM",
+        "date": "8/3/2026 10:38:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.60"
+        "value": "5.74"
       }
     },
     "Farm Pond": {
@@ -53257,6 +53281,12 @@
       "town": "Westport",
       "rows": [
         [
+          "8/4/2026 8:55:00 AM",
+          "Enterococci",
+          "104",
+          "6.00"
+        ],
+        [
           "8/3/2026 9:15:00 AM",
           "Enterococci",
           "104",
@@ -53279,6 +53309,12 @@
     "East Beach": {
       "town": "Westport",
       "rows": [
+        [
+          "8/4/2026 9:40:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "8/3/2026 8:45:00 AM",
           "Enterococci",
