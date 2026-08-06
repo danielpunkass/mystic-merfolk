@@ -2909,7 +2909,8 @@
     {
       "name": "Bassings Beach",
       "town": "Scituate",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Egypt",

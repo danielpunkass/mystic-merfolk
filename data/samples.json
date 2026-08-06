@@ -35332,6 +35332,12 @@
       "town": "New Bedford",
       "rows": [
         [
+          "8/4/2026 11:15:00 AM",
+          "Enterococci",
+          "104",
+          "3.00"
+        ],
+        [
           "8/4/2026 9:25:00 AM",
           "Enterococci",
           "104",
@@ -35411,10 +35417,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 9:25:00 AM",
+        "date": "8/4/2026 11:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "12.49"
+        "value": "17.88"
       }
     },
     "O'Tools": {
@@ -56632,6 +56638,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/5/2026 9:32:00 AM",
+          "E. Coli",
+          "235",
+          "151.50"
+        ],
+        [
           "8/4/2026 10:19:00 AM",
           "E. Coli",
           "235",
@@ -56687,10 +56699,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 10:19:00 AM",
+        "date": "8/5/2026 9:32:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "140.43"
+        "value": "182.92"
       }
     },
     "Sweatt Beach": {
