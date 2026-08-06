@@ -866,6 +866,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "8/4/2026 1:28:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "7/29/2026 11:55:00 AM",
           "E. Coli",
           "235",
@@ -963,7 +969,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 11:55:00 AM",
+        "date": "8/4/2026 1:28:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "2.50"
@@ -15507,6 +15513,12 @@
       "town": "Duxbury",
       "rows": [
         [
+          "8/4/2026 3:22:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/28/2026 11:17:00 AM",
           "Enterococci",
           "104",
@@ -15562,7 +15574,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 11:17:00 AM",
+        "date": "8/4/2026 3:22:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "9.50"
@@ -15571,6 +15583,12 @@
     "Landing Road": {
       "town": "Duxbury",
       "rows": [
+        [
+          "8/4/2026 3:45:00 PM",
+          "Enterococci",
+          "104",
+          "41.00"
+        ],
         [
           "7/28/2026 11:44:00 AM",
           "Enterococci",
@@ -15639,15 +15657,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 11:44:00 AM",
+        "date": "8/4/2026 3:45:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "22.50"
+        "value": "11.54"
       }
     },
     "Residents Beach (Duxbury Beach)": {
       "town": "Duxbury",
       "rows": [
+        [
+          "8/4/2026 3:12:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/28/2026 11:07:00 AM",
           "Enterococci",
@@ -15698,15 +15722,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 11:07:00 AM",
+        "date": "8/4/2026 3:12:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "8.57"
+        "value": "9.85"
       }
     },
     "Shipyard Lane": {
       "town": "Duxbury",
       "rows": [
+        [
+          "8/4/2026 2:50:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/28/2026 11:35:00 AM",
           "Enterococci",
@@ -15763,15 +15793,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 11:35:00 AM",
+        "date": "8/4/2026 2:50:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "14.16"
+        "value": "6.60"
       }
     },
     "West End": {
       "town": "Duxbury",
       "rows": [
+        [
+          "8/4/2026 3:03:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "7/28/2026 10:59:00 AM",
           "Enterococci",
@@ -15828,10 +15864,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 10:59:00 AM",
+        "date": "8/4/2026 3:03:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "11.85"
+        "value": "5.74"
       }
     },
     "Boat Meadow": {
@@ -17702,6 +17738,12 @@
       "town": "Egremont",
       "rows": [
         [
+          "8/5/2026 10:43:00 AM",
+          "E. Coli",
+          "235",
+          "0.50"
+        ],
+        [
           "7/27/2026 12:00:00 PM",
           "E. Coli",
           "235",
@@ -17787,7 +17829,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 12:00:00 PM",
+        "date": "8/5/2026 10:43:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "3.10"
@@ -21759,6 +21801,12 @@
       "town": "Great Barrington",
       "rows": [
         [
+          "8/5/2026 10:14:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "7/27/2026 11:31:00 AM",
           "E. Coli",
           "235",
@@ -21826,15 +21874,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 11:31:00 AM",
+        "date": "8/5/2026 10:14:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.19"
+        "value": "2.92"
       }
     },
     "Old Maid's Park": {
       "town": "Great Barrington",
       "rows": [
+        [
+          "8/5/2026 9:58:00 AM",
+          "E. Coli",
+          "235",
+          "40.40"
+        ],
         [
           "7/27/2026 11:13:00 AM",
           "E. Coli",
@@ -21903,10 +21957,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 11:13:00 AM",
+        "date": "8/5/2026 9:58:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "44.04"
+        "value": "42.68"
       }
     },
     "Greenfield Municipal Bathing Beach": {
@@ -23785,6 +23839,12 @@
       "town": "Hingham",
       "rows": [
         [
+          "8/4/2026 4:00:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/28/2026 11:46:00 AM",
           "Enterococci",
           "104",
@@ -23828,7 +23888,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 11:46:00 AM",
+        "date": "8/4/2026 4:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "8.27"
@@ -26082,6 +26142,12 @@
       "town": "Kingston",
       "rows": [
         [
+          "8/4/2026 3:05:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "7/28/2026 12:20:00 PM",
           "Enterococci",
           "104",
@@ -26155,15 +26221,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 12:20:00 PM",
+        "date": "8/4/2026 3:05:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "15.30"
+        "value": "5.74"
       }
     },
     "Rocky Nook": {
       "town": "Kingston",
       "rows": [
+        [
+          "8/4/2026 3:15:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "7/28/2026 12:30:00 PM",
           "Enterococci",
@@ -26232,10 +26304,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 12:30:00 PM",
+        "date": "8/4/2026 3:15:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "9.07"
+        "value": "10.41"
       }
     },
     "Clear Pond": {
@@ -26336,6 +26408,12 @@
       "town": "Lanesborough",
       "rows": [
         [
+          "8/5/2026 8:04:00 AM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
+        [
           "8/3/2026 11:41:00 AM",
           "E. Coli",
           "235",
@@ -26415,10 +26493,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 11:41:00 AM",
+        "date": "8/5/2026 8:04:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "155.85"
+        "value": "92.76"
       }
     },
     "Lee Town Beach": {
@@ -26549,6 +26627,12 @@
       "town": "Lexington",
       "rows": [
         [
+          "8/4/2026 1:55:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "7/28/2026 3:18:00 PM",
           "Enterococci",
           "61",
@@ -26616,7 +26700,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 3:18:00 PM",
+        "date": "8/4/2026 1:55:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "6.60"
@@ -26625,6 +26709,12 @@
     "Old Reservoir Swim Area  #2": {
       "town": "Lexington",
       "rows": [
+        [
+          "8/4/2026 1:54:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "7/28/2026 3:19:00 PM",
           "Enterococci",
@@ -26693,7 +26783,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 3:19:00 PM",
+        "date": "8/4/2026 1:54:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.00"
@@ -32377,6 +32467,12 @@
       "town": "Medford",
       "rows": [
         [
+          "8/4/2026 12:38:00 PM",
+          "E. Coli",
+          "235",
+          "68.00"
+        ],
+        [
           "7/28/2026 1:54:00 PM",
           "E. Coli",
           "235",
@@ -32426,15 +32522,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 1:54:00 PM",
+        "date": "8/4/2026 12:38:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "12.85"
+        "value": "11.12"
       }
     },
     "Wrights Pond @Shallow End": {
       "town": "Medford",
       "rows": [
+        [
+          "8/4/2026 12:37:00 PM",
+          "E. Coli",
+          "235",
+          "76.00"
+        ],
         [
           "7/28/2026 1:53:00 PM",
           "E. Coli",
@@ -32485,10 +32587,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 1:53:00 PM",
+        "date": "8/4/2026 12:37:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "16.91"
+        "value": "20.10"
       }
     },
     "Forest Lake: Swimming Beach": {
@@ -37278,6 +37380,12 @@
       "town": "Orange",
       "rows": [
         [
+          "8/5/2026 12:06:00 PM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "7/29/2026 7:55:00 AM",
           "E. Coli",
           "235",
@@ -37345,7 +37453,7 @@
         ]
       ],
       "geoMean": {
-        "date": "7/29/2026 7:55:00 AM",
+        "date": "8/5/2026 12:06:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "16.51"
@@ -44129,6 +44237,12 @@
       "town": "Richmond",
       "rows": [
         [
+          "8/5/2026 8:42:00 AM",
+          "E. Coli",
+          "235",
+          "20.30"
+        ],
+        [
           "7/27/2026 9:49:00 AM",
           "E. Coli",
           "235",
@@ -44178,15 +44292,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:49:00 AM",
+        "date": "8/5/2026 8:42:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "21.69"
+        "value": "19.94"
       }
     },
     "Richmond Town Beach": {
       "town": "Richmond",
       "rows": [
+        [
+          "8/5/2026 8:22:00 AM",
+          "E. Coli",
+          "235",
+          "17.10"
+        ],
         [
           "7/27/2026 9:59:00 AM",
           "E. Coli",
@@ -44255,10 +44375,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 9:59:00 AM",
+        "date": "8/5/2026 8:22:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.58"
+        "value": "13.72"
       }
     },
     "S.P.E.N.A. Beach": {
@@ -54097,6 +54217,12 @@
       "town": "West Stockbridge",
       "rows": [
         [
+          "8/5/2026 9:39:00 AM",
+          "E. Coli",
+          "235",
+          "190.40"
+        ],
+        [
           "7/30/2026 8:16:00 AM",
           "E. Coli",
           "235",
@@ -54170,10 +54296,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/30/2026 8:16:00 AM",
+        "date": "8/5/2026 9:39:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "56.04"
+        "value": "80.42"
       }
     },
     "Ice House Pond": {
