@@ -10842,6 +10842,12 @@
       "town": "Chelmsford",
       "rows": [
         [
+          "8/4/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "8.00"
+        ],
+        [
           "7/28/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -10903,15 +10909,21 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 9:30:00 AM",
+        "date": "8/4/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "15.44"
+        "value": "14.76"
       }
     },
     "Heart Pond": {
       "town": "Chelmsford",
       "rows": [
+        [
+          "8/4/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "4.00"
+        ],
         [
           "7/28/2026 10:00:00 AM",
           "E. Coli",
@@ -10980,10 +10992,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/28/2026 10:00:00 AM",
+        "date": "8/4/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.11"
+        "value": "4.48"
       }
     },
     "Ashmere Project-Camp Chesterfield Beach": {
