@@ -13,7 +13,8 @@
     {
       "name": "Glen Devin Condominiums",
       "town": "Amesbury",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Lake Attitash - A.L.S.I.A.",
@@ -94,8 +95,7 @@
     {
       "name": "Hopkinton Reservoir-Upper Beach (DCR)",
       "town": "Ashland",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Ayer Town Beach",
@@ -532,8 +532,7 @@
     {
       "name": "Bucks Creek",
       "town": "Chatham",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Cockle Cove",
@@ -1137,7 +1136,8 @@
     {
       "name": "Manhattan Avenue",
       "town": "Fairhaven",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Sandy Beach (Raymond Street)",
@@ -1287,7 +1287,8 @@
     {
       "name": "Waushakum Beach",
       "town": "Framingham",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Chilson Beach",
@@ -1704,8 +1705,7 @@
     {
       "name": "Sunrise Beach",
       "town": "Lanesborough",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Lee Town Beach",
@@ -2281,8 +2281,7 @@
     {
       "name": "Frye Pond Beach (DCR)",
       "town": "North Andover",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Stevens Pond - Center",
@@ -2750,8 +2749,7 @@
     {
       "name": "Whitehall Pond Beach (DCR)",
       "town": "Rutland",
-      "status": "Closed",
-      "reason": "Other"
+      "status": "Open"
     },
     {
       "name": "Children's Island - Back",
@@ -2909,8 +2907,7 @@
     {
       "name": "Bassings Beach",
       "town": "Scituate",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Egypt",
@@ -3106,14 +3103,12 @@
     {
       "name": "Beamans Pond - Campground (DCR)",
       "town": "Templeton",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Beamans Pond - Day Use (DCR)",
       "town": "Templeton",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Hilman's Point",
@@ -3618,8 +3613,7 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Winthrop Beach (DCR)",
@@ -3644,7 +3638,8 @@
     {
       "name": "Coes Pond Beach (Mill St.)",
       "town": "Worcester",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Indian Lake Public Beach (Sherburne Ave)",
