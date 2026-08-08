@@ -14,6 +14,10 @@ name: Watch DPH Tableau export
 # doing its own one-shot fetch (which would itself be flake-prone). It opens a
 # GitHub issue when a sustained outage is detected and auto-closes it on recovery.
 #
+# It also clears runs wedged in GitHub's "waiting" state, which is a distinct
+# failure mode that looks identical to a dead dispatcher from the meta.json
+# history — see the unwedge step below for the mechanism.
+#
 # No Playwright needed: this only reads git history + parses JSON.
 
 on:
@@ -28,6 +32,7 @@ on:
 permissions:
   contents: read
   issues: write
+  actions: write   # to cancel runs wedged in the pages-sync queue
 
 concurrency:
   group: watch-export
@@ -37,6 +42,71 @@ jobs:
   watch:
     runs-on: ubuntu-latest
     steps:
+      # Runs before the meta.json evaluation below so that a wedge detected now
+      # is already cleared by the time the staleness check reports on it.
+      - name: Clear runs wedged in the deploy queue
+        id: unwedge
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          from datetime import datetime, timezone
+
+          # A healthy sync run finishes in a few minutes, so anything still
+          # unstarted after this long is not merely queued behind traffic.
+          WEDGED_MINUTES = 30.0
+          REPO = os.environ["GITHUB_REPOSITORY"]
+
+          def out(k, v):
+              with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                  f.write(f"{k}={v}\n")
+
+          def gh(*args):
+              p = subprocess.run(["gh", "api", *args], capture_output=True, text=True)
+              if p.returncode != 0:
+                  print(f"  gh api {' '.join(args)} failed: {p.stderr.strip()}")
+                  return None
+              return json.loads(p.stdout) if p.stdout.strip() else None
+
+          def when(ts):
+              return datetime.fromisoformat(ts.replace("Z", "+00:00"))
+
+          # Observed 2026-08-06: a sync run parked in "waiting" on the
+          # github-pages environment for a day and a half. Its pending
+          # deployment had wait_timer 0 and an EMPTY reviewers list, so no
+          # approval could ever release it — and since sync.yml holds the
+          # pages-sync concurrency group with cancel-in-progress: false, every
+          # 15-min dispatch afterwards queued behind it and was killed by the
+          # next one ("Canceling since a higher priority waiting request for
+          # pages-sync exists"). Nothing errored, so the only visible symptom
+          # was silence, which the staleness check below blames on the external
+          # dispatcher. Cancelling the wedged run drains the queue instantly.
+          runs = (gh(f"repos/{REPO}/actions/runs?status=waiting&per_page=50") or {}).get("workflow_runs", [])
+          now = datetime.now(timezone.utc)
+          cleared = []
+          for r in runs:
+              age = (now - when(r["created_at"])).total_seconds() / 60.0
+              if age < WEDGED_MINUTES:
+                  print(f"Run {r['id']} waiting {age:.0f}m — under threshold, leaving it.")
+                  continue
+              # Only cancel what provably cannot be released. A genuine approval
+              # gate lists reviewers or has a wait timer counting down; if this
+              # repo ever gains a required reviewer, those runs are left alone.
+              pending = gh(f"repos/{REPO}/actions/runs/{r['id']}/pending_deployments") or []
+              if any(d.get("reviewers") or d.get("wait_timer_started_at") for d in pending):
+                  print(f"Run {r['id']} waiting {age:.0f}m on a real approval gate — leaving it.")
+                  continue
+              print(f"Run {r['id']} ({r['name']}) wedged {age:.0f}m with no way to be released — cancelling.")
+              if gh("-X", "POST", f"repos/{REPO}/actions/runs/{r['id']}/cancel") is not None:
+                  name = "".join(c for c in r["name"] if c.isalnum() or c in " -_.")
+                  cleared.append(f"#{r['id']} ({name}, queued {r['created_at']})")
+
+          out("cleared_count", str(len(cleared)))
+          out("cleared_desc", "; ".join(cleared))
+          print(f"Cleared {len(cleared)} wedged run(s).")
+          PY
+
       - name: Checkout (full history so meta.json can be walked)
         uses: actions/checkout@v4
         with:
@@ -123,6 +193,7 @@ jobs:
         if: steps.eval.outputs.outage == 'true' && steps.eval.outputs.kind == 'stale'
         env:
           GH_TOKEN: ${{ github.token }}
+          CLEARED_DESC: ${{ steps.unwedge.outputs.cleared_desc }}
         run: |
           title="Water data sync has stopped running"
           open=$(gh issue list --state open --json title \
@@ -131,14 +202,35 @@ jobs:
             echo "A stale-sync issue is already open; not duplicating."
             exit 0
           fi
+          # Two very different causes produce identical silence. If this run just
+          # cancelled a wedged deploy, say so — otherwise the boilerplate below
+          # sends you to Cielo.local, which will look perfectly healthy.
+          if [ "${{ steps.unwedge.outputs.cleared_count }}" != "0" ]; then
+            cause=$(printf '%s\n' \
+              "A run was found wedged in GitHub's \"waiting\" state on the github-pages" \
+              "environment, with no reviewer and no wait timer — nothing could ever" \
+              "release it. sync.yml holds the pages-sync concurrency group with" \
+              "cancel-in-progress: false, so it blocked the queue and every dispatch" \
+              "behind it was cancelled (\"Canceling since a higher priority waiting" \
+              "request for pages-sync exists\")." \
+              "" \
+              "This watchdog has cancelled it: $CLEARED_DESC" \
+              "" \
+              "The queue drains immediately once that run is gone, so this is likely" \
+              "already fixed — the next dispatch should sync normally. If syncs are" \
+              "still not landing at the next check, look at the dispatcher instead:")
+          else
+            cause=$(printf '%s\n' \
+              "sync.yml has no cron of its own; it is driven entirely by trigger_sync.py" \
+              "on Cielo.local via workflow_dispatch every 15 min. Check, in order:")
+          fi
           body=$(printf '%s\n' \
             "No new data/meta.json commit has landed in ~${{ steps.eval.outputs.age_hours }}h" \
             "(most recent sync: ${{ steps.eval.outputs.latest_synced }}). The site is" \
             "serving increasingly stale readings without showing any error, because" \
             "nothing is failing — the sync simply is not running." \
             "" \
-            "sync.yml has no cron of its own; it is driven entirely by trigger_sync.py" \
-            "on Cielo.local via workflow_dispatch every 15 min. Check, in order:" \
+            "$cause" \
             "- Is Cielo.local up, and is its cron entry still installed?" \
             "- Is GITHUB_TOKEN/GH_TOKEN on that machine still valid (PAT expiry) with" \
             "  Actions: write?" \

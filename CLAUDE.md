@@ -121,13 +121,17 @@ beyond `403`, `init` flake, and the "unavailable" fallback.)
   fetch — no Playwright) and opens a GitHub issue for either of two failures, each
   auto-closing on recovery:
   - **syncs stopped entirely** — no new `meta.json` commit in ≥4h, i.e. the
-    external dispatcher is down. This is the backstop for sync.yml having no cron
-    of its own; without it a dead dispatcher is silent, since nothing errors and
-    the page just keeps serving the last good data.
+    external dispatcher is down *or* the deploy queue is wedged (below). This is
+    the backstop for sync.yml having no cron of its own; without it a dead
+    dispatcher is silent, since nothing errors and the page just keeps serving
+    the last good data.
   - **sustained export outage** — in-season syncs running but failing continuously
     for ≥4h (see "Export reliability" above). Single transient flakes stay quiet.
 
-  Does not deploy.
+  It also **self-heals a wedged deploy queue** before evaluating staleness (see
+  "Wedged runs" below), and names that cause in the stale-sync issue when it fires
+  — otherwise the issue text sends you to Cielo.local, which will look healthy.
+  Needs `actions: write` for the cancel. Does not deploy.
 - **`CNAME`** — `water.mysticmerfolk.org`.
 
 ### Upstream Endpoints
@@ -356,6 +360,38 @@ retry, a slow Playwright fetch). Two things keep that from failing the job:
   to `origin/main`, restores them, re-commits, and retries (5×, then fails
   loudly). Ours-wins is safe: `archive/` is a union merge of the full upstream
   season, so a row only the other run saw is re-added by the next sync.
+
+### Wedged runs
+
+A distinct failure of the same concurrency group, seen 2026-08-06 → 08-08: a sync
+run parked in GitHub's **`waiting`** state on the `github-pages` environment for a
+day and a half. Its `pending_deployments` entry had `wait_timer: 0` and an **empty
+`reviewers` array** — the environment's only protection rule is a branch policy,
+so there was no gate to satisfy and no approval that could ever release it. With
+`cancel-in-progress: false`, that zombie held `pages-sync` indefinitely: every
+15-min dispatch queued behind it and was killed by the *next* dispatch, giving a
+wall of runs all `cancelled` at exactly ~15m with
+
+> Canceling since a higher priority waiting request for pages-sync exists
+
+**The symptom points the wrong way.** No job ever starts, so there are no logs;
+nothing fails, so nothing is reported except by the staleness watchdog, whose
+message blames the external dispatcher. Cielo.local was dispatching perfectly
+throughout. Diagnose it with
+
+```bash
+gh run list --limit 200 --json databaseId,status,workflowName \
+  --jq '.[] | select(.status != "completed")'
+```
+
+and look for a `waiting`/`pending` run hours or days old. `gh run cancel <id>`
+drains the entire queue within seconds.
+
+`probe-export.yml` now does this automatically every 2h, but only for runs that
+are **provably unreleasable** — `waiting` for >30 min with no reviewers and no
+running wait timer. A genuine approval gate is left alone, so adding a required
+reviewer to `github-pages` later won't have its deploys cancelled out from under
+it.
 
 ## Desktop Notifications
 
