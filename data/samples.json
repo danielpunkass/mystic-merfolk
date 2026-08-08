@@ -2455,6 +2455,12 @@
       "town": "Barnstable",
       "rows": [
         [
+          "8/7/2026 7:23:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/6/2026 2:07:00 PM",
           "Enterococci",
           "104",
@@ -2612,10 +2618,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/6/2026 2:07:00 PM",
+        "date": "8/7/2026 7:23:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "42.32"
+        "value": "13.27"
       }
     },
     "Loop": {
