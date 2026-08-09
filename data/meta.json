@@ -1,5 +1,5 @@
 {
-  "lastSynced": "2026-08-09T10:00:55+00:00",
+  "lastSynced": "2026-08-09T10:16:10+00:00",
   "season": "in",
   "today": "2026-08-09",
   "beach": "Shannon Beach @ Upper Mystic (DCR)",
@@ -13,11 +13,9 @@
     "status": "ok"
   },
   "cso": {
-    "status": "error",
+    "status": "ok",
     "count": 0
   },
-  "errors": [
-    "cso: HTTP Error 502: Bad Gateway"
-  ],
+  "errors": [],
   "schemaVersion": 1
 }
