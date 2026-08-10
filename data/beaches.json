@@ -2265,7 +2265,8 @@
     {
       "name": "Crystal Lake (Newton)",
       "town": "Newton",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Windsor Lake",
