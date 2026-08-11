@@ -1297,8 +1297,7 @@
     {
       "name": "Freetown Town Beach",
       "town": "Freetown",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Dunn Pond (DCR)",
@@ -2291,14 +2290,12 @@
     {
       "name": "Falls Pond",
       "town": "North Attleborough",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Whitings Pond",
       "town": "North Attleborough",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Musante Beach",

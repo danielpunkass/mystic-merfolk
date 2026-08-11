@@ -18597,6 +18597,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "8/10/2026 9:49:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
+        [
           "8/4/2026 2:32:00 PM",
           "Enterococci",
           "104",
@@ -18652,10 +18658,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 2:32:00 PM",
+        "date": "8/10/2026 9:49:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.15"
+        "value": "0.76"
       }
     },
     "Fort Phoenix (DCR)": {
@@ -18757,6 +18763,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "8/10/2026 8:45:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
+        [
           "8/4/2026 1:35:00 PM",
           "Enterococci",
           "104",
@@ -18812,7 +18824,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 1:35:00 PM",
+        "date": "8/10/2026 8:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "12.65"
@@ -18821,6 +18833,12 @@
     "Sandy Beach (Raymond Street)": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "8/10/2026 8:54:00 AM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
         [
           "8/4/2026 1:42:00 PM",
           "Enterococci",
@@ -18877,15 +18895,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 1:42:00 PM",
+        "date": "8/10/2026 8:54:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "2.20"
+        "value": "1.64"
       }
     },
     "Seaview": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "8/10/2026 9:01:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/4/2026 1:48:00 PM",
           "Enterococci",
@@ -18942,15 +18966,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 1:48:00 PM",
+        "date": "8/10/2026 9:01:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "2.40"
+        "value": "0.87"
       }
     },
     "West Island Causeway": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "8/10/2026 9:30:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/4/2026 2:11:00 PM",
           "Enterococci",
@@ -19007,15 +19037,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 2:11:00 PM",
+        "date": "8/10/2026 9:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.15"
+        "value": "1.00"
       }
     },
     "West Island Town Beach": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "8/10/2026 9:18:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/4/2026 2:04:00 PM",
           "Enterococci",
@@ -19072,7 +19108,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 2:04:00 PM",
+        "date": "8/10/2026 9:18:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "0.57"
@@ -37685,6 +37721,18 @@
       "town": "North Attleborough",
       "rows": [
         [
+          "8/5/2026 10:24:00 AM",
+          "E. Coli",
+          "235",
+          "60.00"
+        ],
+        [
+          "8/3/2026 10:38:00 AM",
+          "E. Coli",
+          "235",
+          "300.00"
+        ],
+        [
           "7/27/2026 10:38:00 AM",
           "E. Coli",
           "235",
@@ -37728,15 +37776,27 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:38:00 AM",
+        "date": "8/5/2026 10:24:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "44.04"
+        "value": "50.36"
       }
     },
     "Whitings Pond": {
       "town": "North Attleborough",
       "rows": [
+        [
+          "8/5/2026 10:46:00 AM",
+          "E. Coli",
+          "235",
+          "30.00"
+        ],
+        [
+          "8/3/2026 10:50:00 AM",
+          "E. Coli",
+          "235",
+          "1,100.00"
+        ],
         [
           "7/27/2026 10:54:00 AM",
           "E. Coli",
@@ -37781,10 +37841,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/27/2026 10:54:00 AM",
+        "date": "8/5/2026 10:46:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.84"
+        "value": "27.76"
       }
     },
     "Musante Beach": {
@@ -57622,6 +57682,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/10/2026 8:42:00 AM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "8/3/2026 10:29:00 AM",
           "E. Coli",
           "235",
@@ -57659,15 +57725,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 10:29:00 AM",
+        "date": "8/10/2026 8:42:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.17"
+        "value": "8.82"
       }
     },
     "Coes Pond Beach (Mill St.)": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/10/2026 9:37:00 AM",
+          "E. Coli",
+          "235",
+          "142.10"
+        ],
         [
           "8/3/2026 11:26:00 AM",
           "E. Coli",
@@ -57712,15 +57784,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 11:26:00 AM",
+        "date": "8/10/2026 9:37:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "76.40"
+        "value": "102.75"
       }
     },
     "Indian Lake Public Beach (Sherburne Ave)": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/10/2026 9:01:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
         [
           "8/4/2026 9:52:00 AM",
           "E. Coli",
@@ -57765,10 +57843,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 9:52:00 AM",
+        "date": "8/10/2026 9:01:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "33.66"
+        "value": "26.76"
       }
     },
     "Lake Quinsigamond-Lake Park Beach (DCR)": {
@@ -57959,6 +58037,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/10/2026 8:54:00 AM",
+          "E. Coli",
+          "235",
+          "19.50"
+        ],
+        [
           "8/3/2026 10:46:00 AM",
           "E. Coli",
           "235",
@@ -57996,15 +58080,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 10:46:00 AM",
+        "date": "8/10/2026 8:54:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "32.25"
+        "value": "36.16"
       }
     },
     "Smith Pond": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/10/2026 9:59:00 AM",
+          "E. Coli",
+          "235",
+          "45.70"
+        ],
         [
           "8/7/2026 9:45:00 AM",
           "E. Coli",
@@ -58079,10 +58169,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/7/2026 9:45:00 AM",
+        "date": "8/10/2026 9:59:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "139.36"
+        "value": "86.77"
       }
     },
     "Sweatt Beach": {
