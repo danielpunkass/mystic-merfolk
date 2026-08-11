@@ -3664,8 +3664,7 @@
     {
       "name": "Smith Pond",
       "town": "Worcester",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Sweatt Beach",

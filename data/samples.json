@@ -15899,6 +15899,12 @@
       "town": "Dracut",
       "rows": [
         [
+          "8/10/2026 8:40:00 AM",
+          "E. Coli",
+          "235",
+          "40.40"
+        ],
+        [
           "8/3/2026 7:30:00 AM",
           "E. Coli",
           "235",
@@ -15930,10 +15936,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 7:30:00 AM",
+        "date": "8/10/2026 8:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.99"
+        "value": "11.68"
       }
     },
     "Merino Pond": {
@@ -26944,6 +26950,12 @@
       "town": "Lakeville",
       "rows": [
         [
+          "7/20/2026 8:17:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
+        [
           "7/14/2026 8:40:00 AM",
           "E. Coli",
           "235",
@@ -26975,10 +26987,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/14/2026 8:40:00 AM",
+        "date": "7/20/2026 8:17:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.00"
+        "value": "5.74"
       }
     },
     "Lancaster Town Beach": {
@@ -49458,6 +49470,12 @@
       "town": "Springfield",
       "rows": [
         [
+          "8/10/2026 10:01:00 AM",
+          "Enterococci",
+          "61",
+          "30.10"
+        ],
+        [
           "8/4/2026 12:44:00 PM",
           "Enterococci",
           "61",
@@ -49513,15 +49531,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 12:44:00 PM",
+        "date": "8/10/2026 10:01:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "15.94"
+        "value": "21.94"
       }
     },
     "Camp Wilder @Right": {
       "town": "Springfield",
       "rows": [
+        [
+          "8/10/2026 10:13:00 AM",
+          "Enterococci",
+          "61",
+          "2.00"
+        ],
         [
           "8/4/2026 12:55:00 PM",
           "Enterococci",
@@ -49596,15 +49620,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 12:55:00 PM",
+        "date": "8/10/2026 10:13:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "14.45"
+        "value": "11.94"
       }
     },
     "Paddle Club @Right": {
       "town": "Springfield",
       "rows": [
+        [
+          "8/10/2026 9:43:00 AM",
+          "Enterococci",
+          "61",
+          "51.20"
+        ],
         [
           "8/3/2026 9:41:00 AM",
           "Enterococci",
@@ -49661,10 +49691,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 9:41:00 AM",
+        "date": "8/10/2026 9:43:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "15.03"
+        "value": "17.19"
       }
     },
     "Lake Waushacum": {
