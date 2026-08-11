@@ -21185,6 +21185,12 @@
       "town": "Freetown",
       "rows": [
         [
+          "8/10/2026 8:15:00 AM",
+          "Enterococci",
+          "61",
+          "3.00"
+        ],
+        [
           "8/3/2026 7:20:00 AM",
           "Enterococci",
           "61",
@@ -21258,10 +21264,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 7:20:00 AM",
+        "date": "8/10/2026 8:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "11.33"
+        "value": "5.36"
       }
     },
     "Dunn Pond (DCR)": {
@@ -45489,6 +45495,12 @@
       "town": "Rochester",
       "rows": [
         [
+          "8/10/2026 8:00:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
+        [
           "8/3/2026 7:45:00 AM",
           "Enterococci",
           "61",
@@ -45550,10 +45562,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 7:45:00 AM",
+        "date": "8/10/2026 8:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "1.97"
+        "value": "1.72"
       }
     },
     "Back Beach": {
