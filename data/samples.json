@@ -49833,6 +49833,12 @@
       "town": "Somerset",
       "rows": [
         [
+          "8/10/2026 8:10:00 AM",
+          "Enterococci",
+          "104",
+          "30.00"
+        ],
+        [
           "8/3/2026 8:10:00 AM",
           "Enterococci",
           "104",
@@ -49882,10 +49888,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 8:10:00 AM",
+        "date": "8/10/2026 8:10:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "18.12"
+        "value": "19.65"
       }
     },
     "South Pond Beach": {
@@ -51086,6 +51092,12 @@
       "town": "Swansea",
       "rows": [
         [
+          "8/10/2026 6:40:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "8/3/2026 6:55:00 AM",
           "Enterococci",
           "104",
@@ -51135,15 +51147,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 6:55:00 AM",
+        "date": "8/10/2026 6:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.74"
+        "value": "6.60"
       }
     },
     "Coles River Club off Harbor Rd": {
       "town": "Swansea",
       "rows": [
+        [
+          "8/10/2026 6:55:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/3/2026 7:11:00 AM",
           "Enterococci",
@@ -51194,15 +51212,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 7:11:00 AM",
+        "date": "8/10/2026 6:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "13.55"
+        "value": "7.15"
       }
     },
     "Leeside": {
       "town": "Swansea",
       "rows": [
+        [
+          "8/10/2026 6:30:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/3/2026 6:45:00 AM",
           "Enterococci",
@@ -51253,15 +51277,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 6:45:00 AM",
+        "date": "8/10/2026 6:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "16.96"
+        "value": "9.50"
       }
     },
     "Sandy Beach (Swansea)": {
       "town": "Swansea",
       "rows": [
+        [
+          "8/10/2026 6:20:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/3/2026 6:33:00 AM",
           "Enterococci",
@@ -51318,7 +51348,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 6:33:00 AM",
+        "date": "8/10/2026 6:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "13.09"
@@ -51327,6 +51357,12 @@
     "Swansea Town Beach": {
       "town": "Swansea",
       "rows": [
+        [
+          "8/10/2026 6:10:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/3/2026 6:25:00 AM",
           "Enterococci",
@@ -51383,10 +51419,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 6:25:00 AM",
+        "date": "8/10/2026 6:10:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.00"
+        "value": "7.58"
       }
     },
     "Massasoit Campers Beach (DCR)": {

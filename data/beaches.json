@@ -3463,7 +3463,8 @@
     {
       "name": "Card Pond Beach",
       "town": "West Stockbridge",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Ice House Pond",
