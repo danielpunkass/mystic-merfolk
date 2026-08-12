@@ -13,8 +13,7 @@
     {
       "name": "Glen Devin Condominiums",
       "town": "Amesbury",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Lake Attitash - A.L.S.I.A.",
@@ -1134,8 +1133,7 @@
     {
       "name": "Manhattan Avenue",
       "town": "Fairhaven",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Sandy Beach (Raymond Street)",
@@ -2379,8 +2377,7 @@
     {
       "name": "Carbuncle Pond",
       "town": "Oxford",
-      "status": "Closed",
-      "reason": "Harmful Cyanobacteria Bloom"
+      "status": "Open"
     },
     {
       "name": "Lulu Pond Beach (DCR)",
