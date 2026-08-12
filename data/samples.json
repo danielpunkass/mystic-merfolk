@@ -950,6 +950,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "8/11/2026 3:35:00 PM",
+          "E. Coli",
+          "235",
+          "40.00"
+        ],
+        [
           "8/5/2026 11:55:00 AM",
           "E. Coli",
           "235",
@@ -1059,10 +1065,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 11:55:00 AM",
+        "date": "8/11/2026 3:35:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.50"
+        "value": "4.35"
       }
     },
     "Ashfield Park Beach": {
