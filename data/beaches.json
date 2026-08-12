@@ -83,7 +83,8 @@
     {
       "name": "Ashland Reservoir-Main Beach (DCR)",
       "town": "Ashland",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Hopkinton Reservoir-Main Beach (DCR)",
@@ -1760,7 +1761,8 @@
     {
       "name": "Lynn Shore Beach (DCR)",
       "town": "Lynn",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Stacey's Brook Outfall (No Swimming) (DCR)",
@@ -2261,8 +2263,7 @@
     {
       "name": "Crystal Lake (Newton)",
       "town": "Newton",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Windsor Lake",
@@ -2672,7 +2673,8 @@
     {
       "name": "Short (DCR)",
       "town": "Revere",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Richmond Pond Association",
@@ -3092,7 +3094,8 @@
     {
       "name": "Beamans Pond - Campground (DCR)",
       "town": "Templeton",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Beamans Pond - Day Use (DCR)",
