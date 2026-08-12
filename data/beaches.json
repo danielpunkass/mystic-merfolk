@@ -3033,7 +3033,8 @@
     {
       "name": "Kings",
       "town": "Swampscott",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "New Ocean/Eisman's",
