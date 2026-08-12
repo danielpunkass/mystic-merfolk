@@ -2777,8 +2777,7 @@
     {
       "name": "Forest River - Pioneer",
       "town": "Salem",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Forest River - Point",
@@ -2788,25 +2787,23 @@
     {
       "name": "Juniper Point",
       "town": "Salem",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Ocean Avenue",
       "town": "Salem",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Osgood",
       "town": "Salem",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Steps",
       "town": "Salem",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Waikiki Beach (Winter Island)",
@@ -2816,8 +2813,7 @@
     {
       "name": "Willow Avenue",
       "town": "Salem",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Willows Pier",
