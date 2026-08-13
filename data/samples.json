@@ -11874,6 +11874,12 @@
       "town": "Chelmsford",
       "rows": [
         [
+          "8/11/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "8.00"
+        ],
+        [
           "8/4/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -11941,15 +11947,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 9:30:00 AM",
+        "date": "8/11/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.76"
+        "value": "9.25"
       }
     },
     "Heart Pond": {
       "town": "Chelmsford",
       "rows": [
+        [
+          "8/11/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "7.00"
+        ],
         [
           "8/4/2026 10:00:00 AM",
           "E. Coli",
@@ -12024,10 +12036,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 10:00:00 AM",
+        "date": "8/11/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.48"
+        "value": "3.84"
       }
     },
     "Ashmere Project-Camp Chesterfield Beach": {
@@ -55368,6 +55380,12 @@
       "town": "Wales",
       "rows": [
         [
+          "8/10/2026 9:06:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/3/2026 9:18:00 AM",
           "E. Coli",
           "235",
@@ -55441,15 +55459,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 9:18:00 AM",
+        "date": "8/10/2026 9:06:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.33"
+        "value": "6.28"
       }
     },
     "Wales Town Beach": {
       "town": "Wales",
       "rows": [
+        [
+          "8/10/2026 9:29:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
         [
           "8/3/2026 9:36:00 AM",
           "E. Coli",
@@ -55524,7 +55548,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 9:36:00 AM",
+        "date": "8/10/2026 9:29:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "6.31"
