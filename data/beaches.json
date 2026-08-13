@@ -1636,7 +1636,8 @@
     {
       "name": "XYZ",
       "town": "Hull",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Clark",
