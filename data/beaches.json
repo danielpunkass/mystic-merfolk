@@ -73,7 +73,8 @@
     {
       "name": "Arlington Reservoir",
       "town": "Arlington",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Ashfield Park Beach",
@@ -280,7 +281,7 @@
     {
       "name": "West",
       "town": "Beverly",
-      "status": "Closed"
+      "status": "Open"
     },
     {
       "name": "Woodbury",
