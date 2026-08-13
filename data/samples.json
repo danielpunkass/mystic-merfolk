@@ -3430,6 +3430,12 @@
       "town": "Becket",
       "rows": [
         [
+          "8/12/2026 8:30:00 AM",
+          "E. Coli",
+          "235",
+          "7.50"
+        ],
+        [
           "8/6/2026 9:02:00 AM",
           "E. Coli",
           "235",
@@ -3503,10 +3509,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/6/2026 9:02:00 AM",
+        "date": "8/12/2026 8:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "23.63"
+        "value": "12.21"
       }
     },
     "Belchertown Town Beach (Lake Arcadia)": {
@@ -25938,6 +25944,12 @@
       "town": "Hinsdale",
       "rows": [
         [
+          "8/12/2026 7:47:00 AM",
+          "E. Coli",
+          "235",
+          "18.30"
+        ],
+        [
           "8/6/2026 8:30:00 AM",
           "E. Coli",
           "235",
@@ -26011,10 +26023,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/6/2026 8:30:00 AM",
+        "date": "8/12/2026 7:47:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "21.18"
+        "value": "20.22"
       }
     },
     "Eagle Lake": {
@@ -35878,6 +35890,12 @@
       "town": "Monterey",
       "rows": [
         [
+          "8/12/2026 11:09:00 AM",
+          "E. Coli",
+          "235",
+          "21.60"
+        ],
+        [
           "8/3/2026 11:50:00 AM",
           "E. Coli",
           "235",
@@ -35921,10 +35939,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 11:50:00 AM",
+        "date": "8/12/2026 11:09:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.36"
+        "value": "8.86"
       }
     },
     "Black Rock (Nahant)": {
@@ -58849,6 +58867,12 @@
       "town": "West Stockbridge",
       "rows": [
         [
+          "8/12/2026 1:48:00 PM",
+          "E. Coli",
+          "235",
+          "37.30"
+        ],
+        [
           "8/11/2026 1:48:00 PM",
           "E. Coli",
           "235",
@@ -58940,10 +58964,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 1:48:00 PM",
+        "date": "8/12/2026 1:48:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "227.08"
+        "value": "119.59"
       }
     },
     "Ice House Pond": {
