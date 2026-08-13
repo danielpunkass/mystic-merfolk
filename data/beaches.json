@@ -3592,8 +3592,7 @@
     {
       "name": "Donovans",
       "town": "Winthrop",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Grandview",
@@ -3608,7 +3607,8 @@
     {
       "name": "Pico",
       "town": "Winthrop",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Winthrop Beach (DCR)",

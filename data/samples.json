@@ -615,6 +615,12 @@
       "town": "Andover",
       "rows": [
         [
+          "8/12/2026 11:19:00 AM",
+          "E. Coli",
+          "235",
+          "112.00"
+        ],
+        [
           "8/5/2026 10:21:00 AM",
           "E. Coli",
           "235",
@@ -670,15 +676,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 10:21:00 AM",
+        "date": "8/12/2026 11:19:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.72"
+        "value": "12.19"
       }
     },
     "Pomps Pond @Left": {
       "town": "Andover",
       "rows": [
+        [
+          "8/12/2026 11:18:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "8/5/2026 10:20:00 AM",
           "E. Coli",
@@ -735,15 +747,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 10:20:00 AM",
+        "date": "8/12/2026 11:18:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.76"
+        "value": "7.86"
       }
     },
     "Pomps Pond @Right": {
       "town": "Andover",
       "rows": [
+        [
+          "8/12/2026 11:20:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "8/5/2026 10:22:00 AM",
           "E. Coli",
@@ -800,10 +818,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 10:22:00 AM",
+        "date": "8/12/2026 11:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.15"
+        "value": "7.25"
       }
     },
     "Lobsterville": {
@@ -950,6 +968,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "8/12/2026 12:42:00 PM",
+          "E. Coli",
+          "235",
+          "364.00"
+        ],
+        [
           "8/11/2026 3:35:00 PM",
           "E. Coli",
           "235",
@@ -1065,10 +1089,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 3:35:00 PM",
+        "date": "8/12/2026 12:42:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.35"
+        "value": "11.79"
       }
     },
     "Ashfield Park Beach": {
@@ -25767,6 +25791,12 @@
       "town": "Haverhill",
       "rows": [
         [
+          "8/12/2026 9:40:00 AM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
+        [
           "8/5/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -25828,7 +25858,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 9:30:00 AM",
+        "date": "8/12/2026 9:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "22.47"
@@ -25837,6 +25867,12 @@
     "Plugs Pond @Side": {
       "town": "Haverhill",
       "rows": [
+        [
+          "8/12/2026 9:40:00 AM",
+          "E. Coli",
+          "235",
+          "15.00"
+        ],
         [
           "8/5/2026 9:30:00 AM",
           "E. Coli",
@@ -25899,15 +25935,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 9:30:00 AM",
+        "date": "8/12/2026 9:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "15.95"
+        "value": "14.52"
       }
     },
     "Hingham Town Beach": {
       "town": "Hingham",
       "rows": [
+        [
+          "8/12/2026 12:33:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/11/2026 10:25:00 AM",
           "Enterococci",
@@ -25964,10 +26006,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 10:25:00 AM",
+        "date": "8/12/2026 12:33:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "12.33"
+        "value": "10.73"
       }
     },
     "Plunkett Lake Beach": {
@@ -27603,6 +27645,12 @@
       "town": "Hull",
       "rows": [
         [
+          "8/12/2026 11:54:00 AM",
+          "Enterococci",
+          "104",
+          "489.00"
+        ],
+        [
           "8/11/2026 8:01:00 AM",
           "Enterococci",
           "104",
@@ -27670,10 +27718,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 8:01:00 AM",
+        "date": "8/12/2026 11:54:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "22.91"
+        "value": "57.29"
       }
     },
     "Clark": {
