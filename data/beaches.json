@@ -280,8 +280,7 @@
     {
       "name": "West",
       "town": "Beverly",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Closed"
     },
     {
       "name": "Woodbury",
