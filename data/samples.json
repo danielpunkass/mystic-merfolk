@@ -35782,6 +35782,12 @@
       "town": "Middleborough",
       "rows": [
         [
+          "8/12/2026 8:55:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "8/5/2026 11:30:00 AM",
           "E. Coli",
           "235",
@@ -35831,15 +35837,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 11:30:00 AM",
+        "date": "8/12/2026 8:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "30.01"
+        "value": "18.96"
       }
     },
     "Camp Yomechas": {
       "town": "Middleborough",
       "rows": [
+        [
+          "8/12/2026 9:10:00 AM",
+          "E. Coli",
+          "235",
+          "30.00"
+        ],
         [
           "8/5/2026 12:00:00 PM",
           "E. Coli",
@@ -35920,15 +35932,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 12:00:00 PM",
+        "date": "8/12/2026 9:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "277.82"
+        "value": "98.55"
       }
     },
     "Woods Pond Cabins": {
       "town": "Middleborough",
       "rows": [
+        [
+          "8/12/2026 8:38:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "8/5/2026 11:10:00 AM",
           "E. Coli",
@@ -35967,10 +35985,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 11:10:00 AM",
+        "date": "8/12/2026 8:38:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "27.70"
+        "value": "28.96"
       }
     },
     "Thunderbridge @Center": {
@@ -52694,6 +52712,12 @@
       "town": "Southwick",
       "rows": [
         [
+          "8/11/2026 1:25:00 PM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
+        [
           "8/3/2026 1:22:00 PM",
           "E. Coli",
           "235",
@@ -52737,10 +52761,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 1:22:00 PM",
+        "date": "8/11/2026 1:25:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "26.49"
+        "value": "28.32"
       }
     },
     "Luther Hill Park": {
