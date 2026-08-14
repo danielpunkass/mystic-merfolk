@@ -2674,8 +2674,7 @@
     {
       "name": "Short (DCR)",
       "town": "Revere",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Richmond Pond Association",
@@ -3096,8 +3095,7 @@
     {
       "name": "Beamans Pond - Campground (DCR)",
       "town": "Templeton",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Beamans Pond - Day Use (DCR)",
@@ -3144,8 +3142,7 @@
     {
       "name": "Pearl Hill Pond Beach (DCR)",
       "town": "Townsend",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Ballston",
