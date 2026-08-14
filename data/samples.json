@@ -40914,6 +40914,12 @@
       "town": "Orange",
       "rows": [
         [
+          "8/13/2026 8:30:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/5/2026 12:06:00 PM",
           "E. Coli",
           "235",
@@ -40987,10 +40993,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 12:06:00 PM",
+        "date": "8/13/2026 8:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "16.51"
+        "value": "6.51"
       }
     },
     "Crystal Lake (Orleans)": {
