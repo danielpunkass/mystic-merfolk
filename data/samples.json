@@ -1105,6 +1105,12 @@
       "town": "Ashfield",
       "rows": [
         [
+          "8/10/2026 8:00:00 AM",
+          "E. Coli",
+          "235",
+          "3.00"
+        ],
+        [
           "8/3/2026 8:17:00 AM",
           "E. Coli",
           "235",
@@ -1178,10 +1184,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 8:17:00 AM",
+        "date": "8/10/2026 8:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.02"
+        "value": "4.74"
       }
     },
     "Ashland Reservoir-Main Beach (DCR)": {
@@ -13322,6 +13328,12 @@
       "town": "Conway",
       "rows": [
         [
+          "8/10/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "32.00"
+        ],
+        [
           "8/5/2026 10:45:00 AM",
           "E. Coli",
           "235",
@@ -13383,10 +13395,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 10:45:00 AM",
+        "date": "8/10/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "25.45"
+        "value": "26.96"
       }
     },
     "Sandy Beach (Danvers)": {
@@ -24085,6 +24097,12 @@
       "town": "Greenfield",
       "rows": [
         [
+          "8/11/2026 9:35:00 AM",
+          "E. Coli",
+          "235",
+          "84.00"
+        ],
+        [
           "8/5/2026 8:50:00 AM",
           "E. Coli",
           "235",
@@ -24152,10 +24170,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 8:50:00 AM",
+        "date": "8/11/2026 9:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "99.57"
+        "value": "102.41"
       }
     },
     "Groton Town Beach (Sargisson Beach)": {
@@ -31220,6 +31238,12 @@
       "town": "Lynn",
       "rows": [
         [
+          "8/13/2026 9:36:00 AM",
+          "Enterococci",
+          "104",
+          "474.00"
+        ],
+        [
           "8/11/2026 8:19:00 AM",
           "Enterococci",
           "104",
@@ -31311,10 +31335,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 8:19:00 AM",
+        "date": "8/13/2026 9:36:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "28.68"
+        "value": "62.05"
       }
     },
     "Stacey's Brook Outfall (No Swimming) (DCR)": {
@@ -36826,6 +36850,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "8/13/2026 8:55:00 AM",
+          "Enterococci",
+          "61",
+          "20.00"
+        ],
+        [
           "8/11/2026 9:55:00 AM",
           "Enterococci",
           "61",
@@ -36911,10 +36941,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 9:55:00 AM",
+        "date": "8/13/2026 8:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "10.66"
+        "value": "14.06"
       }
     },
     "Short": {
@@ -40419,6 +40449,12 @@
       "town": "Northampton",
       "rows": [
         [
+          "8/10/2026 10:52:00 AM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
+        [
           "8/5/2026 10:58:00 AM",
           "E. Coli",
           "235",
@@ -40498,10 +40534,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 10:58:00 AM",
+        "date": "8/10/2026 10:52:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "31.21"
+        "value": "21.57"
       }
     },
     "Eastville Town Beach - Harbor side": {
@@ -48378,6 +48414,12 @@
       "town": "Revere",
       "rows": [
         [
+          "8/13/2026 8:05:00 AM",
+          "Enterococci",
+          "104",
+          "63.00"
+        ],
+        [
           "8/11/2026 9:00:00 AM",
           "Enterococci",
           "104",
@@ -48457,10 +48499,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 9:00:00 AM",
+        "date": "8/13/2026 8:05:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "12.87"
+        "value": "21.36"
       }
     },
     "Richmond Pond Association": {
@@ -51516,6 +51558,12 @@
       "town": "Saugus",
       "rows": [
         [
+          "8/13/2026 9:45:00 AM",
+          "Enterococci",
+          "61",
+          "52.00"
+        ],
+        [
           "8/11/2026 8:59:00 AM",
           "Enterococci",
           "61",
@@ -51607,10 +51655,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 8:59:00 AM",
+        "date": "8/13/2026 9:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "33.79"
+        "value": "41.11"
       }
     },
     "North Pond Beach (DCR)": {
@@ -54523,6 +54571,12 @@
       "town": "Templeton",
       "rows": [
         [
+          "8/13/2026 8:15:00 AM",
+          "Enterococci",
+          "61",
+          "9.60"
+        ],
+        [
           "8/11/2026 8:14:00 AM",
           "Enterococci",
           "61",
@@ -54614,10 +54668,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 8:14:00 AM",
+        "date": "8/13/2026 8:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "17.73"
+        "value": "22.37"
       }
     },
     "Beamans Pond - Day Use (DCR)": {
@@ -55198,6 +55252,12 @@
       "town": "Townsend",
       "rows": [
         [
+          "8/13/2026 8:30:00 AM",
+          "Enterococci",
+          "61",
+          "25.60"
+        ],
+        [
           "8/11/2026 8:00:00 AM",
           "Enterococci",
           "61",
@@ -55277,10 +55337,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 8:00:00 AM",
+        "date": "8/13/2026 8:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "20.82"
+        "value": "26.61"
       }
     },
     "Ballston": {
@@ -60325,6 +60385,12 @@
       "town": "Westport",
       "rows": [
         [
+          "8/13/2026 11:35:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/4/2026 8:55:00 AM",
           "Enterococci",
           "104",
@@ -60348,11 +60414,23 @@
           "104",
           "0.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "8/13/2026 11:35:00 AM",
+        "indicator": "Enterococci",
+        "threshold": "35",
+        "value": "3.93"
+      }
     },
     "East Beach": {
       "town": "Westport",
       "rows": [
+        [
+          "8/13/2026 12:00:00 PM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
         [
           "8/4/2026 9:40:00 AM",
           "Enterococci",
@@ -60377,7 +60455,13 @@
           "104",
           "0.50"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "8/13/2026 12:00:00 PM",
+        "indicator": "Enterococci",
+        "threshold": "35",
+        "value": "3.47"
+      }
     },
     "Elephant Rock Beach Club": {
       "town": "Westport",
@@ -60706,6 +60790,12 @@
       "town": "Whately",
       "rows": [
         [
+          "8/10/2026 10:15:00 AM",
+          "E. Coli",
+          "235",
+          "11.00"
+        ],
+        [
           "8/3/2026 10:15:00 AM",
           "E. Coli",
           "235",
@@ -60779,10 +60869,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/3/2026 10:15:00 AM",
+        "date": "8/10/2026 10:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.53"
+        "value": "14.81"
       }
     },
     "Margaret Lindley Park": {
@@ -61962,6 +62052,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/13/2026 8:36:00 AM",
+          "Enterococci",
+          "61",
+          "13.10"
+        ],
+        [
           "8/11/2026 8:40:00 AM",
           "Enterococci",
           "61",
@@ -62053,10 +62149,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 8:40:00 AM",
+        "date": "8/13/2026 8:36:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "44.07"
+        "value": "55.60"
       }
     },
     "Shore Park": {
