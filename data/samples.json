@@ -7059,6 +7059,12 @@
       "town": "Boston",
       "rows": [
         [
+          "8/16/2026 1:45:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
+        [
           "8/15/2026 12:30:00 PM",
           "Enterococci",
           "104",
@@ -7594,10 +7600,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/15/2026 12:30:00 PM",
+        "date": "8/16/2026 1:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.84"
+        "value": "4.32"
       }
     },
     "Pleasure Bay (DCR) @Broadway": {
@@ -7959,6 +7965,12 @@
     "Tenean (DCR)": {
       "town": "Boston",
       "rows": [
+        [
+          "8/16/2026 2:00:00 PM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "8/15/2026 12:20:00 PM",
           "Enterococci",
@@ -8495,10 +8507,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/15/2026 12:20:00 PM",
+        "date": "8/16/2026 2:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "11.60"
+        "value": "6.37"
       }
     },
     "Barlows Landing": {
@@ -16803,6 +16815,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "8/13/2026 8:18:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/4/2026 8:15:00 AM",
           "E. Coli",
           "235",
@@ -16870,15 +16888,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 8:15:00 AM",
+        "date": "8/13/2026 8:18:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.20"
+        "value": "1.81"
       }
     },
     "Lake Manchaug Camping": {
       "town": "Douglas",
       "rows": [
+        [
+          "8/13/2026 8:29:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
         [
           "8/4/2026 8:02:00 AM",
           "E. Coli",
@@ -16953,10 +16977,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 8:02:00 AM",
+        "date": "8/13/2026 8:29:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.38"
+        "value": "10.86"
       }
     },
     "Wallum Lake (DCR)": {
@@ -17052,6 +17076,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "8/13/2026 8:05:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "8/4/2026 7:41:00 AM",
           "E. Coli",
           "235",
@@ -17125,10 +17155,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 7:41:00 AM",
+        "date": "8/13/2026 8:05:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.37"
+        "value": "2.22"
       }
     },
     "Mascuppic": {
