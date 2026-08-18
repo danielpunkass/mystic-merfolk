@@ -235,7 +235,8 @@
     {
       "name": "Brackenbury",
       "town": "Beverly",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Dane Street",
@@ -2026,7 +2027,8 @@
     {
       "name": "Camp Yomechas",
       "town": "Middleborough",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Other"
     },
     {
       "name": "Woods Pond Cabins",
