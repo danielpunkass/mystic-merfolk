@@ -3497,7 +3497,8 @@
     {
       "name": "Hampton Ponds - Lamberts Beach (DCR)",
       "town": "Westfield",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Crocker Pond",

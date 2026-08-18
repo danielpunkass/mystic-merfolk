@@ -7293,6 +7293,12 @@
       "town": "Boston",
       "rows": [
         [
+          "8/17/2026 3:00:00 PM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
+        [
           "8/16/2026 1:45:00 AM",
           "Enterococci",
           "104",
@@ -7834,10 +7840,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/16/2026 1:45:00 AM",
+        "date": "8/17/2026 3:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "4.32"
+        "value": "3.13"
       }
     },
     "Pleasure Bay (DCR) @Broadway": {
@@ -8199,6 +8205,12 @@
     "Tenean (DCR)": {
       "town": "Boston",
       "rows": [
+        [
+          "8/17/2026 3:30:00 PM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "8/16/2026 2:00:00 PM",
           "Enterococci",
@@ -8741,10 +8753,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/16/2026 2:00:00 PM",
+        "date": "8/17/2026 3:30:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.37"
+        "value": "4.62"
       }
     },
     "Barlows Landing": {
