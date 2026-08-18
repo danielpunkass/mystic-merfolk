@@ -33354,6 +33354,12 @@
       "town": "Marion",
       "rows": [
         [
+          "8/17/2026 7:58:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
+        [
           "8/10/2026 10:32:00 AM",
           "Enterococci",
           "104",
@@ -33409,15 +33415,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:32:00 AM",
+        "date": "8/17/2026 7:58:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.57"
+        "value": "0.76"
       }
     },
     "Converse Point": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 7:34:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/10/2026 9:55:00 AM",
           "Enterococci",
@@ -33486,15 +33498,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 9:55:00 AM",
+        "date": "8/17/2026 7:34:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.76"
+        "value": "0.66"
       }
     },
     "Dexter Lane": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 8:40:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/10/2026 11:19:00 AM",
           "Enterococci",
@@ -33575,15 +33593,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:19:00 AM",
+        "date": "8/17/2026 8:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.78"
+        "value": "0.96"
       }
     },
     "Island Wharf": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 8:06:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/10/2026 10:48:00 AM",
           "Enterococci",
@@ -33646,7 +33670,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:48:00 AM",
+        "date": "8/17/2026 8:06:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "0.57"
@@ -33655,6 +33679,12 @@
     "Oakdale Avenue": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 8:28:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
         [
           "8/10/2026 11:07:00 AM",
           "Enterococci",
@@ -33717,15 +33747,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:07:00 AM",
+        "date": "8/17/2026 8:28:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "3.25"
+        "value": "2.35"
       }
     },
     "Piney Point": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 8:53:00 AM",
+          "Enterococci",
+          "104",
+          "6.00"
+        ],
         [
           "8/10/2026 11:28:00 AM",
           "Enterococci",
@@ -33788,15 +33824,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:28:00 AM",
+        "date": "8/17/2026 8:53:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.02"
+        "value": "1.68"
       }
     },
     "Planting Island": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 9:06:00 AM",
+          "Enterococci",
+          "104",
+          "6.00"
+        ],
         [
           "8/10/2026 11:39:00 AM",
           "Enterococci",
@@ -33859,15 +33901,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:39:00 AM",
+        "date": "8/17/2026 9:06:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.91"
+        "value": "1.50"
       }
     },
     "Silver Shell @North Jetty": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 7:46:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "8/10/2026 10:28:00 AM",
           "Enterococci",
@@ -33936,7 +33984,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:28:00 AM",
+        "date": "8/17/2026 7:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "1.00"
@@ -33945,6 +33993,12 @@
     "Silver Shell @South Jetty": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 7:42:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "8/10/2026 10:25:00 AM",
           "Enterococci",
@@ -34013,15 +34067,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:25:00 AM",
+        "date": "8/17/2026 7:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "1.43"
+        "value": "0.76"
       }
     },
     "Tabor Academy @North": {
       "town": "Marion",
       "rows": [
+        [
+          "8/17/2026 8:17:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "8/10/2026 10:56:00 AM",
           "Enterococci",
@@ -34090,10 +34150,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:56:00 AM",
+        "date": "8/17/2026 8:17:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "1.00"
+        "value": "0.87"
       }
     },
     "Henry F Collins Beach": {
@@ -38660,6 +38720,12 @@
       "town": "New Bedford",
       "rows": [
         [
+          "8/17/2026 9:53:00 AM",
+          "Enterococci",
+          "61",
+          "7.00"
+        ],
+        [
           "8/10/2026 11:12:00 AM",
           "Enterococci",
           "61",
@@ -38757,15 +38823,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:12:00 AM",
+        "date": "8/17/2026 9:53:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.83"
+        "value": "2.36"
       }
     },
     "400 Beach @South": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:55:00 AM",
+          "Enterococci",
+          "61",
+          "31.00"
+        ],
         [
           "8/10/2026 11:16:00 AM",
           "Enterococci",
@@ -38858,15 +38930,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:16:00 AM",
+        "date": "8/17/2026 9:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "11.36"
+        "value": "9.55"
       }
     },
     "Davy's Locker": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:49:00 AM",
+          "Enterococci",
+          "104",
+          "28.00"
+        ],
         [
           "8/10/2026 11:08:00 AM",
           "Enterococci",
@@ -38953,15 +39031,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:08:00 AM",
+        "date": "8/17/2026 9:49:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "12.93"
+        "value": "11.38"
       }
     },
     "J. Beach": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:55:00 AM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
         [
           "8/10/2026 11:16:00 AM",
           "Enterococci",
@@ -39054,15 +39138,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:16:00 AM",
+        "date": "8/17/2026 9:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "4.09"
+        "value": "2.27"
       }
     },
     "Kids Beach": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:53:00 AM",
+          "Enterococci",
+          "104",
+          "11.00"
+        ],
         [
           "8/10/2026 11:12:00 AM",
           "Enterococci",
@@ -39155,15 +39245,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:12:00 AM",
+        "date": "8/17/2026 9:53:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.91"
+        "value": "5.29"
       }
     },
     "O'Tools": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:46:00 AM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
         [
           "8/10/2026 11:05:00 AM",
           "Enterococci",
@@ -39250,15 +39346,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:05:00 AM",
+        "date": "8/17/2026 9:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.78"
+        "value": "2.05"
       }
     },
     "Squid": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:57:00 AM",
+          "Enterococci",
+          "104",
+          "7.00"
+        ],
         [
           "8/10/2026 11:19:00 AM",
           "Enterococci",
@@ -39345,15 +39447,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:19:00 AM",
+        "date": "8/17/2026 9:57:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.59"
+        "value": "4.79"
       }
     },
     "Tabor Park South": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:40:00 AM",
+          "Enterococci",
+          "104",
+          "3.00"
+        ],
         [
           "8/10/2026 11:00:00 AM",
           "Enterococci",
@@ -39440,15 +39548,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:00:00 AM",
+        "date": "8/17/2026 9:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "4.14"
+        "value": "3.08"
       }
     },
     "Tower Beach @Tower 1": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:46:00 AM",
+          "Enterococci",
+          "61",
+          "8.00"
+        ],
         [
           "8/10/2026 11:02:00 AM",
           "Enterococci",
@@ -39535,15 +39649,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:02:00 AM",
+        "date": "8/17/2026 9:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "3.59"
+        "value": "2.63"
       }
     },
     "Tower Beach @Tower 4": {
       "town": "New Bedford",
       "rows": [
+        [
+          "8/17/2026 9:42:00 AM",
+          "Enterococci",
+          "61",
+          "3.00"
+        ],
         [
           "8/10/2026 11:05:00 AM",
           "Enterococci",
@@ -39630,10 +39750,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 11:05:00 AM",
+        "date": "8/17/2026 9:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "4.44"
+        "value": "4.19"
       }
     },
     "York Lake Beach (DCR)": {
@@ -62236,6 +62356,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/17/2026 9:53:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "8/10/2026 8:42:00 AM",
           "E. Coli",
           "235",
@@ -62279,15 +62405,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 8:42:00 AM",
+        "date": "8/17/2026 9:53:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.82"
+        "value": "6.65"
       }
     },
     "Coes Pond Beach (Mill St.)": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/17/2026 10:41:00 AM",
+          "E. Coli",
+          "235",
+          "105.00"
+        ],
         [
           "8/10/2026 9:37:00 AM",
           "E. Coli",
@@ -62338,15 +62470,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 9:37:00 AM",
+        "date": "8/17/2026 10:41:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "102.75"
+        "value": "86.51"
       }
     },
     "Indian Lake Public Beach (Sherburne Ave)": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/17/2026 10:09:00 AM",
+          "E. Coli",
+          "235",
+          "24.30"
+        ],
         [
           "8/10/2026 9:01:00 AM",
           "E. Coli",
@@ -62397,10 +62535,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 9:01:00 AM",
+        "date": "8/17/2026 10:09:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "26.76"
+        "value": "44.10"
       }
     },
     "Lake Quinsigamond-Lake Park Beach (DCR)": {
@@ -62609,6 +62747,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/17/2026 10:20:00 AM",
+          "E. Coli",
+          "235",
+          "8.60"
+        ],
+        [
           "8/10/2026 8:54:00 AM",
           "E. Coli",
           "235",
@@ -62652,15 +62796,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 8:54:00 AM",
+        "date": "8/17/2026 10:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "36.16"
+        "value": "34.48"
       }
     },
     "Smith Pond": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/17/2026 10:55:00 AM",
+          "E. Coli",
+          "235",
+          "12.00"
+        ],
         [
           "8/10/2026 9:59:00 AM",
           "E. Coli",
@@ -62741,10 +62891,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 9:59:00 AM",
+        "date": "8/17/2026 10:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "86.77"
+        "value": "36.87"
       }
     },
     "Sweatt Beach": {
