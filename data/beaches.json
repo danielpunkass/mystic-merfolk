@@ -2168,7 +2168,8 @@
     {
       "name": "Washing Pond",
       "town": "Nantucket",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Washington Street",
@@ -2263,8 +2264,7 @@
     {
       "name": "Crystal Lake (Newton)",
       "town": "Newton",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Off-season"
     },
     {
       "name": "Windsor Lake",
@@ -3488,6 +3488,11 @@
       "name": "Seth's Pond @Town Beach",
       "town": "West Tisbury",
       "status": ""
+    },
+    {
+      "name": "Lake Chauncy Beach",
+      "town": "Westborough",
+      "status": "Open"
     },
     {
       "name": "Hampton Ponds - Kingsley Beach (DCR)",
