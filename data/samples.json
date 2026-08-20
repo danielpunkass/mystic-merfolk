@@ -39211,6 +39211,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "8/19/2026 5:20:00 PM",
+          "Enterococci",
+          "61",
+          "345.00"
+        ],
+        [
           "8/18/2026 10:49:00 AM",
           "Enterococci",
           "61",
@@ -39314,15 +39320,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 10:49:00 AM",
+        "date": "8/19/2026 5:20:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "18.02"
+        "value": "36.58"
       }
     },
     "Nahant Beach (DCR) @2 (Parking Section 12)": {
       "town": "Nahant",
       "rows": [
+        [
+          "8/19/2026 5:15:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
         [
           "8/18/2026 10:39:00 AM",
           "Enterococci",
@@ -39421,15 +39433,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 10:39:00 AM",
+        "date": "8/19/2026 5:15:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "23.82"
+        "value": "27.36"
       }
     },
     "Nahant Beach (DCR) @3 (Flagpole/Halfway)": {
       "town": "Nahant",
       "rows": [
+        [
+          "8/19/2026 5:00:00 PM",
+          "Enterococci",
+          "61",
+          "52.00"
+        ],
         [
           "8/18/2026 10:13:00 AM",
           "Enterococci",
@@ -39528,10 +39546,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 10:13:00 AM",
+        "date": "8/19/2026 5:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "20.34"
+        "value": "28.29"
       }
     },
     "Nahant Beach (DCR) @4 (South/Main Entrance)": {
@@ -51615,6 +51633,12 @@
       "town": "Revere",
       "rows": [
         [
+          "8/19/2026 4:30:00 PM",
+          "Enterococci",
+          "61",
+          "10.00"
+        ],
+        [
           "8/18/2026 9:38:00 AM",
           "Enterococci",
           "61",
@@ -51700,10 +51724,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 9:38:00 AM",
+        "date": "8/19/2026 4:30:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "32.41"
+        "value": "21.72"
       }
     },
     "Revere (DCR) @Oak Island St.": {
@@ -55302,6 +55326,12 @@
       "town": "Saugus",
       "rows": [
         [
+          "8/19/2026 3:45:00 PM",
+          "Enterococci",
+          "61",
+          "7.40"
+        ],
+        [
           "8/18/2026 10:30:00 AM",
           "Enterococci",
           "61",
@@ -55405,10 +55435,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 10:30:00 AM",
+        "date": "8/19/2026 3:45:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "44.24"
+        "value": "20.52"
       }
     },
     "North Pond Beach (DCR)": {
@@ -65627,6 +65657,12 @@
       "town": "Winchester",
       "rows": [
         [
+          "8/19/2026 2:55:00 PM",
+          "Enterococci",
+          "61",
+          "13.40"
+        ],
+        [
           "8/18/2026 9:30:00 AM",
           "Enterococci",
           "61",
@@ -65730,10 +65766,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 9:30:00 AM",
+        "date": "8/19/2026 2:55:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "59.28"
+        "value": "99.62"
       }
     },
     "Donovans": {
