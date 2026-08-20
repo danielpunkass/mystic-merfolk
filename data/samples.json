@@ -44255,6 +44255,12 @@
       "town": "Oxford",
       "rows": [
         [
+          "8/12/2026 12:30:00 PM",
+          "E. Coli",
+          "235",
+          "185.00"
+        ],
+        [
           "7/20/2026 9:00:00 AM",
           "E. Coli",
           "235",
@@ -44298,10 +44304,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/20/2026 9:00:00 AM",
+        "date": "8/12/2026 12:30:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.84"
+        "value": "40.54"
       }
     },
     "Lulu Pond Beach (DCR)": {
@@ -47769,6 +47775,12 @@
       "town": "Quincy",
       "rows": [
         [
+          "8/19/2026 6:00:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/11/2026 10:30:00 AM",
           "Enterococci",
           "104",
@@ -47836,7 +47848,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 10:30:00 AM",
+        "date": "8/19/2026 6:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -47845,6 +47857,12 @@
     "Broady (Baker)": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 5:44:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/11/2026 11:26:00 AM",
           "Enterococci",
@@ -47931,15 +47949,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:26:00 AM",
+        "date": "8/19/2026 5:44:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "32.35"
+        "value": "21.62"
       }
     },
     "Chikatawbot": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 6:18:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/11/2026 11:46:00 AM",
           "Enterococci",
@@ -48008,7 +48032,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:46:00 AM",
+        "date": "8/19/2026 6:18:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.58"
@@ -48017,6 +48041,12 @@
     "Edgewater (Quincy)": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 5:13:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/11/2026 11:01:00 AM",
           "Enterococci",
@@ -48085,7 +48115,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:01:00 AM",
+        "date": "8/19/2026 5:13:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "8.71"
@@ -48094,6 +48124,12 @@
     "Germantown Firestation": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 5:37:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/11/2026 11:17:00 AM",
           "Enterococci",
@@ -48156,15 +48192,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:17:00 AM",
+        "date": "8/19/2026 5:37:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.60"
+        "value": "7.58"
       }
     },
     "Heron": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 5:28:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/11/2026 11:35:00 AM",
           "Enterococci",
@@ -48233,7 +48275,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:35:00 AM",
+        "date": "8/19/2026 5:28:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -48242,6 +48284,12 @@
     "Merrymount": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 6:23:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/11/2026 11:51:00 AM",
           "Enterococci",
@@ -48328,15 +48376,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:51:00 AM",
+        "date": "8/19/2026 6:23:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "23.70"
+        "value": "7.58"
       }
     },
     "Mound": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 6:07:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/11/2026 10:39:00 AM",
           "Enterococci",
@@ -48417,15 +48471,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 10:39:00 AM",
+        "date": "8/19/2026 6:07:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.84"
+        "value": "7.58"
       }
     },
     "Nickerson": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 6:36:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/11/2026 11:59:00 AM",
           "Enterococci",
@@ -48506,15 +48566,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:59:00 AM",
+        "date": "8/19/2026 6:36:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.62"
+        "value": "5.74"
       }
     },
     "Norton Beach": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 6:14:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/11/2026 11:38:00 AM",
           "Enterococci",
@@ -48583,7 +48649,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:38:00 AM",
+        "date": "8/19/2026 6:14:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "9.50"
@@ -48592,6 +48658,12 @@
     "Orchard Street": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 6:42:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/11/2026 12:09:00 AM",
           "Enterococci",
@@ -48654,7 +48726,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 12:09:00 AM",
+        "date": "8/19/2026 6:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.20"
@@ -48663,6 +48735,12 @@
     "Parkhurst": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 5:07:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/11/2026 10:54:00 AM",
           "Enterococci",
@@ -48725,7 +48803,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 10:54:00 AM",
+        "date": "8/19/2026 5:07:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -48734,6 +48812,12 @@
     "Rhoda": {
       "town": "Quincy",
       "rows": [
+        [
+          "8/19/2026 5:21:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/11/2026 11:08:00 AM",
           "Enterococci",
@@ -48796,10 +48880,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:08:00 AM",
+        "date": "8/19/2026 5:21:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.95"
+        "value": "12.58"
       }
     },
     "Wollaston (DCR) @Channing Street": {
