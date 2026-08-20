@@ -657,6 +657,12 @@
       "town": "Andover",
       "rows": [
         [
+          "8/19/2026 10:49:00 AM",
+          "E. Coli",
+          "235",
+          "36.00"
+        ],
+        [
           "8/12/2026 11:19:00 AM",
           "E. Coli",
           "235",
@@ -718,15 +724,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 11:19:00 AM",
+        "date": "8/19/2026 10:49:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "12.19"
+        "value": "15.18"
       }
     },
     "Pomps Pond @Left": {
       "town": "Andover",
       "rows": [
+        [
+          "8/19/2026 10:48:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
         [
           "8/12/2026 11:18:00 AM",
           "E. Coli",
@@ -789,7 +801,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 11:18:00 AM",
+        "date": "8/19/2026 10:48:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "7.86"
@@ -798,6 +810,12 @@
     "Pomps Pond @Right": {
       "town": "Andover",
       "rows": [
+        [
+          "8/19/2026 10:50:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "8/12/2026 11:20:00 AM",
           "E. Coli",
@@ -860,7 +878,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 11:20:00 AM",
+        "date": "8/19/2026 10:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "7.25"
@@ -1022,6 +1040,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "8/19/2026 11:36:00 AM",
+          "E. Coli",
+          "235",
+          "24.00"
+        ],
+        [
           "8/18/2026 1:33:00 PM",
           "E. Coli",
           "235",
@@ -1167,10 +1191,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 1:33:00 PM",
+        "date": "8/19/2026 11:36:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "24.77"
+        "value": "14.38"
       }
     },
     "Ashfield Park Beach": {
@@ -27867,6 +27891,12 @@
       "town": "Haverhill",
       "rows": [
         [
+          "8/19/2026 9:50:00 AM",
+          "E. Coli",
+          "235",
+          "60.00"
+        ],
+        [
           "8/12/2026 9:40:00 AM",
           "E. Coli",
           "235",
@@ -27934,15 +27964,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 9:40:00 AM",
+        "date": "8/19/2026 9:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "22.47"
+        "value": "32.16"
       }
     },
     "Plugs Pond @Side": {
       "town": "Haverhill",
       "rows": [
+        [
+          "8/19/2026 9:50:00 AM",
+          "E. Coli",
+          "235",
+          "28.00"
+        ],
         [
           "8/12/2026 9:40:00 AM",
           "E. Coli",
@@ -28011,10 +28047,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 9:40:00 AM",
+        "date": "8/19/2026 9:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.52"
+        "value": "17.20"
       }
     },
     "Hingham Town Beach": {
@@ -29847,6 +29883,12 @@
       "town": "Hull",
       "rows": [
         [
+          "8/19/2026 2:17:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/18/2026 8:01:00 AM",
           "Enterococci",
           "104",
@@ -29950,10 +29992,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 8:01:00 AM",
+        "date": "8/19/2026 2:17:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "537.63"
+        "value": "129.50"
       }
     },
     "Clark": {
