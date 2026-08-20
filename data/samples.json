@@ -34781,6 +34781,12 @@
       "town": "Marblehead",
       "rows": [
         [
+          "8/19/2026 8:14:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/12/2026 10:04:00 AM",
           "Enterococci",
           "104",
@@ -34848,7 +34854,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 10:04:00 AM",
+        "date": "8/19/2026 8:14:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "8.27"
@@ -34857,6 +34863,12 @@
     "Devereux": {
       "town": "Marblehead",
       "rows": [
+        [
+          "8/19/2026 7:57:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
         [
           "8/12/2026 9:52:00 AM",
           "Enterococci",
@@ -34925,15 +34937,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 9:52:00 AM",
+        "date": "8/19/2026 7:57:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "8.75"
+        "value": "10.05"
       }
     },
     "Gas House": {
       "town": "Marblehead",
       "rows": [
+        [
+          "8/19/2026 8:18:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/12/2026 10:02:00 AM",
           "Enterococci",
@@ -35008,15 +35026,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 10:02:00 AM",
+        "date": "8/19/2026 8:18:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "8.71"
+        "value": "7.58"
       }
     },
     "Grace Oliver": {
       "town": "Marblehead",
       "rows": [
+        [
+          "8/19/2026 8:26:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/12/2026 10:22:00 AM",
           "Enterococci",
@@ -35115,15 +35139,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 10:22:00 AM",
+        "date": "8/19/2026 8:26:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "15.23"
+        "value": "11.49"
       }
     },
     "Stramski": {
       "town": "Marblehead",
       "rows": [
+        [
+          "8/19/2026 8:34:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/12/2026 10:35:00 AM",
           "Enterococci",
@@ -35192,7 +35222,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 10:35:00 AM",
+        "date": "8/19/2026 8:34:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "8.30"
@@ -57158,6 +57188,12 @@
       "town": "Swampscott",
       "rows": [
         [
+          "8/19/2026 8:35:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "8/12/2026 7:35:00 AM",
           "Enterococci",
           "104",
@@ -57225,15 +57261,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 7:35:00 AM",
+        "date": "8/19/2026 8:35:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "9.85"
+        "value": "12.99"
       }
     },
     "Kings": {
       "town": "Swampscott",
       "rows": [
+        [
+          "8/19/2026 8:25:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/12/2026 8:24:00 AM",
           "Enterococci",
@@ -57314,15 +57356,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 8:24:00 AM",
+        "date": "8/19/2026 8:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "25.22"
+        "value": "15.67"
       }
     },
     "New Ocean/Eisman's": {
       "town": "Swampscott",
       "rows": [
+        [
+          "8/19/2026 8:47:00 AM",
+          "Enterococci",
+          "104",
+          "30.00"
+        ],
         [
           "8/12/2026 8:44:00 AM",
           "Enterococci",
@@ -57391,15 +57439,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 8:44:00 AM",
+        "date": "8/19/2026 8:47:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.00"
+        "value": "14.31"
       }
     },
     "Phillips": {
       "town": "Swampscott",
       "rows": [
+        [
+          "8/19/2026 9:04:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/12/2026 8:57:00 AM",
           "Enterococci",
@@ -57462,15 +57516,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 8:57:00 AM",
+        "date": "8/19/2026 9:04:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "8.27"
+        "value": "9.50"
       }
     },
     "Preston": {
       "town": "Swampscott",
       "rows": [
+        [
+          "8/19/2026 9:17:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/12/2026 9:06:00 AM",
           "Enterococci",
@@ -57533,7 +57593,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 9:06:00 AM",
+        "date": "8/19/2026 9:17:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "10.95"
@@ -57542,6 +57602,12 @@
     "Whales": {
       "town": "Swampscott",
       "rows": [
+        [
+          "8/19/2026 8:41:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/12/2026 8:39:00 AM",
           "Enterococci",
@@ -57610,10 +57676,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 8:39:00 AM",
+        "date": "8/19/2026 8:41:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "13.13"
+        "value": "15.08"
       }
     },
     "Cedar Cove Club": {
@@ -65308,6 +65374,12 @@
       "town": "Winthrop",
       "rows": [
         [
+          "8/19/2026 7:08:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/12/2026 7:02:00 AM",
           "Enterococci",
           "104",
@@ -65375,15 +65447,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 7:02:00 AM",
+        "date": "8/19/2026 7:08:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "32.93"
+        "value": "19.16"
       }
     },
     "Grandview": {
       "town": "Winthrop",
       "rows": [
+        [
+          "8/19/2026 7:16:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/12/2026 7:24:00 AM",
           "Enterococci",
@@ -65446,15 +65524,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 7:24:00 AM",
+        "date": "8/19/2026 7:16:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.74"
+        "value": "5.00"
       }
     },
     "Halford": {
       "town": "Winthrop",
       "rows": [
+        [
+          "8/19/2026 7:28:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/12/2026 8:11:00 AM",
           "Enterococci",
@@ -65517,7 +65601,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 8:11:00 AM",
+        "date": "8/19/2026 7:28:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "10.00"
@@ -65526,6 +65610,12 @@
     "Pico": {
       "town": "Winthrop",
       "rows": [
+        [
+          "8/19/2026 7:38:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/12/2026 7:10:00 AM",
           "Enterococci",
@@ -65594,10 +65684,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 7:10:00 AM",
+        "date": "8/19/2026 7:38:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "36.33"
+        "value": "23.85"
       }
     },
     "Winthrop Beach (DCR)": {
@@ -65699,6 +65789,12 @@
       "town": "Winthrop",
       "rows": [
         [
+          "8/19/2026 7:56:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "8/12/2026 7:35:00 AM",
           "Enterococci",
           "104",
@@ -65760,15 +65856,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 7:35:00 AM",
+        "date": "8/19/2026 7:56:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.05"
+        "value": "11.54"
       }
     },
     "Yerrill Lagoon": {
       "town": "Winthrop",
       "rows": [
+        [
+          "8/19/2026 8:07:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/12/2026 7:58:00 AM",
           "Enterococci",
@@ -65831,10 +65933,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 7:58:00 AM",
+        "date": "8/19/2026 8:07:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.74"
+        "value": "5.00"
       }
     },
     "Bell Pond Beach": {
