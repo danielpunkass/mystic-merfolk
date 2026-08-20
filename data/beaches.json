@@ -13,7 +13,8 @@
     {
       "name": "Glen Devin Condominiums",
       "town": "Amesbury",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Lake Attitash - A.L.S.I.A.",
@@ -235,8 +236,7 @@
     {
       "name": "Brackenbury",
       "town": "Beverly",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Dane Street",
@@ -2103,7 +2103,8 @@
     {
       "name": "Children's",
       "town": "Nantucket",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Cisco",
@@ -3089,8 +3090,7 @@
     {
       "name": "Watsons Pond (DCR)",
       "town": "Taunton",
-      "status": "Closed",
-      "reason": "Bacterial Exceedance"
+      "status": "Open"
     },
     {
       "name": "Beamans Pond - Campground (DCR)",
@@ -3142,7 +3142,8 @@
     {
       "name": "Pearl Hill Pond Beach (DCR)",
       "town": "Townsend",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Bacterial Exceedance"
     },
     {
       "name": "Ballston",
@@ -3497,7 +3498,8 @@
     {
       "name": "Hampton Ponds - Kingsley Beach (DCR)",
       "town": "Westfield",
-      "status": "Open"
+      "status": "Closed",
+      "reason": "Harmful Cyanobacteria Bloom"
     },
     {
       "name": "Hampton Ponds - Lamberts Beach (DCR)",
