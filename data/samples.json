@@ -933,6 +933,12 @@
       "town": "Aquinnah",
       "rows": [
         [
+          "8/18/2026 2:00:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/17/2026 11:21:00 AM",
           "Enterococci",
           "104",
@@ -1000,7 +1006,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 11:21:00 AM",
+        "date": "8/18/2026 2:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "31.46"
@@ -3943,6 +3949,12 @@
       "town": "Bellingham",
       "rows": [
         [
+          "8/18/2026 8:45:00 AM",
+          "E. Coli",
+          "235",
+          "290.90"
+        ],
+        [
           "8/4/2026 8:30:00 AM",
           "E. Coli",
           "235",
@@ -4010,10 +4022,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 8:30:00 AM",
+        "date": "8/18/2026 8:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.36"
+        "value": "19.67"
       }
     },
     "Brackenbury": {
@@ -18064,6 +18076,12 @@
       "town": "Dudley",
       "rows": [
         [
+          "8/17/2026 9:20:00 AM",
+          "E. Coli",
+          "235",
+          "57.30"
+        ],
+        [
           "8/14/2026 4:35:00 PM",
           "E. Coli",
           "235",
@@ -18149,10 +18167,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/14/2026 4:35:00 PM",
+        "date": "8/17/2026 9:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "271.48"
+        "value": "273.31"
       }
     },
     "Duxbury Beach @ Bath House": {
@@ -38009,6 +38027,18 @@
       "town": "Methuen",
       "rows": [
         [
+          "8/13/2026 8:50:00 AM",
+          "E. Coli",
+          "235",
+          "17.50"
+        ],
+        [
+          "8/6/2026 7:15:00 PM",
+          "E. Coli",
+          "235",
+          "17.30"
+        ],
+        [
           "7/31/2026 7:30:00 AM",
           "E. Coli",
           "235",
@@ -38070,10 +38100,10 @@
         ]
       ],
       "geoMean": {
-        "date": "7/31/2026 7:30:00 AM",
+        "date": "8/13/2026 8:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "15.77"
+        "value": "23.62"
       }
     },
     "Camp Avoda": {
@@ -38578,6 +38608,12 @@
       "town": "Monterey",
       "rows": [
         [
+          "8/19/2026 11:13:00 AM",
+          "E. Coli",
+          "235",
+          "101.20"
+        ],
+        [
           "8/12/2026 11:09:00 AM",
           "E. Coli",
           "235",
@@ -38627,10 +38663,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 11:09:00 AM",
+        "date": "8/19/2026 11:13:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.86"
+        "value": "19.43"
       }
     },
     "Black Rock (Nahant)": {
@@ -43554,6 +43590,12 @@
       "town": "Orange",
       "rows": [
         [
+          "8/19/2026 10:37:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "8/13/2026 8:30:00 AM",
           "E. Coli",
           "235",
@@ -43633,10 +43675,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/13/2026 8:30:00 AM",
+        "date": "8/19/2026 10:37:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.51"
+        "value": "4.96"
       }
     },
     "Crystal Lake (Orleans)": {
@@ -56717,6 +56759,12 @@
       "town": "Sturbridge",
       "rows": [
         [
+          "8/17/2026 9:45:00 AM",
+          "E. Coli",
+          "235",
+          "43.70"
+        ],
+        [
           "8/10/2026 7:48:00 AM",
           "E. Coli",
           "235",
@@ -56766,10 +56814,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 7:48:00 AM",
+        "date": "8/17/2026 9:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "76.30"
+        "value": "55.94"
       }
     },
     "Wells State Park - Walker Pond Beach (DCR)": {
@@ -56871,6 +56919,12 @@
       "town": "Sutton",
       "rows": [
         [
+          "8/17/2026 2:05:00 PM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "8/10/2026 1:41:00 PM",
           "E. Coli",
           "235",
@@ -56932,10 +56986,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 1:41:00 PM",
+        "date": "8/17/2026 2:05:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.95"
+        "value": "9.27"
       }
     },
     "Fisherman's": {
@@ -59348,6 +59402,12 @@
       "town": "Tyngsborough",
       "rows": [
         [
+          "8/12/2026 1:40:00 PM",
+          "E. Coli",
+          "235",
+          "196.00"
+        ],
+        [
           "8/5/2026 1:39:00 PM",
           "E. Coli",
           "235",
@@ -59409,10 +59469,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/5/2026 1:39:00 PM",
+        "date": "8/12/2026 1:40:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.20"
+        "value": "11.91"
       }
     },
     "Pout Pond Beach": {
@@ -59459,6 +59519,12 @@
     "Sichols": {
       "town": "Wales",
       "rows": [
+        [
+          "8/17/2026 8:52:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
         [
           "8/10/2026 9:06:00 AM",
           "E. Coli",
@@ -59539,15 +59605,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 9:06:00 AM",
+        "date": "8/17/2026 8:52:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.28"
+        "value": "6.86"
       }
     },
     "Wales Town Beach": {
       "town": "Wales",
       "rows": [
+        [
+          "8/17/2026 9:16:00 AM",
+          "E. Coli",
+          "235",
+          "0.50"
+        ],
         [
           "8/10/2026 9:29:00 AM",
           "E. Coli",
@@ -59628,10 +59700,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 9:29:00 AM",
+        "date": "8/17/2026 9:16:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.31"
+        "value": "4.15"
       }
     },
     "Blackmore Pond": {
@@ -63679,6 +63751,12 @@
       "town": "West Tisbury",
       "rows": [
         [
+          "8/18/2026 9:10:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
+        [
           "8/10/2026 10:16:00 AM",
           "Enterococci",
           "61",
@@ -63746,10 +63824,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:16:00 AM",
+        "date": "8/18/2026 9:10:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "2.30"
+        "value": "1.32"
       }
     },
     "Lake Chauncy Beach": {
