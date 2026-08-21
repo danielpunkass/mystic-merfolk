@@ -40919,6 +40919,12 @@
       "town": "Nantucket",
       "rows": [
         [
+          "8/20/2026 8:36:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "8/19/2026 9:27:00 AM",
           "Enterococci",
           "104",
@@ -40998,10 +41004,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 9:27:00 AM",
+        "date": "8/20/2026 8:36:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "35.68"
+        "value": "31.06"
       }
     },
     "Washington Street": {
@@ -56648,6 +56654,12 @@
       "town": "Southwick",
       "rows": [
         [
+          "8/17/2026 1:58:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/11/2026 1:25:00 PM",
           "E. Coli",
           "235",
@@ -56697,10 +56709,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 1:25:00 PM",
+        "date": "8/17/2026 1:58:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "28.32"
+        "value": "18.46"
       }
     },
     "Luther Hill Park": {
@@ -60440,6 +60452,12 @@
       "town": "Wareham",
       "rows": [
         [
+          "8/20/2026 8:24:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "8/19/2026 8:20:00 AM",
           "Enterococci",
           "104",
@@ -60519,10 +60537,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 8:20:00 AM",
+        "date": "8/20/2026 8:24:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "26.53"
+        "value": "30.48"
       }
     },
     "Forbes": {
