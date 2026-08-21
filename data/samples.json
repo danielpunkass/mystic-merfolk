@@ -14205,6 +14205,12 @@
       "town": "Concord",
       "rows": [
         [
+          "8/18/2026 2:05:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "8/11/2026 2:03:00 PM",
           "E. Coli",
           "235",
@@ -14278,10 +14284,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 2:03:00 PM",
+        "date": "8/18/2026 2:05:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.05"
+        "value": "2.50"
       }
     },
     "Conway Swimming Pool": {
