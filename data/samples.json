@@ -1201,6 +1201,12 @@
       "town": "Ashfield",
       "rows": [
         [
+          "8/17/2026 8:00:00 AM",
+          "E. Coli",
+          "235",
+          "9.00"
+        ],
+        [
           "8/10/2026 8:00:00 AM",
           "E. Coli",
           "235",
@@ -1280,10 +1286,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 8:00:00 AM",
+        "date": "8/17/2026 8:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.74"
+        "value": "3.37"
       }
     },
     "Ashland Reservoir-Main Beach (DCR)": {
@@ -14294,6 +14300,12 @@
       "town": "Conway",
       "rows": [
         [
+          "8/19/2026 9:02:00 AM",
+          "E. Coli",
+          "235",
+          "18.00"
+        ],
+        [
           "8/10/2026 10:00:00 AM",
           "E. Coli",
           "235",
@@ -14361,10 +14373,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:00:00 AM",
+        "date": "8/19/2026 9:02:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "26.96"
+        "value": "21.41"
       }
     },
     "Sandy Beach (Danvers)": {
@@ -25867,6 +25879,12 @@
       "town": "Greenfield",
       "rows": [
         [
+          "8/18/2026 9:00:00 AM",
+          "E. Coli",
+          "235",
+          "84.00"
+        ],
+        [
           "8/11/2026 9:35:00 AM",
           "E. Coli",
           "235",
@@ -25940,10 +25958,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 9:35:00 AM",
+        "date": "8/18/2026 9:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "102.41"
+        "value": "100.34"
       }
     },
     "Groton Town Beach (Sargisson Beach)": {
@@ -43425,6 +43443,12 @@
       "town": "Northampton",
       "rows": [
         [
+          "8/18/2026 10:30:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
+        [
           "8/10/2026 10:52:00 AM",
           "E. Coli",
           "235",
@@ -43510,10 +43534,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:52:00 AM",
+        "date": "8/18/2026 10:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "21.57"
+        "value": "25.91"
       }
     },
     "Eastville Town Beach - Harbor side": {
@@ -65313,6 +65337,12 @@
       "town": "Whately",
       "rows": [
         [
+          "8/17/2026 11:22:00 AM",
+          "E. Coli",
+          "235",
+          "4.00"
+        ],
+        [
           "8/10/2026 10:15:00 AM",
           "E. Coli",
           "235",
@@ -65392,10 +65422,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 10:15:00 AM",
+        "date": "8/17/2026 11:22:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.81"
+        "value": "13.25"
       }
     },
     "Margaret Lindley Park": {
