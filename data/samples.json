@@ -3309,7 +3309,7 @@
       "town": "Barnstable",
       "rows": [
         [
-          "8/17/2026 2:00:00 AM",
+          "8/17/2026 2:00:00 PM",
           "Enterococci",
           "104",
           "5.00"
@@ -3382,7 +3382,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 2:00:00 AM",
+        "date": "8/17/2026 2:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "6.60"
@@ -3487,7 +3487,7 @@
       "town": "Barnstable",
       "rows": [
         [
-          "8/17/2026 1:25:00 AM",
+          "8/17/2026 1:25:00 PM",
           "Enterococci",
           "104",
           "5.00"
@@ -3572,7 +3572,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 1:25:00 AM",
+        "date": "8/17/2026 1:25:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -11146,7 +11146,7 @@
       "town": "Brewster",
       "rows": [
         [
-          "8/17/2026 2:26:00 PM",
+          "8/17/2026 3:26:00 PM",
           "Enterococci",
           "104",
           "5.00"
@@ -11231,7 +11231,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 2:26:00 PM",
+        "date": "8/17/2026 3:26:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "10.37"
@@ -44975,6 +44975,12 @@
       "town": "Oxford",
       "rows": [
         [
+          "8/18/2026 11:20:00 AM",
+          "E. Coli",
+          "235",
+          "224.70"
+        ],
+        [
           "8/12/2026 12:30:00 PM",
           "E. Coli",
           "235",
@@ -45024,10 +45030,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/12/2026 12:30:00 PM",
+        "date": "8/18/2026 11:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "40.54"
+        "value": "46.13"
       }
     },
     "Lulu Pond Beach (DCR)": {
