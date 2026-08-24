@@ -62645,6 +62645,12 @@
       "town": "Webster",
       "rows": [
         [
+          "8/18/2026 1:11:00 PM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/10/2026 2:12:00 PM",
           "E. Coli",
           "235",
@@ -62724,15 +62730,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 2:12:00 PM",
+        "date": "8/18/2026 1:11:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.27"
+        "value": "4.69"
       }
     },
     "Memorial Beach (Webster) @Location 1": {
       "town": "Webster",
       "rows": [
+        [
+          "8/18/2026 12:36:00 PM",
+          "E. Coli",
+          "235",
+          "228.20"
+        ],
         [
           "8/10/2026 1:37:00 PM",
           "E. Coli",
@@ -62819,10 +62831,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 1:37:00 PM",
+        "date": "8/18/2026 12:36:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "15.89"
+        "value": "30.61"
       }
     },
     "Burton Baker": {
