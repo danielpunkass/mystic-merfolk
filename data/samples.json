@@ -31078,6 +31078,12 @@
       "town": "Lakeville",
       "rows": [
         [
+          "8/19/2026 8:58:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
+        [
           "8/11/2026 9:05:00 AM",
           "E. Coli",
           "235",
@@ -31133,10 +31139,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 9:05:00 AM",
+        "date": "8/19/2026 8:58:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.60"
+        "value": "7.58"
       }
     },
     "Lancaster Town Beach": {
