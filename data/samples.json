@@ -24974,6 +24974,12 @@
       "town": "Gloucester",
       "rows": [
         [
+          "8/24/2026 10:50:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/17/2026 11:45:00 AM",
           "Enterococci",
           "104",
@@ -25065,7 +25071,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 11:45:00 AM",
+        "date": "8/24/2026 10:50:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "11.20"
@@ -25074,6 +25080,12 @@
     "Good Harbor": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/24/2026 2:15:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/17/2026 1:30:00 PM",
           "Enterococci",
@@ -25160,7 +25172,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 1:30:00 PM",
+        "date": "8/24/2026 2:15:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "6.60"
@@ -25169,6 +25181,12 @@
     "Good Harbor Creek": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/24/2026 12:10:00 PM",
+          "Enterococci",
+          "104",
+          "86.00"
+        ],
         [
           "8/17/2026 1:15:00 PM",
           "Enterococci",
@@ -25279,15 +25297,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 1:15:00 PM",
+        "date": "8/24/2026 12:10:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.58"
+        "value": "13.39"
       }
     },
     "Half Moon": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/24/2026 1:00:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/17/2026 12:00:00 PM",
           "Enterococci",
@@ -25374,15 +25398,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 12:00:00 PM",
+        "date": "8/24/2026 1:00:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.58"
+        "value": "5.74"
       }
     },
     "Niles": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/24/2026 12:25:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/17/2026 12:45:00 PM",
           "Enterococci",
@@ -25475,7 +25505,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 12:45:00 PM",
+        "date": "8/24/2026 12:25:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "6.60"
@@ -25484,6 +25514,12 @@
     "Pavilion Beach": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/24/2026 12:40:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/17/2026 1:45:00 PM",
           "Enterococci",
@@ -25576,7 +25612,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 1:45:00 PM",
+        "date": "8/24/2026 12:40:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "24.62"
@@ -25585,6 +25621,12 @@
     "Plum Cove": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/24/2026 1:45:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/17/2026 2:25:00 PM",
           "Enterococci",
@@ -25689,7 +25731,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 2:25:00 PM",
+        "date": "8/24/2026 1:45:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.58"
@@ -25698,6 +25740,12 @@
     "Wingaersheek": {
       "town": "Gloucester",
       "rows": [
+        [
+          "8/24/2026 1:30:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/17/2026 12:15:00 PM",
           "Enterococci",
@@ -25796,7 +25844,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 12:15:00 PM",
+        "date": "8/24/2026 1:30:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "8.30"
@@ -26411,6 +26459,12 @@
       "town": "Halifax",
       "rows": [
         [
+          "8/18/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "8/11/2026 10:10:00 AM",
           "E. Coli",
           "235",
@@ -26490,7 +26544,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 10:10:00 AM",
+        "date": "8/18/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "5.19"
@@ -26499,6 +26553,12 @@
     "Lingan Street": {
       "town": "Halifax",
       "rows": [
+        [
+          "8/18/2026 9:50:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "8/11/2026 10:00:00 AM",
           "E. Coli",
@@ -26579,7 +26639,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 10:00:00 AM",
+        "date": "8/18/2026 9:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "20.28"
@@ -36920,6 +36980,12 @@
       "town": "Marlborough",
       "rows": [
         [
+          "8/24/2026 10:35:00 AM",
+          "E. Coli",
+          "235",
+          "57.60"
+        ],
+        [
           "8/17/2026 11:05:00 AM",
           "E. Coli",
           "235",
@@ -37005,15 +37071,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 11:05:00 AM",
+        "date": "8/24/2026 10:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.37"
+        "value": "7.83"
       }
     },
     "Memorial Beach (Marlborough) @Middle": {
       "town": "Marlborough",
       "rows": [
+        [
+          "8/24/2026 10:10:00 AM",
+          "E. Coli",
+          "235",
+          "29.20"
+        ],
         [
           "8/17/2026 10:40:00 AM",
           "E. Coli",
@@ -37100,15 +37172,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 10:40:00 AM",
+        "date": "8/24/2026 10:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.44"
+        "value": "8.05"
       }
     },
     "Richard P. Sharon Beach": {
       "town": "Marlborough",
       "rows": [
+        [
+          "8/24/2026 10:30:00 AM",
+          "E. Coli",
+          "235",
+          "65.00"
+        ],
         [
           "8/17/2026 11:00:00 AM",
           "E. Coli",
@@ -37195,10 +37273,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 11:00:00 AM",
+        "date": "8/24/2026 10:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.60"
+        "value": "4.78"
       }
     },
     "Bluefish Cove Beach": {
@@ -39705,6 +39783,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "8/24/2026 7:30:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "8/17/2026 7:15:00 AM",
           "Enterococci",
           "104",
@@ -39802,15 +39886,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 7:15:00 AM",
+        "date": "8/24/2026 7:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.58"
+        "value": "8.71"
       }
     },
     "Forty Steps Beach": {
       "town": "Nahant",
       "rows": [
+        [
+          "8/24/2026 8:00:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/17/2026 7:45:00 AM",
           "Enterococci",
@@ -39897,7 +39987,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 7:45:00 AM",
+        "date": "8/24/2026 8:00:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -40359,6 +40449,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "8/24/2026 7:45:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "8/17/2026 7:30:00 AM",
           "Enterococci",
           "104",
@@ -40444,15 +40540,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 7:30:00 AM",
+        "date": "8/24/2026 7:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "8.71"
+        "value": "11.49"
       }
     },
     "Tudor": {
       "town": "Nahant",
       "rows": [
+        [
+          "8/24/2026 8:15:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/17/2026 8:00:00 AM",
           "Enterococci",
@@ -40539,10 +40641,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:00:00 AM",
+        "date": "8/24/2026 8:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.00"
+        "value": "5.74"
       }
     },
     "40th Pole": {
