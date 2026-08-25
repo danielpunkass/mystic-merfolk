@@ -35760,6 +35760,12 @@
       "town": "Marion",
       "rows": [
         [
+          "8/24/2026 7:44:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
+        [
           "8/17/2026 7:58:00 AM",
           "Enterococci",
           "104",
@@ -35821,15 +35827,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 7:58:00 AM",
+        "date": "8/24/2026 7:44:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.76"
+        "value": "0.87"
       }
     },
     "Converse Point": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 7:15:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/17/2026 7:34:00 AM",
           "Enterococci",
@@ -35904,7 +35916,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 7:34:00 AM",
+        "date": "8/24/2026 7:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "0.66"
@@ -35913,6 +35925,12 @@
     "Dexter Lane": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 8:27:00 AM",
+          "Enterococci",
+          "104",
+          "3.00"
+        ],
         [
           "8/17/2026 8:40:00 AM",
           "Enterococci",
@@ -35999,15 +36017,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:40:00 AM",
+        "date": "8/24/2026 8:27:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.96"
+        "value": "1.37"
       }
     },
     "Island Wharf": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 7:52:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/17/2026 8:06:00 AM",
           "Enterococci",
@@ -36076,7 +36100,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:06:00 AM",
+        "date": "8/24/2026 7:52:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "0.57"
@@ -36085,6 +36109,12 @@
     "Oakdale Avenue": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 8:11:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/17/2026 8:28:00 AM",
           "Enterococci",
@@ -36153,15 +36183,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:28:00 AM",
+        "date": "8/24/2026 8:11:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "2.35"
+        "value": "3.73"
       }
     },
     "Piney Point": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 8:38:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/17/2026 8:53:00 AM",
           "Enterococci",
@@ -36230,15 +36266,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:53:00 AM",
+        "date": "8/24/2026 8:38:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.68"
+        "value": "1.18"
       }
     },
     "Planting Island": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 8:46:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "8/17/2026 9:06:00 AM",
           "Enterococci",
@@ -36307,7 +36349,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 9:06:00 AM",
+        "date": "8/24/2026 8:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "1.50"
@@ -36316,6 +36358,12 @@
     "Silver Shell @North Jetty": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 7:32:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "8/17/2026 7:46:00 AM",
           "Enterococci",
@@ -36390,7 +36438,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 7:46:00 AM",
+        "date": "8/24/2026 7:32:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "1.00"
@@ -36399,6 +36447,12 @@
     "Silver Shell @South Jetty": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 7:27:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "8/17/2026 7:42:00 AM",
           "Enterococci",
@@ -36473,15 +36527,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 7:42:00 AM",
+        "date": "8/24/2026 7:27:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "0.76"
+        "value": "0.66"
       }
     },
     "Tabor Academy @North": {
       "town": "Marion",
       "rows": [
+        [
+          "8/24/2026 7:59:00 AM",
+          "Enterococci",
+          "61",
+          "0.50"
+        ],
         [
           "8/17/2026 8:17:00 AM",
           "Enterococci",
@@ -36556,10 +36616,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:17:00 AM",
+        "date": "8/24/2026 7:59:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "0.87"
+        "value": "0.66"
       }
     },
     "Henry F Collins Beach": {
@@ -52677,6 +52737,12 @@
       "town": "Rochester",
       "rows": [
         [
+          "8/24/2026 7:50:00 AM",
+          "Enterococci",
+          "61",
+          "4.00"
+        ],
+        [
           "8/17/2026 7:58:00 AM",
           "Enterococci",
           "61",
@@ -52750,10 +52816,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 7:58:00 AM",
+        "date": "8/24/2026 7:50:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "1.89"
+        "value": "2.49"
       }
     },
     "Back Beach": {
@@ -57157,6 +57223,12 @@
       "town": "Spencer",
       "rows": [
         [
+          "8/17/2026 11:59:00 AM",
+          "E. Coli",
+          "235",
+          "7.50"
+        ],
+        [
           "8/10/2026 12:16:00 PM",
           "E. Coli",
           "235",
@@ -57218,10 +57290,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/10/2026 12:16:00 PM",
+        "date": "8/17/2026 11:59:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "21.80"
+        "value": "21.27"
       }
     },
     "Bass Pond @Right": {
