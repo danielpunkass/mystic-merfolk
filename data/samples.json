@@ -39427,6 +39427,12 @@
       "town": "Middleton",
       "rows": [
         [
+          "8/24/2026 8:02:00 AM",
+          "E. Coli",
+          "235",
+          "57.60"
+        ],
+        [
           "8/17/2026 8:08:00 AM",
           "E. Coli",
           "235",
@@ -39512,10 +39518,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:08:00 AM",
+        "date": "8/24/2026 8:02:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "26.47"
+        "value": "29.65"
       }
     },
     "Houghton's Pond @ Bathhouse (DCR)": {
@@ -57534,6 +57540,12 @@
       "town": "Sherborn",
       "rows": [
         [
+          "8/24/2026 10:10:00 AM",
+          "E. Coli",
+          "235",
+          "36.00"
+        ],
+        [
           "8/17/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -57625,10 +57637,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 9:30:00 AM",
+        "date": "8/24/2026 10:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.25"
+        "value": "10.76"
       }
     },
     "Sunset Beach": {
@@ -63409,6 +63421,12 @@
       "town": "Wayland",
       "rows": [
         [
+          "8/24/2026 10:30:00 AM",
+          "E. Coli",
+          "235",
+          "72.00"
+        ],
+        [
           "8/17/2026 10:55:00 AM",
           "E. Coli",
           "235",
@@ -63494,15 +63512,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 10:55:00 AM",
+        "date": "8/24/2026 10:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "15.96"
+        "value": "27.22"
       }
     },
     "Wayland Town Beach @Right": {
       "town": "Wayland",
       "rows": [
+        [
+          "8/24/2026 10:40:00 AM",
+          "E. Coli",
+          "235",
+          "228.00"
+        ],
         [
           "8/17/2026 10:50:00 AM",
           "E. Coli",
@@ -63589,10 +63613,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 10:50:00 AM",
+        "date": "8/24/2026 10:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.45"
+        "value": "23.51"
       }
     },
     "Lakeside Boat Ramp": {
