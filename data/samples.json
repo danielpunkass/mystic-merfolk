@@ -1237,6 +1237,12 @@
       "town": "Ashfield",
       "rows": [
         [
+          "8/24/2026 8:10:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/17/2026 8:00:00 AM",
           "E. Coli",
           "235",
@@ -1322,10 +1328,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:00:00 AM",
+        "date": "8/24/2026 8:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "3.37"
+        "value": "3.87"
       }
     },
     "Ashland Reservoir-Main Beach (DCR)": {
@@ -12196,6 +12202,12 @@
       "town": "Brookfield",
       "rows": [
         [
+          "8/24/2026 10:37:00 AM",
+          "E. Coli",
+          "235",
+          "13.10"
+        ],
+        [
           "8/17/2026 10:36:00 AM",
           "E. Coli",
           "235",
@@ -12281,10 +12293,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 10:36:00 AM",
+        "date": "8/24/2026 10:37:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.63"
+        "value": "9.43"
       }
     },
     "Cold River Pool (DCR)": {
@@ -14996,6 +15008,12 @@
       "town": "Conway",
       "rows": [
         [
+          "8/24/2026 11:06:00 AM",
+          "E. Coli",
+          "235",
+          "7.00"
+        ],
+        [
           "8/19/2026 9:02:00 AM",
           "E. Coli",
           "235",
@@ -15069,10 +15087,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 9:02:00 AM",
+        "date": "8/24/2026 11:06:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "21.41"
+        "value": "17.19"
       }
     },
     "Sandy Beach (Danvers)": {
@@ -27037,6 +27055,12 @@
       "town": "Greenfield",
       "rows": [
         [
+          "8/25/2026 11:45:00 AM",
+          "E. Coli",
+          "235",
+          "65.00"
+        ],
+        [
           "8/18/2026 9:00:00 AM",
           "E. Coli",
           "235",
@@ -27116,10 +27140,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 9:00:00 AM",
+        "date": "8/25/2026 11:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "100.34"
+        "value": "87.22"
       }
     },
     "Groton Town Beach (Sargisson Beach)": {
@@ -30078,6 +30102,12 @@
       "town": "Hudson",
       "rows": [
         [
+          "8/25/2026 4:16:00 PM",
+          "E. Coli",
+          "235",
+          "17.30"
+        ],
+        [
           "8/18/2026 9:30:00 AM",
           "E. Coli",
           "235",
@@ -30163,10 +30193,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 9:30:00 AM",
+        "date": "8/25/2026 4:16:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.18"
+        "value": "11.31"
       }
     },
     "A Street Bay Side": {
