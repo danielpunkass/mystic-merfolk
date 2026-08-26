@@ -18537,6 +18537,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "8/20/2026 8:43:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "8/13/2026 8:18:00 AM",
           "E. Coli",
           "235",
@@ -18610,15 +18616,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/13/2026 8:18:00 AM",
+        "date": "8/20/2026 8:43:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.81"
+        "value": "2.08"
       }
     },
     "Lake Manchaug Camping": {
       "town": "Douglas",
       "rows": [
+        [
+          "8/20/2026 8:57:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
         [
           "8/13/2026 8:29:00 AM",
           "E. Coli",
@@ -18699,10 +18711,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/13/2026 8:29:00 AM",
+        "date": "8/20/2026 8:57:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.86"
+        "value": "11.84"
       }
     },
     "Wallum Lake (DCR)": {
@@ -18804,6 +18816,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "8/20/2026 8:57:00 AM",
+          "E. Coli",
+          "235",
+          "0.50"
+        ],
+        [
           "8/13/2026 8:05:00 AM",
           "E. Coli",
           "235",
@@ -18883,10 +18901,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/13/2026 8:05:00 AM",
+        "date": "8/20/2026 8:57:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.22"
+        "value": "1.68"
       }
     },
     "Mascuppic": {
@@ -32256,6 +32274,12 @@
       "town": "Lenox",
       "rows": [
         [
+          "8/17/2026 11:26:00 AM",
+          "E. Coli",
+          "235",
+          "3.00"
+        ],
+        [
           "8/4/2026 10:24:00 AM",
           "E. Coli",
           "235",
@@ -32317,10 +32341,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/4/2026 10:24:00 AM",
+        "date": "8/17/2026 11:26:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.43"
+        "value": "1.78"
       }
     },
     "Old Reservoir Swim Area  #1": {
