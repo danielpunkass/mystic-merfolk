@@ -24753,6 +24753,12 @@
       "town": "Framingham",
       "rows": [
         [
+          "8/24/2026 11:10:00 AM",
+          "E. Coli",
+          "235",
+          "60.00"
+        ],
+        [
           "8/17/2026 4:52:00 PM",
           "E. Coli",
           "235",
@@ -24838,15 +24844,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 4:52:00 PM",
+        "date": "8/24/2026 11:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "47.96"
+        "value": "55.85"
       }
     },
     "Saxonville Beach": {
       "town": "Framingham",
       "rows": [
+        [
+          "8/24/2026 11:43:00 AM",
+          "E. Coli",
+          "235",
+          "144.00"
+        ],
         [
           "8/17/2026 4:30:00 PM",
           "E. Coli",
@@ -24933,15 +24945,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 4:30:00 PM",
+        "date": "8/24/2026 11:43:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "23.42"
+        "value": "45.87"
       }
     },
     "Waushakum Beach": {
       "town": "Framingham",
       "rows": [
+        [
+          "8/24/2026 10:55:00 AM",
+          "E. Coli",
+          "235",
+          "132.00"
+        ],
         [
           "8/17/2026 5:08:00 PM",
           "E. Coli",
@@ -25028,10 +25046,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 5:08:00 PM",
+        "date": "8/24/2026 10:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "38.73"
+        "value": "74.53"
       }
     },
     "Chilson Beach": {
@@ -29320,6 +29338,12 @@
       "town": "Holliston",
       "rows": [
         [
+          "8/24/2026 8:11:00 AM",
+          "E. Coli",
+          "235",
+          "68.00"
+        ],
+        [
           "8/17/2026 8:29:00 AM",
           "E. Coli",
           "235",
@@ -29405,15 +29429,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:29:00 AM",
+        "date": "8/24/2026 8:11:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.23"
+        "value": "10.12"
       }
     },
     "Stoddard Park": {
       "town": "Holliston",
       "rows": [
+        [
+          "8/24/2026 8:00:00 AM",
+          "E. Coli",
+          "235",
+          "92.00"
+        ],
         [
           "8/17/2026 8:17:00 AM",
           "E. Coli",
@@ -29500,10 +29530,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 8:17:00 AM",
+        "date": "8/24/2026 8:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.99"
+        "value": "19.67"
       }
     },
     "Sandy Beach (Hopkinton) @Middle": {
