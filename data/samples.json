@@ -68451,6 +68451,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/25/2026 10:26:00 AM",
+          "E. Coli",
+          "235",
+          "5.20"
+        ],
+        [
           "8/17/2026 9:53:00 AM",
           "E. Coli",
           "235",
@@ -68500,15 +68506,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 9:53:00 AM",
+        "date": "8/25/2026 10:26:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.65"
+        "value": "5.22"
       }
     },
     "Coes Pond Beach (Mill St.)": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/25/2026 11:21:00 AM",
+          "E. Coli",
+          "235",
+          "191.80"
+        ],
         [
           "8/17/2026 10:41:00 AM",
           "E. Coli",
@@ -68565,15 +68577,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 10:41:00 AM",
+        "date": "8/25/2026 11:21:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "86.51"
+        "value": "103.20"
       }
     },
     "Indian Lake Public Beach (Sherburne Ave)": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/25/2026 10:45:00 AM",
+          "E. Coli",
+          "235",
+          "8.50"
+        ],
         [
           "8/17/2026 10:09:00 AM",
           "E. Coli",
@@ -68630,10 +68648,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 10:09:00 AM",
+        "date": "8/25/2026 10:45:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "44.10"
+        "value": "25.35"
       }
     },
     "Lake Quinsigamond-Lake Park Beach (DCR)": {
@@ -68854,6 +68872,12 @@
       "town": "Worcester",
       "rows": [
         [
+          "8/25/2026 10:51:00 AM",
+          "E. Coli",
+          "235",
+          "151.50"
+        ],
+        [
           "8/17/2026 10:20:00 AM",
           "E. Coli",
           "235",
@@ -68903,15 +68927,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 10:20:00 AM",
+        "date": "8/25/2026 10:51:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "34.48"
+        "value": "53.47"
       }
     },
     "Smith Pond": {
       "town": "Worcester",
       "rows": [
+        [
+          "8/25/2026 11:54:00 AM",
+          "E. Coli",
+          "235",
+          "104.60"
+        ],
         [
           "8/17/2026 10:55:00 AM",
           "E. Coli",
@@ -68998,10 +69028,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 10:55:00 AM",
+        "date": "8/25/2026 11:54:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "36.87"
+        "value": "34.24"
       }
     },
     "Sweatt Beach": {
