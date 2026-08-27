@@ -1076,6 +1076,12 @@
       "town": "Arlington",
       "rows": [
         [
+          "8/25/2026 2:25:00 PM",
+          "E. Coli",
+          "235",
+          "15.00"
+        ],
+        [
           "8/19/2026 11:36:00 AM",
           "E. Coli",
           "235",
@@ -1227,10 +1233,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 11:36:00 AM",
+        "date": "8/25/2026 2:25:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.38"
+        "value": "8.91"
       }
     },
     "Ashfield Park Beach": {
@@ -40453,6 +40459,12 @@
       "town": "Medford",
       "rows": [
         [
+          "8/25/2026 1:20:00 PM",
+          "E. Coli",
+          "235",
+          "36.00"
+        ],
+        [
           "8/18/2026 12:38:00 PM",
           "E. Coli",
           "235",
@@ -40520,15 +40532,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 12:38:00 PM",
+        "date": "8/25/2026 1:20:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.75"
+        "value": "25.14"
       }
     },
     "Wrights Pond @Shallow End": {
       "town": "Medford",
       "rows": [
+        [
+          "8/25/2026 1:19:00 PM",
+          "E. Coli",
+          "235",
+          "44.00"
+        ],
         [
           "8/18/2026 12:37:00 PM",
           "E. Coli",
@@ -40597,10 +40615,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 12:37:00 PM",
+        "date": "8/25/2026 1:19:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "23.09"
+        "value": "35.67"
       }
     },
     "Forest Lake: Swimming Beach": {
