@@ -35816,6 +35816,12 @@
       "town": "Lynn",
       "rows": [
         [
+          "8/26/2026 3:52:00 PM",
+          "Enterococci",
+          "104",
+          "295.00"
+        ],
+        [
           "8/25/2026 9:51:00 AM",
           "Enterococci",
           "104",
@@ -35931,10 +35937,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 9:51:00 AM",
+        "date": "8/26/2026 3:52:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "103.15"
+        "value": "101.62"
       }
     },
     "Stacey's Brook Outfall (No Swimming) (DCR)": {
@@ -41994,6 +42000,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "8/26/2026 3:43:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "8/25/2026 8:25:00 AM",
           "Enterococci",
           "61",
@@ -42103,7 +42115,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:25:00 AM",
+        "date": "8/26/2026 3:43:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "45.84"
@@ -70115,6 +70127,12 @@
       "town": "Winchester",
       "rows": [
         [
+          "8/26/2026 2:37:00 PM",
+          "Enterococci",
+          "61",
+          "5.10"
+        ],
+        [
           "8/25/2026 7:28:00 AM",
           "Enterococci",
           "61",
@@ -70230,10 +70248,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 7:28:00 AM",
+        "date": "8/26/2026 2:37:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "79.49"
+        "value": "39.31"
       }
     },
     "Donovans": {
