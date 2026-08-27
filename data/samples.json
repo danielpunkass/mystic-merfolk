@@ -46123,6 +46123,12 @@
       "town": "Oak Bluffs",
       "rows": [
         [
+          "8/25/2026 9:55:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/24/2026 5:10:00 AM",
           "Enterococci",
           "104",
@@ -46202,7 +46208,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 5:10:00 AM",
+        "date": "8/25/2026 9:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "19.34"
@@ -62338,6 +62344,12 @@
       "town": "Tisbury",
       "rows": [
         [
+          "8/25/2026 11:33:00 AM",
+          "Enterococci",
+          "104",
+          "51.00"
+        ],
+        [
           "8/24/2026 8:30:00 AM",
           "Enterococci",
           "104",
@@ -62423,10 +62435,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:30:00 AM",
+        "date": "8/25/2026 11:33:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "17.96"
+        "value": "24.88"
       }
     },
     "Owen Park": {
@@ -67954,6 +67966,12 @@
       "town": "West Tisbury",
       "rows": [
         [
+          "8/25/2026 2:11:00 PM",
+          "Enterococci",
+          "61",
+          "1.00"
+        ],
+        [
           "8/17/2026 1:24:00 PM",
           "Enterococci",
           "61",
@@ -68021,15 +68039,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 1:24:00 PM",
+        "date": "8/25/2026 2:11:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "0.57"
+        "value": "0.66"
       }
     },
     "Long Point (Ocean) @Central": {
       "town": "West Tisbury",
       "rows": [
+        [
+          "8/25/2026 2:07:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "8/17/2026 1:29:00 PM",
           "Enterococci",
@@ -68098,7 +68122,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/17/2026 1:29:00 PM",
+        "date": "8/25/2026 2:07:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "7.92"
