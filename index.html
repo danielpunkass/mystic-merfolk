@@ -71,28 +71,33 @@
             text-decoration: underline;
         }
 
-        /* Language switcher. Lives outside .header so it escapes the gradient
-           text-fill effect that would otherwise render its label transparent. */
+        /* Language switcher — footer chrome, deliberately quiet. Typography
+           matches .last-updated so the two read as one metadata block. */
         .lang-switcher {
-            text-align: center;
-            margin: -1rem 0 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 0.5rem;
+            margin-bottom: 2rem;
             color: #64748b;
             font-size: 0.9rem;
         }
 
         .lang-switcher select {
             font: inherit;
-            color: #0369a1;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid #bae6fd;
+            color: #475569;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
-            padding: 0.3rem 0.6rem;
+            padding: 0.25rem 0.5rem;
             cursor: pointer;
+        }
+
+        .lang-switcher select:hover,
+        .lang-switcher select:focus {
+            color: #0369a1;
+            border-color: #bae6fd;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .card {
@@ -796,11 +801,6 @@
             <!-- <div class="faq-link"><a href="/faq/" data-i18n="faq.link">🛟 Swimming Safety FAQ</a></div> -->
         </div>
 
-        <div class="lang-switcher">
-            <label for="lang-select" data-i18n="lang.label">Language</label>
-            <select id="lang-select" data-i18n-attr="aria-label:lang.label"></select>
-        </div>
-
         <div class="change-beach-row" id="change-beach-row" style="display: none;">
             <nav class="recent-beaches" id="recent-beaches" aria-label="Recently viewed beaches" data-i18n-attr="aria-label:nav.recentAria"></nav>
         </div>
@@ -931,6 +931,14 @@
             <div id="debug-status" class="debug-status">
                 Debug panel loaded. Current configuration will be displayed here.
             </div>
+        </div>
+
+        <!-- Language is a set-once preference (it persists in a cookie), not
+             something visitors toggle, so it sits at the foot of the page with
+             the sync metadata rather than competing with the status card. -->
+        <div class="lang-switcher">
+            <label for="lang-select" data-i18n="lang.label">Language</label>
+            <select id="lang-select" data-i18n-attr="aria-label:lang.label"></select>
         </div>
     </div>
 

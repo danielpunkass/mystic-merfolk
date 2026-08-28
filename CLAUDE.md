@@ -264,11 +264,16 @@ tag onto a catalog, in this order:
    `pt-BR`, which is far closer than dropping to English.
 
 Anything unmatched (`ja`) falls back to English rather than half-translating.
-Switching via the header `<select>` re-renders in place — no
-reload, so the visitor keeps their beach, scroll position, and any revealed
-historical card — writes the cookie, and rewrites `?lang=` **only if the URL
-already had one** (otherwise a reload of a shared link would snap back to the
-sender's language, and clean URLs stay clean).
+
+The `<select>` lives at the **foot of the page**, as quiet chrome beside the
+sync metadata (`.last-updated` on the dashboard, `.footer-note` on the FAQ) —
+language is a set-once preference that persists in a cookie, not something
+visitors toggle, so it doesn't earn header space above the status card.
+Switching re-renders in place — no reload, so the visitor keeps their beach,
+scroll position, and any revealed historical card — writes the cookie, and
+rewrites `?lang=` **only if the URL already had one** (otherwise a reload of a
+shared link would snap back to the sender's language, and clean URLs stay
+clean).
 
 **Where the strings live:**
 

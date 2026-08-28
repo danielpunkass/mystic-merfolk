@@ -58,6 +58,7 @@
             text-decoration: underline;
         }
 
+        /* Footer chrome, deliberately quiet — matches index.html. */
         .lang-switcher {
             display: flex;
             justify-content: center;
@@ -70,13 +71,19 @@
 
         .lang-switcher select {
             font: inherit;
-            color: #0369a1;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid #bae6fd;
+            color: #475569;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
-            padding: 0.3rem 0.6rem;
+            padding: 0.25rem 0.5rem;
             cursor: pointer;
+        }
+
+        .lang-switcher select:hover,
+        .lang-switcher select:focus {
+            color: #0369a1;
+            border-color: #bae6fd;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .card {
@@ -179,10 +186,6 @@
             <h1 data-i18n="header.h1">🏊‍♂️ Open Water Swimming</h1>
             <div class="subtitle" data-i18n="header.subtitle">Common questions about where, when, and how to swim in the Mystic Lake or elsewhere.</div>
             <a class="site-link" href="/" data-i18n="header.dashboardLink">🏊‍♂️ Water Quality Dashboard</a>
-            <div class="lang-switcher">
-                <label for="lang-select" data-i18n="lang.label">Language</label>
-                <select id="lang-select" data-i18n-attr="aria-label:lang.label"></select>
-            </div>
         </div>
 
         <div class="card">
@@ -274,6 +277,12 @@
         </div>
 
         <div class="footer-note" data-i18n-html="footer.html">This FAQ is general guidance, not medical or safety advice. Conditions change quickly — always swim at your own discretion. <a class="site-link" href="/">Check current conditions →</a></div>
+
+        <!-- Set-once preference, kept at the foot of the page (see index.html). -->
+        <div class="lang-switcher">
+            <label for="lang-select" data-i18n="lang.label">Language</label>
+            <select id="lang-select" data-i18n-attr="aria-label:lang.label"></select>
+        </div>
     </div>
 
     <script>
