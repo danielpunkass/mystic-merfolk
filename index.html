@@ -1007,13 +1007,20 @@
     	// everything rendered from JS goes through t().
     	const LANGS = [
     	    { code: "en",     label: "English",                  locale: "en-US"  },
-    	    { code: "es",     label: "Español (España)",         locale: "es-ES"  },
-    	    { code: "es-419", label: "Español (Latinoamérica)",  locale: "es-419" },
-    	    { code: "es-US",  label: "Español (Estados Unidos)", locale: "es-US"  },
-    	    { code: "de",     label: "Deutsch",                  locale: "de-DE"  },
-    	    { code: "pt-BR",  label: "Português (Brasil)",       locale: "pt-BR"  },
+    	    { code: "es",     label: "Español · España",         locale: "es-ES"  },
+    	    { code: "es-419", label: "Español · Latinoamérica",  locale: "es-419" },
+    	    { code: "es-US",  label: "Español · Estados Unidos", locale: "es-US"  },
+    	    { code: "pt-BR",  label: "Português · Brasil",       locale: "pt-BR"  },
     	    { code: "fr",     label: "Français",                 locale: "fr-FR"  },
-    	    { code: "it",     label: "Italiano",                 locale: "it-IT"  }
+    	    { code: "it",     label: "Italiano",                 locale: "it-IT"  },
+    	    // One Chinese catalog (Simplified); every zh-* tag resolves to it.
+    	    { code: "zh",     label: "中文 · 简体",              locale: "zh-CN"  },
+    	    // Intl carries no CLDR data for Haitian Creole (Chrome resolves "ht" to
+    	    // whatever its default locale is), so dates are formatted by hand — see
+    	    // formatDateTime(). fr-HT covers what's left, French being co-official
+    	    // in Haiti, and is a real locale rather than an unpredictable fallback.
+    	    { code: "ht",     label: "Kreyòl Ayisyen",           locale: "fr-HT"  },
+    	    { code: "vi",     label: "Tiếng Việt",               locale: "vi-VN"  }
     	];
     	const LANG_COOKIE = "lang";
     	const DEFAULT_LANG = "en";
@@ -1042,6 +1049,7 @@
     	    "subtitle.link": "DCR Water Quality",
     	    "subtitle.after": " site.",
     	    "lang.label": "Language",
+    	    "lang.system": "Match System ({lang})",
     	    "faq.link": "🛟 Swimming Safety FAQ",
     	    "nav.recentAria": "Recently viewed beaches",
     	    "nav.addBeach": "Add beach…",
@@ -1123,6 +1131,7 @@
     	    "subtitle.after": ".",
     	    "lang.label": "Idioma",
     	    "faq.link": "🛟 Preguntas frecuentes sobre seguridad al nadar",
+    	    "lang.system": "Usar el idioma del sistema ({lang})",
     	    "nav.recentAria": "Playas vistas recientemente",
     	    "nav.addBeach": "Añadir playa…",
     	    "nav.removeAria": "Quitar {beach} de las playas recientes",
@@ -1228,83 +1237,246 @@
     	    "status.preSeasonDesc": "El monitoreo oficial de la calidad del agua en {beach} aún no ha comenzado esta temporada. Generalmente se reanuda alrededor del Memorial Day y se realiza cada semana hasta el Labor Day. Mientras tanto, el lago puede seguir usándose para navegar, hacer kayak o meterse al agua bajo tu propio riesgo, pero se desconocen las condiciones.",
     	    "awaiting.body": "El monitoreo oficial de la calidad del agua apenas está comenzando la temporada. Todavía no se han publicado mediciones de este año. El muestreo generalmente se realiza cada semana desde el Memorial Day hasta el Labor Day."
     	  },
-    	  de: {
-    	    "site.title": "Wasserqualität in Massachusetts",
-    	    "site.description": "Ein kompakter Überblick über die aktuellen und jüngsten Wasserverhältnisse am Shannon Beach.",
-    	    "subtitle.before": "Ein kompakter Überblick über die aktuellen und jüngsten Wasserverhältnisse. Daten von der Website ",
+    	  "zh": {
+    	    "site.title": "马萨诸塞州水质",
+    	    "site.description": "谢农海滩当前及近期水质状况的简要概览。",
+    	    "subtitle.before": "当前及近期水质状况的简要概览。数据来自 ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": " 网站。",
+    	    "lang.label": "语言",
+    	    "lang.system": "跟随系统（{lang}）",
+    	    "faq.link": "🛟 游泳安全常见问题",
+    	    "nav.recentAria": "最近查看的海滩",
+    	    "nav.addBeach": "添加海滩…",
+    	    "nav.removeAria": "将 {beach} 从最近的海滩中移除",
+    	    "selector.title": "添加海滩",
+    	    "selector.town": "城镇",
+    	    "selector.beach": "海滩",
+    	    "selector.add": "添加",
+    	    "town.other": "其他",
+    	    "notify.banner": "🔔 游泳状态变化时接收通知！",
+    	    "notify.enable": "启用通知",
+    	    "notify.enabled": "通知已启用！",
+    	    "notify.blocked": "通知已被阻止",
+    	    "ui.refreshing": "正在刷新数据…",
+    	    "status.current": "当前状态：{status}",
+    	    "status.loading": "加载中…",
+    	    "status.closedForSeason": "本季已关闭",
+    	    "status.monitoringNotActive": "监测尚未开始",
+    	    "status.unavailable": "信息不可用",
+    	    "status.open": "可以游泳",
+    	    "status.closed": "禁止游泳",
+    	    "status.desc": "这是 {beach} 的官方状态，依据单次采样以及近期结果的累计几何平均值得出。与往常一样，游泳风险自负，请自行判断！",
+    	    "status.unavailableDesc": "目前无法获取状态信息。请稍后再查看更新。",
+    	    "status.offSeasonDesc": "{beach} 的官方水质监测从阵亡将士纪念日（五月下旬）持续到美国劳动节（九月上旬）。在此期间之外，湖区仍可用于划船、皮划艇和下水，但风险自负——由于没有公布的监测数据，水质状况未知。",
+    	    "status.preSeasonDesc": "{beach} 本季的官方水质监测尚未开始。通常在阵亡将士纪念日（五月下旬）前后恢复，并每周进行一次，直到美国劳动节（九月上旬）。在此期间，湖区仍可用于划船、皮划艇和下水，但风险自负——水质状况未知。",
+    	    "status.reasonLabel": "原因：",
+    	    "reason.Bacterial Exceedance": "细菌超标",
+    	    "reason.Harmful Cyanobacteria Bloom": "有害蓝藻水华",
+    	    "reason.CSO/SSO event": "污水溢流事件（CSO/SSO）",
+    	    "reason.Other": "其他",
+    	    "indicator.Enterococci": "肠球菌",
+    	    "indicator.E. Coli": "大肠杆菌",
+    	    "cso.heading": "⚠️ 近期污水溢流（CSO）事件",
+    	    "cso.intro": "过去两周内在温切斯特地区报告的、影响米斯蒂克湖的合流制污水溢流事件。",
+    	    "cso.time": "时间：",
+    	    "cso.volume": "水量：",
+    	    "cso.duration": "持续时间：",
+    	    "cso.rainfall": "降雨量：",
+    	    "cso.unknownTime": "时间不详",
+    	    "cso.gallons": "{n} 加仑",
+    	    "cso.volumeUnknown": "水量不详",
+    	    "cso.inches": "{n} 英寸",
+    	    "cso.rainfallUnknown": "降雨量不详",
+    	    "cso.hoursMinutes": "{h} 小时 {m} 分钟",
+    	    "cso.hours": "{h} 小时",
+    	    "cso.durationUnknown": "持续时间不详",
+    	    "table.Date and Time": "日期和时间",
+    	    "table.Indicator": "指标",
+    	    "table.Threshold": "阈值",
+    	    "table.Results": "结果",
+    	    "table.Status": "状态",
+    	    "badge.above": "高于阈值",
+    	    "badge.at": "达到阈值",
+    	    "badge.below": "低于阈值",
+    	    "card.geomean": "几何平均值检测结果",
+    	    "card.singleSample": "单次采样检测结果",
+    	    "card.historical": "历史检测数据",
+    	    "card.seasonHistorical": "{year} 年度历史检测数据",
+    	    "card.unavailableHeading": "最新检测数据暂时不可用",
+    	    "card.awaitingHeading": "等待本季首次检测",
+    	    "loading.beach": "正在加载海滩数据…",
+    	    "loading.historical": "正在加载历史检测数据…",
+    	    "error.historical": "无法加载历史检测数据。",
+    	    "awaiting.body": "本季的官方水质监测刚刚开始。今年尚未公布任何检测数据。采样通常从阵亡将士纪念日（五月下旬）到美国劳动节（九月上旬）每周进行一次。",
+    	    "awaiting.unavailable": "目前无法从本州水质数据面板获取最新检测数据。监测仍在进行——这只是暂时的数据获取问题，并非关闭。下方提供了最近一个完整季度的检测数据链接。",
+    	    "archive.none": "目前还没有 {beach} 往季的存档检测数据。历史数据目前仅存档了 Shannon Beach @ Upper Mystic。",
+    	    "link.viewHistorical": "查看 {year} 年度历史检测数据 →",
+    	    "footer.pageRendered": "页面生成时间：{ts}",
+    	    "footer.testMode": "（测试模式）",
+    	    "footer.lastSynced": "数据最后同步时间：{ts}",
+    	    "footer.commitDated": "Commit: {c}（{ts}）",
+    	    "footer.commit": "Commit: {c}"
+    	  },
+    	  "ht": {
+    	    "site.title": "Kalite Dlo nan Massachusetts",
+    	    "site.description": "Yon rezime kout sou kondisyon dlo aktyèl ak resan nan Shannon Beach.",
+    	    "subtitle.before": "Yon rezime kout sou kondisyon dlo aktyèl ak resan. Done ki soti nan sit ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": " la.",
+    	    "lang.label": "Lang",
+    	    "lang.system": "Sèvi ak lang sistèm nan ({lang})",
+    	    "faq.link": "🛟 Kesyon moun poze sou sekirite naje",
+    	    "nav.recentAria": "Plaj ou sot gade",
+    	    "nav.addBeach": "Ajoute plaj…",
+    	    "nav.removeAria": "Retire {beach} nan plaj resan yo",
+    	    "selector.title": "Ajoute yon plaj",
+    	    "selector.town": "Vil",
+    	    "selector.beach": "Plaj",
+    	    "selector.add": "Ajoute",
+    	    "town.other": "Lòt",
+    	    "notify.banner": "🔔 Resevwa yon avi lè estati naje a chanje!",
+    	    "notify.enable": "Aktive notifikasyon",
+    	    "notify.enabled": "Notifikasyon aktive!",
+    	    "notify.blocked": "Notifikasyon bloke",
+    	    "ui.refreshing": "N ap mete done yo ajou…",
+    	    "status.current": "Estati aktyèl: {status}",
+    	    "status.loading": "Ap chaje…",
+    	    "status.closedForSeason": "Fèmen pou sezon an",
+    	    "status.monitoringNotActive": "Siveyans lan poko kòmanse",
+    	    "status.unavailable": "Enfòmasyon pa disponib",
+    	    "status.open": "Ou ka naje",
+    	    "status.closed": "Ou pa ka naje",
+    	    "status.desc": "Sa a se estati ofisyèl espesyalman pou {beach}, ki baze sou echantiyon endividyèl ak mwayèn jeyometrik kimile rezilta resan yo. Kòm toujou, naje sou pwòp risk ou e selon pwòp jijman ou!",
+    	    "status.unavailableDesc": "Enfòmasyon sou estati a pa disponib kounye a. Tanpri tounen pita pou mizajou.",
+    	    "status.offSeasonDesc": "Siveyans ofisyèl kalite dlo nan {beach} fèt depi Memorial Day (fen mwa me) jiska Labor Day (kòmansman septanm). Andeyò peryòd sa a, ou ka toujou sèvi ak lak la pou navige, fè kayak ak plonje sou pwòp risk ou — men pa gen okenn siveyans ki pibliye, kidonk kondisyon yo pa konnen.",
+    	    "status.preSeasonDesc": "Siveyans ofisyèl kalite dlo nan {beach} poko kòmanse pou sezon sa a. Nòmalman li rekòmanse alantou Memorial Day (fen mwa me) epi li fèt chak semèn jiska Labor Day (kòmansman septanm). Antretan, ou ka toujou sèvi ak lak la pou navige, fè kayak ak plonje sou pwòp risk ou — men kondisyon yo pa konnen.",
+    	    "status.reasonLabel": "Rezon: ",
+    	    "reason.Bacterial Exceedance": "Depasman nivo bakteri",
+    	    "reason.Harmful Cyanobacteria Bloom": "Pwoliferasyon sinobakteri danjere",
+    	    "reason.CSO/SSO event": "Debòdman dlo egou (CSO/SSO)",
+    	    "reason.Other": "Lòt",
+    	    "indicator.Enterococci": "Antewokòk",
+    	    "indicator.E. Coli": "E. coli",
+    	    "cso.heading": "⚠️ Debòdman dlo egou (CSO) resan",
+    	    "cso.intro": "Evènman debòdman egou konbine yo rapòte nan zòn Winchester ki afekte Lak Mystic nan 2 dènye semèn yo.",
+    	    "cso.time": "Lè:",
+    	    "cso.volume": "Volim:",
+    	    "cso.duration": "Dire:",
+    	    "cso.rainfall": "Lapli:",
+    	    "cso.unknownTime": "Lè pa konnen",
+    	    "cso.gallons": "{n} galon",
+    	    "cso.volumeUnknown": "Volim pa konnen",
+    	    "cso.inches": "{n} pous",
+    	    "cso.rainfallUnknown": "Lapli pa konnen",
+    	    "cso.hoursMinutes": "{h} è {m} minit",
+    	    "cso.hours": "{h} è",
+    	    "cso.durationUnknown": "Dire pa konnen",
+    	    "table.Date and Time": "Dat ak lè",
+    	    "table.Indicator": "Endikatè",
+    	    "table.Threshold": "Sèy",
+    	    "table.Results": "Rezilta",
+    	    "table.Status": "Estati",
+    	    "badge.above": "Pi wo pase sèy la",
+    	    "badge.at": "Nan sèy la",
+    	    "badge.below": "Pi ba pase sèy la",
+    	    "card.geomean": "Rezilta mwayèn jeyometrik",
+    	    "card.singleSample": "Rezilta echantiyon endividyèl",
+    	    "card.historical": "Done istorik",
+    	    "card.seasonHistorical": "Done istorik sezon {year}",
+    	    "card.unavailableHeading": "Dènye rezilta yo pa disponib pou kounye a",
+    	    "card.awaitingHeading": "N ap tann premye rezilta sezon an",
+    	    "loading.beach": "N ap chaje done plaj la…",
+    	    "loading.historical": "N ap chaje done istorik yo…",
+    	    "error.historical": "Nou pa t kapab chaje done istorik yo.",
+    	    "awaiting.body": "Siveyans ofisyèl kalite dlo a fèk kòmanse pou sezon an. Pa gen okenn rezilta ki pibliye pou ane sa a ankò. Nòmalman yo pran echantiyon chak semèn depi Memorial Day (fen mwa me) jiska Labor Day (kòmansman septanm).",
+    	    "awaiting.unavailable": "Nou pa t kapab jwenn dènye rezilta yo nan tablodbò kalite dlo eta a kounye a. Siveyans lan aktif — se yon pwoblèm tanporè pou jwenn done yo, se pa yon fèmti. Rezilta dènye sezon konplè a gen lyen anba a.",
+    	    "archive.none": "Pa gen done achive sezon pase pou {beach} ankò. Pou kounye a, se sèlman done istorik Shannon Beach @ Upper Mystic ki achive.",
+    	    "link.viewHistorical": "Gade done istorik sezon {year} →",
+    	    "footer.pageRendered": "Paj la kreye: {ts}",
+    	    "footer.testMode": " (Mòd tès)",
+    	    "footer.lastSynced": "Dènye senkronizasyon done: {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
+    	    "footer.commit": "Commit: {c}"
+    	  },
+    	  "vi": {
+    	    "site.title": "Chất lượng nước tại Massachusetts",
+    	    "site.description": "Tóm tắt ngắn gọn về điều kiện nước hiện tại và gần đây tại Shannon Beach.",
+    	    "subtitle.before": "Tóm tắt ngắn gọn về điều kiện nước hiện tại và gần đây. Dữ liệu từ trang ",
     	    "subtitle.link": "DCR Water Quality",
     	    "subtitle.after": ".",
-    	    "lang.label": "Sprache",
-    	    "faq.link": "🛟 FAQ zur Schwimmsicherheit",
-    	    "nav.recentAria": "Zuletzt angesehene Strände",
-    	    "nav.addBeach": "Strand hinzufügen…",
-    	    "nav.removeAria": "{beach} aus den zuletzt angesehenen Stränden entfernen",
-    	    "selector.title": "Strand hinzufügen",
-    	    "selector.town": "Ort",
-    	    "selector.beach": "Strand",
-    	    "selector.add": "Hinzufügen",
-    	    "town.other": "Sonstige",
-    	    "notify.banner": "🔔 Lassen Sie sich benachrichtigen, wenn sich der Badestatus ändert!",
-    	    "notify.enable": "Benachrichtigungen aktivieren",
-    	    "notify.enabled": "Benachrichtigungen aktiviert!",
-    	    "notify.blocked": "Benachrichtigungen blockiert",
-    	    "ui.refreshing": "Daten werden aktualisiert …",
-    	    "status.current": "Aktueller Status: {status}",
-    	    "status.loading": "Wird geladen …",
-    	    "status.closedForSeason": "Außerhalb der Saison geschlossen",
-    	    "status.monitoringNotActive": "Überwachung noch nicht aktiv",
-    	    "status.unavailable": "Informationen nicht verfügbar",
-    	    "status.open": "Zum Baden geöffnet",
-    	    "status.closed": "Zum Baden gesperrt",
-    	    "status.desc": "Dies ist der offizielle Status speziell für {beach}, basierend auf Einzelproben und dem kumulativen geometrischen Mittel der jüngsten Ergebnisse. Wie immer gilt: Baden auf eigene Gefahr und nach eigenem Ermessen!",
-    	    "status.unavailableDesc": "Statusinformationen sind derzeit nicht verfügbar. Bitte schauen Sie später noch einmal vorbei.",
-    	    "status.offSeasonDesc": "Die offizielle Überwachung der Wasserqualität am {beach} läuft vom Memorial Day (Ende Mai) bis zum Labor Day (Anfang September). Außerhalb dieses Zeitraums kann der See weiterhin zum Bootfahren, Kajakfahren und Baden genutzt werden – auf eigene Gefahr, denn es werden keine Messwerte veröffentlicht und die Bedingungen sind daher unbekannt.",
-    	    "status.preSeasonDesc": "Die offizielle Überwachung der Wasserqualität am {beach} hat in dieser Saison noch nicht begonnen. Sie startet üblicherweise um den Memorial Day (Ende Mai) und läuft dann wöchentlich bis zum Labor Day (Anfang September). Bis dahin kann der See weiterhin zum Bootfahren, Kajakfahren und Baden genutzt werden – auf eigene Gefahr, denn die Bedingungen sind unbekannt.",
-    	    "status.reasonLabel": "Grund: ",
-    	    "reason.Bacterial Exceedance": "Überschreitung der Bakterienwerte",
-    	    "reason.Harmful Cyanobacteria Bloom": "Schädliche Cyanobakterienblüte",
-    	    "reason.CSO/SSO event": "Abwasserüberlauf (CSO/SSO)",
-    	    "reason.Other": "Sonstiges",
-    	    "indicator.Enterococci": "Enterokokken",
+    	    "lang.label": "Ngôn ngữ",
+    	    "lang.system": "Dùng ngôn ngữ hệ thống ({lang})",
+    	    "faq.link": "🛟 Câu hỏi thường gặp về an toàn khi bơi",
+    	    "nav.recentAria": "Các bãi biển đã xem gần đây",
+    	    "nav.addBeach": "Thêm bãi biển…",
+    	    "nav.removeAria": "Xóa {beach} khỏi các bãi biển gần đây",
+    	    "selector.title": "Thêm một bãi biển",
+    	    "selector.town": "Thị trấn",
+    	    "selector.beach": "Bãi biển",
+    	    "selector.add": "Thêm",
+    	    "town.other": "Khác",
+    	    "notify.banner": "🔔 Nhận thông báo khi trạng thái bơi thay đổi!",
+    	    "notify.enable": "Bật thông báo",
+    	    "notify.enabled": "Đã bật thông báo!",
+    	    "notify.blocked": "Thông báo bị chặn",
+    	    "ui.refreshing": "Đang cập nhật dữ liệu…",
+    	    "status.current": "Trạng thái hiện tại: {status}",
+    	    "status.loading": "Đang tải…",
+    	    "status.closedForSeason": "Đóng cửa hết mùa",
+    	    "status.monitoringNotActive": "Chưa bắt đầu giám sát",
+    	    "status.unavailable": "Không có thông tin",
+    	    "status.open": "Được phép bơi",
+    	    "status.closed": "Cấm bơi",
+    	    "status.desc": "Đây là trạng thái chính thức dành riêng cho {beach}, dựa trên các mẫu đơn lẻ và trung bình nhân lũy kế của các kết quả gần đây. Như thường lệ, hãy tự chịu trách nhiệm khi bơi và tự cân nhắc theo phán đoán của mình!",
+    	    "status.unavailableDesc": "Hiện chưa có thông tin trạng thái. Vui lòng quay lại sau để xem cập nhật.",
+    	    "status.offSeasonDesc": "Việc giám sát chất lượng nước chính thức tại {beach} diễn ra từ Memorial Day (cuối tháng 5) đến Labor Day (đầu tháng 9). Ngoài khoảng thời gian đó, hồ vẫn có thể được dùng để chèo thuyền, chèo kayak và ngâm mình, nhưng bạn tự chịu rủi ro — vì không có dữ liệu giám sát được công bố nên không rõ điều kiện nước.",
+    	    "status.preSeasonDesc": "Việc giám sát chất lượng nước chính thức tại {beach} chưa bắt đầu trong mùa này. Thông thường công việc này được nối lại vào khoảng Memorial Day (cuối tháng 5) và diễn ra hằng tuần cho đến Labor Day (đầu tháng 9). Trong thời gian chờ, hồ vẫn có thể được dùng để chèo thuyền, chèo kayak và ngâm mình, nhưng bạn tự chịu rủi ro — và không rõ điều kiện nước.",
+    	    "status.reasonLabel": "Lý do: ",
+    	    "reason.Bacterial Exceedance": "Vượt ngưỡng vi khuẩn",
+    	    "reason.Harmful Cyanobacteria Bloom": "Tảo lam nở hoa gây hại",
+    	    "reason.CSO/SSO event": "Sự cố tràn nước thải (CSO/SSO)",
+    	    "reason.Other": "Khác",
+    	    "indicator.Enterococci": "Khuẩn cầu ruột (Enterococci)",
     	    "indicator.E. Coli": "E. coli",
-    	    "cso.heading": "⚠️ Jüngste Mischwasserüberläufe (CSO)",
-    	    "cso.intro": "In den letzten 2 Wochen im Raum Winchester gemeldete Mischwasserüberläufe, die den Mystic Lake betreffen.",
-    	    "cso.time": "Uhrzeit:",
-    	    "cso.volume": "Volumen:",
-    	    "cso.duration": "Dauer:",
-    	    "cso.rainfall": "Niederschlag:",
-    	    "cso.unknownTime": "Uhrzeit unbekannt",
-    	    "cso.gallons": "{n} Gallonen",
-    	    "cso.volumeUnknown": "Volumen unbekannt",
-    	    "cso.inches": "{n} Zoll",
-    	    "cso.rainfallUnknown": "Niederschlag unbekannt",
-    	    "cso.hoursMinutes": "{h} Std. {m} Min.",
-    	    "cso.hours": "{h} Stunden",
-    	    "cso.durationUnknown": "Dauer unbekannt",
-    	    "table.Date and Time": "Datum und Uhrzeit",
-    	    "table.Indicator": "Indikator",
-    	    "table.Threshold": "Grenzwert",
-    	    "table.Results": "Ergebnisse",
-    	    "table.Status": "Status",
-    	    "badge.above": "Über dem Grenzwert",
-    	    "badge.at": "Auf dem Grenzwert",
-    	    "badge.below": "Unter dem Grenzwert",
-    	    "card.geomean": "Ergebnisse des geometrischen Mittels",
-    	    "card.singleSample": "Ergebnisse der Einzelproben",
-    	    "card.historical": "Historische Messwerte",
-    	    "card.seasonHistorical": "Historische Messwerte der Saison {year}",
-    	    "card.unavailableHeading": "Aktuelle Messwerte vorübergehend nicht verfügbar",
-    	    "card.awaitingHeading": "Warten auf den ersten Messwert der Saison",
-    	    "loading.beach": "Stranddaten werden geladen …",
-    	    "loading.historical": "Historische Messwerte werden geladen …",
-    	    "error.historical": "Historische Messwerte konnten nicht geladen werden.",
-    	    "awaiting.body": "Die offizielle Überwachung der Wasserqualität beginnt gerade erst für diese Saison. Für dieses Jahr wurden noch keine Messwerte veröffentlicht. Die Probenahme erfolgt in der Regel wöchentlich vom Memorial Day (Ende Mai) bis zum Labor Day (Anfang September).",
-    	    "awaiting.unavailable": "Die aktuellen Messwerte konnten derzeit nicht vom Wasserqualitäts-Dashboard des Bundesstaates abgerufen werden. Die Überwachung läuft weiter – dies ist ein vorübergehendes Problem beim Abruf der Daten, keine Sperrung. Die Messwerte der zuletzt abgeschlossenen Saison sind unten verlinkt.",
-    	    "archive.none": "Für {beach} sind noch keine archivierten Messwerte vergangener Saisons verfügbar. Historische Messwerte werden derzeit nur für Shannon Beach @ Upper Mystic archiviert.",
-    	    "link.viewHistorical": "Historische Messwerte der Saison {year} ansehen →",
-    	    "footer.pageRendered": "Seite erstellt: {ts}",
-    	    "footer.testMode": " (Testmodus)",
-    	    "footer.lastSynced": "Daten zuletzt synchronisiert: {ts}",
+    	    "cso.heading": "⚠️ Sự cố tràn nước thải (CSO) gần đây",
+    	    "cso.intro": "Các sự cố tràn nước thải cống chung được ghi nhận tại khu vực Winchester có ảnh hưởng đến hồ Mystic trong 2 tuần qua.",
+    	    "cso.time": "Thời gian:",
+    	    "cso.volume": "Lượng nước:",
+    	    "cso.duration": "Thời lượng:",
+    	    "cso.rainfall": "Lượng mưa:",
+    	    "cso.unknownTime": "Không rõ thời gian",
+    	    "cso.gallons": "{n} gallon",
+    	    "cso.volumeUnknown": "Không rõ lượng nước",
+    	    "cso.inches": "{n} inch",
+    	    "cso.rainfallUnknown": "Không rõ lượng mưa",
+    	    "cso.hoursMinutes": "{h} giờ {m} phút",
+    	    "cso.hours": "{h} giờ",
+    	    "cso.durationUnknown": "Không rõ thời lượng",
+    	    "table.Date and Time": "Ngày và giờ",
+    	    "table.Indicator": "Chỉ số",
+    	    "table.Threshold": "Ngưỡng",
+    	    "table.Results": "Kết quả",
+    	    "table.Status": "Trạng thái",
+    	    "badge.above": "Trên ngưỡng",
+    	    "badge.at": "Ở mức ngưỡng",
+    	    "badge.below": "Dưới ngưỡng",
+    	    "card.geomean": "Kết quả trung bình nhân",
+    	    "card.singleSample": "Kết quả mẫu đơn lẻ",
+    	    "card.historical": "Số liệu trước đây",
+    	    "card.seasonHistorical": "Số liệu mùa {year}",
+    	    "card.unavailableHeading": "Tạm thời chưa có số liệu mới nhất",
+    	    "card.awaitingHeading": "Đang chờ kết quả đầu tiên của mùa",
+    	    "loading.beach": "Đang tải dữ liệu bãi biển…",
+    	    "loading.historical": "Đang tải số liệu trước đây…",
+    	    "error.historical": "Không thể tải số liệu trước đây.",
+    	    "awaiting.body": "Việc giám sát chất lượng nước chính thức mới bắt đầu cho mùa này. Chưa có kết quả nào được công bố trong năm nay. Việc lấy mẫu thường diễn ra hằng tuần từ Memorial Day (cuối tháng 5) đến Labor Day (đầu tháng 9).",
+    	    "awaiting.unavailable": "Hiện không thể lấy được số liệu mới nhất từ bảng dữ liệu chất lượng nước của bang. Việc giám sát vẫn đang diễn ra — đây chỉ là sự cố tạm thời khi lấy dữ liệu, không phải lệnh đóng cửa. Số liệu của mùa gần nhất đã hoàn tất được liên kết bên dưới.",
+    	    "archive.none": "Chưa có số liệu lưu trữ của các mùa trước cho {beach}. Hiện chỉ có số liệu trước đây của Shannon Beach @ Upper Mystic được lưu trữ.",
+    	    "link.viewHistorical": "Xem số liệu mùa {year} →",
+    	    "footer.pageRendered": "Trang được tạo: {ts}",
+    	    "footer.testMode": " (Chế độ thử nghiệm)",
+    	    "footer.lastSynced": "Dữ liệu đồng bộ lần cuối: {ts}",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1316,6 +1488,7 @@
     	    "subtitle.after": ".",
     	    "lang.label": "Idioma",
     	    "faq.link": "🛟 Perguntas frequentes sobre segurança ao nadar",
+    	    "lang.system": "Usar o idioma do sistema ({lang})",
     	    "nav.recentAria": "Praias vistas recentemente",
     	    "nav.addBeach": "Adicionar praia…",
     	    "nav.removeAria": "Remover {beach} das praias recentes",
@@ -1395,6 +1568,7 @@
     	    "subtitle.link": "DCR Water Quality",
     	    "subtitle.after": ".",
     	    "lang.label": "Langue",
+    	    "lang.system": "Utiliser la langue du système ({lang})",
     	    "faq.link": "🛟 FAQ sur la sécurité en baignade",
     	    "nav.recentAria": "Plages consultées récemment",
     	    "nav.addBeach": "Ajouter une plage…",
@@ -1475,6 +1649,7 @@
     	    "subtitle.link": "DCR Water Quality",
     	    "subtitle.after": ".",
     	    "lang.label": "Lingua",
+    	    "lang.system": "Usa la lingua del sistema ({lang})",
     	    "faq.link": "🛟 FAQ sulla sicurezza in acqua",
     	    "nav.recentAria": "Spiagge viste di recente",
     	    "nav.addBeach": "Aggiungi spiaggia…",
@@ -1569,18 +1744,42 @@
     	    if (BASE_FALLBACK[base] && has(BASE_FALLBACK[base])) return BASE_FALLBACK[base];
     	    return null;
     	}
-    	function resolveLang() {
-    	    const fromQuery = normalizeLang(new URLSearchParams(window.location.search).get("lang"));
-    	    if (fromQuery) return fromQuery;
-    	    const fromCookie = normalizeLang(getCookie(LANG_COOKIE));
-    	    if (fromCookie) return fromCookie;
+    	// Two distinct things, deliberately kept apart:
+    	//   langPreference — what the visitor chose: a concrete code, or SYSTEM_LANG
+    	//                    ("follow whatever the browser reports"). This is what
+    	//                    persists in the cookie and what the <select> shows.
+    	//   currentLang    — the concrete code actually in use. Everything that
+    	//                    renders reads this one.
+    	// They differ whenever the preference is SYSTEM_LANG, and collapsing them
+    	// would make "Match System" unrepresentable: a visitor on a French browser
+    	// who is shown French has no way to say whether they *chose* French or are
+    	// following the system, so they could never get back to following it.
+    	const SYSTEM_LANG = "system";
+
+    	// The language the browser asks for, mapped onto a catalog we carry.
+    	function systemLang() {
     	    for (const pref of (navigator.languages || [navigator.language || ""])) {
     	        const m = normalizeLang(pref);
     	        if (m) return m;
     	    }
     	    return DEFAULT_LANG;
     	}
-    	let currentLang = resolveLang();
+
+    	// ?lang= → cookie → follow the system. Note the default: with no query
+    	// parameter and no cookie the answer is SYSTEM_LANG, not English, so the
+    	// page tracks the browser until the visitor pins something explicitly.
+    	function resolvePreference() {
+    	    for (const raw of [new URLSearchParams(window.location.search).get("lang"),
+    	                       getCookie(LANG_COOKIE)]) {
+    	        if (!raw) continue;
+    	        if (String(raw).toLowerCase() === SYSTEM_LANG) return SYSTEM_LANG;
+    	        const m = normalizeLang(raw);
+    	        if (m) return m;
+    	    }
+    	    return SYSTEM_LANG;
+    	}
+    	let langPreference = resolvePreference();
+    	let currentLang = langPreference === SYSTEM_LANG ? systemLang() : langPreference;
     	function currentLocale() {
     	    const entry = LANGS.find(l => l.code === currentLang);
     	    return entry ? entry.locale : "en-US";
@@ -1634,6 +1833,33 @@
     	    els.forEach(el => { if (el) el.removeAttribute("data-i18n-init"); });
     	}
 
+    	// Intl has no CLDR data for Haitian Creole: Intl.DateTimeFormat("ht") doesn't
+    	// throw, it silently resolves to the runtime's default locale (Chrome picks
+    	// es-ES here), which would print Spanish month names inside a Kreyòl page.
+    	// Format those dates by hand so the failure can't happen.
+    	const HT_MONTHS = ["janvye", "fevriye", "mas", "avril", "me", "jen",
+    	                   "jiyè", "out", "septanm", "oktòb", "novanm", "desanm"];
+    	function formatHaitian(d, time) {
+    	    const date = `${d.getDate()} ${HT_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+    	    if (!time) return date;
+    	    const h = d.getHours();
+    	    const clock = `${h % 12 || 12}:${String(d.getMinutes()).padStart(2, "0")}` +
+    	        (time === "medium" ? `:${String(d.getSeconds()).padStart(2, "0")}` : "") +
+    	        (h < 12 ? " AM" : " PM");
+    	    return `${date}, ${clock}`;
+    	}
+
+    	// The single place a Date becomes display text, so the Haitian Creole special
+    	// case is handled once rather than at each call site.
+    	//   time: "short" (default) | "medium" (with seconds) | false (date only)
+    	function formatDateTime(value, time = "short") {
+    	    const d = value instanceof Date ? value : new Date(value);
+    	    if (isNaN(d)) return String(value);
+    	    if (currentLang === "ht") return formatHaitian(d, time);
+    	    if (!time) return d.toLocaleDateString(currentLocale());
+    	    return d.toLocaleString(currentLocale(), { dateStyle: "medium", timeStyle: time });
+    	}
+
     	// DPH publishes sample timestamps as US-format strings ("8/5/2026 8:00:00 AM").
     	// Reformat for the active locale so 8/5 isn't read as 5 August — but leave English
     	// byte-identical to upstream.
@@ -1641,14 +1867,13 @@
     	// dateStyle "medium" rather than the default numeric form, because numeric only
     	// moves the ambiguity around: CLDR's es-US is day-first (4/8/2026), so a US
     	// Spanish reader would hit exactly the misreading this exists to prevent. A month
-    	// name can't be misread in any locale. (German stays numeric under "medium", but
-    	// 04.08.2026 is unambiguous there anyway.) Seconds are dropped — they carry no
+    	// name can't be misread in any locale. Seconds are dropped — they carry no
     	// meaning for a water sample.
     	function formatSampleDate(value) {
     	    if (currentLang === DEFAULT_LANG) return value;
     	    const d = new Date(value);
     	    if (isNaN(d)) return value;
-    	    return d.toLocaleString(currentLocale(), { dateStyle: "medium", timeStyle: "short" });
+    	    return formatDateTime(d);
     	}
 
     	// Apply the active language to <html lang>, the document metadata, and every
@@ -1698,17 +1923,34 @@
     	    }
     	}
 
+    	function langLabel(code) {
+    	    const entry = LANGS.find(l => l.code === code);
+    	    return entry ? entry.label : code;
+    	}
+
     	function buildLangSwitcher() {
     	    const sel = document.getElementById("lang-select");
     	    if (!sel) return;
     	    sel.innerHTML = "";
+    	    // Leads the list, and names the language it currently resolves to — so
+    	    // the option says what picking it would actually do. That is the system
+    	    // language, not the active one: on a French browser with Vietnamese pinned
+    	    // this still reads "Dùng ngôn ngữ hệ thống (Français)".
+    	    const system = document.createElement("option");
+    	    system.value = SYSTEM_LANG;
+    	    system.textContent = t("lang.system", { lang: langLabel(systemLang()) });
+    	    sel.appendChild(system);
+    	    // <hr> inside <select> is the spec'd separator and is what Chrome, Safari
+    	    // and Firefox all render; anything older ignores the element entirely,
+    	    // which is fine — it's decorative, not an option.
+    	    sel.appendChild(document.createElement("hr"));
     	    LANGS.forEach(l => {
     	        const opt = document.createElement("option");
     	        opt.value = l.code;
     	        opt.textContent = l.label;
     	        sel.appendChild(opt);
     	    });
-    	    sel.value = currentLang;
+    	    sel.value = langPreference;
     	    if (sel.dataset.wired !== "1") {
     	        sel.dataset.wired = "1";
     	        sel.addEventListener("change", () => setLanguage(sel.value));
@@ -1717,22 +1959,33 @@
 
     	// Switching language re-renders in place — no reload — so the visitor keeps
     	// their beach, scroll position, and any revealed historical card.
-    	async function setLanguage(code) {
-    	    const next = normalizeLang(code) || DEFAULT_LANG;
-    	    if (next === currentLang) return;
-    	    currentLang = next;
+    	// `choice` is a preference: SYSTEM_LANG or a concrete code.
+    	async function setLanguage(choice) {
+    	    const next = String(choice).toLowerCase() === SYSTEM_LANG
+    	        ? SYSTEM_LANG
+    	        : (normalizeLang(choice) || DEFAULT_LANG);
+    	    const nextLang = next === SYSTEM_LANG ? systemLang() : next;
+    	    if (next === langPreference && nextLang === currentLang) return;
+
+    	    const languageChanged = nextLang !== currentLang;
+    	    langPreference = next;
+    	    currentLang = nextLang;
     	    langLookup = langChain(currentLang);
-    	    setCookie(LANG_COOKIE, currentLang);
+    	    setCookie(LANG_COOKIE, langPreference);
     	    // ?lang= outranks the cookie, so a link that carried one has to be
     	    // rewritten or a reload would snap back to the shared language. URLs
     	    // that never had the parameter stay clean — the cookie covers them.
     	    try {
     	        const url = new URL(window.location.href);
     	        if (url.searchParams.has("lang")) {
-    	            url.searchParams.set("lang", currentLang);
+    	            url.searchParams.set("lang", langPreference);
     	            window.history.replaceState(null, "", url);
     	        }
     	    } catch (e) { /* history not available; non-fatal */ }
+    	    // Switching between "Match System" and the language it already resolves
+    	    // to changes the preference but nothing on screen; persist it, refresh
+    	    // the <select>, and skip the re-render.
+    	    if (!languageChanged) { buildLangSwitcher(); return; }
     	    // Keep the service worker's notification language in step (storeConfigInDB
     	    // deliberately never overwrites an existing record, so update it here).
     	    updateConfigInDB({ lang: currentLang })
@@ -2885,7 +3138,7 @@
 
             mysticIncidents.forEach(incident => {
                 const incidentDate = new Date(incident.incidentDate);
-                const formattedDate = incidentDate.toLocaleDateString(currentLocale());
+                const formattedDate = formatDateTime(incidentDate, false);
                 const formattedTime = incident.incidentTime || t('cso.unknownTime');
 
                 const incidentDiv = document.createElement('div');
@@ -3125,7 +3378,7 @@
             const testModeText = isTestMode ? t('footer.testMode') : '';
             const lastUpdatedDiv = document.getElementById('last-updated');
             const syncedAt = meta && meta.lastSynced
-                ? new Date(meta.lastSynced).toLocaleString(currentLocale())
+                ? formatDateTime(meta.lastSynced, 'medium')
                 : null;
             const syncedLine = syncedAt
                 ? `<br><span class="sync-line">${escapeHTML(t('footer.lastSynced', { ts: syncedAt }))}</span>`
@@ -3134,7 +3387,7 @@
             // predates it (or a local run, which has neither) falls back to the
             // bare SHA rather than printing "Invalid Date".
             const commitAt = meta && meta.commitDate && !isNaN(new Date(meta.commitDate))
-                ? new Date(meta.commitDate).toLocaleString(currentLocale())
+                ? formatDateTime(meta.commitDate, 'medium')
                 : null;
             const commitLine = meta && meta.commit
                 ? `<br><span class="sync-line">${escapeHTML(commitAt
@@ -3142,7 +3395,7 @@
                     : t('footer.commit', { c: meta.commit }))}</span>`
                 : '';
             lastUpdatedDiv.innerHTML =
-                escapeHTML(t('footer.pageRendered', { ts: new Date().toLocaleString(currentLocale()) })) +
+                escapeHTML(t('footer.pageRendered', { ts: formatDateTime(new Date(), 'medium') })) +
                 escapeHTML(testModeText) + syncedLine + commitLine;
             lastUpdatedDiv.style.display = 'block';
         }

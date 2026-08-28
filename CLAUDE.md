@@ -239,11 +239,17 @@ added keep working. Test override: `?slug-overrides-url=`.
 
 ### Localization
 
-The site ships in **eight locales**: English, Spanish (Spain), Spanish
-(Latin America / `es-419`), Spanish (US), German, Portuguese (Brazil), French,
-and Italian. The three Spanish variants and Brazilian Portuguese are deliberate
-— those populations are well represented in the audience, and "es" alone would
-serve peninsular wording to readers who don't use it.
+The site ships in **ten locales**: English, Spanish (Spain), Spanish
+(Latin America / `es-419`), Spanish (US), Portuguese (Brazil), French, Italian,
+Chinese (Simplified), Haitian Creole, and Vietnamese.
+
+The set tracks **Massachusetts demographics**, not "major European languages" —
+Spanish, Portuguese, Chinese, and Haitian Creole are the state's four most-spoken
+non-English languages, and Vietnamese is fifth. The three Spanish variants and
+Brazilian Portuguese exist because those populations are well represented here
+and a single "es" would serve peninsular wording to readers who don't use it.
+German was dropped for the same reason it was never justified: it isn't in the
+state's top ten.
 
 Because everything is static, localization is entirely client-side: each page
 carries its own string catalog and applies it before first paint. There is no
@@ -265,6 +271,25 @@ tag onto a catalog, in this order:
 
 Anything unmatched (`ja`) falls back to English rather than half-translating.
 
+**Two separate notions of "language."** `langPreference` is what the visitor
+chose — a concrete code, or the sentinel `SYSTEM_LANG` (`"system"`) meaning
+"follow the browser." `currentLang` is the code actually in use. Everything that
+renders reads `currentLang`; the cookie and the `<select>` carry
+`langPreference`. Collapsing the two would make "Match System" unrepresentable:
+a visitor on a French browser being shown French gives no way to tell whether
+they *chose* French or are following the system, so they could never get back to
+following it. **`SYSTEM_LANG` is the default** — with no `?lang=` and no cookie,
+`resolvePreference()` returns it, so the page tracks the browser until something
+is pinned explicitly.
+
+The switcher's first entry is that option, labelled with the language it
+currently resolves to — `Match System (Français)` — followed by an `<hr>`
+divider and then the fixed list. The label names the **system** language, not the
+active one, so it says what picking it would do: on a French browser with
+Vietnamese pinned it still reads `Dùng ngôn ngữ hệ thống (Français)`. Variant
+labels use a middle dot (`Español · España`) rather than parentheses, so nesting
+them inside that string doesn't produce `Match System (Español (España))`.
+
 The `<select>` lives at the **foot of the page**, as quiet chrome beside the
 sync metadata (`.last-updated` on the dashboard, `.footer-note` on the FAQ) —
 language is a set-once preference that persists in a cookie, not something
@@ -277,7 +302,7 @@ clean).
 
 **Where the strings live:**
 
-- `index.html` — `STRINGS` (77 keys per complete catalog) plus `t(key, params)`
+- `index.html` — `STRINGS` (79 keys per complete catalog) plus `t(key, params)`
   for `{placeholder}` interpolation and `tData(namespace, value)` for *upstream*
   vocabulary. Static markup carries `data-i18n` (textContent), `data-i18n-html`
   (innerHTML), and `data-i18n-attr="aria-label:some.key"` hooks that
@@ -312,6 +337,14 @@ a key:
   `Harmful Cyanobacteria Bloom`, `CSO/SSO event`, `Other`)
 - statuses (`Open` / `Closed`) render through `status.open` / `status.closed`
 
+**Haitian Creole has no CLDR data.** `Intl.DateTimeFormat("ht")` doesn't throw —
+it silently resolves to the runtime's default locale (Chrome picked `es-ES` on
+this machine), so Kreyòl pages would show Spanish month names. Dates for `ht` are
+therefore formatted by hand from `HT_MONTHS`, and its `locale` is `fr-HT` (a real
+locale, French being co-official in Haiti) for the number formatting Intl still
+does. **All** date rendering goes through `formatDateTime(value, time)` so that
+special case lives in exactly one place — don't call `toLocaleString` directly.
+
 **Sample dates** arrive as US-format strings (`8/5/2026 8:00:00 AM`).
 `formatSampleDate()` re-renders them in the active locale so `8/5` isn't misread
 as 5 August — but returns English **verbatim**, so the en display stays
@@ -333,6 +366,18 @@ elements must call `clearInitFlags()` first.
 **Deliberately not translated:** the test-mode debug panel (developer tool),
 `mystic.html` (a zero-delay meta-refresh redirect stub nobody reads), and beach
 / town names.
+
+**Not yet covered, in rough order of Massachusetts speaker counts:** Russian,
+Arabic, Khmer, and Cape Verdean Creole. Arabic is the one that isn't just a new
+catalog — it needs `dir="rtl"` and a pass over the padding/margins and the
+table's stacked phone layout. Massachusetts holds an outsized share of the
+country's Khmer (Lowell) and Cape Verdean (Brockton, New Bedford) speakers, so
+both matter more than their raw counts suggest.
+
+**Translation provenance.** The Romance-language and Chinese catalogs are
+model-written and reviewed against the English source. Haitian Creole and
+Vietnamese have had no native-speaker review — worth arranging before leaning on
+them for public-health messaging.
 
 ### Season Logic
 
@@ -385,9 +430,10 @@ Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
 - `?beaches-url=test-data/beaches-multi.json` — the Town/Beach selector index
 - `?samples-url=test-data/samples-multi.json` — the all-beaches keyed readings
 - `?season=open|closed` — override the date-based season check
-- `?lang=en|es|es-419|es-US|de|pt-BR|fr|it` — force a locale (outranks the cookie
-  and the browser). Region tags resolve through `normalizeLang()`, so `?lang=es-MX`
-  also works and lands on `es-419`.
+- `?lang=en|es|es-419|es-US|pt-BR|fr|it|zh|ht|vi` — force a locale (outranks the
+  cookie and the browser). Region tags resolve through `normalizeLang()`, so
+  `?lang=es-MX` also works and lands on `es-419`, and every `zh-*` lands on `zh`.
+  `?lang=system` selects "Match System" (the default when nothing is pinned).
 
 To exercise the multi-beach selector locally, combine the last two, e.g.
 `?season=open&beaches-url=test-data/beaches-multi.json&samples-url=test-data/samples-multi.json`.

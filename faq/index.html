@@ -293,13 +293,15 @@
     // the dashboard, so a choice made on either page carries to the other.
     const LANGS = [
         { code: "en",     label: "English" },
-        { code: "es",     label: "Español (España)" },
-        { code: "es-419", label: "Español (Latinoamérica)" },
-        { code: "es-US",  label: "Español (Estados Unidos)" },
-        { code: "de",     label: "Deutsch" },
-        { code: "pt-BR",  label: "Português (Brasil)" },
+        { code: "es",     label: "Español · España" },
+        { code: "es-419", label: "Español · Latinoamérica" },
+        { code: "es-US",  label: "Español · Estados Unidos" },
+        { code: "pt-BR",  label: "Português · Brasil" },
         { code: "fr",     label: "Français" },
-        { code: "it",     label: "Italiano" }
+        { code: "it",     label: "Italiano" },
+        { code: "zh",     label: "中文 · 简体" },
+        { code: "ht",     label: "Kreyòl Ayisyen" },
+        { code: "vi",     label: "Tiếng Việt" }
     ];
 
     // Regional catalogs hold only what differs from their parent; lookup walks
@@ -356,7 +358,8 @@
         "q11.li2": "Use a brightly colored swim buoy or cap so boats and companions can see you.",
         "q11.li3": "Enter cold water gradually — sudden immersion can cause gasping and panic.",
         "q11.li4": "Keep close, active watch on children; designate an adult “water watcher.”",
-        "footer.html": "This FAQ is general guidance, not medical or safety advice. Conditions change quickly — always swim at your own discretion. <a class=\"site-link\" href=\"/\">Check current conditions →</a>"
+        "footer.html": "This FAQ is general guidance, not medical or safety advice. Conditions change quickly — always swim at your own discretion. <a class=\"site-link\" href=\"/\">Check current conditions →</a>",
+        "lang.system": "Match System ({lang})"
     },
     "es": {
         "site.title": "Preguntas frecuentes sobre natación en aguas abiertas",
@@ -403,7 +406,8 @@
         "q11.li2": "Usa una boya o un gorro de colores vivos para que las embarcaciones y tus acompañantes te vean.",
         "q11.li3": "Entra en el agua fría poco a poco: la inmersión brusca puede provocar jadeos y pánico.",
         "q11.li4": "Vigila de cerca y de forma activa a los niños; designa a un adulto como «vigilante del agua».",
-        "footer.html": "Estas preguntas frecuentes son orientación general, no consejo médico ni de seguridad. Las condiciones cambian rápido: nada siempre bajo tu propio criterio. <a class=\"site-link\" href=\"/\">Consultar las condiciones actuales →</a>"
+        "footer.html": "Estas preguntas frecuentes son orientación general, no consejo médico ni de seguridad. Las condiciones cambian rápido: nada siempre bajo tu propio criterio. <a class=\"site-link\" href=\"/\">Consultar las condiciones actuales →</a>",
+        "lang.system": "Usar el idioma del sistema ({lang})"
     },
     "es-419": {
         "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) es la playa pública donde se puede nadar y que el <a href=\"/\">panel</a> muestra por defecto, con el estado actual, los resultados de los análisis y los avisos de descargas de aguas residuales (CSO) de la zona de los lagos Mystic.",
@@ -422,53 +426,6 @@
     },
     "es-US": {
         "q2.a.html": "Usa el selector Ciudad/Playa “Agregar playa…” en la parte superior del <a href=\"/\">panel</a>: incluye todas las playas del programa de monitoreo del estado, varios cientos en total. Cada playa tiene su propio enlace para compartir (como <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), así que puedes guardarla en tus favoritos o pasar las playas que te interesen."
-    },
-    "de": {
-        "site.title": "FAQ zum Freiwasserschwimmen",
-        "site.description": "Antworten auf häufige Fragen zur Schwimmsicherheit: wo man schwimmen kann, wie Regen und Mischwasserüberläufe die Wasserqualität beeinflussen und wie man einschätzt, ob das Wasser sicher ist.",
-        "lang.label": "Sprache",
-        "header.h1": "🏊‍♂️ Freiwasserschwimmen",
-        "header.subtitle": "Häufige Fragen dazu, wo, wann und wie man im Mystic Lake oder anderswo schwimmt.",
-        "header.dashboardLink": "🏊‍♂️ Wasserqualitäts-Dashboard",
-        "sec1.h2": "🗺️ Wo man schwimmen kann",
-        "sec1.intro": "Einen Strand finden – in der Nähe der Mystic Lakes oder überall in Massachusetts.",
-        "q1.q": "Wo kann ich in der Nähe der Mystic Lakes schwimmen?",
-        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) ist der öffentliche Badestrand, den das <a href=\"/\">Dashboard</a> standardmäßig verfolgt – mit aktuellem Status, Messergebnissen und CSO-Warnungen für die Region der Mystic Lakes.",
-        "q2.q": "Wie finde ich andere Strände?",
-        "q2.a.html": "Nutze oben im <a href=\"/\">Dashboard</a> die Ort/Strand-Auswahl „Strand hinzufügen…“ – sie umfasst jeden Strand im Überwachungsprogramm des Bundesstaates, mehrere Hundert insgesamt. Jeder Strand hat einen eigenen teilbaren Link (etwa <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), sodass du die Strände, die dich interessieren, als Lesezeichen speichern oder weitergeben kannst.",
-        "sec2.h2": "🛟 Wann man schwimmen sollte",
-        "sec2.intro": "Einschätzen, ob heute ein guter Tag zum Baden ist – offizieller Status, aktuelles Wetter und Wasserqualität.",
-        "q3.q": "Woher weiß ich, ob ein Strand zum Baden geöffnet ist?",
-        "q3.a.html": "Sieh im <a href=\"/\">Dashboard</a> nach: Es zeigt den offiziellen Status des Bundesstaates für den ausgewählten Strand, basierend auf den Wasserqualitätsuntersuchungen des Massachusetts Department of Public Health. Ein als „gesperrt“ ausgewiesener Strand hat die Bakteriengrenzwerte überschritten oder weist eine andere aktive Gefahr auf (etwa eine schädliche Algenblüte oder einen Abwassereintrag); das Dashboard nennt den angegebenen Sperrgrund, sofern der Bundesstaat einen liefert.",
-        "q4.q": "Ist ein ausgewiesener Status „geöffnet“ eine Garantie dafür, dass das Wasser sicher ist?",
-        "q4.a": "Nein. Während der Saison wird in der Regel wöchentlich beprobt, sodass sich die Bedingungen zwischen zwei Messungen ändern können – besonders nach Regen. Betrachte den ausgewiesenen Status als einen Anhaltspunkt neben dem jüngsten Wetter, der Wasserklarheit und dem eigenen Urteil.",
-        "q5.q": "Sollte ich nach Regen schwimmen?",
-        "q5.callout": "Faustregel: Nach starkem Regen 24–72 Stunden warten, bevor man schwimmen geht.",
-        "q5.a": "Starkregen spült Bakterien und Schadstoffe von Straßen, aus Regeneinläufen und – in manchen Gemeinden – aus überlaufenden Kanälen direkt in Seen und Flüsse. Die Bakterienwerte sind unmittelbar nach einem Unwetter am höchsten und normalisieren sich meist innerhalb weniger Tage. Da offiziell nur wöchentlich gemessen wird, kann ein Strand noch aufgrund einer Probe von vor dem Regen als „geöffnet“ ausgewiesen sein – die Wartezeit ist nach einem Unwetter also der beste Schutz.",
-        "q6.q": "Was ist ein CSO?",
-        "q6.a1.html": "Ein CSO (Combined Sewer Overflow, Mischwasserüberlauf) tritt in älteren Kanalsystemen auf, in denen Abwasser und Regenwasser dieselben Rohre teilen. Bei trockenem Wetter fließt alles zur Kläranlage, doch bei Starkregen kann die kombinierte Menge die Kapazität des Systems übersteigen. Damit Abwasser nicht in Straßen und Häuser zurückstaut, wird der Überschuss – eine Mischung aus Regenwasser und unbehandeltem oder teilbehandeltem Abwasser – direkt in Flüsse, Seen und Häfen abgeleitet. In der Nähe einer kürzlichen CSO-Einleitung sollte man nicht schwimmen. Mehr dazu auf der <a href=\"https://www.mwra.com/your-sewer-system/cso\">CSO-Seite der MWRA</a>.",
-        "q6.a2.html": "Wird in der Nähe der Mystic Lakes ein CSO-Ereignis gemeldet, zeigt das <a href=\"/\">Dashboard</a> eine Warnkarte mit den Details des Vorfalls.",
-        "q7.q": "Was bedeuten die Bakterien-Messergebnisse?",
-        "q7.a": "Massachusetts untersucht Süßwasserstrände auf Indikatorbakterien – E. coli und Enterokokken –, deren Vorkommen auf mögliche Verunreinigungen durch Abwasser oder tierische Fäkalien hindeutet. Überschreitet eine Einzelprobe oder das laufende geometrische Mittel der jüngsten Proben den Grenzwert des Bundesstaates, wird der Strand für das Baden gesperrt, bis eine Nachprobe wieder einwandfrei ist.",
-        "q8.q": "Worauf sollte ich sonst noch achten?",
-        "q8.li1": "Ungewöhnlich trübes Wasser, Schaum an der Oberfläche oder ein grüner, farbartiger Schimmer (mögliche schädliche Algenblüte).",
-        "q8.li2": "Starke Gerüche, sichtbare Schwemmstoffe oder verfärbtes Wasser nach Unwettern.",
-        "q8.li3": "Aushänge am Strand selbst – Beschilderung vor Ort kann aktueller sein als der Online-Status.",
-        "q9.q": "Welche Quellen helfen mir, die Wassersicherheit einzuschätzen?",
-        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> – die offizielle Quelle für Messergebnisse und Strandaushänge im gesamten Bundesstaat (und die Datenquelle dieser Website).",
-        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> – erklärt CSOs und verfolgt Einleitungsmeldungen für das Kanalsystem im Großraum Boston.",
-        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> – lokale Wasserqualitätsüberwachung und Interessenvertretung für das Einzugsgebiet des Mystic River.",
-        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> – allgemeine Hinweise zu Badegewässerqualität und Gesundheit.",
-        "sec3.h2": "🤝 Wie man schwimmt",
-        "sec3.intro": "Du hast einen sauberen, sicheren Ort zum Schwimmen gefunden. Was nun?",
-        "q10.q": "Warum sollte ich nicht allein schwimmen?",
-        "q10.a": "Die meisten Ertrinkungsfälle passieren, wenn niemand in der Nähe ist, der helfen kann. Schwimme zu zweit und bevorzuge Strände und Zeiten mit Rettungsschwimmern im Dienst. Auch geübte Schwimmer können von kaltem Wasser, Krämpfen oder Erschöpfung im Freiwasser überrascht werden.",
-        "q11.q": "Wie mache ich das Freiwasserschwimmen sicherer?",
-        "q11.li1": "Schwimme parallel zum Ufer statt gerade hinaus und kenne deine Ausstiegsstellen.",
-        "q11.li2": "Nutze eine auffällig gefärbte Schwimmboje oder Badekappe, damit Boote und Begleiter dich sehen.",
-        "q11.li3": "Gehe schrittweise ins kalte Wasser – plötzliches Eintauchen kann Schnappatmung und Panik auslösen.",
-        "q11.li4": "Behalte Kinder aufmerksam im Blick; bestimme einen Erwachsenen als „Wasseraufsicht“.",
-        "footer.html": "Diese FAQ sind allgemeine Hinweise, keine medizinische oder sicherheitstechnische Beratung. Die Bedingungen ändern sich schnell – schwimme stets nach eigenem Ermessen. <a class=\"site-link\" href=\"/\">Aktuelle Bedingungen ansehen →</a>"
     },
     "pt-BR": {
         "site.title": "Perguntas frequentes sobre natação em águas abertas",
@@ -515,7 +472,8 @@
         "q11.li2": "Use uma boia ou touca de cor viva para que barcos e companheiros consigam vê-lo.",
         "q11.li3": "Entre na água fria aos poucos — a imersão súbita pode provocar falta de ar e pânico.",
         "q11.li4": "Vigie as crianças de perto e ativamente; designe um adulto como «vigia da água».",
-        "footer.html": "Estas perguntas frequentes são orientação geral, não aconselhamento médico ou de segurança. As condições mudam rapidamente — nade sempre segundo o seu próprio critério. <a class=\"site-link\" href=\"/\">Ver as condições atuais →</a>"
+        "footer.html": "Estas perguntas frequentes são orientação geral, não aconselhamento médico ou de segurança. As condições mudam rapidamente — nade sempre segundo o seu próprio critério. <a class=\"site-link\" href=\"/\">Ver as condições atuais →</a>",
+        "lang.system": "Usar o idioma do sistema ({lang})"
     },
     "fr": {
         "site.title": "FAQ sur la natation en eau libre",
@@ -562,7 +520,8 @@
         "q11.li2": "Utilisez une bouée ou un bonnet de couleur vive pour être vu des bateaux et de vos compagnons.",
         "q11.li3": "Entrez progressivement dans l’eau froide : une immersion brutale peut provoquer suffocation et panique.",
         "q11.li4": "Surveillez les enfants de près et activement ; désignez un adulte « surveillant de l’eau ».",
-        "footer.html": "Cette FAQ fournit des indications générales, et non un avis médical ou de sécurité. Les conditions changent vite — baignez-vous toujours à votre propre appréciation. <a class=\"site-link\" href=\"/\">Voir les conditions actuelles →</a>"
+        "footer.html": "Cette FAQ fournit des indications générales, et non un avis médical ou de sécurité. Les conditions changent vite — baignez-vous toujours à votre propre appréciation. <a class=\"site-link\" href=\"/\">Voir les conditions actuelles →</a>",
+        "lang.system": "Utiliser la langue du système ({lang})"
     },
     "it": {
         "site.title": "FAQ sul nuoto in acque libere",
@@ -609,7 +568,152 @@
         "q11.li2": "Usa una boa o una cuffia di colore acceso perché barche e compagni possano vederti.",
         "q11.li3": "Entra gradualmente nell’acqua fredda: l’immersione improvvisa può provocare affanno e panico.",
         "q11.li4": "Sorveglia i bambini da vicino e attivamente; designa un adulto come «sorvegliante dell’acqua».",
-        "footer.html": "Queste FAQ sono indicazioni generali, non consigli medici o di sicurezza. Le condizioni cambiano rapidamente: nuota sempre secondo il tuo giudizio. <a class=\"site-link\" href=\"/\">Vedi le condizioni attuali →</a>"
+        "footer.html": "Queste FAQ sono indicazioni generali, non consigli medici o di sicurezza. Le condizioni cambiano rapidamente: nuota sempre secondo il tuo giudizio. <a class=\"site-link\" href=\"/\">Vedi le condizioni attuali →</a>",
+        "lang.system": "Usa la lingua del sistema ({lang})"
+    },
+    "zh": {
+        "site.title": "开放水域游泳常见问题",
+        "site.description": "关于游泳安全的常见问题解答：在哪里游泳、降雨和污水溢流如何影响水质，以及如何判断水是否安全。",
+        "lang.label": "语言",
+        "lang.system": "跟随系统（{lang}）",
+        "header.h1": "🏊‍♂️ 开放水域游泳",
+        "header.subtitle": "关于在米斯蒂克湖或其他水域何处、何时以及如何游泳的常见问题。",
+        "header.dashboardLink": "🏊‍♂️ 水质数据面板",
+        "sec1.h2": "🗺️ 在哪里游泳",
+        "sec1.intro": "寻找海滩——无论是在米斯蒂克湖附近还是马萨诸塞州的任何地方。",
+        "q1.q": "米斯蒂克湖附近哪里可以游泳？",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) 是<a href=\"/\">数据面板</a>默认跟踪的公共游泳海滩，提供米斯蒂克湖地区的当前状态、检测结果和污水溢流（CSO）警告。",
+        "q2.q": "如何查找其他海滩？",
+        "q2.a.html": "使用<a href=\"/\">数据面板</a>顶部的“添加海滩…”城镇/海滩选择器——它涵盖本州监测项目中的所有海滩，全州共有数百个。每个海滩都有自己的可分享链接（例如 <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>），因此您可以收藏或转发您关注的海滩。",
+        "sec2.h2": "🛟 何时游泳",
+        "sec2.intro": "判断今天是否适合下水——官方状态、近期天气和水质。",
+        "q3.q": "如何知道某个海滩是否开放游泳？",
+        "q3.a.html": "查看<a href=\"/\">数据面板</a>：它会根据马萨诸塞州公共卫生部的水质检测，显示您所选海滩的官方状态。标记为“关闭”的海滩表示细菌超标或存在其他活跃危害（例如有害藻类水华或污水排放），当州政府提供关闭原因时，面板也会一并显示。",
+        "q4.q": "标示为“开放”就保证水质安全吗？",
+        "q4.a": "不能。在游泳季节通常每周采样一次，因此两次检测之间水质可能发生变化——尤其是在降雨之后。请将公布的状态视为参考之一，同时结合近期天气、水的清澈度和您自己的判断。",
+        "q5.q": "下雨后可以游泳吗？",
+        "q5.callout": "经验法则：大雨过后请等待 24–72 小时再下水游泳。",
+        "q5.a": "大雨会把街道、雨水口以及某些社区溢出的下水道中的细菌和污染物直接冲入湖泊和河流。暴雨过后细菌水平通常最高，一般会在几天内恢复正常。由于官方检测每周才进行一次，海滩可能仍依据降雨前采集的样本标示为“开放”，因此暴雨过后的等待期是您最好的防护。",
+        "q6.q": "什么是 CSO？",
+        "q6.a1.html": "CSO（Combined Sewer Overflow，合流制下水道溢流）发生在污水和雨水共用同一管道的老旧下水道系统中。天气干燥时，所有水都会流向污水处理厂；但在大雨期间，合流水量可能超过系统容量。为防止污水倒灌到街道和住宅，多余的水——雨水与未经处理或仅部分处理的污水的混合物——会直接排入河流、湖泊和港湾。应避免在近期发生 CSO 排放的水域附近游泳。详情请见 <a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA 的 CSO 页面</a>。",
+        "q6.a2.html": "当米斯蒂克湖附近报告 CSO 事件时，<a href=\"/\">数据面板</a>会显示一张包含事件详情的警告卡片。",
+        "q7.q": "细菌检测结果意味着什么？",
+        "q7.a": "马萨诸塞州对淡水海滩检测指示性细菌——大肠杆菌和肠球菌——它们的存在提示可能存在污水或动物粪便污染。当单次采样或近期样本的滚动几何平均值超过本州阈值时，该海滩会被禁止游泳，直至后续采样合格为止。",
+        "q8.q": "还应该注意什么？",
+        "q8.li1": "水异常浑浊、水面浮沫，或出现类似绿色油漆的光泽（可能是有害藻类水华）。",
+        "q8.li2": "暴风雨后出现强烈异味、可见漂浮物或水体变色。",
+        "q8.li3": "海滩现场张贴的告示——现场标识可能比在线状态更及时。",
+        "q9.q": "有哪些资源可以用来判断水的安全性？",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — 全州检测结果和海滩公告的官方来源（也是本站数据的来源）。",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — 解释 CSO 并跟踪波士顿地区下水道系统的排放通知。",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — 米斯蒂克河流域的本地水质监测与倡导组织。",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — 关于海滩水质与健康的一般性指导。",
+        "sec3.h2": "🤝 如何游泳",
+        "sec3.intro": "您已经找到干净、安全的游泳地点。接下来呢？",
+        "q10.q": "为什么不应该独自游泳？",
+        "q10.a": "大多数溺水事故发生在附近无人施救的情况下。请结伴游泳，并优先选择有救生员值班的海滩和时段。即使是游泳好手，也可能在开放水域中因冷水、抽筋或疲劳而措手不及。",
+        "q11.q": "如何让开放水域游泳更安全？",
+        "q11.li1": "沿着岸边平行游泳，而不是直接向外游，并了解上岸地点。",
+        "q11.li2": "使用颜色鲜艳的游泳浮标或泳帽，以便船只和同伴看到您。",
+        "q11.li3": "逐渐进入冷水——突然浸入可能导致喘息和惊慌。",
+        "q11.li4": "密切、主动地看护儿童；指定一名成年人担任“水上看护者”。",
+        "footer.html": "本常见问题仅为一般性指导，不构成医疗或安全建议。水质状况变化很快——请始终自行判断后再下水。<a class=\"site-link\" href=\"/\">查看当前状况 →</a>"
+    },
+    "ht": {
+        "site.title": "Kesyon moun poze sou naje nan dlo lib",
+        "site.description": "Repons pou kesyon moun poze souvan sou sekirite naje: ki kote pou naje, kijan lapli ak debòdman egou afekte kalite dlo, ak kijan pou konnen si dlo a san danje.",
+        "lang.label": "Lang",
+        "lang.system": "Sèvi ak lang sistèm nan ({lang})",
+        "header.h1": "🏊‍♂️ Naje nan dlo lib",
+        "header.subtitle": "Kesyon moun poze souvan sou ki kote, ki lè ak kijan pou naje nan Lak Mystic oswa lòt kote.",
+        "header.dashboardLink": "🏊‍♂️ Tablodbò kalite dlo",
+        "sec1.h2": "🗺️ Ki kote pou naje",
+        "sec1.intro": "Jwenn yon plaj — toupre Lak Mystic yo oswa nenpòt kote nan Massachusetts.",
+        "q1.q": "Ki kote mwen ka naje toupre Lak Mystic yo?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) se plaj piblik pou naje ke <a href=\"/\">tablodbò a</a> swiv pa defo, ak estati aktyèl la, rezilta tès yo, ak avètisman debòdman egou (CSO) pou zòn Lak Mystic yo.",
+        "q2.q": "Kijan pou m jwenn lòt plaj?",
+        "q2.a.html": "Sèvi ak seleksyon Vil/Plaj “Ajoute plaj…” anwo <a href=\"/\">tablodbò a</a> — li kouvri tout plaj ki nan pwogram siveyans eta a, plizyè santèn atravè eta a. Chak plaj gen pwòp lyen pa l ou ka pataje (tankou <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), konsa ou ka make oswa voye bay lòt moun plaj ki enterese ou yo.",
+        "sec2.h2": "🛟 Ki lè pou naje",
+        "sec2.intro": "Konnen si jodi a se yon bon jou pou antre nan dlo a — estati ofisyèl, tan ki fèk pase, ak kalite dlo.",
+        "q3.q": "Kijan pou m konnen si yon plaj louvri pou naje?",
+        "q3.a.html": "Gade <a href=\"/\">tablodbò a</a>: li montre estati ofisyèl eta a pou plaj ou chwazi a, dapre tès kalite dlo Depatman Sante Piblik Massachusetts la. Yon plaj ki make “fèmen” depase limit bakteri yo oswa gen yon lòt danje aktif (tankou yon pwoliferasyon alg danjere oswa yon dechaj dlo egou), epi tablodbò a montre rezon fèmti a lè eta a bay youn.",
+        "q4.q": "Èske yon estati “louvri” garanti dlo a san danje?",
+        "q4.a": "Non. Pandan sezon an yo pran echantiyon anjeneral chak semèn, kidonk kondisyon yo ka chanje ant de tès — sitou apre lapli. Konsidere estati ki afiche a kòm yon eleman pami lòt yo, ansanm ak tan ki fèk pase, klète dlo a, ak pwòp jijman ou.",
+        "q5.q": "Èske mwen ta dwe naje apre lapli?",
+        "q5.callout": "Règ jeneral: tann 24–72 èdtan apre yon gwo lapli anvan ou naje.",
+        "q5.a": "Gwo lapli lave bakteri ak polyan soti nan lari yo, nan kanal dlo lapli yo, epi — nan kèk komin — nan egou ki debòde, dirèkteman nan lak ak rivyè. Nivo bakteri yo anjeneral pi wo jis apre yon tanpèt epi yo tounen nòmal nan kèk jou. Piske tès ofisyèl yo fèt chak semèn, yon plaj ka toujou make “louvri” dapre yon echantiyon yo te pran anvan lapli a, kidonk peryòd datant lan se pi bon pwoteksyon ou apre yon tanpèt.",
+        "q6.q": "Kisa yon CSO ye?",
+        "q6.a1.html": "Yon CSO (Combined Sewer Overflow, debòdman egou konbine) rive nan ansyen sistèm egou kote dlo egou ak dlo lapli pataje menm tiyo yo. Lè tan an sèk tout bagay ale nan yon izin tretman, men pandan gwo lapli volim konbine a ka depase kapasite sistèm nan. Pou anpeche dlo egou remonte nan lari ak nan kay moun, sipli a — yon melanj dlo lapli ak dlo egou ki pa trete oswa ki trete an pati — dechaje dirèkteman nan rivyè, lak ak pò. Ou pa dwe naje toupre yon dechaj CSO ki fèk fèt. Aprann plis sou <a href=\"https://www.mwra.com/your-sewer-system/cso\">paj CSO MWRA a</a>.",
+        "q6.a2.html": "Lè yo rapòte yon evènman CSO toupre Lak Mystic yo, <a href=\"/\">tablodbò a</a> montre yon kat avètisman ak detay ensidan an.",
+        "q7.q": "Kisa rezilta tès bakteri yo vle di?",
+        "q7.a": "Massachusetts teste plaj dlo dous yo pou bakteri endikatè — E. coli ak antewokòk — prezans yo sijere yon posib kontaminasyon dlo egou oswa poupou bèt. Lè yon sèl echantiyon oswa mwayèn jeyometrik kimile echantiyon resan yo depase limit eta a, yo entèdi naje nan plaj la jiskaske yon echantiyon swivi pase.",
+        "q8.q": "Kisa lòt bagay mwen dwe veye?",
+        "q8.li1": "Dlo ki twoub anpil, kim sou sifas la, oswa yon eklat vèt tankou penti (posib pwoliferasyon alg danjere).",
+        "q8.li2": "Move sant, fatra vizib, oswa dlo ki chanje koulè apre tanpèt.",
+        "q8.li3": "Avi ki afiche sou plaj la menm — pankat sou plas la ka pi ajou pase estati sou entènèt la.",
+        "q9.q": "Ki resous mwen ka sèvi pou evalye sekirite dlo a?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — sous ofisyèl pou rezilta tès ak avi plaj atravè eta a (epi sous done sit sa a).",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — eksplike CSO yo epi swiv notifikasyon dechaj pou sistèm egou zòn Boston an.",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — siveyans kalite dlo lokal ak defans pou basen rivyè Mystic la.",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — konsèy jeneral sou kalite dlo plaj ak sante.",
+        "sec3.h2": "🤝 Kijan pou naje",
+        "sec3.intro": "Ou jwenn yon kote pwòp e san danje pou naje. Kisa apre?",
+        "q10.q": "Poukisa mwen pa dwe naje pou kont mwen?",
+        "q10.a": "Pifò neyad rive lè pa gen pèsonn toupre pou ede. Naje ak yon konpayon, epi chwazi plaj ak lè ki gen sovtè an sèvis. Menm bon naje ka sezi pa dlo frèt, kranp, oswa fatig nan dlo lib.",
+        "q11.q": "Kijan mwen ka fè naje nan dlo lib pi an sekirite?",
+        "q11.li1": "Naje paralèl ak rivaj la olye ou ale dwat deyò, epi konnen kote ou ka soti.",
+        "q11.li2": "Sèvi ak yon boye oswa yon bonè naje ki gen koulè klere pou bato ak konpayon ou ka wè ou.",
+        "q11.li3": "Antre nan dlo frèt tikras pa tikras — plonje sibitman ka lakòz ou souke ak panike.",
+        "q11.li4": "Veye timoun yo de pre e aktivman; chwazi yon granmoun kòm “sivèy dlo”.",
+        "footer.html": "Kesyon sa yo se konsèy jeneral, se pa konsèy medikal oswa sekirite. Kondisyon yo chanje vit — toujou naje selon pwòp jijman ou. <a class=\"site-link\" href=\"/\">Gade kondisyon aktyèl yo →</a>"
+    },
+    "vi": {
+        "site.title": "Câu hỏi thường gặp về bơi ở vùng nước mở",
+        "site.description": "Giải đáp các câu hỏi thường gặp về an toàn khi bơi: bơi ở đâu, mưa và sự cố tràn nước thải ảnh hưởng thế nào đến chất lượng nước, và làm sao đánh giá nước có an toàn hay không.",
+        "lang.label": "Ngôn ngữ",
+        "lang.system": "Dùng ngôn ngữ hệ thống ({lang})",
+        "header.h1": "🏊‍♂️ Bơi ở vùng nước mở",
+        "header.subtitle": "Những câu hỏi thường gặp về nơi, thời điểm và cách bơi ở hồ Mystic hoặc những nơi khác.",
+        "header.dashboardLink": "🏊‍♂️ Bảng dữ liệu chất lượng nước",
+        "sec1.h2": "🗺️ Bơi ở đâu",
+        "sec1.intro": "Tìm một bãi biển — gần hồ Mystic hoặc bất cứ đâu tại Massachusetts.",
+        "q1.q": "Tôi có thể bơi ở đâu gần hồ Mystic?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) là bãi tắm công cộng mà <a href=\"/\">bảng dữ liệu</a> theo dõi theo mặc định, kèm trạng thái hiện tại, kết quả xét nghiệm và cảnh báo tràn nước thải (CSO) cho khu vực hồ Mystic.",
+        "q2.q": "Làm sao để tìm các bãi biển khác?",
+        "q2.a.html": "Hãy dùng bộ chọn Thị trấn/Bãi biển “Thêm bãi biển…” ở đầu <a href=\"/\">bảng dữ liệu</a> — nó bao gồm mọi bãi biển trong chương trình giám sát của bang, vài trăm bãi trên toàn bang. Mỗi bãi biển có đường liên kết riêng để chia sẻ (chẳng hạn <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), nên bạn có thể lưu dấu trang hoặc gửi cho người khác những bãi biển mình quan tâm.",
+        "sec2.h2": "🛟 Khi nào nên bơi",
+        "sec2.intro": "Đánh giá hôm nay có phải ngày thích hợp để xuống nước hay không — trạng thái chính thức, thời tiết gần đây và chất lượng nước.",
+        "q3.q": "Làm sao biết một bãi biển có được phép bơi hay không?",
+        "q3.a.html": "Hãy xem <a href=\"/\">bảng dữ liệu</a>: nó hiển thị trạng thái chính thức của bang cho bãi biển bạn chọn, dựa trên kết quả xét nghiệm chất lượng nước của Sở Y tế Công cộng Massachusetts. Bãi biển được ghi là “đóng cửa” đã vượt ngưỡng vi khuẩn hoặc đang có mối nguy khác (như tảo độc nở hoa hoặc sự cố xả nước thải), và bảng dữ liệu sẽ nêu lý do đóng cửa khi bang cung cấp.",
+        "q4.q": "Trạng thái “mở cửa” có bảo đảm nước an toàn không?",
+        "q4.a": "Không. Trong mùa, việc lấy mẫu thường diễn ra hằng tuần, nên điều kiện nước có thể thay đổi giữa hai lần xét nghiệm — nhất là sau khi mưa. Hãy xem trạng thái công bố như một yếu tố tham khảo, cùng với thời tiết gần đây, độ trong của nước và phán đoán của chính bạn.",
+        "q5.q": "Có nên bơi sau khi trời mưa không?",
+        "q5.callout": "Nguyên tắc chung: hãy đợi 24–72 giờ sau mưa lớn rồi mới bơi.",
+        "q5.a": "Mưa lớn cuốn vi khuẩn và chất ô nhiễm từ đường phố, cống thoát nước mưa và — ở một số địa phương — từ cống thải bị tràn, đổ thẳng vào hồ và sông. Mức vi khuẩn thường cao nhất ngay sau một trận mưa bão và thường trở lại bình thường trong vài ngày. Vì xét nghiệm chính thức chỉ diễn ra hằng tuần, một bãi biển vẫn có thể được ghi là “mở cửa” dựa trên mẫu lấy trước khi mưa, nên khoảng thời gian chờ chính là cách bảo vệ tốt nhất sau mưa bão.",
+        "q6.q": "CSO là gì?",
+        "q6.a1.html": "CSO (Combined Sewer Overflow, tràn cống chung) xảy ra ở các hệ thống cống cũ, nơi nước thải và nước mưa dùng chung một đường ống. Khi trời khô ráo, mọi thứ chảy về nhà máy xử lý, nhưng trong mưa lớn, tổng lượng nước có thể vượt quá công suất hệ thống. Để nước thải không tràn ngược lên đường phố và nhà dân, phần dư — hỗn hợp nước mưa với nước thải chưa xử lý hoặc xử lý một phần — được xả thẳng ra sông, hồ và vịnh. Nên tránh bơi gần nơi vừa xảy ra xả CSO. Tìm hiểu thêm tại <a href=\"https://www.mwra.com/your-sewer-system/cso\">trang CSO của MWRA</a>.",
+        "q6.a2.html": "Khi có sự cố CSO được ghi nhận gần hồ Mystic, <a href=\"/\">bảng dữ liệu</a> sẽ hiển thị một thẻ cảnh báo kèm chi tiết sự cố.",
+        "q7.q": "Kết quả xét nghiệm vi khuẩn có ý nghĩa gì?",
+        "q7.a": "Massachusetts xét nghiệm các bãi biển nước ngọt để tìm vi khuẩn chỉ thị — E. coli và khuẩn cầu ruột — sự hiện diện của chúng cho thấy có thể có ô nhiễm từ nước thải hoặc chất thải động vật. Khi một mẫu đơn lẻ hoặc trung bình nhân trượt của các mẫu gần đây vượt ngưỡng của bang, bãi biển sẽ bị cấm bơi cho đến khi một mẫu kiểm tra tiếp theo đạt yêu cầu.",
+        "q8.q": "Còn điều gì khác cần lưu ý?",
+        "q8.li1": "Nước đục bất thường, có váng trên mặt nước, hoặc ánh xanh như sơn (có thể là tảo độc nở hoa).",
+        "q8.li2": "Mùi nồng, rác trôi nổi thấy rõ, hoặc nước đổi màu sau mưa bão.",
+        "q8.li3": "Các thông báo dán tại chính bãi biển — biển báo tại chỗ có thể cập nhật hơn trạng thái trực tuyến.",
+        "q9.q": "Tôi có thể dùng những nguồn nào để đánh giá độ an toàn của nước?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — nguồn chính thức về kết quả xét nghiệm và thông báo bãi biển trên toàn bang (cũng là nguồn dữ liệu của trang này).",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — giải thích về CSO và theo dõi các thông báo xả thải của hệ thống cống khu vực Boston.",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — giám sát chất lượng nước và vận động chính sách tại lưu vực sông Mystic.",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — hướng dẫn chung về chất lượng nước bãi biển và sức khỏe.",
+        "sec3.h2": "🤝 Bơi thế nào",
+        "sec3.intro": "Bạn đã có một nơi sạch sẽ và an toàn để bơi. Tiếp theo thì sao?",
+        "q10.q": "Vì sao không nên bơi một mình?",
+        "q10.a": "Phần lớn các vụ đuối nước xảy ra khi không có ai ở gần để giúp đỡ. Hãy bơi cùng người khác và ưu tiên những bãi biển, khung giờ có nhân viên cứu hộ trực. Ngay cả người bơi giỏi cũng có thể bất ngờ vì nước lạnh, chuột rút hoặc kiệt sức ở vùng nước mở.",
+        "q11.q": "Làm sao để bơi ở vùng nước mở an toàn hơn?",
+        "q11.li1": "Bơi song song với bờ thay vì bơi thẳng ra xa, và biết rõ những điểm có thể lên bờ.",
+        "q11.li2": "Dùng phao bơi hoặc mũ bơi màu sáng để thuyền bè và người đi cùng nhìn thấy bạn.",
+        "q11.li3": "Xuống nước lạnh từ từ — ngâm mình đột ngột có thể gây hụt hơi và hoảng loạn.",
+        "q11.li4": "Trông chừng trẻ em thật sát sao và chủ động; hãy cử một người lớn làm “người canh nước”.",
+        "footer.html": "Phần hỏi đáp này chỉ mang tính hướng dẫn chung, không phải lời khuyên y tế hay an toàn. Điều kiện thay đổi rất nhanh — hãy luôn tự cân nhắc trước khi xuống nước. <a class=\"site-link\" href=\"/\">Xem điều kiện hiện tại →</a>"
     }
 };
 
@@ -638,18 +742,29 @@
         if (BASE_FALLBACK[base] && has(BASE_FALLBACK[base])) return BASE_FALLBACK[base];
         return null;
     }
-    function resolveLang() {
-        const fromQuery = normalizeLang(new URLSearchParams(window.location.search).get("lang"));
-        if (fromQuery) return fromQuery;
-        const fromCookie = normalizeLang(getCookie(LANG_COOKIE));
-        if (fromCookie) return fromCookie;
+    // langPreference is what the visitor chose (a code, or SYSTEM_LANG meaning
+    // "follow the browser"); currentLang is the code actually in use. See
+    // index.html for why they have to stay separate.
+    const SYSTEM_LANG = "system";
+    function systemLang() {
         for (const pref of (navigator.languages || [navigator.language || ""])) {
             const m = normalizeLang(pref);
             if (m) return m;
         }
         return DEFAULT_LANG;
     }
-    let currentLang = resolveLang();
+    function resolvePreference() {
+        for (const raw of [new URLSearchParams(window.location.search).get("lang"),
+                           getCookie(LANG_COOKIE)]) {
+            if (!raw) continue;
+            if (String(raw).toLowerCase() === SYSTEM_LANG) return SYSTEM_LANG;
+            const m = normalizeLang(raw);
+            if (m) return m;
+        }
+        return SYSTEM_LANG;
+    }
+    let langPreference = resolvePreference();
+    let currentLang = langPreference === SYSTEM_LANG ? systemLang() : langPreference;
 
     function langChain(code) {
         const chain = [];
@@ -682,28 +797,44 @@
         });
     }
 
+    function langLabel(code) {
+        const entry = LANGS.find(l => l.code === code);
+        return entry ? entry.label : code;
+    }
+
     function buildLangSwitcher() {
         const sel = document.getElementById("lang-select");
         if (!sel) return;
         sel.innerHTML = "";
+        // Leads the list, naming the language it currently resolves to.
+        const system = document.createElement("option");
+        system.value = SYSTEM_LANG;
+        system.textContent = t("lang.system").replace("{lang}", langLabel(systemLang()));
+        sel.appendChild(system);
+        // Spec'd <select> separator; ignored by browsers that don't support it.
+        sel.appendChild(document.createElement("hr"));
         LANGS.forEach(l => {
             const opt = document.createElement("option");
             opt.value = l.code;
             opt.textContent = l.label;
             sel.appendChild(opt);
         });
-        sel.value = currentLang;
+        sel.value = langPreference;
         if (sel.dataset.wired !== "1") {
             sel.dataset.wired = "1";
             sel.addEventListener("change", () => {
-                currentLang = normalizeLang(sel.value) || DEFAULT_LANG;
+                const choice = String(sel.value).toLowerCase() === SYSTEM_LANG
+                    ? SYSTEM_LANG
+                    : (normalizeLang(sel.value) || DEFAULT_LANG);
+                langPreference = choice;
+                currentLang = choice === SYSTEM_LANG ? systemLang() : choice;
                 langLookup = langChain(currentLang);
-                setCookie(LANG_COOKIE, currentLang);
+                setCookie(LANG_COOKIE, langPreference);
                 // ?lang= outranks the cookie, so keep it in step (see index.html).
                 try {
                     const url = new URL(window.location.href);
                     if (url.searchParams.has("lang")) {
-                        url.searchParams.set("lang", currentLang);
+                        url.searchParams.set("lang", langPreference);
                         window.history.replaceState(null, "", url);
                     }
                 } catch (e) { /* history not available; non-fatal */ }

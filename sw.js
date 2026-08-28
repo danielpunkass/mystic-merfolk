@@ -207,10 +207,12 @@ const NOTIFICATION_STRINGS = {
     en:       { title: 'Beach Status Update',                    open: 'Open for Swimming',      closed: 'Closed for Swimming',   body: 'Swimming status changed to: {status}' },
     es:       { title: 'Cambio de estado de la playa',           open: 'Abierto para el baño',   closed: 'Cerrado para el baño',  body: 'El estado del baño ha cambiado a: {status}' },
     'es-419': { title: 'Cambio de estado de la playa',           open: 'Abierto para nadar',     closed: 'Cerrado para nadar',    body: 'El estado para nadar cambió a: {status}' },
-    de:       { title: 'Aktualisierung des Strandstatus',        open: 'Zum Baden geöffnet',     closed: 'Zum Baden gesperrt',    body: 'Der Badestatus hat sich geändert zu: {status}' },
     'pt-BR':  { title: 'Atualização do estado da praia',         open: 'Aberto para banho',      closed: 'Fechado para banho',    body: 'O estado para banho mudou para: {status}' },
     fr:       { title: 'Mise à jour du statut de la plage',      open: 'Baignade autorisée',     closed: 'Baignade interdite',    body: 'Le statut de baignade est passé à : {status}' },
-    it:       { title: 'Aggiornamento dello stato della spiaggia', open: 'Balneazione consentita', closed: 'Balneazione vietata', body: 'Lo stato della balneazione è cambiato in: {status}' }
+    it:       { title: 'Aggiornamento dello stato della spiaggia', open: 'Balneazione consentita', closed: 'Balneazione vietata', body: 'Lo stato della balneazione è cambiato in: {status}' },
+    zh:       { title: '海滩状态更新',                            open: '可以游泳',                closed: '禁止游泳',              body: '游泳状态已变更为：{status}' },
+    ht:       { title: 'Mizajou estati plaj la',                 open: 'Ou ka naje',             closed: 'Ou pa ka naje',         body: 'Estati naje a chanje pou: {status}' },
+    vi:       { title: 'Cập nhật trạng thái bãi biển',           open: 'Được phép bơi',          closed: 'Cấm bơi',               body: 'Trạng thái bơi đã đổi thành: {status}' }
 };
 
 // Mirrors the page's resolver (index.html): exact regional catalog, then the
