@@ -71,6 +71,30 @@
             text-decoration: underline;
         }
 
+        /* Language switcher. Lives outside .header so it escapes the gradient
+           text-fill effect that would otherwise render its label transparent. */
+        .lang-switcher {
+            text-align: center;
+            margin: -1rem 0 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .lang-switcher select {
+            font: inherit;
+            color: #0369a1;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+        }
+
         .card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
@@ -768,51 +792,56 @@
     <div class="container">
         <div class="header">
             <h1 id="page-title">🏊‍♂️ Massachusetts Water Quality</h1>
-            <div class="subtitle">A concise snapshot of current and recent water conditions. Data from the <a id="dph-link" href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
-            <!-- <div class="faq-link"><a href="/faq/">🛟 Swimming Safety FAQ</a></div> -->
+            <div class="subtitle" id="subtitle">A concise snapshot of current and recent water conditions. Data from the <a id="dph-link" href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">DCR Water Quality</a> site.</div>
+            <!-- <div class="faq-link"><a href="/faq/" data-i18n="faq.link">🛟 Swimming Safety FAQ</a></div> -->
+        </div>
+
+        <div class="lang-switcher">
+            <label for="lang-select" data-i18n="lang.label">Language</label>
+            <select id="lang-select" data-i18n-attr="aria-label:lang.label"></select>
         </div>
 
         <div class="change-beach-row" id="change-beach-row" style="display: none;">
-            <nav class="recent-beaches" id="recent-beaches" aria-label="Recently viewed beaches"></nav>
+            <nav class="recent-beaches" id="recent-beaches" aria-label="Recently viewed beaches" data-i18n-attr="aria-label:nav.recentAria"></nav>
         </div>
 
         <div class="card" id="beach-selector-card" style="display: none;">
             <div class="beach-selector-header">
-                <span class="beach-selector-title">Add a beach</span>
+                <span class="beach-selector-title" data-i18n="selector.title">Add a beach</span>
             </div>
             <div class="beach-selector">
                 <div class="field">
-                    <label for="town-select">Town</label>
+                    <label for="town-select" data-i18n="selector.town">Town</label>
                     <select id="town-select"></select>
                 </div>
                 <div class="field beach-field">
-                    <label for="beach-select">Beach</label>
+                    <label for="beach-select" data-i18n="selector.beach">Beach</label>
                     <select id="beach-select"></select>
                 </div>
             </div>
             <div class="beach-selector-actions">
-                <button type="button" class="selector-add" id="selector-add">Add</button>
+                <button type="button" class="selector-add" id="selector-add" data-i18n="selector.add">Add</button>
             </div>
         </div>
 
         <div id="notification-banner" class="notification-banner" style="display: none;">
-            <span>🔔 Get notified when swimming status changes!</span>
-            <button onclick="enableNotifications()">Enable Notifications</button>
+            <span data-i18n="notify.banner">🔔 Get notified when swimming status changes!</span>
+            <button onclick="enableNotifications()" data-i18n="notify.enable">Enable Notifications</button>
         </div>
 
         <div class="card" id="status-card">
             <div id="current-status" style="padding: 2rem;">
-                <h2 id="status-heading" style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">Current Status: Loading...</h2>
+                <h2 id="status-heading" data-i18n-init="1" style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">Current Status: Loading...</h2>
                 <div id="status-reason" class="status-reason" style="display: none;"></div>
-                <p id="status-description" style="margin: 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">This is the official status for Shannon Beach specifically, based on single samples and the cumulative geometric mean of recent results. As always, swim at your own risk and at the discretion of your own best judgement!</p>
+                <p id="status-description" data-i18n-init="1" style="margin: 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">This is the official status for Shannon Beach specifically, based on single samples and the cumulative geometric mean of recent results. As always, swim at your own risk and at the discretion of your own best judgement!</p>
             </div>
         </div>
 
         <!-- CSO Incidents Section (hidden by default) -->
         <div class="card cso-card" id="cso-card" style="display: none;">
             <div id="cso-incidents" style="padding: 2rem;">
-                <h2 style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">⚠️ Recent CSO Incidents</h2>
-                <p style="margin: 0 0 1.5rem 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">Combined Sewage Overflow events reported in the Winchester area affecting Mystic Lake within the last 2 weeks.</p>
+                <h2 data-i18n="cso.heading" style="margin: 0 0 1rem 0; font-size: 1.8rem; font-weight: 700;">⚠️ Recent CSO Incidents</h2>
+                <p data-i18n="cso.intro" style="margin: 0 0 1.5rem 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9;">Combined Sewage Overflow events reported in the Winchester area affecting Mystic Lake within the last 2 weeks.</p>
                 <div id="cso-list">
                     <!-- CSO incidents will be inserted here -->
                 </div>
@@ -820,7 +849,7 @@
         </div>
 
         <div class="card" id="geomean-card" style="display: none;">
-            <h2 id="geomean-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Geometric Mean Test Results</h2>
+            <h2 id="geomean-heading" data-i18n="card.geomean" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Geometric Mean Test Results</h2>
             <div class="table-container">
                 <table id="geomean-table" class="results-table">
                     <thead>
@@ -832,11 +861,11 @@
         </div>
 
         <div class="card" id="results-card">
-            <h2 id="results-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Single Sample Test Results</h2>
+            <h2 id="results-heading" data-i18n="card.singleSample" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Single Sample Test Results</h2>
             <div class="table-container">
-                <div id="loading" class="loading">Loading beach data...</div>
+                <div id="loading" class="loading" data-i18n="loading.beach">Loading beach data...</div>
                 <div id="awaiting-first-reading" style="display: none; padding: 1.5rem; color: #334155; line-height: 1.5;">
-                    <p style="margin: 0;">Official water quality monitoring is just beginning for the season. No readings have been posted yet for this year. Sampling typically runs weekly from Memorial Day through Labor Day.</p>
+                    <p style="margin: 0;" data-i18n="awaiting.body">Official water quality monitoring is just beginning for the season. No readings have been posted yet for this year. Sampling typically runs weekly from Memorial Day through Labor Day.</p>
                 </div>
                 <table id="data-table" class="results-table" style="display: none;">
                     <thead>
@@ -857,16 +886,14 @@
         <!-- Link to past season's historical readings (shown in open season; off-season uses the
              same mechanism via the status card link instead). -->
         <div id="historical-link-card" style="display: none; text-align: center; margin-bottom: 2rem;">
-            <a href="#historical-card" id="in-season-historical-link" style="color: #0369a1; font-weight: 600; text-decoration: none;">
-                View <span id="historical-link-year"></span> season historical readings →
-            </a>
+            <a href="#historical-card" id="in-season-historical-link" style="color: #0369a1; font-weight: 600; text-decoration: none;"></a>
         </div>
 
         <!-- Historical readings card, revealed on click. -->
         <div class="card" id="historical-card" style="display: none;">
-            <h2 id="historical-heading" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Historical Readings</h2>
+            <h2 id="historical-heading" data-i18n="card.historical" style="padding: 1.5rem 1.5rem; margin: 0; color: #1a365d; font-size: 1.4rem; font-weight: 600;">Historical Readings</h2>
             <div class="table-container">
-                <div id="historical-loading" class="loading">Loading historical readings...</div>
+                <div id="historical-loading" class="loading" data-i18n="loading.historical">Loading historical readings...</div>
                 <table id="historical-table" style="display: none;">
                     <thead>
                         <tr id="historical-table-head"></tr>
@@ -907,7 +934,7 @@
         </div>
     </div>
 
-    <div id="refresh-indicator" class="refresh-indicator">
+    <div id="refresh-indicator" class="refresh-indicator" data-i18n="ui.refreshing">
         Refreshing data...
     </div>
 
@@ -962,6 +989,669 @@
     	    const maxAge = days * 24 * 60 * 60;
     	    document.cookie =
     	        `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}; SameSite=Lax`;
+    	}
+
+    	// --- i18n ------------------------------------------------------------
+    	// The site is fully static, so localization is client-side: one string
+    	// catalog for all supported languages, applied at first paint. Resolution
+    	// order is ?lang=xx -> the `lang` cookie -> navigator.language -> English.
+    	// Static markup carries data-i18n / data-i18n-html / data-i18n-attr hooks;
+    	// everything rendered from JS goes through t().
+    	const LANGS = [
+    	    { code: "en", label: "English",    locale: "en-US" },
+    	    { code: "es", label: "Español",    locale: "es-ES" },
+    	    { code: "de", label: "Deutsch",    locale: "de-DE" },
+    	    { code: "pt", label: "Português",  locale: "pt-BR" },
+    	    { code: "fr", label: "Français",   locale: "fr-FR" },
+    	    { code: "it", label: "Italiano",   locale: "it-IT" }
+    	];
+    	const LANG_COOKIE = "lang";
+    	const DEFAULT_LANG = "en";
+
+    	const STRINGS = {
+    	  en: {
+    	    "site.title": "Massachusetts Water Quality",
+    	    "site.description": "A concise snapshot of current and recent water conditions at Shannon Beach.",
+    	    "subtitle.before": "A concise snapshot of current and recent water conditions. Data from the ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": " site.",
+    	    "lang.label": "Language",
+    	    "faq.link": "🛟 Swimming Safety FAQ",
+    	    "nav.recentAria": "Recently viewed beaches",
+    	    "nav.addBeach": "Add beach…",
+    	    "nav.removeAria": "Remove {beach} from recent beaches",
+    	    "selector.title": "Add a beach",
+    	    "selector.town": "Town",
+    	    "selector.beach": "Beach",
+    	    "selector.add": "Add",
+    	    "town.other": "Other",
+    	    "notify.banner": "🔔 Get notified when swimming status changes!",
+    	    "notify.enable": "Enable Notifications",
+    	    "notify.enabled": "Notifications enabled!",
+    	    "notify.blocked": "Notifications blocked",
+    	    "ui.refreshing": "Refreshing data...",
+    	    "status.current": "Current Status: {status}",
+    	    "status.loading": "Loading...",
+    	    "status.closedForSeason": "Closed for Season",
+    	    "status.monitoringNotActive": "Monitoring not yet active",
+    	    "status.unavailable": "Information Unavailable",
+    	    "status.open": "Open for Swimming",
+    	    "status.closed": "Closed for Swimming",
+    	    "status.desc": "This is the official status for {beach} specifically, based on single samples and the cumulative geometric mean of recent results. As always, swim at your own risk and at the discretion of your own best judgement!",
+    	    "status.unavailableDesc": "Status information is currently unavailable. Please check back later for updates.",
+    	    "status.offSeasonDesc": "Official water quality monitoring at {beach} runs from Memorial Day through Labor Day. Outside that window the lake may still be used for boating, kayaking, and plunging at your own risk — but there is no published monitoring, so conditions are unknown.",
+    	    "status.preSeasonDesc": "Official water quality monitoring at {beach} has not yet begun for this season. It typically resumes around Memorial Day and runs weekly through Labor Day. In the meantime, the lake may still be used for boating, kayaking, and plunging at your own risk — but conditions are unknown.",
+    	    "status.reasonLabel": "Reason: ",
+    	    "reason.Bacterial Exceedance": "Bacterial Exceedance",
+    	    "reason.Harmful Cyanobacteria Bloom": "Harmful Cyanobacteria Bloom",
+    	    "reason.CSO/SSO event": "CSO/SSO event",
+    	    "reason.Other": "Other",
+    	    "indicator.Enterococci": "Enterococci",
+    	    "indicator.E. Coli": "E. coli",
+    	    "cso.heading": "⚠️ Recent CSO Incidents",
+    	    "cso.intro": "Combined Sewage Overflow events reported in the Winchester area affecting Mystic Lake within the last 2 weeks.",
+    	    "cso.time": "Time:",
+    	    "cso.volume": "Volume:",
+    	    "cso.duration": "Duration:",
+    	    "cso.rainfall": "Rainfall:",
+    	    "cso.unknownTime": "Unknown time",
+    	    "cso.gallons": "{n} gallons",
+    	    "cso.volumeUnknown": "Volume unknown",
+    	    "cso.inches": "{n} inches",
+    	    "cso.rainfallUnknown": "Rainfall unknown",
+    	    "cso.hoursMinutes": "{h}h {m}m",
+    	    "cso.hours": "{h} hours",
+    	    "cso.durationUnknown": "Duration unknown",
+    	    "table.Date and Time": "Date and Time",
+    	    "table.Indicator": "Indicator",
+    	    "table.Threshold": "Threshold",
+    	    "table.Results": "Results",
+    	    "table.Status": "Status",
+    	    "badge.above": "Above Threshold",
+    	    "badge.at": "At Threshold",
+    	    "badge.below": "Below Threshold",
+    	    "card.geomean": "Geometric Mean Test Results",
+    	    "card.singleSample": "Single Sample Test Results",
+    	    "card.historical": "Historical Readings",
+    	    "card.seasonHistorical": "{year} Season Historical Readings",
+    	    "card.unavailableHeading": "Latest readings temporarily unavailable",
+    	    "card.awaitingHeading": "Awaiting first reading of the season",
+    	    "loading.beach": "Loading beach data...",
+    	    "loading.historical": "Loading historical readings...",
+    	    "error.historical": "Could not load historical readings.",
+    	    "awaiting.body": "Official water quality monitoring is just beginning for the season. No readings have been posted yet for this year. Sampling typically runs weekly from Memorial Day through Labor Day.",
+    	    "awaiting.unavailable": "The latest readings could not be retrieved from the state’s water-quality dashboard right now. Monitoring is active — this is a temporary problem fetching the data, not a closure. The most recent completed season’s readings are linked below.",
+    	    "archive.none": "No archived past-season readings are available for {beach} yet. Historical readings are currently archived only for Shannon Beach @ Upper Mystic.",
+    	    "link.viewHistorical": "View {year} season historical readings →",
+    	    "footer.pageRendered": "Page rendered: {ts}",
+    	    "footer.testMode": " (Test Mode)",
+    	    "footer.lastSynced": "Data last synced: {ts}",
+    	    "footer.commit": "Commit: {c}"
+    	  },
+    	  es: {
+    	    "site.title": "Calidad del agua en Massachusetts",
+    	    "site.description": "Un resumen conciso de las condiciones actuales y recientes del agua en Shannon Beach.",
+    	    "subtitle.before": "Un resumen conciso de las condiciones actuales y recientes del agua. Datos del sitio ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": ".",
+    	    "lang.label": "Idioma",
+    	    "faq.link": "🛟 Preguntas frecuentes sobre seguridad al nadar",
+    	    "nav.recentAria": "Playas vistas recientemente",
+    	    "nav.addBeach": "Añadir playa…",
+    	    "nav.removeAria": "Quitar {beach} de las playas recientes",
+    	    "selector.title": "Añadir una playa",
+    	    "selector.town": "Municipio",
+    	    "selector.beach": "Playa",
+    	    "selector.add": "Añadir",
+    	    "town.other": "Otros",
+    	    "notify.banner": "🔔 ¡Recibe un aviso cuando cambie el estado del baño!",
+    	    "notify.enable": "Activar notificaciones",
+    	    "notify.enabled": "¡Notificaciones activadas!",
+    	    "notify.blocked": "Notificaciones bloqueadas",
+    	    "ui.refreshing": "Actualizando datos…",
+    	    "status.current": "Estado actual: {status}",
+    	    "status.loading": "Cargando…",
+    	    "status.closedForSeason": "Cerrado por fin de temporada",
+    	    "status.monitoringNotActive": "El control aún no ha comenzado",
+    	    "status.unavailable": "Información no disponible",
+    	    "status.open": "Abierto para el baño",
+    	    "status.closed": "Cerrado para el baño",
+    	    "status.desc": "Este es el estado oficial específico de {beach}, basado en muestras individuales y en la media geométrica acumulada de los resultados recientes. Como siempre, báñate bajo tu propia responsabilidad y según tu mejor criterio.",
+    	    "status.unavailableDesc": "La información sobre el estado no está disponible en este momento. Vuelve más tarde para consultar las actualizaciones.",
+    	    "status.offSeasonDesc": "El control oficial de la calidad del agua en {beach} va desde el Memorial Day (finales de mayo) hasta el Labor Day (principios de septiembre). Fuera de ese periodo el lago puede seguir usándose para navegar, hacer kayak o darse un chapuzón bajo tu propia responsabilidad, pero no se publican mediciones, así que se desconocen las condiciones.",
+    	    "status.preSeasonDesc": "El control oficial de la calidad del agua en {beach} aún no ha comenzado esta temporada. Suele reanudarse en torno al Memorial Day (finales de mayo) y se realiza semanalmente hasta el Labor Day (principios de septiembre). Mientras tanto, el lago puede seguir usándose para navegar, hacer kayak o darse un chapuzón bajo tu propia responsabilidad, pero se desconocen las condiciones.",
+    	    "status.reasonLabel": "Motivo: ",
+    	    "reason.Bacterial Exceedance": "Superación de los límites bacterianos",
+    	    "reason.Harmful Cyanobacteria Bloom": "Proliferación nociva de cianobacterias",
+    	    "reason.CSO/SSO event": "Vertido de alcantarillado (CSO/SSO)",
+    	    "reason.Other": "Otro",
+    	    "indicator.Enterococci": "Enterococos",
+    	    "indicator.E. Coli": "E. coli",
+    	    "cso.heading": "⚠️ Vertidos de alcantarillado (CSO) recientes",
+    	    "cso.intro": "Episodios de desbordamiento de alcantarillado unitario notificados en la zona de Winchester que afectan al lago Mystic en las últimas 2 semanas.",
+    	    "cso.time": "Hora:",
+    	    "cso.volume": "Volumen:",
+    	    "cso.duration": "Duración:",
+    	    "cso.rainfall": "Precipitación:",
+    	    "cso.unknownTime": "Hora desconocida",
+    	    "cso.gallons": "{n} galones",
+    	    "cso.volumeUnknown": "Volumen desconocido",
+    	    "cso.inches": "{n} pulgadas",
+    	    "cso.rainfallUnknown": "Precipitación desconocida",
+    	    "cso.hoursMinutes": "{h} h {m} min",
+    	    "cso.hours": "{h} horas",
+    	    "cso.durationUnknown": "Duración desconocida",
+    	    "table.Date and Time": "Fecha y hora",
+    	    "table.Indicator": "Indicador",
+    	    "table.Threshold": "Umbral",
+    	    "table.Results": "Resultados",
+    	    "table.Status": "Estado",
+    	    "badge.above": "Por encima del umbral",
+    	    "badge.at": "En el umbral",
+    	    "badge.below": "Por debajo del umbral",
+    	    "card.geomean": "Resultados de la media geométrica",
+    	    "card.singleSample": "Resultados de muestras individuales",
+    	    "card.historical": "Mediciones históricas",
+    	    "card.seasonHistorical": "Mediciones históricas de la temporada {year}",
+    	    "card.unavailableHeading": "Últimas mediciones no disponibles temporalmente",
+    	    "card.awaitingHeading": "A la espera de la primera medición de la temporada",
+    	    "loading.beach": "Cargando datos de la playa…",
+    	    "loading.historical": "Cargando mediciones históricas…",
+    	    "error.historical": "No se han podido cargar las mediciones históricas.",
+    	    "awaiting.body": "El control oficial de la calidad del agua acaba de comenzar la temporada. Todavía no se han publicado mediciones de este año. El muestreo suele realizarse semanalmente desde el Memorial Day (finales de mayo) hasta el Labor Day (principios de septiembre).",
+    	    "awaiting.unavailable": "En este momento no se han podido obtener las últimas mediciones del panel de calidad del agua del estado. El control sigue activo: se trata de un problema temporal al recuperar los datos, no de un cierre. Más abajo encontrarás el enlace a las mediciones de la última temporada completa.",
+    	    "archive.none": "Todavía no hay mediciones archivadas de temporadas anteriores para {beach}. Por ahora solo se archivan las mediciones históricas de Shannon Beach @ Upper Mystic.",
+    	    "link.viewHistorical": "Ver las mediciones históricas de la temporada {year} →",
+    	    "footer.pageRendered": "Página generada: {ts}",
+    	    "footer.testMode": " (Modo de prueba)",
+    	    "footer.lastSynced": "Última sincronización de datos: {ts}",
+    	    "footer.commit": "Commit: {c}"
+    	  },
+    	  de: {
+    	    "site.title": "Wasserqualität in Massachusetts",
+    	    "site.description": "Ein kompakter Überblick über die aktuellen und jüngsten Wasserverhältnisse am Shannon Beach.",
+    	    "subtitle.before": "Ein kompakter Überblick über die aktuellen und jüngsten Wasserverhältnisse. Daten von der Website ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": ".",
+    	    "lang.label": "Sprache",
+    	    "faq.link": "🛟 FAQ zur Schwimmsicherheit",
+    	    "nav.recentAria": "Zuletzt angesehene Strände",
+    	    "nav.addBeach": "Strand hinzufügen…",
+    	    "nav.removeAria": "{beach} aus den zuletzt angesehenen Stränden entfernen",
+    	    "selector.title": "Strand hinzufügen",
+    	    "selector.town": "Ort",
+    	    "selector.beach": "Strand",
+    	    "selector.add": "Hinzufügen",
+    	    "town.other": "Sonstige",
+    	    "notify.banner": "🔔 Lassen Sie sich benachrichtigen, wenn sich der Badestatus ändert!",
+    	    "notify.enable": "Benachrichtigungen aktivieren",
+    	    "notify.enabled": "Benachrichtigungen aktiviert!",
+    	    "notify.blocked": "Benachrichtigungen blockiert",
+    	    "ui.refreshing": "Daten werden aktualisiert …",
+    	    "status.current": "Aktueller Status: {status}",
+    	    "status.loading": "Wird geladen …",
+    	    "status.closedForSeason": "Außerhalb der Saison geschlossen",
+    	    "status.monitoringNotActive": "Überwachung noch nicht aktiv",
+    	    "status.unavailable": "Informationen nicht verfügbar",
+    	    "status.open": "Zum Baden geöffnet",
+    	    "status.closed": "Zum Baden gesperrt",
+    	    "status.desc": "Dies ist der offizielle Status speziell für {beach}, basierend auf Einzelproben und dem kumulativen geometrischen Mittel der jüngsten Ergebnisse. Wie immer gilt: Baden auf eigene Gefahr und nach eigenem Ermessen!",
+    	    "status.unavailableDesc": "Statusinformationen sind derzeit nicht verfügbar. Bitte schauen Sie später noch einmal vorbei.",
+    	    "status.offSeasonDesc": "Die offizielle Überwachung der Wasserqualität am {beach} läuft vom Memorial Day (Ende Mai) bis zum Labor Day (Anfang September). Außerhalb dieses Zeitraums kann der See weiterhin zum Bootfahren, Kajakfahren und Baden genutzt werden – auf eigene Gefahr, denn es werden keine Messwerte veröffentlicht und die Bedingungen sind daher unbekannt.",
+    	    "status.preSeasonDesc": "Die offizielle Überwachung der Wasserqualität am {beach} hat in dieser Saison noch nicht begonnen. Sie startet üblicherweise um den Memorial Day (Ende Mai) und läuft dann wöchentlich bis zum Labor Day (Anfang September). Bis dahin kann der See weiterhin zum Bootfahren, Kajakfahren und Baden genutzt werden – auf eigene Gefahr, denn die Bedingungen sind unbekannt.",
+    	    "status.reasonLabel": "Grund: ",
+    	    "reason.Bacterial Exceedance": "Überschreitung der Bakterienwerte",
+    	    "reason.Harmful Cyanobacteria Bloom": "Schädliche Cyanobakterienblüte",
+    	    "reason.CSO/SSO event": "Abwasserüberlauf (CSO/SSO)",
+    	    "reason.Other": "Sonstiges",
+    	    "indicator.Enterococci": "Enterokokken",
+    	    "indicator.E. Coli": "E. coli",
+    	    "cso.heading": "⚠️ Jüngste Mischwasserüberläufe (CSO)",
+    	    "cso.intro": "In den letzten 2 Wochen im Raum Winchester gemeldete Mischwasserüberläufe, die den Mystic Lake betreffen.",
+    	    "cso.time": "Uhrzeit:",
+    	    "cso.volume": "Volumen:",
+    	    "cso.duration": "Dauer:",
+    	    "cso.rainfall": "Niederschlag:",
+    	    "cso.unknownTime": "Uhrzeit unbekannt",
+    	    "cso.gallons": "{n} Gallonen",
+    	    "cso.volumeUnknown": "Volumen unbekannt",
+    	    "cso.inches": "{n} Zoll",
+    	    "cso.rainfallUnknown": "Niederschlag unbekannt",
+    	    "cso.hoursMinutes": "{h} Std. {m} Min.",
+    	    "cso.hours": "{h} Stunden",
+    	    "cso.durationUnknown": "Dauer unbekannt",
+    	    "table.Date and Time": "Datum und Uhrzeit",
+    	    "table.Indicator": "Indikator",
+    	    "table.Threshold": "Grenzwert",
+    	    "table.Results": "Ergebnisse",
+    	    "table.Status": "Status",
+    	    "badge.above": "Über dem Grenzwert",
+    	    "badge.at": "Auf dem Grenzwert",
+    	    "badge.below": "Unter dem Grenzwert",
+    	    "card.geomean": "Ergebnisse des geometrischen Mittels",
+    	    "card.singleSample": "Ergebnisse der Einzelproben",
+    	    "card.historical": "Historische Messwerte",
+    	    "card.seasonHistorical": "Historische Messwerte der Saison {year}",
+    	    "card.unavailableHeading": "Aktuelle Messwerte vorübergehend nicht verfügbar",
+    	    "card.awaitingHeading": "Warten auf den ersten Messwert der Saison",
+    	    "loading.beach": "Stranddaten werden geladen …",
+    	    "loading.historical": "Historische Messwerte werden geladen …",
+    	    "error.historical": "Historische Messwerte konnten nicht geladen werden.",
+    	    "awaiting.body": "Die offizielle Überwachung der Wasserqualität beginnt gerade erst für diese Saison. Für dieses Jahr wurden noch keine Messwerte veröffentlicht. Die Probenahme erfolgt in der Regel wöchentlich vom Memorial Day (Ende Mai) bis zum Labor Day (Anfang September).",
+    	    "awaiting.unavailable": "Die aktuellen Messwerte konnten derzeit nicht vom Wasserqualitäts-Dashboard des Bundesstaates abgerufen werden. Die Überwachung läuft weiter – dies ist ein vorübergehendes Problem beim Abruf der Daten, keine Sperrung. Die Messwerte der zuletzt abgeschlossenen Saison sind unten verlinkt.",
+    	    "archive.none": "Für {beach} sind noch keine archivierten Messwerte vergangener Saisons verfügbar. Historische Messwerte werden derzeit nur für Shannon Beach @ Upper Mystic archiviert.",
+    	    "link.viewHistorical": "Historische Messwerte der Saison {year} ansehen →",
+    	    "footer.pageRendered": "Seite erstellt: {ts}",
+    	    "footer.testMode": " (Testmodus)",
+    	    "footer.lastSynced": "Daten zuletzt synchronisiert: {ts}",
+    	    "footer.commit": "Commit: {c}"
+    	  },
+    	  pt: {
+    	    "site.title": "Qualidade da água em Massachusetts",
+    	    "site.description": "Um resumo conciso das condições atuais e recentes da água em Shannon Beach.",
+    	    "subtitle.before": "Um resumo conciso das condições atuais e recentes da água. Dados do site ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": ".",
+    	    "lang.label": "Idioma",
+    	    "faq.link": "🛟 Perguntas frequentes sobre segurança ao nadar",
+    	    "nav.recentAria": "Praias vistas recentemente",
+    	    "nav.addBeach": "Adicionar praia…",
+    	    "nav.removeAria": "Remover {beach} das praias recentes",
+    	    "selector.title": "Adicionar uma praia",
+    	    "selector.town": "Município",
+    	    "selector.beach": "Praia",
+    	    "selector.add": "Adicionar",
+    	    "town.other": "Outros",
+    	    "notify.banner": "🔔 Receba um aviso quando o estado para banho mudar!",
+    	    "notify.enable": "Ativar notificações",
+    	    "notify.enabled": "Notificações ativadas!",
+    	    "notify.blocked": "Notificações bloqueadas",
+    	    "ui.refreshing": "Atualizando dados…",
+    	    "status.current": "Estado atual: {status}",
+    	    "status.loading": "Carregando…",
+    	    "status.closedForSeason": "Encerrado fora de temporada",
+    	    "status.monitoringNotActive": "Monitoramento ainda não iniciado",
+    	    "status.unavailable": "Informação indisponível",
+    	    "status.open": "Aberto para banho",
+    	    "status.closed": "Fechado para banho",
+    	    "status.desc": "Este é o estado oficial específico de {beach}, com base em amostras individuais e na média geométrica acumulada dos resultados recentes. Como sempre, nade por sua conta e risco e segundo o seu próprio critério!",
+    	    "status.unavailableDesc": "As informações de estado não estão disponíveis no momento. Volte mais tarde para ver as atualizações.",
+    	    "status.offSeasonDesc": "O monitoramento oficial da qualidade da água em {beach} vai do Memorial Day (fim de maio) ao Labor Day (início de setembro). Fora desse período o lago ainda pode ser usado para navegar, remar de caiaque e mergulhar por sua conta e risco — mas não há monitoramento publicado, portanto as condições são desconhecidas.",
+    	    "status.preSeasonDesc": "O monitoramento oficial da qualidade da água em {beach} ainda não começou nesta temporada. Costuma recomeçar por volta do Memorial Day (fim de maio) e segue semanalmente até o Labor Day (início de setembro). Enquanto isso, o lago ainda pode ser usado para navegar, remar de caiaque e mergulhar por sua conta e risco — mas as condições são desconhecidas.",
+    	    "status.reasonLabel": "Motivo: ",
+    	    "reason.Bacterial Exceedance": "Excedência bacteriana",
+    	    "reason.Harmful Cyanobacteria Bloom": "Floração nociva de cianobactérias",
+    	    "reason.CSO/SSO event": "Descarga de esgoto (CSO/SSO)",
+    	    "reason.Other": "Outro",
+    	    "indicator.Enterococci": "Enterococos",
+    	    "indicator.E. Coli": "E. coli",
+    	    "cso.heading": "⚠️ Descargas de esgoto (CSO) recentes",
+    	    "cso.intro": "Eventos de extravasamento de esgoto combinado notificados na área de Winchester que afetam o lago Mystic nas últimas 2 semanas.",
+    	    "cso.time": "Hora:",
+    	    "cso.volume": "Volume:",
+    	    "cso.duration": "Duração:",
+    	    "cso.rainfall": "Precipitação:",
+    	    "cso.unknownTime": "Hora desconhecida",
+    	    "cso.gallons": "{n} galões",
+    	    "cso.volumeUnknown": "Volume desconhecido",
+    	    "cso.inches": "{n} polegadas",
+    	    "cso.rainfallUnknown": "Precipitação desconhecida",
+    	    "cso.hoursMinutes": "{h} h {m} min",
+    	    "cso.hours": "{h} horas",
+    	    "cso.durationUnknown": "Duração desconhecida",
+    	    "table.Date and Time": "Data e hora",
+    	    "table.Indicator": "Indicador",
+    	    "table.Threshold": "Limite",
+    	    "table.Results": "Resultados",
+    	    "table.Status": "Estado",
+    	    "badge.above": "Acima do limite",
+    	    "badge.at": "No limite",
+    	    "badge.below": "Abaixo do limite",
+    	    "card.geomean": "Resultados da média geométrica",
+    	    "card.singleSample": "Resultados de amostras individuais",
+    	    "card.historical": "Medições históricas",
+    	    "card.seasonHistorical": "Medições históricas da temporada {year}",
+    	    "card.unavailableHeading": "Medições mais recentes temporariamente indisponíveis",
+    	    "card.awaitingHeading": "Aguardando a primeira medição da temporada",
+    	    "loading.beach": "Carregando dados da praia…",
+    	    "loading.historical": "Carregando medições históricas…",
+    	    "error.historical": "Não foi possível carregar as medições históricas.",
+    	    "awaiting.body": "O monitoramento oficial da qualidade da água está apenas começando nesta temporada. Ainda não foram publicadas medições deste ano. A amostragem costuma ser semanal, do Memorial Day (fim de maio) ao Labor Day (início de setembro).",
+    	    "awaiting.unavailable": "Não foi possível obter agora as medições mais recentes no painel de qualidade da água do estado. O monitoramento está ativo — trata-se de um problema temporário na obtenção dos dados, não de um fechamento. As medições da última temporada concluída estão indicadas abaixo.",
+    	    "archive.none": "Ainda não há medições arquivadas de temporadas anteriores para {beach}. No momento, apenas as medições históricas de Shannon Beach @ Upper Mystic são arquivadas.",
+    	    "link.viewHistorical": "Ver as medições históricas da temporada {year} →",
+    	    "footer.pageRendered": "Página gerada: {ts}",
+    	    "footer.testMode": " (Modo de teste)",
+    	    "footer.lastSynced": "Dados sincronizados pela última vez: {ts}",
+    	    "footer.commit": "Commit: {c}"
+    	  },
+    	  fr: {
+    	    "site.title": "Qualité de l’eau au Massachusetts",
+    	    "site.description": "Un aperçu concis des conditions actuelles et récentes de l’eau à Shannon Beach.",
+    	    "subtitle.before": "Un aperçu concis des conditions actuelles et récentes de l’eau. Données provenant du site ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": ".",
+    	    "lang.label": "Langue",
+    	    "faq.link": "🛟 FAQ sur la sécurité en baignade",
+    	    "nav.recentAria": "Plages consultées récemment",
+    	    "nav.addBeach": "Ajouter une plage…",
+    	    "nav.removeAria": "Retirer {beach} des plages récentes",
+    	    "selector.title": "Ajouter une plage",
+    	    "selector.town": "Commune",
+    	    "selector.beach": "Plage",
+    	    "selector.add": "Ajouter",
+    	    "town.other": "Autres",
+    	    "notify.banner": "🔔 Soyez averti lorsque le statut de baignade change !",
+    	    "notify.enable": "Activer les notifications",
+    	    "notify.enabled": "Notifications activées !",
+    	    "notify.blocked": "Notifications bloquées",
+    	    "ui.refreshing": "Actualisation des données…",
+    	    "status.current": "Statut actuel : {status}",
+    	    "status.loading": "Chargement…",
+    	    "status.closedForSeason": "Fermé hors saison",
+    	    "status.monitoringNotActive": "Surveillance pas encore active",
+    	    "status.unavailable": "Information indisponible",
+    	    "status.open": "Baignade autorisée",
+    	    "status.closed": "Baignade interdite",
+    	    "status.desc": "Il s’agit du statut officiel propre à {beach}, fondé sur des prélèvements ponctuels et sur la moyenne géométrique cumulée des résultats récents. Comme toujours, baignez-vous à vos propres risques et selon votre propre jugement !",
+    	    "status.unavailableDesc": "Les informations de statut ne sont pas disponibles pour le moment. Revenez plus tard pour les mises à jour.",
+    	    "status.offSeasonDesc": "La surveillance officielle de la qualité de l’eau à {beach} s’étend du Memorial Day (fin mai) au Labor Day (début septembre). En dehors de cette période, le lac reste utilisable pour la navigation, le kayak et la baignade à vos propres risques — mais aucune mesure n’est publiée, les conditions sont donc inconnues.",
+    	    "status.preSeasonDesc": "La surveillance officielle de la qualité de l’eau à {beach} n’a pas encore commencé cette saison. Elle reprend généralement autour du Memorial Day (fin mai) et se poursuit chaque semaine jusqu’au Labor Day (début septembre). D’ici là, le lac reste utilisable pour la navigation, le kayak et la baignade à vos propres risques — mais les conditions sont inconnues.",
+    	    "status.reasonLabel": "Motif : ",
+    	    "reason.Bacterial Exceedance": "Dépassement bactérien",
+    	    "reason.Harmful Cyanobacteria Bloom": "Prolifération nocive de cyanobactéries",
+    	    "reason.CSO/SSO event": "Déversement d’égout (CSO/SSO)",
+    	    "reason.Other": "Autre",
+    	    "indicator.Enterococci": "Entérocoques",
+    	    "indicator.E. Coli": "E. coli",
+    	    "cso.heading": "⚠️ Déversements d’égout (CSO) récents",
+    	    "cso.intro": "Déversements d’égout unitaire signalés dans le secteur de Winchester et affectant le lac Mystic au cours des 2 dernières semaines.",
+    	    "cso.time": "Heure :",
+    	    "cso.volume": "Volume :",
+    	    "cso.duration": "Durée :",
+    	    "cso.rainfall": "Précipitations :",
+    	    "cso.unknownTime": "Heure inconnue",
+    	    "cso.gallons": "{n} gallons",
+    	    "cso.volumeUnknown": "Volume inconnu",
+    	    "cso.inches": "{n} pouces",
+    	    "cso.rainfallUnknown": "Précipitations inconnues",
+    	    "cso.hoursMinutes": "{h} h {m} min",
+    	    "cso.hours": "{h} heures",
+    	    "cso.durationUnknown": "Durée inconnue",
+    	    "table.Date and Time": "Date et heure",
+    	    "table.Indicator": "Indicateur",
+    	    "table.Threshold": "Seuil",
+    	    "table.Results": "Résultats",
+    	    "table.Status": "Statut",
+    	    "badge.above": "Au-dessus du seuil",
+    	    "badge.at": "Au niveau du seuil",
+    	    "badge.below": "En dessous du seuil",
+    	    "card.geomean": "Résultats de la moyenne géométrique",
+    	    "card.singleSample": "Résultats des prélèvements ponctuels",
+    	    "card.historical": "Relevés historiques",
+    	    "card.seasonHistorical": "Relevés historiques de la saison {year}",
+    	    "card.unavailableHeading": "Derniers relevés temporairement indisponibles",
+    	    "card.awaitingHeading": "En attente du premier relevé de la saison",
+    	    "loading.beach": "Chargement des données de la plage…",
+    	    "loading.historical": "Chargement des relevés historiques…",
+    	    "error.historical": "Impossible de charger les relevés historiques.",
+    	    "awaiting.body": "La surveillance officielle de la qualité de l’eau ne fait que commencer pour la saison. Aucun relevé n’a encore été publié cette année. Les prélèvements ont généralement lieu chaque semaine, du Memorial Day (fin mai) au Labor Day (début septembre).",
+    	    "awaiting.unavailable": "Les derniers relevés n’ont pas pu être récupérés depuis le tableau de bord de qualité de l’eau de l’État pour le moment. La surveillance reste active : il s’agit d’un problème temporaire de récupération des données, pas d’une fermeture. Les relevés de la dernière saison complète sont accessibles ci-dessous.",
+    	    "archive.none": "Aucun relevé archivé des saisons précédentes n’est encore disponible pour {beach}. Les relevés historiques ne sont actuellement archivés que pour Shannon Beach @ Upper Mystic.",
+    	    "link.viewHistorical": "Voir les relevés historiques de la saison {year} →",
+    	    "footer.pageRendered": "Page générée : {ts}",
+    	    "footer.testMode": " (Mode test)",
+    	    "footer.lastSynced": "Dernière synchronisation des données : {ts}",
+    	    "footer.commit": "Commit : {c}"
+    	  },
+    	  it: {
+    	    "site.title": "Qualità dell’acqua in Massachusetts",
+    	    "site.description": "Una sintesi delle condizioni attuali e recenti dell’acqua a Shannon Beach.",
+    	    "subtitle.before": "Una sintesi delle condizioni attuali e recenti dell’acqua. Dati dal sito ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": ".",
+    	    "lang.label": "Lingua",
+    	    "faq.link": "🛟 FAQ sulla sicurezza in acqua",
+    	    "nav.recentAria": "Spiagge viste di recente",
+    	    "nav.addBeach": "Aggiungi spiaggia…",
+    	    "nav.removeAria": "Rimuovi {beach} dalle spiagge recenti",
+    	    "selector.title": "Aggiungi una spiaggia",
+    	    "selector.town": "Comune",
+    	    "selector.beach": "Spiaggia",
+    	    "selector.add": "Aggiungi",
+    	    "town.other": "Altri",
+    	    "notify.banner": "🔔 Ricevi una notifica quando cambia lo stato della balneazione!",
+    	    "notify.enable": "Attiva le notifiche",
+    	    "notify.enabled": "Notifiche attivate!",
+    	    "notify.blocked": "Notifiche bloccate",
+    	    "ui.refreshing": "Aggiornamento dei dati…",
+    	    "status.current": "Stato attuale: {status}",
+    	    "status.loading": "Caricamento…",
+    	    "status.closedForSeason": "Chiuso fuori stagione",
+    	    "status.monitoringNotActive": "Monitoraggio non ancora attivo",
+    	    "status.unavailable": "Informazione non disponibile",
+    	    "status.open": "Balneazione consentita",
+    	    "status.closed": "Balneazione vietata",
+    	    "status.desc": "Questo è lo stato ufficiale specifico di {beach}, basato su singoli campioni e sulla media geometrica cumulativa dei risultati recenti. Come sempre, nuota a tuo rischio e secondo il tuo giudizio!",
+    	    "status.unavailableDesc": "Le informazioni sullo stato non sono al momento disponibili. Riprova più tardi per gli aggiornamenti.",
+    	    "status.offSeasonDesc": "Il monitoraggio ufficiale della qualità dell’acqua a {beach} va dal Memorial Day (fine maggio) al Labor Day (inizio settembre). Al di fuori di quel periodo il lago può comunque essere usato per la navigazione, il kayak e i tuffi a proprio rischio — ma non vengono pubblicate misurazioni, quindi le condizioni sono sconosciute.",
+    	    "status.preSeasonDesc": "Il monitoraggio ufficiale della qualità dell’acqua a {beach} non è ancora iniziato in questa stagione. Di solito riprende intorno al Memorial Day (fine maggio) e prosegue settimanalmente fino al Labor Day (inizio settembre). Nel frattempo il lago può comunque essere usato per la navigazione, il kayak e i tuffi a proprio rischio — ma le condizioni sono sconosciute.",
+    	    "status.reasonLabel": "Motivo: ",
+    	    "reason.Bacterial Exceedance": "Superamento dei limiti batterici",
+    	    "reason.Harmful Cyanobacteria Bloom": "Fioritura nociva di cianobatteri",
+    	    "reason.CSO/SSO event": "Sversamento fognario (CSO/SSO)",
+    	    "reason.Other": "Altro",
+    	    "indicator.Enterococci": "Enterococchi",
+    	    "indicator.E. Coli": "E. coli",
+    	    "cso.heading": "⚠️ Sversamenti fognari (CSO) recenti",
+    	    "cso.intro": "Episodi di sfioro fognario misto segnalati nell’area di Winchester che interessano il lago Mystic nelle ultime 2 settimane.",
+    	    "cso.time": "Ora:",
+    	    "cso.volume": "Volume:",
+    	    "cso.duration": "Durata:",
+    	    "cso.rainfall": "Precipitazioni:",
+    	    "cso.unknownTime": "Ora sconosciuta",
+    	    "cso.gallons": "{n} galloni",
+    	    "cso.volumeUnknown": "Volume sconosciuto",
+    	    "cso.inches": "{n} pollici",
+    	    "cso.rainfallUnknown": "Precipitazioni sconosciute",
+    	    "cso.hoursMinutes": "{h} h {m} min",
+    	    "cso.hours": "{h} ore",
+    	    "cso.durationUnknown": "Durata sconosciuta",
+    	    "table.Date and Time": "Data e ora",
+    	    "table.Indicator": "Indicatore",
+    	    "table.Threshold": "Soglia",
+    	    "table.Results": "Risultati",
+    	    "table.Status": "Stato",
+    	    "badge.above": "Sopra la soglia",
+    	    "badge.at": "Alla soglia",
+    	    "badge.below": "Sotto la soglia",
+    	    "card.geomean": "Risultati della media geometrica",
+    	    "card.singleSample": "Risultati dei singoli campioni",
+    	    "card.historical": "Rilevazioni storiche",
+    	    "card.seasonHistorical": "Rilevazioni storiche della stagione {year}",
+    	    "card.unavailableHeading": "Ultime rilevazioni temporaneamente non disponibili",
+    	    "card.awaitingHeading": "In attesa della prima rilevazione della stagione",
+    	    "loading.beach": "Caricamento dei dati della spiaggia…",
+    	    "loading.historical": "Caricamento delle rilevazioni storiche…",
+    	    "error.historical": "Impossibile caricare le rilevazioni storiche.",
+    	    "awaiting.body": "Il monitoraggio ufficiale della qualità dell’acqua sta appena iniziando per la stagione. Non sono ancora state pubblicate rilevazioni per quest’anno. Il campionamento avviene di solito con cadenza settimanale, dal Memorial Day (fine maggio) al Labor Day (inizio settembre).",
+    	    "awaiting.unavailable": "Al momento non è stato possibile recuperare le ultime rilevazioni dal cruscotto sulla qualità dell’acqua dello Stato. Il monitoraggio è attivo: si tratta di un problema temporaneo nel recupero dei dati, non di una chiusura. Le rilevazioni dell’ultima stagione conclusa sono collegate qui sotto.",
+    	    "archive.none": "Non sono ancora disponibili rilevazioni archiviate di stagioni passate per {beach}. Al momento le rilevazioni storiche sono archiviate solo per Shannon Beach @ Upper Mystic.",
+    	    "link.viewHistorical": "Vedi le rilevazioni storiche della stagione {year} →",
+    	    "footer.pageRendered": "Pagina generata: {ts}",
+    	    "footer.testMode": " (Modalità di prova)",
+    	    "footer.lastSynced": "Ultima sincronizzazione dei dati: {ts}",
+    	    "footer.commit": "Commit: {c}"
+    	  }
+    	};
+
+    	// Resolve the active language. ?lang= wins (shareable/testable), then the
+    	// visitor's saved choice, then the browser's preference, then English.
+    	function normalizeLang(value) {
+    	    const base = String(value || "").toLowerCase().split(/[-_]/)[0];
+    	    return LANGS.some(l => l.code === base) ? base : null;
+    	}
+    	function resolveLang() {
+    	    const fromQuery = normalizeLang(new URLSearchParams(window.location.search).get("lang"));
+    	    if (fromQuery) return fromQuery;
+    	    const fromCookie = normalizeLang(getCookie(LANG_COOKIE));
+    	    if (fromCookie) return fromCookie;
+    	    for (const pref of (navigator.languages || [navigator.language || ""])) {
+    	        const m = normalizeLang(pref);
+    	        if (m) return m;
+    	    }
+    	    return DEFAULT_LANG;
+    	}
+    	let currentLang = resolveLang();
+    	function currentLocale() {
+    	    const entry = LANGS.find(l => l.code === currentLang);
+    	    return entry ? entry.locale : "en-US";
+    	}
+
+    	// Look up a key in the active language, falling back to English and finally
+    	// to the key itself, then interpolate {placeholders}.
+    	function t(key, params) {
+    	    const table = STRINGS[currentLang] || STRINGS[DEFAULT_LANG];
+    	    let s = table[key];
+    	    if (s === undefined) s = STRINGS[DEFAULT_LANG][key];
+    	    if (s === undefined) return key;
+    	    if (!params) return s;
+    	    return s.replace(/\{(\w+)\}/g, (m, name) =>
+    	        Object.prototype.hasOwnProperty.call(params, name) ? String(params[name]) : m);
+    	}
+    	// Translate an upstream data value (status reason, indicator, table header)
+    	// through a namespaced key, passing the raw value through when unmapped —
+    	// DPH can introduce vocabulary we haven't seen.
+    	function tData(namespace, value) {
+    	    const raw = String(value == null ? "" : value).trim();
+    	    if (!raw) return raw;
+    	    const key = namespace + "." + raw;
+    	    const table = STRINGS[currentLang] || STRINGS[DEFAULT_LANG];
+    	    if (table[key] !== undefined) return table[key];
+    	    if (STRINGS[DEFAULT_LANG][key] !== undefined) return STRINGS[DEFAULT_LANG][key];
+    	    return raw;
+    	}
+    	function escapeHTML(s) {
+    	    return String(s).replace(/[&<>"']/g, c =>
+    	        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    	}
+
+    	// The status card ships with pre-data placeholder copy that applyStaticTranslations()
+    	// is allowed to localize. The first real render calls this to hand ownership of
+    	// those nodes to the render path, so a later language switch never clobbers live
+    	// content with the "Loading…" placeholder.
+    	function clearInitFlags(...els) {
+    	    els.forEach(el => { if (el) el.removeAttribute("data-i18n-init"); });
+    	}
+
+    	// DPH publishes sample timestamps as US-format strings ("8/5/2026 8:00:00 AM").
+    	// Reformat for the active locale so 8/5 isn't read as 5 August — but leave English
+    	// byte-identical to upstream.
+    	function formatSampleDate(value) {
+    	    if (currentLang === DEFAULT_LANG) return value;
+    	    const d = new Date(value);
+    	    if (isNaN(d)) return value;
+    	    return d.toLocaleString(currentLocale());
+    	}
+
+    	// Apply the active language to <html lang>, the document metadata, and every
+    	// element carrying a data-i18n* hook. Called before first paint and again on
+    	// every language change.
+    	function applyStaticTranslations() {
+    	    document.documentElement.lang = currentLang;
+    	    document.title = t("site.title");
+    	    const desc = document.querySelector('meta[name="description"]');
+    	    if (desc) desc.setAttribute("content", t("site.description"));
+
+    	    document.querySelectorAll("[data-i18n]").forEach(el => {
+    	        el.textContent = t(el.dataset.i18n);
+    	    });
+    	    document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    	        el.innerHTML = t(el.dataset.i18nHtml);
+    	    });
+    	    // data-i18n-attr="attribute:key[,attribute:key]" for aria-labels etc.
+    	    document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+    	        el.dataset.i18nAttr.split(",").forEach(pair => {
+    	            const [attr, key] = pair.split(":").map(s => s.trim());
+    	            if (attr && key) el.setAttribute(attr, t(key));
+    	        });
+    	    });
+
+    	    // Pre-data placeholders in the status card, localized only while the flag
+    	    // is still set (see clearInitFlags).
+    	    const initHeading = document.querySelector('#status-heading[data-i18n-init]');
+    	    if (initHeading) {
+    	        initHeading.textContent = t("status.current", { status: t("status.loading") });
+    	    }
+    	    const initDesc = document.querySelector('#status-description[data-i18n-init]');
+    	    if (initDesc) {
+    	        initDesc.textContent = t("status.desc", { beach: shortBeachName(selectedBeach) });
+    	    }
+
+    	    // The subtitle wraps the DPH deep-link, whose href is maintained
+    	    // separately by updateDphLink(); rebuild it around the translated copy.
+    	    const subtitle = document.getElementById("subtitle");
+    	    if (subtitle) {
+    	        subtitle.innerHTML =
+    	            escapeHTML(t("subtitle.before")) +
+    	            '<a id="dph-link" href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">' +
+    	            escapeHTML(t("subtitle.link")) + "</a>" +
+    	            escapeHTML(t("subtitle.after"));
+    	        updateDphLink();
+    	    }
+    	}
+
+    	function buildLangSwitcher() {
+    	    const sel = document.getElementById("lang-select");
+    	    if (!sel) return;
+    	    sel.innerHTML = "";
+    	    LANGS.forEach(l => {
+    	        const opt = document.createElement("option");
+    	        opt.value = l.code;
+    	        opt.textContent = l.label;
+    	        sel.appendChild(opt);
+    	    });
+    	    sel.value = currentLang;
+    	    if (sel.dataset.wired !== "1") {
+    	        sel.dataset.wired = "1";
+    	        sel.addEventListener("change", () => setLanguage(sel.value));
+    	    }
+    	}
+
+    	// Switching language re-renders in place — no reload — so the visitor keeps
+    	// their beach, scroll position, and any revealed historical card.
+    	async function setLanguage(code) {
+    	    const next = normalizeLang(code) || DEFAULT_LANG;
+    	    if (next === currentLang) return;
+    	    currentLang = next;
+    	    setCookie(LANG_COOKIE, currentLang);
+    	    // ?lang= outranks the cookie, so a link that carried one has to be
+    	    // rewritten or a reload would snap back to the shared language. URLs
+    	    // that never had the parameter stay clean — the cookie covers them.
+    	    try {
+    	        const url = new URL(window.location.href);
+    	        if (url.searchParams.has("lang")) {
+    	            url.searchParams.set("lang", currentLang);
+    	            window.history.replaceState(null, "", url);
+    	        }
+    	    } catch (e) { /* history not available; non-fatal */ }
+    	    // Keep the service worker's notification language in step (storeConfigInDB
+    	    // deliberately never overwrites an existing record, so update it here).
+    	    updateConfigInDB({ lang: currentLang })
+    	        .catch(error => console.error('Error storing language in IndexedDB:', error));
+    	    applyStaticTranslations();
+    	    buildLangSwitcher();
+    	    updatePageHeading();
+    	    renderRecentBeachLinks();
+    	    populateSelectors();
+    	    // A revealed historical card holds already-rendered rows; force a re-read
+    	    // so its headers/badges pick up the new language.
+    	    historicalSeasonLoaded = null;
+    	    await renderSelected();
+    	    const histCard = document.getElementById("historical-card");
+    	    if (histCard && histCard.style.display === "block") {
+    	        await loadHistoricalSeason(mostRecentSeasonYear());
+    	    }
     	}
 
     	// Permalinks are path-based: /beach/<slug>. The slug is derived from the
@@ -1125,14 +1815,13 @@
             const resultsHeading = document.getElementById('results-heading');
 
             statusCard.className = 'card status-card-offseason';
-            statusHeading.textContent = 'Current Status: Closed for Season';
+            clearInitFlags(statusHeading, statusDescription);
+            statusHeading.textContent = t('status.current', { status: t('status.closedForSeason') });
             statusDescription.innerHTML =
-                `Official water quality monitoring at ${shortBeachName(selectedBeach)} runs from Memorial Day through Labor Day. ` +
-                'Outside that window the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
-                'but there is no published monitoring, so conditions are unknown.' +
+                escapeHTML(t('status.offSeasonDesc', { beach: shortBeachName(selectedBeach) })) +
                 '<br><br><span id="offseason-historical-wrap"></span>';
 
-            resultsHeading.textContent = `${year} Season Historical Readings`;
+            resultsHeading.textContent = t('card.seasonHistorical', { year });
             resultsCard.classList.add('hidden-until-revealed');
             // The "view historical readings" link is added asynchronously, only if
             // this beach actually has an archived season.
@@ -1176,7 +1865,7 @@
                 return;
             }
             wrap.innerHTML =
-                `<a href="#results-card" id="historical-link">View ${year} season historical readings →</a>`;
+                `<a href="#results-card" id="historical-link">${escapeHTML(t('link.viewHistorical', { year }))}</a>`;
             wireHistoricalLink();
         }
 
@@ -1185,6 +1874,8 @@
         // "Loading..." status flashes. The script tag is at the bottom of <body>, so the
         // elements above already exist. selectedBeach comes from the cookie (which always
         // tracks the current beach), so a reload shows the right name immediately.
+        applyStaticTranslations();
+        buildLangSwitcher();
         updatePageHeading();
         if (!isInSeason()) renderOffSeasonUI();
 
@@ -1365,20 +2056,20 @@
             if (success) {
                 // Show a brief confirmation
                 const refreshIndicator = document.getElementById('refresh-indicator');
-                refreshIndicator.textContent = 'Notifications enabled!';
+                refreshIndicator.textContent = t('notify.enabled');
                 refreshIndicator.classList.add('show');
                 setTimeout(() => {
                     refreshIndicator.classList.remove('show');
-                    refreshIndicator.textContent = 'Refreshing data...';
+                    refreshIndicator.textContent = t('ui.refreshing');
                 }, 2000);
             } else {
                 // Show error message if permission was denied
                 const refreshIndicator = document.getElementById('refresh-indicator');
-                refreshIndicator.textContent = 'Notifications blocked';
+                refreshIndicator.textContent = t('notify.blocked');
                 refreshIndicator.classList.add('show');
                 setTimeout(() => {
                     refreshIndicator.classList.remove('show');
-                    refreshIndicator.textContent = 'Refreshing data...';
+                    refreshIndicator.textContent = t('ui.refreshing');
                 }, 2000);
             }
         }
@@ -1607,7 +2298,7 @@
         }
 
         function townOf(beach) {
-            return beach.town || 'Other';
+            return beach.town || t('town.other');
         }
 
         function populateBeachSelect(town) {
@@ -1705,7 +2396,7 @@
                 rm.type = 'button';
                 rm.className = 'recent-remove';
                 rm.dataset.remove = name;
-                rm.setAttribute('aria-label', 'Remove ' + shortBeachName(name) + ' from recent beaches');
+                rm.setAttribute('aria-label', t('nav.removeAria', { beach: shortBeachName(name) }));
                 rm.textContent = '×';
                 wrap.appendChild(rm);
             }
@@ -1751,7 +2442,7 @@
             more.href = '#';
             more.id = 'change-beach-link';
             more.className = 'recent-more';
-            more.textContent = 'Add beach…';
+            more.textContent = t('nav.addBeach');
             nav.appendChild(more);
 
             // On the phone chip layout the nav scrolls horizontally rather than
@@ -1982,6 +2673,9 @@
                                 id: 'config',
                                 isTestMode: isTestMode,
                                 syncFrequencyMinutes: syncFrequencyMinutes,
+                                // The SW can't read document.cookie, so the active
+                                // language rides along in the shared config record.
+                                lang: currentLang,
                                 timestamp: Date.now()
                             });
 
@@ -2014,6 +2708,8 @@
 
             // Hidden by default; only the "Closed" branch with a stated reason shows it.
             if (statusReason) statusReason.style.display = 'none';
+            // Real content from here on: release the pre-data placeholder hooks.
+            clearInitFlags(statusHeading, statusDescription);
 
             if (!isInSeason()) {
                 renderOffSeasonUI();
@@ -2026,32 +2722,27 @@
             // a known bacterial closure. Use the off-season copy instead.
             if (status.toLowerCase() === 'off-season') {
                 statusCard.className = 'card status-card-offseason';
-                statusHeading.textContent = 'Current Status: Monitoring not yet active';
-                statusDescription.innerHTML =
-                    `Official water quality monitoring at ${shortBeachName(selectedBeach)} has not yet begun for this season. ` +
-                    'It typically resumes around Memorial Day and runs weekly through Labor Day. ' +
-                    'In the meantime, the lake may still be used for boating, kayaking, and plunging at your own risk — ' +
-                    'but conditions are unknown.';
+                statusHeading.textContent = t('status.current', { status: t('status.monitoringNotActive') });
+                statusDescription.textContent =
+                    t('status.preSeasonDesc', { beach: shortBeachName(selectedBeach) });
                 return;
             }
             if (!status) {
-                statusHeading.textContent = 'Current Status: Information Unavailable';
-                statusDescription.textContent = 'Status information is currently unavailable. Please check back later for updates.';
+                statusHeading.textContent = t('status.current', { status: t('status.unavailable') });
+                statusDescription.textContent = t('status.unavailableDesc');
                 return;
             }
 
             const isOpen = status.toLowerCase() === 'open';
-            const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
+            const statusText = isOpen ? t('status.open') : t('status.closed');
 
             storeStatusInDB(status.toLowerCase()).catch(error => {
                 console.error('Error storing status in IndexedDB:', error);
             });
 
-            statusHeading.textContent = `Current Status: ${statusText}`;
-            statusDescription.innerHTML =
-                `This is the official status for ${shortBeachName(selectedBeach)} specifically, based on single ` +
-                'samples and the cumulative geometric mean of recent results. As always, swim at your own ' +
-                'risk and at the discretion of your own best judgement!';
+            statusHeading.textContent = t('status.current', { status: statusText });
+            statusDescription.textContent =
+                t('status.desc', { beach: shortBeachName(selectedBeach) });
             statusCard.className = isOpen ? 'card status-card-open' : 'card status-card-closed';
 
             // When closed, surface the state's stated reason (e.g. "Bacterial
@@ -2061,9 +2752,9 @@
                 statusReason.textContent = '';
                 const label = document.createElement('span');
                 label.className = 'status-reason-label';
-                label.textContent = 'Reason: ';
+                label.textContent = t('status.reasonLabel');
                 statusReason.appendChild(label);
-                statusReason.appendChild(document.createTextNode(reason));
+                statusReason.appendChild(document.createTextNode(tData('reason', reason)));
                 statusReason.style.display = 'block';
             }
         }
@@ -2096,35 +2787,39 @@
 
             mysticIncidents.forEach(incident => {
                 const incidentDate = new Date(incident.incidentDate);
-                const formattedDate = incidentDate.toLocaleDateString();
-                const formattedTime = incident.incidentTime || 'Unknown time';
+                const formattedDate = incidentDate.toLocaleDateString(currentLocale());
+                const formattedTime = incident.incidentTime || t('cso.unknownTime');
 
                 const incidentDiv = document.createElement('div');
                 incidentDiv.className = 'cso-incident';
 
-                const volume = incident.volumnOfEvent ? `${parseInt(incident.volumnOfEvent).toLocaleString()} gallons` : 'Volume unknown';
-                const rainfall = incident.rainfallData ? `${incident.rainfallData} inches` : 'Rainfall unknown';
-                const duration = incident.hours && incident.minutes ?
-                    `${incident.hours}h ${incident.minutes}m` :
-                    (incident.hours ? `${incident.hours} hours` : 'Duration unknown');
+                const volume = incident.volumnOfEvent
+                    ? t('cso.gallons', { n: parseInt(incident.volumnOfEvent).toLocaleString(currentLocale()) })
+                    : t('cso.volumeUnknown');
+                const rainfall = incident.rainfallData
+                    ? t('cso.inches', { n: incident.rainfallData })
+                    : t('cso.rainfallUnknown');
+                const duration = incident.hours && incident.minutes
+                    ? t('cso.hoursMinutes', { h: incident.hours, m: incident.minutes })
+                    : (incident.hours ? t('cso.hours', { h: incident.hours }) : t('cso.durationUnknown'));
 
                 incidentDiv.innerHTML = `
                     <h4>${formattedDate}</h4>
                     <div class="cso-details">
                         <div class="cso-detail">
-                            <strong>Time:</strong> ${formattedTime}
+                            <strong>${t('cso.time')}</strong> ${formattedTime}
                         </div>
 <!--                        <div class="cso-detail">
                             <strong>Location:</strong> ${incident.waterBodyDescription}
                         </div> -->
                         <div class="cso-detail">
-                            <strong>Volume:</strong> ${volume}
+                            <strong>${t('cso.volume')}</strong> ${volume}
                         </div>
                         <div class="cso-detail">
-                            <strong>Duration:</strong> ${duration}
+                            <strong>${t('cso.duration')}</strong> ${duration}
                         </div>
                         <div class="cso-detail">
-                            <strong>Rainfall:</strong> ${rainfall}
+                            <strong>${t('cso.rainfall')}</strong> ${rainfall}
                         </div>
                     </div>
                 `;
@@ -2178,8 +2873,11 @@
             // "Threshold" so the single-sample and geomean tables share identical headers
             // (and thus matching column widths). These normalized labels are reused as
             // each <td>'s data-label, which drives the stacked-card layout on phones.
+            // headerLabels stays canonical English (it drives the threshold logic);
+            // localizedLabels is what the visitor sees, in the table cells too.
             const headerLabels = headers.map(h => /^threshold/i.test(h) ? 'Threshold' : h);
-            headerLabels.forEach(label => {
+            const localizedLabels = headerLabels.map(h => tData('table', h));
+            localizedLabels.forEach(label => {
                 const th = document.createElement('th');
                 th.textContent = label;
                 th.addEventListener('click', () => sortTableByDate(rows.slice(1)));
@@ -2187,7 +2885,7 @@
             });
 
             const statusTh = document.createElement('th');
-            statusTh.textContent = 'Status';
+            statusTh.textContent = t('table.Status');
             statusTh.addEventListener('click', () => sortTableByDate(rows.slice(1)));
             tableHead.appendChild(statusTh);
 
@@ -2198,22 +2896,27 @@
                 const tr = document.createElement('tr');
                 row.forEach((column, i) => {
                     const td = document.createElement('td');
-                    td.textContent = column;
-                    td.dataset.label = headerLabels[i] || '';
+                    // 0 is the date (US-formatted upstream) and 1 the indicator
+                    // organism; both are localized for display only — `row` itself
+                    // stays raw so sorting and threshold math are unaffected.
+                    td.textContent = i === 0 ? formatSampleDate(column)
+                        : i === 1 ? tData('indicator', column)
+                        : column;
+                    td.dataset.label = localizedLabels[i] || '';
                     tr.appendChild(td);
                 });
 
                 const statusTd = document.createElement('td');
-                statusTd.dataset.label = 'Status';
+                statusTd.dataset.label = t('table.Status');
                 // Columns after dropping the duplicate date: 0:Date, 1:Indicator, 2:Threshold, 3:Results
                 const threshold = parseFloat(row[2]);
                 const result = parseFloat(row[3]?.replace(/,/g, '') || '0');
                 if (result > threshold) {
-                    statusTd.innerHTML = `<span class="status-badge status-danger">Above Threshold</span>`;
+                    statusTd.innerHTML = `<span class="status-badge status-danger">${escapeHTML(t('badge.above'))}</span>`;
                 } else if (result === threshold) {
-                    statusTd.innerHTML = `<span class="status-badge status-warning">At Threshold</span>`;
+                    statusTd.innerHTML = `<span class="status-badge status-warning">${escapeHTML(t('badge.at'))}</span>`;
                 } else {
-                    statusTd.innerHTML = `<span class="status-badge status-safe">Below Threshold</span>`;
+                    statusTd.innerHTML = `<span class="status-badge status-safe">${escapeHTML(t('badge.below'))}</span>`;
                 }
                 tr.appendChild(statusTd);
 
@@ -2287,10 +2990,10 @@
                 const resultsCard = document.getElementById('results-card');
                 document.getElementById('results-heading').textContent =
                     dataUnavailable
-                        ? 'Latest readings temporarily unavailable'
+                        ? t('card.unavailableHeading')
                         : awaitingFirstReading
-                            ? 'Awaiting first reading of the season'
-                            : 'Single Sample Test Results';
+                            ? t('card.awaitingHeading')
+                            : t('card.singleSample');
                 resultsCard.classList.remove('hidden-until-revealed');
                 showInSeasonHistoricalLink();
             }
@@ -2302,18 +3005,18 @@
             document.getElementById('loading').style.display = 'none';
             const dataTable = document.getElementById('data-table');
             const awaitingEl = document.getElementById('awaiting-first-reading');
+            // Each branch rewrites the whole placeholder — the copy differs by case
+            // and must be re-rendered wholesale when the language changes.
             if (awaitingFirstReading) {
-                if (dataUnavailable) {
-                    awaitingEl.innerHTML = '<p style="margin: 0;">The latest readings could not be retrieved from the state’s water-quality dashboard right now. Monitoring is active — this is a temporary problem fetching the data, not a closure. The most recent completed season’s readings are linked below.</p>';
-                }
+                awaitingEl.innerHTML = '<p style="margin: 0;">' +
+                    escapeHTML(t(dataUnavailable ? 'awaiting.unavailable' : 'awaiting.body')) + '</p>';
                 dataTable.style.display = 'none';
                 awaitingEl.style.display = 'block';
             } else if (offSeason && dataRows.length === 0) {
                 // Off-season with no archived readings for this beach (archives are
                 // currently committed only for Shannon Beach).
-                awaitingEl.innerHTML =
-                    `<p style="margin: 0;">No archived past-season readings are available for ${shortBeachName(selectedBeach)} yet. ` +
-                    'Historical readings are currently archived only for Shannon Beach @ Upper Mystic.</p>';
+                awaitingEl.innerHTML = '<p style="margin: 0;">' +
+                    escapeHTML(t('archive.none', { beach: shortBeachName(selectedBeach) })) + '</p>';
                 dataTable.style.display = 'none';
                 awaitingEl.style.display = 'block';
             } else {
@@ -2321,19 +3024,20 @@
                 awaitingEl.style.display = 'none';
             }
 
-            const testModeText = isTestMode ? ' (Test Mode)' : '';
+            const testModeText = isTestMode ? t('footer.testMode') : '';
             const lastUpdatedDiv = document.getElementById('last-updated');
             const syncedAt = meta && meta.lastSynced
-                ? new Date(meta.lastSynced).toLocaleString()
+                ? new Date(meta.lastSynced).toLocaleString(currentLocale())
                 : null;
             const syncedLine = syncedAt
-                ? `<br><span class="sync-line">Data last synced: ${syncedAt}</span>`
+                ? `<br><span class="sync-line">${escapeHTML(t('footer.lastSynced', { ts: syncedAt }))}</span>`
                 : '';
             const commitLine = meta && meta.commit
-                ? `<br><span class="sync-line">Commit: ${meta.commit}</span>`
+                ? `<br><span class="sync-line">${escapeHTML(t('footer.commit', { c: meta.commit }))}</span>`
                 : '';
             lastUpdatedDiv.innerHTML =
-                `Page rendered: ${new Date().toLocaleString()}${testModeText}${syncedLine}${commitLine}`;
+                escapeHTML(t('footer.pageRendered', { ts: new Date().toLocaleString(currentLocale()) })) +
+                escapeHTML(testModeText) + syncedLine + commitLine;
             lastUpdatedDiv.style.display = 'block';
         }
 
@@ -2347,7 +3051,7 @@
             if (beachAtCall !== selectedBeach) return;  // selection changed mid-check
             if (!available) { linkCard.style.display = 'none'; return; }
             const link = document.getElementById('in-season-historical-link');
-            document.getElementById('historical-link-year').textContent = year;
+            link.textContent = t('link.viewHistorical', { year });
             linkCard.style.display = 'block';
             if (link.dataset.wired === '1') return;
             link.dataset.wired = '1';
@@ -2369,7 +3073,7 @@
 
             if (historicalSeasonLoaded === year) return;
 
-            heading.textContent = `${year} Season Historical Readings`;
+            heading.textContent = t('card.seasonHistorical', { year });
             loading.style.display = 'block';
             table.style.display = 'none';
 
@@ -2393,7 +3097,7 @@
                 historicalSeasonLoaded = year;
             } catch (error) {
                 console.error('Error loading historical readings:', error);
-                loading.textContent = 'Could not load historical readings.';
+                loading.textContent = t('error.historical');
             }
         }
 

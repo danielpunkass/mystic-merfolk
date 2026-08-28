@@ -233,6 +233,71 @@ overridden beach the **derived slug is also pre-rendered as an alias** and still
 resolves (then normalizes to the override), so links shared before an override was
 added keep working. Test override: `?slug-overrides-url=`.
 
+### Localization
+
+The site ships in **English, Spanish, German, Portuguese, French, and Italian**.
+Because everything is static, localization is entirely client-side: each page
+carries its own string catalog and applies it before first paint. There is no
+build step, no per-language URL, and nothing for `sync_water_data.py` or the
+deploy to do — the pre-rendered `/beach/<slug>/` pages are byte-copies of
+`index.html` and inherit the whole mechanism for free.
+
+**Language resolution** (`resolveLang()`, same order on both pages):
+`?lang=xx` → the `lang` cookie (1-year, shared across the dashboard and the FAQ)
+→ `navigator.languages` → English. Region variants collapse to the base tag
+(`de-AT` → `de`) and unsupported languages fall back to English rather than
+half-translating. Switching via the header `<select>` re-renders in place — no
+reload, so the visitor keeps their beach, scroll position, and any revealed
+historical card — writes the cookie, and rewrites `?lang=` **only if the URL
+already had one** (otherwise a reload of a shared link would snap back to the
+sender's language, and clean URLs stay clean).
+
+**Where the strings live:**
+
+- `index.html` — `STRINGS` (76 keys × 6 languages) plus `t(key, params)` for
+  `{placeholder}` interpolation and `tData(namespace, value)` for *upstream*
+  vocabulary. Static markup carries `data-i18n` (textContent), `data-i18n-html`
+  (innerHTML), and `data-i18n-attr="aria-label:some.key"` hooks that
+  `applyStaticTranslations()` fills in; everything rendered from JS calls `t()`.
+- `faq/index.html` — the same pattern with its own 45-key catalog (the prose is
+  page-specific, so the two catalogs are deliberately separate).
+- `sw.js` — `NOTIFICATION_STRINGS` for the status-change notification. A service
+  worker can't read `document.cookie`, so the page writes the active language
+  into the shared `BeachStatusDB` `config` record (`lang`) and the SW reads it
+  back. (Moot while SW registration stays commented out, but kept in step.)
+
+**Translating DPH's own vocabulary.** Beach and town names are proper nouns and
+stay as-is, but four upstream vocabularies are mapped through `tData()`, which
+falls back to the **raw upstream value** when a term isn't in the catalog — DPH
+can introduce wording we haven't seen, and showing it untranslated beats showing
+a key:
+
+- `table.*` — column headers (`Date and Time`, `Indicator`, `Threshold`, `Results`)
+- `indicator.*` — `Enterococci` → `Enterokokken` / `Entérocoques` / …
+  (`E. Coli` normalizes to `E. coli` everywhere)
+- `reason.*` — closure reasons (`Bacterial Exceedance`,
+  `Harmful Cyanobacteria Bloom`, `CSO/SSO event`, `Other`)
+- statuses (`Open` / `Closed`) render through `status.open` / `status.closed`
+
+**Sample dates** arrive as US-format strings (`8/5/2026 8:00:00 AM`).
+`formatSampleDate()` re-renders them in the active locale (`4.8.2026, 08:35:00`
+in German) so `8/5` isn't misread as 5 August — but returns English **verbatim**,
+so the en display stays byte-identical to upstream. Only the *display* is
+localized: `row` itself stays raw, so date sorting and the threshold comparison
+are untouched.
+
+**Gotcha — the status card's pre-data placeholders.** `#status-heading` and
+`#status-description` ship with "Current Status: Loading…" copy that
+`applyStaticTranslations()` is allowed to localize *only while*
+`data-i18n-init` is still set. The first real render calls `clearInitFlags()` to
+take ownership of those nodes, so a later language switch can't clobber live
+status with the loading placeholder. Any new branch that writes those two
+elements must call `clearInitFlags()` first.
+
+**Deliberately not translated:** the test-mode debug panel (developer tool),
+`mystic.html` (a zero-delay meta-refresh redirect stub nobody reads), and beach
+/ town names.
+
 ### Season Logic
 
 Memorial Day through Labor Day = "in-season". The Python sync script and the JS
@@ -284,6 +349,7 @@ Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
 - `?beaches-url=test-data/beaches-multi.json` — the Town/Beach selector index
 - `?samples-url=test-data/samples-multi.json` — the all-beaches keyed readings
 - `?season=open|closed` — override the date-based season check
+- `?lang=en|es|de|pt|fr|it` — force a language (outranks the cookie and the browser)
 
 To exercise the multi-beach selector locally, combine the last two, e.g.
 `?season=open&beaches-url=test-data/beaches-multi.json&samples-url=test-data/samples-multi.json`.

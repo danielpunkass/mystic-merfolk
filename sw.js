@@ -77,6 +77,7 @@ async function getConfigSettings() {
                 if (getRequest.result) {
                     resolve({
                         isTestMode: getRequest.result.isTestMode,
+                        lang: getRequest.result.lang,
                         testStatusData: getRequest.result.testStatusData,
                         syncFrequencyMinutes: getRequest.result.syncFrequencyMinutes || 5
                     });
@@ -199,12 +200,36 @@ function createNotificationIcon(isOpen) {
     return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
+// Notification copy, mirroring the page's i18n catalog (index.html). The SW can't
+// read document.cookie, so the active language arrives via the shared `config`
+// record in BeachStatusDB, written by the page.
+const NOTIFICATION_STRINGS = {
+    en: { title: 'Beach Status Update',        open: 'Open for Swimming',    closed: 'Closed for Swimming',   body: 'Swimming status changed to: {status}' },
+    es: { title: 'Cambio de estado de la playa', open: 'Abierto para el baño', closed: 'Cerrado para el baño', body: 'El estado del baño ha cambiado a: {status}' },
+    de: { title: 'Aktualisierung des Strandstatus', open: 'Zum Baden geöffnet', closed: 'Zum Baden gesperrt',  body: 'Der Badestatus hat sich geändert zu: {status}' },
+    pt: { title: 'Atualização do estado da praia', open: 'Aberto para banho',  closed: 'Fechado para banho',   body: 'O estado para banho mudou para: {status}' },
+    fr: { title: 'Mise à jour du statut de la plage', open: 'Baignade autorisée', closed: 'Baignade interdite', body: 'Le statut de baignade est passé à : {status}' },
+    it: { title: 'Aggiornamento dello stato della spiaggia', open: 'Balneazione consentita', closed: 'Balneazione vietata', body: 'Lo stato della balneazione è cambiato in: {status}' }
+};
+
+function notificationStrings(lang) {
+    const base = String(lang || '').toLowerCase().split(/[-_]/)[0];
+    return NOTIFICATION_STRINGS[base] || NOTIFICATION_STRINGS.en;
+}
+
 // Show desktop notification for status changes
 async function showStatusNotification(newStatus, previousStatus) {
     const isOpen = newStatus === 'open';
-    const title = 'Shannon Beach Status Update';
-    const statusText = isOpen ? 'Open for Swimming' : 'Closed for Swimming';
-    const body = `Swimming status changed to: ${statusText}`;
+    let lang = 'en';
+    try {
+        lang = (await getConfigSettings()).lang || 'en';
+    } catch (error) {
+        console.error('Service Worker: Could not read language from config, using English:', error);
+    }
+    const strings = notificationStrings(lang);
+    const title = strings.title;
+    const statusText = isOpen ? strings.open : strings.closed;
+    const body = strings.body.replace('{status}', statusText);
 
     // Create custom icon and badge
     const icon = createNotificationIcon(isOpen);

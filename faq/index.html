@@ -58,6 +58,27 @@
             text-decoration: underline;
         }
 
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .lang-switcher select {
+            font: inherit;
+            color: #0369a1;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+        }
+
         .card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
@@ -155,131 +176,482 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏊‍♂️ Open Water Swimming</h1>
-            <div class="subtitle">Common questions about where, when, and how to swim in the Mystic Lake or elsewhere.</div>
-            <a class="site-link" href="/">🏊‍♂️ Water Quality Dashboard</a>
-        </div>
-
-        <div class="card">
-            <h2>🗺️ Where to Swim</h2>
-            <p class="section-intro">Finding a beach — near the Mystic Lakes or anywhere in Massachusetts.</p>
-
-            <div class="faq-item">
-                <h3>Where can I swim near the Mystic Lakes?</h3>
-                <p>Shannon Beach @ Upper Mystic (DCR) is the public swimming beach the
-                <a href="/">dashboard</a> tracks by default, with current status, test results, and
-                CSO warnings for the Mystic Lakes area.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>How do I find other beaches?</h3>
-                <p>Use the "Add beach…" Town/Beach selector at the top of the
-                <a href="/">dashboard</a> — it covers every beach in the state's monitoring program,
-                several hundred statewide. Each beach gets its own shareable link
-                (like <a href="/beach/upper-mystic/">/beach/upper-mystic/</a>), so you can bookmark
-                or pass around the beaches you care about.</p>
+            <h1 data-i18n="header.h1">🏊‍♂️ Open Water Swimming</h1>
+            <div class="subtitle" data-i18n="header.subtitle">Common questions about where, when, and how to swim in the Mystic Lake or elsewhere.</div>
+            <a class="site-link" href="/" data-i18n="header.dashboardLink">🏊‍♂️ Water Quality Dashboard</a>
+            <div class="lang-switcher">
+                <label for="lang-select" data-i18n="lang.label">Language</label>
+                <select id="lang-select" data-i18n-attr="aria-label:lang.label"></select>
             </div>
         </div>
 
         <div class="card">
-            <h2>🛟 When to Swim</h2>
-            <p class="section-intro">Gauging whether today is a good day to get in the water — official status, recent weather, and water quality.</p>
+            <h2 data-i18n="sec1.h2">🗺️ Where to Swim</h2>
+            <p class="section-intro" data-i18n="sec1.intro">Finding a beach — near the Mystic Lakes or anywhere in Massachusetts.</p>
 
             <div class="faq-item">
-                <h3>How do I know if a beach is open for swimming?</h3>
-                <p>Check the <a href="/">dashboard</a>: it shows the official state status for the beach
-                you select, based on the Massachusetts Department of Public Health's water quality
-                testing. A beach posted as "Closed" has exceeded bacteria limits or has another active
-                hazard (like a harmful algae bloom or a sewage release), and the dashboard shows the
-                stated closure reason when the state provides one.</p>
+                <h3 data-i18n="q1.q">Where can I swim near the Mystic Lakes?</h3>
+                <p data-i18n-html="q1.a.html">Shannon Beach @ Upper Mystic (DCR) is the public swimming beach the <a href="/">dashboard</a> tracks by default, with current status, test results, and CSO warnings for the Mystic Lakes area.</p>
             </div>
 
             <div class="faq-item">
-                <h3>Is a posted "Open" status a guarantee the water is safe?</h3>
-                <p>No. Sampling is typically weekly during the season, so conditions can change between
-                tests — especially after rain. Treat the posted status as one input alongside recent
-                weather, water clarity, and your own judgment.</p>
+                <h3 data-i18n="q2.q">How do I find other beaches?</h3>
+                <p data-i18n-html="q2.a.html">Use the “Add beach…” Town/Beach selector at the top of the <a href="/">dashboard</a> — it covers every beach in the state’s monitoring program, several hundred statewide. Each beach gets its own shareable link (like <a href="/beach/upper-mystic/">/beach/upper-mystic/</a>), so you can bookmark or pass around the beaches you care about.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 data-i18n="sec2.h2">🛟 When to Swim</h2>
+            <p class="section-intro" data-i18n="sec2.intro">Gauging whether today is a good day to get in the water — official status, recent weather, and water quality.</p>
+
+            <div class="faq-item">
+                <h3 data-i18n="q3.q">How do I know if a beach is open for swimming?</h3>
+                <p data-i18n-html="q3.a.html">Check the <a href="/">dashboard</a>: it shows the official state status for the beach you select, based on the Massachusetts Department of Public Health’s water quality testing. A beach posted as “Closed” has exceeded bacteria limits or has another active hazard (like a harmful algae bloom or a sewage release), and the dashboard shows the stated closure reason when the state provides one.</p>
             </div>
 
             <div class="faq-item">
-                <h3>Should I swim after it rains?</h3>
+                <h3 data-i18n="q4.q">Is a posted “Open” status a guarantee the water is safe?</h3>
+                <p data-i18n="q4.a">No. Sampling is typically weekly during the season, so conditions can change between tests — especially after rain. Treat the posted status as one input alongside recent weather, water clarity, and your own judgment.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3 data-i18n="q5.q">Should I swim after it rains?</h3>
                 <div class="callout">
-                    <strong>Rule of thumb: wait 24–72 hours after heavy rain before swimming.</strong>
+                    <strong data-i18n="q5.callout">Rule of thumb: wait 24–72 hours after heavy rain before swimming.</strong>
                 </div>
-                <p>Heavy rain washes bacteria and pollutants from streets, storm drains, and — in some
-                communities — overflowing sewers directly into lakes and rivers. Bacteria levels are
-                usually highest right after a storm and typically return to normal within a few days.
-                Because official testing is weekly, a beach may still be posted "Open" from a sample
-                taken before the rain, so the waiting period is your best protection after a storm.</p>
+                <p data-i18n="q5.a">Heavy rain washes bacteria and pollutants from streets, storm drains, and — in some communities — overflowing sewers directly into lakes and rivers. Bacteria levels are usually highest right after a storm and typically return to normal within a few days. Because official testing is weekly, a beach may still be posted “Open” from a sample taken before the rain, so the waiting period is your best protection after a storm.</p>
             </div>
 
             <div class="faq-item">
-                <h3>What is a CSO?</h3>
-                <p>A CSO (Combined Sewer Overflow) happens in older sewer systems where sewage and
-                stormwater share the same pipes. In dry weather everything flows to a treatment plant,
-                but during heavy rain the combined volume can exceed the system's capacity. To prevent
-                sewage from backing up into streets and homes, the excess — a mix of stormwater and
-                untreated or partially treated sewage — discharges directly into rivers, lakes, and
-                harbors. Swimming should be avoided near a recent CSO discharge. Learn more at the
-                <a href="https://www.mwra.com/your-sewer-system/cso">MWRA's CSO page</a>.</p>
-                <p>When a CSO event is reported near the Mystic Lakes, the
-                <a href="/">dashboard</a> shows a warning card with the incident details.</p>
+                <h3 data-i18n="q6.q">What is a CSO?</h3>
+                <p data-i18n-html="q6.a1.html">A CSO (Combined Sewer Overflow) happens in older sewer systems where sewage and stormwater share the same pipes. In dry weather everything flows to a treatment plant, but during heavy rain the combined volume can exceed the system’s capacity. To prevent sewage from backing up into streets and homes, the excess — a mix of stormwater and untreated or partially treated sewage — discharges directly into rivers, lakes, and harbors. Swimming should be avoided near a recent CSO discharge. Learn more at the <a href="https://www.mwra.com/your-sewer-system/cso">MWRA’s CSO page</a>.</p>
+                <p data-i18n-html="q6.a2.html">When a CSO event is reported near the Mystic Lakes, the <a href="/">dashboard</a> shows a warning card with the incident details.</p>
             </div>
 
             <div class="faq-item">
-                <h3>What do the bacteria test results mean?</h3>
-                <p>Massachusetts tests freshwater beaches for indicator bacteria — E. coli and
-                Enterococci — whose presence suggests possible sewage or animal-waste contamination.
-                When a single sample or the running geometric mean of recent samples exceeds the state
-                threshold, the beach is posted against swimming until a follow-up sample passes.</p>
+                <h3 data-i18n="q7.q">What do the bacteria test results mean?</h3>
+                <p data-i18n="q7.a">Massachusetts tests freshwater beaches for indicator bacteria — E. coli and Enterococci — whose presence suggests possible sewage or animal-waste contamination. When a single sample or the running geometric mean of recent samples exceeds the state threshold, the beach is posted against swimming until a follow-up sample passes.</p>
             </div>
 
             <div class="faq-item">
-                <h3>What else should I watch for?</h3>
+                <h3 data-i18n="q8.q">What else should I watch for?</h3>
                 <ul>
-                    <li>Unusually murky water, surface scum, or a green paint-like sheen (possible harmful algae bloom).</li>
-                    <li>Strong odors, visible debris, or discolored water after storms.</li>
-                    <li>Posted advisories at the beach itself — on-site signage can be more current than online status.</li>
+                    <li data-i18n="q8.li1">Unusually murky water, surface scum, or a green paint-like sheen (possible harmful algae bloom).</li>
+                    <li data-i18n="q8.li2">Strong odors, visible debris, or discolored water after storms.</li>
+                    <li data-i18n="q8.li3">Posted advisories at the beach itself — on-site signage can be more current than online status.</li>
                 </ul>
             </div>
 
             <div class="faq-item">
-                <h3>What resources can I use to gauge water safety?</h3>
+                <h3 data-i18n="q9.q">What resources can I use to gauge water safety?</h3>
                 <ul>
-                    <li><a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">Massachusetts DPH Beach Water Quality Dashboard</a> — the official source for test results and beach postings statewide (and the source of this site's data).</li>
-                    <li><a href="https://www.mwra.com/your-sewer-system/cso">MWRA: Combined Sewer Overflows</a> — explains CSOs and tracks discharge notifications for the Boston-area sewer system.</li>
-                    <li><a href="https://mysticriver.org/">Mystic River Watershed Association</a> — local water quality monitoring and advocacy for the Mystic River watershed.</li>
-                    <li><a href="https://www.epa.gov/beaches">EPA BEACH Act resources</a> — general guidance on beach water quality and health.</li>
+                    <li data-i18n-html="q9.li1.html"><a href="https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard">Massachusetts DPH Beach Water Quality Dashboard</a> — the official source for test results and beach postings statewide (and the source of this site’s data).</li>
+                    <li data-i18n-html="q9.li2.html"><a href="https://www.mwra.com/your-sewer-system/cso">MWRA: Combined Sewer Overflows</a> — explains CSOs and tracks discharge notifications for the Boston-area sewer system.</li>
+                    <li data-i18n-html="q9.li3.html"><a href="https://mysticriver.org/">Mystic River Watershed Association</a> — local water quality monitoring and advocacy for the Mystic River watershed.</li>
+                    <li data-i18n-html="q9.li4.html"><a href="https://www.epa.gov/beaches">EPA BEACH Act resources</a> — general guidance on beach water quality and health.</li>
                 </ul>
             </div>
         </div>
 
         <div class="card">
-            <h2>🤝 How to Swim</h2>
-            <p class="section-intro">You've got a clean, safe place to swim. What next?</p>
+            <h2 data-i18n="sec3.h2">🤝 How to Swim</h2>
+            <p class="section-intro" data-i18n="sec3.intro">You’ve got a clean, safe place to swim. What next?</p>
 
             <div class="faq-item">
-                <h3>Why shouldn't I swim alone?</h3>
-                <p>Most drownings happen when no one is nearby to help. Swim with a buddy, and prefer
-                beaches and hours with lifeguards on duty. Even strong swimmers can be surprised by
-                cold water, cramps, or fatigue in open water.</p>
+                <h3 data-i18n="q10.q">Why shouldn’t I swim alone?</h3>
+                <p data-i18n="q10.a">Most drownings happen when no one is nearby to help. Swim with a buddy, and prefer beaches and hours with lifeguards on duty. Even strong swimmers can be surprised by cold water, cramps, or fatigue in open water.</p>
             </div>
 
             <div class="faq-item">
-                <h3>How can I make open-water swimming safer?</h3>
+                <h3 data-i18n="q11.q">How can I make open-water swimming safer?</h3>
                 <ul>
-                    <li>Swim parallel to shore rather than straight out, and know your exit points.</li>
-                    <li>Use a brightly colored swim buoy or cap so boats and companions can see you.</li>
-                    <li>Enter cold water gradually — sudden immersion can cause gasping and panic.</li>
-                    <li>Keep close, active watch on children; designate an adult "water watcher."</li>
+                    <li data-i18n="q11.li1">Swim parallel to shore rather than straight out, and know your exit points.</li>
+                    <li data-i18n="q11.li2">Use a brightly colored swim buoy or cap so boats and companions can see you.</li>
+                    <li data-i18n="q11.li3">Enter cold water gradually — sudden immersion can cause gasping and panic.</li>
+                    <li data-i18n="q11.li4">Keep close, active watch on children; designate an adult “water watcher.”</li>
                 </ul>
             </div>
         </div>
 
-        <div class="footer-note">
-            This FAQ is general guidance, not medical or safety advice. Conditions change quickly —
-            always swim at your own discretion. <a class="site-link" href="/">Check current conditions →</a>
-        </div>
+        <div class="footer-note" data-i18n-html="footer.html">This FAQ is general guidance, not medical or safety advice. Conditions change quickly — always swim at your own discretion. <a class="site-link" href="/">Check current conditions →</a></div>
     </div>
+
+    <script>
+    // --- i18n -----------------------------------------------------------------
+    // Mirrors the dashboard's approach (see index.html): a static string catalog
+    // applied to data-i18n* hooks, with the language resolved from ?lang= -> the
+    // `lang` cookie -> navigator.language -> English. The cookie is shared with
+    // the dashboard, so a choice made on either page carries to the other.
+    const LANGS = [{"code": "en", "label": "English"}, {"code": "es", "label": "Español"}, {"code": "de", "label": "Deutsch"}, {"code": "pt", "label": "Português"}, {"code": "fr", "label": "Français"}, {"code": "it", "label": "Italiano"}];
+    const LANG_COOKIE = "lang";
+    const DEFAULT_LANG = "en";
+    const STRINGS = {
+    "en": {
+        "site.title": "Open Water Swimming FAQ",
+        "site.description": "Answers to common questions about swimming safety: where to swim, how rain and CSOs affect water quality, and how to gauge whether the water is safe.",
+        "lang.label": "Language",
+        "header.h1": "🏊‍♂️ Open Water Swimming",
+        "header.subtitle": "Common questions about where, when, and how to swim in the Mystic Lake or elsewhere.",
+        "header.dashboardLink": "🏊‍♂️ Water Quality Dashboard",
+        "sec1.h2": "🗺️ Where to Swim",
+        "sec1.intro": "Finding a beach — near the Mystic Lakes or anywhere in Massachusetts.",
+        "q1.q": "Where can I swim near the Mystic Lakes?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) is the public swimming beach the <a href=\"/\">dashboard</a> tracks by default, with current status, test results, and CSO warnings for the Mystic Lakes area.",
+        "q2.q": "How do I find other beaches?",
+        "q2.a.html": "Use the “Add beach…” Town/Beach selector at the top of the <a href=\"/\">dashboard</a> — it covers every beach in the state’s monitoring program, several hundred statewide. Each beach gets its own shareable link (like <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), so you can bookmark or pass around the beaches you care about.",
+        "sec2.h2": "🛟 When to Swim",
+        "sec2.intro": "Gauging whether today is a good day to get in the water — official status, recent weather, and water quality.",
+        "q3.q": "How do I know if a beach is open for swimming?",
+        "q3.a.html": "Check the <a href=\"/\">dashboard</a>: it shows the official state status for the beach you select, based on the Massachusetts Department of Public Health’s water quality testing. A beach posted as “Closed” has exceeded bacteria limits or has another active hazard (like a harmful algae bloom or a sewage release), and the dashboard shows the stated closure reason when the state provides one.",
+        "q4.q": "Is a posted “Open” status a guarantee the water is safe?",
+        "q4.a": "No. Sampling is typically weekly during the season, so conditions can change between tests — especially after rain. Treat the posted status as one input alongside recent weather, water clarity, and your own judgment.",
+        "q5.q": "Should I swim after it rains?",
+        "q5.callout": "Rule of thumb: wait 24–72 hours after heavy rain before swimming.",
+        "q5.a": "Heavy rain washes bacteria and pollutants from streets, storm drains, and — in some communities — overflowing sewers directly into lakes and rivers. Bacteria levels are usually highest right after a storm and typically return to normal within a few days. Because official testing is weekly, a beach may still be posted “Open” from a sample taken before the rain, so the waiting period is your best protection after a storm.",
+        "q6.q": "What is a CSO?",
+        "q6.a1.html": "A CSO (Combined Sewer Overflow) happens in older sewer systems where sewage and stormwater share the same pipes. In dry weather everything flows to a treatment plant, but during heavy rain the combined volume can exceed the system’s capacity. To prevent sewage from backing up into streets and homes, the excess — a mix of stormwater and untreated or partially treated sewage — discharges directly into rivers, lakes, and harbors. Swimming should be avoided near a recent CSO discharge. Learn more at the <a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA’s CSO page</a>.",
+        "q6.a2.html": "When a CSO event is reported near the Mystic Lakes, the <a href=\"/\">dashboard</a> shows a warning card with the incident details.",
+        "q7.q": "What do the bacteria test results mean?",
+        "q7.a": "Massachusetts tests freshwater beaches for indicator bacteria — E. coli and Enterococci — whose presence suggests possible sewage or animal-waste contamination. When a single sample or the running geometric mean of recent samples exceeds the state threshold, the beach is posted against swimming until a follow-up sample passes.",
+        "q8.q": "What else should I watch for?",
+        "q8.li1": "Unusually murky water, surface scum, or a green paint-like sheen (possible harmful algae bloom).",
+        "q8.li2": "Strong odors, visible debris, or discolored water after storms.",
+        "q8.li3": "Posted advisories at the beach itself — on-site signage can be more current than online status.",
+        "q9.q": "What resources can I use to gauge water safety?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — the official source for test results and beach postings statewide (and the source of this site’s data).",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — explains CSOs and tracks discharge notifications for the Boston-area sewer system.",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — local water quality monitoring and advocacy for the Mystic River watershed.",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — general guidance on beach water quality and health.",
+        "sec3.h2": "🤝 How to Swim",
+        "sec3.intro": "You’ve got a clean, safe place to swim. What next?",
+        "q10.q": "Why shouldn’t I swim alone?",
+        "q10.a": "Most drownings happen when no one is nearby to help. Swim with a buddy, and prefer beaches and hours with lifeguards on duty. Even strong swimmers can be surprised by cold water, cramps, or fatigue in open water.",
+        "q11.q": "How can I make open-water swimming safer?",
+        "q11.li1": "Swim parallel to shore rather than straight out, and know your exit points.",
+        "q11.li2": "Use a brightly colored swim buoy or cap so boats and companions can see you.",
+        "q11.li3": "Enter cold water gradually — sudden immersion can cause gasping and panic.",
+        "q11.li4": "Keep close, active watch on children; designate an adult “water watcher.”",
+        "footer.html": "This FAQ is general guidance, not medical or safety advice. Conditions change quickly — always swim at your own discretion. <a class=\"site-link\" href=\"/\">Check current conditions →</a>"
+    },
+    "es": {
+        "site.title": "Preguntas frecuentes sobre natación en aguas abiertas",
+        "site.description": "Respuestas a las preguntas más frecuentes sobre seguridad al nadar: dónde nadar, cómo afectan la lluvia y los vertidos de alcantarillado a la calidad del agua y cómo saber si el agua es segura.",
+        "lang.label": "Idioma",
+        "header.h1": "🏊‍♂️ Natación en aguas abiertas",
+        "header.subtitle": "Preguntas habituales sobre dónde, cuándo y cómo nadar en el lago Mystic o en cualquier otro lugar.",
+        "header.dashboardLink": "🏊‍♂️ Panel de calidad del agua",
+        "sec1.h2": "🗺️ Dónde nadar",
+        "sec1.intro": "Cómo encontrar una playa, cerca de los lagos Mystic o en cualquier punto de Massachusetts.",
+        "q1.q": "¿Dónde puedo nadar cerca de los lagos Mystic?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) es la playa pública de baño que el <a href=\"/\">panel</a> muestra por defecto, con el estado actual, los resultados de los análisis y los avisos de vertidos (CSO) de la zona de los lagos Mystic.",
+        "q2.q": "¿Cómo encuentro otras playas?",
+        "q2.a.html": "Usa el selector Municipio/Playa «Añadir playa…» en la parte superior del <a href=\"/\">panel</a>: incluye todas las playas del programa de control del estado, varios cientos en total. Cada playa tiene su propio enlace para compartir (como <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), así que puedes guardar en marcadores o pasar las playas que te interesen.",
+        "sec2.h2": "🛟 Cuándo nadar",
+        "sec2.intro": "Cómo saber si hoy es un buen día para meterse en el agua: estado oficial, tiempo reciente y calidad del agua.",
+        "q3.q": "¿Cómo sé si una playa está abierta al baño?",
+        "q3.a.html": "Consulta el <a href=\"/\">panel</a>: muestra el estado oficial del estado para la playa que elijas, basado en los análisis de calidad del agua del Departamento de Salud Pública de Massachusetts. Una playa marcada como «cerrada» ha superado los límites bacterianos o presenta otro riesgo activo (como una proliferación nociva de algas o un vertido de aguas residuales), y el panel indica el motivo del cierre cuando el estado lo facilita.",
+        "q4.q": "¿Un estado «abierto» garantiza que el agua es segura?",
+        "q4.a": "No. Durante la temporada el muestreo suele ser semanal, así que las condiciones pueden cambiar entre análisis, sobre todo después de la lluvia. Toma el estado publicado como un dato más, junto al tiempo reciente, la claridad del agua y tu propio criterio.",
+        "q5.q": "¿Debo nadar después de que llueva?",
+        "q5.callout": "Regla general: espera entre 24 y 72 horas después de una lluvia intensa antes de nadar.",
+        "q5.a": "La lluvia intensa arrastra bacterias y contaminantes desde las calles, los sumideros y —en algunos municipios— las alcantarillas desbordadas directamente a lagos y ríos. Los niveles de bacterias suelen ser más altos justo después de una tormenta y normalmente vuelven a la normalidad en unos días. Como los análisis oficiales son semanales, una playa puede seguir marcada como «abierta» a partir de una muestra tomada antes de la lluvia, así que el periodo de espera es tu mejor protección tras una tormenta.",
+        "q6.q": "¿Qué es un CSO?",
+        "q6.a1.html": "Un CSO (Combined Sewer Overflow, desbordamiento de alcantarillado unitario) se produce en redes de saneamiento antiguas en las que las aguas residuales y las pluviales comparten las mismas tuberías. Con tiempo seco todo va a la depuradora, pero durante lluvias intensas el caudal combinado puede superar la capacidad del sistema. Para evitar que las aguas residuales retrocedan hacia calles y viviendas, el exceso —una mezcla de agua de lluvia y aguas residuales sin tratar o parcialmente tratadas— se vierte directamente a ríos, lagos y puertos. Conviene evitar el baño cerca de un vertido reciente. Más información en la <a href=\"https://www.mwra.com/your-sewer-system/cso\">página sobre CSO de la MWRA</a>.",
+        "q6.a2.html": "Cuando se notifica un vertido CSO cerca de los lagos Mystic, el <a href=\"/\">panel</a> muestra una tarjeta de aviso con los detalles del incidente.",
+        "q7.q": "¿Qué significan los resultados de los análisis de bacterias?",
+        "q7.a": "Massachusetts analiza las playas de agua dulce en busca de bacterias indicadoras —E. coli y enterococos— cuya presencia apunta a una posible contaminación por aguas residuales o excrementos animales. Cuando una muestra individual o la media geométrica acumulada de las muestras recientes supera el umbral estatal, se prohíbe el baño en la playa hasta que una muestra de seguimiento dé resultado correcto.",
+        "q8.q": "¿A qué más debo estar atento?",
+        "q8.li1": "Agua inusualmente turbia, espuma en la superficie o un brillo verdoso como de pintura (posible proliferación nociva de algas).",
+        "q8.li2": "Olores fuertes, restos visibles o agua descolorida después de las tormentas.",
+        "q8.li3": "Avisos colocados en la propia playa: la señalización in situ puede estar más actualizada que el estado en línea.",
+        "q9.q": "¿Qué recursos puedo consultar para valorar la seguridad del agua?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — la fuente oficial de resultados de análisis y de los avisos de playas de todo el estado (y el origen de los datos de este sitio).",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — explica los CSO y publica las notificaciones de vertidos de la red de saneamiento del área de Boston.",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — control de la calidad del agua y labor de defensa local en la cuenca del río Mystic.",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — orientación general sobre la calidad del agua en playas y la salud.",
+        "sec3.h2": "🤝 Cómo nadar",
+        "sec3.intro": "Ya tienes un lugar limpio y seguro para nadar. ¿Y ahora qué?",
+        "q10.q": "¿Por qué no debería nadar solo?",
+        "q10.a": "La mayoría de los ahogamientos ocurren cuando no hay nadie cerca para ayudar. Nada acompañado y elige playas y horarios con socorristas de servicio. Incluso los buenos nadadores pueden verse sorprendidos por el agua fría, los calambres o la fatiga en aguas abiertas.",
+        "q11.q": "¿Cómo puedo nadar con más seguridad en aguas abiertas?",
+        "q11.li1": "Nada paralelo a la orilla en vez de mar adentro y ten claros tus puntos de salida.",
+        "q11.li2": "Usa una boya o un gorro de colores vivos para que las embarcaciones y tus acompañantes te vean.",
+        "q11.li3": "Entra en el agua fría poco a poco: la inmersión brusca puede provocar jadeos y pánico.",
+        "q11.li4": "Vigila de cerca y de forma activa a los niños; designa a un adulto como «vigilante del agua».",
+        "footer.html": "Estas preguntas frecuentes son orientación general, no consejo médico ni de seguridad. Las condiciones cambian rápido: nada siempre bajo tu propio criterio. <a class=\"site-link\" href=\"/\">Consultar las condiciones actuales →</a>"
+    },
+    "de": {
+        "site.title": "FAQ zum Freiwasserschwimmen",
+        "site.description": "Antworten auf häufige Fragen zur Schwimmsicherheit: wo man schwimmen kann, wie Regen und Mischwasserüberläufe die Wasserqualität beeinflussen und wie man einschätzt, ob das Wasser sicher ist.",
+        "lang.label": "Sprache",
+        "header.h1": "🏊‍♂️ Freiwasserschwimmen",
+        "header.subtitle": "Häufige Fragen dazu, wo, wann und wie man im Mystic Lake oder anderswo schwimmt.",
+        "header.dashboardLink": "🏊‍♂️ Wasserqualitäts-Dashboard",
+        "sec1.h2": "🗺️ Wo man schwimmen kann",
+        "sec1.intro": "Einen Strand finden – in der Nähe der Mystic Lakes oder überall in Massachusetts.",
+        "q1.q": "Wo kann ich in der Nähe der Mystic Lakes schwimmen?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) ist der öffentliche Badestrand, den das <a href=\"/\">Dashboard</a> standardmäßig verfolgt – mit aktuellem Status, Messergebnissen und CSO-Warnungen für die Region der Mystic Lakes.",
+        "q2.q": "Wie finde ich andere Strände?",
+        "q2.a.html": "Nutze oben im <a href=\"/\">Dashboard</a> die Ort/Strand-Auswahl „Strand hinzufügen…“ – sie umfasst jeden Strand im Überwachungsprogramm des Bundesstaates, mehrere Hundert insgesamt. Jeder Strand hat einen eigenen teilbaren Link (etwa <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), sodass du die Strände, die dich interessieren, als Lesezeichen speichern oder weitergeben kannst.",
+        "sec2.h2": "🛟 Wann man schwimmen sollte",
+        "sec2.intro": "Einschätzen, ob heute ein guter Tag zum Baden ist – offizieller Status, aktuelles Wetter und Wasserqualität.",
+        "q3.q": "Woher weiß ich, ob ein Strand zum Baden geöffnet ist?",
+        "q3.a.html": "Sieh im <a href=\"/\">Dashboard</a> nach: Es zeigt den offiziellen Status des Bundesstaates für den ausgewählten Strand, basierend auf den Wasserqualitätsuntersuchungen des Massachusetts Department of Public Health. Ein als „gesperrt“ ausgewiesener Strand hat die Bakteriengrenzwerte überschritten oder weist eine andere aktive Gefahr auf (etwa eine schädliche Algenblüte oder einen Abwassereintrag); das Dashboard nennt den angegebenen Sperrgrund, sofern der Bundesstaat einen liefert.",
+        "q4.q": "Ist ein ausgewiesener Status „geöffnet“ eine Garantie dafür, dass das Wasser sicher ist?",
+        "q4.a": "Nein. Während der Saison wird in der Regel wöchentlich beprobt, sodass sich die Bedingungen zwischen zwei Messungen ändern können – besonders nach Regen. Betrachte den ausgewiesenen Status als einen Anhaltspunkt neben dem jüngsten Wetter, der Wasserklarheit und dem eigenen Urteil.",
+        "q5.q": "Sollte ich nach Regen schwimmen?",
+        "q5.callout": "Faustregel: Nach starkem Regen 24–72 Stunden warten, bevor man schwimmen geht.",
+        "q5.a": "Starkregen spült Bakterien und Schadstoffe von Straßen, aus Regeneinläufen und – in manchen Gemeinden – aus überlaufenden Kanälen direkt in Seen und Flüsse. Die Bakterienwerte sind unmittelbar nach einem Unwetter am höchsten und normalisieren sich meist innerhalb weniger Tage. Da offiziell nur wöchentlich gemessen wird, kann ein Strand noch aufgrund einer Probe von vor dem Regen als „geöffnet“ ausgewiesen sein – die Wartezeit ist nach einem Unwetter also der beste Schutz.",
+        "q6.q": "Was ist ein CSO?",
+        "q6.a1.html": "Ein CSO (Combined Sewer Overflow, Mischwasserüberlauf) tritt in älteren Kanalsystemen auf, in denen Abwasser und Regenwasser dieselben Rohre teilen. Bei trockenem Wetter fließt alles zur Kläranlage, doch bei Starkregen kann die kombinierte Menge die Kapazität des Systems übersteigen. Damit Abwasser nicht in Straßen und Häuser zurückstaut, wird der Überschuss – eine Mischung aus Regenwasser und unbehandeltem oder teilbehandeltem Abwasser – direkt in Flüsse, Seen und Häfen abgeleitet. In der Nähe einer kürzlichen CSO-Einleitung sollte man nicht schwimmen. Mehr dazu auf der <a href=\"https://www.mwra.com/your-sewer-system/cso\">CSO-Seite der MWRA</a>.",
+        "q6.a2.html": "Wird in der Nähe der Mystic Lakes ein CSO-Ereignis gemeldet, zeigt das <a href=\"/\">Dashboard</a> eine Warnkarte mit den Details des Vorfalls.",
+        "q7.q": "Was bedeuten die Bakterien-Messergebnisse?",
+        "q7.a": "Massachusetts untersucht Süßwasserstrände auf Indikatorbakterien – E. coli und Enterokokken –, deren Vorkommen auf mögliche Verunreinigungen durch Abwasser oder tierische Fäkalien hindeutet. Überschreitet eine Einzelprobe oder das laufende geometrische Mittel der jüngsten Proben den Grenzwert des Bundesstaates, wird der Strand für das Baden gesperrt, bis eine Nachprobe wieder einwandfrei ist.",
+        "q8.q": "Worauf sollte ich sonst noch achten?",
+        "q8.li1": "Ungewöhnlich trübes Wasser, Schaum an der Oberfläche oder ein grüner, farbartiger Schimmer (mögliche schädliche Algenblüte).",
+        "q8.li2": "Starke Gerüche, sichtbare Schwemmstoffe oder verfärbtes Wasser nach Unwettern.",
+        "q8.li3": "Aushänge am Strand selbst – Beschilderung vor Ort kann aktueller sein als der Online-Status.",
+        "q9.q": "Welche Quellen helfen mir, die Wassersicherheit einzuschätzen?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> – die offizielle Quelle für Messergebnisse und Strandaushänge im gesamten Bundesstaat (und die Datenquelle dieser Website).",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> – erklärt CSOs und verfolgt Einleitungsmeldungen für das Kanalsystem im Großraum Boston.",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> – lokale Wasserqualitätsüberwachung und Interessenvertretung für das Einzugsgebiet des Mystic River.",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> – allgemeine Hinweise zu Badegewässerqualität und Gesundheit.",
+        "sec3.h2": "🤝 Wie man schwimmt",
+        "sec3.intro": "Du hast einen sauberen, sicheren Ort zum Schwimmen gefunden. Was nun?",
+        "q10.q": "Warum sollte ich nicht allein schwimmen?",
+        "q10.a": "Die meisten Ertrinkungsfälle passieren, wenn niemand in der Nähe ist, der helfen kann. Schwimme zu zweit und bevorzuge Strände und Zeiten mit Rettungsschwimmern im Dienst. Auch geübte Schwimmer können von kaltem Wasser, Krämpfen oder Erschöpfung im Freiwasser überrascht werden.",
+        "q11.q": "Wie mache ich das Freiwasserschwimmen sicherer?",
+        "q11.li1": "Schwimme parallel zum Ufer statt gerade hinaus und kenne deine Ausstiegsstellen.",
+        "q11.li2": "Nutze eine auffällig gefärbte Schwimmboje oder Badekappe, damit Boote und Begleiter dich sehen.",
+        "q11.li3": "Gehe schrittweise ins kalte Wasser – plötzliches Eintauchen kann Schnappatmung und Panik auslösen.",
+        "q11.li4": "Behalte Kinder aufmerksam im Blick; bestimme einen Erwachsenen als „Wasseraufsicht“.",
+        "footer.html": "Diese FAQ sind allgemeine Hinweise, keine medizinische oder sicherheitstechnische Beratung. Die Bedingungen ändern sich schnell – schwimme stets nach eigenem Ermessen. <a class=\"site-link\" href=\"/\">Aktuelle Bedingungen ansehen →</a>"
+    },
+    "pt": {
+        "site.title": "Perguntas frequentes sobre natação em águas abertas",
+        "site.description": "Respostas às perguntas mais comuns sobre segurança ao nadar: onde nadar, como a chuva e as descargas de esgoto afetam a qualidade da água e como avaliar se a água está segura.",
+        "lang.label": "Idioma",
+        "header.h1": "🏊‍♂️ Natação em águas abertas",
+        "header.subtitle": "Perguntas comuns sobre onde, quando e como nadar no lago Mystic ou em outro lugar.",
+        "header.dashboardLink": "🏊‍♂️ Painel de qualidade da água",
+        "sec1.h2": "🗺️ Onde nadar",
+        "sec1.intro": "Como encontrar uma praia — perto dos lagos Mystic ou em qualquer ponto de Massachusetts.",
+        "q1.q": "Onde posso nadar perto dos lagos Mystic?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) é a praia pública de banho que o <a href=\"/\">painel</a> acompanha por padrão, com estado atual, resultados dos testes e alertas de descargas de esgoto (CSO) para a região dos lagos Mystic.",
+        "q2.q": "Como encontro outras praias?",
+        "q2.a.html": "Use o seletor Município/Praia «Adicionar praia…» no topo do <a href=\"/\">painel</a> — ele cobre todas as praias do programa de monitoramento do estado, várias centenas ao todo. Cada praia tem o seu próprio link compartilhável (como <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), então você pode salvar nos favoritos ou repassar as praias que lhe interessam.",
+        "sec2.h2": "🛟 Quando nadar",
+        "sec2.intro": "Como avaliar se hoje é um bom dia para entrar na água: estado oficial, clima recente e qualidade da água.",
+        "q3.q": "Como sei se uma praia está aberta para banho?",
+        "q3.a.html": "Consulte o <a href=\"/\">painel</a>: ele mostra o estado oficial para a praia selecionada, com base nos testes de qualidade da água do Departamento de Saúde Pública de Massachusetts. Uma praia marcada como «fechada» ultrapassou os limites de bactérias ou apresenta outro risco ativo (como uma floração nociva de algas ou uma descarga de esgoto), e o painel indica o motivo do fechamento quando o estado o informa.",
+        "q4.q": "Um estado «aberto» garante que a água está segura?",
+        "q4.a": "Não. Durante a temporada a amostragem costuma ser semanal, então as condições podem mudar entre os testes — especialmente depois de chuva. Trate o estado publicado como mais um dado, ao lado do clima recente, da transparência da água e do seu próprio julgamento.",
+        "q5.q": "Devo nadar depois da chuva?",
+        "q5.callout": "Regra geral: espere de 24 a 72 horas após chuva forte antes de nadar.",
+        "q5.a": "A chuva forte leva bactérias e poluentes das ruas, dos bueiros e — em alguns municípios — dos esgotos que transbordam diretamente para lagos e rios. Os níveis de bactérias costumam ser mais altos logo depois de uma tempestade e em geral voltam ao normal em poucos dias. Como os testes oficiais são semanais, uma praia pode continuar marcada como «aberta» com base numa amostra colhida antes da chuva, então o período de espera é a sua melhor proteção depois de uma tempestade.",
+        "q6.q": "O que é um CSO?",
+        "q6.a1.html": "Um CSO (Combined Sewer Overflow, extravasamento de esgoto combinado) acontece em redes de esgoto antigas em que o esgoto e as águas pluviais compartilham a mesma tubulação. Em tempo seco tudo segue para a estação de tratamento, mas em chuvas fortes o volume combinado pode ultrapassar a capacidade do sistema. Para evitar que o esgoto retorne às ruas e às casas, o excesso — uma mistura de água de chuva com esgoto não tratado ou parcialmente tratado — é despejado diretamente em rios, lagos e baías. Deve-se evitar nadar perto de uma descarga recente. Saiba mais na <a href=\"https://www.mwra.com/your-sewer-system/cso\">página sobre CSO da MWRA</a>.",
+        "q6.a2.html": "Quando uma descarga CSO é notificada perto dos lagos Mystic, o <a href=\"/\">painel</a> exibe um cartão de alerta com os detalhes do incidente.",
+        "q7.q": "O que significam os resultados dos testes de bactérias?",
+        "q7.a": "Massachusetts analisa as praias de água doce em busca de bactérias indicadoras — E. coli e enterococos — cuja presença sugere possível contaminação por esgoto ou dejetos animais. Quando uma amostra individual ou a média geométrica acumulada das amostras recentes ultrapassa o limite estadual, a praia é interditada para banho até que uma nova amostra fique dentro do limite.",
+        "q8.q": "A que mais devo prestar atenção?",
+        "q8.li1": "Água anormalmente turva, espuma na superfície ou um brilho esverdeado semelhante a tinta (possível floração nociva de algas).",
+        "q8.li2": "Odores fortes, detritos visíveis ou água descolorida depois de tempestades.",
+        "q8.li3": "Avisos afixados na própria praia — a sinalização no local pode estar mais atualizada do que o estado on-line.",
+        "q9.q": "Que recursos posso usar para avaliar a segurança da água?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — a fonte oficial de resultados de testes e de avisos de praias em todo o estado (e a origem dos dados deste site).",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — explica os CSO e acompanha as notificações de descarga da rede de esgoto da região de Boston.",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — monitoramento local da qualidade da água e advocacia para a bacia do rio Mystic.",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — orientações gerais sobre qualidade da água em praias e saúde.",
+        "sec3.h2": "🤝 Como nadar",
+        "sec3.intro": "Você já tem um lugar limpo e seguro para nadar. E agora?",
+        "q10.q": "Por que não devo nadar sozinho?",
+        "q10.a": "A maioria dos afogamentos acontece quando não há ninguém por perto para ajudar. Nade acompanhado e prefira praias e horários com salva-vidas de plantão. Mesmo bons nadadores podem ser surpreendidos pela água fria, por cãibras ou pelo cansaço em águas abertas.",
+        "q11.q": "Como posso tornar a natação em águas abertas mais segura?",
+        "q11.li1": "Nade paralelamente à margem em vez de para longe dela e conheça seus pontos de saída.",
+        "q11.li2": "Use uma boia ou touca de cor viva para que barcos e companheiros consigam vê-lo.",
+        "q11.li3": "Entre na água fria aos poucos — a imersão súbita pode provocar falta de ar e pânico.",
+        "q11.li4": "Vigie as crianças de perto e ativamente; designe um adulto como «vigia da água».",
+        "footer.html": "Estas perguntas frequentes são orientação geral, não aconselhamento médico ou de segurança. As condições mudam rapidamente — nade sempre segundo o seu próprio critério. <a class=\"site-link\" href=\"/\">Ver as condições atuais →</a>"
+    },
+    "fr": {
+        "site.title": "FAQ sur la natation en eau libre",
+        "site.description": "Réponses aux questions courantes sur la sécurité de la baignade : où nager, comment la pluie et les déversements d’égout affectent la qualité de l’eau, et comment évaluer si l’eau est sûre.",
+        "lang.label": "Langue",
+        "header.h1": "🏊‍♂️ Natation en eau libre",
+        "header.subtitle": "Questions courantes sur où, quand et comment nager dans le lac Mystic ou ailleurs.",
+        "header.dashboardLink": "🏊‍♂️ Tableau de bord de la qualité de l’eau",
+        "sec1.h2": "🗺️ Où nager",
+        "sec1.intro": "Trouver une plage — près des lacs Mystic ou partout au Massachusetts.",
+        "q1.q": "Où puis-je nager près des lacs Mystic ?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) est la plage publique que le <a href=\"/\">tableau de bord</a> suit par défaut, avec le statut actuel, les résultats d’analyses et les alertes de déversement (CSO) pour le secteur des lacs Mystic.",
+        "q2.q": "Comment trouver d’autres plages ?",
+        "q2.a.html": "Utilisez le sélecteur Commune/Plage « Ajouter une plage… » en haut du <a href=\"/\">tableau de bord</a> : il couvre toutes les plages du programme de surveillance de l’État, plusieurs centaines au total. Chaque plage dispose de son propre lien partageable (comme <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), pour mettre en favori ou faire circuler les plages qui vous intéressent.",
+        "sec2.h2": "🛟 Quand nager",
+        "sec2.intro": "Évaluer si aujourd’hui est un bon jour pour se mettre à l’eau : statut officiel, météo récente et qualité de l’eau.",
+        "q3.q": "Comment savoir si une plage est ouverte à la baignade ?",
+        "q3.a.html": "Consultez le <a href=\"/\">tableau de bord</a> : il affiche le statut officiel de l’État pour la plage sélectionnée, d’après les analyses de qualité de l’eau du Massachusetts Department of Public Health. Une plage signalée « fermée » a dépassé les limites bactériennes ou présente un autre danger actif (prolifération d’algues nocives, rejet d’eaux usées), et le tableau de bord indique le motif de fermeture lorsque l’État en fournit un.",
+        "q4.q": "Un statut « ouvert » garantit-il que l’eau est sûre ?",
+        "q4.a": "Non. Pendant la saison, les prélèvements sont généralement hebdomadaires : les conditions peuvent donc changer entre deux analyses, surtout après la pluie. Considérez le statut affiché comme un élément parmi d’autres, avec la météo récente, la clarté de l’eau et votre propre jugement.",
+        "q5.q": "Faut-il nager après la pluie ?",
+        "q5.callout": "Règle générale : attendez 24 à 72 heures après une forte pluie avant de nager.",
+        "q5.a": "Les fortes pluies entraînent bactéries et polluants depuis les rues, les avaloirs et — dans certaines communes — les égouts en débordement directement vers les lacs et les rivières. Les taux de bactéries sont généralement les plus élevés juste après un orage et reviennent le plus souvent à la normale en quelques jours. Comme les analyses officielles sont hebdomadaires, une plage peut rester affichée « ouverte » sur la base d’un prélèvement antérieur à la pluie : le délai d’attente est donc votre meilleure protection après un orage.",
+        "q6.q": "Qu’est-ce qu’un CSO ?",
+        "q6.a1.html": "Un CSO (Combined Sewer Overflow, déversoir d’orage unitaire) survient dans les réseaux anciens où eaux usées et eaux pluviales partagent les mêmes canalisations. Par temps sec, tout part vers la station d’épuration, mais lors de fortes pluies le volume combiné peut dépasser la capacité du réseau. Pour éviter que les eaux usées ne refluent vers les rues et les habitations, l’excédent — un mélange d’eaux pluviales et d’eaux usées non ou partiellement traitées — est rejeté directement dans les rivières, les lacs et les ports. Il faut éviter de nager à proximité d’un rejet récent. Pour en savoir plus, voir la <a href=\"https://www.mwra.com/your-sewer-system/cso\">page CSO de la MWRA</a>.",
+        "q6.a2.html": "Lorsqu’un déversement CSO est signalé près des lacs Mystic, le <a href=\"/\">tableau de bord</a> affiche une carte d’alerte avec les détails de l’incident.",
+        "q7.q": "Que signifient les résultats des analyses bactériennes ?",
+        "q7.a": "Le Massachusetts analyse les plages d’eau douce à la recherche de bactéries indicatrices — E. coli et entérocoques — dont la présence signale une possible contamination par des eaux usées ou des déjections animales. Lorsqu’un prélèvement ponctuel ou la moyenne géométrique glissante des prélèvements récents dépasse le seuil de l’État, la baignade est interdite jusqu’à ce qu’un nouveau prélèvement soit conforme.",
+        "q8.q": "À quoi d’autre faut-il faire attention ?",
+        "q8.li1": "Eau anormalement trouble, écume en surface ou reflet vert semblable à de la peinture (possible prolifération d’algues nocives).",
+        "q8.li2": "Odeurs fortes, débris visibles ou eau décolorée après un orage.",
+        "q8.li3": "Les avis affichés sur la plage : la signalisation sur place peut être plus à jour que le statut en ligne.",
+        "q9.q": "Quelles ressources permettent d’évaluer la sûreté de l’eau ?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — la source officielle des résultats d’analyses et des avis de plage dans tout l’État (et la source des données de ce site).",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — explique les CSO et suit les notifications de rejet pour le réseau d’assainissement de la région de Boston.",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — surveillance locale de la qualité de l’eau et plaidoyer pour le bassin versant de la Mystic River.",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — conseils généraux sur la qualité des eaux de baignade et la santé.",
+        "sec3.h2": "🤝 Comment nager",
+        "sec3.intro": "Vous avez trouvé un endroit propre et sûr pour nager. Et ensuite ?",
+        "q10.q": "Pourquoi ne pas nager seul ?",
+        "q10.a": "La plupart des noyades surviennent lorsque personne n’est là pour aider. Nagez accompagné et privilégiez les plages et les horaires surveillés par des sauveteurs. Même les bons nageurs peuvent être surpris par l’eau froide, des crampes ou la fatigue en eau libre.",
+        "q11.q": "Comment rendre la natation en eau libre plus sûre ?",
+        "q11.li1": "Nagez parallèlement au rivage plutôt que vers le large, et repérez vos points de sortie.",
+        "q11.li2": "Utilisez une bouée ou un bonnet de couleur vive pour être vu des bateaux et de vos compagnons.",
+        "q11.li3": "Entrez progressivement dans l’eau froide : une immersion brutale peut provoquer suffocation et panique.",
+        "q11.li4": "Surveillez les enfants de près et activement ; désignez un adulte « surveillant de l’eau ».",
+        "footer.html": "Cette FAQ fournit des indications générales, et non un avis médical ou de sécurité. Les conditions changent vite — baignez-vous toujours à votre propre appréciation. <a class=\"site-link\" href=\"/\">Voir les conditions actuelles →</a>"
+    },
+    "it": {
+        "site.title": "FAQ sul nuoto in acque libere",
+        "site.description": "Risposte alle domande più comuni sulla sicurezza in acqua: dove nuotare, come pioggia e sversamenti fognari influiscono sulla qualità dell’acqua e come capire se l’acqua è sicura.",
+        "lang.label": "Lingua",
+        "header.h1": "🏊‍♂️ Nuoto in acque libere",
+        "header.subtitle": "Domande frequenti su dove, quando e come nuotare nel lago Mystic o altrove.",
+        "header.dashboardLink": "🏊‍♂️ Cruscotto sulla qualità dell’acqua",
+        "sec1.h2": "🗺️ Dove nuotare",
+        "sec1.intro": "Trovare una spiaggia — vicino ai laghi Mystic o ovunque in Massachusetts.",
+        "q1.q": "Dove posso nuotare vicino ai laghi Mystic?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) è la spiaggia pubblica che il <a href=\"/\">cruscotto</a> segue per impostazione predefinita, con stato attuale, risultati delle analisi e avvisi di sversamento (CSO) per l’area dei laghi Mystic.",
+        "q2.q": "Come trovo altre spiagge?",
+        "q2.a.html": "Usa il selettore Comune/Spiaggia «Aggiungi spiaggia…» in cima al <a href=\"/\">cruscotto</a>: copre tutte le spiagge del programma di monitoraggio dello Stato, diverse centinaia in totale. Ogni spiaggia ha il proprio link condivisibile (come <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), così puoi salvare tra i preferiti o passare ad altri le spiagge che ti interessano.",
+        "sec2.h2": "🛟 Quando nuotare",
+        "sec2.intro": "Capire se oggi è una buona giornata per entrare in acqua: stato ufficiale, meteo recente e qualità dell’acqua.",
+        "q3.q": "Come faccio a sapere se una spiaggia è aperta alla balneazione?",
+        "q3.a.html": "Controlla il <a href=\"/\">cruscotto</a>: mostra lo stato ufficiale dello Stato per la spiaggia selezionata, in base alle analisi della qualità dell’acqua del Massachusetts Department of Public Health. Una spiaggia indicata come «chiusa» ha superato i limiti batterici o presenta un altro pericolo attivo (come una fioritura algale nociva o uno scarico fognario), e il cruscotto riporta il motivo della chiusura quando lo Stato lo fornisce.",
+        "q4.q": "Uno stato «aperto» garantisce che l’acqua sia sicura?",
+        "q4.a": "No. Durante la stagione il campionamento è di solito settimanale, quindi le condizioni possono cambiare tra un’analisi e l’altra, soprattutto dopo la pioggia. Considera lo stato pubblicato come uno degli elementi, insieme al meteo recente, alla limpidezza dell’acqua e al tuo giudizio.",
+        "q5.q": "Si può nuotare dopo la pioggia?",
+        "q5.callout": "Regola pratica: dopo una pioggia intensa aspetta 24–72 ore prima di nuotare.",
+        "q5.a": "La pioggia intensa trascina batteri e inquinanti dalle strade, dalle caditoie e — in alcuni comuni — dalle fognature che tracimano direttamente in laghi e fiumi. I livelli batterici sono di solito più alti subito dopo un temporale e in genere tornano normali nel giro di qualche giorno. Poiché le analisi ufficiali sono settimanali, una spiaggia può risultare ancora «aperta» sulla base di un campione prelevato prima della pioggia: l’attesa è quindi la protezione migliore dopo un temporale.",
+        "q6.q": "Che cos’è un CSO?",
+        "q6.a1.html": "Un CSO (Combined Sewer Overflow, sfioratore di piena della fognatura mista) si verifica nelle reti fognarie più vecchie, dove acque reflue e acque piovane condividono le stesse tubazioni. Con il tempo asciutto tutto va all’impianto di depurazione, ma durante le piogge intense il volume combinato può superare la capacità del sistema. Per evitare che i reflui rigurgitino in strade e abitazioni, l’eccesso — una miscela di acqua piovana e reflui non trattati o trattati parzialmente — viene scaricato direttamente in fiumi, laghi e porti. È bene evitare di nuotare vicino a uno scarico recente. Maggiori informazioni sulla <a href=\"https://www.mwra.com/your-sewer-system/cso\">pagina CSO della MWRA</a>.",
+        "q6.a2.html": "Quando viene segnalato uno sversamento CSO vicino ai laghi Mystic, il <a href=\"/\">cruscotto</a> mostra un riquadro di avviso con i dettagli dell’episodio.",
+        "q7.q": "Che cosa significano i risultati delle analisi batteriche?",
+        "q7.a": "Il Massachusetts analizza le spiagge d’acqua dolce alla ricerca di batteri indicatori — E. coli ed enterococchi — la cui presenza segnala una possibile contaminazione da reflui o deiezioni animali. Quando un singolo campione o la media geometrica progressiva dei campioni recenti supera la soglia stabilita dallo Stato, la balneazione viene vietata finché un campione di controllo non rientra nei limiti.",
+        "q8.q": "A cos’altro devo fare attenzione?",
+        "q8.li1": "Acqua insolitamente torbida, schiuma in superficie o una patina verde simile a vernice (possibile fioritura algale nociva).",
+        "q8.li2": "Odori forti, detriti visibili o acqua scolorita dopo i temporali.",
+        "q8.li3": "Gli avvisi affissi sulla spiaggia stessa: la segnaletica in loco può essere più aggiornata dello stato online.",
+        "q9.q": "Quali risorse posso usare per valutare la sicurezza dell’acqua?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — la fonte ufficiale dei risultati delle analisi e degli avvisi sulle spiagge in tutto lo Stato (e l’origine dei dati di questo sito).",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — spiega i CSO e monitora le notifiche di scarico per la rete fognaria dell’area di Boston.",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — monitoraggio locale della qualità dell’acqua e attività di tutela per il bacino del fiume Mystic.",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — indicazioni generali su qualità delle acque di balneazione e salute.",
+        "sec3.h2": "🤝 Come nuotare",
+        "sec3.intro": "Hai trovato un posto pulito e sicuro dove nuotare. E adesso?",
+        "q10.q": "Perché non dovrei nuotare da solo?",
+        "q10.a": "La maggior parte degli annegamenti avviene quando non c’è nessuno vicino che possa aiutare. Nuota in compagnia e preferisci spiagge e orari con bagnini in servizio. Anche i nuotatori esperti possono essere sorpresi dall’acqua fredda, dai crampi o dalla stanchezza in acque libere.",
+        "q11.q": "Come posso rendere più sicuro il nuoto in acque libere?",
+        "q11.li1": "Nuota parallelamente alla riva anziché allontanarti, e individua i punti di uscita.",
+        "q11.li2": "Usa una boa o una cuffia di colore acceso perché barche e compagni possano vederti.",
+        "q11.li3": "Entra gradualmente nell’acqua fredda: l’immersione improvvisa può provocare affanno e panico.",
+        "q11.li4": "Sorveglia i bambini da vicino e attivamente; designa un adulto come «sorvegliante dell’acqua».",
+        "footer.html": "Queste FAQ sono indicazioni generali, non consigli medici o di sicurezza. Le condizioni cambiano rapidamente: nuota sempre secondo il tuo giudizio. <a class=\"site-link\" href=\"/\">Vedi le condizioni attuali →</a>"
+    }
+};
+
+    function getCookie(name) {
+        const prefix = name + "=";
+        const parts = document.cookie ? document.cookie.split("; ") : [];
+        for (const part of parts) {
+            if (part.indexOf(prefix) === 0) return decodeURIComponent(part.slice(prefix.length));
+        }
+        return null;
+    }
+    function setCookie(name, value, days = 365) {
+        document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${days * 24 * 60 * 60}; SameSite=Lax`;
+    }
+
+    function normalizeLang(value) {
+        const base = String(value || "").toLowerCase().split(/[-_]/)[0];
+        return LANGS.some(l => l.code === base) ? base : null;
+    }
+    function resolveLang() {
+        const fromQuery = normalizeLang(new URLSearchParams(window.location.search).get("lang"));
+        if (fromQuery) return fromQuery;
+        const fromCookie = normalizeLang(getCookie(LANG_COOKIE));
+        if (fromCookie) return fromCookie;
+        for (const pref of (navigator.languages || [navigator.language || ""])) {
+            const m = normalizeLang(pref);
+            if (m) return m;
+        }
+        return DEFAULT_LANG;
+    }
+    let currentLang = resolveLang();
+
+    function t(key) {
+        const table = STRINGS[currentLang] || STRINGS[DEFAULT_LANG];
+        const s = table[key];
+        return s === undefined ? (STRINGS[DEFAULT_LANG][key] === undefined ? key : STRINGS[DEFAULT_LANG][key]) : s;
+    }
+
+    function applyTranslations() {
+        document.documentElement.lang = currentLang;
+        document.title = t("site.title");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("site.description"));
+        document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+        document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+        document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+            el.dataset.i18nAttr.split(",").forEach(pair => {
+                const [attr, key] = pair.split(":").map(s => s.trim());
+                if (attr && key) el.setAttribute(attr, t(key));
+            });
+        });
+    }
+
+    function buildLangSwitcher() {
+        const sel = document.getElementById("lang-select");
+        if (!sel) return;
+        sel.innerHTML = "";
+        LANGS.forEach(l => {
+            const opt = document.createElement("option");
+            opt.value = l.code;
+            opt.textContent = l.label;
+            sel.appendChild(opt);
+        });
+        sel.value = currentLang;
+        if (sel.dataset.wired !== "1") {
+            sel.dataset.wired = "1";
+            sel.addEventListener("change", () => {
+                currentLang = normalizeLang(sel.value) || DEFAULT_LANG;
+                setCookie(LANG_COOKIE, currentLang);
+                // ?lang= outranks the cookie, so keep it in step (see index.html).
+                try {
+                    const url = new URL(window.location.href);
+                    if (url.searchParams.has("lang")) {
+                        url.searchParams.set("lang", currentLang);
+                        window.history.replaceState(null, "", url);
+                    }
+                } catch (e) { /* history not available; non-fatal */ }
+                applyTranslations();
+                buildLangSwitcher();
+            });
+        }
+    }
+
+    applyTranslations();
+    buildLangSwitcher();
+    </script>
 </body>
 </html>
