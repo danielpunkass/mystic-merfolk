@@ -199,6 +199,10 @@ CSO incidents (year-round, stdlib):
   — Front-end filters `results` to Mystic Lake by `waterBodyDescription` and only
   shows the CSO card when the selected beach is a Mystic beach (`/mystic/i`).
 - `data/meta.json` → `{ "lastSynced", "season", "today", "beach", "samples", "status", "cso", "errors", "schemaVersion" }`
+  plus `commit` / `commitDate` (short SHA + ISO-8601 committer date), which exist
+  **only in the deployed copy** — `sync.yml` patches them into `site/data/meta.json`
+  at stage time, since a commit can't contain its own SHA. The page renders them
+  as the footer's "Commit:" line, with the date in the visitor's locale.
 
 ### Town/Beach Selector
 
@@ -235,18 +239,32 @@ added keep working. Test override: `?slug-overrides-url=`.
 
 ### Localization
 
-The site ships in **English, Spanish, German, Portuguese, French, and Italian**.
+The site ships in **eight locales**: English, Spanish (Spain), Spanish
+(Latin America / `es-419`), Spanish (US), German, Portuguese (Brazil), French,
+and Italian. The three Spanish variants and Brazilian Portuguese are deliberate
+— those populations are well represented in the audience, and "es" alone would
+serve peninsular wording to readers who don't use it.
+
 Because everything is static, localization is entirely client-side: each page
 carries its own string catalog and applies it before first paint. There is no
 build step, no per-language URL, and nothing for `sync_water_data.py` or the
 deploy to do — the pre-rendered `/beach/<slug>/` pages are byte-copies of
 `index.html` and inherit the whole mechanism for free.
 
-**Language resolution** (`resolveLang()`, same order on both pages):
-`?lang=xx` → the `lang` cookie (1-year, shared across the dashboard and the FAQ)
-→ `navigator.languages` → English. Region variants collapse to the base tag
-(`de-AT` → `de`) and unsupported languages fall back to English rather than
-half-translating. Switching via the header `<select>` re-renders in place — no
+**Language resolution** (`resolveLang()` → `normalizeLang()`, same on both
+pages): `?lang=xx` → the `lang` cookie (1-year, shared across the dashboard and
+the FAQ) → `navigator.languages` → English. `normalizeLang()` maps any BCP-47
+tag onto a catalog, in this order:
+
+1. **Exact regional match** — `es-US` → `es-US`, `pt-BR` → `pt-BR`.
+2. **`ES_419_REGIONS`** — any Latin American Spanish region (`es-MX`, `es-CO`,
+   `es-AR`, …) → `es-419`.
+3. **Base language** — `de-AT` → `de`, `es-ES` → `es`.
+4. **`BASE_FALLBACK`** — a base with no catalog of its own; `pt` / `pt-PT` →
+   `pt-BR`, which is far closer than dropping to English.
+
+Anything unmatched (`ja`) falls back to English rather than half-translating.
+Switching via the header `<select>` re-renders in place — no
 reload, so the visitor keeps their beach, scroll position, and any revealed
 historical card — writes the cookie, and rewrites `?lang=` **only if the URL
 already had one** (otherwise a reload of a shared link would snap back to the
@@ -254,8 +272,8 @@ sender's language, and clean URLs stay clean).
 
 **Where the strings live:**
 
-- `index.html` — `STRINGS` (76 keys × 6 languages) plus `t(key, params)` for
-  `{placeholder}` interpolation and `tData(namespace, value)` for *upstream*
+- `index.html` — `STRINGS` (77 keys per complete catalog) plus `t(key, params)`
+  for `{placeholder}` interpolation and `tData(namespace, value)` for *upstream*
   vocabulary. Static markup carries `data-i18n` (textContent), `data-i18n-html`
   (innerHTML), and `data-i18n-attr="aria-label:some.key"` hooks that
   `applyStaticTranslations()` fills in; everything rendered from JS calls `t()`.
@@ -265,6 +283,16 @@ sender's language, and clean URLs stay clean).
   worker can't read `document.cookie`, so the page writes the active language
   into the shared `BeachStatusDB` `config` record (`lang`) and the SW reads it
   back. (Moot while SW registration stays commented out, but kept in step.)
+
+**Regional variants inherit.** `LANG_PARENT` chains `es-US` → `es-419` → `es`
+→ `en`, and `lookup()` walks it. A variant catalog therefore holds **only what
+actually differs** — `es-419` overrides 18 keys on the dashboard and 13 in the
+FAQ ("monitoreo" for "control", "agregar" for "añadir", "descarga" for
+"vertido", `"…"` for `«…»`); `es-US` adds 4 and 1 more on top ("Ciudad" for the
+town selector, and the Memorial Day / Labor Day glosses dropped, since a US
+audience doesn't need to be told when those fall). Keep it that way: a variant
+key whose value equals its parent's is dead weight, and both catalogs are
+checked for exactly that. `en` and every base language stay complete.
 
 **Translating DPH's own vocabulary.** Beach and town names are proper nouns and
 stay as-is, but four upstream vocabularies are mapped through `tData()`, which
@@ -280,11 +308,14 @@ a key:
 - statuses (`Open` / `Closed`) render through `status.open` / `status.closed`
 
 **Sample dates** arrive as US-format strings (`8/5/2026 8:00:00 AM`).
-`formatSampleDate()` re-renders them in the active locale (`4.8.2026, 08:35:00`
-in German) so `8/5` isn't misread as 5 August — but returns English **verbatim**,
-so the en display stays byte-identical to upstream. Only the *display* is
-localized: `row` itself stays raw, so date sorting and the threshold comparison
-are untouched.
+`formatSampleDate()` re-renders them in the active locale so `8/5` isn't misread
+as 5 August — but returns English **verbatim**, so the en display stays
+byte-identical to upstream. It uses `dateStyle: "medium"` (`4 ago 2026, 8:35`)
+rather than the default numeric form, because numeric only moves the ambiguity
+around: **CLDR's `es-US` is day-first** (`4/8/2026`), so a US Spanish reader
+would hit precisely the misreading this exists to prevent. A month name can't be
+misread in any locale. Only the *display* is localized — `row` itself stays raw,
+so date sorting and the threshold comparison are untouched.
 
 **Gotcha — the status card's pre-data placeholders.** `#status-heading` and
 `#status-description` ship with "Current Status: Loading…" copy that
@@ -349,7 +380,9 @@ Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
 - `?beaches-url=test-data/beaches-multi.json` — the Town/Beach selector index
 - `?samples-url=test-data/samples-multi.json` — the all-beaches keyed readings
 - `?season=open|closed` — override the date-based season check
-- `?lang=en|es|de|pt|fr|it` — force a language (outranks the cookie and the browser)
+- `?lang=en|es|es-419|es-US|de|pt-BR|fr|it` — force a locale (outranks the cookie
+  and the browser). Region tags resolve through `normalizeLang()`, so `?lang=es-MX`
+  also works and lands on `es-419`.
 
 To exercise the multi-beach selector locally, combine the last two, e.g.
 `?season=open&beaches-url=test-data/beaches-multi.json&samples-url=test-data/samples-multi.json`.

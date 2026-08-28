@@ -133,11 +133,13 @@ jobs:
           # can show which commit is live. It can't go in the committed copy
           # (chicken/egg: the SHA isn't known until the commit that contains it
           # exists), so we patch the deploy artifact only.
-          python3 - "$(git rev-parse --short HEAD)" <<'PY'
+          python3 - "$(git rev-parse --short HEAD)" "$(git log -1 --format=%cI)" <<'PY'
           import json, pathlib, sys
           p = pathlib.Path("site/data/meta.json")
           meta = json.loads(p.read_text())
           meta["commit"] = sys.argv[1]
+          # ISO-8601 committer date, rendered in the visitor's locale by the page.
+          meta["commitDate"] = sys.argv[2]
           p.write_text(json.dumps(meta, indent=2) + "\n")
           PY
           # Pre-render a clean /beach/<slug>/ permalink for every beach: each is a

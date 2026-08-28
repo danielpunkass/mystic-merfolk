@@ -204,16 +204,29 @@ function createNotificationIcon(isOpen) {
 // read document.cookie, so the active language arrives via the shared `config`
 // record in BeachStatusDB, written by the page.
 const NOTIFICATION_STRINGS = {
-    en: { title: 'Beach Status Update',        open: 'Open for Swimming',    closed: 'Closed for Swimming',   body: 'Swimming status changed to: {status}' },
-    es: { title: 'Cambio de estado de la playa', open: 'Abierto para el baño', closed: 'Cerrado para el baño', body: 'El estado del baño ha cambiado a: {status}' },
-    de: { title: 'Aktualisierung des Strandstatus', open: 'Zum Baden geöffnet', closed: 'Zum Baden gesperrt',  body: 'Der Badestatus hat sich geändert zu: {status}' },
-    pt: { title: 'Atualização do estado da praia', open: 'Aberto para banho',  closed: 'Fechado para banho',   body: 'O estado para banho mudou para: {status}' },
-    fr: { title: 'Mise à jour du statut de la plage', open: 'Baignade autorisée', closed: 'Baignade interdite', body: 'Le statut de baignade est passé à : {status}' },
-    it: { title: 'Aggiornamento dello stato della spiaggia', open: 'Balneazione consentita', closed: 'Balneazione vietata', body: 'Lo stato della balneazione è cambiato in: {status}' }
+    en:       { title: 'Beach Status Update',                    open: 'Open for Swimming',      closed: 'Closed for Swimming',   body: 'Swimming status changed to: {status}' },
+    es:       { title: 'Cambio de estado de la playa',           open: 'Abierto para el baño',   closed: 'Cerrado para el baño',  body: 'El estado del baño ha cambiado a: {status}' },
+    'es-419': { title: 'Cambio de estado de la playa',           open: 'Abierto para nadar',     closed: 'Cerrado para nadar',    body: 'El estado para nadar cambió a: {status}' },
+    de:       { title: 'Aktualisierung des Strandstatus',        open: 'Zum Baden geöffnet',     closed: 'Zum Baden gesperrt',    body: 'Der Badestatus hat sich geändert zu: {status}' },
+    'pt-BR':  { title: 'Atualização do estado da praia',         open: 'Aberto para banho',      closed: 'Fechado para banho',    body: 'O estado para banho mudou para: {status}' },
+    fr:       { title: 'Mise à jour du statut de la plage',      open: 'Baignade autorisée',     closed: 'Baignade interdite',    body: 'Le statut de baignade est passé à : {status}' },
+    it:       { title: 'Aggiornamento dello stato della spiaggia', open: 'Balneazione consentita', closed: 'Balneazione vietata', body: 'Lo stato della balneazione è cambiato in: {status}' }
 };
 
+// Mirrors the page's resolver (index.html): exact regional catalog, then the
+// Latin-American grouping, then the base language, then English. es-US shares
+// es-419's wording, so it isn't given an entry of its own.
+const SW_ES_419_REGIONS = new Set(['ar', 'bo', 'cl', 'co', 'cr', 'cu', 'do', 'ec', 'gt',
+    'hn', 'mx', 'ni', 'pa', 'pe', 'pr', 'py', 'sv', 'us', 'uy', 've', '419']);
+
 function notificationStrings(lang) {
-    const base = String(lang || '').toLowerCase().split(/[-_]/)[0];
+    const [base, region = ''] = String(lang || '').toLowerCase().split(/[-_]/);
+    if (region) {
+        const exact = base + '-' + (region === '419' ? '419' : region.toUpperCase());
+        if (NOTIFICATION_STRINGS[exact]) return NOTIFICATION_STRINGS[exact];
+    }
+    if (base === 'es' && SW_ES_419_REGIONS.has(region)) return NOTIFICATION_STRINGS['es-419'];
+    if (base === 'pt') return NOTIFICATION_STRINGS['pt-BR'];
     return NOTIFICATION_STRINGS[base] || NOTIFICATION_STRINGS.en;
 }
 

@@ -998,15 +998,33 @@
     	// Static markup carries data-i18n / data-i18n-html / data-i18n-attr hooks;
     	// everything rendered from JS goes through t().
     	const LANGS = [
-    	    { code: "en", label: "English",    locale: "en-US" },
-    	    { code: "es", label: "Español",    locale: "es-ES" },
-    	    { code: "de", label: "Deutsch",    locale: "de-DE" },
-    	    { code: "pt", label: "Português",  locale: "pt-BR" },
-    	    { code: "fr", label: "Français",   locale: "fr-FR" },
-    	    { code: "it", label: "Italiano",   locale: "it-IT" }
+    	    { code: "en",     label: "English",                  locale: "en-US"  },
+    	    { code: "es",     label: "Español (España)",         locale: "es-ES"  },
+    	    { code: "es-419", label: "Español (Latinoamérica)",  locale: "es-419" },
+    	    { code: "es-US",  label: "Español (Estados Unidos)", locale: "es-US"  },
+    	    { code: "de",     label: "Deutsch",                  locale: "de-DE"  },
+    	    { code: "pt-BR",  label: "Português (Brasil)",       locale: "pt-BR"  },
+    	    { code: "fr",     label: "Français",                 locale: "fr-FR"  },
+    	    { code: "it",     label: "Italiano",                 locale: "it-IT"  }
     	];
     	const LANG_COOKIE = "lang";
     	const DEFAULT_LANG = "en";
+
+    	// Regional catalogs hold ONLY the strings that differ from their parent, so
+    	// the diff is the regionalization: es-419 swaps Spain's "control"/"añadir"
+    	// for "monitoreo"/"agregar", es-US layers US conventions on top of that, and
+    	// both inherit the rest. Lookup walks this chain, then English.
+    	const LANG_PARENT = { "es-419": "es", "es-US": "es-419" };
+
+    	// Spanish-speaking regions CLDR groups under es-419. A browser reporting
+    	// es-MX or es-CO gets Latin American Spanish rather than peninsular.
+    	const ES_419_REGIONS = new Set(["ar", "bo", "cl", "co", "cr", "cu", "do", "ec",
+    	    "gt", "hn", "mx", "ni", "pa", "pe", "pr", "py", "sv", "uy", "ve", "419"]);
+
+    	// A base language with no catalog of its own resolves here — a European
+    	// Portuguese browser gets Brazilian Portuguese, which is far closer than
+    	// falling all the way back to English.
+    	const BASE_FALLBACK = { pt: "pt-BR" };
 
     	const STRINGS = {
     	  en: {
@@ -1086,6 +1104,7 @@
     	    "footer.pageRendered": "Page rendered: {ts}",
     	    "footer.testMode": " (Test Mode)",
     	    "footer.lastSynced": "Data last synced: {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
     	  es: {
@@ -1165,7 +1184,41 @@
     	    "footer.pageRendered": "Página generada: {ts}",
     	    "footer.testMode": " (Modo de prueba)",
     	    "footer.lastSynced": "Última sincronización de datos: {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
+    	  },
+    	  // Latin American Spanish. Only what actually differs from Spain: "monitoreo"
+    	  // for "control", "agregar" for "añadir", "nadar" where Spain says "bañarse",
+    	  // "regresa" for "vuelve", and "descarga" for "vertido".
+    	  "es-419": {
+    	    "selector.title": "Agregar una playa",
+    	    "selector.add": "Agregar",
+    	    "nav.addBeach": "Agregar playa…",
+    	    "notify.banner": "🔔 ¡Recibe un aviso cuando cambie el estado para nadar!",
+    	    "status.open": "Abierto para nadar",
+    	    "status.closed": "Cerrado para nadar",
+    	    "status.monitoringNotActive": "El monitoreo aún no ha comenzado",
+    	    "status.desc": "Este es el estado oficial específico de {beach}, basado en muestras individuales y en la media geométrica acumulada de los resultados recientes. Como siempre, nada bajo tu propio riesgo y según tu mejor criterio.",
+    	    "status.unavailableDesc": "La información sobre el estado no está disponible en este momento. Regresa más tarde para ver las actualizaciones.",
+    	    "status.offSeasonDesc": "El monitoreo oficial de la calidad del agua en {beach} va desde el Memorial Day (finales de mayo) hasta el Labor Day (principios de septiembre). Fuera de ese periodo el lago puede seguir usándose para navegar, hacer kayak o meterse al agua bajo tu propio riesgo, pero no se publican mediciones, así que se desconocen las condiciones.",
+    	    "status.preSeasonDesc": "El monitoreo oficial de la calidad del agua en {beach} aún no ha comenzado esta temporada. Generalmente se reanuda alrededor del Memorial Day (finales de mayo) y se realiza cada semana hasta el Labor Day (principios de septiembre). Mientras tanto, el lago puede seguir usándose para navegar, hacer kayak o meterse al agua bajo tu propio riesgo, pero se desconocen las condiciones.",
+    	    "reason.CSO/SSO event": "Descarga de aguas residuales (CSO/SSO)",
+    	    "cso.heading": "⚠️ Descargas de aguas residuales (CSO) recientes",
+    	    "cso.intro": "Eventos de desbordamiento de alcantarillado combinado reportados en el área de Winchester que afectan al lago Mystic en las últimas 2 semanas.",
+    	    "cso.rainfall": "Lluvia:",
+    	    "cso.rainfallUnknown": "Lluvia desconocida",
+    	    "awaiting.body": "El monitoreo oficial de la calidad del agua apenas está comenzando la temporada. Todavía no se han publicado mediciones de este año. El muestreo generalmente se realiza cada semana desde el Memorial Day (finales de mayo) hasta el Labor Day (principios de septiembre).",
+    	    "awaiting.unavailable": "En este momento no se pudieron obtener las últimas mediciones del panel de calidad del agua del estado. El monitoreo sigue activo: se trata de un problema temporal al recuperar los datos, no de un cierre. Más abajo encontrarás el enlace a las mediciones de la última temporada completa."
+    	  },
+    	  // US Spanish: Latin American Spanish plus US conventions. "Ciudad" for the
+    	  // town selector, and the Memorial Day / Labor Day glosses dropped — a US
+    	  // audience doesn't need to be told when those fall. Dates come from
+    	  // formatSampleDate(), which sidesteps CLDR's day-first es-US ordering.
+    	  "es-US": {
+    	    "selector.town": "Ciudad",
+    	    "status.offSeasonDesc": "El monitoreo oficial de la calidad del agua en {beach} va desde el Memorial Day hasta el Labor Day. Fuera de ese periodo el lago puede seguir usándose para navegar, hacer kayak o meterse al agua bajo tu propio riesgo, pero no se publican mediciones, así que se desconocen las condiciones.",
+    	    "status.preSeasonDesc": "El monitoreo oficial de la calidad del agua en {beach} aún no ha comenzado esta temporada. Generalmente se reanuda alrededor del Memorial Day y se realiza cada semana hasta el Labor Day. Mientras tanto, el lago puede seguir usándose para navegar, hacer kayak o meterse al agua bajo tu propio riesgo, pero se desconocen las condiciones.",
+    	    "awaiting.body": "El monitoreo oficial de la calidad del agua apenas está comenzando la temporada. Todavía no se han publicado mediciones de este año. El muestreo generalmente se realiza cada semana desde el Memorial Day hasta el Labor Day."
     	  },
     	  de: {
     	    "site.title": "Wasserqualität in Massachusetts",
@@ -1244,9 +1297,10 @@
     	    "footer.pageRendered": "Seite erstellt: {ts}",
     	    "footer.testMode": " (Testmodus)",
     	    "footer.lastSynced": "Daten zuletzt synchronisiert: {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
-    	  pt: {
+    	  "pt-BR": {
     	    "site.title": "Qualidade da água em Massachusetts",
     	    "site.description": "Um resumo conciso das condições atuais e recentes da água em Shannon Beach.",
     	    "subtitle.before": "Um resumo conciso das condições atuais e recentes da água. Dados do site ",
@@ -1323,6 +1377,7 @@
     	    "footer.pageRendered": "Página gerada: {ts}",
     	    "footer.testMode": " (Modo de teste)",
     	    "footer.lastSynced": "Dados sincronizados pela última vez: {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
     	  fr: {
@@ -1402,6 +1457,7 @@
     	    "footer.pageRendered": "Page générée : {ts}",
     	    "footer.testMode": " (Mode test)",
     	    "footer.lastSynced": "Dernière synchronisation des données : {ts}",
+    	    "footer.commitDated": "Commit : {c} ({ts})",
     	    "footer.commit": "Commit : {c}"
     	  },
     	  it: {
@@ -1481,15 +1537,29 @@
     	    "footer.pageRendered": "Pagina generata: {ts}",
     	    "footer.testMode": " (Modalità di prova)",
     	    "footer.lastSynced": "Ultima sincronizzazione dei dati: {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  }
     	};
 
     	// Resolve the active language. ?lang= wins (shareable/testable), then the
     	// visitor's saved choice, then the browser's preference, then English.
+    	// Map any BCP-47 tag onto one of our catalogs: exact regional match first
+    	// (es-US, es-419, pt-BR), then the Latin-American grouping, then the base
+    	// language, then BASE_FALLBACK. Returns null for languages we don't carry,
+    	// so the caller can move on to the next preference.
     	function normalizeLang(value) {
-    	    const base = String(value || "").toLowerCase().split(/[-_]/)[0];
-    	    return LANGS.some(l => l.code === base) ? base : null;
+    	    const [base, region = ""] = String(value || "").toLowerCase().split(/[-_]/);
+    	    if (!base) return null;
+    	    const has = code => LANGS.some(l => l.code === code);
+    	    if (region) {
+    	        const exact = base + "-" + (region === "419" ? "419" : region.toUpperCase());
+    	        if (has(exact)) return exact;
+    	    }
+    	    if (base === "es" && ES_419_REGIONS.has(region) && has("es-419")) return "es-419";
+    	    if (has(base)) return base;
+    	    if (BASE_FALLBACK[base] && has(BASE_FALLBACK[base])) return BASE_FALLBACK[base];
+    	    return null;
     	}
     	function resolveLang() {
     	    const fromQuery = normalizeLang(new URLSearchParams(window.location.search).get("lang"));
@@ -1508,12 +1578,27 @@
     	    return entry ? entry.locale : "en-US";
     	}
 
-    	// Look up a key in the active language, falling back to English and finally
-    	// to the key itself, then interpolate {placeholders}.
+    	// The catalogs to consult, nearest first: the active language, each ancestor
+    	// via LANG_PARENT, then English. Recomputed only when the language changes.
+    	function langChain(code) {
+    	    const chain = [];
+    	    for (let c = code; c && !chain.includes(c); c = LANG_PARENT[c]) chain.push(c);
+    	    if (!chain.includes(DEFAULT_LANG)) chain.push(DEFAULT_LANG);
+    	    return chain;
+    	}
+    	let langLookup = langChain(currentLang);
+
+    	// Resolve a key through the chain, then interpolate {placeholders}. Falls
+    	// back to the key itself so a missing string is visible rather than blank.
+    	function lookup(key) {
+    	    for (const code of langLookup) {
+    	        const table = STRINGS[code];
+    	        if (table && table[key] !== undefined) return table[key];
+    	    }
+    	    return undefined;
+    	}
     	function t(key, params) {
-    	    const table = STRINGS[currentLang] || STRINGS[DEFAULT_LANG];
-    	    let s = table[key];
-    	    if (s === undefined) s = STRINGS[DEFAULT_LANG][key];
+    	    const s = lookup(key);
     	    if (s === undefined) return key;
     	    if (!params) return s;
     	    return s.replace(/\{(\w+)\}/g, (m, name) =>
@@ -1525,11 +1610,8 @@
     	function tData(namespace, value) {
     	    const raw = String(value == null ? "" : value).trim();
     	    if (!raw) return raw;
-    	    const key = namespace + "." + raw;
-    	    const table = STRINGS[currentLang] || STRINGS[DEFAULT_LANG];
-    	    if (table[key] !== undefined) return table[key];
-    	    if (STRINGS[DEFAULT_LANG][key] !== undefined) return STRINGS[DEFAULT_LANG][key];
-    	    return raw;
+    	    const s = lookup(namespace + "." + raw);
+    	    return s === undefined ? raw : s;
     	}
     	function escapeHTML(s) {
     	    return String(s).replace(/[&<>"']/g, c =>
@@ -1547,11 +1629,18 @@
     	// DPH publishes sample timestamps as US-format strings ("8/5/2026 8:00:00 AM").
     	// Reformat for the active locale so 8/5 isn't read as 5 August — but leave English
     	// byte-identical to upstream.
+    	//
+    	// dateStyle "medium" rather than the default numeric form, because numeric only
+    	// moves the ambiguity around: CLDR's es-US is day-first (4/8/2026), so a US
+    	// Spanish reader would hit exactly the misreading this exists to prevent. A month
+    	// name can't be misread in any locale. (German stays numeric under "medium", but
+    	// 04.08.2026 is unambiguous there anyway.) Seconds are dropped — they carry no
+    	// meaning for a water sample.
     	function formatSampleDate(value) {
     	    if (currentLang === DEFAULT_LANG) return value;
     	    const d = new Date(value);
     	    if (isNaN(d)) return value;
-    	    return d.toLocaleString(currentLocale());
+    	    return d.toLocaleString(currentLocale(), { dateStyle: "medium", timeStyle: "short" });
     	}
 
     	// Apply the active language to <html lang>, the document metadata, and every
@@ -1624,6 +1713,7 @@
     	    const next = normalizeLang(code) || DEFAULT_LANG;
     	    if (next === currentLang) return;
     	    currentLang = next;
+    	    langLookup = langChain(currentLang);
     	    setCookie(LANG_COOKIE, currentLang);
     	    // ?lang= outranks the cookie, so a link that carried one has to be
     	    // rewritten or a reload would snap back to the shared language. URLs
@@ -3032,8 +3122,16 @@
             const syncedLine = syncedAt
                 ? `<br><span class="sync-line">${escapeHTML(t('footer.lastSynced', { ts: syncedAt }))}</span>`
                 : '';
+            // commitDate is stamped alongside commit at deploy time; a deploy that
+            // predates it (or a local run, which has neither) falls back to the
+            // bare SHA rather than printing "Invalid Date".
+            const commitAt = meta && meta.commitDate && !isNaN(new Date(meta.commitDate))
+                ? new Date(meta.commitDate).toLocaleString(currentLocale())
+                : null;
             const commitLine = meta && meta.commit
-                ? `<br><span class="sync-line">${escapeHTML(t('footer.commit', { c: meta.commit }))}</span>`
+                ? `<br><span class="sync-line">${escapeHTML(commitAt
+                    ? t('footer.commitDated', { c: meta.commit, ts: commitAt })
+                    : t('footer.commit', { c: meta.commit }))}</span>`
                 : '';
             lastUpdatedDiv.innerHTML =
                 escapeHTML(t('footer.pageRendered', { ts: new Date().toLocaleString(currentLocale()) })) +

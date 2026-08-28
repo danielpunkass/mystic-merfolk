@@ -282,7 +282,23 @@
     // applied to data-i18n* hooks, with the language resolved from ?lang= -> the
     // `lang` cookie -> navigator.language -> English. The cookie is shared with
     // the dashboard, so a choice made on either page carries to the other.
-    const LANGS = [{"code": "en", "label": "English"}, {"code": "es", "label": "Español"}, {"code": "de", "label": "Deutsch"}, {"code": "pt", "label": "Português"}, {"code": "fr", "label": "Français"}, {"code": "it", "label": "Italiano"}];
+    const LANGS = [
+        { code: "en",     label: "English" },
+        { code: "es",     label: "Español (España)" },
+        { code: "es-419", label: "Español (Latinoamérica)" },
+        { code: "es-US",  label: "Español (Estados Unidos)" },
+        { code: "de",     label: "Deutsch" },
+        { code: "pt-BR",  label: "Português (Brasil)" },
+        { code: "fr",     label: "Français" },
+        { code: "it",     label: "Italiano" }
+    ];
+
+    // Regional catalogs hold only what differs from their parent; lookup walks
+    // this chain and then English. Mirrors index.html.
+    const LANG_PARENT = { "es-419": "es", "es-US": "es-419" };
+    const ES_419_REGIONS = new Set(["ar", "bo", "cl", "co", "cr", "cu", "do", "ec",
+        "gt", "hn", "mx", "ni", "pa", "pe", "pr", "py", "sv", "uy", "ve", "419"]);
+    const BASE_FALLBACK = { pt: "pt-BR" };
     const LANG_COOKIE = "lang";
     const DEFAULT_LANG = "en";
     const STRINGS = {
@@ -380,6 +396,24 @@
         "q11.li4": "Vigila de cerca y de forma activa a los niños; designa a un adulto como «vigilante del agua».",
         "footer.html": "Estas preguntas frecuentes son orientación general, no consejo médico ni de seguridad. Las condiciones cambian rápido: nada siempre bajo tu propio criterio. <a class=\"site-link\" href=\"/\">Consultar las condiciones actuales →</a>"
     },
+    "es-419": {
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) es la playa pública donde se puede nadar y que el <a href=\"/\">panel</a> muestra por defecto, con el estado actual, los resultados de los análisis y los avisos de descargas de aguas residuales (CSO) de la zona de los lagos Mystic.",
+        "q2.a.html": "Usa el selector Municipio/Playa “Agregar playa…” en la parte superior del <a href=\"/\">panel</a>: incluye todas las playas del programa de monitoreo del estado, varios cientos en total. Cada playa tiene su propio enlace para compartir (como <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), así que puedes guardarla en tus favoritos o pasar las playas que te interesen.",
+        "q3.a.html": "Revisa el <a href=\"/\">panel</a>: muestra el estado oficial del estado para la playa que elijas, basado en los análisis de calidad del agua del Departamento de Salud Pública de Massachusetts. Una playa marcada como “cerrada” ha superado los límites bacterianos o presenta otro riesgo activo (como una proliferación nociva de algas o una descarga de aguas residuales), y el panel indica el motivo del cierre cuando el estado lo proporciona.",
+        "q4.q": "¿Un estado “abierto” garantiza que el agua es segura?",
+        "q4.a": "No. Durante la temporada el muestreo generalmente es semanal, así que las condiciones pueden cambiar entre análisis, sobre todo después de la lluvia. Toma el estado publicado como un dato más, junto al clima reciente, la claridad del agua y tu propio criterio.",
+        "q5.a": "La lluvia intensa arrastra bacterias y contaminantes desde las calles, las alcantarillas pluviales y —en algunos municipios— los drenajes desbordados directamente a lagos y ríos. Los niveles de bacterias suelen ser más altos justo después de una tormenta y normalmente vuelven a la normalidad en unos días. Como los análisis oficiales son semanales, una playa puede seguir marcada como “abierta” a partir de una muestra tomada antes de la lluvia, así que el periodo de espera es tu mejor protección tras una tormenta.",
+        "q6.a1.html": "Un CSO (Combined Sewer Overflow, desbordamiento de alcantarillado combinado) se produce en redes de drenaje antiguas en las que las aguas residuales y las pluviales comparten las mismas tuberías. Con tiempo seco todo va a la planta de tratamiento, pero durante lluvias intensas el caudal combinado puede superar la capacidad del sistema. Para evitar que las aguas residuales retrocedan hacia calles y viviendas, el exceso —una mezcla de agua de lluvia y aguas residuales sin tratar o parcialmente tratadas— se descarga directamente a ríos, lagos y bahías. Conviene evitar nadar cerca de una descarga reciente. Más información en la <a href=\"https://www.mwra.com/your-sewer-system/cso\">página sobre CSO de la MWRA</a>.",
+        "q6.a2.html": "Cuando se reporta una descarga CSO cerca de los lagos Mystic, el <a href=\"/\">panel</a> muestra una tarjeta de aviso con los detalles del evento.",
+        "q7.a": "Massachusetts analiza las playas de agua dulce en busca de bacterias indicadoras —E. coli y enterococos— cuya presencia apunta a una posible contaminación por aguas residuales o desechos animales. Cuando una muestra individual o la media geométrica acumulada de las muestras recientes supera el límite estatal, se prohíbe nadar en la playa hasta que una muestra de seguimiento salga dentro del límite.",
+        "q8.li3": "Avisos colocados en la propia playa: la señalización en el lugar puede estar más actualizada que el estado en línea.",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — explica los CSO y publica las notificaciones de descargas del sistema de drenaje del área de Boston.",
+        "q10.a": "La mayoría de los ahogamientos ocurren cuando no hay nadie cerca para ayudar. Nada acompañado y elige playas y horarios con salvavidas de servicio. Incluso los buenos nadadores pueden verse sorprendidos por el agua fría, los calambres o el cansancio en aguas abiertas.",
+        "footer.html": "Estas preguntas frecuentes son orientación general, no consejo médico ni de seguridad. Las condiciones cambian rápido: nada siempre bajo tu propio criterio. <a class=\"site-link\" href=\"/\">Ver las condiciones actuales →</a>"
+    },
+    "es-US": {
+        "q2.a.html": "Usa el selector Ciudad/Playa “Agregar playa…” en la parte superior del <a href=\"/\">panel</a>: incluye todas las playas del programa de monitoreo del estado, varios cientos en total. Cada playa tiene su propio enlace para compartir (como <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), así que puedes guardarla en tus favoritos o pasar las playas que te interesen."
+    },
     "de": {
         "site.title": "FAQ zum Freiwasserschwimmen",
         "site.description": "Antworten auf häufige Fragen zur Schwimmsicherheit: wo man schwimmen kann, wie Regen und Mischwasserüberläufe die Wasserqualität beeinflussen und wie man einschätzt, ob das Wasser sicher ist.",
@@ -427,7 +461,7 @@
         "q11.li4": "Behalte Kinder aufmerksam im Blick; bestimme einen Erwachsenen als „Wasseraufsicht“.",
         "footer.html": "Diese FAQ sind allgemeine Hinweise, keine medizinische oder sicherheitstechnische Beratung. Die Bedingungen ändern sich schnell – schwimme stets nach eigenem Ermessen. <a class=\"site-link\" href=\"/\">Aktuelle Bedingungen ansehen →</a>"
     },
-    "pt": {
+    "pt-BR": {
         "site.title": "Perguntas frequentes sobre natação em águas abertas",
         "site.description": "Respostas às perguntas mais comuns sobre segurança ao nadar: onde nadar, como a chuva e as descargas de esgoto afetam a qualidade da água e como avaliar se a água está segura.",
         "lang.label": "Idioma",
@@ -583,8 +617,17 @@
     }
 
     function normalizeLang(value) {
-        const base = String(value || "").toLowerCase().split(/[-_]/)[0];
-        return LANGS.some(l => l.code === base) ? base : null;
+        const [base, region = ""] = String(value || "").toLowerCase().split(/[-_]/);
+        if (!base) return null;
+        const has = code => LANGS.some(l => l.code === code);
+        if (region) {
+            const exact = base + "-" + (region === "419" ? "419" : region.toUpperCase());
+            if (has(exact)) return exact;
+        }
+        if (base === "es" && ES_419_REGIONS.has(region) && has("es-419")) return "es-419";
+        if (has(base)) return base;
+        if (BASE_FALLBACK[base] && has(BASE_FALLBACK[base])) return BASE_FALLBACK[base];
+        return null;
     }
     function resolveLang() {
         const fromQuery = normalizeLang(new URLSearchParams(window.location.search).get("lang"));
@@ -599,10 +642,20 @@
     }
     let currentLang = resolveLang();
 
+    function langChain(code) {
+        const chain = [];
+        for (let c = code; c && !chain.includes(c); c = LANG_PARENT[c]) chain.push(c);
+        if (!chain.includes(DEFAULT_LANG)) chain.push(DEFAULT_LANG);
+        return chain;
+    }
+    let langLookup = langChain(currentLang);
+
     function t(key) {
-        const table = STRINGS[currentLang] || STRINGS[DEFAULT_LANG];
-        const s = table[key];
-        return s === undefined ? (STRINGS[DEFAULT_LANG][key] === undefined ? key : STRINGS[DEFAULT_LANG][key]) : s;
+        for (const code of langLookup) {
+            const table = STRINGS[code];
+            if (table && table[key] !== undefined) return table[key];
+        }
+        return key;
     }
 
     function applyTranslations() {
@@ -635,6 +688,7 @@
             sel.dataset.wired = "1";
             sel.addEventListener("change", () => {
                 currentLang = normalizeLang(sel.value) || DEFAULT_LANG;
+                langLookup = langChain(currentLang);
                 setCookie(LANG_COOKIE, currentLang);
                 // ?lang= outranks the cookie, so keep it in step (see index.html).
                 try {
