@@ -10285,6 +10285,12 @@
       "town": "Bourne",
       "rows": [
         [
+          "8/27/2026 8:26:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/26/2026 10:19:00 AM",
           "Enterococci",
           "104",
@@ -10364,10 +10370,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 10:19:00 AM",
+        "date": "8/27/2026 8:26:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "14.48"
+        "value": "10.05"
       }
     },
     "Stiles Pond Beach": {
