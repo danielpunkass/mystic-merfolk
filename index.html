@@ -78,9 +78,25 @@
             justify-content: center;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0.75rem;
             color: #64748b;
             font-size: 0.9rem;
+        }
+
+        .translation-report {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .translation-report a {
+            color: #64748b;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .translation-report a:hover {
+            color: #0369a1;
         }
 
         .lang-switcher select {
@@ -348,7 +364,7 @@
             text-align: center;
             color: #64748b;
             font-size: 0.9rem;
-            margin-top: 1rem;
+            margin-bottom: 2rem;
             padding: 1rem;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 8px;
@@ -878,9 +894,6 @@
                     </tbody>
                 </table>
             </div>
-            <div id="last-updated" class="last-updated" style="display: none;">
-                <!-- Last updated time will be inserted here -->
-            </div>
         </div>
 
         <!-- Link to past season's historical readings (shown in open season; off-season uses the
@@ -933,12 +946,21 @@
             </div>
         </div>
 
-        <!-- Language is a set-once preference (it persists in a cookie), not
-             something visitors toggle, so it sits at the foot of the page with
-             the sync metadata rather than competing with the status card. -->
+        <!-- Page foot: language is a set-once preference (it persists in a
+             cookie), not something visitors toggle, so it sits down here with the
+             sync metadata rather than competing with the status card. -->
         <div class="lang-switcher">
             <label for="lang-select" data-i18n="lang.label">Language</label>
             <select id="lang-select" data-i18n-attr="aria-label:lang.label"></select>
+        </div>
+
+        <!-- Shown only on a translated page — see applyStaticTranslations(). -->
+        <p class="translation-report" id="translation-report" style="display: none;">
+            <a id="translation-report-link" href="https://github.com/danielpunkass/mystic-merfolk/issues">Report a translation problem</a>
+        </p>
+
+        <div id="last-updated" class="last-updated" style="display: none;">
+            <!-- Last updated time will be inserted here -->
         </div>
     </div>
 
@@ -1020,10 +1042,15 @@
     	    // formatDateTime(). fr-HT covers what's left, French being co-official
     	    // in Haiti, and is a real locale rather than an unpredictable fallback.
     	    { code: "ht",     label: "Kreyòl Ayisyen",           locale: "fr-HT"  },
-    	    { code: "vi",     label: "Tiếng Việt",               locale: "vi-VN"  }
+    	    { code: "vi",     label: "Tiếng Việt",               locale: "vi-VN"  },
+    	    // Khmer, like Haitian Creole, has no CLDR data (see MANUAL_DATE_LOCALES).
+    	    // en-US is the numeric fallback: Cambodia uses the same "," grouping and
+    	    // "." decimal, so Intl still formats numbers correctly under it.
+    	    { code: "km",     label: "ភាសាខ្មែរ",                  locale: "en-US"  }
     	];
     	const LANG_COOKIE = "lang";
     	const DEFAULT_LANG = "en";
+    	const ISSUES_URL = "https://github.com/danielpunkass/mystic-merfolk/issues";
 
     	// Regional catalogs hold ONLY the strings that differ from their parent, so
     	// the diff is the regionalization: es-419 swaps Spain's "control"/"añadir"
@@ -1050,6 +1077,7 @@
     	    "subtitle.after": " site.",
     	    "lang.label": "Language",
     	    "lang.system": "Match System ({lang})",
+    	    "report.translation": "Report a translation problem",
     	    "faq.link": "🛟 Swimming Safety FAQ",
     	    "nav.recentAria": "Recently viewed beaches",
     	    "nav.addBeach": "Add beach…",
@@ -1132,6 +1160,7 @@
     	    "lang.label": "Idioma",
     	    "faq.link": "🛟 Preguntas frecuentes sobre seguridad al nadar",
     	    "lang.system": "Usar el idioma del sistema ({lang})",
+    	    "report.translation": "Informar de un problema de traducción",
     	    "nav.recentAria": "Playas vistas recientemente",
     	    "nav.addBeach": "Añadir playa…",
     	    "nav.removeAria": "Quitar {beach} de las playas recientes",
@@ -1208,6 +1237,7 @@
     	  // for "control", "agregar" for "añadir", "nadar" where Spain says "bañarse",
     	  // "regresa" for "vuelve", and "descarga" for "vertido".
     	  "es-419": {
+    	    "report.translation": "Reportar un problema de traducción",
     	    "selector.title": "Agregar una playa",
     	    "selector.add": "Agregar",
     	    "nav.addBeach": "Agregar playa…",
@@ -1245,6 +1275,7 @@
     	    "subtitle.after": " 网站。",
     	    "lang.label": "语言",
     	    "lang.system": "跟随系统（{lang}）",
+    	    "report.translation": "报告翻译问题",
     	    "faq.link": "🛟 游泳安全常见问题",
     	    "nav.recentAria": "最近查看的海滩",
     	    "nav.addBeach": "添加海滩…",
@@ -1326,6 +1357,7 @@
     	    "subtitle.after": " la.",
     	    "lang.label": "Lang",
     	    "lang.system": "Sèvi ak lang sistèm nan ({lang})",
+    	    "report.translation": "Siyale yon pwoblèm tradiksyon",
     	    "faq.link": "🛟 Kesyon moun poze sou sekirite naje",
     	    "nav.recentAria": "Plaj ou sot gade",
     	    "nav.addBeach": "Ajoute plaj…",
@@ -1407,6 +1439,7 @@
     	    "subtitle.after": ".",
     	    "lang.label": "Ngôn ngữ",
     	    "lang.system": "Dùng ngôn ngữ hệ thống ({lang})",
+    	    "report.translation": "Báo lỗi dịch thuật",
     	    "faq.link": "🛟 Câu hỏi thường gặp về an toàn khi bơi",
     	    "nav.recentAria": "Các bãi biển đã xem gần đây",
     	    "nav.addBeach": "Thêm bãi biển…",
@@ -1480,6 +1513,88 @@
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
+    	  "km": {
+    	    "site.title": "គុណភាពទឹកនៅរដ្ឋម៉ាសាឈូសេត",
+    	    "site.description": "សេចក្ដីសង្ខេបខ្លីអំពីស្ថានភាពទឹកបច្ចុប្បន្ន និងថ្មីៗនៅឆ្នេរ Shannon។",
+    	    "subtitle.before": "សេចក្ដីសង្ខេបខ្លីអំពីស្ថានភាពទឹកបច្ចុប្បន្ន និងថ្មីៗ។ ទិន្នន័យពីគេហទំព័រ ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": "។",
+    	    "lang.label": "ភាសា",
+    	    "lang.system": "ប្រើភាសាប្រព័ន្ធ ({lang})",
+    	    "report.translation": "រាយការណ៍បញ្ហាការបកប្រែ",
+    	    "faq.link": "🛟 សំណួរញឹកញាប់អំពីសុវត្ថិភាពហែលទឹក",
+    	    "nav.recentAria": "ឆ្នេរដែលបានមើលថ្មីៗ",
+    	    "nav.addBeach": "បន្ថែមឆ្នេរ…",
+    	    "nav.removeAria": "ដកឆ្នេរ {beach} ចេញពីបញ្ជីឆ្នេរថ្មីៗ",
+    	    "selector.title": "បន្ថែមឆ្នេរមួយ",
+    	    "selector.town": "ក្រុង",
+    	    "selector.beach": "ឆ្នេរ",
+    	    "selector.add": "បន្ថែម",
+    	    "town.other": "ផ្សេងៗ",
+    	    "notify.banner": "🔔 ទទួលការជូនដំណឹងនៅពេលស្ថានភាពហែលទឹកផ្លាស់ប្ដូរ!",
+    	    "notify.enable": "បើកការជូនដំណឹង",
+    	    "notify.enabled": "បានបើកការជូនដំណឹង!",
+    	    "notify.blocked": "ការជូនដំណឹងត្រូវបានទប់ស្កាត់",
+    	    "ui.refreshing": "កំពុងធ្វើបច្ចុប្បន្នភាពទិន្នន័យ…",
+    	    "status.current": "ស្ថានភាពបច្ចុប្បន្ន៖ {status}",
+    	    "status.loading": "កំពុងផ្ទុក…",
+    	    "status.closedForSeason": "បិទក្រៅរដូវកាល",
+    	    "status.monitoringNotActive": "ការត្រួតពិនិត្យមិនទាន់ចាប់ផ្ដើម",
+    	    "status.unavailable": "មិនមានព័ត៌មាន",
+    	    "status.open": "អនុញ្ញាតឱ្យហែលទឹក",
+    	    "status.closed": "ហាមហែលទឹក",
+    	    "status.desc": "នេះជាស្ថានភាពផ្លូវការសម្រាប់ {beach} ដោយផ្អែកលើគំរូទឹកនីមួយៗ និងមធ្យមភាគធរណីមាត្រសរុបនៃលទ្ធផលថ្មីៗ។ ដូចធម្មតា សូមហែលទឹកដោយទទួលខុសត្រូវដោយខ្លួនឯង និងតាមការវិនិច្ឆ័យរបស់អ្នក!",
+    	    "status.unavailableDesc": "បច្ចុប្បន្នមិនមានព័ត៌មានអំពីស្ថានភាពទេ។ សូមត្រឡប់មកមើលវិញនៅពេលក្រោយ។",
+    	    "status.offSeasonDesc": "ការត្រួតពិនិត្យគុណភាពទឹកជាផ្លូវការនៅ {beach} ធ្វើឡើងចាប់ពី Memorial Day (ចុងខែឧសភា) រហូតដល់ Labor Day (ដើមខែកញ្ញា)។ ក្រៅពីរយៈពេលនោះ បឹងនេះនៅតែអាចប្រើសម្រាប់ជិះទូក ជិះកាយ៉ាក់ និងចុះទឹកបាន ប៉ុន្តែដោយទទួលខុសត្រូវដោយខ្លួនឯង — ដោយសារគ្មានការត្រួតពិនិត្យត្រូវបានផ្សព្វផ្សាយ ស្ថានភាពទឹកមិនត្រូវបានដឹងឡើយ។",
+    	    "status.preSeasonDesc": "ការត្រួតពិនិត្យគុណភាពទឹកជាផ្លូវការនៅ {beach} មិនទាន់ចាប់ផ្ដើមសម្រាប់រដូវកាលនេះទេ។ ជាធម្មតាវាចាប់ផ្ដើមឡើងវិញនៅជុំវិញ Memorial Day (ចុងខែឧសភា) ហើយធ្វើឡើងរៀងរាល់សប្ដាហ៍រហូតដល់ Labor Day (ដើមខែកញ្ញា)។ ក្នុងអំឡុងពេលនេះ បឹងនេះនៅតែអាចប្រើសម្រាប់ជិះទូក ជិះកាយ៉ាក់ និងចុះទឹកបាន ប៉ុន្តែដោយទទួលខុសត្រូវដោយខ្លួនឯង — ហើយស្ថានភាពទឹកមិនត្រូវបានដឹងឡើយ។",
+    	    "status.reasonLabel": "មូលហេតុ៖ ",
+    	    "reason.Bacterial Exceedance": "លើសកម្រិតបាក់តេរី",
+    	    "reason.Harmful Cyanobacteria Bloom": "ការរីកសាយនៃស៊ីយ៉ាណូបាក់តេរីគ្រោះថ្នាក់",
+    	    "reason.CSO/SSO event": "ព្រឹត្តិការណ៍ហៀរទឹកកខ្វក់ (CSO/SSO)",
+    	    "reason.Other": "ផ្សេងៗ",
+    	    "indicator.Enterococci": "អង់តេរ៉ូកូក (Enterococci)",
+    	    "indicator.E. Coli": "E. coli",
+    	    "cso.heading": "⚠️ ព្រឹត្តិការណ៍ហៀរទឹកកខ្វក់ (CSO) ថ្មីៗ",
+    	    "cso.intro": "ព្រឹត្តិការណ៍ហៀរទឹកកខ្វក់លាយចម្រុះដែលបានរាយការណ៍នៅតំបន់ Winchester ដែលប៉ះពាល់ដល់បឹង Mystic ក្នុងរយៈពេល ២ សប្ដាហ៍ចុងក្រោយ។",
+    	    "cso.time": "ម៉ោង៖",
+    	    "cso.volume": "បរិមាណ៖",
+    	    "cso.duration": "រយៈពេល៖",
+    	    "cso.rainfall": "ទឹកភ្លៀង៖",
+    	    "cso.unknownTime": "មិនដឹងម៉ោង",
+    	    "cso.gallons": "{n} ហ្គាឡុង",
+    	    "cso.volumeUnknown": "មិនដឹងបរិមាណ",
+    	    "cso.inches": "{n} អ៊ីញ",
+    	    "cso.rainfallUnknown": "មិនដឹងទឹកភ្លៀង",
+    	    "cso.hoursMinutes": "{h} ម៉ោង {m} នាទី",
+    	    "cso.hours": "{h} ម៉ោង",
+    	    "cso.durationUnknown": "មិនដឹងរយៈពេល",
+    	    "table.Date and Time": "កាលបរិច្ឆេទ និងម៉ោង",
+    	    "table.Indicator": "សូចនាករ",
+    	    "table.Threshold": "កម្រិតកំណត់",
+    	    "table.Results": "លទ្ធផល",
+    	    "table.Status": "ស្ថានភាព",
+    	    "badge.above": "លើសកម្រិតកំណត់",
+    	    "badge.at": "ស្មើកម្រិតកំណត់",
+    	    "badge.below": "ក្រោមកម្រិតកំណត់",
+    	    "card.geomean": "លទ្ធផលមធ្យមភាគធរណីមាត្រ",
+    	    "card.singleSample": "លទ្ធផលគំរូនីមួយៗ",
+    	    "card.historical": "ទិន្នន័យប្រវត្តិសាស្ត្រ",
+    	    "card.seasonHistorical": "ទិន្នន័យប្រវត្តិសាស្ត្ររដូវកាល {year}",
+    	    "card.unavailableHeading": "លទ្ធផលថ្មីបំផុតមិនអាចប្រើបានបណ្ដោះអាសន្ន",
+    	    "card.awaitingHeading": "កំពុងរង់ចាំលទ្ធផលដំបូងនៃរដូវកាល",
+    	    "loading.beach": "កំពុងផ្ទុកទិន្នន័យឆ្នេរ…",
+    	    "loading.historical": "កំពុងផ្ទុកទិន្នន័យប្រវត្តិសាស្ត្រ…",
+    	    "error.historical": "មិនអាចផ្ទុកទិន្នន័យប្រវត្តិសាស្ត្របានទេ។",
+    	    "awaiting.body": "ការត្រួតពិនិត្យគុណភាពទឹកជាផ្លូវការទើបតែចាប់ផ្ដើមសម្រាប់រដូវកាលនេះ។ មិនទាន់មានលទ្ធផលណាមួយត្រូវបានផ្សព្វផ្សាយសម្រាប់ឆ្នាំនេះទេ។ ការយកគំរូជាធម្មតាធ្វើឡើងរៀងរាល់សប្ដាហ៍ចាប់ពី Memorial Day (ចុងខែឧសភា) រហូតដល់ Labor Day (ដើមខែកញ្ញា)។",
+    	    "awaiting.unavailable": "បច្ចុប្បន្នមិនអាចទាញយកលទ្ធផលថ្មីបំផុតពីផ្ទាំងទិន្នន័យគុណភាពទឹករបស់រដ្ឋបានទេ។ ការត្រួតពិនិត្យនៅតែដំណើរការ — នេះគ្រាន់តែជាបញ្ហាបណ្ដោះអាសន្នក្នុងការទាញយកទិន្នន័យ មិនមែនជាការបិទទេ។ លទ្ធផលនៃរដូវកាលពេញលេញចុងក្រោយមានតំណភ្ជាប់ខាងក្រោម។",
+    	    "archive.none": "មិនទាន់មានទិន្នន័យរដូវកាលមុនដែលបានរក្សាទុកសម្រាប់ {beach} នៅឡើយទេ។ បច្ចុប្បន្នមានតែទិន្នន័យប្រវត្តិសាស្ត្ររបស់ Shannon Beach @ Upper Mystic ប៉ុណ្ណោះដែលត្រូវបានរក្សាទុក។",
+    	    "link.viewHistorical": "មើលទិន្នន័យប្រវត្តិសាស្ត្ររដូវកាល {year} →",
+    	    "footer.pageRendered": "ទំព័រត្រូវបានបង្កើត៖ {ts}",
+    	    "footer.testMode": " (របៀបសាកល្បង)",
+    	    "footer.lastSynced": "ធ្វើសមកាលកម្មទិន្នន័យចុងក្រោយ៖ {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
+    	    "footer.commit": "Commit: {c}"
+    	  },
     	  "pt-BR": {
     	    "site.title": "Qualidade da água em Massachusetts",
     	    "site.description": "Um resumo conciso das condições atuais e recentes da água em Shannon Beach.",
@@ -1489,6 +1604,7 @@
     	    "lang.label": "Idioma",
     	    "faq.link": "🛟 Perguntas frequentes sobre segurança ao nadar",
     	    "lang.system": "Usar o idioma do sistema ({lang})",
+    	    "report.translation": "Relatar um problema de tradução",
     	    "nav.recentAria": "Praias vistas recentemente",
     	    "nav.addBeach": "Adicionar praia…",
     	    "nav.removeAria": "Remover {beach} das praias recentes",
@@ -1569,6 +1685,7 @@
     	    "subtitle.after": ".",
     	    "lang.label": "Langue",
     	    "lang.system": "Utiliser la langue du système ({lang})",
+    	    "report.translation": "Signaler un problème de traduction",
     	    "faq.link": "🛟 FAQ sur la sécurité en baignade",
     	    "nav.recentAria": "Plages consultées récemment",
     	    "nav.addBeach": "Ajouter une plage…",
@@ -1650,6 +1767,7 @@
     	    "subtitle.after": ".",
     	    "lang.label": "Lingua",
     	    "lang.system": "Usa la lingua del sistema ({lang})",
+    	    "report.translation": "Segnala un problema di traduzione",
     	    "faq.link": "🛟 FAQ sulla sicurezza in acqua",
     	    "nav.recentAria": "Spiagge viste di recente",
     	    "nav.addBeach": "Aggiungi spiaggia…",
@@ -1833,19 +1951,33 @@
     	    els.forEach(el => { if (el) el.removeAttribute("data-i18n-init"); });
     	}
 
-    	// Intl has no CLDR data for Haitian Creole: Intl.DateTimeFormat("ht") doesn't
-    	// throw, it silently resolves to the runtime's default locale (Chrome picks
-    	// es-ES here), which would print Spanish month names inside a Kreyòl page.
-    	// Format those dates by hand so the failure can't happen.
-    	const HT_MONTHS = ["janvye", "fevriye", "mas", "avril", "me", "jen",
-    	                   "jiyè", "out", "septanm", "oktòb", "novanm", "desanm"];
-    	function formatHaitian(d, time) {
-    	    const date = `${d.getDate()} ${HT_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+    	// Intl carries no CLDR data for Haitian Creole or Khmer, and — the trap —
+    	// Intl.DateTimeFormat("ht") does not throw. It silently resolves to the
+    	// runtime's default locale (Chrome picked es-ES on this machine), so those
+    	// pages would quietly print Spanish month names. Format them from these
+    	// tables instead. Check Intl.DateTimeFormat.supportedLocalesOf() before
+    	// adding a language; anything it returns empty for belongs here.
+    	const MANUAL_DATE_LOCALES = {
+    	    ht: {
+    	        months: ["janvye", "fevriye", "mas", "avril", "me", "jen",
+    	                 "jiyè", "out", "septanm", "oktòb", "novanm", "desanm"],
+    	        clock24: false,
+    	    },
+    	    km: {
+    	        months: ["មករា", "កុម្ភៈ", "មីនា", "មេសា", "ឧសភា", "មិថុនា",
+    	                 "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"],
+    	        clock24: true,
+    	    },
+    	};
+    	function formatManualDate(d, spec, time) {
+    	    const date = `${d.getDate()} ${spec.months[d.getMonth()]} ${d.getFullYear()}`;
     	    if (!time) return date;
     	    const h = d.getHours();
-    	    const clock = `${h % 12 || 12}:${String(d.getMinutes()).padStart(2, "0")}` +
-    	        (time === "medium" ? `:${String(d.getSeconds()).padStart(2, "0")}` : "") +
-    	        (h < 12 ? " AM" : " PM");
+    	    const mm = String(d.getMinutes()).padStart(2, "0");
+    	    const ss = time === "medium" ? `:${String(d.getSeconds()).padStart(2, "0")}` : "";
+    	    const clock = spec.clock24
+    	        ? `${String(h).padStart(2, "0")}:${mm}${ss}`
+    	        : `${h % 12 || 12}:${mm}${ss} ${h < 12 ? "AM" : "PM"}`;
     	    return `${date}, ${clock}`;
     	}
 
@@ -1855,7 +1987,8 @@
     	function formatDateTime(value, time = "short") {
     	    const d = value instanceof Date ? value : new Date(value);
     	    if (isNaN(d)) return String(value);
-    	    if (currentLang === "ht") return formatHaitian(d, time);
+    	    const manual = MANUAL_DATE_LOCALES[currentLang];
+    	    if (manual) return formatManualDate(d, manual, time);
     	    if (!time) return d.toLocaleDateString(currentLocale());
     	    return d.toLocaleString(currentLocale(), { dateStyle: "medium", timeStyle: time });
     	}
@@ -1898,6 +2031,22 @@
     	            if (attr && key) el.setAttribute(attr, t(key));
     	        });
     	    });
+
+    	    // The translation-feedback link is meaningful only on a translated page:
+    	    // English is the source text, so there is nothing to report it against.
+    	    const report = document.getElementById("translation-report");
+    	    if (report) {
+    	        const translated = currentLang !== DEFAULT_LANG;
+    	        report.style.display = translated ? "block" : "none";
+    	        if (translated) {
+    	            const link = document.getElementById("translation-report-link");
+    	            link.textContent = t("report.translation");
+    	            // Prefill which catalog is at fault: the reporter is the one
+    	            // person who knows, and the least likely to think to say.
+    	            link.href = ISSUES_URL + "/new?title=" + encodeURIComponent(
+    	                `Translation problem: ${langLabel(currentLang)} (${currentLang})`);
+    	        }
+    	    }
 
     	    // Pre-data placeholders in the status card, localized only while the flag
     	    // is still set (see clearInitFlags).

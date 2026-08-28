@@ -239,17 +239,18 @@ added keep working. Test override: `?slug-overrides-url=`.
 
 ### Localization
 
-The site ships in **ten locales**: English, Spanish (Spain), Spanish
+The site ships in **eleven locales**: English, Spanish (Spain), Spanish
 (Latin America / `es-419`), Spanish (US), Portuguese (Brazil), French, Italian,
-Chinese (Simplified), Haitian Creole, and Vietnamese.
+Chinese (Simplified), Haitian Creole, Vietnamese, and Khmer.
 
 The set tracks **Massachusetts demographics**, not "major European languages" —
 Spanish, Portuguese, Chinese, and Haitian Creole are the state's four most-spoken
-non-English languages, and Vietnamese is fifth. The three Spanish variants and
-Brazilian Portuguese exist because those populations are well represented here
-and a single "es" would serve peninsular wording to readers who don't use it.
-German was dropped for the same reason it was never justified: it isn't in the
-state's top ten.
+non-English languages, and Vietnamese is fifth. Khmer is there despite a smaller
+count because Massachusetts holds ~10% of all US Khmer speakers (Lowell). The
+three Spanish variants and Brazilian Portuguese exist because those populations
+are well represented here and a single "es" would serve peninsular wording to
+readers who don't use it. German was dropped for the same reason it was never
+justified: it isn't in the state's top ten.
 
 Because everything is static, localization is entirely client-side: each page
 carries its own string catalog and applies it before first paint. There is no
@@ -290,8 +291,10 @@ Vietnamese pinned it still reads `Dùng ngôn ngữ hệ thống (Français)`. V
 labels use a middle dot (`Español · España`) rather than parentheses, so nesting
 them inside that string doesn't produce `Match System (Español (España))`.
 
-The `<select>` lives at the **foot of the page**, as quiet chrome beside the
-sync metadata (`.last-updated` on the dashboard, `.footer-note` on the FAQ) —
+The `<select>` lives at the **foot of the page**, as quiet chrome. The page now
+ends with, in order: the language `<select>`, the translation-feedback link, then
+the sync metadata (`#last-updated`, which was moved out of `#results-card` so the
+whole block reads as one footer) —
 language is a set-once preference that persists in a cookie, not something
 visitors toggle, so it doesn't earn header space above the status card.
 Switching re-renders in place — no reload, so the visitor keeps their beach,
@@ -337,13 +340,21 @@ a key:
   `Harmful Cyanobacteria Bloom`, `CSO/SSO event`, `Other`)
 - statuses (`Open` / `Closed`) render through `status.open` / `status.closed`
 
-**Haitian Creole has no CLDR data.** `Intl.DateTimeFormat("ht")` doesn't throw —
-it silently resolves to the runtime's default locale (Chrome picked `es-ES` on
-this machine), so Kreyòl pages would show Spanish month names. Dates for `ht` are
-therefore formatted by hand from `HT_MONTHS`, and its `locale` is `fr-HT` (a real
-locale, French being co-official in Haiti) for the number formatting Intl still
-does. **All** date rendering goes through `formatDateTime(value, time)` so that
-special case lives in exactly one place — don't call `toLocaleString` directly.
+**Haitian Creole and Khmer have no CLDR data, and the failure is silent.**
+`Intl.DateTimeFormat("ht")` does not throw — it resolves to the runtime's default
+locale (Chrome picked `es-ES` on this machine), so those pages would quietly show
+**Spanish** month names. Both are therefore formatted by hand from
+`MANUAL_DATE_LOCALES` (month names plus a `clock24` flag; Kreyòl uses 12-hour,
+Khmer 24-hour). Their `locale` fields are fallbacks for the number formatting Intl
+still does: `fr-HT` for Haitian Creole (French is co-official there) and `en-US`
+for Khmer (Cambodia uses the same `,` grouping and `.` decimal).
+
+**Before adding a language, check
+`Intl.DateTimeFormat.supportedLocalesOf(["xx"])` in a browser** — Node's ICU and
+Chrome's disagree (Node has `km`, Chrome doesn't), and the browser is what ships.
+An empty result means the language needs a `MANUAL_DATE_LOCALES` entry. **All**
+date rendering goes through `formatDateTime(value, time)` so the special case
+lives in exactly one place — never call `toLocaleString` directly.
 
 **Sample dates** arrive as US-format strings (`8/5/2026 8:00:00 AM`).
 `formatSampleDate()` re-renders them in the active locale so `8/5` isn't misread
@@ -363,21 +374,28 @@ take ownership of those nodes, so a later language switch can't clobber live
 status with the loading placeholder. Any new branch that writes those two
 elements must call `clearInitFlags()` first.
 
+**Translation feedback.** Below the switcher, `#translation-report` links to a
+prefilled GitHub issue (`Translation problem: <label> (<code>)` — the reporter is
+the one person who knows which catalog is wrong and the least likely to think to
+say). It is shown only when `currentLang !== DEFAULT_LANG`: English is the source
+text, so there is nothing to report it against.
+
 **Deliberately not translated:** the test-mode debug panel (developer tool),
 `mystic.html` (a zero-delay meta-refresh redirect stub nobody reads), and beach
 / town names.
 
 **Not yet covered, in rough order of Massachusetts speaker counts:** Russian,
-Arabic, Khmer, and Cape Verdean Creole. Arabic is the one that isn't just a new
+Arabic, and Cape Verdean Creole. Arabic is the one that isn't just a new
 catalog — it needs `dir="rtl"` and a pass over the padding/margins and the
-table's stacked phone layout. Massachusetts holds an outsized share of the
-country's Khmer (Lowell) and Cape Verdean (Brockton, New Bedford) speakers, so
-both matter more than their raw counts suggest.
+table's stacked phone layout. Cape Verdean Creole matters more than its census
+count suggests (Brockton, New Bedford), since the census often folds it into
+"Portuguese".
 
 **Translation provenance.** The Romance-language and Chinese catalogs are
-model-written and reviewed against the English source. Haitian Creole and
-Vietnamese have had no native-speaker review — worth arranging before leaning on
-them for public-health messaging.
+model-written and reviewed against the English source. **Haitian Creole,
+Vietnamese, and Khmer have had no native-speaker review** — Khmer least
+confident of the three. Worth arranging before leaning on them for
+public-health messaging; the in-page feedback link exists partly for this.
 
 ### Season Logic
 
@@ -430,7 +448,7 @@ Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
 - `?beaches-url=test-data/beaches-multi.json` — the Town/Beach selector index
 - `?samples-url=test-data/samples-multi.json` — the all-beaches keyed readings
 - `?season=open|closed` — override the date-based season check
-- `?lang=en|es|es-419|es-US|pt-BR|fr|it|zh|ht|vi` — force a locale (outranks the
+- `?lang=en|es|es-419|es-US|pt-BR|fr|it|zh|ht|vi|km` — force a locale (outranks the
   cookie and the browser). Region tags resolve through `normalizeLang()`, so
   `?lang=es-MX` also works and lands on `es-419`, and every `zh-*` lands on `zh`.
   `?lang=system` selects "Match System" (the default when nothing is pinned).

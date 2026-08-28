@@ -212,7 +212,8 @@ const NOTIFICATION_STRINGS = {
     it:       { title: 'Aggiornamento dello stato della spiaggia', open: 'Balneazione consentita', closed: 'Balneazione vietata', body: 'Lo stato della balneazione è cambiato in: {status}' },
     zh:       { title: '海滩状态更新',                            open: '可以游泳',                closed: '禁止游泳',              body: '游泳状态已变更为：{status}' },
     ht:       { title: 'Mizajou estati plaj la',                 open: 'Ou ka naje',             closed: 'Ou pa ka naje',         body: 'Estati naje a chanje pou: {status}' },
-    vi:       { title: 'Cập nhật trạng thái bãi biển',           open: 'Được phép bơi',          closed: 'Cấm bơi',               body: 'Trạng thái bơi đã đổi thành: {status}' }
+    vi:       { title: 'Cập nhật trạng thái bãi biển',           open: 'Được phép bơi',          closed: 'Cấm bơi',               body: 'Trạng thái bơi đã đổi thành: {status}' },
+    km:       { title: 'ព័ត៌មានថ្មីអំពីស្ថានភាពឆ្នេរ',              open: 'អនុញ្ញាតឱ្យហែលទឹក',        closed: 'ហាមហែលទឹក',              body: 'ស្ថានភាពហែលទឹកបានប្ដូរទៅជា៖ {status}' }
 };
 
 // Mirrors the page's resolver (index.html): exact regional catalog, then the

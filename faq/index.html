@@ -86,6 +86,22 @@
             background: rgba(255, 255, 255, 0.9);
         }
 
+        .translation-report {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+
+        .translation-report a {
+            color: #64748b;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .translation-report a:hover {
+            color: #0369a1;
+        }
+
         .card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
@@ -283,6 +299,11 @@
             <label for="lang-select" data-i18n="lang.label">Language</label>
             <select id="lang-select" data-i18n-attr="aria-label:lang.label"></select>
         </div>
+
+        <!-- Shown only on a translated page — see applyTranslations(). -->
+        <p class="translation-report" id="translation-report" style="display: none;">
+            <a id="translation-report-link" href="https://github.com/danielpunkass/mystic-merfolk/issues">Report a translation problem</a>
+        </p>
     </div>
 
     <script>
@@ -301,7 +322,8 @@
         { code: "it",     label: "Italiano" },
         { code: "zh",     label: "中文 · 简体" },
         { code: "ht",     label: "Kreyòl Ayisyen" },
-        { code: "vi",     label: "Tiếng Việt" }
+        { code: "vi",     label: "Tiếng Việt" },
+        { code: "km",     label: "ភាសាខ្មែរ" }
     ];
 
     // Regional catalogs hold only what differs from their parent; lookup walks
@@ -312,6 +334,7 @@
     const BASE_FALLBACK = { pt: "pt-BR" };
     const LANG_COOKIE = "lang";
     const DEFAULT_LANG = "en";
+    const ISSUES_URL = "https://github.com/danielpunkass/mystic-merfolk/issues";
     const STRINGS = {
     "en": {
         "site.title": "Open Water Swimming FAQ",
@@ -359,7 +382,8 @@
         "q11.li3": "Enter cold water gradually — sudden immersion can cause gasping and panic.",
         "q11.li4": "Keep close, active watch on children; designate an adult “water watcher.”",
         "footer.html": "This FAQ is general guidance, not medical or safety advice. Conditions change quickly — always swim at your own discretion. <a class=\"site-link\" href=\"/\">Check current conditions →</a>",
-        "lang.system": "Match System ({lang})"
+        "lang.system": "Match System ({lang})",
+        "report.translation": "Report a translation problem"
     },
     "es": {
         "site.title": "Preguntas frecuentes sobre natación en aguas abiertas",
@@ -407,7 +431,8 @@
         "q11.li3": "Entra en el agua fría poco a poco: la inmersión brusca puede provocar jadeos y pánico.",
         "q11.li4": "Vigila de cerca y de forma activa a los niños; designa a un adulto como «vigilante del agua».",
         "footer.html": "Estas preguntas frecuentes son orientación general, no consejo médico ni de seguridad. Las condiciones cambian rápido: nada siempre bajo tu propio criterio. <a class=\"site-link\" href=\"/\">Consultar las condiciones actuales →</a>",
-        "lang.system": "Usar el idioma del sistema ({lang})"
+        "lang.system": "Usar el idioma del sistema ({lang})",
+        "report.translation": "Informar de un problema de traducción"
     },
     "es-419": {
         "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) es la playa pública donde se puede nadar y que el <a href=\"/\">panel</a> muestra por defecto, con el estado actual, los resultados de los análisis y los avisos de descargas de aguas residuales (CSO) de la zona de los lagos Mystic.",
@@ -422,7 +447,8 @@
         "q8.li3": "Avisos colocados en la propia playa: la señalización en el lugar puede estar más actualizada que el estado en línea.",
         "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — explica los CSO y publica las notificaciones de descargas del sistema de drenaje del área de Boston.",
         "q10.a": "La mayoría de los ahogamientos ocurren cuando no hay nadie cerca para ayudar. Nada acompañado y elige playas y horarios con salvavidas de servicio. Incluso los buenos nadadores pueden verse sorprendidos por el agua fría, los calambres o el cansancio en aguas abiertas.",
-        "footer.html": "Estas preguntas frecuentes son orientación general, no consejo médico ni de seguridad. Las condiciones cambian rápido: nada siempre bajo tu propio criterio. <a class=\"site-link\" href=\"/\">Ver las condiciones actuales →</a>"
+        "footer.html": "Estas preguntas frecuentes son orientación general, no consejo médico ni de seguridad. Las condiciones cambian rápido: nada siempre bajo tu propio criterio. <a class=\"site-link\" href=\"/\">Ver las condiciones actuales →</a>",
+        "report.translation": "Reportar un problema de traducción"
     },
     "es-US": {
         "q2.a.html": "Usa el selector Ciudad/Playa “Agregar playa…” en la parte superior del <a href=\"/\">panel</a>: incluye todas las playas del programa de monitoreo del estado, varios cientos en total. Cada playa tiene su propio enlace para compartir (como <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>), así que puedes guardarla en tus favoritos o pasar las playas que te interesen."
@@ -473,7 +499,8 @@
         "q11.li3": "Entre na água fria aos poucos — a imersão súbita pode provocar falta de ar e pânico.",
         "q11.li4": "Vigie as crianças de perto e ativamente; designe um adulto como «vigia da água».",
         "footer.html": "Estas perguntas frequentes são orientação geral, não aconselhamento médico ou de segurança. As condições mudam rapidamente — nade sempre segundo o seu próprio critério. <a class=\"site-link\" href=\"/\">Ver as condições atuais →</a>",
-        "lang.system": "Usar o idioma do sistema ({lang})"
+        "lang.system": "Usar o idioma do sistema ({lang})",
+        "report.translation": "Relatar um problema de tradução"
     },
     "fr": {
         "site.title": "FAQ sur la natation en eau libre",
@@ -521,7 +548,8 @@
         "q11.li3": "Entrez progressivement dans l’eau froide : une immersion brutale peut provoquer suffocation et panique.",
         "q11.li4": "Surveillez les enfants de près et activement ; désignez un adulte « surveillant de l’eau ».",
         "footer.html": "Cette FAQ fournit des indications générales, et non un avis médical ou de sécurité. Les conditions changent vite — baignez-vous toujours à votre propre appréciation. <a class=\"site-link\" href=\"/\">Voir les conditions actuelles →</a>",
-        "lang.system": "Utiliser la langue du système ({lang})"
+        "lang.system": "Utiliser la langue du système ({lang})",
+        "report.translation": "Signaler un problème de traduction"
     },
     "it": {
         "site.title": "FAQ sul nuoto in acque libere",
@@ -569,7 +597,8 @@
         "q11.li3": "Entra gradualmente nell’acqua fredda: l’immersione improvvisa può provocare affanno e panico.",
         "q11.li4": "Sorveglia i bambini da vicino e attivamente; designa un adulto come «sorvegliante dell’acqua».",
         "footer.html": "Queste FAQ sono indicazioni generali, non consigli medici o di sicurezza. Le condizioni cambiano rapidamente: nuota sempre secondo il tuo giudizio. <a class=\"site-link\" href=\"/\">Vedi le condizioni attuali →</a>",
-        "lang.system": "Usa la lingua del sistema ({lang})"
+        "lang.system": "Usa la lingua del sistema ({lang})",
+        "report.translation": "Segnala un problema di traduzione"
     },
     "zh": {
         "site.title": "开放水域游泳常见问题",
@@ -617,7 +646,8 @@
         "q11.li2": "使用颜色鲜艳的游泳浮标或泳帽，以便船只和同伴看到您。",
         "q11.li3": "逐渐进入冷水——突然浸入可能导致喘息和惊慌。",
         "q11.li4": "密切、主动地看护儿童；指定一名成年人担任“水上看护者”。",
-        "footer.html": "本常见问题仅为一般性指导，不构成医疗或安全建议。水质状况变化很快——请始终自行判断后再下水。<a class=\"site-link\" href=\"/\">查看当前状况 →</a>"
+        "footer.html": "本常见问题仅为一般性指导，不构成医疗或安全建议。水质状况变化很快——请始终自行判断后再下水。<a class=\"site-link\" href=\"/\">查看当前状况 →</a>",
+        "report.translation": "报告翻译问题"
     },
     "ht": {
         "site.title": "Kesyon moun poze sou naje nan dlo lib",
@@ -665,7 +695,8 @@
         "q11.li2": "Sèvi ak yon boye oswa yon bonè naje ki gen koulè klere pou bato ak konpayon ou ka wè ou.",
         "q11.li3": "Antre nan dlo frèt tikras pa tikras — plonje sibitman ka lakòz ou souke ak panike.",
         "q11.li4": "Veye timoun yo de pre e aktivman; chwazi yon granmoun kòm “sivèy dlo”.",
-        "footer.html": "Kesyon sa yo se konsèy jeneral, se pa konsèy medikal oswa sekirite. Kondisyon yo chanje vit — toujou naje selon pwòp jijman ou. <a class=\"site-link\" href=\"/\">Gade kondisyon aktyèl yo →</a>"
+        "footer.html": "Kesyon sa yo se konsèy jeneral, se pa konsèy medikal oswa sekirite. Kondisyon yo chanje vit — toujou naje selon pwòp jijman ou. <a class=\"site-link\" href=\"/\">Gade kondisyon aktyèl yo →</a>",
+        "report.translation": "Siyale yon pwoblèm tradiksyon"
     },
     "vi": {
         "site.title": "Câu hỏi thường gặp về bơi ở vùng nước mở",
@@ -713,7 +744,57 @@
         "q11.li2": "Dùng phao bơi hoặc mũ bơi màu sáng để thuyền bè và người đi cùng nhìn thấy bạn.",
         "q11.li3": "Xuống nước lạnh từ từ — ngâm mình đột ngột có thể gây hụt hơi và hoảng loạn.",
         "q11.li4": "Trông chừng trẻ em thật sát sao và chủ động; hãy cử một người lớn làm “người canh nước”.",
-        "footer.html": "Phần hỏi đáp này chỉ mang tính hướng dẫn chung, không phải lời khuyên y tế hay an toàn. Điều kiện thay đổi rất nhanh — hãy luôn tự cân nhắc trước khi xuống nước. <a class=\"site-link\" href=\"/\">Xem điều kiện hiện tại →</a>"
+        "footer.html": "Phần hỏi đáp này chỉ mang tính hướng dẫn chung, không phải lời khuyên y tế hay an toàn. Điều kiện thay đổi rất nhanh — hãy luôn tự cân nhắc trước khi xuống nước. <a class=\"site-link\" href=\"/\">Xem điều kiện hiện tại →</a>",
+        "report.translation": "Báo lỗi dịch thuật"
+    },
+    "km": {
+        "site.title": "សំណួរញឹកញាប់អំពីការហែលទឹកក្នុងទឹកបើកចំហ",
+        "site.description": "ចម្លើយចំពោះសំណួរញឹកញាប់អំពីសុវត្ថិភាពហែលទឹក៖ កន្លែងហែលទឹក របៀបដែលភ្លៀង និងការហៀរទឹកកខ្វក់ប៉ះពាល់ដល់គុណភាពទឹក និងវិធីវាយតម្លៃថាតើទឹកមានសុវត្ថិភាពឬអត់។",
+        "lang.label": "ភាសា",
+        "lang.system": "ប្រើភាសាប្រព័ន្ធ ({lang})",
+        "report.translation": "រាយការណ៍បញ្ហាការបកប្រែ",
+        "header.h1": "🏊‍♂️ ការហែលទឹកក្នុងទឹកបើកចំហ",
+        "header.subtitle": "សំណួរញឹកញាប់អំពីកន្លែង ពេលវេលា និងរបៀបហែលទឹកនៅបឹង Mystic ឬកន្លែងផ្សេងទៀត។",
+        "header.dashboardLink": "🏊‍♂️ ផ្ទាំងទិន្នន័យគុណភាពទឹក",
+        "sec1.h2": "🗺️ កន្លែងហែលទឹក",
+        "sec1.intro": "ការស្វែងរកឆ្នេរ — នៅជិតបឹង Mystic ឬកន្លែងណាមួយក្នុងរដ្ឋម៉ាសាឈូសេត។",
+        "q1.q": "តើខ្ញុំអាចហែលទឹកនៅឯណាជិតបឹង Mystic?",
+        "q1.a.html": "Shannon Beach @ Upper Mystic (DCR) គឺជាឆ្នេរសាធារណៈសម្រាប់ហែលទឹកដែល<a href=\"/\">ផ្ទាំងទិន្នន័យ</a>តាមដានតាមលំនាំដើម ព្រមទាំងស្ថានភាពបច្ចុប្បន្ន លទ្ធផលពិនិត្យ និងការព្រមានអំពីការហៀរទឹកកខ្វក់ (CSO) សម្រាប់តំបន់បឹង Mystic។",
+        "q2.q": "តើខ្ញុំរកឆ្នេរផ្សេងទៀតដោយរបៀបណា?",
+        "q2.a.html": "សូមប្រើកម្មវិធីជ្រើសរើស ក្រុង/ឆ្នេរ “បន្ថែមឆ្នេរ…” នៅផ្នែកខាងលើនៃ<a href=\"/\">ផ្ទាំងទិន្នន័យ</a> — វារួមបញ្ចូលឆ្នេរទាំងអស់ក្នុងកម្មវិធីត្រួតពិនិត្យរបស់រដ្ឋ ដែលមានរាប់រយកន្លែងទូទាំងរដ្ឋ។ ឆ្នេរនីមួយៗមានតំណភ្ជាប់ផ្ទាល់ខ្លួនសម្រាប់ចែករំលែក (ដូចជា <a href=\"/beach/upper-mystic/\">/beach/upper-mystic/</a>) ដូច្នេះអ្នកអាចរក្សាទុក ឬបញ្ជូនបន្តឆ្នេរដែលអ្នកចាប់អារម្មណ៍។",
+        "sec2.h2": "🛟 ពេលណាគួរហែលទឹក",
+        "sec2.intro": "វាយតម្លៃថាតើថ្ងៃនេះជាថ្ងៃសមរម្យសម្រាប់ចុះទឹកឬអត់ — ស្ថានភាពផ្លូវការ អាកាសធាតុថ្មីៗ និងគុណភាពទឹក។",
+        "q3.q": "តើខ្ញុំដឹងយ៉ាងណាថាឆ្នេរមួយបើកឱ្យហែលទឹក?",
+        "q3.a.html": "សូមពិនិត្យ<a href=\"/\">ផ្ទាំងទិន្នន័យ</a>៖ វាបង្ហាញស្ថានភាពផ្លូវការរបស់រដ្ឋសម្រាប់ឆ្នេរដែលអ្នកជ្រើសរើស ដោយផ្អែកលើការពិនិត្យគុណភាពទឹករបស់ក្រសួងសុខាភិបាលសាធារណៈរដ្ឋម៉ាសាឈូសេត។ ឆ្នេរដែលដាក់ស្លាកថា “បិទ” បានលើសកម្រិតបាក់តេរី ឬមានគ្រោះថ្នាក់សកម្មផ្សេងទៀត (ដូចជាការរីកសាយនៃសារាយគ្រោះថ្នាក់ ឬការបញ្ចេញទឹកកខ្វក់) ហើយផ្ទាំងទិន្នន័យបង្ហាញមូលហេតុនៃការបិទនៅពេលរដ្ឋផ្ដល់ឱ្យ។",
+        "q4.q": "តើស្ថានភាព “បើក” ធានាថាទឹកមានសុវត្ថិភាពឬ?",
+        "q4.a": "ទេ។ ក្នុងអំឡុងរដូវកាល ការយកគំរូជាធម្មតាធ្វើឡើងរៀងរាល់សប្ដាហ៍ ដូច្នេះស្ថានភាពអាចប្រែប្រួលរវាងការពិនិត្យនីមួយៗ — ជាពិសេសបន្ទាប់ពីភ្លៀង។ សូមចាត់ទុកស្ថានភាពដែលបានប្រកាសជាធាតុមួយក្នុងចំណោមធាតុផ្សេងទៀត រួមជាមួយអាកាសធាតុថ្មីៗ ភាពថ្លានៃទឹក និងការវិនិច្ឆ័យផ្ទាល់ខ្លួនរបស់អ្នក។",
+        "q5.q": "តើខ្ញុំគួរហែលទឹកបន្ទាប់ពីភ្លៀងឬទេ?",
+        "q5.callout": "គោលការណ៍ទូទៅ៖ សូមរង់ចាំ ២៤–៧២ ម៉ោងបន្ទាប់ពីភ្លៀងធំមុននឹងហែលទឹក។",
+        "q5.a": "ភ្លៀងធំបោកបក់បាក់តេរី និងសារធាតុពុលពីផ្លូវ ប្រព័ន្ធលូទឹកភ្លៀង និង — នៅក្នុងសហគមន៍ខ្លះ — លូទឹកកខ្វក់ដែលហៀរចូលដោយផ្ទាល់ទៅក្នុងបឹង និងទន្លេ។ កម្រិតបាក់តេរីជាធម្មតាខ្ពស់បំផុតភ្លាមៗបន្ទាប់ពីព្យុះ ហើយជាធម្មតាត្រឡប់មកធម្មតាវិញក្នុងរយៈពេលពីរបីថ្ងៃ។ ដោយសារការពិនិត្យផ្លូវការធ្វើឡើងរៀងរាល់សប្ដាហ៍ ឆ្នេរអាចនៅតែដាក់ស្លាកថា “បើក” ដោយផ្អែកលើគំរូដែលយកមុនភ្លៀង ដូច្នេះរយៈពេលរង់ចាំគឺជាការការពារល្អបំផុតរបស់អ្នកបន្ទាប់ពីព្យុះ។",
+        "q6.q": "តើ CSO គឺជាអ្វី?",
+        "q6.a1.html": "CSO (Combined Sewer Overflow ការហៀរលូលាយចម្រុះ) កើតឡើងនៅក្នុងប្រព័ន្ធលូចាស់ដែលទឹកកខ្វក់ និងទឹកភ្លៀងប្រើបំពង់ដូចគ្នា។ ក្នុងអាកាសធាតុស្ងួត អ្វីៗទាំងអស់ហូរទៅរោងចក្រចម្រោះ ប៉ុន្តែក្នុងអំឡុងភ្លៀងធំ បរិមាណសរុបអាចលើសសមត្ថភាពប្រព័ន្ធ។ ដើម្បីទប់ស្កាត់ទឹកកខ្វក់ពីការហូរច្រាសទៅផ្លូវ និងផ្ទះ បរិមាណលើស — ល្បាយនៃទឹកភ្លៀង និងទឹកកខ្វក់ដែលមិនបានចម្រោះ ឬចម្រោះមួយផ្នែក — ត្រូវបានបញ្ចេញដោយផ្ទាល់ទៅក្នុងទន្លេ បឹង និងកំពង់ផែ។ គួរជៀសវាងការហែលទឹកនៅជិតកន្លែងបញ្ចេញ CSO ថ្មីៗ។ ស្វែងយល់បន្ថែមនៅ<a href=\"https://www.mwra.com/your-sewer-system/cso\">ទំព័រ CSO របស់ MWRA</a>។",
+        "q6.a2.html": "នៅពេលមានការរាយការណ៍ព្រឹត្តិការណ៍ CSO នៅជិតបឹង Mystic <a href=\"/\">ផ្ទាំងទិន្នន័យ</a>នឹងបង្ហាញកាតព្រមានជាមួយព័ត៌មានលម្អិតអំពីព្រឹត្តិការណ៍នោះ។",
+        "q7.q": "តើលទ្ធផលពិនិត្យបាក់តេរីមានន័យដូចម្ដេច?",
+        "q7.a": "រដ្ឋម៉ាសាឈូសេតពិនិត្យឆ្នេរទឹកសាបរកបាក់តេរីសូចនាករ — E. coli និងអង់តេរ៉ូកូក — ដែលវត្តមានរបស់ពួកវាបង្ហាញពីការចម្លងរោគដែលអាចកើតមានពីទឹកកខ្វក់ ឬលាមកសត្វ។ នៅពេលគំរូតែមួយ ឬមធ្យមភាគធរណីមាត្រនៃគំរូថ្មីៗលើសកម្រិតកំណត់របស់រដ្ឋ ឆ្នេរនោះត្រូវបានហាមហែលទឹករហូតដល់គំរូតាមដានបន្ទាប់ជាប់លក្ខណៈ។",
+        "q8.q": "តើមានអ្វីផ្សេងទៀតដែលខ្ញុំគួរប្រុងប្រយ័ត្ន?",
+        "q8.li1": "ទឹកល្អក់ខុសធម្មតា ពពុះនៅលើផ្ទៃទឹក ឬពន្លឺបៃតងដូចថ្នាំលាប (អាចជាការរីកសាយនៃសារាយគ្រោះថ្នាក់)។",
+        "q8.li2": "ក្លិនខ្លាំង សំរាមដែលមើលឃើញ ឬទឹកប្រែពណ៌បន្ទាប់ពីព្យុះ។",
+        "q8.li3": "ការជូនដំណឹងដែលបិទផ្សាយនៅឯឆ្នេរផ្ទាល់ — ផ្លាកសញ្ញានៅនឹងកន្លែងអាចថ្មីជាងស្ថានភាពលើអ៊ីនធឺណិត។",
+        "q9.q": "តើខ្ញុំអាចប្រើធនធានអ្វីខ្លះដើម្បីវាយតម្លៃសុវត្ថិភាពទឹក?",
+        "q9.li1.html": "<a href=\"https://www.mass.gov/info-details/interactive-beach-water-quality-dashboard\">Massachusetts DPH Beach Water Quality Dashboard</a> — ប្រភពផ្លូវការសម្រាប់លទ្ធផលពិនិត្យ និងការប្រកាសអំពីឆ្នេរទូទាំងរដ្ឋ (និងជាប្រភពទិន្នន័យរបស់គេហទំព័រនេះ)។",
+        "q9.li2.html": "<a href=\"https://www.mwra.com/your-sewer-system/cso\">MWRA: Combined Sewer Overflows</a> — ពន្យល់អំពី CSO និងតាមដានការជូនដំណឹងអំពីការបញ្ចេញសម្រាប់ប្រព័ន្ធលូតំបន់ Boston។",
+        "q9.li3.html": "<a href=\"https://mysticriver.org/\">Mystic River Watershed Association</a> — ការត្រួតពិនិត្យគុណភាពទឹកក្នុងតំបន់ និងការតស៊ូមតិសម្រាប់អាងទន្លេ Mystic។",
+        "q9.li4.html": "<a href=\"https://www.epa.gov/beaches\">EPA BEACH Act resources</a> — ការណែនាំទូទៅអំពីគុណភាពទឹកឆ្នេរ និងសុខភាព។",
+        "sec3.h2": "🤝 របៀបហែលទឹក",
+        "sec3.intro": "អ្នកមានកន្លែងស្អាត និងមានសុវត្ថិភាពសម្រាប់ហែលទឹកហើយ។ តើបន្ទាប់មកយ៉ាងណា?",
+        "q10.q": "ហេតុអ្វីខ្ញុំមិនគួរហែលទឹកតែម្នាក់ឯង?",
+        "q10.a": "ករណីលង់ទឹកភាគច្រើនកើតឡើងនៅពេលគ្មាននរណាម្នាក់នៅជិតដើម្បីជួយ។ សូមហែលទឹកជាមួយមិត្តភក្តិ ហើយជ្រើសរើសឆ្នេរ និងម៉ោងដែលមានអ្នកសង្គ្រោះបំពេញការងារ។ សូម្បីតែអ្នកហែលទឹកពូកែក៏អាចភ្ញាក់ផ្អើលដោយទឹកត្រជាក់ ការរមួលក្រពើ ឬការនឿយហត់នៅក្នុងទឹកបើកចំហដែរ។",
+        "q11.q": "តើខ្ញុំអាចធ្វើឱ្យការហែលទឹកក្នុងទឹកបើកចំហមានសុវត្ថិភាពជាងមុនដោយរបៀបណា?",
+        "q11.li1": "សូមហែលទឹកស្របនឹងច្រាំង ជាជាងហែលចេញទៅឆ្ងាយ ហើយត្រូវដឹងពីចំណុចឡើងច្រាំង។",
+        "q11.li2": "សូមប្រើអណ្ដែត ឬមួកហែលទឹកពណ៌ភ្លឺ ដើម្បីឱ្យទូក និងអ្នករួមដំណើរមើលឃើញអ្នក។",
+        "q11.li3": "សូមចុះក្នុងទឹកត្រជាក់បន្តិចម្ដងៗ — ការលិចភ្លាមៗអាចបណ្ដាលឱ្យដកដង្ហើមខ្លាំង និងភ័យស្លន់ស្លោ។",
+        "q11.li4": "សូមមើលថែក្មេងៗយ៉ាងដិតដល់ និងសកម្ម។ សូមចាត់តាំងមនុស្សពេញវ័យម្នាក់ជា “អ្នកយាមទឹក”។",
+        "footer.html": "សំណួរញឹកញាប់នេះជាការណែនាំទូទៅ មិនមែនជាការប្រឹក្សាវេជ្ជសាស្ត្រ ឬសុវត្ថិភាពទេ។ ស្ថានភាពប្រែប្រួលយ៉ាងលឿន — សូមហែលទឹកតាមការវិនិច្ឆ័យផ្ទាល់ខ្លួនរបស់អ្នកជានិច្ច។ <a class=\"site-link\" href=\"/\">មើលស្ថានភាពបច្ចុប្បន្ន →</a>"
     }
 };
 
@@ -795,6 +876,19 @@
                 if (attr && key) el.setAttribute(attr, t(key));
             });
         });
+
+        // Only meaningful on a translated page: English is the source text.
+        const report = document.getElementById("translation-report");
+        if (report) {
+            const translated = currentLang !== DEFAULT_LANG;
+            report.style.display = translated ? "block" : "none";
+            if (translated) {
+                const link = document.getElementById("translation-report-link");
+                link.textContent = t("report.translation");
+                link.href = ISSUES_URL + "/new?title=" + encodeURIComponent(
+                    `Translation problem (FAQ): ${langLabel(currentLang)} (${currentLang})`);
+            }
+        }
     }
 
     function langLabel(code) {
