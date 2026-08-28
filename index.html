@@ -71,6 +71,18 @@
             text-decoration: underline;
         }
 
+        /* RTL: give every cell and metadata line its own bidi context. Sample
+           rows mix an RTL page with Latin-script values (dates, "E. coli",
+           counts like 2,419.60); without isolation the bidi algorithm drags
+           neighbouring punctuation to the wrong end of the run. */
+        [dir="rtl"] td,
+        [dir="rtl"] th,
+        [dir="rtl"] .cso-detail,
+        [dir="rtl"] .sync-line,
+        [dir="rtl"] #last-updated {
+            unicode-bidi: isolate;
+        }
+
         /* Language switcher — footer chrome, deliberately quiet. Typography
            matches .last-updated so the two read as one metadata block. */
         .lang-switcher {
@@ -141,7 +153,7 @@
             border-top: 2px solid #0284c7;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-left: 10px;
+            margin-inline-start: 10px;
         }
 
         @keyframes spin {
@@ -186,7 +198,7 @@
 
         th, td {
             padding: 1rem;
-            text-align: left;
+            text-align: start;
             border-bottom: 1px solid #e2e8f0;
         }
 
@@ -202,11 +214,11 @@
             position: sticky;
             top: 0;
             z-index: 10;
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-inline-end: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         th:last-child {
-            border-right: none;
+            border-inline-end: none;
         }
 
         th:hover {
@@ -567,8 +579,8 @@
                 gap: 0.4rem;
                 padding-bottom: 0.35rem;
                 margin: 0 -0.25rem;
-                padding-left: 0.25rem;
-                padding-right: 0.25rem;
+                padding-inline-start: 0.25rem;
+                padding-inline-end: 0.25rem;
                 scrollbar-width: none;          /* Firefox */
                 -webkit-overflow-scrolling: touch;
             }
@@ -588,8 +600,8 @@
                 box-sizing: border-box;
             }
             .recent-beaches > a { padding: 0 0.95rem; }
-            .recent-item { padding-left: 0.95rem; }         /* × supplies right padding */
-            .recent-item:not(:has(.recent-remove)) { padding-right: 0.95rem; }
+            .recent-item { padding-inline-start: 0.95rem; }         /* × supplies right padding */
+            .recent-item:not(:has(.recent-remove)) { padding-inline-end: 0.95rem; }
             .recent-item .recent-beach { padding: 0; }
 
             /* Current beach: a filled chip that stands out even mid-list. */
@@ -654,7 +666,7 @@
                 justify-content: space-between;
                 align-items: baseline;
                 gap: 1rem;
-                text-align: right;
+                text-align: end;
                 padding: 0.2rem 0 !important;
                 border: none !important;
                 background: transparent !important;
@@ -665,7 +677,7 @@
             #historical-table td::before {
                 content: attr(data-label);
                 flex: 0 0 auto;
-                text-align: left;
+                text-align: start;
                 font-weight: 600;
                 text-transform: uppercase;
                 font-size: 0.7rem;
@@ -677,7 +689,7 @@
             #data-table td:first-child,
             #historical-table td:first-child {
                 display: block;
-                text-align: left;
+                text-align: start;
                 font-weight: 700;
                 font-size: 1rem;
                 color: #1a365d;
@@ -695,7 +707,7 @@
         .refresh-indicator {
             position: fixed;
             top: 20px;
-            right: 20px;
+            inset-inline-end: 20px;
             background: #0ea5e9;
             color: white;
             padding: 0.5rem 1rem;
@@ -729,7 +741,7 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            margin-left: 1rem;
+            margin-inline-start: 1rem;
             transition: all 0.2s ease;
         }
 
@@ -805,7 +817,7 @@
             border-radius: 8px;
             font-family: monospace;
             font-size: 0.9rem;
-            border-left: 4px solid #10b981;
+            border-inline-start: 4px solid #10b981;
         }
     </style>
 </head>
@@ -1046,7 +1058,12 @@
     	    // Khmer, like Haitian Creole, has no CLDR data (see MANUAL_DATE_LOCALES).
     	    // en-US is the numeric fallback: Cambodia uses the same "," grouping and
     	    // "." decimal, so Intl still formats numbers correctly under it.
-    	    { code: "km",     label: "ភាសាខ្មែរ",                  locale: "en-US"  }
+    	    { code: "km",     label: "ភាសាខ្មែរ",                  locale: "en-US"  },
+    	    { code: "ru",     label: "Русский",                  locale: "ru-RU"  },
+    	    // Plain "ar" uses Western digits in CLDR, which is what we want: the
+    	    // Results column carries raw Latin numerals from DPH, so ar-EG's
+    	    // Arabic-Indic digits would make one table read in two numbering systems.
+    	    { code: "ar",     label: "العربية",                   locale: "ar",    rtl: true }
     	];
     	const LANG_COOKIE = "lang";
     	const DEFAULT_LANG = "en";
@@ -1677,6 +1694,170 @@
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
+    	  "ru": {
+    	    "site.title": "Качество воды в Массачусетсе",
+    	    "site.description": "Краткая сводка текущего и недавнего состояния воды на пляже Shannon.",
+    	    "subtitle.before": "Краткая сводка текущего и недавнего состояния воды. Данные с сайта ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": ".",
+    	    "lang.label": "Язык",
+    	    "lang.system": "Использовать язык системы ({lang})",
+    	    "report.translation": "Сообщить об ошибке перевода",
+    	    "faq.link": "🛟 Вопросы о безопасности плавания",
+    	    "nav.recentAria": "Недавно просмотренные пляжи",
+    	    "nav.addBeach": "Добавить пляж…",
+    	    "nav.removeAria": "Удалить {beach} из списка недавних пляжей",
+    	    "selector.title": "Добавить пляж",
+    	    "selector.town": "Город",
+    	    "selector.beach": "Пляж",
+    	    "selector.add": "Добавить",
+    	    "town.other": "Другое",
+    	    "notify.banner": "🔔 Получайте уведомления об изменении статуса купания!",
+    	    "notify.enable": "Включить уведомления",
+    	    "notify.enabled": "Уведомления включены!",
+    	    "notify.blocked": "Уведомления заблокированы",
+    	    "ui.refreshing": "Обновление данных…",
+    	    "status.current": "Текущий статус: {status}",
+    	    "status.loading": "Загрузка…",
+    	    "status.closedForSeason": "Закрыто до следующего сезона",
+    	    "status.monitoringNotActive": "Мониторинг ещё не начался",
+    	    "status.unavailable": "Информация недоступна",
+    	    "status.open": "Купание разрешено",
+    	    "status.closed": "Купание запрещено",
+    	    "status.desc": "Это официальный статус именно для {beach}, основанный на отдельных пробах и накопленном среднем геометрическом последних результатов. Как всегда, купайтесь на свой страх и риск и полагайтесь на собственное суждение!",
+    	    "status.unavailableDesc": "Информация о статусе сейчас недоступна. Пожалуйста, зайдите позже за обновлениями.",
+    	    "status.offSeasonDesc": "Официальный контроль качества воды на {beach} проводится с Memorial Day (конец мая) по Labor Day (начало сентября). Вне этого периода на озере по-прежнему можно кататься на лодке и каяке и купаться на свой страх и риск, но измерения не публикуются, поэтому состояние воды неизвестно.",
+    	    "status.preSeasonDesc": "Официальный контроль качества воды на {beach} в этом сезоне ещё не начался. Обычно он возобновляется около Memorial Day (конец мая) и проводится еженедельно до Labor Day (начало сентября). А пока на озере по-прежнему можно кататься на лодке и каяке и купаться на свой страх и риск, но состояние воды неизвестно.",
+    	    "status.reasonLabel": "Причина: ",
+    	    "reason.Bacterial Exceedance": "Превышение уровня бактерий",
+    	    "reason.Harmful Cyanobacteria Bloom": "Вредоносное цветение цианобактерий",
+    	    "reason.CSO/SSO event": "Сброс сточных вод (CSO/SSO)",
+    	    "reason.Other": "Другое",
+    	    "indicator.Enterococci": "Энтерококки",
+    	    "indicator.E. Coli": "Кишечная палочка (E. coli)",
+    	    "cso.heading": "⚠️ Недавние сбросы сточных вод (CSO)",
+    	    "cso.intro": "Случаи переполнения общесплавной канализации, зарегистрированные в районе Winchester и затрагивающие озеро Mystic за последние 2 недели.",
+    	    "cso.time": "Время:",
+    	    "cso.volume": "Объём:",
+    	    "cso.duration": "Продолжительность:",
+    	    "cso.rainfall": "Осадки:",
+    	    "cso.unknownTime": "Время неизвестно",
+    	    "cso.gallons": "{n} галлонов",
+    	    "cso.volumeUnknown": "Объём неизвестен",
+    	    "cso.inches": "{n} дюймов",
+    	    "cso.rainfallUnknown": "Осадки неизвестны",
+    	    "cso.hoursMinutes": "{h} ч {m} мин",
+    	    "cso.hours": "{h} ч",
+    	    "cso.durationUnknown": "Продолжительность неизвестна",
+    	    "table.Date and Time": "Дата и время",
+    	    "table.Indicator": "Показатель",
+    	    "table.Threshold": "Порог",
+    	    "table.Results": "Результаты",
+    	    "table.Status": "Статус",
+    	    "badge.above": "Выше порога",
+    	    "badge.at": "На уровне порога",
+    	    "badge.below": "Ниже порога",
+    	    "card.geomean": "Результаты по среднему геометрическому",
+    	    "card.singleSample": "Результаты отдельных проб",
+    	    "card.historical": "Архивные измерения",
+    	    "card.seasonHistorical": "Архивные измерения сезона {year}",
+    	    "card.unavailableHeading": "Последние измерения временно недоступны",
+    	    "card.awaitingHeading": "Ожидание первого измерения сезона",
+    	    "loading.beach": "Загрузка данных о пляже…",
+    	    "loading.historical": "Загрузка архивных измерений…",
+    	    "error.historical": "Не удалось загрузить архивные измерения.",
+    	    "awaiting.body": "Официальный контроль качества воды только начинается в этом сезоне. Измерения за текущий год ещё не опубликованы. Пробы обычно берут еженедельно с Memorial Day (конец мая) по Labor Day (начало сентября).",
+    	    "awaiting.unavailable": "Сейчас не удалось получить последние измерения с панели качества воды штата. Мониторинг работает — это временная проблема с получением данных, а не закрытие. Ссылка на измерения последнего завершённого сезона приведена ниже.",
+    	    "archive.none": "Для {beach} пока нет архивных измерений прошлых сезонов. Сейчас архивируются только измерения Shannon Beach @ Upper Mystic.",
+    	    "link.viewHistorical": "Смотреть архивные измерения сезона {year} →",
+    	    "footer.pageRendered": "Страница сформирована: {ts}",
+    	    "footer.testMode": " (Тестовый режим)",
+    	    "footer.lastSynced": "Последняя синхронизация данных: {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
+    	    "footer.commit": "Commit: {c}"
+    	  },
+    	  "ar": {
+    	    "site.title": "جودة المياه في ماساتشوستس",
+    	    "site.description": "ملخص موجز لحالة المياه الحالية والأخيرة في شاطئ Shannon.",
+    	    "subtitle.before": "ملخص موجز لحالة المياه الحالية والأخيرة. البيانات من موقع ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": ".",
+    	    "lang.label": "اللغة",
+    	    "lang.system": "استخدام لغة النظام ({lang})",
+    	    "report.translation": "الإبلاغ عن مشكلة في الترجمة",
+    	    "faq.link": "🛟 أسئلة شائعة عن سلامة السباحة",
+    	    "nav.recentAria": "الشواطئ التي شوهدت مؤخرًا",
+    	    "nav.addBeach": "إضافة شاطئ…",
+    	    "nav.removeAria": "إزالة {beach} من الشواطئ الأخيرة",
+    	    "selector.title": "إضافة شاطئ",
+    	    "selector.town": "البلدة",
+    	    "selector.beach": "الشاطئ",
+    	    "selector.add": "إضافة",
+    	    "town.other": "أخرى",
+    	    "notify.banner": "🔔 احصل على إشعار عند تغيّر حالة السباحة!",
+    	    "notify.enable": "تفعيل الإشعارات",
+    	    "notify.enabled": "تم تفعيل الإشعارات!",
+    	    "notify.blocked": "الإشعارات محظورة",
+    	    "ui.refreshing": "جارٍ تحديث البيانات…",
+    	    "status.current": "الحالة الراهنة: {status}",
+    	    "status.loading": "جارٍ التحميل…",
+    	    "status.closedForSeason": "مغلق خارج الموسم",
+    	    "status.monitoringNotActive": "لم تبدأ المراقبة بعد",
+    	    "status.unavailable": "المعلومات غير متاحة",
+    	    "status.open": "السباحة مسموحة",
+    	    "status.closed": "السباحة ممنوعة",
+    	    "status.desc": "هذه هي الحالة الرسمية الخاصة بـ {beach}، بناءً على عينات مفردة والمتوسط الهندسي التراكمي للنتائج الأخيرة. كالعادة، اسبح على مسؤوليتك الخاصة ووفق تقديرك الشخصي!",
+    	    "status.unavailableDesc": "معلومات الحالة غير متاحة حاليًا. يرجى العودة لاحقًا للاطلاع على التحديثات.",
+    	    "status.offSeasonDesc": "تجري المراقبة الرسمية لجودة المياه في {beach} من Memorial Day (أواخر مايو) حتى Labor Day (أوائل سبتمبر). خارج هذه الفترة يمكن استخدام البحيرة للتجديف بالقوارب والكاياك والنزول إلى الماء على مسؤوليتك الخاصة، لكن لا تُنشر أي قياسات، لذا فإن الظروف غير معروفة.",
+    	    "status.preSeasonDesc": "لم تبدأ بعد المراقبة الرسمية لجودة المياه في {beach} لهذا الموسم. تُستأنف عادةً قرب Memorial Day (أواخر مايو) وتُجرى أسبوعيًا حتى Labor Day (أوائل سبتمبر). في هذه الأثناء يمكن استخدام البحيرة للتجديف بالقوارب والكاياك والنزول إلى الماء على مسؤوليتك الخاصة، لكن الظروف غير معروفة.",
+    	    "status.reasonLabel": "السبب: ",
+    	    "reason.Bacterial Exceedance": "تجاوز حدود البكتيريا",
+    	    "reason.Harmful Cyanobacteria Bloom": "ازدهار ضار للبكتيريا الزرقاء",
+    	    "reason.CSO/SSO event": "تصريف مياه الصرف الصحي (CSO/SSO)",
+    	    "reason.Other": "أخرى",
+    	    "indicator.Enterococci": "المكورات المعوية",
+    	    "indicator.E. Coli": "الإشريكية القولونية (E. coli)",
+    	    "cso.heading": "⚠️ حوادث تصريف الصرف الصحي (CSO) الأخيرة",
+    	    "cso.intro": "حوادث فيضان شبكة الصرف المشتركة المبلّغ عنها في منطقة Winchester والمؤثرة على بحيرة Mystic خلال الأسبوعين الماضيين.",
+    	    "cso.time": "الوقت:",
+    	    "cso.volume": "الكمية:",
+    	    "cso.duration": "المدة:",
+    	    "cso.rainfall": "الأمطار:",
+    	    "cso.unknownTime": "الوقت غير معروف",
+    	    "cso.gallons": "{n} جالون",
+    	    "cso.volumeUnknown": "الكمية غير معروفة",
+    	    "cso.inches": "{n} بوصة",
+    	    "cso.rainfallUnknown": "كمية الأمطار غير معروفة",
+    	    "cso.hoursMinutes": "{h} س {m} د",
+    	    "cso.hours": "{h} ساعة",
+    	    "cso.durationUnknown": "المدة غير معروفة",
+    	    "table.Date and Time": "التاريخ والوقت",
+    	    "table.Indicator": "المؤشر",
+    	    "table.Threshold": "الحد",
+    	    "table.Results": "النتائج",
+    	    "table.Status": "الحالة",
+    	    "badge.above": "فوق الحد",
+    	    "badge.at": "عند الحد",
+    	    "badge.below": "تحت الحد",
+    	    "card.geomean": "نتائج المتوسط الهندسي",
+    	    "card.singleSample": "نتائج العينات المفردة",
+    	    "card.historical": "القياسات السابقة",
+    	    "card.seasonHistorical": "قياسات موسم {year}",
+    	    "card.unavailableHeading": "أحدث القياسات غير متاحة مؤقتًا",
+    	    "card.awaitingHeading": "في انتظار أول قياس للموسم",
+    	    "loading.beach": "جارٍ تحميل بيانات الشاطئ…",
+    	    "loading.historical": "جارٍ تحميل القياسات السابقة…",
+    	    "error.historical": "تعذّر تحميل القياسات السابقة.",
+    	    "awaiting.body": "بدأت للتو المراقبة الرسمية لجودة المياه لهذا الموسم. لم تُنشر أي قياسات لهذا العام بعد. تُؤخذ العينات عادةً أسبوعيًا من Memorial Day (أواخر مايو) حتى Labor Day (أوائل سبتمبر).",
+    	    "awaiting.unavailable": "تعذّر الآن الحصول على أحدث القياسات من لوحة بيانات جودة المياه بالولاية. المراقبة مستمرة — هذه مشكلة مؤقتة في جلب البيانات وليست إغلاقًا. قياسات آخر موسم مكتمل مرتبطة أدناه.",
+    	    "archive.none": "لا تتوفر بعد قياسات مؤرشفة من مواسم سابقة لـ {beach}. تُؤرشف حاليًا قياسات Shannon Beach @ Upper Mystic فقط.",
+    	    "link.viewHistorical": "عرض قياسات موسم {year} ←",
+    	    "footer.pageRendered": "تم إنشاء الصفحة: {ts}",
+    	    "footer.testMode": " (وضع الاختبار)",
+    	    "footer.lastSynced": "آخر مزامنة للبيانات: {ts}",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
+    	    "footer.commit": "Commit: {c}"
+    	  },
     	  fr: {
     	    "site.title": "Qualité de l’eau au Massachusetts",
     	    "site.description": "Un aperçu concis des conditions actuelles et récentes de l’eau à Shannon Beach.",
@@ -1898,6 +2079,17 @@
     	}
     	let langPreference = resolvePreference();
     	let currentLang = langPreference === SYSTEM_LANG ? systemLang() : langPreference;
+    	function isRTL(code) {
+    	    const entry = LANGS.find(l => l.code === code);
+    	    return !!(entry && entry.rtl);
+    	}
+    	// Interpolated values are proper nouns, dates and counts — Latin-script runs
+    	// inside an RTL sentence. Wrapping them in Unicode isolates (FSI…PDI) keeps
+    	// the bidi algorithm from pulling adjacent punctuation to the wrong end.
+    	// No-op in LTR, so English stays byte-identical.
+    	function bidiIsolate(value) {
+    	    return isRTL(currentLang) ? "\u2068" + value + "\u2069" : value;
+    	}
     	function currentLocale() {
     	    const entry = LANGS.find(l => l.code === currentLang);
     	    return entry ? entry.locale : "en-US";
@@ -1927,7 +2119,8 @@
     	    if (s === undefined) return key;
     	    if (!params) return s;
     	    return s.replace(/\{(\w+)\}/g, (m, name) =>
-    	        Object.prototype.hasOwnProperty.call(params, name) ? String(params[name]) : m);
+    	        Object.prototype.hasOwnProperty.call(params, name)
+    	            ? bidiIsolate(String(params[name])) : m);
     	}
     	// Translate an upstream data value (status reason, indicator, table header)
     	// through a namespaced key, passing the raw value through when unmapped —
@@ -2014,6 +2207,7 @@
     	// every language change.
     	function applyStaticTranslations() {
     	    document.documentElement.lang = currentLang;
+    	    document.documentElement.dir = isRTL(currentLang) ? "rtl" : "ltr";
     	    document.title = t("site.title");
     	    const desc = document.querySelector('meta[name="description"]');
     	    if (desc) desc.setAttribute("content", t("site.description"));
@@ -2742,7 +2936,7 @@
         // title stays the site name (set statically in <title>).
         function updatePageHeading() {
             const titleEl = document.getElementById('page-title');
-            if (titleEl) titleEl.textContent = `🏊‍♂️ ${shortBeachName(selectedBeach)}`;
+        if (titleEl) titleEl.textContent = `🏊‍♂️ ${bidiIsolate(shortBeachName(selectedBeach))}`;
             updateDphLink();
         }
 

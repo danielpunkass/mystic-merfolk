@@ -239,14 +239,15 @@ added keep working. Test override: `?slug-overrides-url=`.
 
 ### Localization
 
-The site ships in **eleven locales**: English, Spanish (Spain), Spanish
-(Latin America / `es-419`), Spanish (US), Portuguese (Brazil), French, Italian,
-Chinese (Simplified), Haitian Creole, Vietnamese, and Khmer.
+The site ships in **thirteen locales**: English, Spanish (Spain), Spanish
+(Latin America / `es-419`), Spanish (US), Portuguese (Brazil), Russian, Arabic,
+French, Italian, Chinese (Simplified), Haitian Creole, Vietnamese, and Khmer.
 
 The set tracks **Massachusetts demographics**, not "major European languages" —
 Spanish, Portuguese, Chinese, and Haitian Creole are the state's four most-spoken
-non-English languages, and Vietnamese is fifth. Khmer is there despite a smaller
-count because Massachusetts holds ~10% of all US Khmer speakers (Lowell). The
+non-English languages, Vietnamese is fifth, and Russian and Arabic are sixth and
+seventh. Khmer is there despite a smaller count because Massachusetts holds ~10%
+of all US Khmer speakers (Lowell). The
 three Spanish variants and Brazilian Portuguese exist because those populations
 are well represented here and a single "es" would serve peninsular wording to
 readers who don't use it. German was dropped for the same reason it was never
@@ -374,6 +375,32 @@ take ownership of those nodes, so a later language switch can't clobber live
 status with the loading placeholder. Any new branch that writes those two
 elements must call `clearInitFlags()` first.
 
+**Right-to-left.** Arabic carries `rtl: true` in `LANGS`; `isRTL()` reads it and
+`applyStaticTranslations()` sets `documentElement.dir` alongside `lang`. Three
+things make that nearly free here:
+
+1. **The CSS is logical, not physical.** Every direction-sensitive declaration
+   (`text-align`, `padding-left/right`, `margin-left`, `border-left/right`, the
+   refresh indicator's `right`) uses `start`/`end`/`inline` forms, so RTL mirrors
+   with no per-direction overrides. Verified: the English render is
+   byte-identical before and after the conversion. **Keep it that way** — a new
+   `padding-left` is a silent RTL bug.
+2. **`t()` isolates its parameters.** Interpolated values are proper nouns, dates
+   and counts — Latin-script runs inside an RTL sentence. `bidiIsolate()` wraps
+   them in `U+2068`/`U+2069` (FSI…PDI) so the bidi algorithm can't drag adjacent
+   punctuation to the wrong end. It's a no-op in LTR, so English stays
+   byte-identical. `updatePageHeading()` isolates the beach name too, since it
+   builds its string outside `t()`.
+3. **Table cells get `unicode-bidi: isolate` under `[dir="rtl"]`.** Sample rows
+   mix Arabic headers with Latin values (`E. coli`, `2,419.60`, DPH dates), and
+   each cell needs its own bidi context.
+
+Arabic's locale is plain `ar` deliberately: CLDR's `ar` uses Western digits,
+while `ar-EG`/`ar-SA` use Arabic-Indic ones — and the Results column carries raw
+Latin numerals from DPH, so those would render one table in two numbering
+systems. The `→` in `link.viewHistorical` is a per-language string, so Arabic
+simply uses `←`.
+
 **Translation feedback.** Below the switcher, `#translation-report` links to a
 prefilled GitHub issue (`Translation problem: <label> (<code>)` — the reporter is
 the one person who knows which catalog is wrong and the least likely to think to
@@ -384,18 +411,22 @@ text, so there is nothing to report it against.
 `mystic.html` (a zero-delay meta-refresh redirect stub nobody reads), and beach
 / town names.
 
-**Not yet covered, in rough order of Massachusetts speaker counts:** Russian,
-Arabic, and Cape Verdean Creole. Arabic is the one that isn't just a new
-catalog — it needs `dir="rtl"` and a pass over the padding/margins and the
-table's stacked phone layout. Cape Verdean Creole matters more than its census
-count suggests (Brockton, New Bedford), since the census often folds it into
-"Portuguese".
+**Not yet covered:** Cape Verdean Creole is the main remaining gap — it matters
+more than its census count suggests (Brockton, New Bedford, both coastal), since
+the census usually folds it into "Portuguese". After that the tail drops off
+fast: Korean, Greek, Polish, Hindi and Gujarati are each well under 1% of the
+state's limited-English-proficient population.
 
-**Translation provenance.** The Romance-language and Chinese catalogs are
-model-written and reviewed against the English source. **Haitian Creole,
-Vietnamese, and Khmer have had no native-speaker review** — Khmer least
-confident of the three. Worth arranging before leaning on them for
-public-health messaging; the in-page feedback link exists partly for this.
+Adding a language is now: a catalog, a `LANGS` entry, an `sw.js` entry, and —
+if `Intl.DateTimeFormat.supportedLocalesOf()` comes back empty **in a browser** —
+a `MANUAL_DATE_LOCALES` table. An RTL language additionally needs `rtl: true`
+and nothing else.
+
+**Translation provenance.** The Romance-language, Russian and Chinese catalogs
+are model-written and reviewed against the English source. **Arabic, Haitian
+Creole, Vietnamese, and Khmer have had no native-speaker review** — Khmer least
+confident. Worth arranging before leaning on them for public-health messaging;
+the in-page feedback link exists partly for this.
 
 ### Season Logic
 
@@ -448,7 +479,7 @@ Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
 - `?beaches-url=test-data/beaches-multi.json` — the Town/Beach selector index
 - `?samples-url=test-data/samples-multi.json` — the all-beaches keyed readings
 - `?season=open|closed` — override the date-based season check
-- `?lang=en|es|es-419|es-US|pt-BR|fr|it|zh|ht|vi|km` — force a locale (outranks the
+- `?lang=en|es|es-419|es-US|pt-BR|ru|ar|fr|it|zh|ht|vi|km` — force a locale (outranks the
   cookie and the browser). Region tags resolve through `normalizeLang()`, so
   `?lang=es-MX` also works and lands on `es-419`, and every `zh-*` lands on `zh`.
   `?lang=system` selects "Match System" (the default when nothing is pinned).
