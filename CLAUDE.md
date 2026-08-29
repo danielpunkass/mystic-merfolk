@@ -100,6 +100,14 @@ beyond `403`, `init` flake, and the "unavailable" fallback.)
 - **`index.html`** — Main dashboard. Vanilla JS, no frameworks. Loads static JSON
   from `data/`, renders current status, CSO incidents card, samples table, and a
   "Data last synced" line driven by `meta.json`.
+- **`faq/index.html`** — Open-water swimming safety FAQ (where to swim, the
+  24–72h rain rule, what a CSO is, how to read the bacteria results). Self-contained
+  like the dashboard: its own CSS and its own string catalog. **Work in progress —
+  the content isn't finished, which is why the dashboard's link to it is commented
+  out** (`index.html`, the `.faq-link` div under the subtitle). The page itself is
+  deployed and reachable at `/faq/`; it just isn't advertised yet. Uncomment that
+  div to launch it — everything else is already wired, including the translated
+  `faq.link` label in all thirteen catalogs.
 - **`sw.js`** — Service worker (currently registration is disabled in `index.html`).
   Reads the same `data/*.json` and posts a desktop notification on status change.
 - **`sync_water_data.py`** — Python 3 stdlib orchestrator. Stdlib only (urllib +
@@ -277,7 +285,7 @@ Anything unmatched (`ja`) falls back to English rather than half-translating.
 chose — a concrete code, or the sentinel `SYSTEM_LANG` (`"system"`) meaning
 "follow the browser." `currentLang` is the code actually in use. Everything that
 renders reads `currentLang`; the cookie and the `<select>` carry
-`langPreference`. Collapsing the two would make "Match System" unrepresentable:
+`langPreference`. Collapsing the two would make "System Default" unrepresentable:
 a visitor on a French browser being shown French gives no way to tell whether
 they *chose* French or are following the system, so they could never get back to
 following it. **`SYSTEM_LANG` is the default** — with no `?lang=` and no cookie,
@@ -285,12 +293,12 @@ following it. **`SYSTEM_LANG` is the default** — with no `?lang=` and no cooki
 is pinned explicitly.
 
 The switcher's first entry is that option, labelled with the language it
-currently resolves to — `Match System (Français)` — followed by an `<hr>`
+currently resolves to — `System Default (Français)` — followed by an `<hr>`
 divider and then the fixed list. The label names the **system** language, not the
 active one, so it says what picking it would do: on a French browser with
 Vietnamese pinned it still reads `Dùng ngôn ngữ hệ thống (Français)`. Variant
 labels use a middle dot (`Español · España`) rather than parentheses, so nesting
-them inside that string doesn't produce `Match System (Español (España))`.
+them inside that string doesn't produce `System Default (Español (España))`.
 
 The `<select>` lives at the **foot of the page**, as quiet chrome. The page now
 ends with, in order: the language `<select>`, the translation-feedback link, then
@@ -311,8 +319,11 @@ clean).
   vocabulary. Static markup carries `data-i18n` (textContent), `data-i18n-html`
   (innerHTML), and `data-i18n-attr="aria-label:some.key"` hooks that
   `applyStaticTranslations()` fills in; everything rendered from JS calls `t()`.
-- `faq/index.html` — the same pattern with its own 45-key catalog (the prose is
-  page-specific, so the two catalogs are deliberately separate).
+- `faq/index.html` — the same pattern with its own 47-key catalog (the prose is
+  page-specific, so the two catalogs are deliberately separate). Note that the FAQ
+  is still in progress: **its copy will keep changing, and every edit means
+  re-translating that string across thirteen catalogs.** Worth finishing the
+  English text before investing more in its translations.
 - `sw.js` — `NOTIFICATION_STRINGS` for the status-change notification. A service
   worker can't read `document.cookie`, so the page writes the active language
   into the shared `BeachStatusDB` `config` record (`lang`) and the SW reads it
@@ -482,7 +493,7 @@ Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
 - `?lang=en|es|es-419|es-US|pt-BR|ru|ar|fr|it|zh|ht|vi|km` — force a locale (outranks the
   cookie and the browser). Region tags resolve through `normalizeLang()`, so
   `?lang=es-MX` also works and lands on `es-419`, and every `zh-*` lands on `zh`.
-  `?lang=system` selects "Match System" (the default when nothing is pinned).
+  `?lang=system` selects "System Default" (the default when nothing is pinned).
 
 To exercise the multi-beach selector locally, combine the last two, e.g.
 `?season=open&beaches-url=test-data/beaches-multi.json&samples-url=test-data/samples-multi.json`.
