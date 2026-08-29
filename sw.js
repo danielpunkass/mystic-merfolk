@@ -215,6 +215,7 @@ const NOTIFICATION_STRINGS = {
     vi:       { title: 'Cập nhật trạng thái bãi biển',           open: 'Được phép bơi',          closed: 'Cấm bơi',               body: 'Trạng thái bơi đã đổi thành: {status}' },
     km:       { title: 'ព័ត៌មានថ្មីអំពីស្ថានភាពឆ្នេរ',              open: 'អនុញ្ញាតឱ្យហែលទឹក',        closed: 'ហាមហែលទឹក',              body: 'ស្ថានភាពហែលទឹកបានប្ដូរទៅជា៖ {status}' },
     ru:       { title: 'Изменение статуса пляжа',                open: 'Купание разрешено',      closed: 'Купание запрещено',     body: 'Статус купания изменился на: {status}' },
+    uk:       { title: 'Зміна статусу пляжу',                    open: 'Купання дозволено',      closed: 'Купання заборонено',    body: 'Статус купання змінився на: {status}' },
     ar:       { title: 'تحديث حالة الشاطئ',                       open: 'السباحة مسموحة',          closed: 'السباحة ممنوعة',         body: 'تغيّرت حالة السباحة إلى: {status}' }
 };
 

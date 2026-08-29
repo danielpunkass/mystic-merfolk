@@ -247,9 +247,15 @@ added keep working. Test override: `?slug-overrides-url=`.
 
 ### Localization
 
-The site ships in **thirteen locales**: English, Spanish (Spain), Spanish
-(Latin America / `es-419`), Spanish (US), Portuguese (Brazil), Russian, Arabic,
-French, Italian, Chinese (Simplified), Haitian Creole, Vietnamese, and Khmer.
+The site ships in **fourteen locales**: English, Spanish (Spain), Spanish
+(Latin America / `es-419`), Spanish (US), Portuguese (Brazil), Russian,
+Ukrainian, Arabic, French, Italian, Chinese (Simplified), Haitian Creole,
+Vietnamese, and Khmer.
+
+**Ukrainian is paired with Russian deliberately.** It isn't there on speaker
+counts — it's there so shipping Russian alone doesn't read as the site taking a
+side. Keep them together: adding one without the other reintroduces exactly that
+problem.
 
 The set tracks **Massachusetts demographics**, not "major European languages" —
 Spanish, Portuguese, Chinese, and Haitian Creole are the state's four most-spoken
@@ -314,7 +320,7 @@ clean).
 
 **Where the strings live:**
 
-- `index.html` — `STRINGS` (79 keys per complete catalog) plus `t(key, params)`
+- `index.html` — `STRINGS` (81 keys per complete catalog) plus `t(key, params)`
   for `{placeholder}` interpolation and `tData(namespace, value)` for *upstream*
   vocabulary. Static markup carries `data-i18n` (textContent), `data-i18n-html`
   (innerHTML), and `data-i18n-attr="aria-label:some.key"` hooks that
@@ -386,6 +392,22 @@ take ownership of those nodes, so a later language switch can't clobber live
 status with the loading placeholder. Any new branch that writes those two
 elements must call `clearInitFlags()` first.
 
+**The geometric mean's sample period.** DPH publishes the geomean as one number
+against one date and says nothing about the window it covers, so it reads like a
+fresh reading when it's actually an average spanning weeks. `geoMeanWindow()`
+recovers the window by finding how many of the most recent samples reproduce the
+published value, and the card shows that span (`Aug 11, 2026 – Aug 26, 2026`)
+under a `Sample Period` header rather than a single date.
+
+Measured against a full season: **608 of 711 beaches match the last 5 samples**,
+and the remaining ones match a shorter window only because they don't have 5 yet
+(79 have a single sample). Every beach matched something. It verifies rather than
+hard-coding 5, so a beach whose value can't be reproduced falls back to the plain
+date instead of asserting a period we haven't checked. The joined range is no
+longer a parseable date, and `formatSampleDate()` passes non-dates through
+untouched — that's load-bearing. Each endpoint is `bidiIsolate()`d so an RTL page
+orders them by reading direction.
+
 **Right-to-left.** Arabic carries `rtl: true` in `LANGS`; `isRTL()` reads it and
 `applyStaticTranslations()` sets `documentElement.dir` alongside `lang`. Three
 things make that nearly free here:
@@ -418,6 +440,12 @@ the one person who knows which catalog is wrong and the least likely to think to
 say). It is shown only when `currentLang !== DEFAULT_LANG`: English is the source
 text, so there is nothing to report it against.
 
+**Colophon.** The last line on the dashboard (`.colophon`) credits the author and
+host, and is translated like everything else — it carries its own anchors, so each
+catalog holds the full HTML string (`footer.colophon`), the one HTML-bearing entry
+in `index.html`'s catalogs besides the assembled subtitle. The FAQ doesn't have
+one; add it there if the two pages should match.
+
 **Deliberately not translated:** the test-mode debug panel (developer tool),
 `mystic.html` (a zero-delay meta-refresh redirect stub nobody reads), and beach
 / town names.
@@ -433,8 +461,9 @@ if `Intl.DateTimeFormat.supportedLocalesOf()` comes back empty **in a browser** 
 a `MANUAL_DATE_LOCALES` table. An RTL language additionally needs `rtl: true`
 and nothing else.
 
-**Translation provenance.** The Romance-language, Russian and Chinese catalogs
-are model-written and reviewed against the English source. **Arabic, Haitian
+**Translation provenance.** The Romance-language, Russian, Ukrainian and Chinese
+catalogs are model-written and reviewed against the English source.
+**Arabic, Haitian
 Creole, Vietnamese, and Khmer have had no native-speaker review** — Khmer least
 confident. Worth arranging before leaning on them for public-health messaging;
 the in-page feedback link exists partly for this.
@@ -490,7 +519,7 @@ Visit `?test=1` for test mode. Use URL overrides to load specific fixtures:
 - `?beaches-url=test-data/beaches-multi.json` — the Town/Beach selector index
 - `?samples-url=test-data/samples-multi.json` — the all-beaches keyed readings
 - `?season=open|closed` — override the date-based season check
-- `?lang=en|es|es-419|es-US|pt-BR|ru|ar|fr|it|zh|ht|vi|km` — force a locale (outranks the
+- `?lang=en|es|es-419|es-US|pt-BR|ru|uk|ar|fr|it|zh|ht|vi|km` — force a locale (outranks the
   cookie and the browser). Region tags resolve through `normalizeLang()`, so
   `?lang=es-MX` also works and lands on `es-419`, and every `zh-*` lands on `zh`.
   `?lang=system` selects "System Default" (the default when nothing is pinned).

@@ -111,6 +111,24 @@
             color: #0369a1;
         }
 
+        /* Colophon — the quietest thing on the page; sits under the sync metadata. */
+        .colophon {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .colophon a {
+            color: #64748b;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .colophon a:hover {
+            color: #0369a1;
+        }
+
         .lang-switcher select {
             font: inherit;
             color: #475569;
@@ -376,7 +394,7 @@
             text-align: center;
             color: #64748b;
             font-size: 0.9rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0.75rem;
             padding: 1rem;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 8px;
@@ -974,6 +992,8 @@
         <div id="last-updated" class="last-updated" style="display: none;">
             <!-- Last updated time will be inserted here -->
         </div>
+
+        <p class="colophon" data-i18n-html="footer.colophon">Created by robots under supervision by <a href="https://bitsplitting.org/">Daniel Jalkut</a>. Hosted on <a href="https://github.com/danielpunkass/mystic-merfolk">GitHub</a>.</p>
     </div>
 
     <div id="refresh-indicator" class="refresh-indicator" data-i18n="ui.refreshing">
@@ -1060,6 +1080,7 @@
     	    // "." decimal, so Intl still formats numbers correctly under it.
     	    { code: "km",     label: "ភាសាខ្មែរ",                  locale: "en-US"  },
     	    { code: "ru",     label: "Русский",                  locale: "ru-RU"  },
+    	    { code: "uk",     label: "Українська",               locale: "uk-UA"  },
     	    // Plain "ar" uses Western digits in CLDR, which is what we want: the
     	    // Results column carries raw Latin numerals from DPH, so ar-EG's
     	    // Arabic-Indic digits would make one table read in two numbering systems.
@@ -1146,6 +1167,7 @@
     	    "table.Threshold": "Threshold",
     	    "table.Results": "Results",
     	    "table.Status": "Status",
+    	    "table.Sample Period": "Sample Period",
     	    "badge.above": "Above Threshold",
     	    "badge.at": "At Threshold",
     	    "badge.below": "Below Threshold",
@@ -1165,6 +1187,7 @@
     	    "footer.pageRendered": "Page rendered: {ts}",
     	    "footer.testMode": " (Test Mode)",
     	    "footer.lastSynced": "Data last synced: {ts}",
+    	    "footer.colophon": "Created by robots under supervision by <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Hosted on <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1228,6 +1251,7 @@
     	    "table.Threshold": "Umbral",
     	    "table.Results": "Resultados",
     	    "table.Status": "Estado",
+    	    "table.Sample Period": "Periodo de muestreo",
     	    "badge.above": "Por encima del umbral",
     	    "badge.at": "En el umbral",
     	    "badge.below": "Por debajo del umbral",
@@ -1247,6 +1271,7 @@
     	    "footer.pageRendered": "Página generada: {ts}",
     	    "footer.testMode": " (Modo de prueba)",
     	    "footer.lastSynced": "Última sincronización de datos: {ts}",
+    	    "footer.colophon": "Creado por robots bajo la supervisión de <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Alojado en <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1344,6 +1369,7 @@
     	    "table.Threshold": "阈值",
     	    "table.Results": "结果",
     	    "table.Status": "状态",
+    	    "table.Sample Period": "采样时段",
     	    "badge.above": "高于阈值",
     	    "badge.at": "达到阈值",
     	    "badge.below": "低于阈值",
@@ -1363,6 +1389,7 @@
     	    "footer.pageRendered": "页面生成时间：{ts}",
     	    "footer.testMode": "（测试模式）",
     	    "footer.lastSynced": "数据最后同步时间：{ts}",
+    	    "footer.colophon": "由机器人在 <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a> 的监督下创建。托管于 <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>。",
     	    "footer.commitDated": "Commit: {c}（{ts}）",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1426,6 +1453,7 @@
     	    "table.Threshold": "Sèy",
     	    "table.Results": "Rezilta",
     	    "table.Status": "Estati",
+    	    "table.Sample Period": "Peryòd echantiyon",
     	    "badge.above": "Pi wo pase sèy la",
     	    "badge.at": "Nan sèy la",
     	    "badge.below": "Pi ba pase sèy la",
@@ -1445,6 +1473,7 @@
     	    "footer.pageRendered": "Paj la kreye: {ts}",
     	    "footer.testMode": " (Mòd tès)",
     	    "footer.lastSynced": "Dènye senkronizasyon done: {ts}",
+    	    "footer.colophon": "Kreye pa robo anba sipèvizyon <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Ebèje sou <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1508,6 +1537,7 @@
     	    "table.Threshold": "Ngưỡng",
     	    "table.Results": "Kết quả",
     	    "table.Status": "Trạng thái",
+    	    "table.Sample Period": "Kỳ lấy mẫu",
     	    "badge.above": "Trên ngưỡng",
     	    "badge.at": "Ở mức ngưỡng",
     	    "badge.below": "Dưới ngưỡng",
@@ -1527,6 +1557,7 @@
     	    "footer.pageRendered": "Trang được tạo: {ts}",
     	    "footer.testMode": " (Chế độ thử nghiệm)",
     	    "footer.lastSynced": "Dữ liệu đồng bộ lần cuối: {ts}",
+    	    "footer.colophon": "Được tạo bởi robot dưới sự giám sát của <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Lưu trữ trên <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1590,6 +1621,7 @@
     	    "table.Threshold": "កម្រិតកំណត់",
     	    "table.Results": "លទ្ធផល",
     	    "table.Status": "ស្ថានភាព",
+    	    "table.Sample Period": "រយៈពេលយកគំរូ",
     	    "badge.above": "លើសកម្រិតកំណត់",
     	    "badge.at": "ស្មើកម្រិតកំណត់",
     	    "badge.below": "ក្រោមកម្រិតកំណត់",
@@ -1609,6 +1641,7 @@
     	    "footer.pageRendered": "ទំព័រត្រូវបានបង្កើត៖ {ts}",
     	    "footer.testMode": " (របៀបសាកល្បង)",
     	    "footer.lastSynced": "ធ្វើសមកាលកម្មទិន្នន័យចុងក្រោយ៖ {ts}",
+    	    "footer.colophon": "បង្កើតដោយរូបយន្តក្រោមការត្រួតពិនិត្យរបស់ <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>។ ដាក់លើ <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>។",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1672,6 +1705,7 @@
     	    "table.Threshold": "Limite",
     	    "table.Results": "Resultados",
     	    "table.Status": "Estado",
+    	    "table.Sample Period": "Período de amostragem",
     	    "badge.above": "Acima do limite",
     	    "badge.at": "No limite",
     	    "badge.below": "Abaixo do limite",
@@ -1691,6 +1725,7 @@
     	    "footer.pageRendered": "Página gerada: {ts}",
     	    "footer.testMode": " (Modo de teste)",
     	    "footer.lastSynced": "Dados sincronizados pela última vez: {ts}",
+    	    "footer.colophon": "Criado por robôs sob a supervisão de <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Hospedado no <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1754,6 +1789,7 @@
     	    "table.Threshold": "Порог",
     	    "table.Results": "Результаты",
     	    "table.Status": "Статус",
+    	    "table.Sample Period": "Период отбора проб",
     	    "badge.above": "Выше порога",
     	    "badge.at": "На уровне порога",
     	    "badge.below": "Ниже порога",
@@ -1773,6 +1809,91 @@
     	    "footer.pageRendered": "Страница сформирована: {ts}",
     	    "footer.testMode": " (Тестовый режим)",
     	    "footer.lastSynced": "Последняя синхронизация данных: {ts}",
+    	    "footer.colophon": "Создано роботами под наблюдением <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Размещено на <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
+    	    "footer.commitDated": "Commit: {c} ({ts})",
+    	    "footer.commit": "Commit: {c}"
+    	  },
+    	  "uk": {
+    	    "site.title": "Якість води в Массачусетсі",
+    	    "site.description": "Стислий огляд поточного та нещодавнього стану води на пляжі Shannon.",
+    	    "subtitle.before": "Стислий огляд поточного та нещодавнього стану води. Дані з сайту ",
+    	    "subtitle.link": "DCR Water Quality",
+    	    "subtitle.after": ".",
+    	    "lang.label": "Мова",
+    	    "lang.system": "Мова системи за замовчуванням ({lang})",
+    	    "report.translation": "Повідомити про помилку перекладу",
+    	    "faq.link": "🛟 Питання про безпеку плавання",
+    	    "nav.recentAria": "Нещодавно переглянуті пляжі",
+    	    "nav.addBeach": "Додати пляж…",
+    	    "nav.removeAria": "Видалити {beach} зі списку нещодавніх пляжів",
+    	    "selector.title": "Додати пляж",
+    	    "selector.town": "Місто",
+    	    "selector.beach": "Пляж",
+    	    "selector.add": "Додати",
+    	    "town.other": "Інше",
+    	    "notify.banner": "🔔 Отримуйте сповіщення про зміну статусу купання!",
+    	    "notify.enable": "Увімкнути сповіщення",
+    	    "notify.enabled": "Сповіщення увімкнено!",
+    	    "notify.blocked": "Сповіщення заблоковано",
+    	    "ui.refreshing": "Оновлення даних…",
+    	    "status.current": "Поточний статус: {status}",
+    	    "status.loading": "Завантаження…",
+    	    "status.closedForSeason": "Закрито до наступного сезону",
+    	    "status.monitoringNotActive": "Моніторинг ще не розпочався",
+    	    "status.unavailable": "Інформація недоступна",
+    	    "status.open": "Купання дозволено",
+    	    "status.closed": "Купання заборонено",
+    	    "status.desc": "Це офіційний статус саме для {beach}, заснований на окремих пробах і накопиченому середньому геометричному останніх результатів. Як завжди, купайтеся на власний ризик і покладайтеся на власне судження!",
+    	    "status.unavailableDesc": "Інформація про статус зараз недоступна. Будь ласка, зайдіть пізніше по оновлення.",
+    	    "status.offSeasonDesc": "Офіційний контроль якості води на {beach} проводиться з Memorial Day (кінець травня) до Labor Day (початок вересня). Поза цим періодом на озері й далі можна кататися на човні та каяку і купатися на власний ризик, але вимірювання не публікуються, тож стан води невідомий.",
+    	    "status.preSeasonDesc": "Офіційний контроль якості води на {beach} цього сезону ще не розпочався. Зазвичай він відновлюється близько Memorial Day (кінець травня) і проводиться щотижня до Labor Day (початок вересня). А поки на озері й далі можна кататися на човні та каяку і купатися на власний ризик, але стан води невідомий.",
+    	    "status.reasonLabel": "Причина: ",
+    	    "reason.Bacterial Exceedance": "Перевищення рівня бактерій",
+    	    "reason.Harmful Cyanobacteria Bloom": "Шкідливе цвітіння ціанобактерій",
+    	    "reason.CSO/SSO event": "Скид стічних вод (CSO/SSO)",
+    	    "reason.Other": "Інше",
+    	    "indicator.Enterococci": "Ентерококи",
+    	    "indicator.E. Coli": "Кишкова паличка (E. coli)",
+    	    "cso.heading": "⚠️ Нещодавні скиди стічних вод (CSO)",
+    	    "cso.intro": "Випадки переповнення загальносплавної каналізації, зафіксовані в районі Winchester, які впливають на озеро Mystic, за останні 2 тижні.",
+    	    "cso.time": "Час:",
+    	    "cso.volume": "Об’єм:",
+    	    "cso.duration": "Тривалість:",
+    	    "cso.rainfall": "Опади:",
+    	    "cso.unknownTime": "Час невідомий",
+    	    "cso.gallons": "{n} галонів",
+    	    "cso.volumeUnknown": "Об’єм невідомий",
+    	    "cso.inches": "{n} дюймів",
+    	    "cso.rainfallUnknown": "Опади невідомі",
+    	    "cso.hoursMinutes": "{h} год {m} хв",
+    	    "cso.hours": "{h} год",
+    	    "cso.durationUnknown": "Тривалість невідома",
+    	    "table.Date and Time": "Дата й час",
+    	    "table.Indicator": "Показник",
+    	    "table.Threshold": "Поріг",
+    	    "table.Results": "Результати",
+    	    "table.Status": "Статус",
+    	    "table.Sample Period": "Період відбору проб",
+    	    "badge.above": "Вище порога",
+    	    "badge.at": "На рівні порога",
+    	    "badge.below": "Нижче порога",
+    	    "card.geomean": "Результати за середнім геометричним",
+    	    "card.singleSample": "Результати окремих проб",
+    	    "card.historical": "Архівні вимірювання",
+    	    "card.seasonHistorical": "Архівні вимірювання сезону {year}",
+    	    "card.unavailableHeading": "Останні вимірювання тимчасово недоступні",
+    	    "card.awaitingHeading": "Очікування першого вимірювання сезону",
+    	    "loading.beach": "Завантаження даних про пляж…",
+    	    "loading.historical": "Завантаження архівних вимірювань…",
+    	    "error.historical": "Не вдалося завантажити архівні вимірювання.",
+    	    "awaiting.body": "Офіційний контроль якості води тільки починається цього сезону. Вимірювання за поточний рік ще не опубліковані. Проби зазвичай беруть щотижня з Memorial Day (кінець травня) до Labor Day (початок вересня).",
+    	    "awaiting.unavailable": "Зараз не вдалося отримати останні вимірювання з панелі якості води штату. Моніторинг працює — це тимчасова проблема з отриманням даних, а не закриття. Посилання на вимірювання останнього завершеного сезону наведено нижче.",
+    	    "archive.none": "Для {beach} поки немає архівних вимірювань минулих сезонів. Зараз архівуються лише вимірювання Shannon Beach @ Upper Mystic.",
+    	    "link.viewHistorical": "Переглянути архівні вимірювання сезону {year} →",
+    	    "footer.pageRendered": "Сторінку сформовано: {ts}",
+    	    "footer.testMode": " (Тестовий режим)",
+    	    "footer.lastSynced": "Остання синхронізація даних: {ts}",
+    	    "footer.colophon": "Створено роботами під наглядом <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Розміщено на <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1836,6 +1957,7 @@
     	    "table.Threshold": "الحد",
     	    "table.Results": "النتائج",
     	    "table.Status": "الحالة",
+    	    "table.Sample Period": "فترة أخذ العينات",
     	    "badge.above": "فوق الحد",
     	    "badge.at": "عند الحد",
     	    "badge.below": "تحت الحد",
@@ -1855,6 +1977,7 @@
     	    "footer.pageRendered": "تم إنشاء الصفحة: {ts}",
     	    "footer.testMode": " (وضع الاختبار)",
     	    "footer.lastSynced": "آخر مزامنة للبيانات: {ts}",
+    	    "footer.colophon": "أنشأته روبوتات تحت إشراف <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. مستضاف على <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  },
@@ -1918,6 +2041,7 @@
     	    "table.Threshold": "Seuil",
     	    "table.Results": "Résultats",
     	    "table.Status": "Statut",
+    	    "table.Sample Period": "Période de prélèvement",
     	    "badge.above": "Au-dessus du seuil",
     	    "badge.at": "Au niveau du seuil",
     	    "badge.below": "En dessous du seuil",
@@ -1937,6 +2061,7 @@
     	    "footer.pageRendered": "Page générée : {ts}",
     	    "footer.testMode": " (Mode test)",
     	    "footer.lastSynced": "Dernière synchronisation des données : {ts}",
+    	    "footer.colophon": "Créé par des robots sous la supervision de <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Hébergé sur <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit : {c} ({ts})",
     	    "footer.commit": "Commit : {c}"
     	  },
@@ -2000,6 +2125,7 @@
     	    "table.Threshold": "Soglia",
     	    "table.Results": "Risultati",
     	    "table.Status": "Stato",
+    	    "table.Sample Period": "Periodo di campionamento",
     	    "badge.above": "Sopra la soglia",
     	    "badge.at": "Alla soglia",
     	    "badge.below": "Sotto la soglia",
@@ -2019,6 +2145,7 @@
     	    "footer.pageRendered": "Pagina generata: {ts}",
     	    "footer.testMode": " (Modalità di prova)",
     	    "footer.lastSynced": "Ultima sincronizzazione dei dati: {ts}",
+    	    "footer.colophon": "Creato da robot sotto la supervisione di <a href=\"https://bitsplitting.org/\">Daniel Jalkut</a>. Ospitato su <a href=\"https://github.com/danielpunkass/mystic-merfolk\">GitHub</a>.",
     	    "footer.commitDated": "Commit: {c} ({ts})",
     	    "footer.commit": "Commit: {c}"
     	  }
@@ -2182,7 +2309,7 @@
     	    if (isNaN(d)) return String(value);
     	    const manual = MANUAL_DATE_LOCALES[currentLang];
     	    if (manual) return formatManualDate(d, manual, time);
-    	    if (!time) return d.toLocaleDateString(currentLocale());
+    	    if (!time) return d.toLocaleDateString(currentLocale(), { dateStyle: "medium" });
     	    return d.toLocaleString(currentLocale(), { dateStyle: "medium", timeStyle: time });
     	}
 
@@ -3618,19 +3745,63 @@
             });
         }
 
+        // DPH publishes the geometric mean as one number against one date, and says
+        // nothing about which samples it covers — so it reads like a fresh reading
+        // when it is actually an average over weeks. Recover the window by finding
+        // how many of the most recent samples reproduce the published value.
+        //
+        // Measured against a full season: 608 of 711 beaches match the last 5
+        // samples, and the rest match a shorter window only because they don't have
+        // 5 yet. Every beach matched something. Verifying beats hard-coding 5 — a
+        // beach we can't reproduce falls back to the plain date rather than
+        // asserting a period we haven't checked.
+        const GEOMEAN_MAX_WINDOW = 10;
+        function geoMeanWindow(geoMean, rows) {
+            const target = parseFloat(String(geoMean.value).replace(/,/g, ''));
+            if (!isFinite(target) || target <= 0) return null;
+            const end = new Date(geoMean.date);
+            const samples = (rows || [])
+                .filter(r => r[1] === geoMean.indicator)
+                .map(r => ({ date: new Date(r[0]), value: parseFloat(String(r[3]).replace(/,/g, '')) }))
+                .filter(r => !isNaN(r.date) && isFinite(r.value) && r.value > 0
+                    && (isNaN(end) || r.date <= end))
+                .sort((a, b) => b.date - a.date);
+
+            let logSum = 0;
+            for (let n = 1; n <= Math.min(GEOMEAN_MAX_WINDOW, samples.length); n++) {
+                logSum += Math.log(samples[n - 1].value);
+                // The published mean is rounded to 2dp, so compare with tolerance.
+                if (Math.abs(Math.exp(logSum / n) - target) <= Math.max(0.02, target * 0.005)) {
+                    return samples.slice(0, n);
+                }
+            }
+            return null;
+        }
+
         // Render the "Geometric Mean Test Results" card with just the most recent
         // geomean reading (reusing the single-sample table styling + status badge).
         // Hidden when there's no geomean for the selected beach (off-season, early
         // season before a geomean is computed, or a beach without one).
-        function updateGeoMean(geoMean) {
+        function updateGeoMean(geoMean, rows) {
             const card = document.getElementById('geomean-card');
             const value = geoMean && geoMean.value;
             if (!value || isNaN(parseFloat(String(value).replace(/,/g, '')))) {
                 card.style.display = 'none';
                 return;
             }
-            const headers = ['Date and Time', 'Indicator', 'Threshold: Geometric Mean', 'Results'];
-            const row = [geoMean.date, geoMean.indicator, geoMean.threshold, geoMean.value];
+            // Show the span the mean actually covers, so it doesn't read as a single
+            // recent test. Each endpoint is isolated so an RTL page orders them by
+            // reading direction; the joined string is no longer a parseable date, and
+            // renderSamplesTable's formatSampleDate passes non-dates through untouched.
+            const window = geoMeanWindow(geoMean, rows);
+            let period = geoMean.date;
+            if (window && window.length > 1) {
+                const from = formatDateTime(window[window.length - 1].date, false);
+                const to = formatDateTime(window[0].date, false);
+                if (from !== to) period = bidiIsolate(from) + ' – ' + bidiIsolate(to);
+            }
+            const headers = ['Sample Period', 'Indicator', 'Threshold: Geometric Mean', 'Results'];
+            const row = [period, geoMean.indicator, geoMean.threshold, geoMean.value];
             renderSamplesTable([headers, row],
                 document.getElementById('geomean-table-head'),
                 document.getElementById('geomean-table-body'));
@@ -3639,7 +3810,7 @@
 
         function updateWithData(samples, status, csoData, meta) {
             updateCurrentStatus(status);
-            updateGeoMean(samples && samples.geoMean);
+            updateGeoMean(samples && samples.geoMean, (samples && samples.rows) || []);
             // CSO incidents are only meaningful for the Mystic Lakes; hide the card
             // entirely for any other beach.
             if (csoData && isMysticBeach(selectedBeach)) {
