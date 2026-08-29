@@ -320,7 +320,7 @@ clean).
 
 **Where the strings live:**
 
-- `index.html` — `STRINGS` (81 keys per complete catalog) plus `t(key, params)`
+- `index.html` — `STRINGS` (83 keys per complete catalog) plus `t(key, params)`
   for `{placeholder}` interpolation and `tData(namespace, value)` for *upstream*
   vocabulary. Static markup carries `data-i18n` (textContent), `data-i18n-html`
   (innerHTML), and `data-i18n-attr="aria-label:some.key"` hooks that
@@ -475,6 +475,17 @@ both implement the same calendar math. Off-season, upstream stops publishing
 samples, so the script writes a stub `status.json` (`"Closed for Season"`) and
 the page reads from `archive/Shannon_Beach_Upper_Mystic_DCR/<year>.csv` for the
 most recent completed season.
+
+**A beach's own season can be shorter than the statewide one.** DPH marks such a
+beach `Off-season` in the `Map` status *while the calendar season is still open* —
+seen 2026-08-28 for Crystal Lake (Newton), Chilson Beach and Ames Pond, whose
+towns stopped sampling in July/August. `updateCurrentStatus()` never renders that
+as "Closed for Swimming" (which would imply a bacterial closure), but the raw
+status doesn't say *which end* of the season it means. This year's readings do:
+a beach with current-year rows has **finished** early (`status.closedForSeason` +
+`status.seasonEndedDesc`), one with none hasn't **started** yet
+(`status.monitoringNotActive` + `status.preSeasonDesc`). `currentSeasonRows()` is
+the shared test, also used for the "awaiting first reading" placeholder.
 
 ## Local Development
 
