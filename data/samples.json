@@ -27887,6 +27887,12 @@
       "town": "Halifax",
       "rows": [
         [
+          "8/25/2026 10:00:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
+        [
           "8/18/2026 10:00:00 AM",
           "E. Coli",
           "235",
@@ -27972,15 +27978,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 10:00:00 AM",
+        "date": "8/25/2026 10:00:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.19"
+        "value": "4.51"
       }
     },
     "Lingan Street": {
       "town": "Halifax",
       "rows": [
+        [
+          "8/25/2026 9:50:00 AM",
+          "E. Coli",
+          "235",
+          "10.00"
+        ],
         [
           "8/18/2026 9:50:00 AM",
           "E. Coli",
@@ -28067,10 +28079,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 9:50:00 AM",
+        "date": "8/25/2026 9:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "20.28"
+        "value": "16.51"
       }
     },
     "Cranberry Cove (aka Camp Kiwanee)": {
@@ -41195,6 +41207,12 @@
       "town": "Methuen",
       "rows": [
         [
+          "8/22/2026 6:25:00 AM",
+          "E. Coli",
+          "235",
+          "15.60"
+        ],
+        [
           "8/13/2026 8:50:00 AM",
           "E. Coli",
           "235",
@@ -41268,10 +41286,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/13/2026 8:50:00 AM",
+        "date": "8/22/2026 6:25:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "23.62"
+        "value": "23.87"
       }
     },
     "Camp Avoda": {
