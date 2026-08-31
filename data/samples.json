@@ -41343,6 +41343,12 @@
       "town": "Middleborough",
       "rows": [
         [
+          "8/26/2026 11:34:00 AM",
+          "E. Coli",
+          "235",
+          "24.00"
+        ],
+        [
           "8/19/2026 11:45:00 AM",
           "E. Coli",
           "235",
@@ -41434,15 +41440,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 11:45:00 AM",
+        "date": "8/26/2026 11:34:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "49.03"
+        "value": "28.53"
       }
     },
     "Woods Pond Cabins": {
       "town": "Middleborough",
       "rows": [
+        [
+          "8/26/2026 11:20:00 AM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "8/19/2026 11:20:00 AM",
           "E. Coli",
@@ -41493,10 +41505,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 11:20:00 AM",
+        "date": "8/26/2026 11:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "25.21"
+        "value": "11.96"
       }
     },
     "Thunderbridge @Center": {
@@ -64298,6 +64310,12 @@
       "town": "Tyngsborough",
       "rows": [
         [
+          "8/19/2026 12:53:00 PM",
+          "E. Coli",
+          "235",
+          "70.00"
+        ],
+        [
           "8/19/2026 11:51:00 AM",
           "E. Coli",
           "235",
@@ -64371,10 +64389,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 11:51:00 AM",
+        "date": "8/19/2026 12:53:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "20.48"
+        "value": "47.90"
       }
     },
     "Pout Pond Beach": {
