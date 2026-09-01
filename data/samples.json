@@ -3952,6 +3952,12 @@
       "town": "Becket",
       "rows": [
         [
+          "8/31/2026 8:11:00 AM",
+          "E. Coli",
+          "235",
+          "0.50"
+        ],
+        [
           "8/24/2026 8:42:00 AM",
           "E. Coli",
           "235",
@@ -4043,10 +4049,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:42:00 AM",
+        "date": "8/31/2026 8:11:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "13.41"
+        "value": "6.15"
       }
     },
     "Belchertown Town Beach (Lake Arcadia)": {
@@ -14170,6 +14176,12 @@
       "town": "Chesterfield",
       "rows": [
         [
+          "8/31/2026 7:15:00 AM",
+          "E. Coli",
+          "235",
+          "0.50"
+        ],
+        [
           "8/24/2026 7:15:00 AM",
           "E. Coli",
           "235",
@@ -14243,10 +14255,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 7:15:00 AM",
+        "date": "8/31/2026 7:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.88"
+        "value": "4.25"
       }
     },
     "Chicopee Beach (DCR)": {
@@ -22574,6 +22586,12 @@
       "town": "Egremont",
       "rows": [
         [
+          "8/31/2026 10:02:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/24/2026 11:03:00 AM",
           "E. Coli",
           "235",
@@ -22683,10 +22701,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 11:03:00 AM",
+        "date": "8/31/2026 10:02:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.96"
+        "value": "1.62"
       }
     },
     "Laurel Lake (DCR)": {
@@ -27603,6 +27621,12 @@
       "town": "Great Barrington",
       "rows": [
         [
+          "8/31/2026 9:31:00 AM",
+          "E. Coli",
+          "235",
+          "0.50"
+        ],
+        [
           "8/24/2026 10:36:00 AM",
           "E. Coli",
           "235",
@@ -27694,15 +27718,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 10:36:00 AM",
+        "date": "8/31/2026 9:31:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.46"
+        "value": "1.54"
       }
     },
     "Old Maid's Park": {
       "town": "Great Barrington",
       "rows": [
+        [
+          "8/31/2026 9:15:00 AM",
+          "E. Coli",
+          "235",
+          "37.70"
+        ],
         [
           "8/24/2026 10:22:00 AM",
           "E. Coli",
@@ -27795,10 +27825,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 10:22:00 AM",
+        "date": "8/31/2026 9:15:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "49.93"
+        "value": "54.25"
       }
     },
     "Greenfield Municipal Bathing Beach": {
@@ -28203,6 +28233,18 @@
       "town": "Hanson",
       "rows": [
         [
+          "8/26/2026 9:30:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
+          "8/19/2026 9:10:00 AM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "8/11/2026 11:18:00 AM",
           "E. Coli",
           "235",
@@ -28246,10 +28288,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/11/2026 11:18:00 AM",
+        "date": "8/26/2026 9:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "23.71"
+        "value": "7.58"
       }
     },
     "Harvard Town Beach": {
@@ -30300,6 +30342,12 @@
       "town": "Hinsdale",
       "rows": [
         [
+          "8/31/2026 7:50:00 AM",
+          "E. Coli",
+          "235",
+          "9.70"
+        ],
+        [
           "8/24/2026 8:12:00 AM",
           "E. Coli",
           "235",
@@ -30391,10 +30439,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:12:00 AM",
+        "date": "8/31/2026 7:50:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "29.74"
+        "value": "22.83"
       }
     },
     "Eagle Lake": {
@@ -56189,6 +56237,12 @@
       "town": "Richmond",
       "rows": [
         [
+          "8/31/2026 8:39:00 AM",
+          "E. Coli",
+          "235",
+          "39.30"
+        ],
+        [
           "8/24/2026 8:32:00 AM",
           "E. Coli",
           "235",
@@ -56262,15 +56316,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:32:00 AM",
+        "date": "8/31/2026 8:39:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "19.50"
+        "value": "19.17"
       }
     },
     "Richmond Town Beach": {
       "town": "Richmond",
       "rows": [
+        [
+          "8/31/2026 8:29:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
         [
           "8/24/2026 8:23:00 AM",
           "E. Coli",
@@ -56363,10 +56423,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:23:00 AM",
+        "date": "8/31/2026 8:29:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.58"
+        "value": "5.73"
       }
     },
     "S.P.E.N.A. Beach": {
@@ -68923,6 +68983,12 @@
       "town": "West Stockbridge",
       "rows": [
         [
+          "8/31/2026 8:59:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "8/24/2026 8:58:00 AM",
           "E. Coli",
           "235",
@@ -69032,10 +69098,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:58:00 AM",
+        "date": "8/31/2026 8:59:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "36.95"
+        "value": "14.88"
       }
     },
     "Ice House Pond": {
