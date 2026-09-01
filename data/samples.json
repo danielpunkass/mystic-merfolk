@@ -22947,6 +22947,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "8/31/2026 10:32:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
+        [
           "8/26/2026 7:30:00 AM",
           "Enterococci",
           "104",
@@ -23020,10 +23026,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 7:30:00 AM",
+        "date": "8/31/2026 10:32:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.43"
+        "value": "1.08"
       }
     },
     "Fort Phoenix (DCR)": {
@@ -23143,6 +23149,12 @@
       "town": "Fairhaven",
       "rows": [
         [
+          "8/31/2026 9:31:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
+        [
           "8/26/2026 7:45:00 AM",
           "Enterococci",
           "104",
@@ -23216,15 +23228,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 7:45:00 AM",
+        "date": "8/31/2026 9:31:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "3.84"
+        "value": "3.20"
       }
     },
     "Sandy Beach (Raymond Street)": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "8/31/2026 9:40:00 AM",
+          "Enterococci",
+          "104",
+          "3.00"
+        ],
         [
           "8/26/2026 8:00:00 AM",
           "Enterococci",
@@ -23299,15 +23317,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 8:00:00 AM",
+        "date": "8/31/2026 9:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "2.05"
+        "value": "2.55"
       }
     },
     "Seaview": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "8/31/2026 9:46:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/26/2026 8:10:00 AM",
           "Enterococci",
@@ -23382,15 +23406,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 8:10:00 AM",
+        "date": "8/31/2026 9:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.10"
+        "value": "1.75"
       }
     },
     "West Island Causeway": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "8/31/2026 10:14:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
         [
           "8/26/2026 8:25:00 AM",
           "Enterococci",
@@ -23465,15 +23495,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 8:25:00 AM",
+        "date": "8/31/2026 10:14:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.52"
+        "value": "1.32"
       }
     },
     "West Island Town Beach": {
       "town": "Fairhaven",
       "rows": [
+        [
+          "8/31/2026 10:01:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "8/26/2026 8:40:00 AM",
           "Enterococci",
@@ -23548,10 +23584,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 8:40:00 AM",
+        "date": "8/31/2026 10:01:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.57"
+        "value": "0.66"
       }
     },
     "Bikepath - Trunk River (East)": {
@@ -61074,6 +61110,12 @@
       "town": "Springfield",
       "rows": [
         [
+          "8/31/2026 9:52:00 AM",
+          "Enterococci",
+          "61",
+          "7.30"
+        ],
+        [
           "8/24/2026 9:42:00 AM",
           "Enterococci",
           "61",
@@ -61147,10 +61189,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 9:42:00 AM",
+        "date": "8/31/2026 9:52:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "12.74"
+        "value": "8.28"
       }
     },
     "Camp Wilder @Right": {
@@ -61258,6 +61300,12 @@
       "town": "Springfield",
       "rows": [
         [
+          "8/31/2026 9:38:00 AM",
+          "Enterococci",
+          "61",
+          "5.10"
+        ],
+        [
           "8/24/2026 9:27:00 AM",
           "Enterococci",
           "61",
@@ -61331,10 +61379,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 9:27:00 AM",
+        "date": "8/31/2026 9:38:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "15.87"
+        "value": "12.90"
       }
     },
     "Lake Waushacum": {
