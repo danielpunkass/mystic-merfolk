@@ -68144,6 +68144,12 @@
       "town": "Warren",
       "rows": [
         [
+          "8/31/2026 9:32:00 AM",
+          "E. Coli",
+          "235",
+          "31.00"
+        ],
+        [
           "8/24/2026 9:35:00 AM",
           "E. Coli",
           "235",
@@ -68235,10 +68241,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 9:35:00 AM",
+        "date": "8/31/2026 9:32:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "14.22"
+        "value": "20.48"
       }
     },
     "Wayland Town Beach @Left": {
