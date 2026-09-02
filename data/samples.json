@@ -15918,6 +15918,12 @@
       "town": "Dartmouth",
       "rows": [
         [
+          "9/1/2026 9:45:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
+        [
           "8/25/2026 9:59:00 AM",
           "Enterococci",
           "104",
@@ -15991,15 +15997,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 9:59:00 AM",
+        "date": "9/1/2026 9:45:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.45"
+        "value": "1.67"
       }
     },
     "Apponagansett Town Beach": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 9:35:00 AM",
+          "Enterococci",
+          "104",
+          "7.00"
+        ],
         [
           "8/25/2026 9:36:00 AM",
           "Enterococci",
@@ -16110,15 +16122,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 9:36:00 AM",
+        "date": "9/1/2026 9:35:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "3.58"
+        "value": "5.28"
       }
     },
     "Barney's Joy - Channel": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 7:46:00 AM",
+          "Enterococci",
+          "104",
+          "13.00"
+        ],
         [
           "8/25/2026 7:44:00 AM",
           "Enterococci",
@@ -16187,15 +16205,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 7:44:00 AM",
+        "date": "9/1/2026 7:46:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "3.87"
+        "value": "7.42"
       }
     },
     "Barney's Joy - Main": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 7:41:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "8/25/2026 7:39:00 AM",
           "Enterococci",
@@ -16264,15 +16288,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 7:39:00 AM",
+        "date": "9/1/2026 7:41:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.49"
+        "value": "5.71"
       }
     },
     "Bayview (Dartmouth)": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 9:26:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/25/2026 9:29:00 AM",
           "Enterococci",
@@ -16347,10 +16377,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 9:29:00 AM",
+        "date": "9/1/2026 9:26:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "1.43"
+        "value": "1.08"
       }
     },
     "Demarest Lloyd (DCR)": {
@@ -16458,6 +16488,12 @@
       "town": "Dartmouth",
       "rows": [
         [
+          "9/1/2026 10:05:00 AM",
+          "Enterococci",
+          "104",
+          "2.00"
+        ],
+        [
           "8/25/2026 10:17:00 AM",
           "Enterococci",
           "104",
@@ -16531,15 +16567,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:17:00 AM",
+        "date": "9/1/2026 10:05:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "3.21"
+        "value": "1.78"
       }
     },
     "Jones Town Beach North": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 10:18:00 AM",
+          "Enterococci",
+          "104",
+          "26.00"
+        ],
         [
           "8/25/2026 10:30:00 AM",
           "Enterococci",
@@ -16644,15 +16686,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:30:00 AM",
+        "date": "9/1/2026 10:18:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "4.87"
+        "value": "5.24"
       }
     },
     "Jones Town Beach South": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 10:19:00 AM",
+          "Enterococci",
+          "104",
+          "9.00"
+        ],
         [
           "8/25/2026 10:32:00 AM",
           "Enterococci",
@@ -16751,15 +16799,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:32:00 AM",
+        "date": "9/1/2026 10:19:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "2.27"
+        "value": "4.04"
       }
     },
     "Moses Smith Creek": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 8:44:00 AM",
+          "Enterococci",
+          "104",
+          "11.00"
+        ],
         [
           "8/25/2026 8:48:00 AM",
           "Enterococci",
@@ -16858,15 +16912,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:48:00 AM",
+        "date": "9/1/2026 8:44:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "72.37"
+        "value": "88.59"
       }
     },
     "Nonquitt": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 9:12:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
         [
           "8/25/2026 9:14:00 AM",
           "Enterococci",
@@ -16941,15 +17001,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 9:14:00 AM",
+        "date": "9/1/2026 9:12:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.66"
+        "value": "0.76"
       }
     },
     "Oak Hill Shores": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 9:52:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/25/2026 10:05:00 AM",
           "Enterococci",
@@ -17030,7 +17096,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:05:00 AM",
+        "date": "9/1/2026 9:52:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "0.57"
@@ -17039,6 +17105,12 @@
     "Round Hill": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 8:51:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/25/2026 8:55:00 AM",
           "Enterococci",
@@ -17137,15 +17209,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:55:00 AM",
+        "date": "9/1/2026 8:51:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "2.43"
+        "value": "1.18"
       }
     },
     "Salter's Point East": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 8:30:00 AM",
+          "Enterococci",
+          "104",
+          "4.00"
+        ],
         [
           "8/25/2026 8:31:00 AM",
           "Enterococci",
@@ -17220,15 +17298,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:31:00 AM",
+        "date": "9/1/2026 8:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "11.97"
+        "value": "15.79"
       }
     },
     "Salter's Point South": {
       "town": "Dartmouth",
       "rows": [
+        [
+          "9/1/2026 8:18:00 AM",
+          "Enterococci",
+          "104",
+          "0.50"
+        ],
         [
           "8/25/2026 8:18:00 AM",
           "Enterococci",
@@ -17297,7 +17381,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:18:00 AM",
+        "date": "9/1/2026 8:18:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "1.00"
