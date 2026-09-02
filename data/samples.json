@@ -15266,6 +15266,12 @@
       "town": "Cohasset",
       "rows": [
         [
+          "9/1/2026 10:05:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/25/2026 10:30:00 AM",
           "Enterococci",
           "104",
@@ -15363,7 +15369,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:30:00 AM",
+        "date": "9/1/2026 10:05:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -15372,6 +15378,12 @@
     "Sandy Beach (Cohasset)": {
       "town": "Cohasset",
       "rows": [
+        [
+          "9/1/2026 9:50:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 10:45:00 AM",
           "Enterococci",
@@ -15458,7 +15470,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:45:00 AM",
+        "date": "9/1/2026 9:50:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -26631,6 +26643,12 @@
       "town": "Framingham",
       "rows": [
         [
+          "8/31/2026 12:25:00 PM",
+          "E. Coli",
+          "235",
+          "20.00"
+        ],
+        [
           "8/24/2026 11:10:00 AM",
           "E. Coli",
           "235",
@@ -26722,15 +26740,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 11:10:00 AM",
+        "date": "8/31/2026 12:25:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "55.85"
+        "value": "37.43"
       }
     },
     "Saxonville Beach": {
       "town": "Framingham",
       "rows": [
+        [
+          "8/31/2026 12:50:00 PM",
+          "E. Coli",
+          "235",
+          "2.50"
+        ],
         [
           "8/24/2026 11:43:00 AM",
           "E. Coli",
@@ -26823,15 +26847,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 11:43:00 AM",
+        "date": "8/31/2026 12:50:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "45.87"
+        "value": "36.35"
       }
     },
     "Waushakum Beach": {
       "town": "Framingham",
       "rows": [
+        [
+          "8/31/2026 12:05:00 PM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "8/24/2026 10:55:00 AM",
           "E. Coli",
@@ -26924,7 +26954,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 10:55:00 AM",
+        "date": "8/31/2026 12:05:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "74.53"
@@ -32003,6 +32033,12 @@
       "town": "Hull",
       "rows": [
         [
+          "9/1/2026 9:01:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "8/25/2026 7:38:00 AM",
           "Enterococci",
           "104",
@@ -32076,7 +32112,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 7:38:00 AM",
+        "date": "9/1/2026 9:01:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "17.58"
@@ -32085,6 +32121,12 @@
     "A Street Ocean": {
       "town": "Hull",
       "rows": [
+        [
+          "9/1/2026 8:53:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 7:49:00 AM",
           "Enterococci",
@@ -32159,7 +32201,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 7:49:00 AM",
+        "date": "9/1/2026 8:53:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -32168,6 +32210,12 @@
     "Darcy's": {
       "town": "Hull",
       "rows": [
+        [
+          "9/1/2026 8:20:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/25/2026 8:56:00 AM",
           "Enterococci",
@@ -32242,15 +32290,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:56:00 AM",
+        "date": "9/1/2026 8:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "12.52"
+        "value": "14.38"
       }
     },
     "Edgewater (Hull)": {
       "town": "Hull",
       "rows": [
+        [
+          "9/1/2026 9:31:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 8:28:00 AM",
           "Enterococci",
@@ -32325,7 +32379,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:28:00 AM",
+        "date": "9/1/2026 9:31:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.58"
@@ -32334,6 +32388,12 @@
     "Gunrock": {
       "town": "Hull",
       "rows": [
+        [
+          "9/1/2026 9:41:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 8:16:00 AM",
           "Enterococci",
@@ -32408,7 +32468,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:16:00 AM",
+        "date": "9/1/2026 9:41:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -32417,6 +32477,12 @@
     "James Ave.": {
       "town": "Hull",
       "rows": [
+        [
+          "9/1/2026 8:31:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/4/2026 7:51:00 AM",
           "Enterococci",
@@ -32440,6 +32506,12 @@
     "Kenberma": {
       "town": "Hull",
       "rows": [
+        [
+          "9/1/2026 9:19:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/18/2026 7:31:00 AM",
           "Enterococci",
@@ -32478,7 +32550,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/18/2026 7:31:00 AM",
+        "date": "9/1/2026 9:19:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "6.60"
@@ -32916,6 +32988,12 @@
       "town": "Hull",
       "rows": [
         [
+          "9/1/2026 9:10:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
+        [
           "8/25/2026 8:35:00 AM",
           "Enterococci",
           "104",
@@ -32989,10 +33067,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:35:00 AM",
+        "date": "9/1/2026 9:10:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.95"
+        "value": "12.58"
       }
     },
     "Peddocks Island (DCR) @Perry Cove": {
@@ -33213,6 +33291,12 @@
       "town": "Hull",
       "rows": [
         [
+          "9/1/2026 8:42:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/25/2026 8:45:00 AM",
           "Enterococci",
           "104",
@@ -33340,10 +33424,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:45:00 AM",
+        "date": "9/1/2026 8:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "8.27"
+        "value": "7.20"
       }
     },
     "Clark": {
@@ -40625,6 +40709,12 @@
       "town": "Marshfield",
       "rows": [
         [
+          "9/1/2026 8:10:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/25/2026 8:01:00 AM",
           "Enterococci",
           "104",
@@ -40686,7 +40776,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:01:00 AM",
+        "date": "9/1/2026 8:10:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "11.94"
@@ -40695,6 +40785,12 @@
     "Brant Rock": {
       "town": "Marshfield",
       "rows": [
+        [
+          "9/1/2026 8:20:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 8:15:00 AM",
           "Enterococci",
@@ -40757,7 +40853,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:15:00 AM",
+        "date": "9/1/2026 8:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -40766,6 +40862,12 @@
     "Fieldston @Hartford Rd.": {
       "town": "Marshfield",
       "rows": [
+        [
+          "9/1/2026 8:40:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "8/25/2026 8:34:00 AM",
           "Enterococci",
@@ -40828,15 +40930,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:34:00 AM",
+        "date": "9/1/2026 8:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "6.23"
+        "value": "5.00"
       }
     },
     "Green Harbor": {
       "town": "Marshfield",
       "rows": [
+        [
+          "9/1/2026 7:55:00 AM",
+          "Enterococci",
+          "104",
+          "31.00"
+        ],
         [
           "8/25/2026 7:50:00 AM",
           "Enterococci",
@@ -40929,15 +41037,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 7:50:00 AM",
+        "date": "9/1/2026 7:55:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.58"
+        "value": "10.92"
       }
     },
     "Rexhame": {
       "town": "Marshfield",
       "rows": [
+        [
+          "9/1/2026 8:58:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 8:55:00 AM",
           "Enterococci",
@@ -41030,7 +41144,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:55:00 AM",
+        "date": "9/1/2026 8:58:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -41039,6 +41153,12 @@
     "Sunrise @9th St.": {
       "town": "Marshfield",
       "rows": [
+        [
+          "9/1/2026 8:30:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "8/25/2026 8:25:00 AM",
           "Enterococci",
@@ -41101,7 +41221,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:25:00 AM",
+        "date": "9/1/2026 8:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "5.00"
@@ -61702,6 +61822,12 @@
       "town": "Scituate",
       "rows": [
         [
+          "9/1/2026 9:30:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/25/2026 10:00:00 AM",
           "Enterococci",
           "104",
@@ -61817,15 +61943,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:00:00 AM",
+        "date": "9/1/2026 9:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "13.91"
+        "value": "12.11"
       }
     },
     "Egypt": {
       "town": "Scituate",
       "rows": [
+        [
+          "9/1/2026 10:27:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 10:21:00 AM",
           "Enterococci",
@@ -61894,7 +62026,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:21:00 AM",
+        "date": "9/1/2026 10:27:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "8.75"
@@ -61903,6 +62035,12 @@
     "Humarock": {
       "town": "Scituate",
       "rows": [
+        [
+          "9/1/2026 9:25:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/25/2026 9:22:00 AM",
           "Enterococci",
@@ -61971,15 +62109,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 9:22:00 AM",
+        "date": "9/1/2026 9:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.60"
+        "value": "7.58"
       }
     },
     "Minot": {
       "town": "Scituate",
       "rows": [
+        [
+          "9/1/2026 10:38:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/25/2026 10:32:00 AM",
           "Enterococci",
@@ -62048,15 +62192,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:32:00 AM",
+        "date": "9/1/2026 10:38:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "12.58"
+        "value": "10.95"
       }
     },
     "Peggotty": {
       "town": "Scituate",
       "rows": [
+        [
+          "9/1/2026 9:52:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 9:50:00 AM",
           "Enterococci",
@@ -62131,7 +62281,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 9:50:00 AM",
+        "date": "9/1/2026 9:52:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.96"
@@ -62140,6 +62290,12 @@
     "Sand Hills": {
       "town": "Scituate",
       "rows": [
+        [
+          "9/1/2026 10:16:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 10:10:00 AM",
           "Enterococci",
@@ -62208,15 +62364,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:10:00 AM",
+        "date": "9/1/2026 10:16:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "16.05"
+        "value": "10.54"
       }
     },
     "Scituate Lighthouse": {
       "town": "Scituate",
       "rows": [
+        [
+          "9/1/2026 10:08:00 AM",
+          "Enterococci",
+          "104",
+          "20.00"
+        ],
         [
           "8/25/2026 10:02:00 AM",
           "Enterococci",
@@ -62285,10 +62447,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 10:02:00 AM",
+        "date": "9/1/2026 10:08:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.00"
+        "value": "6.60"
       }
     },
     "Community Center Beach": {
@@ -69155,6 +69317,12 @@
       "town": "Webster",
       "rows": [
         [
+          "8/31/2026 10:42:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "8/25/2026 12:37:00 PM",
           "E. Coli",
           "235",
@@ -69246,15 +69414,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 12:37:00 PM",
+        "date": "8/31/2026 10:42:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.19"
+        "value": "3.73"
       }
     },
     "Memorial Beach (Webster) @Location 1": {
       "town": "Webster",
       "rows": [
+        [
+          "8/31/2026 10:10:00 AM",
+          "E. Coli",
+          "235",
+          "68.90"
+        ],
         [
           "8/25/2026 12:02:00 PM",
           "E. Coli",
@@ -69353,10 +69527,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 12:02:00 PM",
+        "date": "8/31/2026 10:10:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "29.91"
+        "value": "60.72"
       }
     },
     "Burton Baker": {
@@ -72413,6 +72587,12 @@
       "town": "Weymouth",
       "rows": [
         [
+          "9/1/2026 8:33:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "8/25/2026 8:31:00 AM",
           "Enterococci",
           "104",
@@ -72486,7 +72666,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:31:00 AM",
+        "date": "9/1/2026 8:33:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.74"
@@ -72495,6 +72675,12 @@
     "Wessagusett (Old Wessagussett)": {
       "town": "Weymouth",
       "rows": [
+        [
+          "9/1/2026 8:42:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 8:37:00 AM",
           "Enterococci",
@@ -72569,7 +72755,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:37:00 AM",
+        "date": "9/1/2026 8:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "6.60"
