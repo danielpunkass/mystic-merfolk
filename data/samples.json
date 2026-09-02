@@ -19677,6 +19677,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "8/25/2026 1:29:00 PM",
+          "E. Coli",
+          "235",
+          "16.00"
+        ],
+        [
           "8/20/2026 8:43:00 AM",
           "E. Coli",
           "235",
@@ -19756,15 +19762,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/20/2026 8:43:00 AM",
+        "date": "8/25/2026 1:29:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.08"
+        "value": "3.16"
       }
     },
     "Lake Manchaug Camping": {
       "town": "Douglas",
       "rows": [
+        [
+          "8/25/2026 1:44:00 PM",
+          "E. Coli",
+          "235",
+          "14.80"
+        ],
         [
           "8/20/2026 8:57:00 AM",
           "E. Coli",
@@ -19851,10 +19863,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/20/2026 8:57:00 AM",
+        "date": "8/25/2026 1:44:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "11.84"
+        "value": "11.65"
       }
     },
     "Wallum Lake (DCR)": {
@@ -19962,6 +19974,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "8/25/2026 1:14:00 PM",
+          "E. Coli",
+          "235",
+          "31.80"
+        ],
+        [
           "8/20/2026 8:57:00 AM",
           "E. Coli",
           "235",
@@ -20047,10 +20065,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/20/2026 8:57:00 AM",
+        "date": "8/25/2026 1:14:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "1.68"
+        "value": "3.36"
       }
     },
     "Mascuppic": {
@@ -41653,6 +41671,12 @@
       "town": "Mattapoisett",
       "rows": [
         [
+          "9/1/2026 8:35:00 AM",
+          "Enterococci",
+          "104",
+          "1.00"
+        ],
+        [
           "8/25/2026 8:20:00 AM",
           "Enterococci",
           "104",
@@ -41726,15 +41750,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:20:00 AM",
+        "date": "9/1/2026 8:35:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "10.61"
+        "value": "9.23"
       }
     },
     "Mattapoisett Town Beach": {
       "town": "Mattapoisett",
       "rows": [
+        [
+          "9/1/2026 8:15:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 8:10:00 AM",
           "Enterococci",
@@ -41815,7 +41845,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:10:00 AM",
+        "date": "9/1/2026 8:15:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "1.05"
@@ -41824,6 +41854,12 @@
     "Ned's Point": {
       "town": "Mattapoisett",
       "rows": [
+        [
+          "9/1/2026 8:30:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/25/2026 8:26:00 AM",
           "Enterococci",
@@ -41898,15 +41934,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 8:26:00 AM",
+        "date": "9/1/2026 8:30:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "0.76"
+        "value": "0.91"
       }
     },
     "Shining Tides Reservation": {
       "town": "Mattapoisett",
       "rows": [
+        [
+          "9/1/2026 7:57:00 AM",
+          "Enterococci",
+          "104",
+          "7.00"
+        ],
         [
           "8/25/2026 7:55:00 AM",
           "Enterococci",
@@ -41981,10 +42023,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 7:55:00 AM",
+        "date": "9/1/2026 7:57:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "3.29"
+        "value": "4.85"
       }
     },
     "Hinkley @Left": {
