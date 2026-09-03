@@ -5784,6 +5784,12 @@
       "town": "Boston",
       "rows": [
         [
+          "9/2/2026 3:45:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
+        [
           "9/1/2026 9:10:00 AM",
           "Enterococci",
           "61",
@@ -5890,6 +5896,12 @@
     "Carson Beach (DCR) @I Street": {
       "town": "Boston",
       "rows": [
+        [
+          "9/2/2026 3:20:00 PM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "9/1/2026 9:00:00 AM",
           "Enterococci",
@@ -8379,6 +8391,12 @@
       "town": "Boston",
       "rows": [
         [
+          "9/2/2026 3:45:00 PM",
+          "Enterococci",
+          "104",
+          "33.00"
+        ],
+        [
           "9/1/2026 2:15:00 PM",
           "Enterococci",
           "104",
@@ -9016,10 +9034,10 @@
         ]
       ],
       "geoMean": {
-        "date": "9/1/2026 2:15:00 PM",
+        "date": "9/2/2026 3:45:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "7.45"
+        "value": "11.37"
       }
     },
     "Pleasure Bay (DCR) @Broadway": {
@@ -9453,6 +9471,12 @@
     "Tenean (DCR)": {
       "town": "Boston",
       "rows": [
+        [
+          "9/2/2026 3:56:00 PM",
+          "Enterococci",
+          "104",
+          "23.00"
+        ],
         [
           "9/1/2026 2:40:00 PM",
           "Enterococci",
@@ -10091,10 +10115,10 @@
         ]
       ],
       "geoMean": {
-        "date": "9/1/2026 2:40:00 PM",
+        "date": "9/2/2026 3:56:00 PM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "5.70"
+        "value": "10.67"
       }
     },
     "Barlows Landing": {
@@ -44347,6 +44371,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "9/2/2026 4:55:00 PM",
+          "Enterococci",
+          "61",
+          "471.00"
+        ],
+        [
           "9/1/2026 11:30:00 AM",
           "Enterococci",
           "61",
@@ -44477,6 +44507,12 @@
     "Nahant Beach (DCR) @2 (Parking Section 12)": {
       "town": "Nahant",
       "rows": [
+        [
+          "9/2/2026 4:50:00 PM",
+          "Enterococci",
+          "61",
+          "448.00"
+        ],
         [
           "9/1/2026 11:36:00 AM",
           "Enterococci",
@@ -44609,6 +44645,12 @@
       "town": "Nahant",
       "rows": [
         [
+          "9/2/2026 4:45:00 PM",
+          "Enterococci",
+          "61",
+          "63.00"
+        ],
+        [
           "9/1/2026 11:19:00 AM",
           "Enterococci",
           "61",
@@ -44733,6 +44775,12 @@
     "Nahant Beach (DCR) @4 (South/Main Entrance)": {
       "town": "Nahant",
       "rows": [
+        [
+          "9/2/2026 4:30:00 PM",
+          "Enterococci",
+          "61",
+          "63.00"
+        ],
         [
           "9/1/2026 11:24:00 AM",
           "Enterococci",
