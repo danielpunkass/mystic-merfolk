@@ -34970,6 +34970,12 @@
       "town": "Lanesborough",
       "rows": [
         [
+          "9/2/2026 11:43:00 AM",
+          "E. Coli",
+          "235",
+          "10.70"
+        ],
+        [
           "8/24/2026 2:10:00 PM",
           "E. Coli",
           "235",
@@ -35073,10 +35079,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 2:10:00 PM",
+        "date": "9/2/2026 11:43:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "16.60"
+        "value": "9.21"
       }
     },
     "Lee Town Beach": {
@@ -43846,6 +43852,12 @@
       "town": "Monterey",
       "rows": [
         [
+          "9/2/2026 9:27:00 AM",
+          "E. Coli",
+          "235",
+          "6.30"
+        ],
+        [
           "8/26/2026 11:06:00 AM",
           "E. Coli",
           "235",
@@ -43907,10 +43919,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 11:06:00 AM",
+        "date": "9/2/2026 9:27:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "10.39"
+        "value": "10.06"
       }
     },
     "Black Rock (Nahant)": {
@@ -48297,6 +48309,12 @@
       "town": "North Adams",
       "rows": [
         [
+          "9/2/2026 10:40:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/24/2026 12:47:00 PM",
           "E. Coli",
           "235",
@@ -48388,10 +48406,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 12:47:00 PM",
+        "date": "9/2/2026 10:40:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.31"
+        "value": "4.74"
       }
     },
     "Berry Pond Beach (DCR)": {
@@ -49452,6 +49470,12 @@
       "town": "Orange",
       "rows": [
         [
+          "9/2/2026 1:10:00 PM",
+          "E. Coli",
+          "235",
+          "0.50"
+        ],
+        [
           "8/24/2026 9:48:00 AM",
           "E. Coli",
           "235",
@@ -49543,10 +49567,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 9:48:00 AM",
+        "date": "9/2/2026 1:10:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "4.77"
+        "value": "3.31"
       }
     },
     "Crystal Lake (Orleans)": {
@@ -50373,6 +50397,12 @@
       "town": "Plainfield",
       "rows": [
         [
+          "9/2/2026 8:52:00 AM",
+          "E. Coli",
+          "235",
+          "7.50"
+        ],
+        [
           "8/24/2026 9:07:00 AM",
           "E. Coli",
           "235",
@@ -50464,10 +50494,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 9:07:00 AM",
+        "date": "9/2/2026 8:52:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.53"
+        "value": "3.29"
       }
     },
     "Barrett Pond (DCR)": {
@@ -59443,6 +59473,12 @@
       "town": "Rowe",
       "rows": [
         [
+          "9/2/2026 9:55:00 AM",
+          "E. Coli",
+          "235",
+          "4.10"
+        ],
+        [
           "8/24/2026 11:47:00 AM",
           "E. Coli",
           "235",
@@ -59534,15 +59570,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 11:47:00 AM",
+        "date": "9/2/2026 9:55:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "21.81"
+        "value": "15.94"
       }
     },
     "Rowe Town Beach at Pelham Park @Right": {
       "town": "Rowe",
       "rows": [
+        [
+          "9/2/2026 9:52:00 AM",
+          "E. Coli",
+          "235",
+          "3.10"
+        ],
         [
           "8/24/2026 11:48:00 AM",
           "E. Coli",
@@ -59635,10 +59677,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 11:48:00 AM",
+        "date": "9/2/2026 9:52:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "7.29"
+        "value": "5.37"
       }
     },
     "H.A. Moses Beach (Scout Reservation)": {
@@ -73652,6 +73694,12 @@
       "town": "Williamstown",
       "rows": [
         [
+          "9/2/2026 11:12:00 AM",
+          "E. Coli",
+          "235",
+          "129.10"
+        ],
+        [
           "8/24/2026 1:46:00 PM",
           "E. Coli",
           "235",
@@ -73749,10 +73797,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 1:46:00 PM",
+        "date": "9/2/2026 11:12:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "48.90"
+        "value": "44.52"
       }
     },
     "Lake Dennison State Park (DCR) @Day Use Beach": {
