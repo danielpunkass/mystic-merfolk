@@ -1,24 +1,21 @@
 {
-  "lastSynced": "2026-09-04T11:31:22+00:00",
+  "lastSynced": "2026-09-04T11:45:55+00:00",
   "season": "in",
   "today": "2026-09-04",
   "beach": "Shannon Beach @ Upper Mystic (DCR)",
   "mostRecentSeasonYear": 2025,
   "samples": {
-    "status": "unavailable",
-    "count": 11823,
-    "source": "none"
+    "status": "ok",
+    "count": 11826,
+    "source": "browser"
   },
   "status": {
-    "status": "unavailable"
+    "status": "ok"
   },
   "cso": {
-    "status": "error",
+    "status": "ok",
     "count": 0
   },
-  "errors": [
-    "browser: browser fetch exited 1: {\"errors\": [\"fatal: token fetch failed after 3 attempts: HTTP Error 403: Forbidden\"]}",
-    "cso: HTTP Error 403: Forbidden"
-  ],
+  "errors": [],
   "schemaVersion": 1
 }
