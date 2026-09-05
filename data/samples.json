@@ -5689,6 +5689,12 @@
       "town": "Bolton",
       "rows": [
         [
+          "8/31/2026 8:30:00 AM",
+          "E. Coli",
+          "235",
+          "9.00"
+        ],
+        [
           "8/24/2026 7:45:00 AM",
           "E. Coli",
           "235",
@@ -5780,10 +5786,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 7:45:00 AM",
+        "date": "8/31/2026 8:30:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "2.40"
+        "value": "3.73"
       }
     },
     "Carson Beach (DCR) @Bathhouse": {
@@ -29400,6 +29406,12 @@
       "town": "Groton",
       "rows": [
         [
+          "8/31/2026 9:44:00 AM",
+          "E. Coli",
+          "235",
+          "4.00"
+        ],
+        [
           "8/24/2026 9:08:00 AM",
           "E. Coli",
           "235",
@@ -29491,10 +29503,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 9:08:00 AM",
+        "date": "8/31/2026 9:44:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "18.80"
+        "value": "15.36"
       }
     },
     "Holmes Street": {
@@ -29768,6 +29780,12 @@
       "town": "Harvard",
       "rows": [
         [
+          "8/31/2026 9:22:00 AM",
+          "E. Coli",
+          "235",
+          "4.00"
+        ],
+        [
           "8/24/2026 8:38:00 AM",
           "E. Coli",
           "235",
@@ -29841,10 +29859,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:38:00 AM",
+        "date": "8/31/2026 9:22:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "5.58"
+        "value": "7.36"
       }
     },
     "Atlantic Avenue (Harwich)": {
@@ -35673,6 +35691,12 @@
       "town": "Lunenburg",
       "rows": [
         [
+          "8/31/2026 11:22:00 AM",
+          "E. Coli",
+          "235",
+          "11.00"
+        ],
+        [
           "8/26/2026 8:10:00 AM",
           "E. Coli",
           "235",
@@ -35782,15 +35806,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/26/2026 8:10:00 AM",
+        "date": "8/31/2026 11:22:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "55.54"
+        "value": "29.48"
       }
     },
     "Hickory Hills (Hemlock Drive)": {
       "town": "Lunenburg",
       "rows": [
+        [
+          "8/31/2026 10:57:00 AM",
+          "E. Coli",
+          "235",
+          "8.00"
+        ],
         [
           "8/24/2026 12:10:00 PM",
           "E. Coli",
@@ -35883,15 +35913,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 12:10:00 PM",
+        "date": "8/31/2026 10:57:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "22.53"
+        "value": "20.15"
       }
     },
     "Hickory Hills (Island Rd.)": {
       "town": "Lunenburg",
       "rows": [
+        [
+          "8/31/2026 10:47:00 AM",
+          "E. Coli",
+          "235",
+          "56.00"
+        ],
         [
           "8/24/2026 12:02:00 PM",
           "E. Coli",
@@ -35984,10 +36020,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 12:02:00 PM",
+        "date": "8/31/2026 10:47:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "9.18"
+        "value": "16.49"
       }
     },
     "Lunenburg Town Beach": {
@@ -64776,6 +64812,12 @@
       "town": "Stow",
       "rows": [
         [
+          "8/31/2026 8:58:00 AM",
+          "E. Coli",
+          "235",
+          "2.00"
+        ],
+        [
           "8/24/2026 8:17:00 AM",
           "E. Coli",
           "235",
@@ -64849,10 +64891,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:17:00 AM",
+        "date": "8/31/2026 8:58:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.28"
+        "value": "6.27"
       }
     },
     "Cedar Lake Recreation Area": {
