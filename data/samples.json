@@ -44077,6 +44077,12 @@
       "town": "Middleton",
       "rows": [
         [
+          "8/31/2026 9:03:00 AM",
+          "E. Coli",
+          "235",
+          "17.30"
+        ],
+        [
           "8/24/2026 8:02:00 AM",
           "E. Coli",
           "235",
@@ -44168,10 +44174,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/24/2026 8:02:00 AM",
+        "date": "8/31/2026 9:03:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "29.65"
+        "value": "28.05"
       }
     },
     "Houghton's Pond @ Bathhouse (DCR)": {
