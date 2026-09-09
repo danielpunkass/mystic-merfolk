@@ -414,6 +414,12 @@
       "town": "Amesbury",
       "rows": [
         [
+          "9/8/2026 10:57:00 AM",
+          "E. Coli",
+          "235",
+          "14.80"
+        ],
+        [
           "9/1/2026 6:59:00 AM",
           "E. Coli",
           "235",
@@ -511,10 +517,10 @@
         ]
       ],
       "geoMean": {
-        "date": "9/1/2026 6:59:00 AM",
+        "date": "9/8/2026 10:57:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "26.43"
+        "value": "19.94"
       }
     },
     "Puffers Pond (AKA Factory Hollow Pond) @Mill St.": {
@@ -16361,7 +16367,7 @@
           "9/16/2025 11:14:00 AM",
           "E. Coli",
           "235",
-          "0.50"
+          "*"
         ]
       ],
       "geoMean": {
@@ -50766,6 +50772,12 @@
       "town": "Otis",
       "rows": [
         [
+          "9/8/2026 11:12:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "9/1/2026 11:18:00 AM",
           "E. Coli",
           "235",
@@ -50863,10 +50875,10 @@
         ]
       ],
       "geoMean": {
-        "date": "9/1/2026 11:18:00 AM",
+        "date": "9/8/2026 11:12:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "8.50"
+        "value": "6.41"
       }
     },
     "Carbuncle Pond": {
@@ -59690,6 +59702,12 @@
       "town": "Rockport",
       "rows": [
         [
+          "9/8/2026 11:25:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "8/31/2026 11:55:00 AM",
           "Enterococci",
           "104",
@@ -59769,10 +59787,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 11:55:00 AM",
+        "date": "9/8/2026 11:25:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "20.20"
+        "value": "17.58"
       }
     },
     "Cape Hedge": {
@@ -59807,6 +59825,12 @@
     "Front Beach (Rockport)": {
       "town": "Rockport",
       "rows": [
+        [
+          "9/8/2026 11:20:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/31/2026 11:52:00 AM",
           "Enterococci",
@@ -59935,7 +59959,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 11:52:00 AM",
+        "date": "9/8/2026 11:20:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "7.58"
@@ -59944,6 +59968,12 @@
     "Long - Gloucester": {
       "town": "Rockport",
       "rows": [
+        [
+          "9/8/2026 10:50:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/31/2026 11:22:00 AM",
           "Enterococci",
@@ -60024,7 +60054,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 11:22:00 AM",
+        "date": "9/8/2026 10:50:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "5.00"
@@ -60033,6 +60063,12 @@
     "Long Beach": {
       "town": "Rockport",
       "rows": [
+        [
+          "9/8/2026 10:56:00 AM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/31/2026 11:31:00 AM",
           "Enterococci",
@@ -60113,7 +60149,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 11:31:00 AM",
+        "date": "9/8/2026 10:56:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
         "value": "8.71"
@@ -60212,6 +60248,12 @@
       "town": "Rockport",
       "rows": [
         [
+          "9/8/2026 11:08:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "9/3/2026 2:52:00 PM",
           "Enterococci",
           "104",
@@ -60235,7 +60277,13 @@
           "104",
           "5.00"
         ]
-      ]
+      ],
+      "geoMean": {
+        "date": "9/8/2026 11:08:00 AM",
+        "indicator": "Enterococci",
+        "threshold": "35",
+        "value": "5.74"
+      }
     },
     "Rowe Town Beach at Pelham Park @Center": {
       "town": "Rowe",
