@@ -977,6 +977,12 @@
       "town": "Aquinnah",
       "rows": [
         [
+          "9/3/2026 2:45:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "8/3/2026 10:35:00 AM",
           "Enterococci",
           "104",
@@ -15294,6 +15300,12 @@
       "town": "Chilmark",
       "rows": [
         [
+          "9/3/2026 2:05:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
+        [
           "8/3/2026 8:50:00 AM",
           "Enterococci",
           "104",
@@ -15316,6 +15328,12 @@
     "Ocean @ Lucy Vincent Beach": {
       "town": "Chilmark",
       "rows": [
+        [
+          "9/8/2026 8:40:00 AM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/31/2026 8:50:00 AM",
           "Enterococci",
@@ -15408,10 +15426,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 8:50:00 AM",
+        "date": "9/8/2026 8:40:00 AM",
         "indicator": "Enterococci",
         "threshold": "35",
-        "value": "6.60"
+        "value": "5.74"
       }
     },
     "Ocean @ Squibnocket Beach": {
@@ -20355,6 +20373,12 @@
       "town": "Douglas",
       "rows": [
         [
+          "9/2/2026 10:35:00 AM",
+          "E. Coli",
+          "235",
+          "1.00"
+        ],
+        [
           "8/25/2026 1:29:00 PM",
           "E. Coli",
           "235",
@@ -20440,7 +20464,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 1:29:00 PM",
+        "date": "9/2/2026 10:35:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
         "value": "3.16"
@@ -23537,6 +23561,12 @@
       "town": "Edgartown",
       "rows": [
         [
+          "9/3/2026 1:17:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "8/4/2026 7:25:00 AM",
           "Enterococci",
           "104",
@@ -23559,6 +23589,12 @@
     "Fuller Street": {
       "town": "Edgartown",
       "rows": [
+        [
+          "9/3/2026 1:05:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
         [
           "8/3/2026 7:05:00 AM",
           "Enterococci",
@@ -23719,6 +23755,12 @@
       "town": "Edgartown",
       "rows": [
         [
+          "9/3/2026 2:30:00 PM",
+          "Enterococci",
+          "104",
+          "10.00"
+        ],
+        [
           "8/3/2026 1:00:00 PM",
           "Enterococci",
           "104",
@@ -23876,6 +23918,12 @@
     "Wasque Swim Beach": {
       "town": "Edgartown",
       "rows": [
+        [
+          "9/3/2026 1:08:00 PM",
+          "Enterococci",
+          "104",
+          "5.00"
+        ],
         [
           "8/4/2026 7:05:00 AM",
           "Enterococci",
@@ -68276,6 +68324,12 @@
       "town": "Tyngsborough",
       "rows": [
         [
+          "9/2/2026 12:18:00 PM",
+          "E. Coli",
+          "235",
+          "31.00"
+        ],
+        [
           "8/19/2026 12:53:00 PM",
           "E. Coli",
           "235",
@@ -68355,10 +68409,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 12:53:00 PM",
+        "date": "9/2/2026 12:18:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "47.90"
+        "value": "64.50"
       }
     },
     "Pout Pond Beach": {
@@ -73096,6 +73150,12 @@
       "town": "West Tisbury",
       "rows": [
         [
+          "9/3/2026 1:25:00 PM",
+          "Enterococci",
+          "61",
+          "2.00"
+        ],
+        [
           "8/25/2026 2:11:00 PM",
           "Enterococci",
           "61",
@@ -73169,10 +73229,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 2:11:00 PM",
+        "date": "9/3/2026 1:25:00 PM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "0.66"
+        "value": "0.87"
       }
     },
     "Long Point (Ocean) @Central": {
