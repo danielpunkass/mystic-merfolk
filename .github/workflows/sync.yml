@@ -53,10 +53,27 @@ jobs:
         # The in-season sample/status data now lives in DPH's Tableau Cloud
         # workbook, read by fetch_tableau_cloud.py via a headless browser.
         if: github.event_name != 'push'
+        # Retried: both halves of this step reach out to the network, and both
+        # have flaked. Seen 2026-09-09 (six consecutive runs): `--with-deps`
+        # shells out to apt, which failed with "Hash Sum mismatch" fetching
+        # dl.google.com's Packages.gz — a mirror hiccup, exit 100, nothing to do
+        # with us. A stale apt index is what causes that, so the retry path
+        # clears the cached lists before trying again.
         run: |
-          python -m pip install --upgrade pip
-          pip install playwright
-          python -m playwright install --with-deps chromium
+          for i in 1 2 3; do
+            if python -m pip install --upgrade pip \
+               && pip install playwright \
+               && python -m playwright install --with-deps chromium; then
+              echo "Playwright ready on attempt $i."
+              exit 0
+            fi
+            echo "Playwright install failed (attempt $i) — clearing apt lists and retrying..."
+            sudo apt-get clean || true
+            sudo rm -rf /var/lib/apt/lists/* || true
+            sleep $((i * 15))
+          done
+          echo "::error::Could not install Playwright + Chromium after 3 attempts."
+          exit 1
 
       - name: Run sync (dispatched runs only)
         if: github.event_name != 'push'
@@ -189,3 +206,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Raised from the 10-minute default. The action just polls GitHub's
+          # Pages backend for `updating_pages` → `succeeded`; that normally
+          # takes well under a minute here, but the backend occasionally slows
+          # to ~10 min for a stretch and the default turns that into a red run.
+          # Seen 2026-09-10: the 11:00 sync squeaked through at 10m25s and the
+          # 11:15 one polled `updating_pages` for the full 600s and aborted —
+          # with the data already committed, so only the deploy was lost.
+          # 20 min rides that out. It is deliberately not higher: this job holds
+          # the `pages-sync` concurrency group while it waits, and the external
+          # dispatcher fires every 15 min, so a longer stall should surface as a
+          # failure (and to probe-export.yml) rather than back the queue up.
+          timeout: 1200000
