@@ -30,7 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      # Falls back to the retry step's output when the first deploy attempt
+      # timed out (see the deploy steps at the foot of the job).
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -203,19 +205,29 @@ jobs:
         with:
           path: site
 
+      # deploy-pages just polls the Pages backend for `updating_pages` →
+      # `succeeded`. That is normally well under a minute here, but the backend
+      # occasionally slows to ~10 min for a stretch: on 2026-09-10 the 11:00
+      # sync squeaked through at 10m25s and the 11:15 one polled the full 600s
+      # and aborted (data already committed, so only the deploy was lost).
+      #
+      # The action's `timeout` input CANNOT ride that out — 600000 ms is both
+      # the default and a hard ceiling (`Math.min(timeoutInput, MAX_TIMEOUT)`),
+      # so passing anything larger just logs "timeout value is greater than the
+      # allowed maximum" and clamps. Two attempts is the only way to get more
+      # tolerance. A timed-out attempt cancels its own deployment before
+      # returning, so the retry starts clean from the same uploaded artifact.
+      #
+      # Two is deliberate rather than more: the job holds the `pages-sync`
+      # concurrency group while it waits and the external dispatcher fires every
+      # 15 min, so a stall past ~20 min should go red (and reach
+      # probe-export.yml) rather than back the queue up.
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          # Raised from the 10-minute default. The action just polls GitHub's
-          # Pages backend for `updating_pages` → `succeeded`; that normally
-          # takes well under a minute here, but the backend occasionally slows
-          # to ~10 min for a stretch and the default turns that into a red run.
-          # Seen 2026-09-10: the 11:00 sync squeaked through at 10m25s and the
-          # 11:15 one polled `updating_pages` for the full 600s and aborted —
-          # with the data already committed, so only the deploy was lost.
-          # 20 min rides that out. It is deliberately not higher: this job holds
-          # the `pages-sync` concurrency group while it waits, and the external
-          # dispatcher fires every 15 min, so a longer stall should surface as a
-          # failure (and to probe-export.yml) rather than back the queue up.
-          timeout: 1200000
+        continue-on-error: true
+
+      - name: Deploy to GitHub Pages (retry)
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
