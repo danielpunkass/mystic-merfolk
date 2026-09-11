@@ -27435,6 +27435,12 @@
       "town": "Framingham",
       "rows": [
         [
+          "9/8/2026 2:40:00 PM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
+        [
           "8/31/2026 12:25:00 PM",
           "E. Coli",
           "235",
@@ -27532,15 +27538,21 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 12:25:00 PM",
+        "date": "9/8/2026 2:40:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "37.43"
+        "value": "22.77"
       }
     },
     "Saxonville Beach": {
       "town": "Framingham",
       "rows": [
+        [
+          "9/8/2026 3:05:00 PM",
+          "E. Coli",
+          "235",
+          "5.00"
+        ],
         [
           "8/31/2026 12:50:00 PM",
           "E. Coli",
@@ -27639,10 +27651,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 12:50:00 PM",
+        "date": "9/8/2026 3:05:00 PM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "36.35"
+        "value": "21.32"
       }
     },
     "Waushakum Beach": {
