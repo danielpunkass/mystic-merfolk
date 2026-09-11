@@ -4144,6 +4144,12 @@
       "town": "Becket",
       "rows": [
         [
+          "9/10/2026 7:52:00 AM",
+          "E. Coli",
+          "235",
+          "31.30"
+        ],
+        [
           "8/31/2026 8:11:00 AM",
           "E. Coli",
           "235",
@@ -4241,10 +4247,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 8:11:00 AM",
+        "date": "9/10/2026 7:52:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.15"
+        "value": "7.16"
       }
     },
     "Belchertown Town Beach (Lake Arcadia)": {
@@ -32142,6 +32148,12 @@
       "town": "Hinsdale",
       "rows": [
         [
+          "9/10/2026 7:14:00 AM",
+          "E. Coli",
+          "235",
+          "41.40"
+        ],
+        [
           "8/31/2026 7:50:00 AM",
           "E. Coli",
           "235",
@@ -32239,10 +32251,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 7:50:00 AM",
+        "date": "9/10/2026 7:14:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "22.83"
+        "value": "25.02"
       }
     },
     "Eagle Lake": {
