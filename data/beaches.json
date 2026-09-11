@@ -1093,7 +1093,7 @@
     {
       "name": "Prospect Lake Park",
       "town": "Egremont",
-      "status": "Off-season"
+      "status": "Open"
     },
     {
       "name": "Laurel Lake (DCR)",
@@ -1693,7 +1693,7 @@
     {
       "name": "Sunrise Beach",
       "town": "Lanesborough",
-      "status": "Off-season"
+      "status": "Open"
     },
     {
       "name": "Lee Town Beach",
@@ -2053,7 +2053,7 @@
     {
       "name": "Lake Garfield",
       "town": "Monterey",
-      "status": "Off-season"
+      "status": "Open"
     },
     {
       "name": "Black Rock (Nahant)",
@@ -2268,7 +2268,7 @@
     {
       "name": "Windsor Lake",
       "town": "North Adams",
-      "status": "Off-season"
+      "status": "Open"
     },
     {
       "name": "Berry Pond Beach (DCR)",
@@ -2683,7 +2683,7 @@
     {
       "name": "Richmond Town Beach",
       "town": "Richmond",
-      "status": "Off-season"
+      "status": "Open"
     },
     {
       "name": "S.P.E.N.A. Beach",
@@ -3448,7 +3448,7 @@
     {
       "name": "Card Pond Beach",
       "town": "West Stockbridge",
-      "status": "Off-season"
+      "status": "Open"
     },
     {
       "name": "Ice House Pond",
@@ -3563,7 +3563,7 @@
     {
       "name": "Margaret Lindley Park",
       "town": "Williamstown",
-      "status": "Off-season"
+      "status": "Open"
     },
     {
       "name": "Lake Dennison State Park (DCR) @Day Use Beach",
