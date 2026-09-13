@@ -73532,6 +73532,12 @@
       "town": "West Tisbury",
       "rows": [
         [
+          "9/10/2026 9:42:00 AM",
+          "Enterococci",
+          "61",
+          "3.00"
+        ],
+        [
           "9/3/2026 1:25:00 PM",
           "Enterococci",
           "61",
@@ -73611,15 +73617,21 @@
         ]
       ],
       "geoMean": {
-        "date": "9/3/2026 1:25:00 PM",
+        "date": "9/10/2026 9:42:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
-        "value": "0.87"
+        "value": "1.08"
       }
     },
     "Long Point (Ocean) @Central": {
       "town": "West Tisbury",
       "rows": [
+        [
+          "9/10/2026 9:39:00 AM",
+          "Enterococci",
+          "61",
+          "5.00"
+        ],
         [
           "8/25/2026 2:07:00 PM",
           "Enterococci",
@@ -73694,7 +73706,7 @@
         ]
       ],
       "geoMean": {
-        "date": "8/25/2026 2:07:00 PM",
+        "date": "9/10/2026 9:39:00 AM",
         "indicator": "Enterococci",
         "threshold": "33",
         "value": "7.92"
