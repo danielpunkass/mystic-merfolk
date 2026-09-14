@@ -20884,6 +20884,12 @@
       "town": "Dudley",
       "rows": [
         [
+          "9/8/2026 9:20:00 AM",
+          "E. Coli",
+          "235",
+          "8.50"
+        ],
+        [
           "8/31/2026 9:41:00 AM",
           "E. Coli",
           "235",
@@ -20987,10 +20993,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 9:41:00 AM",
+        "date": "9/8/2026 9:20:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "73.58"
+        "value": "40.83"
       }
     },
     "Duxbury Beach @ Bath House": {
@@ -32576,6 +32582,18 @@
       "town": "Hopkinton",
       "rows": [
         [
+          "9/2/2026 10:43:00 AM",
+          "E. Coli",
+          "235",
+          "26.20"
+        ],
+        [
+          "8/26/2026 9:37:00 AM",
+          "E. Coli",
+          "235",
+          "7.40"
+        ],
+        [
           "8/19/2026 11:07:00 AM",
           "E. Coli",
           "235",
@@ -32661,10 +32679,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/19/2026 11:07:00 AM",
+        "date": "9/2/2026 10:43:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "6.46"
+        "value": "8.87"
       }
     },
     "Asnacomet Pond Beach (DCR) @Middle": {
@@ -65601,6 +65619,12 @@
       "town": "Sturbridge",
       "rows": [
         [
+          "9/8/2026 8:32:00 AM",
+          "E. Coli",
+          "235",
+          "35.00"
+        ],
+        [
           "8/31/2026 10:25:00 AM",
           "E. Coli",
           "235",
@@ -65668,10 +65692,10 @@
         ]
       ],
       "geoMean": {
-        "date": "8/31/2026 10:25:00 AM",
+        "date": "9/8/2026 8:32:00 AM",
         "indicator": "E. Coli",
         "threshold": "126",
-        "value": "54.79"
+        "value": "42.57"
       }
     },
     "Wells State Park - Walker Pond Beach (DCR)": {
