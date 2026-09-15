@@ -1,16 +1,16 @@
 {
-  "lastSynced": "2026-09-14T23:45:49+00:00",
-  "season": "in",
-  "today": "2026-09-14",
+  "lastSynced": "2026-09-15T00:00:44+00:00",
+  "season": "off",
+  "today": "2026-09-15",
   "beach": "Shannon Beach @ Upper Mystic (DCR)",
-  "mostRecentSeasonYear": 2025,
+  "mostRecentSeasonYear": 2026,
   "samples": {
-    "status": "ok",
-    "count": 11984,
-    "source": "browser"
+    "status": "skipped",
+    "count": 0,
+    "source": "none"
   },
   "status": {
-    "status": "ok"
+    "status": "off-season"
   },
   "cso": {
     "status": "ok",
