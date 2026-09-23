@@ -1,5 +1,5 @@
 {
-  "lastSynced": "2026-09-23T21:00:45+00:00",
+  "lastSynced": "2026-09-23T21:15:45+00:00",
   "season": "off",
   "today": "2026-09-23",
   "beach": "Shannon Beach @ Upper Mystic (DCR)",
@@ -13,9 +13,11 @@
     "status": "off-season"
   },
   "cso": {
-    "status": "ok",
+    "status": "error",
     "count": 0
   },
-  "errors": [],
+  "errors": [
+    "cso: HTTP Error 403: Forbidden"
+  ],
   "schemaVersion": 1
 }
