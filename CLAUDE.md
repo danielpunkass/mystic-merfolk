@@ -643,6 +643,15 @@ running wait timer. A genuine approval gate is left alone, so adding a required
 reviewer to `github-pages` later won't have its deploys cancelled out from under
 it.
 
+**A hung `in_progress` run wedges the queue the same way** (2026-10-07): apt
+stalled inside `playwright install --with-deps` with no error and no exit, and
+the run sat in that step from 18:25 until GitHub's default 6-hour job timeout
+killed it at 00:26. Same wall of `cancelled` runs, same misleading stale-sync
+issue — but the culprit shows as `in_progress`, not `waiting`, so the probe's
+self-heal doesn't apply. `sync.yml` now caps the job at `timeout-minutes: 60`
+and each install attempt at `timeout 10m` (so a hang becomes a retry), which
+bounds this to well under the probe's 4h threshold.
+
 ## Desktop Notifications
 
 The application can provide desktop notifications when swimming status changes

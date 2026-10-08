@@ -28,6 +28,11 @@ permissions:
 jobs:
   sync-and-deploy:
     runs-on: ubuntu-latest
+    # A healthy run takes 1–15 min (install ≤ ~7, deploy ≤ 2×10). Without this
+    # the default is 6 hours, and a hung run holds `pages-sync` the whole time:
+    # on 2026-10-07 apt hung mid-`playwright install --with-deps` at 18:25 and
+    # every dispatch queued behind it until GitHub killed it at 00:26.
+    timeout-minutes: 60
     environment:
       name: github-pages
       # Falls back to the retry step's output when the first deploy attempt
@@ -61,15 +66,22 @@ jobs:
         # dl.google.com's Packages.gz — a mirror hiccup, exit 100, nothing to do
         # with us. A stale apt index is what causes that, so the retry path
         # clears the cached lists before trying again.
+        #
+        # Each attempt is also capped with `timeout`: on 2026-10-07 apt hung
+        # outright (no error, no exit) fetching noble-security's InRelease, and
+        # a hang never reaches the retry. Normal is ~30s, slow is ~7 min.
         run: |
           for i in 1 2 3; do
             if python -m pip install --upgrade pip \
                && pip install playwright \
-               && python -m playwright install --with-deps chromium; then
+               && timeout -k 30s 10m python -m playwright install --with-deps chromium; then
               echo "Playwright ready on attempt $i."
               exit 0
             fi
             echo "Playwright install failed (attempt $i) — clearing apt lists and retrying..."
+            # A timed-out attempt can leave apt running under sudo, holding the
+            # dpkg lock the next attempt needs.
+            sudo pkill -x apt-get || true
             sudo apt-get clean || true
             sudo rm -rf /var/lib/apt/lists/* || true
             sleep $((i * 15))
