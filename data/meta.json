@@ -1,5 +1,5 @@
 {
-  "lastSynced": "2026-10-12T16:30:35+00:00",
+  "lastSynced": "2026-10-12T16:45:58+00:00",
   "season": "off",
   "today": "2026-10-12",
   "beach": "Shannon Beach @ Upper Mystic (DCR)",
@@ -13,9 +13,11 @@
     "status": "off-season"
   },
   "cso": {
-    "status": "ok",
+    "status": "error",
     "count": 0
   },
-  "errors": [],
+  "errors": [
+    "cso: HTTP Error 500: Internal Server Error"
+  ],
   "schemaVersion": 1
 }
