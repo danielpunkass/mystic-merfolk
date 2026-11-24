@@ -24,6 +24,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  actions: read   # artifact listing in "Wait for Pages artifact to be listed"
 
 jobs:
   sync-and-deploy:
@@ -217,6 +218,29 @@ jobs:
         with:
           path: site
 
+      # upload-pages-artifact reports the artifact finalized, but the run's
+      # artifact *listing* (what deploy-pages queries first) is eventually
+      # consistent. Since ~2026-11-21 it has intermittently come back empty for
+      # a few seconds after the upload: deploy-pages logs "Found 0 artifact(s)"
+      # → "No artifacts named github-pages were found", and the retry below,
+      # firing ~1s later, hits the same empty listing. That was every sync
+      # failure from 11-21 to 11-24 (up to ~40% of runs). Poll the same listing
+      # until the artifact appears so deploy-pages never races it.
+      - name: Wait for Pages artifact to be listed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 24); do
+            n=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?name=github-pages" \
+                  --jq '.total_count' 2>/dev/null || echo 0)
+            if [ "${n:-0}" -gt 0 ]; then
+              echo "github-pages artifact listed after $(( (i - 1) * 5 ))s"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::warning::github-pages artifact still not listed after 120s; attempting deploy anyway"
+
       # deploy-pages just polls the Pages backend for `updating_pages` →
       # `succeeded`. That is normally well under a minute here, but the backend
       # occasionally slows to ~10 min for a stretch: on 2026-09-10 the 11:00
@@ -238,6 +262,12 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         continue-on-error: true
+
+      # Brief pause so a retry after a transient API failure (e.g. the listing
+      # lag above resurfacing) isn't fired into the same window ~1s later.
+      - name: Pause before deploy retry
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
 
       - name: Deploy to GitHub Pages (retry)
         id: deployment_retry
